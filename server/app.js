@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import groupRoutes from './routes/groupRoutes.js';
 
 // Create an express application
 const app = express();
@@ -16,7 +17,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // ROUTES
-// app.use('/api/v1/tbd', tbdRouter);
+app.use('/api/v1/groups', groupRoutes);
 
 // Route configuration
 

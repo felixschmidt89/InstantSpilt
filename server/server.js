@@ -19,8 +19,6 @@ const db = process.env.DATABASE.replace(
   .replace('<DATABASE_PASSWORD>', process.env.DATABASE_PASSWORD)
   .replace('<DATABASE_NAME>', process.env.DATABASE_NAME);
 
-console.log(db);
-
 // Define Mongoose connection options
 const mongooseOptions = {
   useNewUrlParser: true, // Use the new URL parser
@@ -34,7 +32,7 @@ mongoose
     console.log('Connected to MongoDB');
   })
   .catch((err) => {
-    console.error('MongoDB connection error:', err);
+    console.error('Failed to connect to MongoDB:', err);
   });
 
 export default app;
