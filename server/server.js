@@ -15,7 +15,6 @@ const mongooseOptions = {
 };
 
 // Connect to MongoDB using Mongoose
-
 mongoose
   .connect(db, mongooseOptions)
   .then(() => {
@@ -23,7 +22,7 @@ mongoose
   })
   .catch((error) => {
     console.log(error.message);
-    console.log('🤨');
+    console.log('Database not connected!🤨');
   });
 
 // Define the port
