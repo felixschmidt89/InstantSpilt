@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 const groupSchema = new Schema(
   {
-    groupID: {
+    groupId: {
       type: String,
       unique: true, // Ensure groupID is globally unique
       required: true,
