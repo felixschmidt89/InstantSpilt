@@ -17,7 +17,6 @@ const groupSchema = new mongoose.Schema(
   },
 );
 
-// Define your Group model using the schema
 const Group = mongoose.model('Group', groupSchema);
 
 export default Group;

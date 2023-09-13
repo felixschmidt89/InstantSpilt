@@ -5,19 +5,8 @@ import app from './app.js';
 // Load environment variables
 dotenv.config({ path: '../config.env' });
 
-// Define the port
-const port = process.env.PORT || 3000;
-
-// Start the express server
-app.listen(port, () => console.log(`App is running on port ${port}...`));
-
-// Construct MongoDB connection string
-const db = process.env.DATABASE.replace(
-  '<DATABASE_USERNAME>',
-  process.env.DATABASE_USERNAME,
-)
-  .replace('<DATABASE_PASSWORD>', process.env.DATABASE_PASSWORD)
-  .replace('<DATABASE_NAME>', process.env.DATABASE_NAME);
+// Construct Mongoose database
+const db = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`;
 
 // Define Mongoose connection options
 const mongooseOptions = {
@@ -26,13 +15,21 @@ const mongooseOptions = {
 };
 
 // Connect to MongoDB using Mongoose
+
 mongoose
   .connect(db, mongooseOptions)
   .then(() => {
-    console.log('Connected to MongoDB');
+    console.log('Database connected! 😃');
   })
-  .catch((err) => {
-    console.error('Failed to connect to MongoDB:', err);
+  .catch((error) => {
+    console.log(error.message);
+    console.log('🤨');
   });
+
+// Define the port
+const port = process.env.PORT || 3000;
+
+// Start the express server
+app.listen(port, () => console.log(`App is running on port ${port}...`));
 
 export default app;
