@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 import shortid from 'shortid';
-import Group from '../models/group.js';
+import Group from '../models/Group.js';
 
 /**
  * Creates a new group with a unique group ID
