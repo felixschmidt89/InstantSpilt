@@ -10,12 +10,15 @@ import { validateGroupExistence } from '../middleware/validateGroupExistence.js'
 
 const router = express.Router();
 
-router.get('/list', listAllGroups);
-router.delete('/delete', deleteAllGroups);
-router.post('/create', createGroup);
-router.patch('/update/name/', validateGroupExistence, updateGroupName);
+// Create a new group
+router.post('/', createGroup);
+// Update group name by groupID
+router.patch('/:groupId', validateGroupExistence, updateGroupName);
 
-router.get('/list', developmentOnly, listAllGroups);
-router.delete('/delete', developmentOnly, deleteAllGroups);
+// ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
+// List all groups
+router.get('/', developmentOnly, listAllGroups);
+// Delete all groups
+router.delete('/', developmentOnly, deleteAllGroups);
 
 export default router;
