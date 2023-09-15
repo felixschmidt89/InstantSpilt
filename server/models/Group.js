@@ -4,8 +4,7 @@ const groupSchema = new Schema(
   {
     groupId: {
       type: String,
-      unique: true, // Ensure groupID is globally unique
-      required: true,
+      required: true, // ensure that no group can be created wo/ groupID as it is the key value in the application
     },
     groupname: {
       type: String,

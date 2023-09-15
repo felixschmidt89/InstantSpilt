@@ -11,7 +11,7 @@ const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
 export const createGroup = async (req, res) => {
   try {
     const { groupname } = req.body;
-    const groupId = nanoid(6); // Generate the unique group Id
+    const groupId = nanoid(8); // Generate the unique group Id
     const group = await Group.create({ groupname, groupId });
 
     res.status(StatusCodes.CREATED).json({ message: 'Group created', group });
