@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const expensesSchema = new Schema(
+const expenseSchema = new Schema(
   {
     expenseName: {
       type: String,
@@ -10,16 +10,13 @@ const expensesSchema = new Schema(
       type: Number,
       required: true,
     },
-    payer: { type: Schema.Types.ObjectId, ref: 'User' },
-    beneficiaries: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    groupId: {
-      type: String,
-      required: true,
-    },
+    expensePayer: { type: Schema.Types.ObjectId, ref: 'User' },
+    expenseBeneficiaries: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    groupId: { type: Schema.Types.ObjectId, ref: 'Group' },
   },
   { timestamps: true },
 );
 
-const Expense = model('Expense', expensesSchema);
+const Expense = model('Expense', expenseSchema);
 
-export default Expenses;
+export default Expense;
