@@ -6,7 +6,7 @@ const expensesSchema = new Schema(
       type: String,
       required: true,
     },
-    expensePrice: {
+    expenseAmount: {
       type: Number,
       required: true,
     },
@@ -20,6 +20,6 @@ const expensesSchema = new Schema(
   { timestamps: true },
 );
 
-const Expenses = model('Expenses', expensesSchema);
+const Expense = model('Expense', expensesSchema);
 
 export default Expenses;
