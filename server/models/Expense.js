@@ -10,9 +10,11 @@ const expenseSchema = new Schema(
       type: Number,
       required: true,
     },
-    expensePayer: { type: Schema.Types.ObjectId, ref: 'User' },
-    expenseBeneficiaries: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    groupId: { type: Schema.Types.ObjectId, ref: 'Group' },
+    expensePayer: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    expenseBeneficiaries: [
+      { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    ],
+    groupId: { type: Schema.Types.ObjectId, ref: 'Group', required: true },
   },
   { timestamps: true },
 );
