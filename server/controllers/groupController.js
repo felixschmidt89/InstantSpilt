@@ -22,7 +22,7 @@ export const createGroup = async (req, res) => {
       isUnique = await isGroupIdUnique(groupId);
     }
 
-    // storeGroupIdLocally(groupId);
+    storeGroupIdLocally(groupId);
 
     const group = await Group.create({ groupName, groupId });
 
