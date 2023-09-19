@@ -3,16 +3,19 @@ import { useState } from 'react';
 import axios from 'axios';
 
 export default function CreateGroup() {
-  const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+  //   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+  const apiUrl = 'http://localhost:3000/api/v1/groups';
 
   const [groupName, setGroupName] = useState('');
 
   const handleFormSubmit = async (e) => {
+    console.log('button clicked');
     e.preventDefault();
     try {
-      await axios.post(`${apiUrl}`, {
+      const response = await axios.post(`${apiUrl}`, {
         groupName,
       });
+      console.log('Response from server:', response.data);
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
         console.error('Error creating group:', error);
