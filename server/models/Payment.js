@@ -6,9 +6,9 @@ const paymentSchema = new Schema(
       type: Number,
       required: true,
     },
-    paymentPayer: { type: Schema.Types.ObjectId, ref: 'User' },
-    paymentPayee: { type: Schema.Types.ObjectId, ref: 'User' },
-    groupId: { type: Schema.Types.ObjectId, ref: 'Group' },
+    paymentPayer: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    paymentPayee: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    groupId: { type: Schema.Types.ObjectId, ref: 'Group', required: true },
   },
   { timestamps: true },
 );

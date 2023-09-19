@@ -6,11 +6,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    groupId: { type: Schema.Types.ObjectId, ref: 'Group' },
+    groupId: { type: Schema.Types.ObjectId, ref: 'Group', required: true },
   },
   { timestamps: true },
 );
-
 const User = model('User', userSchema);
 
 export default User;
