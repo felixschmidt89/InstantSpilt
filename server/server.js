@@ -22,7 +22,7 @@ mongoose
   })
   .catch((error) => {
     console.log(error.message);
-    console.log('Database not connected!🤨');
+    console.log('🤨');
   });
 
 // Define the port
@@ -30,5 +30,3 @@ const port = process.env.PORT || 3000;
 
 // Start the express server
 app.listen(port, () => console.log(`App is running on port ${port}...`));
-
-export default app;

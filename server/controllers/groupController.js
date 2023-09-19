@@ -4,11 +4,11 @@ import storeGroupIdLocally from '../helpers/storeGroupIdLocallyHelper.js';
 import isGroupIdUnique from '../helpers/isGroupIdUniqueHelper.js';
 import Group from '../models/Group.js';
 
-// Define customAlphabet for groupId generation
+// Define customAlphabet for groupId generation (excluding those numbers and uppercase letters that are easily confused)
 const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
 
 /**
- * Creates a new group with a globally unique group ID (excluding those numbers and uppercase letters that are easily confused) and stores it in user's local storage.
+ * Creates a new group with a globally unique group ID  and stores it in user's local storage.
  */
 export const createGroup = async (req, res) => {
   try {
