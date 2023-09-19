@@ -1,6 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
 import { customAlphabet } from 'nanoid';
-import storeGroupIdLocally from '../helpers/storeGroupIdLocallyHelper.js';
 import isGroupIdUnique from '../helpers/isGroupIdUniqueHelper.js';
 import Group from '../models/Group.js';
 
@@ -21,8 +20,6 @@ export const createGroup = async (req, res) => {
       groupId = nanoid(6);
       isUnique = await isGroupIdUnique(groupId);
     }
-
-    storeGroupIdLocally(groupId);
 
     const group = await Group.create({ groupName, groupId });
 
