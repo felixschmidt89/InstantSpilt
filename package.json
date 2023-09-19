@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felixschmidt89/HandySplit.git"
+    "url": "git+https://github.com/felixschmidt89/InstantSplit.git"
   },
   "author": "Felix Schmidt",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/felixschmidt89/HandySpilt/issues"
+    "url": "https://github.com/felixschmidt89/InstantSplit/issues"
   },
-  "homepage": "https://github.com/felixschmidt89/HandySplit#readme",
+  "homepage": "https://github.com/felixschmidt89/InstantSplit#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",

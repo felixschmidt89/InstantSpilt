@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import groupRoutes from './routes/groupRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import dotenv from 'dotenv';
 
 // Create an express application
@@ -26,5 +27,6 @@ if (process.env.NODE_ENV === 'development') {
 
 // ROUTES
 app.use(`${process.env.API_BASEURL}/groups`, groupRoutes);
+app.use(`${process.env.API_BASEURL}/users`, userRoutes);
 
 export default app;
