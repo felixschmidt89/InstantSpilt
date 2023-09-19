@@ -2,9 +2,6 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import app from './app.js';
 
-// Load environment variables
-dotenv.config({ path: '../config.env' });
-
 // Construct Mongoose database
 const db = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}`;
 
@@ -29,4 +26,8 @@ mongoose
 const port = process.env.PORT || 3000;
 
 // Start the express server
-app.listen(port, () => console.log(`App is running on port ${port}...`));
+app.listen(port, () =>
+  console.log(
+    `App is running on port ${port} in ${process.env.NODE_ENV} environment`,
+  ),
+);

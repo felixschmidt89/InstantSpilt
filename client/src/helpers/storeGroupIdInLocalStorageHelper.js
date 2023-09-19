@@ -4,7 +4,7 @@
  * @param {string} groupId - The groupId to add to local storage.
  * @returns {boolean} - Returns true if groupId has been added to local storage, false in case of an error.
  */
-const storeGroupIdLocally = (groupId) => {
+const storeGroupIdInLocalStorage = (groupId) => {
   try {
     let storedGroupIds = JSON.parse(localStorage.getItem('GroupIds'));
 
@@ -24,4 +24,4 @@ const storeGroupIdLocally = (groupId) => {
   }
 };
 
-export default storeGroupIdLocally;
+export default storeGroupIdInLocalStorage;

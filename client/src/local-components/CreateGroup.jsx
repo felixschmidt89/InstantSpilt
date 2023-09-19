@@ -1,21 +1,24 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import storeGroupIdInLocalStorage from '../helpers/storeGroupIdInLocalStorageHelper';
 
+/**
+ * Form to create a new group, stores the groupId in user's local storage upon submission.
+ */
 export default function CreateGroup() {
-  //   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-  const apiUrl = 'http://localhost:3000/api/v1/groups';
+  const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
   const [groupName, setGroupName] = useState('');
 
   const handleFormSubmit = async (e) => {
-    console.log('button clicked');
     e.preventDefault();
     try {
-      const response = await axios.post(`${apiUrl}`, {
+      const res = await axios.post(`${apiUrl}/groups`, {
         groupName,
       });
-      console.log('Response from server:', response.data);
+      const { groupId } = res.data.group;
+      storeGroupIdInLocalStorage(groupId);
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
         console.error('Error creating group:', error);
@@ -29,17 +32,23 @@ export default function CreateGroup() {
 
   return (
     <div>
-      <h1>Create a Group</h1>
+      <h2>Create a group </h2>
       <form onSubmit={handleFormSubmit}>
-        <label>
-          Enter group name
-          <input
-            type="text"
-            value={groupName}
-            onChange={handleGroupNameChange}
-          />
-        </label>
-        <button type="submit">Create group</button>
+        <input
+          type="text"
+          value={groupName}
+          onChange={handleGroupNameChange}
+          placeholder="group name"
+          required
+          minLength="3"
+          pattern=".*\S+.*"
+          style={{ marginLeft: '10px' }}
+        />
+        {groupName.length >= 3 && (
+          <button type="submit" style={{ marginLeft: '10px', padding: '2px' }}>
+            next
+          </button>
+        )}
       </form>
     </div>
   );

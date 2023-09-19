@@ -2,17 +2,17 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import groupRoutes from './routes/groupRoutes.js';
-import { developmentApiBaseUrl } from './config/config.development.js';
-import { productionApiBaseUrl } from './config/config.production.js';
+import dotenv from 'dotenv';
 
 // Create an express application
 const app = express();
 
-// Choose the appropriate apiBaseUrl based on the environment
-const apiBaseUrl =
-  process.env.NODE_ENV === 'production'
-    ? productionApiBaseUrl
-    : developmentApiBaseUrl;
+// Load environment variables based on NODE_ENV
+if (process.env.NODE_ENV === 'production') {
+  dotenv.config({ path: '../config.prod.env' });
+} else {
+  dotenv.config({ path: '../config.dev.env' });
+}
 
 // Parse request bodies as JSON
 app.use(express.json());
@@ -25,6 +25,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // ROUTES
-app.use(`${apiBaseUrl}/groups`, groupRoutes);
+app.use(`${process.env.API_BASEURL}/groups`, groupRoutes);
 
 export default app;
