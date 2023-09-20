@@ -62,7 +62,7 @@ export const changeUserName = async (req, res) => {
 
 export const listAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find({});
     res.status(StatusCodes.OK).json({ users });
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {

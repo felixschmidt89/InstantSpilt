@@ -7,21 +7,22 @@ import {
 } from '../controllers/userController.js';
 import developmentOnly from '../middleware/developmentOnly.js';
 import { validateUserNamePropertyPresence } from '../middleware/validateRequestBody.js';
-
 import { checkUserNameMatch } from '../middleware/validatePropertyMatch.js';
+import validateGroupId from '../middleware/validateGroupId.js';
 
 const router = express.Router();
 
 // Create new user
-router.post('/', validateUserNamePropertyPresence, createUser);
+router.post('/', validateGroupId, validateUserNamePropertyPresence, createUser);
 
 // Change user name
-router.patch('/', checkUserNameMatch, changeUserName);
+router.patch('/', validateGroupId, checkUserNameMatch, changeUserName);
 
 // List users by groupId
-router.get('/', listAllUsersByGroupId);
+router.get('/byGroupId', validateGroupId, listAllUsersByGroupId);
 
+// ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 // List all users
-router.get('/', developmentOnly, listAllUsers);
+router.get('/debug/all', developmentOnly, listAllUsers);
 
 export default router;

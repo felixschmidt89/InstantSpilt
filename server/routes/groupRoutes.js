@@ -21,10 +21,9 @@ router.patch(
 );
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
-
 // List all groups
-router.get('/', developmentOnly, listAllGroups);
+router.get('/debug/all', developmentOnly, listAllGroups);
 // Delete all groups
-router.delete('/', developmentOnly, deleteAllGroups);
+router.delete('/debug/all', developmentOnly, deleteAllGroups);
 
 export default router;

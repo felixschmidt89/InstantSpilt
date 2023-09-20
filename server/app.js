@@ -28,6 +28,6 @@ if (process.env.NODE_ENV === 'development') {
 
 // ROUTES
 app.use(`${process.env.API_BASEURL}/groups`, groupRoutes);
-app.use(`${process.env.API_BASEURL}/users`, validateGroupId, userRoutes);
+app.use(`${process.env.API_BASEURL}/users`, userRoutes);
 
 export default app;
