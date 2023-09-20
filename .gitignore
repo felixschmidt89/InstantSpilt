@@ -5,3 +5,7 @@ build/
 dist/
 .env.development
 .env.production
+.vscode
+.prettierrc
+..eslintrc.json
+vite.config.js
