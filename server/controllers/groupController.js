@@ -35,7 +35,7 @@ export const createGroup = async (req, res) => {
   }
 };
 
-export const updateGroupName = async (req, res) => {
+export const changeGroupName = async (req, res) => {
   try {
     const { groupId, groupName } = req.body;
     const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
@@ -43,7 +43,7 @@ export const updateGroupName = async (req, res) => {
     const updatedGroup = await Group.findByIdAndUpdate(
       linkedGroup,
       { $set: { groupName } },
-      { new: true }, // Return the updated document
+      { new: true },
     );
 
     res

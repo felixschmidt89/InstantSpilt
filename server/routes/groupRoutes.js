@@ -1,7 +1,7 @@
 import express from 'express';
 import {
   createGroup,
-  updateGroupName,
+  changeGroupName,
   listAllGroups,
   deleteAllGroups,
 } from '../controllers/groupController.js';
@@ -19,12 +19,12 @@ router.post(
   createGroup,
 );
 // Update group name
-const updateGroupNameRequiredProperties = ['groupId', 'groupName'];
+const changeGroupNameRequiredProperties = ['groupName'];
 router.patch(
   '/',
   validateGroupId,
-  validateRequestBody(updateGroupNameRequiredProperties),
-  updateGroupName,
+  validateRequestBody(changeGroupNameRequiredProperties),
+  changeGroupName,
 );
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY

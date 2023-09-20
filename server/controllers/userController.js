@@ -34,6 +34,30 @@ export const listAllUsersByGroupId = async (req, res) => {
   }
 };
 
+export const changeUserName = async (req, res) => {
+  try {
+    const { groupId, userName, newUserName } = req.body;
+    const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
+
+    const updatedUser = await User.findOneAndUpdate(
+      { userName, linkedGroup },
+      { $set: { userName: newUserName } },
+      { new: true },
+    );
+
+    res
+      .status(StatusCodes.OK)
+      .json({ message: 'User name updated successfully.', updatedUser });
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error updating user name:', error);
+    }
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Internal server error. Please try again later.' });
+  }
+};
+
 // FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 
 export const listAllUsers = async (req, res) => {
