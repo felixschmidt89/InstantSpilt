@@ -1,38 +1,39 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
  * Form to create a new user
  */
-export default function CreateUser() {
-  const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-
+export default function CreateUser({ toggleDataRefresh }) {
   const [userName, setUserName] = useState('');
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
+      // provide groupId for authentication
       const groupId = localStorage.getItem('activeGroupId');
-      console.log(groupId);
       await axios.post(`${apiUrl}/users`, {
         userName,
         groupId: String(groupId),
       });
+      setUserName('');
+      // update parent state, to rerender userList
+      toggleDataRefresh();
     } catch (error) {
       if (process.env.NODE_ENV === 'development') {
         console.error('Error creating user:', error);
       }
     }
   };
-
   const handleUserNameChange = (e) => {
     setUserName(e.target.value);
   };
 
   return (
     <div>
-      <h2>Add a user</h2>
+      <h2>Add user</h2>
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"

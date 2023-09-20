@@ -20,7 +20,7 @@ export const createUser = async (req, res) => {
 
 export const listAllUsersByGroupId = async (req, res) => {
   try {
-    const { groupId } = req.body;
+    const groupId = req.params.groupId;
     const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
     const users = await User.find({ linkedGroup });
     res.status(StatusCodes.OK).json({ message: 'Userlist', users });

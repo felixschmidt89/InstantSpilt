@@ -19,7 +19,7 @@ router.post('/', validateGroupId, validateUserNamePropertyPresence, createUser);
 router.patch('/', validateGroupId, checkUserNameMatch, changeUserName);
 
 // List users by groupId
-router.get('/byGroupId', validateGroupId, listAllUsersByGroupId);
+router.get('/byGroupId/:groupId', validateGroupId, listAllUsersByGroupId);
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 // List all users
