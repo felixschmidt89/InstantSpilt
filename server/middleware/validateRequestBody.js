@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
  *
  * @param {string[]} requiredProperties - An array of property names that are required.
  */
-const validateRequestBody = (requiredProperties) => {
+export const validateRequestBody = (requiredProperties) => {
   return (req, res, next) => {
     const missingProperties = requiredProperties.filter(
       (prop) => !req.body[prop],
@@ -23,4 +23,13 @@ const validateRequestBody = (requiredProperties) => {
   };
 };
 
-export default validateRequestBody;
+/**
+ * validates the presence of the userName property in the req.body.
+ */
+export const validateUserNamePropertyPresence = validateRequestBody([
+  'userName',
+]);
+
+export const validateGroupNamePropertyPresence = validateRequestBody([
+  'groupName',
+]);
