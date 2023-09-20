@@ -14,7 +14,6 @@ const storeGroupIdInLocalStorage = (groupId) => {
     if (!storedGroupIds.includes(groupId)) {
       storedGroupIds.push(groupId);
       localStorage.setItem('storedGroupIds', JSON.stringify(storedGroupIds));
-
       setGroupIdToCurrentlyActive(groupId);
     }
     return true;

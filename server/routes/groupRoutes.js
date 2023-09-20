@@ -5,17 +5,25 @@ import {
   listAllGroups,
   deleteAllGroups,
 } from '../controllers/groupController.js';
-import { developmentOnly } from '../middleware/developmentOnly.js';
-import { validateGroupExistence } from '../middleware/validateGroupExistence.js';
+import developmentOnly from '../middleware/developmentOnly.js';
+import validateGroupId from '../middleware/validateGroupId.js';
+import validateRequestBody from '../middleware/validateRequestBody.js';
 
 const router = express.Router();
 
 // Create a new group
 router.post('/', createGroup);
 // Update group name by groupID
-router.patch('/:groupId', validateGroupExistence, updateGroupName);
+const updateGroupNameRequiredProperties = ['groupId', 'groupName'];
+router.patch(
+  '/',
+  validateGroupId,
+  validateRequestBody(updateGroupNameRequiredProperties),
+  updateGroupName,
+);
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
+
 // List all groups
 router.get('/', developmentOnly, listAllGroups);
 // Delete all groups

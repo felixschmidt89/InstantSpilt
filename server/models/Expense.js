@@ -14,7 +14,15 @@ const expenseSchema = new Schema(
     expenseBeneficiaries: [
       { type: Schema.Types.ObjectId, ref: 'User', required: true },
     ],
-    groupId: { type: Schema.Types.ObjectId, ref: 'Group', required: true },
+    groupId: {
+      type: String,
+      required: true,
+    },
+    linkedGroup: {
+      type: Schema.Types.ObjectId,
+      ref: 'Group',
+      required: true,
+    },
   },
   { timestamps: true },
 );

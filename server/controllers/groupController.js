@@ -1,6 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import { customAlphabet } from 'nanoid';
 import isGroupIdUnique from '../helpers/isGroupIdUniqueHelper.js';
+import obtainGroupObjectIdByGroupIdHelper from '../helpers/obtainGroupObjectIdByGroupId.js';
 import Group from '../models/Group.js';
 
 // Define customAlphabet for groupId generation (excluding those numbers and uppercase letters that are easily confused)
@@ -36,11 +37,12 @@ export const createGroup = async (req, res) => {
 
 export const updateGroupName = async (req, res) => {
   try {
-    const { groupId, groupname } = req.body;
+    const { groupId, groupName } = req.body;
+    const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
 
     const updatedGroup = await Group.findByIdAndUpdate(
-      groupId,
-      { $set: { groupname } },
+      linkedGroup,
+      { $set: { groupName } },
       { new: true }, // Return the updated document
     );
 
