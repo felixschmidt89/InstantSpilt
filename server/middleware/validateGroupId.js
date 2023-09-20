@@ -20,7 +20,7 @@ const validateGroupId = async (req, res, next) => {
     next();
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
-      console.error('Error checking group existence:', error);
+      console.error('Error validating provided group ID existence:', error);
     }
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)

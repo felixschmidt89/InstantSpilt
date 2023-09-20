@@ -5,14 +5,21 @@ import {
   listAllUsersByGroupId,
 } from '../controllers/userController.js';
 import developmentOnly from '../middleware/developmentOnly.js';
+import validateGroupId from '../middleware/validateGroupId.js';
+import validateRequestBody from '../middleware/validateRequestBody.js';
 
 const router = express.Router();
 
 // Create new user
-router.post('/', createUser);
+const createUserRequiredProperties = ['userName'];
+router.post(
+  '/',
+  validateRequestBody(createUserRequiredProperties),
+  validateGroupId,
+  createUser,
+);
 
 // Change user name
-router.patch;
 
 // List users by groupId
 router.get('/', listAllUsersByGroupId);
