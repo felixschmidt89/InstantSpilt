@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import Group from '../models/Group.js';
 
-export const validateGroupExistence = async (req, res, next) => {
+const validateGroupId = async (req, res, next) => {
   try {
     const groupId = req.params.groupId || req.body.groupId;
 
@@ -19,9 +19,13 @@ export const validateGroupExistence = async (req, res, next) => {
 
     next();
   } catch (error) {
-    console.error('Error checking group existence:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error checking group existence:', error);
+    }
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ error: 'Internal server error. Please try again later.' });
   }
 };
+
+export default validateGroupId;

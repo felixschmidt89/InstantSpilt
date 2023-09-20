@@ -6,7 +6,7 @@
  */
 const setGroupIdToCurrentlyActive = (groupId) => {
   try {
-    localStorage.setItem('activeGroupId', JSON.stringify(groupId));
+    localStorage.setItem('activeGroupId', groupId);
     return true;
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {

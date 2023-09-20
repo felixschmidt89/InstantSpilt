@@ -6,7 +6,15 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    groupId: { type: Schema.Types.ObjectId, ref: 'Group', required: true },
+    groupId: {
+      type: String,
+      required: true,
+    },
+    linkedGroup: {
+      type: Schema.Types.ObjectId,
+      ref: 'Group',
+      required: true,
+    },
   },
   { timestamps: true },
 );
