@@ -3,12 +3,13 @@ config.prod.env
 node_modules/
 build/
 dist/
-.env.development
-.env.production
-.vscode
+.vscode/
 .prettierrc
-.eslintrc.json
-vite.config.js
+
+client/.eslintrc.json
+client/vite.config.js
+client/.env.development
+client/.env.production
 
 
 
