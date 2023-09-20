@@ -34,7 +34,7 @@ export const listAllUsersByGroupId = async (req, res) => {
   }
 };
 
-// DEVELOPMENT AND DEBUGGING
+// FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 
 export const listAllUsers = async (req, res) => {
   try {

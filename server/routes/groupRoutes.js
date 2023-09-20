@@ -12,8 +12,13 @@ import validateRequestBody from '../middleware/validateRequestBody.js';
 const router = express.Router();
 
 // Create a new group
-router.post('/', createGroup);
-// Update group name by groupID
+const createGroupRequiredProperties = ['groupName'];
+router.post(
+  '/',
+  validateRequestBody(createGroupRequiredProperties),
+  createGroup,
+);
+// Update group name
 const updateGroupNameRequiredProperties = ['groupId', 'groupName'];
 router.patch(
   '/',
