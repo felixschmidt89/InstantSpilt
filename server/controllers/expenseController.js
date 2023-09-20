@@ -1,5 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 import Expense from '../models/Expense.js';
+import obtainGroupObjectIdByGroupIdHelper from '../helpers/obtainGroupObjectIdByGroupId.js';
 
 export const createExpense = async (req, res) => {
   try {
@@ -8,14 +9,17 @@ export const createExpense = async (req, res) => {
       expenseAmount,
       expensePayer,
       expenseBeneficiaries,
-      groupID,
+      groupId,
     } = req.body;
+
+    const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
 
     const expense = await Expense.create({
       expenseName,
       expenseAmount,
       expensePayer,
       expenseBeneficiaries,
+      linkedGroup,
     });
     res
       .status(StatusCodes.CREATED)
