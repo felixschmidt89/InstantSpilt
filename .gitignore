@@ -1,5 +1,7 @@
-config.env
+config.dev.env
+config.prod.env
 node_modules/
 build/
 dist/
-
+.env.development
+.env.production

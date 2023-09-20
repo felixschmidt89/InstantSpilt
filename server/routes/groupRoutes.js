@@ -7,23 +7,16 @@ import {
 } from '../controllers/groupController.js';
 import developmentOnly from '../middleware/developmentOnly.js';
 import validateGroupId from '../middleware/validateGroupId.js';
-import validateRequestBody from '../middleware/validateRequestBody.js';
-
+import { validateGroupNamePropertyPresence } from '../middleware/validateRequestBody.js';
 const router = express.Router();
 
 // Create a new group
-const createGroupRequiredProperties = ['groupName'];
-router.post(
-  '/',
-  validateRequestBody(createGroupRequiredProperties),
-  createGroup,
-);
+router.post('/', validateGroupNamePropertyPresence, createGroup);
 // Update group name
-const changeGroupNameRequiredProperties = ['groupName'];
 router.patch(
   '/',
   validateGroupId,
-  validateRequestBody(changeGroupNameRequiredProperties),
+  validateGroupNamePropertyPresence,
   changeGroupName,
 );
 

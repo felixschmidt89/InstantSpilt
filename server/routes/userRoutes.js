@@ -6,14 +6,14 @@ import {
   changeUserName,
 } from '../controllers/userController.js';
 import developmentOnly from '../middleware/developmentOnly.js';
-import validateRequestBody from '../middleware/validateRequestBody.js';
+import { validateUserNamePropertyPresence } from '../middleware/validateRequestBody.js';
+
 import { checkUserNameMatch } from '../middleware/validatePropertyMatch.js';
 
 const router = express.Router();
 
 // Create new user
-const createUserRequiredProperties = ['userName'];
-router.post('/', validateRequestBody(createUserRequiredProperties), createUser);
+router.post('/', validateUserNamePropertyPresence, createUser);
 
 // Change user name
 router.patch('/', checkUserNameMatch, changeUserName);
