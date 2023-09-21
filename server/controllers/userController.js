@@ -2,6 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
 import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCode.js';
 
+// TODO: Add duplicate error handling
 export const createUser = async (req, res) => {
   try {
     const { userName, groupCode } = req.body;

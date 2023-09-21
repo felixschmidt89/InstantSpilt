@@ -1,5 +1,8 @@
 import express from 'express';
-import { createExpense } from '../controllers/expenseController.js';
+import {
+  createExpense,
+  listAllExpensesByGroupCode,
+} from '../controllers/expenseController.js';
 
 const router = express.Router();
 
@@ -9,4 +12,7 @@ router.post('/', createExpense);
 // router.delete('/', deleteExpense);
 // Update an expense
 // router.update('/', updateExpense);
+
+// Get expenses by GroupCode
+router.get('/byGroupCode/:groupCode', listAllExpensesByGroupCode);
 export default router;

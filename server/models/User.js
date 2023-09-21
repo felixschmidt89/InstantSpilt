@@ -18,6 +18,10 @@ const userSchema = new Schema(
   },
   { timestamps: true },
 );
+
+// Ensure users are unique within a group using schema-level validation
+userSchema.index({ userName: 1, groupObjectId: 1 }, { unique: true });
+
 const User = model('User', userSchema);
 
 export default User;

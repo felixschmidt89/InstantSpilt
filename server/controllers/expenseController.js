@@ -51,3 +51,19 @@ export const createExpense = async (req, res) => {
       .json({ error: 'Internal server error' });
   }
 };
+
+export const listAllExpensesByGroupCode = async (req, res) => {
+  try {
+    const groupCode = req.params.groupCode;
+    const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
+    const expenses = await Expense.find({ groupObjectId });
+    res.status(StatusCodes.OK).json({ message: 'Group expenses', expenses });
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error finding expenses:', error);
+    }
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Internal server error. Please try again later.' });
+  }
+};
