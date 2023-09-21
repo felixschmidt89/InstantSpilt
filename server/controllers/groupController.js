@@ -38,10 +38,10 @@ export const createGroup = async (req, res) => {
 export const changeGroupName = async (req, res) => {
   try {
     const { groupCode, groupName } = req.body;
-    const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
+    const group = await Group.findOneAndUpdate({ groupCode });
 
     const updatedGroup = await Group.findByIdAndUpdate(
-      groupObjectId,
+      group._id,
       { $set: { groupName } },
       { new: true },
     );
