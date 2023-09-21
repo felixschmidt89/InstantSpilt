@@ -1,82 +1,53 @@
 import { StatusCodes } from 'http-status-codes';
 import Expense from '../models/Expense.js';
+import User from '../models/User.js';
 import obtainGroupObjectIdByGroupIdHelper from '../helpers/obtainGroupObjectIdByGroupId.js';
 
 export const createExpense = async (req, res) => {
+  const {
+    userName,
+    groupId,
+    expenseName,
+    expenseAmount,
+    expenseBeneficiariesNames,
+  } = req.body;
+  const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
+
   try {
-    const {
-      expenseName,
-      expenseAmount,
-      expensePayer,
-      expenseBeneficiaries,
-      groupId,
-    } = req.body;
+    const expensePayer = await User.findOne({ userName, linkedGroup });
 
-    const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
+    if (!expensePayer) {
+      return res
+        .status(StatusCodes.NOT_FOUND)
+        .json({ error: 'Expense payer not found.' });
+    }
 
-    const expense = await Expense.create({
-      expenseName,
-      expenseAmount,
-      expensePayer,
-      expenseBeneficiaries,
+    const expenseBeneficiaries = await User.find({
+      userName: { $in: expenseBeneficiariesNames },
       linkedGroup,
     });
-    res
-      .status(StatusCodes.CREATED)
-      .json({ message: 'Expense created', expense });
+
+    const beneficiaryIds = expenseBeneficiaries.map((user) => user._id);
+
+    const newExpense = new Expense({
+      expenseName,
+      expenseAmount,
+      groupId,
+      expensePayer: expensePayer._id,
+      expenseBeneficiaries: beneficiaryIds,
+      linkedGroup,
+    });
+
+    // Save the expense to the database
+    const expense = await newExpense.save();
+
+    return res.status(StatusCodes.CREATED).json(expense);
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
-      console.error('Error creating expense:', error);
+      console.error('Error updating user name:', error);
     }
-    res
+    return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+      .json({ error: 'Internal server error' });
   }
 };
-
-// export const updateGroupName = async (req, res) => {
-//   try {
-//     const { groupId, groupname } = req.body;
-
-//     const updatedGroup = await Group.findByIdAndUpdate(
-//       groupId,
-//       { $set: { groupname } },
-//       { new: true }, // Return the updated document
-//     );
-
-//     res
-//       .status(StatusCodes.OK)
-//       .json({ message: 'Group name updated successfully.', updatedGroup });
-//   } catch (error) {
-//     console.error('Error updating group name:', error);
-//     res
-//       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-//       .json({ error: 'Internal server error. Please try again later.' });
-//   }
-// };
-
-// export const listAllGroups = async (req, res) => {
-//   try {
-//     const groups = await Group.find();
-//     res.status(StatusCodes.OK).json({ groups });
-//   } catch (error) {
-//     console.error('Error listing all groups:', error);
-//     res
-//       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-//       .json({ error: 'Internal server error. Please try again later.' });
-//   }
-// };
-
-// export const deleteAllGroups = async (req, res) => {
-//   try {
-//     await Group.deleteMany({});
-//     res
-//       .status(StatusCodes.OK)
-//       .json({ message: 'All groups deleted successfully.' });
-//   } catch (error) {
-//     console.error('Error deleting all groups:', error);
-//     res
-//       .status(StatusCodes.INTERNAL_SERVER_ERROR)
-//       .json({ error: 'Internal server error. Please try again later.' });
-//   }
-// };
