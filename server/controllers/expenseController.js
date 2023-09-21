@@ -1,20 +1,20 @@
 import { StatusCodes } from 'http-status-codes';
 import Expense from '../models/Expense.js';
 import User from '../models/User.js';
-import obtainGroupObjectIdByGroupIdHelper from '../helpers/obtainGroupObjectIdByGroupId.js';
+import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCode.js';
 
 export const createExpense = async (req, res) => {
   const {
     userName,
-    groupId,
+    groupCode,
     expenseName,
     expenseAmount,
     expenseBeneficiariesNames,
   } = req.body;
-  const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
+  const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
 
   try {
-    const expensePayer = await User.findOne({ userName, linkedGroup });
+    const expensePayer = await User.findOne({ userName, groupObjectId });
 
     if (!expensePayer) {
       return res
@@ -24,7 +24,7 @@ export const createExpense = async (req, res) => {
 
     const expenseBeneficiaries = await User.find({
       userName: { $in: expenseBeneficiariesNames },
-      linkedGroup,
+      groupObjectId,
     });
 
     const beneficiaryIds = expenseBeneficiaries.map((user) => user._id);
@@ -32,10 +32,10 @@ export const createExpense = async (req, res) => {
     const newExpense = new Expense({
       expenseName,
       expenseAmount,
-      groupId,
+      groupCode,
       expensePayer: expensePayer._id,
       expenseBeneficiaries: beneficiaryIds,
-      linkedGroup,
+      groupObjectId,
     });
 
     // Save the expense to the database

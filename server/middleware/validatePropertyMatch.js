@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
-import obtainGroupObjectIdByGroupIdHelper from '../helpers/obtainGroupObjectIdByGroupId.js';
+import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCode.js';
 
 /**
  * Checks if a provided property value in the request body matches the one in the database.
@@ -10,11 +10,12 @@ import obtainGroupObjectIdByGroupIdHelper from '../helpers/obtainGroupObjectIdBy
 export const validatePropertyValueMatch = (propertyName, model) => {
   return async (req, res, next) => {
     try {
-      const { [propertyName]: propertyValue, groupId } = req.body;
-      const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
+      const { [propertyName]: propertyValue, groupCode } = req.body;
+      const groupObjectId =
+        await obtainGroupObjectIdByGroupCodeHelper(groupCode);
 
       const existingDocument = await model.findOne({
-        linkedGroup,
+        groupObjectId,
         [propertyName]: propertyValue,
       });
 

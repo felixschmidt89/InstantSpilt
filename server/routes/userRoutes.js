@@ -2,24 +2,33 @@ import express from 'express';
 import {
   createUser,
   listAllUsers,
-  listAllUsersByGroupId,
+  listAllUsersByGroupCode,
   changeUserName,
 } from '../controllers/userController.js';
 import developmentOnly from '../middleware/developmentOnly.js';
 import { validateUserNamePropertyPresence } from '../middleware/validateRequestBody.js';
 import { checkUserNameMatch } from '../middleware/validatePropertyMatch.js';
-import validateGroupId from '../middleware/validateGroupId.js';
+import validateGroupCode from '../middleware/validateGroupCode.js';
 
 const router = express.Router();
 
 // Create new user
-router.post('/', validateGroupId, validateUserNamePropertyPresence, createUser);
+router.post(
+  '/',
+  validateGroupCode,
+  validateUserNamePropertyPresence,
+  createUser,
+);
 
 // Change user name
-router.patch('/', validateGroupId, checkUserNameMatch, changeUserName);
+router.patch('/', validateGroupCode, checkUserNameMatch, changeUserName);
 
-// List users by groupId
-router.get('/byGroupId/:groupId', validateGroupId, listAllUsersByGroupId);
+// List users by groupCode
+router.get(
+  '/byGroupCode/:groupCode',
+  validateGroupCode,
+  listAllUsersByGroupCode,
+);
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 // List all users

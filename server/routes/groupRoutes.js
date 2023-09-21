@@ -6,7 +6,7 @@ import {
   deleteAllGroups,
 } from '../controllers/groupController.js';
 import developmentOnly from '../middleware/developmentOnly.js';
-import validateGroupId from '../middleware/validateGroupId.js';
+import validateGroupCode from '../middleware/validateGroupCode.js';
 import { validateGroupNamePropertyPresence } from '../middleware/validateRequestBody.js';
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.post('/', validateGroupNamePropertyPresence, createGroup);
 // Update group name
 router.patch(
   '/',
-  validateGroupId,
+  validateGroupCode,
   validateGroupNamePropertyPresence,
   changeGroupName,
 );

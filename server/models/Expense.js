@@ -14,7 +14,7 @@ const expenseSchema = new Schema(
     expenseBeneficiaries: [
       { type: Schema.Types.ObjectId, ref: 'User', required: true },
     ],
-    groupId: {
+    groupCode: {
       type: String,
       required: true,
     },

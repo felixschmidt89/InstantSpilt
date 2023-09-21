@@ -8,11 +8,11 @@ const paymentSchema = new Schema(
     },
     paymentPayer: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     paymentPayee: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-    groupId: {
+    groupCode: {
       type: String,
       required: true,
     },
-    linkedGroup: {
+    groupObjectId: {
       type: Schema.Types.ObjectId,
       ref: 'Group',
       required: true,

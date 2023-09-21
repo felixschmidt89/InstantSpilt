@@ -5,7 +5,7 @@ import groupRoutes from './routes/groupRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import expenseRoutes from './routes/expenseRoutes.js';
 import dotenv from 'dotenv';
-import validateGroupId from './middleware/validateGroupId.js';
+import validateGroupCode from './middleware/validateGroupCode.js';
 
 // Create an express application
 const app = express();

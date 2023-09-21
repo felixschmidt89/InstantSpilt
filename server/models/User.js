@@ -6,7 +6,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    groupId: {
+    groupCode: {
       type: String,
       required: true,
     },

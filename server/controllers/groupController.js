@@ -1,28 +1,28 @@
 import { StatusCodes } from 'http-status-codes';
 import { customAlphabet } from 'nanoid';
-import isGroupIdUnique from '../helpers/isGroupIdUniqueHelper.js';
-import obtainGroupObjectIdByGroupIdHelper from '../helpers/obtainGroupObjectIdByGroupId.js';
+import isGroupCodeUnique from '../helpers/isGroupCodeUniqueHelper.js';
+import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCode.js';
 import Group from '../models/Group.js';
 
-// Define customAlphabet for groupId generation (excluding those numbers and uppercase letters that are easily confused)
+// Define customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)
 const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
 
 /**
- * Creates a new group with a globally unique group ID  and stores it in user's local storage.
+ * Creates a new group with a globally unique group ID
  */
 export const createGroup = async (req, res) => {
   try {
     const { groupName } = req.body;
-    let groupId;
+    let groupCode;
     let isUnique = false;
 
-    // Generate globally unique groupId
+    // Generate globally unique groupCode
     while (!isUnique) {
-      groupId = nanoid(6);
-      isUnique = await isGroupIdUnique(groupId);
+      groupCode = nanoid(6);
+      isUnique = await isGroupCodeUnique(groupCode);
     }
 
-    const group = await Group.create({ groupName, groupId });
+    const group = await Group.create({ groupName, groupCode });
 
     res.status(StatusCodes.CREATED).json({ message: 'Group created', group });
   } catch (error) {
@@ -37,11 +37,11 @@ export const createGroup = async (req, res) => {
 
 export const changeGroupName = async (req, res) => {
   try {
-    const { groupId, groupName } = req.body;
-    const linkedGroup = await obtainGroupObjectIdByGroupIdHelper(groupId);
+    const { groupCode, groupName } = req.body;
+    const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
 
     const updatedGroup = await Group.findByIdAndUpdate(
-      linkedGroup,
+      groupObjectId,
       { $set: { groupName } },
       { new: true },
     );

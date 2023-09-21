@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 const groupSchema = new Schema(
   {
-    groupId: {
+    groupCode: {
       type: String,
       required: true,
     },
