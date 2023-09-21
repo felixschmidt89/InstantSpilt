@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -7,23 +7,23 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * Form to create a new user
  */
 export default function CreateUser({ toggleDataRefresh }) {
-  const [userName, setUserName] = useState('');
+  const [userName, setUserName] = useState("");
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      // provide groupId for authentication
-      const groupId = localStorage.getItem('activeGroupId');
+      // provide groupCode for authentication
+      const groupCode = localStorage.getItem("activeGroupCode");
       await axios.post(`${apiUrl}/users`, {
         userName,
-        groupId: String(groupId),
+        groupCode: String(groupCode),
       });
-      setUserName('');
+      setUserName("");
       // update parent state, to rerender userList
       toggleDataRefresh();
     } catch (error) {
-      if (process.env.NODE_ENV === 'development') {
-        console.error('Error creating user:', error);
+      if (process.env.NODE_ENV === "development") {
+        console.error("Error creating user:", error);
       }
     }
   };
@@ -36,17 +36,17 @@ export default function CreateUser({ toggleDataRefresh }) {
       <h2>Add user</h2>
       <form onSubmit={handleFormSubmit}>
         <input
-          type="text"
+          type='text'
           value={userName}
           onChange={handleUserNameChange}
-          placeholder="user name"
+          placeholder='user name'
           required
-          minLength="2"
-          pattern=".*\S+.*"
-          style={{ marginLeft: '10px' }}
+          minLength='2'
+          pattern='.*\S+.*'
+          style={{ marginLeft: "10px" }}
         />
         {userName.length >= 3 && (
-          <button type="submit" style={{ marginLeft: '10px', padding: '2px' }}>
+          <button type='submit' style={{ marginLeft: "10px", padding: "2px" }}>
             add
           </button>
         )}

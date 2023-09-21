@@ -1,7 +1,18 @@
+# Project variables
 config.dev.env
 config.prod.env
+.env.development
+.env.production
+
+# Dependencies, build & dist folders
 node_modules/
 build/
 dist/
-.env.development
-.env.production
+
+# Dev tools config files
+.eslintrc.json
+.prettierrc
+.vite.config.js
+
+
+

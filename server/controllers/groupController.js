@@ -1,7 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 import { customAlphabet } from 'nanoid';
 import isGroupCodeUnique from '../helpers/isGroupCodeUniqueHelper.js';
-import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCode.js';
 import Group from '../models/Group.js';
 
 // Define customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)

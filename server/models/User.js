@@ -10,7 +10,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    linkedGroup: {
+    groupObjectId: {
       type: Schema.Types.ObjectId,
       ref: 'Group',
       required: true,
