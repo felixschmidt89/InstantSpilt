@@ -7,6 +7,12 @@ export default function ListGroupUsers({ refreshData }) {
   const [userNames, setUserNames] = useState([]);
   const [error, setError] = useState(null);
   useEffect(() => {
+    const groupObjectId = localStorage.getItem("activeGroupObjectId");
+
+    if (!groupObjectId) {
+      return;
+    }
+
     async function getUsers() {
       try {
         const groupObjectId = localStorage.getItem("activeGroupObjectId");
