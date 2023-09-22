@@ -12,7 +12,7 @@ dist/
 # Dev tools config files
 .eslintrc.json
 .prettierrc
-.vite.config.js
+vite.config.js
 
 
 

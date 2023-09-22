@@ -2,7 +2,7 @@ import Group from '../models/Group.js';
 
 const obtainGroupObjectIdByGroupCodeHelper = async (groupCode) => {
   try {
-    const group = await Group.findOne({ groupCode }).exec();
+    const group = await Group.findOne({ groupCode });
     if (!group) {
       throw new Error(`Group with groupCode "${groupCode}" not found`);
     }

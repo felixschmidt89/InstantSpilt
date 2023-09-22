@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import storeGroupCodeInLocalStorage from "../helpers/storeGroupCodeInLocalStorageHelper";
+import storeGroupCodesInLocalStorage from "../helpers/storeGroupCodesInLocalStorageHelper";
 
 /**
  * Form to create a new group, stores the groupCode in user's local storage upon submission.
@@ -17,8 +17,10 @@ export default function CreateGroup() {
       const res = await axios.post(`${apiUrl}/groups`, {
         groupName,
       });
-      const { groupCode } = res.data.group;
-      storeGroupCodeInLocalStorage(groupCode);
+      const { groupCode, _id } = res.data.group;
+      storeGroupCodesInLocalStorage(groupCode);
+      // Store groupId in localStorage
+      localStorage.setItem("activeGroupObjectId", JSON.stringify(_id));
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Error creating group:", error);
