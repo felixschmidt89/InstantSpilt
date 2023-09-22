@@ -58,6 +58,25 @@ export const changeGroupName = async (req, res) => {
   }
 };
 
+export const listGroupNamesByStoredGroupCodes = async (req, res) => {
+  try {
+    const { storedGroupCodes } = req.query;
+    const groupCodesArray = storedGroupCodes.split(',');
+    const groups = await Group.find({ groupCode: { $in: groupCodesArray } });
+    const groupNames = groups.map((group) => group.groupName);
+    res.status(StatusCodes.OK).json({ groupNames });
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error listing group names:', error);
+    }
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Internal server error. Please try again later.' });
+  }
+};
+
+// FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
+
 export const listAllGroups = async (req, res) => {
   try {
     const groups = await Group.find();

@@ -35,10 +35,26 @@ export const listAllUsersByGroupCode = async (req, res) => {
   }
 };
 
+export const listAllUsersByGroupObjectId = async (req, res) => {
+  try {
+    const { groupObjectId } = req.params;
+    const users = await User.find({ groupObjectId });
+    res.status(StatusCodes.OK).json({ message: 'Userlist', users });
+  } catch (error) {
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error finding users:', error);
+    }
+    res
+      .status(StatusCodes.INTERNAL_SERVER_ERROR)
+      .json({ error: 'Internal server error. Please try again later.' });
+  }
+};
+
 export const changeUserName = async (req, res) => {
   try {
-    const { groupCode, userName, newUserName } = req.body;
-    const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
+    const { activeGroupObjectId, userName, newUserName } = req.body;
+
+    groupObjectId = activeGroupObjectId;
 
     const updatedUser = await User.findOneAndUpdate(
       { userName, groupObjectId },

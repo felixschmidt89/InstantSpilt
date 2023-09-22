@@ -9,20 +9,22 @@ export default function ListGroupUsers({ refreshData }) {
   useEffect(() => {
     async function getUsers() {
       try {
-        const groupCode = localStorage.getItem("activeGroupCode");
+        const groupObjectId = localStorage.getItem("activeGroupObjectId");
         const response = await axios.get(
-          `${apiUrl}/users/byGroupCode/${groupCode}`
+          `${apiUrl}/users/byGroupObjectId/${groupObjectId}`
         );
         const responseData = response.data;
-        const names = responseData.users.map((user) => user.userName);
-        setUserNames(names);
+        if (responseData.users && responseData.users.length > 0) {
+          const names = responseData.users.map((user) => user.userName);
+          setUserNames(names);
+        }
         setError(null);
       } catch (error) {
         if (process.env.NODE_ENV === "development") {
           console.error("Error fetching data:", error);
         }
         setError(
-          "An error occurred while fetching data. Please try again later."
+          "An error occurred while fetching group users. Please try again later."
         );
       }
     }

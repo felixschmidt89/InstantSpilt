@@ -4,6 +4,7 @@ import {
   changeGroupName,
   listAllGroups,
   deleteAllGroups,
+  listGroupNamesByStoredGroupCodes,
 } from '../controllers/groupController.js';
 import developmentOnly from '../middleware/developmentOnly.js';
 import validateGroupCode from '../middleware/validateGroupCode.js';
@@ -19,6 +20,10 @@ router.patch(
   validateGroupNamePropertyPresence,
   changeGroupName,
 );
+
+// List group names of locally stored groups (by groupCode)
+
+router.get('/listGroupNames', listGroupNamesByStoredGroupCodes);
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 // List all groups

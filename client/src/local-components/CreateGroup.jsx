@@ -20,7 +20,7 @@ export default function CreateGroup() {
       const { groupCode, _id } = res.data.group;
       storeGroupCodesInLocalStorage(groupCode);
       // Store groupId in localStorage
-      localStorage.setItem("activeGroupObjectId", JSON.stringify(_id));
+      localStorage.setItem("activeGroupObjectId", _id);
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Error creating group:", error);

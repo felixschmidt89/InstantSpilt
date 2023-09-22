@@ -10,9 +10,8 @@ import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectId
 export const validatePropertyValueMatch = (propertyName, model) => {
   return async (req, res, next) => {
     try {
-      const { [propertyName]: propertyValue, groupCode } = req.body;
-      const groupObjectId =
-        await obtainGroupObjectIdByGroupCodeHelper(groupCode);
+      const { [propertyName]: propertyValue, activeGroupCode } = req.body;
+      const groupObjectId = activeGroupCode;
 
       const existingDocument = await model.findOne({
         groupObjectId,
