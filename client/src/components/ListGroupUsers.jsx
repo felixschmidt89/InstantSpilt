@@ -6,7 +6,6 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 export default function ListGroupUsers({ refreshData }) {
   const [userNames, setUserNames] = useState([]);
   const [error, setError] = useState(null);
-  console.log(apiUrl);
   useEffect(() => {
     async function getUsers() {
       try {
