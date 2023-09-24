@@ -6,12 +6,12 @@ import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectId
 export const createExpense = async (req, res) => {
   const {
     userName,
+    groupObjectId,
     groupCode,
     expenseName,
     expenseAmount,
     expenseBeneficiariesNames,
   } = req.body;
-  const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
 
   try {
     const expensePayer = await User.findOne({ userName, groupObjectId });
@@ -33,9 +33,9 @@ export const createExpense = async (req, res) => {
       expenseName,
       expenseAmount,
       groupCode,
+      groupObjectId,
       expensePayer: expensePayer._id,
       expenseBeneficiaries: beneficiaryIds,
-      groupObjectId,
     });
 
     // Save the expense to the database

@@ -4,16 +4,22 @@ const userSchema = new Schema(
   {
     userName: {
       type: String,
-      required: true,
+      required: [true, 'The name of the user is required but missing.'],
     },
     groupCode: {
       type: String,
-      required: true,
+      required: [
+        true,
+        'The user cannot be created because no groupCode has been provided.',
+      ],
     },
     groupObjectId: {
       type: Schema.Types.ObjectId,
       ref: 'Group',
-      required: true,
+      required: [
+        true,
+        'The user cannot be created because no groupObjectId has been provided.',
+      ],
     },
   },
   { timestamps: true },

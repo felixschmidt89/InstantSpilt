@@ -31,7 +31,7 @@ export default function ListGroups() {
       } catch (error) {
         console.error("Error fetching data:", error);
         setError(
-          "An error occurred while fetching groupNames. Please try again later."
+          "An error occurred while fetching group names. Please try again later."
         );
       }
     }

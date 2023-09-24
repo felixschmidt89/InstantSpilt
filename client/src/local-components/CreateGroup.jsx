@@ -42,7 +42,8 @@ export default function CreateGroup() {
           onChange={handleGroupNameChange}
           placeholder='group name'
           required
-          minLength='3'
+          minLength={3}
+          maxLength={50}
           pattern='.*\S+.*'
           style={{ marginLeft: "10px" }}
         />

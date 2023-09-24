@@ -19,7 +19,7 @@ export default function CreateUser({ toggleDataRefresh }) {
         groupCode: String(groupCode),
       });
       setUserName("");
-      // update parent state, to rerender userList
+      // update parent state to trigger userList rerender
       toggleDataRefresh();
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
@@ -41,7 +41,8 @@ export default function CreateUser({ toggleDataRefresh }) {
           onChange={handleUserNameChange}
           placeholder='user name'
           required
-          minLength='2'
+          minLength={3}
+          maxLength={50}
           pattern='.*\S+.*'
           style={{ marginLeft: "10px" }}
         />
