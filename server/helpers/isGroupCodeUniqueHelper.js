@@ -7,7 +7,7 @@ import Group from '../models/Group.js';
  * @throws {Error} - Throws an error if there's an issue with the database or the uniqueness check.
  */
 
-const isGroupCodeUnique = async (groupCode) => {
+const isGroupCodeUniqueHelper = async (groupCode) => {
   try {
     const existingGroup = await Group.findOne({ groupCode: groupCode });
     return !existingGroup;
@@ -21,4 +21,4 @@ const isGroupCodeUnique = async (groupCode) => {
   }
 };
 
-export default isGroupCodeUnique;
+export default isGroupCodeUniqueHelper;

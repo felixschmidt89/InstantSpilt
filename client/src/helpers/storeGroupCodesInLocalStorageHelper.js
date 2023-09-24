@@ -6,7 +6,7 @@ import setGroupCodeToCurrentlyActive from "./setGroupCodeToCurrentlyActiveHelper
  * @param {string} groupCode - The groupCode to add to local storage.
  * @returns {boolean} - Returns true if groupCode has been added to local storage, false in case of an error.
  */
-const storeGroupCodesInLocalStorage = (groupCode) => {
+const storeGroupCodesInLocalStorageHelper = (groupCode) => {
   try {
     let storedGroupCodes =
       JSON.parse(localStorage.getItem("storedGroupCodes")) || [];
@@ -28,4 +28,4 @@ const storeGroupCodesInLocalStorage = (groupCode) => {
   }
 };
 
-export default storeGroupCodesInLocalStorage;
+export default storeGroupCodesInLocalStorageHelper;

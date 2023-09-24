@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 import { customAlphabet } from 'nanoid';
-import isGroupCodeUnique from '../helpers/isGroupCodeUniqueHelper.js';
+import isGroupCodeUniqueHelper from '../helpers/isGroupCodeUniqueHelper.js';
 import Group from '../models/Group.js';
 
 // Define customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)
@@ -18,7 +18,7 @@ export const createGroup = async (req, res) => {
     // Generate globally unique groupCode
     while (!isUnique) {
       groupCode = nanoid(6);
-      isUnique = await isGroupCodeUnique(groupCode);
+      isUnique = await isGroupCodeUniqueHelper(groupCode);
     }
 
     const group = await Group.create({ groupName, groupCode });
