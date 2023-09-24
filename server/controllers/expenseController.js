@@ -60,6 +60,7 @@ export const listAllExpensesByGroupCode = async (req, res) => {
     const expenses = await Expense.find({ groupObjectId });
     res.status(StatusCodes.OK).json({
       status: 'success',
+      results: expenses.length,
       data: { expenses },
       message: 'Group expenses',
     });

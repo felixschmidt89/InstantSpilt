@@ -68,6 +68,7 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
     const groupNames = groups.map((group) => group.groupName);
     res.status(StatusCodes.OK).json({
       status: 'success',
+      results: groupNames.length,
       data: { groupNames },
       message: 'Group names retrieved successfully',
     });
@@ -84,6 +85,7 @@ export const listAllGroups = async (req, res) => {
     const groups = await Group.find();
     res.status(StatusCodes.OK).json({
       status: 'success',
+      results: groups.length,
       data: { groups },
       message: 'Groups retrieved successfully',
     });
@@ -95,7 +97,7 @@ export const listAllGroups = async (req, res) => {
 
 export const deleteAllGroups = async (req, res) => {
   try {
-    await Group.deleteMany({});
+    await Group.deleteMany();
     res.status(StatusCodes.NO_CONTENT).json({
       status: 'success',
       data: null,

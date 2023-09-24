@@ -27,6 +27,7 @@ export const listAllUsersByGroupCode = async (req, res) => {
     const users = await User.find({ groupObjectId });
     res.status(StatusCodes.OK).json({
       status: 'success',
+      results: users.length,
       data: { users },
       message: 'User list retrieved successfully',
     });
@@ -42,6 +43,7 @@ export const listAllUsersByGroupObjectId = async (req, res) => {
     const users = await User.find({ groupObjectId });
     res.status(StatusCodes.OK).json({
       status: 'success',
+      results: users.length,
       data: { users },
       message: 'User list retrieved successfully',
     });
@@ -78,9 +80,10 @@ export const changeUserName = async (req, res) => {
 
 export const listAllUsers = async (req, res) => {
   try {
-    const users = await User.find({});
+    const users = await User.find();
     res.status(StatusCodes.OK).json({
       status: 'success',
+      results: users.length,
       data: { users },
       message: 'Users retrieved successfully',
     });

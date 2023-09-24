@@ -15,12 +15,7 @@ import validateGroupObjectId from '../middleware/validateGroupObjectId.js';
 const router = express.Router();
 
 // Create new user
-router.post(
-  '/',
-  validateGroupCode,
-  validateUserNamePropertyPresence,
-  createUser,
-);
+router.post('/', validateUserNamePropertyPresence, createUser);
 
 // Change user name
 router.patch('/', validateGroupObjectId, checkUserNameMatch, changeUserName);
@@ -28,7 +23,7 @@ router.patch('/', validateGroupObjectId, checkUserNameMatch, changeUserName);
 // List users by groupCode
 router.get(
   '/byGroupCode/:groupCode',
-  validateGroupCode,
+  validateGroupObjectId,
   listAllUsersByGroupCode,
 );
 
