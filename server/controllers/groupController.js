@@ -1,6 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import { customAlphabet } from 'nanoid';
 import isGroupCodeUniqueHelper from '../helpers/isGroupCodeUniqueHelper.js';
+import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 import Group from '../models/Group.js';
 
 // Define customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)
@@ -8,6 +9,8 @@ const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
 
 /**
  * Creates a new group with a globally unique group ID
+ * @param {object} req - The request object.
+ * @param {object} res - The response object.
  */
 export const createGroup = async (req, res) => {
   try {
@@ -25,12 +28,8 @@ export const createGroup = async (req, res) => {
 
     res.status(StatusCodes.CREATED).json({ message: 'Group created', group });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error creating group:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Erorr creating group:', error);
+    sendInternalErrorHelper(res);
   }
 };
 
@@ -44,17 +43,14 @@ export const changeGroupName = async (req, res) => {
       { $set: { groupName } },
       { new: true },
     );
-
     res
       .status(StatusCodes.OK)
       .json({ message: 'Group name updated successfully.', updatedGroup });
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
-      console.error('Error updating group name:', error);
+      logDevErrorHelper('Error updating group name:', error);
+      sendInternalErrorHelper(res);
     }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
   }
 };
 
@@ -66,12 +62,8 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
     const groupNames = groups.map((group) => group.groupName);
     res.status(StatusCodes.OK).json({ groupNames });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error listing group names:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Error listing group names:', error);
+    sendInternalErrorHelper(res);
   }
 };
 
@@ -82,12 +74,8 @@ export const listAllGroups = async (req, res) => {
     const groups = await Group.find();
     res.status(StatusCodes.OK).json({ groups });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error listing all groups:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Error listing all groups:', error);
+    sendInternalErrorHelper(res);
   }
 };
 
@@ -98,11 +86,7 @@ export const deleteAllGroups = async (req, res) => {
       .status(StatusCodes.OK)
       .json({ message: 'All groups deleted successfully.' });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error deleting all groups:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Error deleting all groups:', error);
+    sendInternalErrorHelper(res);
   }
 };

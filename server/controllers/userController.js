@@ -1,6 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
 import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCodeHelper.js';
+import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
+import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 
 // TODO: Add duplicate error handling
 export const createUser = async (req, res) => {
@@ -10,12 +12,8 @@ export const createUser = async (req, res) => {
     const user = await User.create({ userName, groupCode, groupObjectId });
     res.status(StatusCodes.CREATED).json({ message: 'User created', user });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error creating user:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Error creating user:', error);
+    sendInternalErrorHelper(res);
   }
 };
 
@@ -26,12 +24,8 @@ export const listAllUsersByGroupCode = async (req, res) => {
     const users = await User.find({ groupObjectId });
     res.status(StatusCodes.OK).json({ message: 'Userlist', users });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error finding users:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Error listing group members by groupCode', error);
+    sendInternalErrorHelper(res);
   }
 };
 
@@ -41,12 +35,8 @@ export const listAllUsersByGroupObjectId = async (req, res) => {
     const users = await User.find({ groupObjectId });
     res.status(StatusCodes.OK).json({ message: 'Userlist', users });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error finding users:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Error listing group members by groupObjectId', error);
+    sendInternalErrorHelper(res);
   }
 };
 
@@ -54,7 +44,7 @@ export const changeUserName = async (req, res) => {
   try {
     const { activeGroupObjectId, userName, newUserName } = req.body;
 
-    groupObjectId = activeGroupObjectId;
+    const groupObjectId = activeGroupObjectId;
 
     const updatedUser = await User.findOneAndUpdate(
       { userName, groupObjectId },
@@ -62,16 +52,16 @@ export const changeUserName = async (req, res) => {
       { new: true },
     );
 
-    res
-      .status(StatusCodes.OK)
-      .json({ message: 'User name updated successfully.', updatedUser });
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: {
+        message: 'User name updated successfully.',
+        updatedUser: updatedUser,
+      },
+    });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error updating user name:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Error updating user name', error);
+    sendInternalErrorHelper(res);
   }
 };
 
@@ -82,11 +72,7 @@ export const listAllUsers = async (req, res) => {
     const users = await User.find({});
     res.status(StatusCodes.OK).json({ users });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error listing all users:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Error listing users', error);
+    sendInternalErrorHelper(res);
   }
 };

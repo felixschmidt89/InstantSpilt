@@ -2,6 +2,8 @@ import { StatusCodes } from 'http-status-codes';
 import Expense from '../models/Expense.js';
 import User from '../models/User.js';
 import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCodeHelper.js';
+import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
+import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 
 export const createExpense = async (req, res) => {
   const {
@@ -38,17 +40,12 @@ export const createExpense = async (req, res) => {
       expenseBeneficiaries: beneficiaryIds,
     });
 
-    // Save the expense to the database
     const expense = await newExpense.save();
 
     return res.status(StatusCodes.CREATED).json(expense);
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error updating user name:', error);
-    }
-    return res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error' });
+    logDevErrorHelper('Error updating user name:', error);
+    sendInternalErrorHelper(res);
   }
 };
 
@@ -59,11 +56,7 @@ export const listAllExpensesByGroupCode = async (req, res) => {
     const expenses = await Expense.find({ groupObjectId });
     res.status(StatusCodes.OK).json({ message: 'Group expenses', expenses });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error finding expenses:', error);
-    }
-    res
-      .status(StatusCodes.INTERNAL_SERVER_ERROR)
-      .json({ error: 'Internal server error. Please try again later.' });
+    logDevErrorHelper('Error listing expenses', error);
+    sendInternalError(res);
   }
 };
