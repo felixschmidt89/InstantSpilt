@@ -26,9 +26,13 @@ export const createGroup = async (req, res) => {
 
     const group = await Group.create({ groupName, groupCode });
 
-    res.status(StatusCodes.CREATED).json({ message: 'Group created', group });
+    res.status(StatusCodes.CREATED).json({
+      status: 'success',
+      data: { group },
+      message: 'Group created',
+    });
   } catch (error) {
-    logDevErrorHelper('Erorr creating group:', error);
+    logDevErrorHelper('Error creating group:', error);
     sendInternalErrorHelper(res);
   }
 };
@@ -43,9 +47,11 @@ export const changeGroupName = async (req, res) => {
       { $set: { groupName } },
       { new: true },
     );
-    res
-      .status(StatusCodes.OK)
-      .json({ message: 'Group name updated successfully.', updatedGroup });
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { updatedGroup },
+      message: 'Group name updated successfully',
+    });
   } catch (error) {
     if (process.env.NODE_ENV === 'development') {
       logDevErrorHelper('Error updating group name:', error);
@@ -60,7 +66,11 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
     const groupCodesArray = storedGroupCodes.split(',');
     const groups = await Group.find({ groupCode: { $in: groupCodesArray } });
     const groupNames = groups.map((group) => group.groupName);
-    res.status(StatusCodes.OK).json({ groupNames });
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { groupNames },
+      message: 'Group names retrieved successfully',
+    });
   } catch (error) {
     logDevErrorHelper('Error listing group names:', error);
     sendInternalErrorHelper(res);
@@ -72,7 +82,11 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
 export const listAllGroups = async (req, res) => {
   try {
     const groups = await Group.find();
-    res.status(StatusCodes.OK).json({ groups });
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { groups },
+      message: 'Groups retrieved successfully',
+    });
   } catch (error) {
     logDevErrorHelper('Error listing all groups:', error);
     sendInternalErrorHelper(res);
@@ -82,9 +96,11 @@ export const listAllGroups = async (req, res) => {
 export const deleteAllGroups = async (req, res) => {
   try {
     await Group.deleteMany({});
-    res
-      .status(StatusCodes.OK)
-      .json({ message: 'All groups deleted successfully.' });
+    res.status(StatusCodes.NO_CONTENT).json({
+      status: 'success',
+      data: null,
+      message: 'All groups deleted successfully.',
+    });
   } catch (error) {
     logDevErrorHelper('Error deleting all groups:', error);
     sendInternalErrorHelper(res);

@@ -4,13 +4,16 @@ import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectId
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 
-// TODO: Add duplicate error handling
 export const createUser = async (req, res) => {
   try {
     const { userName, groupCode } = req.body;
     const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
     const user = await User.create({ userName, groupCode, groupObjectId });
-    res.status(StatusCodes.CREATED).json({ message: 'User created', user });
+    res.status(StatusCodes.CREATED).json({
+      status: 'success',
+      data: { user },
+      message: 'User created successfully',
+    });
   } catch (error) {
     logDevErrorHelper('Error creating user:', error);
     sendInternalErrorHelper(res);
@@ -22,7 +25,11 @@ export const listAllUsersByGroupCode = async (req, res) => {
     const groupCode = req.params.groupCode;
     const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
     const users = await User.find({ groupObjectId });
-    res.status(StatusCodes.OK).json({ message: 'Userlist', users });
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { users },
+      message: 'User list retrieved successfully',
+    });
   } catch (error) {
     logDevErrorHelper('Error listing group members by groupCode', error);
     sendInternalErrorHelper(res);
@@ -33,7 +40,11 @@ export const listAllUsersByGroupObjectId = async (req, res) => {
   try {
     const { groupObjectId } = req.params;
     const users = await User.find({ groupObjectId });
-    res.status(StatusCodes.OK).json({ message: 'Userlist', users });
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { users },
+      message: 'User list retrieved successfully',
+    });
   } catch (error) {
     logDevErrorHelper('Error listing group members by groupObjectId', error);
     sendInternalErrorHelper(res);
@@ -54,10 +65,8 @@ export const changeUserName = async (req, res) => {
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: {
-        message: 'User name updated successfully.',
-        updatedUser: updatedUser,
-      },
+      data: { updatedUser },
+      message: 'User name updated successfully.',
     });
   } catch (error) {
     logDevErrorHelper('Error updating user name', error);
@@ -70,7 +79,11 @@ export const changeUserName = async (req, res) => {
 export const listAllUsers = async (req, res) => {
   try {
     const users = await User.find({});
-    res.status(StatusCodes.OK).json({ users });
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { users },
+      message: 'Users retrieved successfully',
+    });
   } catch (error) {
     logDevErrorHelper('Error listing users', error);
     sendInternalErrorHelper(res);

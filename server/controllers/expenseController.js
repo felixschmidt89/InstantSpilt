@@ -42,7 +42,11 @@ export const createExpense = async (req, res) => {
 
     const expense = await newExpense.save();
 
-    return res.status(StatusCodes.CREATED).json(expense);
+    return res.status(StatusCodes.CREATED).json({
+      status: 'success',
+      data: { expense },
+      message: 'Expense created successfully',
+    });
   } catch (error) {
     logDevErrorHelper('Error updating user name:', error);
     sendInternalErrorHelper(res);
@@ -54,7 +58,11 @@ export const listAllExpensesByGroupCode = async (req, res) => {
     const groupCode = req.params.groupCode;
     const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
     const expenses = await Expense.find({ groupObjectId });
-    res.status(StatusCodes.OK).json({ message: 'Group expenses', expenses });
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { expenses },
+      message: 'Group expenses',
+    });
   } catch (error) {
     logDevErrorHelper('Error listing expenses', error);
     sendInternalError(res);
