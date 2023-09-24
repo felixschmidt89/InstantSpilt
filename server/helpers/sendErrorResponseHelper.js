@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 
-export const sendErrorResponse(res, statusCode, message) {
+export const sendErrorResponse(res, statusCode, message) => {
   return res.status(StatusCode).json({ error: message });
 }
 
