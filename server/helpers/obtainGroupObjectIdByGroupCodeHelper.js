@@ -1,4 +1,5 @@
 import Group from '../models/Group.js';
+import logDevErrorHelper from './logDevErrorHelper.js';
 
 /**
  * Obtains the groupObjectId of a group by its groupCode.
@@ -16,7 +17,7 @@ const obtainGroupObjectIdByGroupCodeHelper = async (groupCode) => {
     }
     return group._id;
   } catch (error) {
-    console.error('Error obtaining group ObjectId:', error);
+    logDevErrorHelper('Error obtaining groupObjectId by groupCode:', error);
     throw error;
   }
 };

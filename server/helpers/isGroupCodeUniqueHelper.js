@@ -1,4 +1,5 @@
 import Group from '../models/Group.js';
+import logDevErrorHelper from './logDevErrorHelper.js';
 
 /** Checks if groupCode is unique in database
  *
@@ -12,9 +13,7 @@ const isGroupCodeUniqueHelper = async (groupCode) => {
     const existingGroup = await Group.findOne({ groupCode: groupCode });
     return !existingGroup;
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      console.error('Error checking groupCode uniqueness:', error);
-    }
+    logDevErrorHelper('Error checking groupCode uniqueness:', error);
     throw new Error(
       'An error occurred while checking groupCode uniqueness. Please try again later.',
     );

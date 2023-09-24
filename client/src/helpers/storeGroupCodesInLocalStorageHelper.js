@@ -1,4 +1,5 @@
 import setGroupCodeToCurrentlyActive from "./setGroupCodeToCurrentlyActiveHelper";
+import logDevErrorHelper from "../../../server/helpers/logDevErrorHelper";
 
 /**
  * Adds groupCode to local storage if it doesn't already exist and sets it to currently active groupCode
@@ -21,9 +22,7 @@ const storeGroupCodesInLocalStorageHelper = (groupCode) => {
     }
     return true;
   } catch (error) {
-    if (process.env.NODE_ENV === "development") {
-      console.error("Error storing groupCode locally:", error);
-    }
+    logDevErrorHelper("Error storing groupCode in local storage:", error);
     return false;
   }
 };

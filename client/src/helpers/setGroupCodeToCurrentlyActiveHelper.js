@@ -1,3 +1,4 @@
+import logDevErrorHelper from "../../../server/helpers/logDevErrorHelper";
 /**
  * Sets groupCode as currently active in local storage.
  *
@@ -9,9 +10,7 @@ const setGroupCodeToCurrentlyActive = (groupCode) => {
     localStorage.setItem("activeGroupCode", groupCode);
     return true;
   } catch (error) {
-    if (process.env.NODE_ENV === "development") {
-      console.error("Error setting groupCode to active:", error);
-    }
+    logDevErrorHelper("Error setting groupCode to active", error);
     return false;
   }
 };
