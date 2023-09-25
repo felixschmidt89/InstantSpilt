@@ -47,7 +47,7 @@ export const changeGroupName = async (req, res) => {
     const updatedGroup = await Group.findByIdAndUpdate(
       group._id,
       { $set: { groupName } },
-      { new: true },
+      { new: true, runValidators: true },
     );
     res.status(StatusCodes.OK).json({
       status: 'success',

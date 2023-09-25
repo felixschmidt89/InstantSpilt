@@ -62,7 +62,7 @@ export const changeUserName = async (req, res) => {
     const updatedUser = await User.findOneAndUpdate(
       { userName, groupObjectId },
       { $set: { userName: newUserName } },
-      { new: true },
+      { new: true, runValidators: true },
     );
 
     res.status(StatusCodes.OK).json({
