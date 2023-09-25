@@ -55,7 +55,7 @@ export const createExpense = async (req, res) => {
 
 export const listAllExpensesByGroupCode = async (req, res) => {
   try {
-    const groupCode = req.params.groupCode;
+    const { groupCode } = req.params;
     const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
     const expenses = await Expense.find({ groupObjectId });
     res.status(StatusCodes.OK).json({
@@ -66,6 +66,6 @@ export const listAllExpensesByGroupCode = async (req, res) => {
     });
   } catch (error) {
     logDevErrorHelper('Error listing expenses', error);
-    sendInternalError(res);
+    sendInternalErrorHelper(res);
   }
 };

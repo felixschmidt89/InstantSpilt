@@ -4,7 +4,7 @@
  * @param {string} message - The error message to log.
  * @param {Error} error - The error object to log.
  */
-export const logDevErrorHelper = (message, error) => {
+const logDevErrorHelper = (message, error) => {
   if (process.env.NODE_ENV === 'development') {
     console.error(message, error);
   }

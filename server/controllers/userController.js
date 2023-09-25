@@ -22,7 +22,7 @@ export const createUser = async (req, res) => {
 
 export const listAllUsersByGroupCode = async (req, res) => {
   try {
-    const groupCode = req.params.groupCode;
+    const { groupCode } = req.params;
     const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
     const users = await User.find({ groupObjectId });
     res.status(StatusCodes.OK).json({

@@ -6,9 +6,10 @@ import { StatusCodes } from 'http-status-codes';
  * @param {object} res - The response object.
  */
 const sendInternalErrorHelper = (res) => {
-  res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .json({ error: 'Internal server error. Please try again later.' });
+  res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    status: 'fail',
+    message: 'Internal server error. Please try again later.',
+  });
 };
 
 export default sendInternalErrorHelper;

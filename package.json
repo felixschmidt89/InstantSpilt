@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start:dev": "cross-env NODE_ENV=development nodemon server.js",
-    "start:prod": "cross-env NODE_ENV=production nodemon server.js"
+    "start:prod": "cross-env NODE_ENV=production nodemon server.js",
+    "setup": "npm i && cd client && npm i",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",

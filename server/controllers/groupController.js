@@ -3,6 +3,7 @@ import { customAlphabet } from 'nanoid';
 import isGroupCodeUniqueHelper from '../helpers/isGroupCodeUniqueHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 import Group from '../models/Group.js';
+import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 
 // Define customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)
 const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
@@ -21,6 +22,7 @@ export const createGroup = async (req, res) => {
     // Generate globally unique groupCode
     while (!isUnique) {
       groupCode = nanoid(6);
+      // eslint-disable-next-line no-await-in-loop
       isUnique = await isGroupCodeUniqueHelper(groupCode);
     }
 
