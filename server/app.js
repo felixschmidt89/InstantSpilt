@@ -30,8 +30,8 @@ if (NODE_ENV === 'development') {
 }
 
 // ROUTES
-app.use(`${API_BASEURL}/groups`, groupRouter);
-app.use(`${API_BASEURL}/users`, userRouter);
-app.use(`${API_BASEURL}/expenses`, expenseRouter);
+app.use(`/${API_BASEURL}/groups`, groupRouter);
+app.use(`/${API_BASEURL}/users`, userRouter);
+app.use(`/${API_BASEURL}/expenses`, expenseRouter);
 
 export default app;

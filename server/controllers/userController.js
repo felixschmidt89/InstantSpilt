@@ -76,6 +76,28 @@ export const changeUserName = async (req, res) => {
   }
 };
 
+// TODO: Add check to disallow deleting user if user has open payments
+export const deleteUser = async (req, res) => {
+  try {
+    const { activeGroupObjectId, userName } = req.body;
+
+    const groupObjectId = activeGroupObjectId;
+
+    await User.findOneAndDelete({
+      userName,
+      groupObjectId,
+    });
+
+    res.status(StatusCodes.NO_CONTENT).json({
+      status: 'success',
+      data: null,
+    });
+  } catch (error) {
+    logDevErrorHelper('Error updating user name', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
 // FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 
 export const listAllUsers = async (req, res) => {

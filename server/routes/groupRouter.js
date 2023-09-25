@@ -9,6 +9,7 @@ import {
 import developmentOnly from '../middleware/developmentOnly.js';
 import validateGroupCode from '../middleware/validateGroupCode.js';
 import { validateGroupNamePropertyPresence } from '../middleware/validateRequestBody.js';
+
 const router = express.Router();
 
 // Create a new group
@@ -23,7 +24,7 @@ router.patch(
 
 // List group names of locally stored groups (by groupCode)
 
-router.get('/listGroupNames', listGroupNamesByStoredGroupCodes);
+router.get('/StoredGroupNames', listGroupNamesByStoredGroupCodes);
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 // List all groups
