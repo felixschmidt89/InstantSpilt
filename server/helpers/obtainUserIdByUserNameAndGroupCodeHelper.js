@@ -18,7 +18,7 @@ const obtainUserIdByUserNameAndGroupCodeHelper = async (
     const user = await User.findOne({ groupCode, userName });
     if (!user) {
       throw new Error(
-        `User with groupCode "${groupCode}" and "${userName}"not found`,
+        `User with groupCode "${groupCode}" and username "${userName}"not found`,
       );
     }
     return user._id;

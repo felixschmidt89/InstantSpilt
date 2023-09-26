@@ -1,19 +1,35 @@
-import Expense from '../models/Expense';
+import Expense from '../models/Expense.js';
+import obtainUserIdByUserNameAndGroupCodeHelper from './obtainUserIdByUserNameAndGroupCodeHelper.js';
 
 async function calculateExpensesPaidByUserHelper(groupCode, userName) {
   try {
-    const expensesPaidByUser = await Expense.find({ expensePayer: userId });
-
-    const totalExpensesPaid = expensesPaidByUser.reduce(
-      (total, expense) => total + expense.expenseAmount,
-      0
+    const userId = await obtainUserIdByUserNameAndGroupCodeHelper(
+      groupCode,
+      userName,
     );
 
-    return totalExpensesPaid;
+    const totalExpensesPaid = await Expense.aggregate([
+      {
+        $match: { expensePayer: userId },
+      },
+      {
+        $group: {
+          _id: null,
+          total: { $sum: '$expenseAmount' },
+        },
+      },
+    ]);
+
+    // Extract the total from the aggregation result
+    const totalPaid =
+      totalExpensesPaid.length > 0 ? totalExpensesPaid[0].total : 0;
+
+    console.log(totalPaid);
+    return totalPaid;
   } catch (error) {
     console.error('Error calculating expenses paid by user:', error);
     throw error;
   }
 }
 
-export default calculateExpensesPaidByUser;
+export default calculateExpensesPaidByUserHelper;
