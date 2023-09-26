@@ -3,6 +3,7 @@ import Expense from '../models/Expense.js';
 import User from '../models/User.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
+import obtainUserIdByUserNameAndGroupCodeHelper from '../helpers/obtainUserIdbyUserNameAndGroupCodeHelper.js';
 
 export const createExpense = async (req, res) => {
   const {
@@ -58,10 +59,43 @@ export const listAllExpensesByGroupCode = async (req, res) => {
       status: 'success',
       results: expenses.length,
       data: { expenses },
-      message: 'Group expenses',
+      message: 'Group expenses retrieved successfully',
     });
   } catch (error) {
     logDevErrorHelper('Error listing expenses', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
+// obtainUserIdByUserNameAndGroupCodeHelper();
+
+// FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
+
+export const listAllExpenses = async (req, res) => {
+  try {
+    const expenses = await Expense.find();
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      results: expenses.length,
+      data: { expenses },
+      message: 'All expenses retrieved successfully',
+    });
+  } catch (error) {
+    logDevErrorHelper('Error listing users', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
+export const deleteAllExpenses = async (req, res) => {
+  try {
+    await Expense.deleteMany();
+    res.status(StatusCodes.NO_CONTENT).json({
+      status: 'success',
+      data: null,
+      message: 'All expenses deleted successfully.',
+    });
+  } catch (error) {
+    logDevErrorHelper('Error deleting all expenses:', error);
     sendInternalErrorHelper(res);
   }
 };

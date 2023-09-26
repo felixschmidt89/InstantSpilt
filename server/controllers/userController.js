@@ -83,11 +83,25 @@ export const listAllUsers = async (req, res) => {
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: users.length,
-      data: { groupName: 'user.groupName' },
+      data: { users },
       message: 'Users retrieved successfully',
     });
   } catch (error) {
     logDevErrorHelper('Error listing users', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
+export const deleteAllUsers = async (req, res) => {
+  try {
+    await User.deleteMany();
+    res.status(StatusCodes.NO_CONTENT).json({
+      status: 'success',
+      data: null,
+      message: 'All users deleted successfully.',
+    });
+  } catch (error) {
+    logDevErrorHelper('Error deleting all users:', error);
     sendInternalErrorHelper(res);
   }
 };

@@ -5,6 +5,7 @@ import {
   listAllUsersByGroupCode,
   changeUserName,
   deleteUser,
+  deleteAllUsers,
 } from '../controllers/userController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 import { validateUserNamePropertyPresenceMiddleware } from '../middleware/validateRequestBodyMiddleware.js';
@@ -37,5 +38,7 @@ router.get(
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 // List all users
 router.get('/debug/all', developmentOnlyMiddleware, listAllUsers);
+// Delete all users
+router.delete('/debug/all', developmentOnlyMiddleware, deleteAllUsers);
 
 export default router;

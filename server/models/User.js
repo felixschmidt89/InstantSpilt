@@ -13,6 +13,7 @@ const userSchema = new Schema(
       default: true,
     },
     balance: { type: Number, default: 0 },
+
     groupCode: {
       type: String,
       required: [
