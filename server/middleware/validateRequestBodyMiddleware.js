@@ -5,7 +5,7 @@ import { StatusCodes } from 'http-status-codes';
  *
  * @param {string[]} requiredProperties - An array of property names that are required.
  */
-export const validateRequestBody = (requiredProperties) => {
+export const validateRequestBodyMiddleware = (requiredProperties) => {
   return (req, res, next) => {
     const missingProperties = requiredProperties.filter(
       (prop) => !req.body[prop],
@@ -26,10 +26,8 @@ export const validateRequestBody = (requiredProperties) => {
 /**
  * validates the presence of the userName property in the req.body.
  */
-export const validateUserNamePropertyPresence = validateRequestBody([
-  'userName',
-]);
+export const validateUserNamePropertyPresenceMiddleware =
+  validateRequestBodyMiddleware(['userName']);
 
-export const validateGroupNamePropertyPresence = validateRequestBody([
-  'groupName',
-]);
+export const validateGroupNamePropertyPresenceMiddleware =
+  validateRequestBodyMiddleware(['groupName']);

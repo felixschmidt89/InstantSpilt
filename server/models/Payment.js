@@ -29,14 +29,6 @@ const paymentSchema = new Schema(
         'The payment can not be created, because no groupCode has been provided.',
       ],
     },
-    groupObjectId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Group',
-      required: [
-        true,
-        'The payment can not be created, because no groupObjectId has been provided.',
-      ],
-    },
   },
   { timestamps: true },
 );

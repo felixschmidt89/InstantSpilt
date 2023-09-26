@@ -1,14 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
-import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCodeHelper.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 
 export const createUser = async (req, res) => {
   try {
     const { userName, groupCode } = req.body;
-    const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
-    const user = await User.create({ userName, groupCode, groupObjectId });
+    const user = await User.create({ userName, groupCode });
     res.status(StatusCodes.CREATED).json({
       status: 'success',
       data: { user },
@@ -23,8 +21,7 @@ export const createUser = async (req, res) => {
 export const listAllUsersByGroupCode = async (req, res) => {
   try {
     const { groupCode } = req.params;
-    const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
-    const users = await User.find({ groupObjectId });
+    const users = await User.find({ groupCode });
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: users.length,
@@ -37,30 +34,12 @@ export const listAllUsersByGroupCode = async (req, res) => {
   }
 };
 
-export const listAllUsersByGroupObjectId = async (req, res) => {
-  try {
-    const { groupObjectId } = req.params;
-    const users = await User.find({ groupObjectId });
-    res.status(StatusCodes.OK).json({
-      status: 'success',
-      results: users.length,
-      data: { users },
-      message: 'User list retrieved successfully',
-    });
-  } catch (error) {
-    logDevErrorHelper('Error listing group members by groupObjectId', error);
-    sendInternalErrorHelper(res);
-  }
-};
-
 export const changeUserName = async (req, res) => {
   try {
-    const { activeGroupObjectId, userName, newUserName } = req.body;
-
-    const groupObjectId = activeGroupObjectId;
+    const { groupCode, userName, newUserName } = req.body;
 
     const updatedUser = await User.findOneAndUpdate(
-      { userName, groupObjectId },
+      { userName, groupCode },
       { $set: { userName: newUserName } },
       { new: true, runValidators: true },
     );
@@ -79,13 +58,11 @@ export const changeUserName = async (req, res) => {
 // TODO: Add check to disallow deleting user if user has open payments
 export const deleteUser = async (req, res) => {
   try {
-    const { activeGroupObjectId, userName } = req.body;
-
-    const groupObjectId = activeGroupObjectId;
+    const { groupCode, userName } = req.body;
 
     await User.findOneAndDelete({
       userName,
-      groupObjectId,
+      groupCode,
     });
 
     res.status(StatusCodes.NO_CONTENT).json({
@@ -106,7 +83,7 @@ export const listAllUsers = async (req, res) => {
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: users.length,
-      data: { users },
+      data: { groupName: 'user.groupName' },
       message: 'Users retrieved successfully',
     });
   } catch (error) {

@@ -7,19 +7,18 @@ export default function ListGroupUsers({ refreshData }) {
   const [userNames, setUserNames] = useState([]);
   const [error, setError] = useState(null);
   useEffect(() => {
-    const groupObjectId = localStorage.getItem("activeGroupObjectId");
+    const groupCode = localStorage.getItem("activeGroupCode");
 
-    if (!groupObjectId) {
+    if (!groupCode) {
       return;
     }
 
     async function getUsers() {
       try {
-        const groupObjectId = localStorage.getItem("activeGroupObjectId");
         const response = await axios.get(
-          `${apiUrl}/users/byGroupObjectId/${groupObjectId}`
+          `${apiUrl}/users/byGroupCode/${groupCode}`
         );
-        const responseData = response.data;
+        const responseData = response.data.data;
         if (responseData.users && responseData.users.length > 0) {
           const names = responseData.users.map((user) => user.userName);
           setUserNames(names);

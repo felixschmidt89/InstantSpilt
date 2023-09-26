@@ -1,20 +1,20 @@
 import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
-import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCodeHelper.js';
 
 /**
  * Checks if a provided property value in the request body matches the one in the database.
  * @param {string} propertyName - The name of the property to check.
  * @param {Model} model - The Mongoose model to query for comparison.
  */
-export const validatePropertyValueMatch = (propertyName, model) => {
+export const validatePropertyValueMatchMiddleware = (propertyName, model) => {
   return async (req, res, next) => {
     try {
-      const { [propertyName]: propertyValue, activeGroupCode } = req.body;
-      const groupObjectId = activeGroupCode;
+      // Destructure the property value and groupCode from the request body
+      const { [propertyName]: propertyValue, groupCode } = req.body;
 
+      // Use Mongoose's findOne method to check if a document exists with the specified properties
       const existingDocument = await model.findOne({
-        groupObjectId,
+        groupCode,
         [propertyName]: propertyValue,
       });
 
@@ -41,4 +41,5 @@ export const validatePropertyValueMatch = (propertyName, model) => {
 /**
  * Checks if the provided userName in the request body matches the one in the database.
  */
-export const checkUserNameMatch = validatePropertyValueMatch('userName', User);
+export const checkUserNameMatchMiddleware =
+  validatePropertyValueMatchMiddleware('userName', User);

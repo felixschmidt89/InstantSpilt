@@ -2,9 +2,10 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import storeGroupCodesInLocalStorageHelper from "../helpers/storeGroupCodesInLocalStorageHelper";
+import setGroupCodeToCurrentlyActiveHelper from "../helpers/setGroupCodeToCurrentlyActiveHelper";
 
 /**
- * Form to create a new group, stores the groupCode in user's local storage upon submission.
+ * Create a new group, stores the groupCode in user's local storage upon submission.
  */
 export default function CreateGroup() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -17,10 +18,11 @@ export default function CreateGroup() {
       const res = await axios.post(`${apiUrl}/groups`, {
         groupName,
       });
-      const { groupCode, _id } = res.data.group;
+      // Retrieve groupCode from response, data.data redundancy due to axios responding res.data and API built adhering to status, data and message API convention
+      const { groupCode } = res.data.data.group;
       storeGroupCodesInLocalStorageHelper(groupCode);
-      // Store groupId in localStorage
-      localStorage.setItem("activeGroupObjectId", _id);
+      setGroupCodeToCurrentlyActiveHelper(groupCode);
+      setGroupName("");
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Error creating group:", error);

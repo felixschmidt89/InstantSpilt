@@ -4,6 +4,7 @@ const expenseSchema = new Schema(
   {
     expenseName: {
       type: String,
+      trim: true,
       required: [true, 'The name of the expense is required but missing.'],
     },
     expenseAmount: {
@@ -33,14 +34,6 @@ const expenseSchema = new Schema(
       required: [
         true,
         'The expense can not be created, because no groupCode has been provided.',
-      ],
-    },
-    groupObjectId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Group',
-      required: [
-        true,
-        'The expense can not be created, because no groupObjectId has been provided.',
       ],
     },
   },

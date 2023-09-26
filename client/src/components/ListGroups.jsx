@@ -21,12 +21,12 @@ export default function ListGroups() {
         const groupCodesString = groupCodesArray.join(",");
 
         const response = await axios.get(
-          `${apiUrl}/groups/listGroupNames?storedGroupCodes=${groupCodesString}`
+          `${apiUrl}/groups/StoredGroupNames?storedGroupCodes=${groupCodesString}`
         );
 
-        const responseData = response.data;
-
-        const names = responseData.groupNames.map((groupName) => groupName);
+        const names = response.data.data.groupNames.map(
+          (groupName) => groupName
+        );
         setGroupNames(names);
       } catch (error) {
         console.error("Error fetching data:", error);

@@ -1,9 +1,10 @@
 import { StatusCodes } from 'http-status-codes';
 import Group from '../models/Group.js';
 
-const validateGroupCode = async (req, res, next) => {
+const validateGroupCodeMiddleware = async (req, res, next) => {
   try {
-    const groupCode = req.params.groupCode || req.body.groupCode;
+    const groupCode =
+      req.params.groupCode || req.body.groupCode || req.query.groupCode;
 
     if (!groupCode) {
       return res
@@ -11,7 +12,7 @@ const validateGroupCode = async (req, res, next) => {
         .json({ error: 'GroupCode not provided' });
     }
 
-    if (!(await Group.exists({ groupCode: groupCode }))) {
+    if (!(await Group.exists({ groupCode }))) {
       return res
         .status(StatusCodes.NOT_FOUND)
         .json({ error: 'Group not found' });
@@ -28,4 +29,4 @@ const validateGroupCode = async (req, res, next) => {
   }
 };
 
-export default validateGroupCode;
+export default validateGroupCodeMiddleware;

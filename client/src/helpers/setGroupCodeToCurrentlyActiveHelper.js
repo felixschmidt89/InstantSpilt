@@ -5,7 +5,7 @@ import logDevErrorHelper from "../../../server/helpers/logDevErrorHelper";
  * @param {string} groupCode - The groupCode to set active
  * @returns {boolean} - Returns true if groupCode has been set active, false in case of an error.
  */
-const setGroupCodeToCurrentlyActive = (groupCode) => {
+const setGroupCodeToCurrentlyActiveHelper = (groupCode) => {
   try {
     localStorage.setItem("activeGroupCode", groupCode);
     return true;
@@ -15,4 +15,4 @@ const setGroupCodeToCurrentlyActive = (groupCode) => {
   }
 };
 
-export default setGroupCodeToCurrentlyActive;
+export default setGroupCodeToCurrentlyActiveHelper;

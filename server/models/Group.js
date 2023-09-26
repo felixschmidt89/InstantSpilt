@@ -11,9 +11,15 @@ const groupSchema = new Schema(
     },
     groupName: {
       type: String,
+      trim: true,
       required: [true, 'The name of the group is required but missing.'],
     },
+    groupExpensesSettled: {
+      type: Boolean,
+      default: true,
+    },
   },
+
   { timestamps: true },
 );
 

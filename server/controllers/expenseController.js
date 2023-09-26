@@ -1,14 +1,12 @@
 import { StatusCodes } from 'http-status-codes';
 import Expense from '../models/Expense.js';
 import User from '../models/User.js';
-import obtainGroupObjectIdByGroupCodeHelper from '../helpers/obtainGroupObjectIdByGroupCodeHelper.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 
 export const createExpense = async (req, res) => {
   const {
     userName,
-    groupObjectId,
     groupCode,
     expenseName,
     expenseAmount,
@@ -16,7 +14,7 @@ export const createExpense = async (req, res) => {
   } = req.body;
 
   try {
-    const expensePayer = await User.findOne({ userName, groupObjectId });
+    const expensePayer = await User.findOne({ userName, groupCode });
 
     if (!expensePayer) {
       return res
@@ -26,7 +24,7 @@ export const createExpense = async (req, res) => {
 
     const expenseBeneficiaries = await User.find({
       userName: { $in: expenseBeneficiariesNames },
-      groupObjectId,
+      groupCode,
     });
 
     const beneficiaryIds = expenseBeneficiaries.map((user) => user._id);
@@ -35,7 +33,6 @@ export const createExpense = async (req, res) => {
       expenseName,
       expenseAmount,
       groupCode,
-      groupObjectId,
       expensePayer: expensePayer._id,
       expenseBeneficiaries: beneficiaryIds,
     });
@@ -56,8 +53,7 @@ export const createExpense = async (req, res) => {
 export const listAllExpensesByGroupCode = async (req, res) => {
   try {
     const { groupCode } = req.params;
-    const groupObjectId = await obtainGroupObjectIdByGroupCodeHelper(groupCode);
-    const expenses = await Expense.find({ groupObjectId });
+    const expenses = await Expense.find({ groupCode });
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: expenses.length,

@@ -18,7 +18,6 @@ const storeGroupCodesInLocalStorageHelper = (groupCode) => {
         "storedGroupCodes",
         JSON.stringify(storedGroupCodes)
       );
-      setGroupCodeToCurrentlyActive(groupCode);
     }
     return true;
   } catch (error) {

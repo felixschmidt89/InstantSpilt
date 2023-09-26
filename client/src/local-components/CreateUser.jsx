@@ -16,7 +16,7 @@ export default function CreateUser({ toggleDataRefresh }) {
       const groupCode = localStorage.getItem("activeGroupCode");
       await axios.post(`${apiUrl}/users`, {
         userName,
-        groupCode: String(groupCode),
+        groupCode,
       });
       setUserName("");
       // update parent state to trigger userList rerender

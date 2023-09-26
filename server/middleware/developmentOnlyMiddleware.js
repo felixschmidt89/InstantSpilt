@@ -1,6 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 
-const developmentOnly = (req, res, next) => {
+const developmentOnlyMiddleware = (req, res, next) => {
   if (process.env.NODE_ENV === 'development') {
     next();
   } else {
@@ -8,4 +8,4 @@ const developmentOnly = (req, res, next) => {
   }
 };
 
-export default developmentOnly;
+export default developmentOnlyMiddleware;
