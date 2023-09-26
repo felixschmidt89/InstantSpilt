@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import User from "../../server/models/User";
 import ListGroups from "./components/ListGroups";
 import "./index.css";
 import CreateGroup from "./local-components/CreateGroup";
@@ -12,5 +13,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <CreateGroup />
     <CreateUsers />
     <ListGroups />
+    <User />
   </React.StrictMode>
 );

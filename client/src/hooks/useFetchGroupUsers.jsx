@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-export default function ListGroupUsers({ refreshData }) {
+export default function useFetchGroupUsers({ refreshData }) {
   const [userNames, setUserNames] = useState([]);
   const [error, setError] = useState(null);
   useEffect(() => {
@@ -37,14 +37,5 @@ export default function ListGroupUsers({ refreshData }) {
     getUsers();
   }, [refreshData]);
 
-  return (
-    <div>
-      {error && <p>{error}</p>}
-      <ul style={{ listStyleType: "none" }}>
-        {userNames.map((userName) => (
-          <li key={userName}>{userName}</li>
-        ))}
-      </ul>
-    </div>
-  );
+  return { userNames, error };
 }
