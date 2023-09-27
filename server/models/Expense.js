@@ -39,8 +39,22 @@ const expenseSchema = new Schema(
       ],
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    toJSON: { virtuals: true }, // Include virtual property in JSON serialization
+    toObject: { virtuals: true }, // Include virtual property when converting to JavaScript objects
+  },
 );
+
+// Virtual property expenseAmountPerBeneficiary
+expenseSchema.virtual('expenseAmountPerBeneficiary').get(function () {
+  // Calculate the expense amount per beneficiary
+  const numberOfBeneficiaries = this.expenseBeneficiaries.length;
+  if (numberOfBeneficiaries === 0) {
+    return 0; // bug prevention: avoid division by 0.
+  }
+  return this.expenseAmount / numberOfBeneficiaries;
+});
 
 const Expense = model('Expense', expenseSchema);
 

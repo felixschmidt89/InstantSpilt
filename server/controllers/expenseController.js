@@ -68,9 +68,6 @@ export const listAllExpensesByGroupCode = async (req, res) => {
   }
 };
 
-calculateExpensesPaidByUserHelper('O4HS9R', 'Marc');
-calculateExpensesBenefittedByUserHelper('O4HS9R', 'Marc');
-
 // FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 
 export const listAllExpenses = async (req, res) => {
