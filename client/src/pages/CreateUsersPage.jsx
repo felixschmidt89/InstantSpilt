@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import CreateUser from "../local-components/CreateUser";
-import ListGroupUsers from "../components/ReusableComponents/FetchGroupUsers";
+import CreateUser from "../components/CreateUser";
+import RenderUserNames from "../components/RenderUserNames";
 
-function CreateUsers() {
+function CreateUsersPage() {
   const [refreshData, setRefreshData] = useState(false);
 
   const toggleDataRefresh = () => {
@@ -13,9 +13,9 @@ function CreateUsers() {
   return (
     <div>
       <CreateUser toggleDataRefresh={toggleDataRefresh} />
-      <ListGroupUsers refreshData={refreshData} />
+      <RenderUserNames refreshData={refreshData} />
     </div>
   );
 }
 
-export default CreateUsers;
+export default CreateUsersPage;

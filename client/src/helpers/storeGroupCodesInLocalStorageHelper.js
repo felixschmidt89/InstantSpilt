@@ -1,5 +1,5 @@
-import setGroupCodeToCurrentlyActive from "./setGroupCodeToCurrentlyActiveHelper";
 import logDevErrorHelper from "../../../server/helpers/logDevErrorHelper";
+import setGroupCodeToCurrentlyActiveHelper from "./setGroupCodeToCurrentlyActiveHelper";
 
 /**
  * Adds groupCode to local storage if it doesn't already exist and sets it to currently active groupCode
@@ -19,6 +19,7 @@ const storeGroupCodesInLocalStorageHelper = (groupCode) => {
         JSON.stringify(storedGroupCodes)
       );
     }
+    setGroupCodeToCurrentlyActiveHelper(groupCode);
     return true;
   } catch (error) {
     logDevErrorHelper("Error storing groupCode in local storage:", error);

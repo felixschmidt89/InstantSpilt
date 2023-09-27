@@ -5,7 +5,7 @@ import storeGroupCodesInLocalStorageHelper from "../helpers/storeGroupCodesInLoc
 import setGroupCodeToCurrentlyActiveHelper from "../helpers/setGroupCodeToCurrentlyActiveHelper";
 
 /**
- * Create a new group, stores the groupCode in user's local storage upon submission.
+ * Creates a new group & stores the related groupCode in user's local storage upon submission.
  */
 export default function CreateGroup() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;

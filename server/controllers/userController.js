@@ -24,19 +24,6 @@ export const listAllUsersByGroupCode = async (req, res) => {
     const { groupCode } = req.params;
     const users = await User.find({ groupCode });
 
-    // Log the users before populating
-    console.log('Found users:', users);
-
-    // Populate the 'totalExpensesPaid' virtual field
-    await User.populate(users, {
-      path: 'totalExpensesPaid',
-      model: 'Expense',
-      select: 'expenseAmount',
-    });
-
-    // Log the users after populating
-    console.log('Populated users:', users);
-
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: users.length,
