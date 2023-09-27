@@ -26,8 +26,18 @@ const userSchema = new Schema(
   },
   {
     timestamps: true,
+    toJSON: { virtuals: true }, // Enable virtual properties to be included in JSON output
+    toObject: { virtuals: true }, // Enable virtual properties to be included in object representations
   },
 );
+
+// Virtual properties
+userSchema.virtual('userBalance').get(function () {
+  return this.totalExpensesPaidAmount - this.totalExpenseBenefittedAmount;
+});
+userSchema.virtual('expensesSettled').get(function () {
+  return this.balance === 0;
+});
 
 // Calculate and update the totalExpensesPaidAmount of the user
 userSchema.methods.updateTotalExpensesPaid = async function () {

@@ -15,12 +15,6 @@ export const createExpense = async (req, res) => {
 
   try {
     const expensePayer = await User.findOne({ userName, groupCode });
-    console.log(expensePayer);
-    if (!expensePayer) {
-      return res
-        .status(StatusCodes.NOT_FOUND)
-        .json({ error: 'Expense payer not found.' });
-    }
 
     const expenseBeneficiaries = await User.find({
       userName: { $in: expenseBeneficiariesNames },
