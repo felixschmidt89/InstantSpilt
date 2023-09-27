@@ -29,7 +29,7 @@ const userSchema = new Schema(
   },
 );
 
-// Function to calculate and update the totalExpensesPaidAmount
+// Calculate and update the totalExpensesPaidAmount of the user
 userSchema.methods.updateTotalExpensesPaid = async function () {
   const userId = this._id;
 
@@ -52,25 +52,30 @@ userSchema.methods.updateTotalExpensesPaid = async function () {
       { _id: userId },
       {
         $set: {
-          totalExpensesPaidAmount: totalExpensesPaid[0].total,
+          totalExpensesPaidAmount: totalExpensesPaid[0]?.total || 0,
         },
       },
     );
   } catch (error) {
-    console.error('Error calculating and updating total expenses:', error);
+    console.error(
+      'Error calculating and updating total expensesPaidAmount:',
+      error,
+    );
     throw error;
   }
 };
 
-// Define a method to calculate and update the totalExpenseBenefittedAmount
+// Calculate and update the totalExpenseBenefittedAmount of the user
 userSchema.methods.updateTotalExpenseBenefitted = async function () {
   const userId = this._id;
 
   try {
-    // Calculate the total expenses benefited by the user
+    // Calculate the total expense benefitted from by the user
     const totalExpenseBenefitted = await Expense.aggregate([
       {
-        $match: { expenseBeneficiaries: userId },
+        $match: {
+          expenseBeneficiaries: userId,
+        },
       },
       {
         $group: {
@@ -79,17 +84,18 @@ userSchema.methods.updateTotalExpenseBenefitted = async function () {
         },
       },
     ]);
-
     // Update the totalExpenseBenefittedAmount field
-    this.totalExpenseBenefittedAmount = totalExpenseBenefitted[0]
-      ? totalExpenseBenefitted[0].total
-      : 0;
-
-    // Save the updated user document
-    await this.save();
+    await User.findOneAndUpdate(
+      { _id: userId },
+      {
+        $set: {
+          totalExpenseBenefittedAmount: totalExpenseBenefitted[0]?.total || 0,
+        },
+      },
+    );
   } catch (error) {
     console.error(
-      'Error calculating and updating total expenses benefited:',
+      'Error calculating and updating total benefittedExpensesAmount:',
       error,
     );
     throw error;

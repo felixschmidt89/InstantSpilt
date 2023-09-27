@@ -13,6 +13,10 @@ const expenseSchema = new Schema(
       type: Number,
       required: [true, 'The amount of the expense is required but missing.'],
     },
+    expenseAmountPerBeneficiary: {
+      type: Number,
+      required: [true, 'The amount of the expense is required but missing.'],
+    },
     expensePayer: {
       type: Schema.Types.ObjectId,
       ref: 'User',
@@ -41,20 +45,8 @@ const expenseSchema = new Schema(
   },
   {
     timestamps: true,
-    toJSON: { virtuals: true }, // Include virtual property in JSON serialization
-    toObject: { virtuals: true }, // Include virtual property when converting to JavaScript objects
   },
 );
-
-// Virtual property expenseAmountPerBeneficiary
-expenseSchema.virtual('expenseAmountPerBeneficiary').get(function () {
-  // Calculate the expense amount per beneficiary
-  const numberOfBeneficiaries = this.expenseBeneficiaries.length;
-  if (numberOfBeneficiaries === 0) {
-    return 0; // bug prevention: avoid division by 0.
-  }
-  return this.expenseAmount / numberOfBeneficiaries;
-});
 
 const Expense = model('Expense', expenseSchema);
 

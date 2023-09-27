@@ -15,7 +15,7 @@ export const createExpense = async (req, res) => {
 
   try {
     const expensePayer = await User.findOne({ userName, groupCode });
-
+    console.log(expensePayer);
     if (!expensePayer) {
       return res
         .status(StatusCodes.NOT_FOUND)
@@ -27,11 +27,15 @@ export const createExpense = async (req, res) => {
       groupCode,
     });
 
+    const expenseAmountPerBeneficiary =
+      expenseAmount / expenseBeneficiaries.length;
+
     const beneficiaryIds = expenseBeneficiaries.map((user) => user._id);
 
     const newExpense = new Expense({
       expenseName,
       expenseAmount,
+      expenseAmountPerBeneficiary,
       groupCode,
       expensePayer: expensePayer._id,
       expenseBeneficiaries: beneficiaryIds,
@@ -39,8 +43,15 @@ export const createExpense = async (req, res) => {
 
     const expense = await newExpense.save();
 
-    // Update total expenses paid by the expense payer
+    // Update total expenses paid by expense payer
     await expensePayer.updateTotalExpensesPaid();
+
+    // Update total expenses benefitted from by expense beneficiaries concurrently
+    await Promise.all(
+      expenseBeneficiaries.map(async (beneficiary) => {
+        await beneficiary.updateTotalExpenseBenefitted();
+      }),
+    );
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
