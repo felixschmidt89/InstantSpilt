@@ -23,6 +23,20 @@ export const listAllUsersByGroupCode = async (req, res) => {
   try {
     const { groupCode } = req.params;
     const users = await User.find({ groupCode });
+
+    // Log the users before populating
+    console.log('Found users:', users);
+
+    // Populate the 'totalExpensesPaid' virtual field
+    await User.populate(users, {
+      path: 'totalExpensesPaid',
+      model: 'Expense',
+      select: 'expenseAmount',
+    });
+
+    // Log the users after populating
+    console.log('Populated users:', users);
+
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: users.length,
@@ -80,7 +94,7 @@ export const deleteUser = async (req, res) => {
 
 export const listAllUsers = async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().populate('totalExpensesPaid');
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: users.length,

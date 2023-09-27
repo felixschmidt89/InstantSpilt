@@ -3,8 +3,6 @@ import Expense from '../models/Expense.js';
 import User from '../models/User.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
-import calculateExpensesPaidByUserHelper from '../helpers/calculateExpensesPaidByUserHelper.js';
-import calculateExpensesBenefittedByUserHelper from '../helpers/calculateExpensesBenefittedByUserHelper.js';
 
 export const createExpense = async (req, res) => {
   const {
@@ -40,6 +38,9 @@ export const createExpense = async (req, res) => {
     });
 
     const expense = await newExpense.save();
+
+    // Update total expenses paid by the expense payer
+    await expensePayer.updateTotalExpensesPaid();
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
