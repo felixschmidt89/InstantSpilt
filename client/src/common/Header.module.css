@@ -1,0 +1,5 @@
+.header {
+  text-align: center;
+  border-bottom: 3px solid var(--color-signal);
+  font-size: 2rem;
+}

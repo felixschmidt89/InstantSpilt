@@ -1,0 +1,87 @@
+:root {
+  --color-body: #f8f7ff;
+  --color-main: #ffffff;
+  --color-dark: #454372;
+  --color-dark2: #00100b;
+  --color-error: #ef946c;
+  --color-signal: #559cad;
+  --color-success: #749c75;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  color: var(--color-dark);
+  font-weight: 400;
+  line-height: 1.6;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: var(--color-body);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  font-size: 1.6rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-main);
+  /* ensure that bottom symbols are visible on most devices */
+  height: 95vh;
+  border-radius: 10px;
+}
+
+/* small devices (up to 576px width) */
+@media (max-width: 576px) {
+  main {
+    width: 100vw;
+  }
+}
+
+/* medium devices (between 577px and 768px width) */
+@media (min-width: 577px) and (max-width: 768px) {
+  main {
+    width: 90vw;
+    margin: 3rem;
+  }
+}
+
+/* large devices (between 769px and 992px width) */
+@media (min-width: 769px) and (max-width: 992px) {
+  main {
+    width: 70vw;
+    margin: 3rem;
+  }
+}
+
+/* extra-large devices (greater than 1200px width) */
+@media (min-width: 1200px) {
+  main {
+    width: 50vw;
+    margin: 7rem;
+  }
+}
+
+::selection {
+  background-color: var(--color-signal);
+  color: var(--color-body);
+}
+
+:focus {
+  outline: 0.2rem solid var(--color-success);
+  padding: 0.1 rem;
+}
