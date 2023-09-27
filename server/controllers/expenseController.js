@@ -4,6 +4,9 @@ import User from '../models/User.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 
+/** Creates a new expense in database
+ *  Updates totalExpenseAmountPaid by expense payer and totalExpenseBenefittedAmount from by expense beneficiaries
+ */
 export const createExpense = async (req, res) => {
   const {
     userName,
@@ -94,6 +97,11 @@ export const listAllExpenses = async (req, res) => {
 export const deleteAllExpenses = async (req, res) => {
   try {
     await Expense.deleteMany();
+    await User.updateMany(
+      {},
+      { totalExpensesPaidAmount: 0, totalExpenseBenefittedAmount: 0 },
+    );
+
     res.status(StatusCodes.NO_CONTENT).json({
       status: 'success',
       data: null,

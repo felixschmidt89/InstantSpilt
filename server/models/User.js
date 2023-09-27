@@ -36,7 +36,7 @@ userSchema.virtual('userBalance').get(function () {
   return this.totalExpensesPaidAmount - this.totalExpenseBenefittedAmount;
 });
 userSchema.virtual('expensesSettled').get(function () {
-  return this.balance === 0;
+  return this.get('userBalance') === 0;
 });
 
 // Calculate and update the totalExpensesPaidAmount of the user
