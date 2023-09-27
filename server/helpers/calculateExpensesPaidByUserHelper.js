@@ -20,7 +20,6 @@ async function calculateExpensesPaidByUserHelper(groupCode, userName) {
       },
     ]);
 
-    // Extract the total from the aggregation result
     const totalPaid =
       totalExpensesPaid.length > 0 ? totalExpensesPaid[0].total : 0;
 

@@ -9,10 +9,11 @@ node_modules/
 build/
 dist/
 
-# Dev tools config files
+# Dev tools
 .eslintrc.json
 .prettierrc
 vite.config.js
+.vscode/
 
 
 
