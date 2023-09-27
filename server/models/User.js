@@ -53,9 +53,16 @@ userSchema.methods.updateTotalExpensesPaid = async function () {
     ]);
 
     // Update the totalExpensesAmount field
-    this.totalExpensesPaidAmount = totalExpensesPaid[0]
-      ? totalExpensesPaid[0].total
-      : 0;
+    await User.findOneAndUpdate(
+      { _id: this._id },
+      {
+        $set: {
+          totalExpensesPaidAmount: totalExpensesPaid[0]
+            ? totalExpensesPaid[0].total
+            : 0,
+        },
+      },
+    );
 
     // Save the updated user document
     await this.save();
