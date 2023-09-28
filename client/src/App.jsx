@@ -15,8 +15,8 @@ function App() {
     <>
       <Header />
       <main>
-        {/* <CreateGroupPage />
-        <CreateUsersPage /> */}
+        <CreateGroupPage />
+        <CreateUsersPage />
         <InstantSplitPage />
         <CreatePaymentPage />
         <CreateExpensePage />

@@ -50,7 +50,9 @@ export default function GroupBalances({ refreshData }) {
             <div>
               <strong>{user.userName}</strong>
             </div>
-            {user.userBalance !== null && <div>{user.userBalance}€</div>}
+            {user.userBalance !== null && (
+              <div>{user.userBalance.toFixed(2)}€</div>
+            )}
           </li>
         ))}
       </ul>

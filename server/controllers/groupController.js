@@ -86,8 +86,10 @@ export const listExpensesAndPaymentsByGroup = async (req, res) => {
   try {
     const { groupCode } = req.params;
     const [expenses, payments] = await Promise.all([
-      Expense.find({ groupCode }),
-      Payment.find({ groupCode }),
+      Expense.find({ groupCode }).populate('expensePayer', 'userName'),
+      Payment.find({ groupCode })
+        .populate('paymentMaker', 'userName')
+        .populate('paymentRecipient', 'userName'),
     ]);
 
     const groupExpensesAndPayments = [...expenses, ...payments];
