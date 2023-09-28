@@ -5,7 +5,8 @@ import "./global.css";
 import InstantSplitPage from "./pages/InstantSplitPage";
 import CreateGroupPage from "./pages/CreateGroupPage.jsx";
 import CreateUsersPage from "./pages/CreateUsersPage.jsx";
-import CreatePayment from "./pages/CreatePayment";
+import CreatePaymentPage from "./pages/CreatePaymentPage";
+import CreateExpensePage from "./pages/CreateExpensePage";
 
 // FOR TESTING COMPONENTS WHILE STILL AT AN EARLY STAGE OF BUILDING MVP/FE
 
@@ -14,10 +15,11 @@ function App() {
     <>
       <Header />
       <main>
-        <CreateGroupPage />
-        <CreateUsersPage />
-        <CreatePayment />
+        {/* <CreateGroupPage />
+        <CreateUsersPage /> */}
         <InstantSplitPage />
+        <CreatePaymentPage />
+        <CreateExpensePage />
       </main>
       <Footer />
     </>
