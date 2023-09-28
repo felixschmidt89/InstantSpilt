@@ -31,7 +31,7 @@ export default function CreateExpensePage() {
       setExpenseName("");
       setExpenseAmount("");
       setUserName("");
-      // You can optionally reset the selectedBeneficiaries here if needed
+      setSelectedBeneficiaries([...groupMembers]);
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Error creating expense:", error);
