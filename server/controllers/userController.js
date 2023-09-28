@@ -57,15 +57,25 @@ export const changeUserName = async (req, res) => {
   }
 };
 
-// TODO: Add check to disallow deleting user if user has open payments
 export const deleteUser = async (req, res) => {
   try {
     const { groupCode, userName } = req.body;
 
-    await User.findOneAndDelete({
+    const userToDelete = await User.findOne({
       userName,
       groupCode,
     });
+
+    // Check if the user's expenses are settled
+    if (userToDelete && !userToDelete.expensesSettled) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message:
+          'The user cannot be deleted because the user has unsettled expenses.',
+      });
+    }
+
+    await User.deleteOne({ _id: userToDelete._id });
 
     res.status(StatusCodes.NO_CONTENT).json({
       status: 'success',
