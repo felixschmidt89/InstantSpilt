@@ -56,7 +56,7 @@ export const createExpense = async (req, res) => {
       message: 'Expense created successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error updating user name:', error);
+    logDevErrorHelper('Error creating expense:', error);
     sendInternalErrorHelper(res);
   }
 };

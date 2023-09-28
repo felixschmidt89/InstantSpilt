@@ -56,14 +56,15 @@ userSchema.virtual('expensesSettled').get(function () {
   return this.get('userBalance') === 0;
 });
 
-const User = model('User', userSchema);
+// METHODS
 
-// Calculate and update the totalExpensesPaidAmount of the user
+/** Calculates and updates the totalExpensesPaidAmount of a user
+ * @throws {Error} -
+ */
 userSchema.methods.updateTotalExpensesPaid = async function () {
   const userId = this._id;
 
   try {
-    // Calculate the total expenses paid by the user
     const totalExpensesPaid = await Expense.aggregate([
       {
         $match: { expensePayer: userId },
@@ -76,7 +77,7 @@ userSchema.methods.updateTotalExpensesPaid = async function () {
       },
     ]);
 
-    // Update the totalExpensesAmount field
+    // eslint-disable-next-line no-use-before-define
     await User.findOneAndUpdate(
       { _id: userId },
       {
@@ -94,12 +95,13 @@ userSchema.methods.updateTotalExpensesPaid = async function () {
   }
 };
 
-// Calculate and update the totalExpenseBenefittedAmount of the user
+/** Calculates and updates the totalExpensesBenefittedAmount of a user
+ * @throws {Error} -
+ */
 userSchema.methods.updateTotalExpenseBenefitted = async function () {
   const userId = this._id;
 
   try {
-    // Calculate the total expense benefitted from by the user
     const totalExpenseBenefitted = await Expense.aggregate([
       {
         $match: {
@@ -113,7 +115,7 @@ userSchema.methods.updateTotalExpenseBenefitted = async function () {
         },
       },
     ]);
-    // Update the totalExpenseBenefittedAmount field
+    // eslint-disable-next-line no-use-before-define
     await User.findOneAndUpdate(
       { _id: userId },
       {
@@ -131,11 +133,48 @@ userSchema.methods.updateTotalExpenseBenefitted = async function () {
   }
 };
 
-userSchema.methods.updateTotalPaymentsMade = async function () {
+/** Calculates and updates the totalPaymentsReceivedAmount of a user
+ * @throws {Error} -
+ */
+userSchema.methods.updateTotalPaymentsReceived = async function () {
   try {
     const userId = this._id;
 
-    // Calculate the total payments made by the user
+    const totalPaymentsReceived = await Payment.aggregate([
+      {
+        $match: { paymentRecipient: userId },
+      },
+      {
+        $group: {
+          _id: null,
+          total: { $sum: '$paymentAmount' },
+        },
+      },
+    ]);
+    // eslint-disable-next-line no-use-before-define
+    await User.findOneAndUpdate(
+      { _id: userId },
+      {
+        $set: {
+          totalPaymentsReceivedAmount: totalPaymentsReceived[0].total || 0,
+        },
+      },
+    );
+  } catch (error) {
+    console.error(
+      'Error calculating and updating totalPaymentsReceivedAmount:',
+      error,
+    );
+    throw error;
+  }
+};
+
+/** Calculates and updates the totalPaymentsMadeAmount of a user
+ * @throws {Error} -
+ */ userSchema.methods.updateTotalPaymentsMadeAmount = async function () {
+  try {
+    const userId = this._id;
+
     const totalPaymentsMade = await Payment.aggregate([
       {
         $match: { paymentMaker: userId },
@@ -148,9 +187,15 @@ userSchema.methods.updateTotalPaymentsMade = async function () {
       },
     ]);
 
-    // Update the totalPaymentsMadeAmount field
-    this.totalPaymentsMadeAmount = totalPaymentsMade[0]?.total || 0;
-    await this.save();
+    // eslint-disable-next-line no-use-before-define
+    await User.findOneAndUpdate(
+      { _id: userId },
+      {
+        $set: {
+          totalPaymentsMadeAmount: totalPaymentsMade[0].total || 0,
+        },
+      },
+    );
   } catch (error) {
     console.error(
       'Error calculating and updating totalPaymentsMadeAmount:',
@@ -159,5 +204,7 @@ userSchema.methods.updateTotalPaymentsMade = async function () {
     throw error;
   }
 };
+
+const User = model('User', userSchema);
 
 export default User;

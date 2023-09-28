@@ -81,7 +81,7 @@ export const deleteUser = async (req, res) => {
 
 export const listAllUsers = async (req, res) => {
   try {
-    const users = await User.find().populate('totalExpensesPaid');
+    const users = await User.find();
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: users.length,

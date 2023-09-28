@@ -25,6 +25,9 @@ export const createPayment = async (req, res) => {
 
     const payment = await newPayment.save();
 
+    await paymentRecipient.updateTotalPaymentsReceived();
+    await paymentMaker.updateTotalPaymentsMadeAmount();
+
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
       data: { payment },
