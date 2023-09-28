@@ -23,6 +23,14 @@ const userSchema = new Schema(
       type: Number,
       default: 0,
     },
+    totalPaymentsMadeAmount: {
+      type: Number,
+      default: 0,
+    },
+    totalPaymentsReceivedAmount: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,
@@ -33,7 +41,12 @@ const userSchema = new Schema(
 
 // Virtual properties
 userSchema.virtual('userBalance').get(function () {
-  return this.totalExpensesPaidAmount - this.totalExpenseBenefittedAmount;
+  return (
+    this.totalExpensesPaidAmount +
+    this.totalPaymentsMadeAmount -
+    this.totalExpenseBenefittedAmount -
+    this.totalPaymentsReceivedAmount
+  );
 });
 userSchema.virtual('expensesSettled').get(function () {
   return this.get('userBalance') === 0;
