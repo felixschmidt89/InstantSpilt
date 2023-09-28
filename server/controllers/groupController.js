@@ -1,11 +1,13 @@
 import { StatusCodes } from 'http-status-codes';
 import { customAlphabet } from 'nanoid';
+import Group from '../models/Group.js';
+import Expense from '../models/Expense.js';
+import Payment from '../models/Payment.js';
+import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import isGroupCodeUniqueHelper from '../helpers/isGroupCodeUniqueHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
-import Group from '../models/Group.js';
-import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 
-// Define customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)
+// Defines customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)
 const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
 
 /**
@@ -19,7 +21,7 @@ export const createGroup = async (req, res) => {
     let groupCode;
     let isUnique = false;
 
-    // Generate globally unique groupCode
+    // Generates globally unique groupCode
     while (!isUnique) {
       groupCode = nanoid(6);
       // eslint-disable-next-line no-await-in-loop
@@ -76,6 +78,29 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
     });
   } catch (error) {
     logDevErrorHelper('Error listing group names:', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
+export const listExpensesAndPaymentsByGroup = async (req, res) => {
+  try {
+    const { groupCode } = req.params;
+    const [expenses, payments] = await Promise.all([
+      Expense.find({ groupCode }),
+      Payment.find({ groupCode }),
+    ]);
+
+    const groupExpensesAndPayments = [...expenses, ...payments];
+
+    groupExpensesAndPayments.sort((a, b) => a.createdAt - b.createdAt);
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { groupExpensesAndPayments },
+      message: 'All group expenses and payments retrieved successfully',
+    });
+  } catch (error) {
+    logDevErrorHelper('Error listing expenses and payments', error);
     sendInternalErrorHelper(res);
   }
 };
