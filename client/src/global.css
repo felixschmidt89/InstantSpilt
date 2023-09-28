@@ -8,6 +8,16 @@
   --color-success: #749c75;
 }
 
+::selection {
+  background-color: var(--color-signal);
+  color: var(--color-body);
+}
+
+:focus {
+  outline: 0.2rem solid var(--color-success);
+  padding: 0.1 rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -35,17 +45,17 @@ body {
   font-size: 1.6rem;
 }
 
-body {
+main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--color-main);
-  /* ensure that bottom symbols are visible on most devices */
-  height: 95vh;
+  height: 50vh;
   border-radius: 10px;
 }
 
-/* small devices (up to 576px width) */
+/*small devices (up to 576px width)*/
+
 @media (max-width: 576px) {
   main {
     width: 100vw;
@@ -74,14 +84,4 @@ body {
     width: 50vw;
     margin: 7rem;
   }
-}
-
-::selection {
-  background-color: var(--color-signal);
-  color: var(--color-body);
-}
-
-:focus {
-  outline: 0.2rem solid var(--color-success);
-  padding: 0.1 rem;
 }

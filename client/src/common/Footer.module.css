@@ -1,4 +1,21 @@
 .footer {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-top: 3px solid var(--color-signal);
+  font-size: 2rem;
+  height: 6vh;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-body);
+  z-index: 999;
+}
+
+/* Reset the positioning for larger screens */
+@media (min-width: 769px) {
+  .footer {
+    position: static;
+  }
 }

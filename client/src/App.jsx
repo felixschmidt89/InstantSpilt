@@ -13,10 +13,9 @@ function App() {
   return (
     <>
       <Header />
-      <InstantSplitPage />
-      <CreateGroupPage />
-      <ListGroups />
-      <CreateUsersPage />
+      <main>
+        <InstantSplitPage />
+      </main>
       <Footer />
     </>
   );

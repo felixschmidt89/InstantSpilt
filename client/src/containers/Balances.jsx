@@ -43,16 +43,10 @@ export default function Balances({ refreshData }) {
 
   return (
     <div>
-      <h2>User Balances</h2>
-      <ul style={{ listStyleType: "none" }}>
+      <h2>Balances</h2>
+      <ul>
         {userDetails.map((user) => (
-          <li
-            key={user.userName}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginRight: "5%",
-            }}>
+          <li key={user.userName}>
             <div>
               <strong>{user.userName}</strong>
             </div>
