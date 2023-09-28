@@ -17,7 +17,7 @@ export default function ListGroups() {
         if (!groupCodesArray) {
           return;
         }
-
+        // Convert the group codes array to a string
         const groupCodesString = groupCodesArray.join(",");
 
         const response = await axios.get(

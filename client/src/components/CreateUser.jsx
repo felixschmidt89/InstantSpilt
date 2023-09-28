@@ -3,9 +3,6 @@ import axios from "axios";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-/**
- * Form to create a new user
- */
 export default function CreateUser({ toggleDataRefresh }) {
   const [userName, setUserName] = useState("");
 

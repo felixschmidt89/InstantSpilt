@@ -7,10 +7,9 @@ export const createUser = async (req, res) => {
   try {
     const { userName, groupCode } = req.body;
     const user = await User.create({ userName, groupCode });
-    const userJson = user.toJSON();
     res.status(StatusCodes.CREATED).json({
       status: 'success',
-      data: { userJson },
+      data: { user },
       message: 'User created successfully',
     });
   } catch (error) {

@@ -43,13 +43,7 @@ export default function RenderUserNames({ refreshData }) {
       <h2>User Details</h2>
       <ul style={{ listStyleType: "none" }}>
         {userNames.map((userName) => (
-          <li
-            key={userName}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginRight: "5%",
-            }}>
+          <li key={userName}>
             <div>
               <strong>{userName}</strong>
             </div>

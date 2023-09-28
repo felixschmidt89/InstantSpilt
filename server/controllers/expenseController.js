@@ -4,7 +4,7 @@ import User from '../models/User.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 
-/** Creates a new expense in database
+/** Creates a new expense
  *  Updates totalExpenseAmountPaid by expense payer and totalExpenseBenefittedAmount from by expense beneficiaries
  */
 export const createExpense = async (req, res) => {

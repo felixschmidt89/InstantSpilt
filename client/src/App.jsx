@@ -3,7 +3,6 @@ import Footer from "./common/Footer";
 import Header from "./common/Header";
 import "./global.css";
 import InstantSplitPage from "./pages/InstantSplitPage";
-import ListGroups from "./components/ListGroups.jsx";
 import CreateGroupPage from "./pages/CreateGroupPage.jsx";
 import CreateUsersPage from "./pages/CreateUsersPage.jsx";
 
@@ -14,6 +13,8 @@ function App() {
     <>
       <Header />
       <main>
+        <CreateGroupPage />
+        <CreateUsersPage />
         <InstantSplitPage />
       </main>
       <Footer />
