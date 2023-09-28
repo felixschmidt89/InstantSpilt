@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
-import Expense from './Expense.js'; // Import the Expense model
+import Expense from './Expense.js';
+import Payment from './Payment.js';
 
 const userSchema = new Schema(
   {
@@ -38,6 +39,9 @@ const userSchema = new Schema(
     toObject: { virtuals: true }, // Enable virtual properties to be included in object representations
   },
 );
+
+// Ensure users are unique within a group using schema-level validation
+userSchema.index({ userName: 1, groupCode: 1 }, { unique: true });
 
 // Virtual properties
 userSchema.virtual('userBalance').get(function () {
@@ -127,7 +131,33 @@ userSchema.methods.updateTotalExpenseBenefitted = async function () {
   }
 };
 
-// Ensure users are unique within a group using schema-level validation
-userSchema.index({ userName: 1, groupCode: 1 }, { unique: true });
+userSchema.methods.updateTotalPaymentsMade = async function () {
+  try {
+    const userId = this._id;
+
+    // Calculate the total payments made by the user
+    const totalPaymentsMade = await Payment.aggregate([
+      {
+        $match: { paymentMaker: userId },
+      },
+      {
+        $group: {
+          _id: null,
+          total: { $sum: '$paymentAmount' },
+        },
+      },
+    ]);
+
+    // Update the totalPaymentsMadeAmount field
+    this.totalPaymentsMadeAmount = totalPaymentsMade[0]?.total || 0;
+    await this.save();
+  } catch (error) {
+    console.error(
+      'Error calculating and updating totalPaymentsMadeAmount:',
+      error,
+    );
+    throw error;
+  }
+};
 
 export default User;

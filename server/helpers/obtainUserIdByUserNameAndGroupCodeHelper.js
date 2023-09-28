@@ -6,7 +6,6 @@ import logDevErrorHelper from './logDevErrorHelper.js';
  *
  * @param {string} groupCode
  * @param {string} userName
- * @param {string} paymentRecipientName
  * @returns {Promise<string>} - The objectId of user.
  * @throws {Error} if the objectId is not found.
  */
@@ -14,19 +13,16 @@ import logDevErrorHelper from './logDevErrorHelper.js';
 const obtainUserIdByUserNameAndGroupCodeHelper = async (
   groupCode,
   userName,
-  paymentRecipientName,
 ) => {
   try {
     const user = await User.findOne({
       groupCode,
-      userName: paymentRecipientName ? paymentRecipientName : userName,
+      userName,
     });
 
     if (!user) {
       throw new Error(
-        `User with groupCode "${groupCode}" and username "${
-          paymentRecipientName ? paymentRecipientName : userName
-        }" not found`,
+        `User with groupCode "${groupCode}" and username "${userName}" not found`,
       );
     }
     return user._id;

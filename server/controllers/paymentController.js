@@ -1,21 +1,24 @@
 import { StatusCodes } from 'http-status-codes';
 import Payment from '../models/Payment.js';
+import User from '../models/User.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
-import obtainUserIdByUserNameAndGroupCodeHelper from '../helpers/obtainUserIdByUserNameAndGroupCodeHelper.js';
 
 export const createPayment = async (req, res) => {
   try {
     const { userName, groupCode, paymentAmount, paymentRecipientName } =
       req.body;
-    const [paymentMaker, paymentRecipient] = await Promise.all([
-      obtainUserIdByUserNameAndGroupCodeHelper(groupCode, userName),
-      obtainUserIdByUserNameAndGroupCodeHelper(groupCode, paymentRecipientName),
-    ]);
+
+    const paymentMaker = await User.findOne({ userName, groupCode });
+
+    const paymentRecipient = await User.findOne({
+      userName: { $eq: paymentRecipientName },
+      groupCode,
+    });
 
     const newPayment = new Payment({
-      paymentMaker,
-      paymentRecipient,
+      paymentMaker: paymentMaker._id,
+      paymentRecipient: paymentRecipient.id,
       groupCode,
       paymentAmount,
     });
