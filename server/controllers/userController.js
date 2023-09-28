@@ -6,6 +6,17 @@ import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 export const createUser = async (req, res) => {
   try {
     const { userName, groupCode } = req.body;
+
+    // Check if a user with the same name and group code already exists
+    const existingUser = await User.findOne({ userName, groupCode });
+
+    if (existingUser) {
+      return res.status(StatusCodes.CONFLICT).json({
+        status: 'error',
+        message: 'A user with the same name already exists in this group.',
+      });
+    }
+
     const user = await User.create({ userName, groupCode });
     res.status(StatusCodes.CREATED).json({
       status: 'success',

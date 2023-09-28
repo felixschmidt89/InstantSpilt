@@ -40,9 +40,6 @@ const userSchema = new Schema(
   },
 );
 
-// Ensure users are unique within a group using schema-level validation
-userSchema.index({ userName: 1, groupCode: 1 }, { unique: true });
-
 // Virtual properties
 userSchema.virtual('userBalance').get(function () {
   return (

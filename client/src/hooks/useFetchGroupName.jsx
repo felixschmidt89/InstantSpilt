@@ -10,8 +10,8 @@ const useFetchGroupName = (groupCode) => {
     async function fetchGroupName() {
       try {
         const response = await axios.get(`${apiUrl}/groups/${groupCode}`);
-        const data = response.data.data;
-        const groupName = data.groupName;
+        const groupData = response.data.data;
+        const groupName = groupData.group.groupName;
         setGroupName(groupName);
       } catch (error) {
         if (process.env.NODE_ENV === "development") {
