@@ -6,6 +6,7 @@ import {
   deleteAllGroups,
   listGroupNamesByStoredGroupCodes,
   listExpensesAndPaymentsByGroup,
+  getGroupInfo,
 } from '../controllers/groupController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 import validateGroupCodeMiddleware from '../middleware/validateGroupCodeMiddleware.js';
@@ -18,8 +19,11 @@ router.post('/', createGroup);
 // Update group name
 router.patch('/', validateGroupCodeMiddleware, changeGroupName);
 
-// List group names of locally stored groups (by groupCode)
+// List group names of locally stored groupCodes
 router.get('/StoredGroupNames', listGroupNamesByStoredGroupCodes);
+
+// Get group info by groupCode
+router.get('/:groupCode', getGroupInfo);
 
 // Lists all expenses and payments of a group
 router.get('/:groupCode/expenses-and-payments', listExpensesAndPaymentsByGroup);

@@ -7,7 +7,7 @@ import setGroupCodeToCurrentlyActiveHelper from "../helpers/setGroupCodeToCurren
 /**
  * Creates a new group & stores the related groupCode in user's local storage upon submission.
  */
-export default function CreateGroup() {
+export default function CreateGroupPage() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
   const [groupName, setGroupName] = useState("");

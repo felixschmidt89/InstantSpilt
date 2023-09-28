@@ -3,7 +3,7 @@ import axios from "axios";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-export default function Balances({ refreshData }) {
+export default function GroupBalances({ refreshData }) {
   const [userDetails, setUserDetails] = useState([]);
   const [error, setError] = useState(null);
 
@@ -43,7 +43,7 @@ export default function Balances({ refreshData }) {
 
   return (
     <div>
-      <h2>Balances</h2>
+      <h2>Group balances</h2>
       <ul>
         {userDetails.map((user) => (
           <li key={user.userName}>

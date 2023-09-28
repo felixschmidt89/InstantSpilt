@@ -105,6 +105,23 @@ export const listExpensesAndPaymentsByGroup = async (req, res) => {
   }
 };
 
+export const getGroupInfo = async (req, res) => {
+  try {
+    const { groupCode } = req.params;
+
+    const group = await Group.findOne({ groupCode });
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { group },
+      message: 'Group info retrieved successfully',
+    });
+  } catch (error) {
+    logDevErrorHelper('Error fetching group info:', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
 // FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 
 export const listAllGroups = async (req, res) => {
@@ -114,7 +131,7 @@ export const listAllGroups = async (req, res) => {
       status: 'success',
       results: groups.length,
       data: { groups },
-      message: 'Groups retrieved successfully',
+      message: 'Groups info retrieved successfully',
     });
   } catch (error) {
     logDevErrorHelper('Error listing all groups:', error);

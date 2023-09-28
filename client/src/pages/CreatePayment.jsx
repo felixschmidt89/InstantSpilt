@@ -4,7 +4,7 @@ import useFetchGroupMembers from "../hooks/useFetchGroupMembers";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-export default function CreatePayment() {
+export default function CreatePaymentPage() {
   const [paymentAmount, setPaymentAmount] = useState("");
   const [userName, setUserName] = useState("");
   const [paymentRecipientName, setPaymentRecipientName] = useState("");
@@ -41,11 +41,10 @@ export default function CreatePayment() {
           type='number'
           value={paymentAmount}
           onChange={handlePaymentAmountChange}
-          placeholder='Payment amount'
+          placeholder='Enter amount'
           required
           step='0.01'
           min='0.01'
-          style={{ marginLeft: "10px" }}
         />
         <select
           value={userName}

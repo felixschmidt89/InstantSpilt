@@ -1,17 +1,12 @@
 import React, { useState } from "react";
-import Balances from "../containers/Balances";
-import Expenses from "../containers/Expenses";
-import useFetchGroupMembers from "../hooks/useFetchGroupMembers";
+import GroupBalances from "../components/GroupBalances";
+import GroupExpenses from "../components/GroupExpenses";
 import styles from "./InstantSplitPage.module.css";
+
+const groupCode = localStorage.getItem("activeGroupCode");
 
 export default function InstantSplitPage() {
   const [view, setView] = useState("view1");
-
-  // DEBUGGING AND TESTING
-  const groupCode = localStorage.getItem("activeGroupCode");
-  const groupMembers = useFetchGroupMembers(groupCode);
-  console.log(groupMembers);
-  // DEBUGGING AND TESTING
 
   const handleSwitchView = () => {
     // Toggle the view between "view1" and "view2"
@@ -25,8 +20,8 @@ export default function InstantSplitPage() {
         {view === "view1" ? "Show expenses" : "Show balances"}
       </button>
 
-      {view === "view1" && <Balances />}
-      {view === "view2" && <Expenses />}
+      {view === "view1" && <GroupBalances />}
+      {view === "view2" && <GroupExpenses />}
     </div>
   );
 }

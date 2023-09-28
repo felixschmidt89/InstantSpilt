@@ -5,7 +5,7 @@ import "./global.css";
 import InstantSplitPage from "./pages/InstantSplitPage";
 import CreateGroupPage from "./pages/CreateGroupPage.jsx";
 import CreateUsersPage from "./pages/CreateUsersPage.jsx";
-import CreatePayment from "./components/CreatePayment";
+import CreatePayment from "./pages/CreatePayment";
 
 // FOR TESTING COMPONENTS WHILE STILL AT AN EARLY STAGE OF BUILDING MVP/FE
 

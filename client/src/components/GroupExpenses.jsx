@@ -1,6 +1,6 @@
 import React from "react";
 
-function Expenses() {
+function GroupExpenses() {
   return (
     <div>
       <h2>Expenses</h2>
@@ -8,4 +8,4 @@ function Expenses() {
   );
 }
 
-export default Expenses;
+export default GroupExpenses;
