@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import groupRouter from './routes/groupRouter.js';
 import userRouter from './routes/userRouter.js';
 import expenseRouter from './routes/expenseRouter.js';
+import paymentRouter from './routes/paymentRouter.js';
 
 // Create an express application
 const app = express();
@@ -36,5 +37,6 @@ if (NODE_ENV === 'development') {
 app.use(`${API_BASEURL}/groups`, groupRouter);
 app.use(`${API_BASEURL}/users`, userRouter);
 app.use(`${API_BASEURL}/expenses`, expenseRouter);
+app.use(`${API_BASEURL}/payments`, paymentRouter);
 
 export default app;

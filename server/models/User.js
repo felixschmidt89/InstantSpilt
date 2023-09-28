@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import Expense from '../models/Expense.js'; // Import the Expense model
+import Expense from './Expense.js'; // Import the Expense model
 
 const userSchema = new Schema(
   {
@@ -39,6 +39,8 @@ userSchema.virtual('expensesSettled').get(function () {
   return this.get('userBalance') === 0;
 });
 
+const User = model('User', userSchema);
+
 // Calculate and update the totalExpensesPaidAmount of the user
 userSchema.methods.updateTotalExpensesPaid = async function () {
   const userId = this._id;
@@ -62,7 +64,7 @@ userSchema.methods.updateTotalExpensesPaid = async function () {
       { _id: userId },
       {
         $set: {
-          totalExpensesPaidAmount: totalExpensesPaid[0]?.total || 0,
+          totalExpensesPaidAmount: totalExpensesPaid[0].total || 0,
         },
       },
     );
@@ -99,7 +101,7 @@ userSchema.methods.updateTotalExpenseBenefitted = async function () {
       { _id: userId },
       {
         $set: {
-          totalExpenseBenefittedAmount: totalExpenseBenefitted[0]?.total || 0,
+          totalExpenseBenefittedAmount: totalExpenseBenefitted[0].total || 0,
         },
       },
     );
@@ -114,7 +116,5 @@ userSchema.methods.updateTotalExpenseBenefitted = async function () {
 
 // Ensure users are unique within a group using schema-level validation
 userSchema.index({ userName: 1, groupCode: 1 }, { unique: true });
-
-const User = model('User', userSchema);
 
 export default User;

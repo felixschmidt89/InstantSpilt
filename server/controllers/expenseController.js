@@ -8,15 +8,15 @@ import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
  *  Updates totalExpenseAmountPaid by expense payer and totalExpenseBenefittedAmount from by expense beneficiaries
  */
 export const createExpense = async (req, res) => {
-  const {
-    userName,
-    groupCode,
-    expenseName,
-    expenseAmount,
-    expenseBeneficiariesNames,
-  } = req.body;
-
   try {
+    const {
+      userName,
+      groupCode,
+      expenseName,
+      expenseAmount,
+      expenseBeneficiariesNames,
+    } = req.body;
+
     const expensePayer = await User.findOne({ userName, groupCode });
 
     const expenseBeneficiaries = await User.find({

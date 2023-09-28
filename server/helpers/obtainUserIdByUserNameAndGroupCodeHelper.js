@@ -2,10 +2,11 @@ import User from '../models/User.js';
 import logDevErrorHelper from './logDevErrorHelper.js';
 
 /**
- * Obtains the objectId of a user by its groupCode and userName.
+ * Obtains the objectId of a user by its groupCode and userName or paymentRecipientName.
  *
- * @param {string} groupCode - The groupCode to search for.
- * @param {string} userName - The userName to search for.
+ * @param {string} groupCode
+ * @param {string} userName
+ * @param {string} paymentRecipientName
  * @returns {Promise<string>} - The objectId of user.
  * @throws {Error} if the objectId is not found.
  */
@@ -13,12 +14,19 @@ import logDevErrorHelper from './logDevErrorHelper.js';
 const obtainUserIdByUserNameAndGroupCodeHelper = async (
   groupCode,
   userName,
+  paymentRecipientName,
 ) => {
   try {
-    const user = await User.findOne({ groupCode, userName });
+    const user = await User.findOne({
+      groupCode,
+      userName: paymentRecipientName ? paymentRecipientName : userName,
+    });
+
     if (!user) {
       throw new Error(
-        `User with groupCode "${groupCode}" and username "${userName}"not found`,
+        `User with groupCode "${groupCode}" and username "${
+          paymentRecipientName ? paymentRecipientName : userName
+        }" not found`,
       );
     }
     return user._id;
