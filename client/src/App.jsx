@@ -1,31 +1,23 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./common/Footer";
 import Header from "./common/Header";
-import "./global.css";
-import InstantSplitPage from "./pages/InstantSplitPage";
-import CreateGroupPage from "./pages/CreateGroupPage.jsx";
-import CreateUsersPage from "./pages/CreateUsersPage.jsx";
-import CreatePaymentPage from "./pages/CreatePaymentPage";
-import CreateExpensePage from "./pages/CreateExpensePage";
+import PageNotFoundPage from "./pages/PageNotFoundPage";
 import HomePage from "./pages/HomePage";
+import "./global.css";
 
 // FOR TESTING COMPONENTS WHILE STILL AT AN EARLY STAGE OF BUILDING MVP/FE
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <main>
-        {/* <CreateGroupPage />
-        <CreateUsersPage /> */}
-        {/* <InstantSplitPage /> */}
-
-        <HomePage />
-        <CreatePaymentPage />
-        <CreateExpensePage />
-      </main>
+      <Routes>
+        <Route index element={<HomePage />} />
+        <Route path='*' element={<PageNotFoundPage />} />
+      </Routes>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

@@ -5,7 +5,7 @@ const HomePage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
 
   return (
-    <div>
+    <main>
       {groupCode ? (
         <InstantSplitPage />
       ) : (
@@ -29,7 +29,7 @@ const HomePage = () => {
           </ul>{" "}
         </>
       )}
-    </div>
+    </main>
   );
 };
 
