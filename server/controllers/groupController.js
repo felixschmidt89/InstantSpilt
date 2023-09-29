@@ -124,6 +124,37 @@ export const getGroupInfo = async (req, res) => {
   }
 };
 
+/**
+ * Validates the existence of a group with the provided groupCode in the database.
+ * Sends a response indicating whether the group exists or not.
+ * @param {object} req
+ * @param {object} res
+ * @returns {object} JSON response with status, data (boolean value), and message fields.
+ */
+export const validateGroupExistence = async (req, res) => {
+  try {
+    const { groupCode } = req.params;
+    const group = await Group.findOne({ groupCode });
+
+    if (group) {
+      res.status(StatusCodes.OK).json({
+        status: 'success',
+        data: true,
+        message: 'The group exists',
+      });
+    } else {
+      res.status(StatusCodes.OK).json({
+        status: 'success',
+        data: false,
+        message: 'The group does not exist',
+      });
+    }
+  } catch (error) {
+    logDevErrorHelper('Error fetching group info:', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
 // FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 
 export const listAllGroups = async (req, res) => {

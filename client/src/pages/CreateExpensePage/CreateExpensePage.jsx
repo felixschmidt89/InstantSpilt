@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
+import { useNavigate } from "react-router-dom";
+import NavigateButton from "../../components/NavigateButton/NavigateButton";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function CreateExpensePage() {
+  const navigate = useNavigate();
+
   const [expenseName, setExpenseName] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
   const [userName, setUserName] = useState("");
@@ -32,6 +36,7 @@ export default function CreateExpensePage() {
       setExpenseAmount("");
       setUserName("");
       setSelectedBeneficiaries([...groupMembers]);
+      navigate("/instant-split");
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Error creating expense:", error);
@@ -59,7 +64,8 @@ export default function CreateExpensePage() {
   };
 
   return (
-    <div>
+    <main>
+      <NavigateButton route={"instant-split"} buttonText={"back"} />
       <h2>Add Expense</h2>
       <form onSubmit={handleFormSubmit}>
         <input
@@ -113,6 +119,6 @@ export default function CreateExpensePage() {
           </button>
         )}
       </form>
-    </div>
+    </main>
   );
 }

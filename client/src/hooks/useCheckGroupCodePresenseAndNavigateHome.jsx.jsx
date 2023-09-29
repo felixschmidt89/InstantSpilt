@@ -1,7 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function useCheckGroupCodeAndNavigateToHome() {
+/** Checks if groupCode exists in localStorage and navigates to homepage if
+ * not
+ */
+
+function useCheckGroupCodePresenceAndNavigateHome() {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,4 +18,4 @@ function useCheckGroupCodeAndNavigateToHome() {
   return null;
 }
 
-export default useCheckGroupCodeAndNavigateToHome;
+export default useCheckGroupCodePresenceAndNavigateHome;

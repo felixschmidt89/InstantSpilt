@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import InstantSplitPage from "../InstantSplitPage";
+import InstantSplitPage from "../InstantSplitPage/InstantSplitPage";
 
 const HomePage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");

@@ -1,0 +1,14 @@
+.button {
+  background-color: var(--color-signal);
+  color: var(--color-main);
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.button:hover {
+  background-color: var(--color-success);
+}

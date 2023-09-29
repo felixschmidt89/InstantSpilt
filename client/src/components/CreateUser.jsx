@@ -43,7 +43,7 @@ export default function CreateUser({ toggleDataRefresh }) {
           pattern='.*\S+.*'
           style={{ marginLeft: "10px" }}
         />
-        {userName.length >= 3 && (
+        {userName.length >= 1 && (
           <button type='submit' style={{ marginLeft: "10px", padding: "2px" }}>
             add
           </button>

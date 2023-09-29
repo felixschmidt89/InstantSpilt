@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
+import NavigateButton from "../../components/NavigateButton/NavigateButton";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function CreatePaymentPage() {
+  const navigate = useNavigate();
+
   const [paymentAmount, setPaymentAmount] = useState("");
   const [userName, setUserName] = useState("");
   const [paymentRecipientName, setPaymentRecipientName] = useState("");
@@ -22,6 +27,7 @@ export default function CreatePaymentPage() {
         paymentRecipientName,
       });
       setPaymentAmount("");
+      navigate("/instant-split");
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Error creating expense:", error);
@@ -34,7 +40,8 @@ export default function CreatePaymentPage() {
   };
 
   return (
-    <div>
+    <main>
+      <NavigateButton route={"instant-split"} buttonText={"back"} />
       <h2>Add payment</h2>
       <form onSubmit={handleFormSubmit}>
         <input
@@ -78,6 +85,6 @@ export default function CreatePaymentPage() {
           </button>
         )}
       </form>
-    </div>
+    </main>
   );
 }

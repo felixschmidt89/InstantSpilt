@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function GroupBalances({ refreshData }) {
+  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState([]);
   const [error, setError] = useState(null);
+
+  const handleUserClick = (userId) => {
+    navigate(`/user-page/${userId}`);
+  };
 
   useEffect(() => {
     const groupCode = localStorage.getItem("activeGroupCode");
@@ -22,6 +28,7 @@ export default function GroupBalances({ refreshData }) {
         const responseData = response.data.data;
         if (responseData.users && responseData.users.length > 0) {
           const userDetails = responseData.users.map((user) => ({
+            userId: user._id,
             userName: user.userName,
             userBalance: user.userBalance,
           }));
@@ -48,7 +55,11 @@ export default function GroupBalances({ refreshData }) {
         {userDetails.map((user) => (
           <li key={user.userName}>
             <div>
-              <strong>{user.userName}</strong>
+              <strong>
+                <a href='#' onClick={() => handleUserClick(user.userId)}>
+                  {user.userName}
+                </a>
+              </strong>
             </div>
             {user.userBalance !== null && (
               <div>{user.userBalance.toFixed(2)}€</div>

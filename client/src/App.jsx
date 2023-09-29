@@ -7,7 +7,10 @@ import HomePage from "./pages/HomePage/HomePage";
 import "./global.css";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
 import CreateUsersPage from "./pages/CreateUsersPage/CreateUsersPage";
-import InstantSplitPage from "./pages/InstantSplitPage";
+import InstantSplitPage from "./pages/InstantSplitPage/InstantSplitPage";
+import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
+import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
+import UserPage from "./pages/UserPage/UserPage";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path='create-group' element={<CreateGroupPage />} />
         <Route path='create-users' element={<CreateUsersPage />} />
         <Route path='instant-split' element={<InstantSplitPage />} />
+        <Route path='create-expense' element={<CreateExpensePage />} />
+        <Route path='create-payment' element={<CreatePaymentPage />} />
+        <Route path='user-page/:userId' element={<UserPage />} />
         <Route path='*' element={<PageNotFoundPage />} />
       </Routes>
       <Footer />
