@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./common/Footer";
 import Header from "./common/Header";
-import PageNotFoundPage from "./pages/PageNotFoundPage";
-import HomePage from "./pages/HomePage";
+import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
+import HomePage from "./pages/HomePage/HomePage";
 import "./global.css";
-import CreateGroupPage from "./pages/CreateGroupPage";
+import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
 
 function App() {
   return (

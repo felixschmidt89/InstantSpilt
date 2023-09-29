@@ -8,8 +8,9 @@
   background-color: var(--color-body);
 }
 
-header#LinkToHomepage {
+.LinkToHomepage {
   text-decoration: none;
+  color: var(--color-dark);
 }
 
 /* large devices (between 769px and 992px width) */

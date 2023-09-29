@@ -5,7 +5,10 @@ import styles from "./Header.module.css";
 function Header() {
   return (
     <header className={styles.header}>
-      <Link to='/' style={{ textDecoration: "none" }}>
+      <Link
+        to='/'
+        className={styles.LinkToHomepage}
+        style={{ textDecoration: "none" }}>
         InstantSplit
       </Link>
     </header>

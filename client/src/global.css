@@ -29,6 +29,10 @@ html {
   box-sizing: border-box;
 }
 
+a {
+  color: var(--color-signal);
+}
+
 body {
   font-family: "Ubuntu", sans-serif;
   color: var(--color-dark);
@@ -43,15 +47,19 @@ body {
   justify-content: start;
   align-items: center;
   font-size: 1.6rem;
+  text-align: center;
 }
 
 main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   background-color: var(--color-main);
   height: 50vh;
   border-radius: 10px;
+}
+
+ul {
+  list-style: none;
 }
 
 /*small devices (up to 576px width)*/

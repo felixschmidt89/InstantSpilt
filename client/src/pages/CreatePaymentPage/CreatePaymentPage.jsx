@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import useFetchGroupMembers from "../hooks/useFetchGroupMembers";
+import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
