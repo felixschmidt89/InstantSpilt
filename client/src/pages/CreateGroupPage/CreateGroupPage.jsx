@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 
@@ -9,6 +10,7 @@ import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCur
  */
 export default function CreateGroupPage() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+  const navigate = useNavigate();
 
   const [groupName, setGroupName] = useState("");
 
@@ -23,6 +25,7 @@ export default function CreateGroupPage() {
       storeGroupCodesInLocalStorageHelper(groupCode);
       setGroupCodeToCurrentlyActiveHelper(groupCode);
       setGroupName("");
+      navigate("/create-users");
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Error creating group:", error);
@@ -35,7 +38,7 @@ export default function CreateGroupPage() {
   };
 
   return (
-    <div>
+    <main>
       <h2>Create a group </h2>
       <form onSubmit={handleFormSubmit}>
         <input
@@ -55,6 +58,6 @@ export default function CreateGroupPage() {
           </button>
         )}
       </form>
-    </div>
+    </main>
   );
 }

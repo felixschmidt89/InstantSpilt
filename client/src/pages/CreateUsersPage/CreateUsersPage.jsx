@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
-import CreateUser from "../components/CreateUser";
-import RenderUserNames from "../components/RenderUserNames";
+import styles from "./CreateUsersPage.module.css";
+import CreateUser from "../../components/CreateUser";
+import RenderUserNames from "../../components/RenderUserNames";
+import NavigateButton from "../../components/NavigateButton";
 
 function CreateUsersPage() {
   const [refreshData, setRefreshData] = useState(false);
@@ -11,10 +13,11 @@ function CreateUsersPage() {
   };
 
   return (
-    <div>
+    <main>
       <CreateUser toggleDataRefresh={toggleDataRefresh} />
+      <NavigateButton route={"instant-split"} buttonText={"next"} />
       <RenderUserNames refreshData={refreshData} />
-    </div>
+    </main>
   );
 }
 

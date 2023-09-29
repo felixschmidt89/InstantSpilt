@@ -40,7 +40,6 @@ export default function RenderUserNames({ refreshData }) {
 
   return (
     <div>
-      <h2>User Details</h2>
       <ul style={{ listStyleType: "none" }}>
         {userNames.map((userName) => (
           <li key={userName}>

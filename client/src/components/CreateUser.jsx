@@ -38,7 +38,7 @@ export default function CreateUser({ toggleDataRefresh }) {
           onChange={handleUserNameChange}
           placeholder='user name'
           required
-          minLength={3}
+          minLength={1}
           maxLength={50}
           pattern='.*\S+.*'
           style={{ marginLeft: "10px" }}

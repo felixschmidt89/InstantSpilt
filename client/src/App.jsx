@@ -6,6 +6,8 @@ import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
 import HomePage from "./pages/HomePage/HomePage";
 import "./global.css";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
+import CreateUsersPage from "./pages/CreateUsersPage/CreateUsersPage";
+import InstantSplitPage from "./pages/InstantSplitPage";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path='create-group' element={<CreateGroupPage />} />
+        <Route path='create-users' element={<CreateUsersPage />} />
+        <Route path='instant-split' element={<InstantSplitPage />} />
         <Route path='*' element={<PageNotFoundPage />} />
       </Routes>
       <Footer />
