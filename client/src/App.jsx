@@ -5,8 +5,7 @@ import Header from "./common/Header";
 import PageNotFoundPage from "./pages/PageNotFoundPage";
 import HomePage from "./pages/HomePage";
 import "./global.css";
-
-// FOR TESTING COMPONENTS WHILE STILL AT AN EARLY STAGE OF BUILDING MVP/FE
+import CreateGroupPage from "./pages/CreateGroupPage";
 
 function App() {
   return (
@@ -14,6 +13,7 @@ function App() {
       <Header />
       <Routes>
         <Route index element={<HomePage />} />
+        <Route path='create-group' element={<CreateGroupPage />} />
         <Route path='*' element={<PageNotFoundPage />} />
       </Routes>
       <Footer />

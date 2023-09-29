@@ -8,6 +8,10 @@
   background-color: var(--color-body);
 }
 
+header#LinkToHomepage {
+  text-decoration: none;
+}
+
 /* large devices (between 769px and 992px width) */
 @media (min-width: 769px) and (max-width: 992px) {
   .header {

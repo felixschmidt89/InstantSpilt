@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import the Link component
 import InstantSplitPage from "./InstantSplitPage"; // Import your InstantSplitPage component
 
 const HomePage = () => {
@@ -17,16 +18,18 @@ const HomePage = () => {
             settling expenses is your groupCode. So guard it well after signing
             up!
           </p>
-          <br></br>
+          <br />
           <h2>No groups found on this device</h2>
           <ul>
             <li>Enter your groupCode here</li>
             <li>
-              📱💻 Send you an invite from your logged in device or ask your
-              friends to do so 🤝
+              📱💻 Send an invite from your logged-in device or ask your friends
+              to do so 🤝
             </li>
-            <li>Or create a new group </li>
-          </ul>{" "}
+            <li>
+              Or <Link to='/create-group'>create a new group</Link>
+            </li>
+          </ul>
         </>
       )}
     </main>
