@@ -4,5 +4,6 @@ const emojiConstants = {
   paidFor: "💳",
   benefittedFrom: "😄",
   paymentsMade: "➡️",
+  paymentsReceived: "⬅️",
 };
 export default emojiConstants;

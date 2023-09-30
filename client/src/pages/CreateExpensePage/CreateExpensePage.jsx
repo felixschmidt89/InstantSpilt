@@ -16,9 +16,9 @@ export default function CreateExpensePage() {
   const groupCode = localStorage.getItem("activeGroupCode");
   const groupMembers = useFetchGroupMembers(groupCode);
 
+  // Set all group members as beneficiaries by default
   useEffect(() => {
-    // Preselect all group members when the component mounts
-    setSelectedBeneficiaries([...groupMembers]); // Copy all group members to selectedBeneficiaries
+    setSelectedBeneficiaries([...groupMembers]); //
   }, [groupMembers]);
 
   const handleFormSubmit = async (e) => {

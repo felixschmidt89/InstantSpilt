@@ -30,7 +30,7 @@ router.patch(
 );
 
 // Delete user
-router.delete('/', validateGroupCodeMiddleware, deleteUser);
+router.delete('/:userId', deleteUser);
 
 // List group members by groupCode
 router.get(

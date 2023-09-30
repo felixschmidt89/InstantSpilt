@@ -68,11 +68,10 @@ export const changeUserName = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    const { groupCode, userName } = req.body;
+    const { userId } = req.params;
 
     const userToDelete = await User.findOne({
-      userName,
-      groupCode,
+      _id: userId,
     });
 
     // Check if the user's expenses are settled

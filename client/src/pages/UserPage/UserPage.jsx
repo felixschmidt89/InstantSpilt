@@ -4,6 +4,7 @@ import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import useFetchUserInfo from "../../hooks/useFetchUserInfo";
 import emojiConstants from "../../constants/emojiConstants";
 import styles from "./UserPage.module.css";
+import DeleteUser from "../../components/DeleteUser/DeleteUser";
 
 const UserPage = () => {
   const { userId } = useParams();
@@ -11,6 +12,7 @@ const UserPage = () => {
   const userInfo = useFetchUserInfo(userId);
   console.log(userInfo);
 
+  // Visually indicate userBalance state
   const balanceClass =
     userInfo && userInfo.userBalance >= 0
       ? styles.positiveBalance
@@ -30,24 +32,37 @@ const UserPage = () => {
             </span>
           </h2>
           <br />
-          <h3>Expenses 🛒</h3>
-          paid for: {userInfo.totalExpensesPaidAmount.toFixed(2)}€{" "}
-          {emojiConstants.paidFor}
-          <p>
-            benefitted from: {userInfo.totalExpenseBenefittedAmount.toFixed(2)}€{" "}
-            {emojiConstants.benefittedFrom}
-          </p>
-          <h3>Payments 💸</h3>
-          <p>Payments made: {userInfo.totalPaymentsMadeAmount.toFixed(2)}€</p>
-          <p>
-            Payments received: {userInfo.totalPaymentsReceivedAmount.toFixed(2)}
-            €
-          </p>
+          <div>
+            <h3>Expenses {emojiConstants.expense}</h3>
+            <p>
+              paid for: {userInfo.totalExpensesPaidAmount.toFixed(2)}€{" "}
+              {emojiConstants.paidFor}
+            </p>
+            <p>
+              benefitted from:{" "}
+              {userInfo.totalExpenseBenefittedAmount.toFixed(2)}€{" "}
+              {emojiConstants.benefittedFrom}
+            </p>
+          </div>
+          <div>
+            <h3>Payments {emojiConstants.payment}</h3>
+            <p>
+              Payments made: {userInfo.totalPaymentsMadeAmount.toFixed(2)}€{" "}
+              {emojiConstants.paymentsMade}
+            </p>
+            <p>
+              Payments received:{" "}
+              {userInfo.totalPaymentsReceivedAmount.toFixed(2)}€{" "}
+              {emojiConstants.paymentsReceived}
+            </p>
+          </div>
           <br />
         </div>
       ) : (
         <p>Loading user information...</p>
       )}
+
+      <DeleteUser userId={userId} />
     </main>
   );
 };
