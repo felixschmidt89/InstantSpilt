@@ -1,11 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import styles from "./CreateUsersPage.module.css";
 import CreateUser from "../../components/CreateUser";
 import RenderUserNames from "../../components/RenderUserNames";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 
-function CreateUsersChild({ buttonText }) {
+function CreateUsersChild({ route, alignment, buttonText }) {
   const [refreshData, setRefreshData] = useState(false);
 
   const toggleDataRefresh = () => {
@@ -14,7 +13,11 @@ function CreateUsersChild({ buttonText }) {
 
   return (
     <main>
-      <NavigateButton route={"instant-split"} buttonText={buttonText} />
+      <NavigateButton
+        route={route}
+        alignment={alignment}
+        buttonText={buttonText}
+      />
       <CreateUser toggleDataRefresh={toggleDataRefresh} />
       <RenderUserNames refreshData={refreshData} />
     </main>

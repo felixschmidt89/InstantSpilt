@@ -26,7 +26,11 @@ export default function InstantSplitPage() {
       </button>
       {view === "view1" && <GroupBalances />}
       {view === "view2" && <GroupExpenses />}
-      <NavigateButton route={"create-expense"} buttonText={"add expense"} />
+      <NavigateButton
+        route={"create-expense"}
+        buttonText={"add expense"}
+        alignment={"left"}
+      />
       <NavigateButton route={"create-payment"} buttonText={"add payment"} />
       <NavigateButton route={"create-users-inapp"} buttonText={"add user"} />
     </main>
