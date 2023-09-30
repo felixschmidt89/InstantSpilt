@@ -18,6 +18,7 @@ import ItemNavigatorPage from "./pages/ItemNavigatorPage/ItemNavigatorPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import ExpensePage from "./pages/ExpensePage/ExpensePage";
 import IndexNavigator from "./pages/IndexNavigator/IndexNavigator";
+import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           path='create-users-signup'
           element={<CreateUsersNextButtonPage />}
         />
+        <Route path='enter-groupcode' element={<EnterGroupCode />} />
         <Route path='instant-split' element={<InstantSplitPage />} />
         <Route path='create-expense' element={<CreateExpensePage />} />
         <Route path='create-payment' element={<CreatePaymentPage />} />

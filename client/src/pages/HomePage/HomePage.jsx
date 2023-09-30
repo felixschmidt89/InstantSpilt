@@ -19,7 +19,9 @@ const HomePage = () => {
         <Link to='/create-group'>HERE</Link>
         <h3>Or join an existing group by</h3>
         <ul>
-          <li>1️⃣ Entering your GroupCode here</li>
+          <li>
+            1️⃣ Entering your GroupCode <Link to='/enter-groupcode'>HERE</Link>
+          </li>
           <li>
             2️⃣ Sending yourself an invite from another device where you're
             already using InstantSplit.
