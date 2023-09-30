@@ -29,19 +29,18 @@ export const createUser = async (req, res) => {
   }
 };
 
-export const listAllUsersByGroupCode = async (req, res) => {
+export const getUserInfo = async (req, res) => {
   try {
-    const { groupCode } = req.params;
-    const users = await User.find({ groupCode });
+    const { userId } = req.params;
+    const user = await User.findById(userId);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      results: users.length,
-      data: { users },
-      message: 'User list retrieved successfully',
+      data: { user },
+      message: 'User info retrieved successfully.',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing group members by groupCode', error);
+    logDevErrorHelper('Error retrieving user info', error);
     sendInternalErrorHelper(res);
   }
 };
@@ -93,6 +92,23 @@ export const deleteUser = async (req, res) => {
     });
   } catch (error) {
     logDevErrorHelper('Error updating user name', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
+export const listAllUsersByGroupCode = async (req, res) => {
+  try {
+    const { groupCode } = req.params;
+    const users = await User.find({ groupCode });
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      results: users.length,
+      data: { users },
+      message: 'User list retrieved successfully',
+    });
+  } catch (error) {
+    logDevErrorHelper('Error listing group members by groupCode', error);
     sendInternalErrorHelper(res);
   }
 };

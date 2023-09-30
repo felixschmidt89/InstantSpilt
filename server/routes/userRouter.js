@@ -6,6 +6,7 @@ import {
   changeUserName,
   deleteUser,
   deleteAllUsers,
+  getUserInfo,
 } from '../controllers/userController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 import { validateUserNamePropertyPresenceMiddleware } from '../middleware/validateRequestBodyMiddleware.js';
@@ -16,6 +17,9 @@ const router = express.Router();
 
 // Create new user
 router.post('/', validateUserNamePropertyPresenceMiddleware, createUser);
+
+// Get user info by id
+router.get('/:userId', getUserInfo);
 
 // Change user name
 router.patch(
@@ -28,7 +32,7 @@ router.patch(
 // Delete user
 router.delete('/', validateGroupCodeMiddleware, deleteUser);
 
-// List users by groupCode
+// List group members by groupCode
 router.get(
   '/byGroupCode/:groupCode',
   validateGroupCodeMiddleware,
