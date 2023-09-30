@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import emojiConstants from "../constants/emojiConstants";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -45,16 +46,21 @@ export default function GroupExpenses({ groupCode }) {
           <li key={item._id}>
             {item.expenseName ? (
               <>
-                <strong>🛒 {item.expenseName}</strong>:{" "}
-                <u>{item.expenseAmount.toFixed(2)}€</u> 💳{" "}
+                <strong>
+                  {emojiConstants.expense} {item.expenseName}
+                </strong>
+                : <span>{item.expenseAmount.toFixed(2)}€</span>{" "}
+                {emojiConstants.paidFor}{" "}
                 <strong>{item.expensePayer.userName}</strong>
                 <br />({new Date(item.updatedAt).toLocaleString()})
               </>
             ) : (
               <>
-                💸 <u>{item.paymentAmount.toFixed(2)}€</u>{" "}
+                <span>
+                  {emojiConstants.payment} {item.paymentAmount.toFixed(2)}€
+                </span>{" "}
                 <strong>
-                  {item.paymentMaker.userName} ➡️{" "}
+                  {item.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
                   {item.paymentRecipient.userName}
                 </strong>
                 <br />({new Date(item.updatedAt).toLocaleString()})

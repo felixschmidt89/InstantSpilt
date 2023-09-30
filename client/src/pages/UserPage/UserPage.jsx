@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import useFetchUserInfo from "../../hooks/useFetchUserInfo";
+import emojiConstants from "../../constants/emojiConstants";
 import styles from "./UserPage.module.css";
 
 const UserPage = () => {
@@ -31,8 +32,10 @@ const UserPage = () => {
           <br />
           <h3>Expenses 🛒</h3>
           paid for: {userInfo.totalExpensesPaidAmount.toFixed(2)}€{" "}
+          {emojiConstants.paidFor}
           <p>
-            benefitted from: {userInfo.totalExpenseBenefittedAmount.toFixed(2)}€
+            benefitted from: {userInfo.totalExpenseBenefittedAmount.toFixed(2)}€{" "}
+            {emojiConstants.benefittedFrom}
           </p>
           <h3>Payments 💸</h3>
           <p>Payments made: {userInfo.totalPaymentsMadeAmount.toFixed(2)}€</p>
