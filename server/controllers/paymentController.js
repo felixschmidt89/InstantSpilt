@@ -57,28 +57,31 @@ export const getPaymentInfo = async (req, res) => {
   }
 };
 
-//     const toDeletePayment = Payment.findOneAndDelete({ PAYMENTID });
+export const deletePayment = async (req, res) => {
+  try {
+    const { paymentId } = req.params;
 
-//     // const newPayment = new Payment({
-//     //   paymentMaker: paymentMaker._id,
-//     //   paymentRecipient: paymentRecipient.id,
-//     //   groupCode,
-//     //   paymentAmount,
-//     // });
+    const paymentToDelete = await Payment.findById(paymentId)
+      .populate('paymentRecipient')
+      .populate('paymentMaker');
 
-//     await paymentRecipient.updateTotalPaymentsReceived();
-//     await paymentMaker.updateTotalPaymentsMadeAmount();
+    console.log(paymentToDelete);
 
-//     return res.status(StatusCodes.CREATED).json({
-//       status: 'success',
-//       data: { payment },
-//       message: 'Payment created successfully',
-//     });
-//   } catch (error) {
-//     logDevErrorHelper('Error creating expense:', error);
-//     sendInternalErrorHelper(res);
-//   }
-// };
+    const { paymentRecipient, paymentMaker } = paymentToDelete;
+
+    await Payment.deleteOne({ _id: paymentToDelete._id });
+
+    await paymentRecipient.updateTotalPaymentsReceived();
+    await paymentMaker.updateTotalPaymentsMadeAmount();
+    res.status(StatusCodes.NO_CONTENT).json({
+      status: 'success',
+      data: null,
+    });
+  } catch (error) {
+    logDevErrorHelper('Error deleting payment:', error);
+    sendInternalErrorHelper(res);
+  }
+};
 
 // FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 

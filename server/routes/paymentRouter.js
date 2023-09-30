@@ -5,7 +5,7 @@ import {
   listAllPayments,
   deleteAllPayments,
   getPaymentInfo,
-  //   deletePayment,
+  deletePayment,
 } from '../controllers/paymentController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 
@@ -18,6 +18,7 @@ router.post('/', createPayment);
 router.get('/:paymentId', getPaymentInfo);
 
 // Delete payment
+router.delete('/:paymentId', deletePayment);
 
 // router.post('/', deletePayment);
 

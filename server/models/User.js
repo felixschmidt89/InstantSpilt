@@ -79,7 +79,7 @@ userSchema.methods.updateTotalExpensesPaid = async function () {
       { _id: userId },
       {
         $set: {
-          totalExpensesPaidAmount: totalExpensesPaid[0].total || 0,
+          totalExpensesPaidAmount: totalExpensesPaid[0]?.total || 0,
         },
       },
     );
@@ -117,7 +117,7 @@ userSchema.methods.updateTotalExpenseBenefitted = async function () {
       { _id: userId },
       {
         $set: {
-          totalExpenseBenefittedAmount: totalExpenseBenefitted[0].total || 0,
+          totalExpenseBenefittedAmount: totalExpenseBenefitted[0]?.total || 0,
         },
       },
     );
@@ -153,7 +153,7 @@ userSchema.methods.updateTotalPaymentsReceived = async function () {
       { _id: userId },
       {
         $set: {
-          totalPaymentsReceivedAmount: totalPaymentsReceived[0].total || 0,
+          totalPaymentsReceivedAmount: totalPaymentsReceived[0]?.total || 0,
         },
       },
     );
@@ -189,7 +189,7 @@ userSchema.methods.updateTotalPaymentsReceived = async function () {
       { _id: userId },
       {
         $set: {
-          totalPaymentsMadeAmount: totalPaymentsMade[0].total || 0,
+          totalPaymentsMadeAmount: totalPaymentsMade[0]?.total || 0,
         },
       },
     );

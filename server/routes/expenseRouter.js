@@ -5,6 +5,7 @@ import {
   listAllExpenses,
   deleteAllExpenses,
   getExpenseInfo,
+  deleteExpense,
 } from '../controllers/expenseController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 
@@ -16,9 +17,8 @@ router.post('/', createExpense);
 // Get expense info by id
 router.get('/:expenseId', getExpenseInfo);
 
-// Delete an expense
-
-// router.delete('/', deleteExpense);
+// Delete expense
+router.delete('/:expenseId', deleteExpense);
 // Update an expense
 // router.update('/', updateExpense);
 

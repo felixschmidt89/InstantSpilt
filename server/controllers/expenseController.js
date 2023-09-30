@@ -79,6 +79,42 @@ export const getExpenseInfo = async (req, res) => {
   }
 };
 
+export const deleteExpense = async (req, res) => {
+  try {
+    const { expenseId } = req.params;
+    console.log(expenseId);
+
+    const expenseToDelete = await Expense.findById(expenseId)
+      .populate('expensePayer')
+      .populate('expenseBeneficiaries');
+
+    console.log(expenseToDelete);
+
+    const { expensePayer, expenseBeneficiaries } = expenseToDelete;
+
+    // Delete the expense using the retrieved _id
+    await Expense.deleteOne({ _id: expenseToDelete._id });
+
+    // Update total expenses paid by the expense payer
+    await expensePayer.updateTotalExpensesPaid();
+
+    // Update total expenses benefitted from by expense beneficiaries concurrently
+    await Promise.all(
+      expenseBeneficiaries.map(async (beneficiary) => {
+        await beneficiary.updateTotalExpenseBenefitted();
+      }),
+    );
+
+    res.status(StatusCodes.NO_CONTENT).json({
+      status: 'success',
+      data: null,
+    });
+  } catch (error) {
+    logDevErrorHelper('Error deleting expense', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
 export const listAllExpensesByGroupCode = async (req, res) => {
   try {
     const { groupCode } = req.params;
