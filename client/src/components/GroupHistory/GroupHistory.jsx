@@ -69,9 +69,6 @@ export default function GroupHistory({ groupCode }) {
                 </Link>{" "}
                 {emojiConstants.paidFor}{" "}
                 <strong>{item.expensePayer.userName}</strong>
-                <div className={styles.date}>
-                  ({new Date(item.updatedAt).toLocaleString()})
-                </div>
               </div>
             ) : (
               <div>
@@ -86,9 +83,7 @@ export default function GroupHistory({ groupCode }) {
                   {item.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
                   {item.paymentRecipient.userName}
                 </strong>
-                <div className={styles.date}>
-                  ({new Date(item.updatedAt).toLocaleString()})
-                </div>
+                <div className={styles.date}></div>
               </div>
             )}
           </li>

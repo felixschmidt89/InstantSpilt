@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import emojiConstants from "../../constants/emojiConstants";
@@ -21,8 +21,17 @@ const PaymentPage = () => {
           <h1>Payment {emojiConstants.payment}</h1>
           <h2>{paymentDetails.paymentAmount.toFixed(2)}€</h2>
           <p>
-            {paymentDetails.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
-            {paymentDetails.paymentRecipient.userName}{" "}
+            <strong>
+              <Link to={`/user-page/${paymentDetails.paymentMaker._id}`}>
+                {paymentDetails.paymentMaker.userName}
+              </Link>
+            </strong>{" "}
+            {emojiConstants.paymentsMade}{" "}
+            <strong>
+              <Link to={`/user-page/${paymentDetails.paymentRecipient._id}`}>
+                {paymentDetails.paymentRecipient.userName}
+              </Link>
+            </strong>{" "}
           </p>
           <p></p>
           <p>
