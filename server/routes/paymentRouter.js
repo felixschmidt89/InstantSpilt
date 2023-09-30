@@ -4,6 +4,7 @@ import {
   createPayment,
   listAllPayments,
   deleteAllPayments,
+  getPaymentInfo,
   //   deletePayment,
 } from '../controllers/paymentController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
@@ -12,6 +13,9 @@ const router = express.Router();
 
 // Create payment
 router.post('/', createPayment);
+
+// Get payment info by id
+router.get('/:paymentId', getPaymentInfo);
 
 // Delete payment
 

@@ -17,13 +17,15 @@ import UserPage from "./pages/UserPage/UserPage";
 import ItemNavigatorPage from "./pages/ItemNavigatorPage/ItemNavigatorPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import ExpensePage from "./pages/ExpensePage/ExpensePage";
+import IndexNavigator from "./pages/IndexNavigator/IndexNavigator";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route index element={<HomePage />} />
+        <Route index element={<IndexNavigator />} />
+        <Route path='homepage' element={<HomePage />} />
         <Route path='create-group' element={<CreateGroupPage />} />
         <Route
           path='create-users-signup'

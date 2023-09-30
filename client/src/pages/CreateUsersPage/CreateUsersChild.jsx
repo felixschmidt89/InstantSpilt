@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import CreateUser from "../../components/CreateUser";
-import RenderUserNames from "../../components/RenderUserNames";
+import CreateUser from "../../components/CreateUser/CreateUser";
+import RenderUserNames from "../../components/RenderUserNames/RenderUserNames";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 
 function CreateUsersChild({ route, alignment, buttonText }) {

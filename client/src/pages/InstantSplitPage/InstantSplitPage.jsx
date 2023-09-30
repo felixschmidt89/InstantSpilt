@@ -11,7 +11,7 @@ export default function InstantSplitPage() {
 
   useCheckGroupCodeAndNavigateToHome({ groupCode });
 
-  const [view, setView] = useState("view2"); // Set "view2" as the default view
+  const [view, setView] = useState("view2");
   const groupName = useFetchGroupName(groupCode);
 
   const handleSwitchView = () => {

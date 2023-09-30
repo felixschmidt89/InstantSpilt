@@ -39,6 +39,24 @@ export const createPayment = async (req, res) => {
   }
 };
 
+export const getPaymentInfo = async (req, res) => {
+  try {
+    const { paymentId } = req.params;
+    const payment = await Payment.findById(paymentId)
+      .populate('paymentMaker', 'userName')
+      .populate('paymentRecipient', 'userName');
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { payment },
+      message: 'Payment info retrieved successfully.',
+    });
+  } catch (error) {
+    logDevErrorHelper('Error retrieving payment info', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
 //     const toDeletePayment = Payment.findOneAndDelete({ PAYMENTID });
 
 //     // const newPayment = new Payment({
