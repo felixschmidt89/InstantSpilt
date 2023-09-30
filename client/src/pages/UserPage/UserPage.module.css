@@ -1,0 +1,7 @@
+.positiveBalance {
+  color: var(--color-success);
+}
+
+.negativeBalance {
+  color: var(--color-error);
+}
