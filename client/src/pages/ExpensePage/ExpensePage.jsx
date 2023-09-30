@@ -1,10 +1,13 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import useFetchExpenseInfo from "../../hooks/uesFetchExpenseInfo";
+import emojiConstants from "../../constants/emojiConstants";
 
 const ExpensePage = () => {
-  const { itemId } = useParams();
-  console.log(itemId);
+  const { itemId: expenseId } = useParams(); //
+  const expenseDetails = useFetchExpenseInfo(expenseId);
+
   return (
     <main>
       <NavigateButton
@@ -12,7 +15,44 @@ const ExpensePage = () => {
         buttonText={"back"}
         alignment={"left"}
       />
-      <h1>Expense Details</h1>
+      <h1>Expense {emojiConstants.expense}</h1>
+      {expenseDetails ? (
+        <div>
+          <h2>{expenseDetails.expenseAmount.toFixed(2)}€</h2>
+          <p>Description: {expenseDetails.expenseName}</p>
+          <p>
+            {emojiConstants.paidFor}{" "}
+            <Link to={`/user-page/${expenseDetails.expensePayer._id}`}>
+              <strong>{expenseDetails.expensePayer.userName}</strong>
+            </Link>
+          </p>
+          <p>Beneficiaries:</p>
+          <ul>
+            <li
+              key={expenseDetails.expenseBeneficiaries
+                .map((beneficiary) => beneficiary._id)
+                .join(", ")}>
+              {expenseDetails.expenseBeneficiaries.map((beneficiary, index) => (
+                <React.Fragment key={beneficiary._id}>
+                  {index > 0 && ", "}{" "}
+                  <strong>
+                    <Link to={`/user-page/${beneficiary._id}`}>
+                      {beneficiary.userName}
+                    </Link>
+                  </strong>
+                </React.Fragment>
+              ))}
+            </li>
+          </ul>
+
+          <p>
+            {emojiConstants.created}{" "}
+            {new Date(expenseDetails.createdAt).toLocaleString()}
+          </p>
+        </div>
+      ) : (
+        <p>Loading expense information...</p>
+      )}
     </main>
   );
 };

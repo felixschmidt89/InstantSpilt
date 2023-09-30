@@ -4,13 +4,18 @@ import {
   listAllExpensesByGroupCode,
   listAllExpenses,
   deleteAllExpenses,
+  getExpenseInfo,
 } from '../controllers/expenseController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 
 const router = express.Router();
 
-// Create a new expense
+// Create a expense
 router.post('/', createExpense);
+
+// Get expense info by id
+router.get('/:expenseId', getExpenseInfo);
+
 // Delete an expense
 
 // router.delete('/', deleteExpense);

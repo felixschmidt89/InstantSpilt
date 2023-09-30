@@ -61,6 +61,24 @@ export const createExpense = async (req, res) => {
   }
 };
 
+export const getExpenseInfo = async (req, res) => {
+  try {
+    const { expenseId } = req.params;
+    const expense = await Expense.findById(expenseId)
+      .populate('expensePayer', 'userName')
+      .populate('expenseBeneficiaries', 'userName');
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { expense },
+      message: 'Expense info retrieved successfully.',
+    });
+  } catch (error) {
+    logDevErrorHelper('Error retrieving expense info', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
 export const listAllExpensesByGroupCode = async (req, res) => {
   try {
     const { groupCode } = req.params;
