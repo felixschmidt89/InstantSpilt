@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import styles from "./GroupBalances.module.css";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -49,16 +50,13 @@ export default function GroupBalances({ refreshData }) {
   }, [refreshData]);
 
   return (
-    <div>
-      <h2>Group balances</h2>
+    <div className={styles.balances}>
       <ul>
         {userDetails.map((user) => (
           <li key={user.userName}>
             <div>
               <strong>
-                <a href='#' onClick={() => handleUserClick(user.userId)}>
-                  {user.userName}
-                </a>
+                <Link to={`/user-page/${user.userId}`}>{user.userName}</Link>
               </strong>
             </div>
             {user.userBalance !== null && (

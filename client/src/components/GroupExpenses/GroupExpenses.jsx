@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import emojiConstants from "../constants/emojiConstants";
+import styles from "./GroupExpenses.module.css";
+import emojiConstants from "../../constants/emojiConstants";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function GroupExpenses({ groupCode }) {
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
   const [error, setError] = useState(null);
+
+  // const handleItemclick = (itemId) => {
+  //   navigate(`/item-page/${itemId}`);
+  // };
 
   useEffect(() => {
     const groupCode = localStorage.getItem("activeGroupCode");
@@ -17,12 +23,24 @@ export default function GroupExpenses({ groupCode }) {
           `${apiUrl}/groups/${groupCode}/expenses-and-payments`
         );
         const responseData = response.data.data;
-        console.log(responseData);
         if (
           responseData.groupExpensesAndPayments &&
           responseData.groupExpensesAndPayments.length > 0
         ) {
-          setGroupExpensesAndPayments(responseData.groupExpensesAndPayments);
+          // Create new properties
+          const modifiedData = responseData.groupExpensesAndPayments.map(
+            (item) => ({
+              ...item,
+              itemId: item._id,
+              // Determine and add 'itemType' based on the presence of properties
+              itemType: item.expenseName
+                ? "expense"
+                : item.paymentAmount
+                ? "payment"
+                : "unknown",
+            })
+          );
+          setGroupExpensesAndPayments(modifiedData);
         }
         setError(null);
       } catch (error) {
@@ -39,8 +57,7 @@ export default function GroupExpenses({ groupCode }) {
   }, [groupCode]);
 
   return (
-    <div>
-      <h2>Expenses and payments</h2>
+    <div className={styles.expenses}>
       <ul>
         {groupExpensesAndPayments.map((item) => (
           <li key={item._id}>
@@ -49,7 +66,11 @@ export default function GroupExpenses({ groupCode }) {
                 <strong>
                   {emojiConstants.expense} {item.expenseName}
                 </strong>
-                : <span>{item.expenseAmount.toFixed(2)}€</span>{" "}
+                :{" "}
+                <Link
+                  to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
+                  {item.expenseAmount.toFixed(2)}€
+                </Link>{" "}
                 {emojiConstants.paidFor}{" "}
                 <strong>{item.expensePayer.userName}</strong>
                 <br />({new Date(item.updatedAt).toLocaleString()})

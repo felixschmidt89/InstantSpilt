@@ -8,6 +8,9 @@
   border-radius: 4px;
 }
 
-.button:hover {
-  background-color: var(--color-success);
+/* Your CSS module (styles.module.css) */
+.inactiveButton {
+  opacity: 0.6; /* Adjust the opacity as needed */
+  /* OR */
+  filter: grayscale(15%);
 }

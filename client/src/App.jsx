@@ -14,6 +14,9 @@ import InstantSplitPage from "./pages/InstantSplitPage/InstantSplitPage";
 import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
 import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
 import UserPage from "./pages/UserPage/UserPage";
+import ItemNavigatorPage from "./pages/ItemNavigatorPage/ItemNavigatorPage";
+import PaymentPage from "./pages/PaymentPage/PaymentPage";
+import ExpensePage from "./pages/ExpensePage/ExpensePage";
 
 function App() {
   return (
@@ -33,7 +36,11 @@ function App() {
           path='create-users-inapp'
           element={<CreateUsersBackButtonPage />}
         />
+        <Route path='/item-page' element={<ItemNavigatorPage />} />
         <Route path='user-page/:userId' element={<UserPage />} />
+        <Route path='payment-page/:itemId' element={<PaymentPage />} />
+        <Route path='expense-page/:itemId' element={<ExpensePage />} />
+
         <Route path='*' element={<PageNotFoundPage />} />
       </Routes>
       <Footer />

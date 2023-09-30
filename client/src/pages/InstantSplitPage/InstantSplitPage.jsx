@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import GroupBalances from "../../components/GroupBalances";
-import GroupExpenses from "../../components/GroupExpenses";
+import GroupBalances from "../../components/GroupBalances/GroupBalances";
+import GroupExpenses from "../../components/GroupExpenses/GroupExpenses";
 import styles from "./InstantSplitPage.module.css";
 import useFetchGroupName from "../../hooks/useFetchGroupName";
 import useCheckGroupCodeAndNavigateToHome from "../../hooks/useCheckGroupCodePresenseAndNavigateHome.jsx";
@@ -11,7 +11,7 @@ export default function InstantSplitPage() {
 
   useCheckGroupCodeAndNavigateToHome({ groupCode });
 
-  const [view, setView] = useState("view1");
+  const [view, setView] = useState("view2"); // Set "view2" as the default view
   const groupName = useFetchGroupName(groupCode);
 
   const handleSwitchView = () => {
@@ -20,12 +20,26 @@ export default function InstantSplitPage() {
 
   return (
     <main>
-      <h2>{groupName}</h2> {/* Display the group name */}
-      <button className={styles.button} onClick={handleSwitchView}>
-        {view === "view1" ? "Show expenses" : "Show balances"}
-      </button>
-      {view === "view1" && <GroupBalances />}
-      {view === "view2" && <GroupExpenses />}
+      <h1>{groupName}</h1>
+      <div>
+        <button
+          className={`${styles.button} ${
+            view === "view2" ? styles.expensesButton : styles.balancesButton
+          } ${view === "view2" ? "" : styles.inactiveButton}`}
+          onClick={handleSwitchView}
+          disabled={view === "view2"}>
+          Balances
+        </button>
+        <button
+          className={`${styles.button} ${
+            view === "view1" ? styles.expensesButton : styles.balancesButton
+          } ${view === "view1" ? "" : styles.inactiveButton}`}
+          onClick={handleSwitchView}
+          disabled={view === "view1"}>
+          History
+        </button>
+      </div>
+      {view === "view1" ? <GroupExpenses /> : <GroupBalances />}
       <NavigateButton
         route={"create-expense"}
         buttonText={"add expense"}
