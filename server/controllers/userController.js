@@ -106,7 +106,7 @@ export const listAllUsers = async (req, res) => {
       status: 'success',
       results: users.length,
       data: { users },
-      message: 'Users retrieved successfully',
+      message: 'All users retrieved successfully',
     });
   } catch (error) {
     logDevErrorHelper('Error listing users', error);

@@ -89,7 +89,7 @@ export const listAllExpenses = async (req, res) => {
       message: 'All expenses retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing users', error);
+    logDevErrorHelper('Error listing all expenses', error);
     sendInternalErrorHelper(res);
   }
 };

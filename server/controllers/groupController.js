@@ -164,7 +164,7 @@ export const listAllGroups = async (req, res) => {
       status: 'success',
       results: groups.length,
       data: { groups },
-      message: 'Groups info retrieved successfully',
+      message: 'All groups retrieved successfully',
     });
   } catch (error) {
     logDevErrorHelper('Error listing all groups:', error);
