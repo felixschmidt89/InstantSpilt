@@ -41,7 +41,11 @@ export default function CreatePaymentPage() {
 
   return (
     <main>
-      <NavigateButton route={"instant-split"} buttonText={"back"} />
+      <NavigateButton
+        route={"instant-split"}
+        buttonText={"back"}
+        alignment={"left"}
+      />
       <h2>Add payment</h2>
       <form onSubmit={handleFormSubmit}>
         <input

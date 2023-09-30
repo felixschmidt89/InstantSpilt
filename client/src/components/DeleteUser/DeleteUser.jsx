@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import styles from "./DeleteUser.module.css";
 import { StatusCodes } from "http-status-codes";
 import { useNavigate } from "react-router-dom";
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -29,7 +30,9 @@ const DeleteUser = ({ userId }) => {
 
   return (
     <div>
-      <button onClick={handleDeleteUser}>Delete User</button>
+      <button className={styles.button} onClick={handleDeleteUser}>
+        Delete User
+      </button>
       {error && <p>{error}</p>}
     </div>
   );

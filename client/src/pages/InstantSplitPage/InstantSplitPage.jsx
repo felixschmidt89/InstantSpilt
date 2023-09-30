@@ -31,8 +31,16 @@ export default function InstantSplitPage() {
         buttonText={"add expense"}
         alignment={"left"}
       />
-      <NavigateButton route={"create-payment"} buttonText={"add payment"} />
-      <NavigateButton route={"create-users-inapp"} buttonText={"add user"} />
+      <NavigateButton
+        route={"create-payment"}
+        buttonText={"add payment"}
+        alignment={"left"}
+      />
+      <NavigateButton
+        route={"create-users-inapp"}
+        buttonText={"add user"}
+        alignment={"left"}
+      />
     </main>
   );
 }

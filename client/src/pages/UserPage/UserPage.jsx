@@ -20,7 +20,11 @@ const UserPage = () => {
 
   return (
     <main>
-      <NavigateButton route={"instant-split"} buttonText={"back"} />
+      <NavigateButton
+        route={"instant-split"}
+        buttonText={"back"}
+        alignment={"left"}
+      />
 
       {userInfo ? (
         <div>

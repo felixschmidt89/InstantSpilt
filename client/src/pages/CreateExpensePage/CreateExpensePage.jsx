@@ -65,7 +65,11 @@ export default function CreateExpensePage() {
 
   return (
     <main>
-      <NavigateButton route={"instant-split"} buttonText={"back"} />
+      <NavigateButton
+        route={"instant-split"}
+        buttonText={"back"}
+        alignment={"left"}
+      />
       <h2>Add Expense</h2>
       <form onSubmit={handleFormSubmit}>
         <input
