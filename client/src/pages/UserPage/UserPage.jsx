@@ -4,7 +4,7 @@ import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import useFetchUserInfo from "../../hooks/useFetchUserInfo";
 import emojiConstants from "../../constants/emojiConstants";
 import styles from "./UserPage.module.css";
-import DeleteUser from "../../components/DeleteUser/DeleteUser";
+import DeleteResourceButton from "../../components/DeleteResourceButton/DeleteResourceButton";
 
 const UserPage = () => {
   const { userId } = useParams();
@@ -25,7 +25,6 @@ const UserPage = () => {
         buttonText={"back"}
         alignment={"left"}
       />
-
       {userInfo ? (
         <div>
           <h1>{userInfo.userName}</h1>
@@ -65,8 +64,7 @@ const UserPage = () => {
       ) : (
         <p>Loading user information...</p>
       )}
-
-      <DeleteUser userId={userId} />
+      <DeleteResourceButton resourceId={userId} resourceType='users' />{" "}
     </main>
   );
 };
