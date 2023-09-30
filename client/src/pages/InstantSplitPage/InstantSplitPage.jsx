@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import GroupBalances from "../../components/GroupBalances/GroupBalances";
-import GroupExpenses from "../../components/GroupExpenses/GroupExpenses";
+import GroupHistory from "../../components/GroupHistory/GroupHistory";
 import styles from "./InstantSplitPage.module.css";
 import useFetchGroupName from "../../hooks/useFetchGroupName";
 import useCheckGroupCodeAndNavigateToHome from "../../hooks/useCheckGroupCodePresenseAndNavigateHome.jsx";
@@ -39,7 +39,7 @@ export default function InstantSplitPage() {
           History
         </button>
       </div>
-      {view === "view1" ? <GroupExpenses /> : <GroupBalances />}
+      {view === "view1" ? <GroupHistory /> : <GroupBalances />}
       <NavigateButton
         route={"create-expense"}
         buttonText={"add expense"}

@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import styles from "./GroupExpenses.module.css";
+import styles from "./GroupHistory.module.css";
 import emojiConstants from "../../constants/emojiConstants";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-export default function GroupExpenses({ groupCode }) {
+export default function GroupHistory({ groupCode }) {
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
   const [error, setError] = useState(null);
-
-  // const handleItemclick = (itemId) => {
-  //   navigate(`/item-page/${itemId}`);
-  // };
 
   useEffect(() => {
     const groupCode = localStorage.getItem("activeGroupCode");
@@ -62,7 +58,7 @@ export default function GroupExpenses({ groupCode }) {
         {groupExpensesAndPayments.map((item) => (
           <li key={item._id}>
             {item.expenseName ? (
-              <>
+              <div>
                 <strong>
                   {emojiConstants.expense} {item.expenseName}
                 </strong>
@@ -73,24 +69,32 @@ export default function GroupExpenses({ groupCode }) {
                 </Link>{" "}
                 {emojiConstants.paidFor}{" "}
                 <strong>{item.expensePayer.userName}</strong>
-                <br />({new Date(item.updatedAt).toLocaleString()})
-              </>
+                <div className={styles.date}>
+                  ({new Date(item.updatedAt).toLocaleString()})
+                </div>
+              </div>
             ) : (
-              <>
+              <div>
                 <span>
-                  {emojiConstants.payment} {item.paymentAmount.toFixed(2)}€
+                  {emojiConstants.payment}{" "}
+                  <Link
+                    to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
+                    {item.paymentAmount.toFixed(2)}€
+                  </Link>
                 </span>{" "}
                 <strong>
                   {item.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
                   {item.paymentRecipient.userName}
                 </strong>
-                <br />({new Date(item.updatedAt).toLocaleString()})
-              </>
+                <div className={styles.date}>
+                  ({new Date(item.updatedAt).toLocaleString()})
+                </div>
+              </div>
             )}
           </li>
         ))}
       </ul>
-      {error && <p>{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 }

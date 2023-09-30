@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./GroupBalances.module.css";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function GroupBalances({ refreshData }) {
-  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState([]);
   const [error, setError] = useState(null);
-
-  const handleUserClick = (userId) => {
-    navigate(`/user-page/${userId}`);
-  };
 
   useEffect(() => {
     const groupCode = localStorage.getItem("activeGroupCode");
