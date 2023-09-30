@@ -79,7 +79,7 @@ export const deleteUser = async (req, res) => {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
         message:
-          'The user cannot be deleted because the user has unsettled expenses.',
+          "Oops! You can't delete the user right now because of associated transaction(s). Please go ahead and remove the user from those transaction(s) first.",
       });
     }
 

@@ -25,7 +25,7 @@ export default function CreateGroupPage() {
       storeGroupCodesInLocalStorageHelper(groupCode);
       setGroupCodeToCurrentlyActiveHelper(groupCode);
       setGroupName("");
-      navigate("/create-users");
+      navigate("/create-users-signup");
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Error creating group:", error);

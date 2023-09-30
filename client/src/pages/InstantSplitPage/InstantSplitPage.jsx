@@ -3,7 +3,7 @@ import GroupBalances from "../../components/GroupBalances";
 import GroupExpenses from "../../components/GroupExpenses";
 import styles from "./InstantSplitPage.module.css";
 import useFetchGroupName from "../../hooks/useFetchGroupName";
-import useCheckGroupCodeAndNavigateToHome from "../../hooks/useCheckGroupCodePresenseAndNavigateHome.jsx.jsx";
+import useCheckGroupCodeAndNavigateToHome from "../../hooks/useCheckGroupCodePresenseAndNavigateHome.jsx";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 
 export default function InstantSplitPage() {
@@ -28,6 +28,7 @@ export default function InstantSplitPage() {
       {view === "view2" && <GroupExpenses />}
       <NavigateButton route={"create-expense"} buttonText={"add expense"} />
       <NavigateButton route={"create-payment"} buttonText={"add payment"} />
+      <NavigateButton route={"create-users-inapp"} buttonText={"add user"} />
     </main>
   );
 }

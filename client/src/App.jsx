@@ -6,7 +6,10 @@ import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
 import HomePage from "./pages/HomePage/HomePage";
 import "./global.css";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
-import CreateUsersPage from "./pages/CreateUsersPage/CreateUsersPage";
+import {
+  CreateUsersBackButtonPage,
+  CreateUsersNextButtonPage,
+} from "./pages/CreateUsersPage/CreateUsersPage";
 import InstantSplitPage from "./pages/InstantSplitPage/InstantSplitPage";
 import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
 import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
@@ -19,10 +22,17 @@ function App() {
       <Routes>
         <Route index element={<HomePage />} />
         <Route path='create-group' element={<CreateGroupPage />} />
-        <Route path='create-users' element={<CreateUsersPage />} />
+        <Route
+          path='create-users-signup'
+          element={<CreateUsersNextButtonPage />}
+        />
         <Route path='instant-split' element={<InstantSplitPage />} />
         <Route path='create-expense' element={<CreateExpensePage />} />
         <Route path='create-payment' element={<CreatePaymentPage />} />
+        <Route
+          path='create-users-inapp'
+          element={<CreateUsersBackButtonPage />}
+        />
         <Route path='user-page/:userId' element={<UserPage />} />
         <Route path='*' element={<PageNotFoundPage />} />
       </Routes>
