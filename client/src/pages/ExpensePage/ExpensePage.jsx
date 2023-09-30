@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import useFetchExpenseInfo from "../../hooks/uesFetchExpenseInfo";
 import emojiConstants from "../../constants/emojiConstants";
+import DeleteResourceButton from "../../components/DeleteResourceButton/DeleteResourceButton";
 
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
@@ -49,6 +50,10 @@ const ExpensePage = () => {
             {emojiConstants.created}{" "}
             {new Date(expenseDetails.createdAt).toLocaleString()}
           </p>
+          <DeleteResourceButton
+            resourceId={expenseId}
+            resourceType='expenses'
+          />
         </div>
       ) : (
         <p>Loading expense information...</p>
