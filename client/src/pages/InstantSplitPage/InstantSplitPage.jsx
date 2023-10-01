@@ -5,6 +5,7 @@ import styles from "./InstantSplitPage.module.css";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import GroupActionsContainer from "../../components/GroupActionsContainer/GroupActionsContainer";
 import useCheckGroupCodePresenceAndNavigateHome from "../../hooks/useCheckGroupCodePresenceAndNavigateHome";
+import UserActionsComponent from "../../components/UserActionsComponent/UserActionsComponent";
 
 export default function InstantSplitPage() {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -47,6 +48,7 @@ export default function InstantSplitPage() {
         </div>
         {view === "view1" ? <GroupHistory /> : <GroupBalances />}
         <GroupActionsContainer />
+        <UserActionsComponent />
       </main>
     );
   }

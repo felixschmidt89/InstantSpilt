@@ -27,19 +27,10 @@ const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
 
   return (
     <main>
-      <InlineNavigateButtons
-        buttonData={[
-          {
-            route: "homepage",
-            buttonText: "back",
-            alignment: "left",
-          },
-          {
-            route: "instant-split",
-            buttonText: "join",
-            alignment: "right",
-          },
-        ]}
+      <NavigateButton
+        route={"homepage"}
+        buttonText={"back"}
+        alignment={"left"}
       />
       <h1>Enter group code</h1>
       <p>

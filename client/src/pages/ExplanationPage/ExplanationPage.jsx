@@ -1,13 +1,23 @@
 import React from "react";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import InlineNavigateButtons from "../../components/InlineNavigateButtons/InlineNavigateButtons";
 
 const ExplanationPage = () => {
   return (
     <main>
-      <NavigateButton
-        route={"create-group"}
-        alignment={"right"}
-        buttonText={"next"}
+      <InlineNavigateButtons
+        buttonData={[
+          {
+            route: "homepage",
+            buttonText: "back",
+            alignment: "left",
+          },
+          {
+            route: "create-group",
+            buttonText: "next",
+            alignment: "right",
+          },
+        ]}
       />
       <h1>ℹ️ GroupCode ℹ️</h1>
       <p>

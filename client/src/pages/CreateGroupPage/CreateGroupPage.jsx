@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
+import NavigateButton from "../../components/NavigateButton/NavigateButton";
 
 /**
  * Creates a new group & stores the related groupCode in user's local storage upon submission.
@@ -39,6 +40,11 @@ export default function CreateGroupPage() {
 
   return (
     <main>
+      <NavigateButton
+        route={"homepage"}
+        buttonText={"back"}
+        alignment={"left"}
+      />
       <h2>Create a group </h2>
       <form onSubmit={handleFormSubmit}>
         <input

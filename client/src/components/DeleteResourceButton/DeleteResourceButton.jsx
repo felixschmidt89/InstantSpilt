@@ -36,7 +36,7 @@ const DeleteResourceButton = ({ resourceId, resourceType, route }) => {
       <button className={styles.button} onClick={handleDelete}>
         Delete {buttonText}
       </button>
-      {error && <p>{error}</p>}
+      {error && <p className={styles.errorMessage}>{error}</p>}
     </div>
   );
 };
