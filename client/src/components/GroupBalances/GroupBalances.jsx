@@ -48,15 +48,15 @@ export default function GroupBalances({ refreshData }) {
     <div className={styles.balances}>
       <ul>
         {userDetails.map((user) => (
-          <li key={user.userName}>
-            <div>
+          <li key={user.userName} className={styles.userListItem}>
+            <div className={styles.userDetails}>
               <strong>
                 <Link to={`/user-page/${user.userId}`}>{user.userName}</Link>
               </strong>
+              {user.userBalance !== null && (
+                <div>{user.userBalance.toFixed(2)}€</div>
+              )}
             </div>
-            {user.userBalance !== null && (
-              <div>{user.userBalance.toFixed(2)}€</div>
-            )}
           </li>
         ))}
       </ul>

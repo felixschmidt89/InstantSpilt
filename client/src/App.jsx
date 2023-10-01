@@ -17,7 +17,7 @@ import UserPage from "./pages/UserPage/UserPage";
 import ItemNavigatorPage from "./pages/ItemNavigatorPage/ItemNavigatorPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import ExpensePage from "./pages/ExpensePage/ExpensePage";
-import IndexNavigator from "./pages/IndexNavigator/IndexNavigator";
+import IndexNavigator from "./pages/IndexNavigatorPage/IndexNavigator";
 import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 
 function App() {

@@ -19,7 +19,6 @@ const storeGroupCodesInLocalStorageHelper = (groupCode) => {
         JSON.stringify(storedGroupCodes)
       );
     }
-    setGroupCodeToCurrentlyActiveHelper(groupCode);
     return true;
   } catch (error) {
     logDevErrorHelper("Error storing groupCode in local storage:", error);

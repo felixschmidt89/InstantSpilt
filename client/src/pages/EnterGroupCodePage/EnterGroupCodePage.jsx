@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
+import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import { useNavigate } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 
@@ -17,6 +18,7 @@ const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
   const handleEnterClick = () => {
     if (!isInvalid) {
       storeGroupCodesInLocalStorageHelper(groupCode);
+      setGroupCodeToCurrentlyActiveHelper(groupCode);
       navigate("instant-split");
     }
   };

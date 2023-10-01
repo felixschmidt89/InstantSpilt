@@ -10,8 +10,10 @@ const HomePage = () => {
           InstantSplit is the hassle-free way to settle group expenses – no user
           registration, no app download.
           <br />
-          The key to this while sharing minimal data is your{" "}
-          <strong>GroupCode</strong>. So guard it well after signing up!
+          The key to this, while sharing minimal data, is the 6-digit{" "}
+          <strong>GroupCode</strong>. <br />
+          So, guard it well after signing up and make sure to write your
+          GroupCode down in a safe place.
         </p>
         <br />
         <h2>Get started</h2>

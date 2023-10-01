@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-/** Checks if groupCode exists in localStorage and navigates to homepage if
- * not
+/** Checks if groupCode exists in localStorage and navigates to homepage if not
  */
 
 function useCheckGroupCodePresenceAndNavigateHome() {
@@ -11,7 +10,7 @@ function useCheckGroupCodePresenceAndNavigateHome() {
   useEffect(() => {
     const groupCode = localStorage.getItem("activeGroupCode");
     if (!groupCode) {
-      navigate("/");
+      navigate("/homepage");
     }
   }, [navigate]);
 
