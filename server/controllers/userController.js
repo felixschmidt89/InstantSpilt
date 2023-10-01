@@ -81,18 +81,14 @@ export const listExpensesAndPaymentsByUser = async (req, res) => {
     ]);
 
     const userExpensesAndPayments = [...expenses, ...payments];
-    const results = userExpensesAndPayments.length;
-    const expenseCount = expenses.length;
-    const paymentCount = payments.length;
-
     userExpensesAndPayments.sort((a, b) => a.createdAt - b.createdAt);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
       data: {
-        results,
-        expenseCount,
-        paymentCount,
+        results: userExpensesAndPayments.length,
+        expenseCount: expenses.length,
+        paymentCount: payments.length,
         userExpensesAndPayments,
       },
       message: 'All user expenses and payments retrieved successfully',
@@ -106,21 +102,32 @@ export const listExpensesAndPaymentsByUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   try {
     const { userId } = req.params;
+    console.log(userId);
+
+    // Check if the user has associated transactions
+    const [expenses, payments] = await Promise.all([
+      Expense.find({
+        $or: [{ expensePayer: userId }, { expenseBeneficiaries: userId }],
+      }),
+      Payment.find({
+        $or: [{ paymentMaker: userId }, { paymentRecipient: userId }],
+      }),
+    ]);
+
+    // Do not allow deleting the user iif there are associated transactions
+    if (expenses.length > 0 || payments.length > 0) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message:
+          "Oops! You can't delete the user because of associated transaction(s). Please remove those transaction(s) first.",
+      });
+    }
 
     const userToDelete = await User.findOne({
       _id: userId,
     });
 
     console.log(userToDelete);
-
-    // Check if the user's expenses are settled
-    if (userToDelete && !userToDelete.expensesSettled) {
-      return res.status(StatusCodes.BAD_REQUEST).json({
-        status: 'fail',
-        message:
-          "Oops! You can't delete the user right because of associated transaction(s). Please remove those transaction(s) first.",
-      });
-    }
 
     await User.deleteOne({ _id: userToDelete._id });
 
@@ -129,7 +136,7 @@ export const deleteUser = async (req, res) => {
       data: null,
     });
   } catch (error) {
-    logDevErrorHelper('Error updating user name', error);
+    logDevErrorHelper('Error deleting user', error);
     sendInternalErrorHelper(res);
   }
 };
