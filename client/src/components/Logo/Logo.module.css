@@ -3,6 +3,11 @@
   text-decoration: none;
 }
 
+.logoLink:focus,
+.logoLink:active {
+  outline: none;
+}
+
 .logoImage {
   width: 20vw;
   height: auto;

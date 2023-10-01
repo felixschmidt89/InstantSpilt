@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import { useNavigate } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
-import InlineNavigateButtons from "../../components/InlineNavigateButtons/InlineNavigateButtons";
+import style from "./EnterGroupCodePage.module.css";
 
-const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
+const EnterGroupCode = () => {
   const [groupCode, setGroupCode] = useState("");
   const [isInvalid, setIsInvalid] = useState(false);
   const navigate = useNavigate();
@@ -18,10 +17,9 @@ const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
 
   const handleEnterClick = () => {
     if (!isInvalid) {
-      storeGroupCodesInLocalStorageHelper(groupCode);
       console.log(groupCode);
       setGroupCodeToCurrentlyActiveHelper(groupCode);
-      navigate("instant-split");
+      navigate("/instant-split");
     }
   };
 
@@ -32,23 +30,21 @@ const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
         buttonText={"back"}
         alignment={"left"}
       />
-      <h1>Enter group code</h1>
-      <p>
-        {" "}
-        Send yourself an invite from another device where you're already using
-        InstantSplit. Ask your friends to send you an invite or the your
-        GroupCode
-      </p>
-      <input
-        type='text'
-        placeholder='Enter Group Code'
-        value={groupCode}
-        onChange={handleInputChange}
-        className={isInvalid ? "invalid" : ""}
-      />
-      {groupCode.length === 6 && (
-        <button onClick={handleEnterClick}>Enter</button>
-      )}
+      <div className={style.container}>
+        <h1>Enter groupCode</h1>
+        <input
+          className={style.inputField}
+          type='text'
+          placeholder='groupCode'
+          value={groupCode}
+          onChange={handleInputChange}
+        />
+        {groupCode.length === 6 && (
+          <button className={style.button} onClick={handleEnterClick}>
+            join
+          </button>
+        )}
+      </div>
     </main>
   );
 };

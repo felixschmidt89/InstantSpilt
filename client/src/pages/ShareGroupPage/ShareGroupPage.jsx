@@ -24,8 +24,8 @@ const ShareGroupPage = () => {
       <div className={styles.container}>
         <h1>Invite & Share</h1>
         <p>
-          To invite others to join {groupName} or use InstantSplit on your other
-          devices, just copy and share this link:
+          To invite others to join <strong>{groupName}</strong> or use
+          InstantSplit on your other devices, just copy and share this link:
         </p>
         <CopyToClipboard url={url} />
       </div>

@@ -13,6 +13,7 @@ h2 {
 .inputFieldOne,
 .inputFieldTwo,
 .select {
+  color: var(--color-dark);
   font-family: "Ubuntu", sans-serif;
   padding: 0.2rem;
   border: 0.2rem solid var(--color-grey);

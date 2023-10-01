@@ -1,26 +1,30 @@
+.container {
+  justify-content: center;
+}
+
 .inputField {
-  font-family: "Ubuntu", sans-serif;
   color: var(--color-dark);
-  width: 50rem;
-  padding: 0.3rem;
+  font-family: "Ubuntu", sans-serif;
+  width: 10rem;
+  padding: 0.2rem;
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.5rem;
   font-size: 1.6rem;
   text-align: center;
   outline: none;
-  margin-bottom: 0.5rem;
 }
 
 .inputField:focus {
   border-color: var(--color-signal);
-  box-shadow: 0 0 0.5rem var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-success);
 }
+
 .button {
   background-color: var(--color-signal);
   color: var(--color-main);
   font-weight: bold;
   border: none;
-  width: 10rem;
+  width: 4rem;
   padding: 0.4rem;
   font-size: 1.5rem;
   cursor: pointer;

@@ -3,6 +3,7 @@ h2 {
 }
 .inputField,
 .select {
+  color: var(--color-dark);
   font-family: "Ubuntu", sans-serif;
   width: 10rem;
   padding: 0.2rem;

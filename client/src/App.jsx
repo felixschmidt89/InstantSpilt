@@ -29,26 +29,26 @@ function App() {
       <Header />
       <Routes>
         <Route index element={<IndexNavigator />} />
-        <Route path='homepage' element={<HomePage />} />
-        <Route path='groupcode-explanation' element={<ExplanationPage />} />
+        <Route path='/homepage' element={<HomePage />} />
+        <Route path='/groupcode-explanation' element={<ExplanationPage />} />
 
-        <Route path='create-group' element={<CreateGroupPage />} />
+        <Route path='/create-group' element={<CreateGroupPage />} />
         <Route
           path='create-users-signup'
           element={<CreateUsersNextButtonPage />}
         />
-        <Route path='enter-groupcode' element={<EnterGroupCode />} />
-        <Route path='instant-split' element={<InstantSplitPage />} />
-        <Route path='create-expense' element={<CreateExpensePage />} />
-        <Route path='create-payment' element={<CreatePaymentPage />} />
+        <Route path='/enter-groupcode' element={<EnterGroupCode />} />
+        <Route path='/instant-split' element={<InstantSplitPage />} />
+        <Route path='/create-expense' element={<CreateExpensePage />} />
+        <Route path='/create-payment' element={<CreatePaymentPage />} />
         <Route
           path='create-users-inapp'
           element={<CreateUsersBackButtonPage />}
         />
         <Route path='/item-page' element={<ItemNavigatorPage />} />
-        <Route path='user-page/:userId' element={<UserPage />} />
-        <Route path='payment-page/:itemId' element={<PaymentPage />} />
-        <Route path='expense-page/:itemId' element={<ExpensePage />} />
+        <Route path='/user-page/:userId' element={<UserPage />} />
+        <Route path='/payment-page/:itemId' element={<PaymentPage />} />
+        <Route path='/expense-page/:itemId' element={<ExpensePage />} />
         <Route
           path='/leave-group/:groupName/:groupCode'
           element={<ForgetGroupOnDevicePage />}
