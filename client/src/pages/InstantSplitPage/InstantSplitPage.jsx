@@ -48,7 +48,10 @@ export default function InstantSplitPage() {
         </div>
         {view === "view1" ? <GroupHistory /> : <GroupBalances />}
         <GroupActionsContainer />
-        <UserActionsComponent />
+        <UserActionsComponent
+          groupCode={groupCode}
+          groupName={groupData.group.groupName}
+        />
       </main>
     );
   }

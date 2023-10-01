@@ -1,8 +1,7 @@
 import logDevErrorHelper from "../../../server/helpers/logDevErrorHelper";
-import setGroupCodeToCurrentlyActiveHelper from "./setGroupCodeToCurrentlyActiveHelper";
 
 /**
- * Adds groupCode to local storage if it doesn't already exist and sets it to currently active groupCode
+ * Adds groupCode to local storage if it doesn't already exist
  *
  * @param {string} groupCode - The groupCode to add to local storage.
  * @returns {boolean} - Returns true if groupCode has been added to local storage, false in case of an error.

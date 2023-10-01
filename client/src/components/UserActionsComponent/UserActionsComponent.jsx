@@ -1,11 +1,27 @@
 import React from "react";
-import { faUser } from "@fortawesome/free-solid-svg-icons"; // Import the specific icon
+import {
+  faRightFromBracket,
+  faShareNodes,
+} from "@fortawesome/free-solid-svg-icons";
 import NavigateIcon from "../NavigateIcon/NavigateIcon";
 
-const UserActionsComponent = () => {
+const UserActionsContainer = ({ groupCode, groupName }) => {
+  console.log(groupCode);
+
   return (
-    <NavigateIcon icon={faUser} route='/leave-group' tooltip='Leave Group' /> // Use the imported icon
+    <>
+      <NavigateIcon
+        icon={faShareNodes}
+        route={`/invite-users/${groupName}/${groupCode}`}
+        tooltip='Invite group members'
+      />
+      <NavigateIcon
+        icon={faRightFromBracket}
+        route={`/leave-group/${groupName}/${groupCode}`}
+        tooltip='Leave group'
+      />
+    </>
   );
 };
 
-export default UserActionsComponent;
+export default UserActionsContainer;

@@ -20,6 +20,7 @@ import ExpensePage from "./pages/ExpensePage/ExpensePage";
 import IndexNavigator from "./pages/IndexNavigatorPage/IndexNavigator";
 import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 import ExplanationPage from "./pages/ExplanationPage/ExplanationPage";
+import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevice/ForgetGroupOnDevice";
 
 function App() {
   return (
@@ -47,6 +48,10 @@ function App() {
         <Route path='user-page/:userId' element={<UserPage />} />
         <Route path='payment-page/:itemId' element={<PaymentPage />} />
         <Route path='expense-page/:itemId' element={<ExpensePage />} />
+        <Route
+          path='/leave-group/:groupName/:groupCode'
+          element={<ForgetGroupOnDevicePage />}
+        />
 
         <Route path='*' element={<PageNotFoundPage />} />
       </Routes>

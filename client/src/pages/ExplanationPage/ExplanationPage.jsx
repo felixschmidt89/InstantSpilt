@@ -1,5 +1,4 @@
 import React from "react";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import InlineNavigateButtons from "../../components/InlineNavigateButtons/InlineNavigateButtons";
 
 const ExplanationPage = () => {
