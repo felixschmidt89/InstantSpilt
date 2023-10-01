@@ -21,6 +21,7 @@ import IndexNavigator from "./pages/IndexNavigatorPage/IndexNavigator";
 import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 import ExplanationPage from "./pages/ExplanationPage/ExplanationPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
+import ShareGroupPage from "./pages/ShareGroupPage/ShareGroupPage";
 
 function App() {
   return (
@@ -51,6 +52,10 @@ function App() {
         <Route
           path='/leave-group/:groupName/:groupCode'
           element={<ForgetGroupOnDevicePage />}
+        />
+        <Route
+          path='/share-group/:groupName/:groupCode'
+          element={<ShareGroupPage />}
         />
 
         <Route path='*' element={<PageNotFoundPage />} />

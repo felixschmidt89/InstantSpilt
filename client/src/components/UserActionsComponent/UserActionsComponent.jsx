@@ -6,16 +6,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import NavigateIcon from "../NavigateIcon/NavigateIcon";
 import styles from "./UserActionsComponent.module.css";
+import InviteGroupMembers from "../InviteGroupMembers/InviteGroupMembers.jsx";
 
 const UserActionsContainer = ({ groupCode, groupName }) => {
-  console.log(groupCode);
-
+  // TODO: Test Web Share Api component and conditionally render on mobile devices
   return (
     <div className={styles.container}>
+      {/* <InviteGroupMembers groupCode={groupCode} groupName={groupName} /> */}
       <NavigateIcon
         icon={faShareNodes}
-        route={`/invite-users/${groupName}/${groupCode}`}
-        tooltip='Invite group members'
+        route={`/share-group/${groupName}/${groupCode}`}
+        tooltip='Invite & share group'
       />
       <NavigateIcon
         icon={faCircleInfo}

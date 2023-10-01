@@ -6,7 +6,6 @@ import styles from "./ForgetGroupOnDevicePage.module.css";
 
 const ForgetGroupOnDevicePage = () => {
   const pathParts = window.location.pathname.split("/");
-
   const groupName = pathParts[pathParts.length - 2];
   const groupCode = pathParts[pathParts.length - 1];
 
@@ -14,7 +13,7 @@ const ForgetGroupOnDevicePage = () => {
 
   const handleConfirm = () => {
     removeActiveGroupCodeFromLocalStorage();
-    navigate("/homepage"); // Use the navigate function to go to the homepage
+    navigate("/homepage");
   };
 
   return (
