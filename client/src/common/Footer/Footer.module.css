@@ -20,3 +20,15 @@
     margin-bottom: 10vh;
   }
 }
+
+@media (min-width: 769px) and (max-width: 1600px) {
+  .footer {
+    height: 5vh;
+  }
+}
+
+@media (min-width: 1601px) {
+  .footer {
+    height: 4vh;
+  }
+}

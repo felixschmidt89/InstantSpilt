@@ -73,14 +73,13 @@ ul {
   list-style: none;
 }
 
-/*small devices (up to 576px width)*/
-
-@media (max-width: 576px) {
+@media (max-width: 768px) {
   main {
     width: 100vw;
   }
 }
 
+/* bigger devices */
 @media (min-width: 769px) and (max-width: 1600px) {
   main {
     width: 70vw;
@@ -88,9 +87,10 @@ ul {
   }
 }
 
-@media (min-width: 769px) {
+/* large devices */
+@media (min-width: 1601px) {
   main {
     width: 45vw;
-    height: 64vh;
+    height: 65vh;
   }
 }

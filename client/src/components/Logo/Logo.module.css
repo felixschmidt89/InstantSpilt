@@ -11,8 +11,9 @@
 /* small devices */
 @media (max-width: 576px) {
   .logoImage {
-    width: 25%;
+    width: 50%;
     max-width: 500px;
+    transform: translate(0, 1vh);
   }
 }
 
@@ -28,7 +29,7 @@
 /* large devices */
 @media (min-width: 1601px) {
   .logoImage {
-    width: 50%;
+    width: 40%;
     max-width: 500px;
   }
 }
