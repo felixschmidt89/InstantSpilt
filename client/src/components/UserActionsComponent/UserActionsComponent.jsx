@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import NavigateIcon from "../NavigateIcon/NavigateIcon";
 import styles from "./UserActionsComponent.module.css";
-import InviteGroupMembers from "../InviteGroupMembers/InviteGroupMembers.jsx";
+import InviteGroupMembers from "../WebShareApiInvite/WebShareApiInvite.jsx";
 
 const UserActionsContainer = ({ groupCode, groupName }) => {
   // TODO: Test Web Share Api component and conditionally render on mobile devices

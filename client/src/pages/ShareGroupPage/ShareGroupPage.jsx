@@ -3,7 +3,7 @@ import CopyToClipboard from "../../components/CopyToClipboard/CopyToClipboard";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import styles from "./ShareGroupPage.module.css";
 
-const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 const ShareGroupPage = () => {
   const pathParts = window.location.pathname.split("/");
@@ -12,20 +12,20 @@ const ShareGroupPage = () => {
 
   console.log(groupName, groupCode);
 
-  const url = `${apiUrl}/groups/join/${groupCode}`;
+  const url = `${baseUrl}/join/${groupCode}`;
 
   return (
     <main>
       <NavigateButton
-        route='/instant-split'
+        route='instant-split'
         buttonText='back'
         alignment='left'
       />
       <div className={styles.container}>
-        <h1>Share an invite</h1> {/* Close the <h1> tag properly */}
+        <h1>Invite & Share</h1>
         <p>
-          The key to settling group expenses easily while sharing minimal data
-          is the 6-digit <strong>GroupCode</strong>. <br />
+          To invite others to join {groupName} or use InstantSplit on your other
+          devices, just copy and share this link:
         </p>
         <CopyToClipboard url={url} />
       </div>

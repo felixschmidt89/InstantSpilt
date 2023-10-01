@@ -17,9 +17,13 @@ const CopyToClipboard = ({ url }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <input type='text' value={url} readOnly />
-      <button onClick={handleCopyClick} disabled={isCopied}>
+    <div>
+      <input className={styles.inputField} type='text' value={url} readOnly />
+      <br />
+      <button
+        className={styles.button}
+        onClick={handleCopyClick}
+        disabled={isCopied}>
         <FontAwesomeIcon icon={faCopy} />{" "}
         {isCopied ? "Copied!" : "Copy to Clipboard"}
       </button>
