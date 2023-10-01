@@ -17,7 +17,11 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
         route={`/invite-users/${groupName}/${groupCode}`}
         tooltip='Invite group members'
       />
-      <NavigateIcon icon={faCircleInfo} tooltip={`GroupCode: ${groupCode}`} />
+      <NavigateIcon
+        icon={faCircleInfo}
+        route={`/instant-split/`}
+        tooltip={`GroupCode: ${groupCode}`}
+      />
       <NavigateIcon
         icon={faRightFromBracket}
         route={`/leave-group/${groupName}/${groupCode}`}

@@ -1,16 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
+import Logo from "../../components/Logo/Logo";
 
 function Header() {
   return (
     <header className={styles.header}>
-      <Link
-        to='/'
-        className={styles.LinkToHomepage}
-        style={{ textDecoration: "none" }}>
-        InstantSplit
-      </Link>
+      <Logo />
     </header>
   );
 }

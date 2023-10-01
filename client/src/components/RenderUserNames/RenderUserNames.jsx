@@ -40,7 +40,7 @@ export default function RenderUserNames({ refreshData }) {
   }, [refreshData]);
 
   return (
-    <div>
+    <div className={styles.container}>
       <ul className={styles.userList}>
         {userNames.map((userName) => (
           <li key={userName}>

@@ -13,7 +13,6 @@
   color: var(--color-dark);
 }
 
-/* large devices (between 769px and 992px width) */
 @media (min-width: 769px) {
   .header {
     margin-top: 10vh;

@@ -1,4 +1,4 @@
-.userList {
-  height: 60%;
+.container {
   overflow-y: auto;
+  height: 70%;
 }

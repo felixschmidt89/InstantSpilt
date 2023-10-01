@@ -1,0 +1,34 @@
+/* Logo.css */
+.logoLink {
+  text-decoration: none;
+}
+
+.logoImage {
+  width: 20vw;
+  height: auto;
+}
+
+/* small devices */
+@media (max-width: 576px) {
+  .logoImage {
+    width: 25%;
+    max-width: 500px;
+  }
+}
+
+/* bigger devices */
+
+@media (min-width: 577px) and (max-width: 1600px) {
+  .logoImage {
+    width: 40%;
+    max-width: 400px;
+    height: auto;
+  }
+}
+/* large devices */
+@media (min-width: 1601px) {
+  .logoImage {
+    width: 50%;
+    max-width: 500px;
+  }
+}

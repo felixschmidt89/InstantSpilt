@@ -5,6 +5,7 @@ import axios from "axios";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import styles from "./CreateGroupPage.module.css";
 
 /**
  * Creates a new group & stores the related groupCode in user's local storage upon submission.
@@ -48,6 +49,7 @@ export default function CreateGroupPage() {
       <h2>Create a group </h2>
       <form onSubmit={handleFormSubmit}>
         <input
+          className={styles.inputField}
           type='text'
           value={groupName}
           onChange={handleGroupNameChange}
@@ -56,11 +58,13 @@ export default function CreateGroupPage() {
           minLength={3}
           maxLength={50}
           pattern='.*\S+.*'
-          style={{ marginLeft: "10px" }}
         />
         {groupName.length >= 3 && (
-          <button type='submit' style={{ marginLeft: "10px", padding: "2px" }}>
-            next
+          <button
+            className={styles.button}
+            type='submit'
+            style={{ marginLeft: "10px", padding: "2px" }}>
+            +
           </button>
         )}
       </form>

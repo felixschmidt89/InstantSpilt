@@ -11,7 +11,7 @@ const HomePage = () => {
         user registration or app download while sharing minimal data.
       </p>
       <br />
-      <h2>Get started</h2>
+      <h2>Get started:</h2>
       <h3>
         <Link to='/groupcode-explanation'>Create a new group</Link>
       </h3>
