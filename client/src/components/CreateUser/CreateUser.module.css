@@ -1,0 +1,35 @@
+.inputField {
+  width: 15rem;
+  padding: 0.3rem;
+  border: 0.2rem solid var(--color-grey);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  text-align: center;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+.inputField:focus {
+  border-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-signal);
+}
+.button {
+  background-color: var(--color-signal);
+  color: var(--color-main);
+  font-weight: bold;
+  border: none;
+  padding: 0.4rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.button:hover {
+  background-color: var(--color-success);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+.errorText {
+  color: var(--color-error);
+}

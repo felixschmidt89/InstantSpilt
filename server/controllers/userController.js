@@ -15,7 +15,8 @@ export const createUser = async (req, res) => {
     if (existingUser) {
       return res.status(StatusCodes.CONFLICT).json({
         status: 'error',
-        message: 'A user with the same name already exists in this group.',
+        message:
+          'Oops! This name is already taken in this group. Please pick another one.',
       });
     }
 

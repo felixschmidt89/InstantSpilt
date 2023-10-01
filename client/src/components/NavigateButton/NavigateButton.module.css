@@ -1,13 +1,17 @@
 .button {
-  background-color: var(--color-signal);
+  background-color: var(--color-grey);
   color: var(--color-main);
   border: none;
-  padding: 0.5rem;
+  padding: 0.4rem;
   font-size: 1.5rem;
   cursor: pointer;
-  border-radius: 10px;
-  width: fit-content;
-  margin: 1rem;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.button:hover {
+  background-color: var(--color-success);
+  box-shadow: 0 0 0.5rem var(--color-success);
 }
 
 /* Align the button within its container */

@@ -5,8 +5,8 @@ import styles from "./NavigateButton.module.css";
 export default function NavigateButton({
   route,
   buttonText,
-  alignment,
-  margin,
+  alignment = "center",
+  margin = "10px",
 }) {
   const navigate = useNavigate();
 
@@ -25,8 +25,7 @@ export default function NavigateButton({
     containerClass = `${containerClass} ${styles.centerAligned}`;
   }
 
-  // Apply the margin style based on the 'margin' prop
-  const buttonStyle = margin ? { margin } : {};
+  const buttonStyle = { margin };
 
   return (
     <div className={containerClass}>
