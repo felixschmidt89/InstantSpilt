@@ -114,7 +114,7 @@ export const deleteUser = async (req, res) => {
       }),
     ]);
 
-    // Do not allow deleting the user iif there are associated transactions
+    // Disallow deleting the user if there are associated transactions
     if (expenses.length > 0 || payments.length > 0) {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
