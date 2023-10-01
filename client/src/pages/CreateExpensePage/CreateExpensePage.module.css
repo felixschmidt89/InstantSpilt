@@ -1,0 +1,87 @@
+h2 {
+  margin-bottom: 1rem;
+}
+
+.inputFieldOne {
+  width: 20rem;
+}
+
+.inputFieldTwo {
+  width: 10rem;
+}
+
+.inputFieldOne,
+.inputFieldTwo,
+.select {
+  font-family: "Ubuntu", sans-serif;
+  padding: 0.2rem;
+  border: 0.2rem solid var(--color-grey);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  text-align: center;
+  outline: none;
+}
+
+.select {
+  width: 8rem;
+  background-color: var(--color-main);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  text-align: center;
+  outline: auto;
+  outline-color: var(--color-grey);
+}
+
+.select,
+.inputFieldOne,
+.inputFieldTwo:focus {
+  border-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-main);
+  border: 2px solid var(--color-grey);
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.6rem;
+  outline: none;
+  vertical-align: middle;
+  margin: 0.2rem;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--color-signal-reduced-opacity);
+  border-color: var(--color-success);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+.button {
+  margin-top: 2rem;
+  background-color: var(--color-signal);
+  color: var(--color-main);
+  font-weight: bold;
+  border: none;
+  width: 3rem;
+  padding: 0.4rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.button:hover {
+  background-color: var(--color-success);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+.beneficiaries {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

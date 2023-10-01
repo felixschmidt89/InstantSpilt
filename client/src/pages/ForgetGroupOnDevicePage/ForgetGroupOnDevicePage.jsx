@@ -2,6 +2,7 @@ import React from "react";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import { useNavigate } from "react-router-dom";
 import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorage";
+import styles from "./ForgetGroupOnDevicePage.module.css";
 
 const ForgetGroupOnDevicePage = () => {
   const pathParts = window.location.pathname.split("/");

@@ -3,6 +3,8 @@ import axios from "axios";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import { useNavigate } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import styles from "./CreateExpensePage.module.css";
+import emojiConstants from "../../constants/emojiConstants";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -62,7 +64,6 @@ export default function CreateExpensePage() {
       );
     }
   };
-
   return (
     <main>
       <NavigateButton
@@ -70,18 +71,20 @@ export default function CreateExpensePage() {
         buttonText={"back"}
         alignment={"left"}
       />
-      <h2>Add Expense</h2>
+      <h2>Add expense {emojiConstants.expense}</h2>
       <form onSubmit={handleFormSubmit}>
         <input
+          className={styles.inputFieldOne}
           type='text'
           value={expenseName}
           onChange={handleExpenseNameChange}
-          placeholder='Expense Name'
+          placeholder='Expense description'
           required
           minLength={3}
           maxLength={50}
         />
         <input
+          className={styles.inputFieldTwo}
           type='number'
           value={expenseAmount}
           onChange={handleExpenseAmountChange}
@@ -91,11 +94,12 @@ export default function CreateExpensePage() {
           min='0.01'
         />
         <select
+          className={styles.select}
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           required>
           <option value='' disabled>
-            By
+            {emojiConstants.paidFor} by
           </option>
           {groupMembers.map((member) => (
             <option key={member} value={member}>
@@ -103,10 +107,10 @@ export default function CreateExpensePage() {
             </option>
           ))}
         </select>
-        <div>
-          <h4>For</h4>
+        <h4>for </h4>
+        <div className={styles.beneficiaries}>
           {groupMembers.map((member) => (
-            <label key={member}>
+            <label className={styles.label} key={member}>
               <input
                 type='checkbox'
                 value={member}
@@ -118,8 +122,8 @@ export default function CreateExpensePage() {
           ))}
         </div>
         {expenseName.length >= 3 && (
-          <button type='submit' style={{ marginLeft: "10px", padding: "2px" }}>
-            Add
+          <button className={styles.button} type='submit'>
+            +
           </button>
         )}
       </form>

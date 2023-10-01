@@ -4,12 +4,13 @@ import {
   faShareNodes,
 } from "@fortawesome/free-solid-svg-icons";
 import NavigateIcon from "../NavigateIcon/NavigateIcon";
+import styles from "./UserActionsComponent.module.css";
 
 const UserActionsContainer = ({ groupCode, groupName }) => {
   console.log(groupCode);
 
   return (
-    <>
+    <div className={styles.container}>
       <NavigateIcon
         icon={faShareNodes}
         route={`/invite-users/${groupName}/${groupCode}`}
@@ -20,7 +21,7 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
         route={`/leave-group/${groupName}/${groupCode}`}
         tooltip='Leave group'
       />
-    </>
+    </div>
   );
 };
 

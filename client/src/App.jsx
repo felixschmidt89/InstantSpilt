@@ -20,7 +20,7 @@ import ExpensePage from "./pages/ExpensePage/ExpensePage";
 import IndexNavigator from "./pages/IndexNavigatorPage/IndexNavigator";
 import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 import ExplanationPage from "./pages/ExplanationPage/ExplanationPage";
-import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevice/ForgetGroupOnDevice";
+import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
 
 function App() {
   return (
