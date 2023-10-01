@@ -7,6 +7,7 @@ import {
   deleteUser,
   deleteAllUsers,
   getUserInfo,
+  listExpensesAndPaymentsByUser,
 } from '../controllers/userController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 import { validateUserNamePropertyPresenceMiddleware } from '../middleware/validateRequestBodyMiddleware.js';
@@ -31,6 +32,9 @@ router.patch(
 
 // Delete user
 router.delete('/:userId', deleteUser);
+
+// List all expenses and payments of a group
+router.get('/:userId/expenses-and-payments', listExpensesAndPaymentsByUser);
 
 // List group members by groupCode
 router.get(

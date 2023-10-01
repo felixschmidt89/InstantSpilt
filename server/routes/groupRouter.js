@@ -29,7 +29,7 @@ router.get('/:groupCode', getGroupInfo);
 // Check if groupCode exists in database
 router.get('/:groupCode/validate-existence', validateGroupExistence);
 
-// Lists all expenses and payments of a group
+// List all expenses and payments of a group
 router.get('/:groupCode/expenses-and-payments', listExpensesAndPaymentsByGroup);
 
 // Add more routes for other group-related functionality

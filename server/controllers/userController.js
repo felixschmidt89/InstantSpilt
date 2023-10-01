@@ -1,5 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
+import Expense from '../models/Expense.js';
+import Payment from '../models/Payment.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
 
@@ -66,6 +68,41 @@ export const changeUserName = async (req, res) => {
   }
 };
 
+export const listExpensesAndPaymentsByUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const [expenses, payments] = await Promise.all([
+      Expense.find({
+        $or: [{ expensePayer: userId }, { expenseBeneficiaries: userId }],
+      }),
+      Payment.find({
+        $or: [{ paymentMaker: userId }, { paymentRecipient: userId }],
+      }),
+    ]);
+
+    const userExpensesAndPayments = [...expenses, ...payments];
+    const results = userExpensesAndPayments.length;
+    const expenseCount = expenses.length;
+    const paymentCount = payments.length;
+
+    userExpensesAndPayments.sort((a, b) => a.createdAt - b.createdAt);
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: {
+        results,
+        expenseCount,
+        paymentCount,
+        userExpensesAndPayments,
+      },
+      message: 'All user expenses and payments retrieved successfully',
+    });
+  } catch (error) {
+    logDevErrorHelper('Error listing user expenses and payments', error);
+    sendInternalErrorHelper(res);
+  }
+};
+
 export const deleteUser = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -74,12 +111,14 @@ export const deleteUser = async (req, res) => {
       _id: userId,
     });
 
+    console.log(userToDelete);
+
     // Check if the user's expenses are settled
     if (userToDelete && !userToDelete.expensesSettled) {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
         message:
-          "Oops! You can't delete the user right now because of associated transaction(s). Please go ahead and remove the user from those transaction(s) first.",
+          "Oops! You can't delete the user right because of associated transaction(s). Please remove those transaction(s) first.",
       });
     }
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import { useNavigate } from "react-router-dom";
+import NavigateButton from "../../components/NavigateButton/NavigateButton";
 
 const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
   const [groupCode, setGroupCode] = useState("");
@@ -22,6 +23,11 @@ const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
 
   return (
     <main>
+      <NavigateButton
+        route={"instant-split"}
+        buttonText={"back"}
+        alignment={"left"}
+      />
       <h1>Enter group code</h1>
       <input
         type='text'
