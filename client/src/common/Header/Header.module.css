@@ -4,7 +4,7 @@
   align-items: center;
   border-bottom: 3px solid var(--color-signal);
   font-size: 2rem;
-  height: 6vh;
+  height: 8vh;
   background-color: var(--color-body);
 }
 
@@ -14,15 +14,8 @@
 }
 
 /* large devices (between 769px and 992px width) */
-@media (min-width: 769px) and (max-width: 992px) {
+@media (min-width: 769px) {
   .header {
-    margin-top: 15vh;
-  }
-}
-
-/* extra-large devices (greater than 1200px width) */
-@media (min-width: 1200px) {
-  .header {
-    margin-top: 18vh;
+    margin-top: 10vh;
   }
 }

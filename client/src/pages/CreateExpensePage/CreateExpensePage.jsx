@@ -78,21 +78,23 @@ export default function CreateExpensePage() {
           type='text'
           value={expenseName}
           onChange={handleExpenseNameChange}
-          placeholder='Expense description'
+          placeholder='expense description'
           required
           minLength={3}
           maxLength={50}
         />
+        <span> </span>
         <input
           className={styles.inputFieldTwo}
           type='number'
           value={expenseAmount}
           onChange={handleExpenseAmountChange}
-          placeholder='Amount'
-          required
+          placeholder='0.00'
           step='0.01'
           min='0.01'
+          required
         />
+        <span> </span>
         <select
           className={styles.select}
           value={userName}

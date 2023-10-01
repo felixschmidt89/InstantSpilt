@@ -19,7 +19,7 @@
 
 .tooltip {
   position: absolute;
-  top: 100%;
+  bottom: 120%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--color-dark);

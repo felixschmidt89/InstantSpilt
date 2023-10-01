@@ -2,6 +2,7 @@ import React from "react";
 import {
   faRightFromBracket,
   faShareNodes,
+  faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import NavigateIcon from "../NavigateIcon/NavigateIcon";
 import styles from "./UserActionsComponent.module.css";
@@ -16,6 +17,7 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
         route={`/invite-users/${groupName}/${groupCode}`}
         tooltip='Invite group members'
       />
+      <NavigateIcon icon={faCircleInfo} tooltip={`GroupCode: ${groupCode}`} />
       <NavigateIcon
         icon={faRightFromBracket}
         route={`/leave-group/${groupName}/${groupCode}`}

@@ -24,7 +24,3 @@
   background-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
 }
-
-.groupCodeInfo {
-  font-style: italic;
-}

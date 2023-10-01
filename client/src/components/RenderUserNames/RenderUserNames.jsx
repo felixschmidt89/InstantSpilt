@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import styles from "./RenderUserNames.module.css";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -40,7 +41,7 @@ export default function RenderUserNames({ refreshData }) {
 
   return (
     <div>
-      <ul style={{ listStyleType: "none" }}>
+      <ul className={styles.userList}>
         {userNames.map((userName) => (
           <li key={userName}>
             <div>

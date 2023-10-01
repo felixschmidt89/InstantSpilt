@@ -25,9 +25,10 @@ export default function InstantSplitPage() {
     return (
       <main>
         <h1>{groupData.group.groupName}</h1>
-        <p className={styles.groupCodeInfo}>
-          GroupCode: {groupData.group.groupCode}
-        </p>
+        <UserActionsComponent
+          groupCode={groupCode}
+          groupName={groupData.group.groupName}
+        />
         <div className={styles.buttonContainer}>
           <button
             className={`${styles.button} ${
@@ -48,10 +49,6 @@ export default function InstantSplitPage() {
         </div>
         {view === "view1" ? <GroupHistory /> : <GroupBalances />}
         <GroupActionsContainer />
-        <UserActionsComponent
-          groupCode={groupCode}
-          groupName={groupData.group.groupName}
-        />
       </main>
     );
   }
