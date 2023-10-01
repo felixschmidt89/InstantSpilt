@@ -34,7 +34,6 @@ const PaymentPage = () => {
               </Link>
             </strong>{" "}
           </p>
-          <p></p>
           <p>
             {emojiConstants.created}{" "}
             {new Date(paymentDetails.createdAt).toLocaleString()}

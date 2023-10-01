@@ -3,6 +3,7 @@ import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesIn
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import { useNavigate } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import InlineNavigateButtons from "../../components/InlineNavigateButtons/InlineNavigateButtons";
 
 const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
   const [groupCode, setGroupCode] = useState("");
@@ -18,6 +19,7 @@ const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
   const handleEnterClick = () => {
     if (!isInvalid) {
       storeGroupCodesInLocalStorageHelper(groupCode);
+      console.log(groupCode);
       setGroupCodeToCurrentlyActiveHelper(groupCode);
       navigate("instant-split");
     }
@@ -25,12 +27,27 @@ const EnterGroupCode = ({ storeGroupCodesInLocalStorageHelper }) => {
 
   return (
     <main>
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={"back"}
-        alignment={"left"}
+      <InlineNavigateButtons
+        buttonData={[
+          {
+            route: "homepage",
+            buttonText: "back",
+            alignment: "left",
+          },
+          {
+            route: "instant-split",
+            buttonText: "join",
+            alignment: "right",
+          },
+        ]}
       />
       <h1>Enter group code</h1>
+      <p>
+        {" "}
+        Send yourself an invite from another device where you're already using
+        InstantSplit. Ask your friends to send you an invite or the your
+        GroupCode
+      </p>
       <input
         type='text'
         placeholder='Enter Group Code'

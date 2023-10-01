@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./common/Footer";
-import Header from "./common/Header";
+import Footer from "./common/Footer/Footer";
+import Header from "./common/Header/Header";
 import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
 import HomePage from "./pages/HomePage/HomePage";
 import "./global.css";
@@ -19,6 +19,7 @@ import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import ExpensePage from "./pages/ExpensePage/ExpensePage";
 import IndexNavigator from "./pages/IndexNavigatorPage/IndexNavigator";
 import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
+import ExplanationPage from "./pages/ExplanationPage/ExplanationPage";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
       <Routes>
         <Route index element={<IndexNavigator />} />
         <Route path='homepage' element={<HomePage />} />
+        <Route path='groupcode-explanation' element={<ExplanationPage />} />
+
         <Route path='create-group' element={<CreateGroupPage />} />
         <Route
           path='create-users-signup'
