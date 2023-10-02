@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
@@ -31,7 +32,7 @@ const AcceptInviteAndJoinPage = () => {
   return (
     <main className={styles.container}>
       <h1>Hey there!</h1>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <Spinner />}
       {!isLoading && groupData && (
         <div className={styles.explanationContainer}>
           <p>

@@ -4,6 +4,7 @@ import styles from "./ValidateProvidedGroupCodePage.module.css";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
+import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 
 const ValidateProvideGroupCodePage = () => {
   const { groupCode } = useParams();
@@ -22,7 +23,7 @@ const ValidateProvideGroupCodePage = () => {
     <main className={styles.container}>
       <h1>GroupCode validation</h1>
       {/* Handle different outcomes */}
-      {groupExists === null && <p>Validating groupCode...</p>}
+      {groupExists === null && <Spinner />}
       {groupExists === false && (
         <div>
           <p>

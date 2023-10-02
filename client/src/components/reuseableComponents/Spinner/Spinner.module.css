@@ -1,0 +1,5 @@
+.spinner {
+  fill: var(--color-signal);
+  width: 4rem;
+  height: 4rem;
+}

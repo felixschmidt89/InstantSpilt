@@ -4,6 +4,7 @@ import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import emojiConstants from "../../constants/emojiConstants";
 import DeleteResourceButton from "../../components/DeleteResourceButton/DeleteResourceButton";
+import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -42,7 +43,7 @@ const PaymentPage = () => {
           <DeleteResourceButton resourceId={itemId} resourceType='payments' />
         </div>
       ) : (
-        <p>Loading payment details...</p>
+        <Spinner />
       )}
     </main>
   );

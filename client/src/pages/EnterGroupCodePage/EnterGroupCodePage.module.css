@@ -19,6 +19,10 @@
   box-shadow: 0 0 0.5rem var(--color-success);
 }
 
+.buttonContainer {
+  padding-top: 0.8rem;
+}
+
 .button {
   background-color: var(--color-signal);
   color: var(--color-main);

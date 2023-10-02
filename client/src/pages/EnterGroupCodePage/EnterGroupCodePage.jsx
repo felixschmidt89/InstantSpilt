@@ -36,9 +36,11 @@ const EnterGroupCode = () => {
             onChange={handleInputChange}
           />
           {groupCode.length === 6 && (
-            <button type='submit' className={style.button}>
-              join
-            </button>
+            <div className={style.buttonContainer}>
+              <button type='submit' className={style.button}>
+                join
+              </button>
+            </div>
           )}
         </form>
       </div>

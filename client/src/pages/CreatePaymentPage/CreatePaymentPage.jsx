@@ -14,9 +14,11 @@ export default function CreatePaymentPage() {
   const navigate = useNavigate();
   const inputField = useRef(null);
 
+  // Define states for paymentAmount, userName, paymentRecipient and error message
   const [paymentAmount, setPaymentAmount] = useState("");
   const [userName, setUserName] = useState("");
   const [paymentRecipientName, setPaymentRecipientName] = useState("");
+  const [error, setError] = useState("");
   const groupCode = localStorage.getItem("activeGroupCode");
   const groupMembers = useFetchGroupMembers(groupCode);
 
@@ -37,8 +39,12 @@ export default function CreatePaymentPage() {
       });
       navigate("/instant-split");
     } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        console.error("Error creating expense:", error);
+      if (error.response && error.response.status === 409) {
+        setError(error.response.data.message);
+      } else {
+        if (process.env.NODE_ENV === "development") {
+          console.error("Error creating expense:", error);
+        }
       }
     }
   };
@@ -109,6 +115,8 @@ export default function CreatePaymentPage() {
               +
             </button>
           )}
+          {error && <div className={styles.errorText}>{error}</div>}{" "}
+          {/* Render error message */}
         </div>
       </form>
     </main>

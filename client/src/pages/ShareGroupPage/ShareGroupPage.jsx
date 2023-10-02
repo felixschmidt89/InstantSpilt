@@ -9,8 +9,6 @@ const ShareGroupPage = () => {
   const groupName = pathParts[pathParts.length - 2];
   const groupCode = pathParts[pathParts.length - 1];
 
-  console.log(groupName, groupCode);
-
   const infoTocopy = `${baseUrl}/join/${groupCode}`;
 
   return (

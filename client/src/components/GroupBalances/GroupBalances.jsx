@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./GroupBalances.module.css";
+import Spinner from "../reuseableComponents/Spinner/Spinner";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function GroupBalances() {
   const groupCode = localStorage.getItem("activeGroupCode");
 
-  // States for user details and error messages
+  // States for user details, loading error messages
   const [userDetails, setUserDetails] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Define fetch user details function, extract & format relevant data, then set the user details
   useEffect(() => {
@@ -32,6 +34,7 @@ export default function GroupBalances() {
           setUserDetails(userDetails);
         }
         setError(null);
+        setIsLoading(false); // Set loading to false when data is fetched
       } catch (error) {
         if (process.env.NODE_ENV === "development") {
           console.error("Error fetching data:", error);
@@ -39,6 +42,7 @@ export default function GroupBalances() {
         setError(
           "An error occurred while fetching group users. Please try again later."
         );
+        setIsLoading(false); // Set loading to false on error
       }
     }
 
@@ -46,34 +50,38 @@ export default function GroupBalances() {
     fetchUserDetails();
   }, [groupCode]); // Include groupCode in the dependency array
 
-  // Render user details, link to user pages and any error message
+  // Render spinner while loading then render user details,  link to user pages, and any error message
   return (
     <div className={styles.balances}>
-      <ul>
-        {userDetails.map((user) => (
-          <li key={user.userId} className={styles.userListItem}>
-            <div className={styles.userDetails}>
-              <strong>
-                {/* Link to the user page with user-specific URL */}
-                <Link
-                  className={styles.userName}
-                  to={`/user-page/${user.userId}`}>
-                  {user.userName}
-                </Link>
-              </strong>
-              {/* Visually indicate negative userBalance by rendering it in a different color */}
-              <div
-                className={`${styles.userBalance} ${
-                  user.userBalance >= 0
-                    ? styles.positiveBalance
-                    : styles.negativeBalance
-                }`}>
-                {user.userBalance.toFixed(2)}€
+      {isLoading ? ( // Display Spinner while loading
+        <Spinner />
+      ) : (
+        <ul>
+          {userDetails.map((user) => (
+            <li key={user.userId} className={styles.userListItem}>
+              <div className={styles.userDetails}>
+                <strong>
+                  {/* Link to the user page */}
+                  <Link
+                    className={styles.userName}
+                    to={`/user-page/${user.userId}`}>
+                    {user.userName}
+                  </Link>
+                </strong>
+                {/* Visually indicate negative userBalance by rendering it in a different color */}
+                <div
+                  className={`${styles.userBalance} ${
+                    user.userBalance >= 0
+                      ? styles.positiveBalance
+                      : styles.negativeBalance
+                  }`}>
+                  {user.userBalance.toFixed(2)}€
+                </div>
               </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      )}
       {error && <p>{error}</p>}{" "}
       {/* Display error message if there's an error */}
     </div>

@@ -6,7 +6,6 @@ const CopyGroupCodePage = () => {
   const pathParts = window.location.pathname.split("/");
   const groupName = pathParts[pathParts.length - 2];
   const groupCode = pathParts[pathParts.length - 1];
-  console.log(groupName, groupCode);
 
   return (
     <main>

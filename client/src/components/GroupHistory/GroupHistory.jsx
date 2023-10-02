@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./GroupHistory.module.css";
 import emojiConstants from "../../constants/emojiConstants";
+import Spinner from "../reuseableComponents/Spinner/Spinner";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function GroupHistory({ groupCode }) {
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const groupCode = localStorage.getItem("activeGroupCode");
@@ -39,6 +41,7 @@ export default function GroupHistory({ groupCode }) {
           setGroupExpensesAndPayments(modifiedData);
         }
         setError(null);
+        setIsLoading(false);
       } catch (error) {
         if (process.env.NODE_ENV === "development") {
           console.error("Error fetching group expenses and payments:", error);
@@ -46,49 +49,53 @@ export default function GroupHistory({ groupCode }) {
         setError(
           "An error occurred while fetching group expenses and payments. Please try again later."
         );
+        setIsLoading(false); // Set loading to false when data is fetched
       }
     }
 
     fetchGroupExpensesAndPayments();
   }, [groupCode]);
-
   return (
     <div className={styles.expenses}>
-      <ul>
-        {groupExpensesAndPayments.map((item) => (
-          <li key={item._id}>
-            {item.expenseName ? (
-              <div>
-                <strong>
-                  {emojiConstants.expense} {item.expenseName}
-                </strong>
-                :{" "}
-                <Link
-                  to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
-                  {item.expenseAmount.toFixed(2)}€
-                </Link>{" "}
-                {emojiConstants.paidFor}{" "}
-                <strong>{item.expensePayer.userName}</strong>
-              </div>
-            ) : (
-              <div>
-                <span>
-                  {emojiConstants.payment}{" "}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <ul>
+          {groupExpensesAndPayments.map((item) => (
+            <li key={item._id}>
+              {item.expenseName ? (
+                <div>
+                  <strong>
+                    {emojiConstants.expense} {item.expenseName}
+                  </strong>
+                  :{" "}
                   <Link
                     to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
-                    {item.paymentAmount.toFixed(2)}€
-                  </Link>
-                </span>{" "}
-                <strong>
-                  {item.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
-                  {item.paymentRecipient.userName}
-                </strong>
-                <div className={styles.date}></div>
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
+                    {item.expenseAmount.toFixed(2)}€
+                  </Link>{" "}
+                  {emojiConstants.paidFor}{" "}
+                  <strong>{item.expensePayer.userName}</strong>
+                </div>
+              ) : (
+                <div>
+                  <span>
+                    {emojiConstants.payment}{" "}
+                    <Link
+                      to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
+                      {item.paymentAmount.toFixed(2)}€
+                    </Link>
+                  </span>{" "}
+                  <strong>
+                    {item.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
+                    {item.paymentRecipient.userName}
+                  </strong>
+                  <div className={styles.date}></div>
+                </div>
+              )}
+            </li>
+          ))}
+        </ul>
+      )}
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );

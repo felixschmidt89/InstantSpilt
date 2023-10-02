@@ -5,12 +5,11 @@ import useFetchUserInfo from "../../hooks/useFetchUserInfo";
 import emojiConstants from "../../constants/emojiConstants";
 import styles from "./UserPage.module.css";
 import DeleteResourceButton from "../../components/DeleteResourceButton/DeleteResourceButton";
+import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 
 const UserPage = () => {
   const { userId } = useParams();
-  console.log(userId);
   const userInfo = useFetchUserInfo(userId);
-  console.log(userInfo);
 
   // Visually indicate userBalance state
   const balanceClass =
@@ -62,7 +61,7 @@ const UserPage = () => {
           <br />
         </div>
       ) : (
-        <p>Loading user information...</p>
+        <Spinner />
       )}
       <DeleteResourceButton resourceId={userId} resourceType='users' />{" "}
     </main>

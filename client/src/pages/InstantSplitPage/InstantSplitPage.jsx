@@ -6,6 +6,7 @@ import useFetchGroupData from "../../hooks/useFetchGroupData";
 import GroupActionsContainer from "../../components/GroupActionsContainer/GroupActionsContainer";
 import useCheckGroupCodePresenceAndNavigateHome from "../../hooks/useCheckGroupCodePresenceAndNavigateHome";
 import UserActionsComponent from "../../components/UserActionsComponent/UserActionsComponent";
+import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 
 export default function InstantSplitPage() {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -20,7 +21,11 @@ export default function InstantSplitPage() {
   };
 
   if (groupData === null) {
-    return <main>Loading...</main>;
+    return (
+      <main>
+        <Spinner />
+      </main>
+    );
   } else {
     return (
       <main>

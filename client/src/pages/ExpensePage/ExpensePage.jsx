@@ -4,6 +4,7 @@ import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import useFetchExpenseInfo from "../../hooks/uesFetchExpenseInfo";
 import emojiConstants from "../../constants/emojiConstants";
 import DeleteResourceButton from "../../components/DeleteResourceButton/DeleteResourceButton";
+import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
@@ -56,7 +57,7 @@ const ExpensePage = () => {
           />
         </div>
       ) : (
-        <p>Loading expense information...</p>
+        <Spinner />
       )}
     </main>
   );
