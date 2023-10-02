@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+// DONE adding only meaningful necessary comments
+
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
@@ -10,6 +12,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function CreatePaymentPage() {
   const navigate = useNavigate();
+  const inputField = useRef(null);
 
   const [paymentAmount, setPaymentAmount] = useState("");
   const [userName, setUserName] = useState("");
@@ -17,17 +20,21 @@ export default function CreatePaymentPage() {
   const groupCode = localStorage.getItem("activeGroupCode");
   const groupMembers = useFetchGroupMembers(groupCode);
 
+  // Autofocus the input field on mount
+  useEffect(() => {
+    inputField.current.focus();
+  }, []);
+
+  // On form submission: post payment and programmatically navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const groupCode = localStorage.getItem("activeGroupCode");
       await axios.post(`${apiUrl}/payments`, {
         userName,
         groupCode,
         paymentAmount,
         paymentRecipientName,
       });
-      setPaymentAmount("");
       navigate("/instant-split");
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
@@ -36,10 +43,12 @@ export default function CreatePaymentPage() {
     }
   };
 
+  // controlled component to set paymentAmount state
   const handlePaymentAmountChange = (e) => {
     setPaymentAmount(e.target.value);
   };
 
+  // render back button to abort and input fields,
   return (
     <main>
       <NavigateButton
@@ -58,6 +67,7 @@ export default function CreatePaymentPage() {
           required
           step='0.01'
           min='0.01'
+          ref={inputField}
         />
         <span> </span>
         <select
@@ -65,6 +75,7 @@ export default function CreatePaymentPage() {
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           required>
+          {/* Do not preselect user, indicate functionality instead */}
           <option value='' disabled>
             by
           </option>
@@ -80,6 +91,7 @@ export default function CreatePaymentPage() {
           value={paymentRecipientName}
           onChange={(e) => setPaymentRecipientName(e.target.value)}
           required>
+          {/* Do not preselect user, indicate functionality instead */}
           <option value='' disabled>
             to
           </option>
@@ -89,14 +101,14 @@ export default function CreatePaymentPage() {
             </option>
           ))}
         </select>
-        {userName.length >= 3 && (
-          <button
-            className={styles.button}
-            type='submit'
-            style={{ marginLeft: "10px", padding: "2px" }}>
-            +
-          </button>
-        )}
+        {/* Conditionally render submit button when payment amount, payment maker and recipient is given*/}
+        <div className={styles.buttonContainer}>
+          {paymentAmount && userName && paymentRecipientName && (
+            <button className={styles.button} type='submit'>
+              +
+            </button>
+          )}
+        </div>
       </form>
     </main>
   );

@@ -21,7 +21,7 @@ export default function CreateGroupPage() {
     inputRef.current.focus();
   }, []);
 
-  // Store provided group name in database, get related groupCode in exchange, store groupCode in the client's localStorage and programmatically navigate navigate to next page
+  // On form submission: store provided group name in database, get related groupCode in exchange, store groupCode in the client's localStorage and programmatically navigate to next page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -40,6 +40,7 @@ export default function CreateGroupPage() {
     }
   };
 
+  // controlled component to set groupName state
   const handleGroupNameChange = (e) => {
     setGroupName(e.target.value);
   };

@@ -30,6 +30,11 @@ h2 {
   box-shadow: 0 0 0.5rem var(--color-success);
 }
 
+.buttonContainer {
+  padding-top: 1rem;
+  display: block;
+  justify-content: center;
+}
 .button {
   background-color: var(--color-signal);
   color: var(--color-main);
