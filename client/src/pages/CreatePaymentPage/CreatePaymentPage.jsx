@@ -48,7 +48,7 @@ export default function CreatePaymentPage() {
     setPaymentAmount(e.target.value);
   };
 
-  // render back button to abort and input fields,
+  // render back button to abort and input fields, conditionally render submit button
   return (
     <main>
       <NavigateButton

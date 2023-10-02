@@ -45,6 +45,7 @@ export default function CreateGroupPage() {
     setGroupName(e.target.value);
   };
 
+  // render back button to abort and input field, conditionally render submit button
   return (
     <main>
       <NavigateButton
@@ -68,9 +69,11 @@ export default function CreateGroupPage() {
           autoFocus
         />
         {groupName.length >= 1 && (
-          <button className={styles.button} type='submit'>
-            +
-          </button>
+          <div className={styles.buttonContainer}>
+            <button className={styles.button} type='submit'>
+              +
+            </button>
+          </div>
         )}
       </form>
     </main>
