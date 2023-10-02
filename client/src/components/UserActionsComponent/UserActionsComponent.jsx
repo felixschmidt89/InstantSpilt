@@ -4,7 +4,7 @@ import {
   faShareNodes,
   faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
-import NavigateIcon from "../NavigateIcon/NavigateIcon";
+import NavigateFontAwesomeIcon from "../NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
 import styles from "./UserActionsComponent.module.css";
 
 const UserActionsContainer = ({ groupCode, groupName }) => {
@@ -12,17 +12,17 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
   return (
     <div className={styles.container}>
       {/* <InviteGroupMembers groupCode={groupCode} groupName={groupName} /> */}
-      <NavigateIcon
+      <NavigateFontAwesomeIcon
         icon={faShareNodes}
         route={`/share-group/${groupName}/${groupCode}`}
         tooltip='Invite & share group'
       />
-      <NavigateIcon
+      <NavigateFontAwesomeIcon
         icon={faCircleInfo}
         route={`/instant-split/`}
         tooltip={`GroupCode: ${groupCode}`}
       />
-      <NavigateIcon
+      <NavigateFontAwesomeIcon
         icon={faRightFromBracket}
         route={`/leave-group/${groupName}/${groupCode}`}
         tooltip='Leave group'

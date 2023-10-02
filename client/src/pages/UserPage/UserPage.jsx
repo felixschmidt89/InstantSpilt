@@ -29,7 +29,7 @@ const UserPage = () => {
         <div>
           <h1>{userInfo.userName}</h1>
           <h2>
-            Balance:{" "}
+            Balance:
             <span className={balanceClass}>
               {userInfo.userBalance.toFixed(2)}€
             </span>

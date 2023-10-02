@@ -1,8 +1,8 @@
 import React from "react";
 import InlineNavigateButtons from "../../components/InlineNavigateButtons/InlineNavigateButtons";
-import styles from "./ExplanationPage.module.css";
+import styles from "./GroupCodeExplanationPage.module.css";
 
-const ExplanationPage = () => {
+const GroupCodeExplanationPage = () => {
   return (
     <main>
       <InlineNavigateButtons
@@ -35,4 +35,4 @@ const ExplanationPage = () => {
   );
 };
 
-export default ExplanationPage;
+export default GroupCodeExplanationPage;

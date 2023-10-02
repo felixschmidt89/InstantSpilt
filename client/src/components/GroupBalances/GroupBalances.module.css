@@ -3,3 +3,27 @@
   height: 70%;
   overflow-y: auto;
 }
+
+.positiveBalance {
+  padding-left: 0.4rem;
+  color: var(--color-dark);
+}
+
+.negativeBalance {
+  padding-left: 0.4rem;
+  color: var(--color-error);
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.userName {
+  margin-right: 0.5rem;
+}
+
+.userName:hover {
+  color: var(--color-success);
+}

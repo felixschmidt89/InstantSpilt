@@ -1,7 +1,9 @@
 .positiveBalance {
+  padding-left: 0.4rem;
   color: var(--color-success);
 }
 
 .negativeBalance {
+  padding-left: 0.4rem;
   color: var(--color-error);
 }

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
-import styles from "./NavigateIcon.module.css";
+import styles from "./NavigateFontAwesomeIcon.module.css";
 
-const NavigateIcon = ({ icon, route, tooltip }) => {
+const NavigateFontAwesomeIcon = ({ icon, route, tooltip }) => {
   const navigate = useNavigate();
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -26,4 +26,4 @@ const NavigateIcon = ({ icon, route, tooltip }) => {
   );
 };
 
-export default NavigateIcon;
+export default NavigateFontAwesomeIcon;
