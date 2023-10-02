@@ -1,13 +1,32 @@
-a {
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--color-success);
-}
-
 .container {
   padding-top: 4rem;
   display: flex;
-  text-align: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+.introContainer {
+  max-width: 80%;
+}
+
+.groupContainer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.groupLink {
+  text-decoration: none;
+}
+
+.groupLink:focus,
+.groupLink:active {
+  outline: none;
+  color: var(--color-success);
+}
+
+.groupLink:hover {
+  color: var(--color-success);
 }

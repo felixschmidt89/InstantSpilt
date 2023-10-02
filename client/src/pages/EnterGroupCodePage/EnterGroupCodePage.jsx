@@ -11,7 +11,8 @@ const EnterGroupCode = () => {
     setGroupCode(e.target.value);
   };
 
-  const handleEnterClick = async () => {
+  const handleFormSubmit = (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
     if (groupCode.length === 6) {
       navigate(`/groupCode-validator/${groupCode}`);
     }
@@ -26,18 +27,20 @@ const EnterGroupCode = () => {
       />
       <div className={style.container}>
         <h1>Enter groupCode</h1>
-        <input
-          className={style.inputField}
-          type='text'
-          placeholder='groupCode'
-          value={groupCode}
-          onChange={handleInputChange}
-        />
-        {groupCode.length === 6 && (
-          <button className={style.button} onClick={handleEnterClick}>
-            join
-          </button>
-        )}
+        <form onSubmit={handleFormSubmit}>
+          <input
+            className={style.inputField}
+            type='text'
+            placeholder='groupCode'
+            value={groupCode}
+            onChange={handleInputChange}
+          />
+          {groupCode.length === 6 && (
+            <button type='submit' className={style.button}>
+              join
+            </button>
+          )}
+        </form>
       </div>
     </main>
   );
