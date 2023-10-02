@@ -21,7 +21,9 @@ const NavigateFontAwesomeIcon = ({ icon, route, tooltip }) => {
         onClick={handleClick}
         className={styles.icon}
       />
-      {showTooltip && <div className={styles.tooltip}>{tooltip}</div>}
+      {tooltip && showTooltip && (
+        <div className={styles.tooltip}>{tooltip}</div>
+      )}
     </div>
   );
 };
