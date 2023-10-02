@@ -6,20 +6,15 @@ import style from "./EnterGroupCodePage.module.css";
 
 const EnterGroupCode = () => {
   const [groupCode, setGroupCode] = useState("");
-  const [isInvalid, setIsInvalid] = useState(false);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
-    const groupCode = e.target.value;
-    setGroupCode(groupCode);
-    setIsInvalid(groupCode.length !== 6);
+    setGroupCode(e.target.value);
   };
 
-  const handleEnterClick = () => {
-    if (!isInvalid) {
-      console.log(groupCode);
-      setGroupCodeToCurrentlyActiveHelper(groupCode);
-      navigate("/instant-split");
+  const handleEnterClick = async () => {
+    if (groupCode.length === 6) {
+      navigate(`/groupCode-validator/${groupCode}`);
     }
   };
 
