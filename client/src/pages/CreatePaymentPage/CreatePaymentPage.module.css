@@ -12,6 +12,7 @@ h2 {
   font-size: 1.6rem;
   text-align: center;
   outline: none;
+  margin-right: 0.4rem;
 }
 
 .select {
@@ -28,6 +29,10 @@ h2 {
 .inputField:focus {
   border-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+.paymentToEmoji {
+  margin-right: 0.4rem;
 }
 
 .buttonContainer {

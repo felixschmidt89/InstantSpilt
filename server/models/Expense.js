@@ -6,7 +6,7 @@ const expenseSchema = new Schema(
       type: String,
       trim: true,
       required: [true, 'The name of the expense is required but missing.'],
-      minlength: [1, 'The expense name must be at least 3 characters long.'],
+      minlength: [1, 'The expense name must be at least 1 characters long.'],
       maxlength: [100, 'The expense name cannot exceed 100 characters.'],
     },
     expenseAmount: {

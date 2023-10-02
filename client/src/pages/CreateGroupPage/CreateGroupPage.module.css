@@ -15,7 +15,6 @@
   border-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-signal);
 }
-
 .buttonContainer {
   padding-top: 1rem;
   display: block;

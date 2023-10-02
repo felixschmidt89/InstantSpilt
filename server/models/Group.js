@@ -13,7 +13,7 @@ const groupSchema = new Schema(
       type: String,
       trim: true,
       required: [true, 'The name of the group is required but missing.'],
-      minlength: [3, 'The group name must be at least 3 characters long.'],
+      minlength: [1, 'The group name must be at least 1 characters long.'],
       maxlength: [50, 'The group name cannot exceed 50 characters.'],
     },
   },

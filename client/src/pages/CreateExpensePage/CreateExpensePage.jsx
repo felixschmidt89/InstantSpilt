@@ -95,7 +95,6 @@ export default function CreateExpensePage() {
           maxLength={50}
           ref={inputFieldOne}
         />
-        <span> </span>
         {/* Input field for expense amount */}
         <input
           className={styles.inputFieldTwo}
@@ -107,7 +106,6 @@ export default function CreateExpensePage() {
           min='0.01'
           required
         />
-        <span> </span>
         {/* Dropdown to select the expense paye r */}
         <select
           className={styles.select}

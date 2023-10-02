@@ -69,7 +69,6 @@ export default function CreatePaymentPage() {
           min='0.01'
           ref={inputField}
         />
-        <span> </span>
         <select
           className={styles.select}
           value={userName}
@@ -85,7 +84,9 @@ export default function CreatePaymentPage() {
             </option>
           ))}
         </select>
-        <span> {emojiConstants.paymentsMade} </span>
+        <span className={styles.paymentToEmoji}>
+          {emojiConstants.paymentsMade}
+        </span>
         <select
           className={styles.select}
           value={paymentRecipientName}

@@ -2,6 +2,11 @@ h2 {
   margin-bottom: 1rem;
 }
 
+.inputFieldOne,
+.inputFieldTwo {
+  margin-right: 0.4rem;
+}
+
 .inputFieldOne {
   width: 20rem;
 }
