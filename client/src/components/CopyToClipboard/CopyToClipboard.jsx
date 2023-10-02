@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CopyToClipboard.module.css";
 
-const CopyToClipboard = ({ url }) => {
+const CopyToClipboard = ({ infoTocopy, inputFieldWidth = "fit-content" }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyClick = () => {
     const textField = document.createElement("input");
-    textField.value = url;
+    textField.value = infoTocopy;
     document.body.appendChild(textField);
     textField.select();
     document.execCommand("copy");
@@ -18,7 +18,13 @@ const CopyToClipboard = ({ url }) => {
 
   return (
     <div>
-      <input className={styles.inputField} type='text' value={url} readOnly />
+      <input
+        className={styles.inputField}
+        type='text'
+        value={infoTocopy}
+        readOnly
+        style={{ width: inputFieldWidth }}
+      />
       <br />
       <button
         className={styles.button}

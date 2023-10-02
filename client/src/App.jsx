@@ -24,6 +24,7 @@ import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroup
 import ShareGroupPage from "./pages/ShareGroupPage/ShareGroupPage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
 import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
+import CopyGroupCodePage from "./pages/CopyGroupCodePage/CopyGroupCodePage";
 
 function App() {
   return (
@@ -67,6 +68,10 @@ function App() {
         <Route
           path='/share-group/:groupName/:groupCode'
           element={<ShareGroupPage />}
+        />
+        <Route
+          path='/copy-groupCode/:groupName/:groupCode'
+          element={<CopyGroupCodePage />}
         />
 
         <Route path='*' element={<PageNotFoundPage />} />

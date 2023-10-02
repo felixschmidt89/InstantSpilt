@@ -2,16 +2,11 @@ import React from "react";
 import CopyToClipboard from "../../components/CopyToClipboard/CopyToClipboard";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 
-const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
-
-const ShareGroupPage = () => {
+const CopyGroupCodePage = () => {
   const pathParts = window.location.pathname.split("/");
   const groupName = pathParts[pathParts.length - 2];
   const groupCode = pathParts[pathParts.length - 1];
-
   console.log(groupName, groupCode);
-
-  const infoTocopy = `${baseUrl}/join/${groupCode}`;
 
   return (
     <main>
@@ -21,15 +16,15 @@ const ShareGroupPage = () => {
         alignment='left'
       />
       <div>
-        <h1>Invite & Share</h1>
+        <h1>Copy & save groupCode</h1>
         <p>
-          To invite others to join <strong>{groupName}</strong> or use
-          InstantSplit on your other devices, just copy and share this link:
+          To regain access to <strong>{groupName}</strong> on any device easily,
+          store your groupCode somewhere safe:
         </p>
-        <CopyToClipboard infoTocopy={infoTocopy} inputFieldWidth='400px' />
+        <CopyToClipboard infoTocopy={groupCode} />
       </div>
     </main>
   );
 };
 
-export default ShareGroupPage;
+export default CopyGroupCodePage;

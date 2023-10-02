@@ -19,7 +19,7 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
       />
       <NavigateFontAwesomeIcon
         icon={faCircleInfo}
-        route={`/instant-split/`}
+        route={`/copy-groupcode/${groupName}/${groupCode}`}
         tooltip={`GroupCode: ${groupCode}`}
       />
       <NavigateFontAwesomeIcon
