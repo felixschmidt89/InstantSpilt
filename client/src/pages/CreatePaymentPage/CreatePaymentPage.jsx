@@ -25,7 +25,7 @@ export default function CreatePaymentPage() {
     inputField.current.focus();
   }, []);
 
-  // On form submission: post payment and programmatically navigate to instant-split page
+  // On form submission: post payment and navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {

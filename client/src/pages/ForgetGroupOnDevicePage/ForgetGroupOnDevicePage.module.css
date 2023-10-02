@@ -1,4 +1,4 @@
-button {
+.button {
   background-color: var(--color-error);
   color: var(--color-main);
   border: none;
@@ -10,7 +10,7 @@ button {
   margin: 0 auto;
 }
 
-button:hover {
+.button:hover {
   background-color: var(--color-error);
   box-shadow: 0 0 0.5rem var(--color-error);
 }

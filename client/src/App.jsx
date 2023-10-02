@@ -23,6 +23,7 @@ import ExplanationPage from "./pages/ExplanationPage/ExplanationPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
 import ShareGroupPage from "./pages/ShareGroupPage/ShareGroupPage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
+import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           path='/groupCode-validator/:groupCode'
           element={<ValidateProvidedGroupCodePage />}
         />
+        <Route path='/join/:groupCode' element={<AcceptInviteAndJoinPage />} />
 
         <Route path='/instant-split' element={<InstantSplitPage />} />
         <Route path='/create-expense' element={<CreateExpensePage />} />

@@ -1,60 +1,48 @@
+// DONE adding only meaningful necessary comments
+
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import styles from "./AcceptInviteAndJoinPage.module.css";
+import { useParams, useNavigate } from "react-router-dom";
+import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
+import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
-import storeGroupCodesInLocalStorageHelper from "../helpers/storeGroupCodesInLocalStorageHelper";
-import setGroupCodeToCurrentlyActiveHelper from "../helpers/setGroupCodeToCurrentlyActiveHelper";
+import styles from "./AcceptInviteAndJoinPage.module.css";
 
 const AcceptInviteAndJoinPage = () => {
   const { groupCode } = useParams();
   const navigate = useNavigate();
-  const [confirmed, setConfirmed] = useState(false);
-  const groupDataResponse = useFetchGroupData(groupCode);
+  const [isLoading, setIsLoading] = useState(true);
+  const groupData = useFetchGroupData(groupCode);
 
+  // Set isLoading to false when group data is received.
   useEffect(() => {
-    if (
-      groupDataResponse.status === "success" &&
-      confirmed &&
-      groupDataResponse.data.group !== null
-    ) {
-      storeGroupCodesInLocalStorageHelper(groupCode);
-      setGroupCodeToCurrentlyActiveHelper(groupCode);
-      // navigate("/instant-split");
+    if (groupData !== null && groupData !== undefined) {
+      setIsLoading(false);
     }
-  }, [groupDataResponse, confirmed, navigate]);
+  }, [groupData]);
 
-  const handleConfirm = () => {
-    setConfirmed(true);
+  // On confirmation button click: store groupCode in client's localStorage and navigate to instant-split page
+  const handleAcceptInvitation = () => {
+    storeGroupCodesInLocalStorageHelper(groupCode);
+    setGroupCodeToCurrentlyActiveHelper(groupCode);
+    navigate("/instant-split");
   };
 
+  // Visually indicate fetching, render button to accept invitation when data is received
   return (
     <main className={styles.container}>
-      <h1>GroupCode validation</h1>
-      {groupDataResponse.status === "loading" && <p>Validating groupCode...</p>}
-      {groupDataResponse.status === "error" && (
-        <div>
-          <p>🚧 Oops, there's an error validating the provided GroupCode.</p>
-          <Link to='/homepage'>Go to main</Link>
-        </div>
-      )}
-      {groupDataResponse.status === "success" && !confirmed && (
-        <div>
-          {groupDataResponse.data.group !== null ? (
-            <>
-              <p>
-                You've been invited to {groupDataResponse.data.group.groupName}
-              </p>
-              <p>Do you want to join?</p>
-              <button onClick={handleConfirm}>Confirm</button>
-            </>
-          ) : (
-            <>
-              <p>
-                🚧 Oops, there's no group associated with the provided
-                GroupCode.
-              </p>
-            </>
-          )}
+      <h1>Hey there!</h1>
+      {isLoading && <p>Loading...</p>}
+      {!isLoading && groupData && (
+        <div className={styles.explanationContainer}>
+          <p>
+            Someone has given you this link so you can access{" "}
+            <strong>{groupData.group.groupName}</strong> - a group to settle
+            expenses - on this device.
+          </p>
+          <h2>Are you in?</h2>
+          <button className={styles.button} onClick={handleAcceptInvitation}>
+            Sure!
+          </button>
         </div>
       )}
     </main>

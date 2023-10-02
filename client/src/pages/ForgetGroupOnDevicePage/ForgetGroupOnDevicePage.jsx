@@ -31,7 +31,9 @@ const ForgetGroupOnDevicePage = () => {
         <strong>{groupCode}</strong>
       </p>{" "}
       <br />
-      <button onClick={handleConfirm}>Confirm</button>
+      <button className={styles.button} onClick={handleConfirm}>
+        Confirm
+      </button>
     </main>
   );
 };

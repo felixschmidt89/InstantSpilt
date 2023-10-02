@@ -31,7 +31,7 @@ export default function CreateExpensePage() {
     setSelectedBeneficiaries([...groupMembers]);
   }, [groupMembers]);
 
-  // On form submission: Post expense, programmatically navigate to instant-split page
+  // On form submission: Post expense and navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
