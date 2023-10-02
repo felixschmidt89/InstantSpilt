@@ -22,6 +22,7 @@ import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 import ExplanationPage from "./pages/ExplanationPage/ExplanationPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
 import ShareGroupPage from "./pages/ShareGroupPage/ShareGroupPage";
+import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
 
 function App() {
   return (
@@ -38,6 +39,11 @@ function App() {
           element={<CreateUsersNextButtonPage />}
         />
         <Route path='/enter-groupcode' element={<EnterGroupCode />} />
+        <Route
+          path='/groupCode-validator/:groupCode'
+          element={<ValidateProvidedGroupCodePage />}
+        />
+
         <Route path='/instant-split' element={<InstantSplitPage />} />
         <Route path='/create-expense' element={<CreateExpensePage />} />
         <Route path='/create-payment' element={<CreatePaymentPage />} />

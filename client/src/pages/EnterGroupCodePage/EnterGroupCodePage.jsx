@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import { useNavigate } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import style from "./EnterGroupCodePage.module.css";

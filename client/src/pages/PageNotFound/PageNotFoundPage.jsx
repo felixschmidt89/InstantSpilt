@@ -7,7 +7,7 @@ function PageNotFoundPage() {
     <main className={styles.pageNotFound}>
       <h1>🚧 404 - Page not found</h1>
       <p>The page you're looking for does not exist.</p>
-      <Link to='/'>Go back to main</Link>
+      <Link to='/'>Go to main</Link>
     </main>
   );
 }
