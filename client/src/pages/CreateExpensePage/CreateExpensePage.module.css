@@ -33,8 +33,8 @@ h2 {
   outline-color: var(--color-grey);
 }
 
-.select,
-.inputFieldOne,
+.select:focus,
+.inputFieldOne:focus,
 .inputFieldTwo:focus {
   border-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-success);

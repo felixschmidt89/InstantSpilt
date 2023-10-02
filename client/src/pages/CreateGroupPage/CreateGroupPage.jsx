@@ -1,3 +1,5 @@
+// DONE adding only meaningful necessary comments
+
 import React from "react";
 import { useState, useEffect, useRef } from "react"; // Import `useRef`
 import { useNavigate } from "react-router-dom";

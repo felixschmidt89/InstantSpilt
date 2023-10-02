@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+// DONE: adding only meaningful necessary comments
+
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +12,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function CreateExpensePage() {
   const navigate = useNavigate();
+  const inputFieldOne = useRef(null);
 
   const [expenseName, setExpenseName] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
@@ -18,11 +21,17 @@ export default function CreateExpensePage() {
   const groupCode = localStorage.getItem("activeGroupCode");
   const groupMembers = useFetchGroupMembers(groupCode);
 
-  // Set all group members as beneficiaries by default
+  // Autofocus first input field on mount
   useEffect(() => {
-    setSelectedBeneficiaries([...groupMembers]); //
+    inputFieldOne.current.focus();
+  }, []);
+
+  // Set all group members as beneficiaries on mount
+  useEffect(() => {
+    setSelectedBeneficiaries([...groupMembers]);
   }, [groupMembers]);
 
+  // On form submission: Post expense, programmatically navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -34,10 +43,6 @@ export default function CreateExpensePage() {
         userName,
         expenseBeneficiariesNames: selectedBeneficiaries,
       });
-      setExpenseName("");
-      setExpenseAmount("");
-      setUserName("");
-      setSelectedBeneficiaries([...groupMembers]);
       navigate("/instant-split");
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
@@ -46,14 +51,17 @@ export default function CreateExpensePage() {
     }
   };
 
+  // controlled first input component to set expenseName state
   const handleExpenseNameChange = (e) => {
     setExpenseName(e.target.value);
   };
 
+  // controlled second input component to set expenseAmount state
   const handleExpenseAmountChange = (e) => {
     setExpenseAmount(e.target.value);
   };
 
+  // controlled select component to set expenseBeneficiaries state
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
@@ -64,6 +72,8 @@ export default function CreateExpensePage() {
       );
     }
   };
+
+  // render back button to abort and input fields, conditionally render submit button
   return (
     <main>
       <NavigateButton
@@ -73,6 +83,7 @@ export default function CreateExpensePage() {
       />
       <h2>Add expense {emojiConstants.expense}</h2>
       <form onSubmit={handleFormSubmit}>
+        {/* Input field for expense name */}
         <input
           className={styles.inputFieldOne}
           type='text'
@@ -82,8 +93,10 @@ export default function CreateExpensePage() {
           required
           minLength={3}
           maxLength={50}
+          ref={inputFieldOne}
         />
         <span> </span>
+        {/* Input field for expense amount */}
         <input
           className={styles.inputFieldTwo}
           type='number'
@@ -95,6 +108,7 @@ export default function CreateExpensePage() {
           required
         />
         <span> </span>
+        {/* Dropdown to select the expense paye r */}
         <select
           className={styles.select}
           value={userName}
@@ -103,6 +117,7 @@ export default function CreateExpensePage() {
           <option value='' disabled>
             {emojiConstants.paidFor} by
           </option>
+          {/* Map all group members to select beneficiaries */}
           {groupMembers.map((member) => (
             <option key={member} value={member}>
               {member}
@@ -111,6 +126,7 @@ export default function CreateExpensePage() {
         </select>
         <h4>for </h4>
         <div className={styles.beneficiaries}>
+          {/* (Un)check beneficiaries */}
           {groupMembers.map((member) => (
             <label className={styles.label} key={member}>
               <input
@@ -123,11 +139,15 @@ export default function CreateExpensePage() {
             </label>
           ))}
         </div>
-        {expenseName.length >= 3 && (
-          <button className={styles.button} type='submit'>
-            +
-          </button>
-        )}
+        {/* Conditionally render submit button when expense amount, name, payer & min 1 beneficiary is given*/}
+        {expenseAmount &&
+          userName &&
+          expenseName &&
+          selectedBeneficiaries.length > 0 && (
+            <button className={styles.button} type='submit'>
+              +
+            </button>
+          )}
       </form>
     </main>
   );
