@@ -6,6 +6,7 @@ import groupRouter from './routes/groupRouter.js';
 import userRouter from './routes/userRouter.js';
 import expenseRouter from './routes/expenseRouter.js';
 import paymentRouter from './routes/paymentRouter.js';
+import compression from 'compression';
 
 // Create an express application
 const app = express();
@@ -27,6 +28,8 @@ const { API_BASEURL, NODE_ENV } = process.env;
 app.use(express.json());
 // Enable CORS for all routes
 app.use(cors());
+
+app.use(compression());
 
 // MIDDLEWARES
 if (NODE_ENV === 'development') {

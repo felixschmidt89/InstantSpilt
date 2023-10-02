@@ -103,7 +103,6 @@ export const listExpensesAndPaymentsByUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   try {
     const { userId } = req.params;
-    console.log(userId);
 
     // Check if the user has associated transactions
     const [expenses, payments] = await Promise.all([
@@ -127,8 +126,6 @@ export const deleteUser = async (req, res) => {
     const userToDelete = await User.findOne({
       _id: userId,
     });
-
-    console.log(userToDelete);
 
     await User.deleteOne({ _id: userToDelete._id });
 

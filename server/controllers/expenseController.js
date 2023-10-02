@@ -82,13 +82,10 @@ export const getExpenseInfo = async (req, res) => {
 export const deleteExpense = async (req, res) => {
   try {
     const { expenseId } = req.params;
-    console.log(expenseId);
 
     const expenseToDelete = await Expense.findById(expenseId)
       .populate('expensePayer')
       .populate('expenseBeneficiaries');
-
-    console.log(expenseToDelete);
 
     const { expensePayer, expenseBeneficiaries } = expenseToDelete;
 

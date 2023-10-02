@@ -16,6 +16,18 @@ export const createPayment = async (req, res) => {
       groupCode,
     });
 
+    // Check if paymentMaker and paymentRecipient are the same user
+    if (
+      paymentMaker &&
+      paymentRecipient &&
+      paymentMaker._id.equals(paymentRecipient._id)
+    ) {
+      return res.status(StatusCodes.CONFLICT).json({
+        status: 'fail',
+        message: 'Oops! Payer and recipient can not be the same person.',
+      });
+    }
+
     const newPayment = new Payment({
       paymentMaker: paymentMaker._id,
       paymentRecipient: paymentRecipient.id,
