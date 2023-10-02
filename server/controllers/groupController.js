@@ -12,16 +12,19 @@ const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
 
 /**
  * Creates a new group with a globally unique group ID
- * @param {object} req - The request object.
- * @param {object} res - The response object.
+ * @param {Object} req
+ * @param {Object} res
+ * @returns {Object} The created group object.
+ *
  */
+
 export const createGroup = async (req, res) => {
   try {
     const { groupName } = req.body;
     let groupCode;
     let isUnique = false;
 
-    // Generates globally unique groupCode
+    // Generate globally unique groupCode
     while (!isUnique) {
       groupCode = nanoid(6);
       // eslint-disable-next-line no-await-in-loop

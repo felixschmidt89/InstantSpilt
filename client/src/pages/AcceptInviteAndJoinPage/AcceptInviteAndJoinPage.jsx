@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
+import styles from "./AcceptInviteAndJoinPage.module.css";
+import useFetchGroupData from "../../hooks/useFetchGroupData";
+import storeGroupCodesInLocalStorageHelper from "../helpers/storeGroupCodesInLocalStorageHelper";
+import setGroupCodeToCurrentlyActiveHelper from "../helpers/setGroupCodeToCurrentlyActiveHelper";
 
-const ValidateJoinGroupCodePage = () => {
+const AcceptInviteAndJoinPage = () => {
   const { groupCode } = useParams();
-  console.log(groupCode);
-  const groupExists = useValidateGroupExistence({ groupCode });
   const navigate = useNavigate();
-  const [confirmed, setConfirmed] = useState(false); // To track user confirmation
+  const [confirmed, setConfirmed] = useState(false);
+  const groupDataResponse = useFetchGroupData(groupCode);
 
   useEffect(() => {
-    if (groupExists === true && confirmed) {
-      // If group exists and user confirmed, add group code to local storage
-      // Note: You can use your own function to store the group code
-      // storeGroupCodesInLocalStorageHelper(groupCode);
-      navigate("/instant-split");
+    if (
+      groupDataResponse.status === "success" &&
+      confirmed &&
+      groupDataResponse.data.group !== null
+    ) {
+      storeGroupCodesInLocalStorageHelper(groupCode);
+      setGroupCodeToCurrentlyActiveHelper(groupCode);
+      // navigate("/instant-split");
     }
-  }, [groupExists, groupCode, navigate, confirmed]);
+  }, [groupDataResponse, confirmed, navigate]);
 
   const handleConfirm = () => {
     setConfirmed(true);
@@ -24,25 +29,36 @@ const ValidateJoinGroupCodePage = () => {
 
   return (
     <main className={styles.container}>
-      <h1>Group Invitation</h1>
-      {/* Handle different outcomes */}
-      {groupExists === null && <p>Validating groupCode...</p>}
-      {groupExists === false && (
+      <h1>GroupCode validation</h1>
+      {groupDataResponse.status === "loading" && <p>Validating groupCode...</p>}
+      {groupDataResponse.status === "error" && (
         <div>
-          <p>
-            🚧 Oops, there's no group associated with the provided GroupCode.
-          </p>
+          <p>🚧 Oops, there's an error validating the provided GroupCode.</p>
           <Link to='/homepage'>Go to main</Link>
         </div>
       )}
-      {groupExists === true && !confirmed && (
+      {groupDataResponse.status === "success" && !confirmed && (
         <div>
-          <p>You've been invited to</p>
-          <button onClick={handleConfirm}>Confirm</button>
+          {groupDataResponse.data.group !== null ? (
+            <>
+              <p>
+                You've been invited to {groupDataResponse.data.group.groupName}
+              </p>
+              <p>Do you want to join?</p>
+              <button onClick={handleConfirm}>Confirm</button>
+            </>
+          ) : (
+            <>
+              <p>
+                🚧 Oops, there's no group associated with the provided
+                GroupCode.
+              </p>
+            </>
+          )}
         </div>
       )}
     </main>
   );
 };
 
-export default ValidateJoinGroupCodePage;
+export default AcceptInviteAndJoinPage;

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./GroupBalances.module.css";
-import CopyToClipboard from "../CopyToClipboard/CopyToClipboard";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
