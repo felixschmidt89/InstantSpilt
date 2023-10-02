@@ -25,6 +25,7 @@ import ShareGroupPage from "./pages/ShareGroupPage/ShareGroupPage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
 import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 import CopyGroupCodePage from "./pages/CopyGroupCodePage/CopyGroupCodePage";
+import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
       <Routes>
         <Route index element={<IndexNavigator />} />
         <Route path='/homepage' element={<HomePage />} />
+        <Route path='/legal-notice' element={<LegalNoticePage />} />
+
         <Route
           path='/groupcode-explanation'
           element={<GroupCodeExplanationPage />}

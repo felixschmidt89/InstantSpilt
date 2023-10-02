@@ -1,0 +1,9 @@
+.container {
+  height: 100%;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+}
+
+.note {
+  font-style: italic;
+}
