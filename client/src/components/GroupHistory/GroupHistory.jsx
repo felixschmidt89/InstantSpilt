@@ -62,7 +62,7 @@ export default function GroupHistory({ groupCode }) {
     <div className={styles.expenses}>
       {isLoading ? (
         <Spinner />
-      ) : (
+      ) : groupExpensesAndPayments.length > 0 ? ( // Check if there are expenses or payments
         <ul>
           {groupExpensesAndPayments.map((item) => (
             <li key={item._id}>
@@ -97,6 +97,8 @@ export default function GroupHistory({ groupCode }) {
             </li>
           ))}
         </ul>
+      ) : (
+        <p>No expenses added yet...</p> // Display a message when there are no expenses or payments
       )}
       {error && <p className={styles.error}>{error}</p>}
     </div>

@@ -73,6 +73,7 @@ export default function CreatePaymentPage() {
           placeholder='amount'
           required
           pattern='[0-9]+([,.][0-9]{1,2})?'
+          inputMode='numeric'
           ref={inputField}
         />
         <select

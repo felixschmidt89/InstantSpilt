@@ -14,7 +14,7 @@ export default function Footer() {
       <LinkFontAwesomeIcon
         icon={faCopyright}
         url={"https://www.linkedin.com/in/felixschmidt89/"}
-        tooltip={"2023"}
+        tooltip={"2023 - Felix Schmidt"}
       />
       <LinkFontAwesomeIcon icon={faAt} email={"felix.schmidt@protonmail.com"} />
       <NavigateFontAwesomeIcon

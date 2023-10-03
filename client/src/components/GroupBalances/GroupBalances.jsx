@@ -60,7 +60,7 @@ export default function GroupBalances() {
     <div className={styles.balances}>
       {isLoading ? (
         <Spinner />
-      ) : (
+      ) : userDetails.length > 0 ? (
         <ul>
           {userDetails.map((user) => (
             <li key={user.userId} className={styles.userListItem}>
@@ -80,7 +80,7 @@ export default function GroupBalances() {
                       ? styles.positiveBalance
                       : styles.negativeBalance
                   }`}>
-                  {/*Fix rounding issue in certain settling, e.g. 10€/3 will result in 3.33, 3.33, 3.4 */}
+                  {/* Fix rounding issue in certain settling, e.g., 10€/3 will result in 3.33, 3.33, 3.4 */}
                   {user.userBalance === 0.01
                     ? "0.00€"
                     : user.userBalance.toFixed(2) + "€"}{" "}
@@ -89,6 +89,8 @@ export default function GroupBalances() {
             </li>
           ))}
         </ul>
+      ) : (
+        <p>Add users to start settling expenses...</p> // Display a message when there are no users
       )}
       {error && <p>{error}</p>}{" "}
       {/* Display error message if there's an error */}
