@@ -6,6 +6,7 @@ import {
   faAt,
   faCopyright,
   faScaleBalanced,
+  faCode,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function Footer() {
@@ -16,7 +17,16 @@ export default function Footer() {
         url={"https://www.linkedin.com/in/felixschmidt89/"}
         tooltip={"2023 - Felix Schmidt"}
       />
-      <LinkFontAwesomeIcon icon={faAt} email={"felix.schmidt@protonmail.com"} />
+      <LinkFontAwesomeIcon
+        icon={faAt}
+        email={"felix.schmidt@protonmail.com"}
+        tooltip={"Mail"}
+      />
+      <LinkFontAwesomeIcon
+        icon={faCode}
+        url={"https://github.com/felixschmidt89/InstantSpilt"}
+        tooltip={"GitHub repository"}
+      />
       <NavigateFontAwesomeIcon
         icon={faScaleBalanced}
         route={"/legal-notice/"}

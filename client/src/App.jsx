@@ -27,6 +27,7 @@ import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInvit
 import CopyGroupCodePage from "./pages/CopyGroupCodePage/CopyGroupCodePage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroupExpensesPage";
+import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
 
 function App() {
   return (
@@ -79,6 +80,7 @@ function App() {
           path='/copy-groupCode/:groupName/:groupCode'
           element={<CopyGroupCodePage />}
         />
+        <Route path='/feedback/:groupCode' element={<FeedbackPage />} />
 
         <Route path='*' element={<PageNotFoundPage />} />
       </Routes>

@@ -3,6 +3,7 @@ import {
   faRightFromBracket,
   faShareNodes,
   faCircleInfo,
+  faMessage,
 } from "@fortawesome/free-solid-svg-icons";
 import NavigateFontAwesomeIcon from "../NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
 import styles from "./UserActionsComponent.module.css";
@@ -22,6 +23,12 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
         route={`/copy-groupcode/${groupName}/${groupCode}`}
         tooltip={`GroupCode: ${groupCode}`}
       />
+      <NavigateFontAwesomeIcon
+        icon={faMessage}
+        route={`/feedback/${groupCode}`}
+        tooltip={"Feedback"}
+      />
+
       <NavigateFontAwesomeIcon
         icon={faRightFromBracket}
         route={`/leave-group/${groupName}/${groupCode}`}

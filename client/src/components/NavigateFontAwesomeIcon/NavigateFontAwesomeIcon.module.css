@@ -18,7 +18,7 @@
 .tooltip {
   font-size: 1.6rem;
   position: absolute;
-  bottom: 100%;
+  bottom: 110%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--color-dark);
