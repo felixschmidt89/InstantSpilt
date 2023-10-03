@@ -6,12 +6,12 @@ import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 // eslint-disable-next-line import/prefer-default-export
 export const createFeedback = async (req, res) => {
   try {
-    const { name, email, requestType, feedback, groupCode } = req.body;
+    const { name, email, messageType, feedback, groupCode } = req.body;
 
     const newFeedback = new Feedback({
       name,
       email,
-      requestType,
+      messageType,
       feedback,
       groupCode,
     });

@@ -1,13 +1,13 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
 import groupRouter from './routes/groupRouter.js';
 import userRouter from './routes/userRouter.js';
 import expenseRouter from './routes/expenseRouter.js';
 import paymentRouter from './routes/paymentRouter.js';
-import compression from 'compression';
-
+import feedbackRouter from './routes/feedbackRouter.js';
 // Create an express application
 const app = express();
 
@@ -41,5 +41,6 @@ app.use(`${API_BASEURL}/groups`, groupRouter);
 app.use(`${API_BASEURL}/users`, userRouter);
 app.use(`${API_BASEURL}/expenses`, expenseRouter);
 app.use(`${API_BASEURL}/payments`, paymentRouter);
+app.use(`${API_BASEURL}/feedbacks`, feedbackRouter);
 
 export default app;

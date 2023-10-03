@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 import styles from "./FeedbackPage.module.css/";
-
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
+
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 export default function FeedbackPage() {
   const { groupCode } = useParams();
 
-  console.log(groupCode);
-
+  // states to set user input data, to display form and message from server
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    requestType: "", // Add requestType to the form data
+    messageType: "",
     feedback: "",
   });
 
+  const [showForm, setShowForm] = useState(true);
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+
+  // controlled component to handle user form inputs
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,15 +29,24 @@ export default function FeedbackPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  // On form submission: Post feedback, hide the form and render message from server instead
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData);
-    setFormData({
-      name: "",
-      email: "",
-      requestType: "", // Reset requestType as well
-      feedback: "",
-    });
+
+    try {
+      const requestData = {
+        ...formData,
+        groupCode,
+      };
+
+      const response = await axios.post(`${apiUrl}/feedbacks`, requestData);
+
+      setFeedbackMessage(response.data.message);
+      setShowForm(false); // Hide the form after successful submission
+    } catch (error) {
+      console.error("Error creating feedback:", error);
+      setFeedbackMessage("Error creating feedback. Please try again.");
+    }
   };
 
   return (
@@ -43,82 +57,88 @@ export default function FeedbackPage() {
         alignment={"left"}
       />
       <h1>Leave a message</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='name'>
-            <strong>Name*</strong>
-          </label>
+      {showForm ? (
+        <form onSubmit={handleSubmit}>
           <div>
-            <input
-              className={styles.inputField}
-              type='text'
-              id='name'
-              name='name'
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder='required'
-              required
-            />
+            <label htmlFor='name'>
+              <strong>Name*</strong>
+            </label>
+            <div>
+              <input
+                className={styles.inputField}
+                type='text'
+                id='name'
+                name='name'
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder='required'
+                required
+              />
+            </div>
           </div>
-        </div>
-        <div>
-          <label htmlFor='email'>Email</label>
           <div>
-            <input
-              className={styles.inputField}
-              type='email'
-              id='email'
-              name='email'
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder='optional'
-            />
+            <label htmlFor='email'>Email</label>
+            <div>
+              <input
+                className={styles.inputField}
+                type='text' // so that field is *really* optional
+                id='email'
+                name='email'
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder='optional'
+              />
+            </div>
           </div>
-        </div>
-        <div>
-          <label htmlFor='messageType'>
-            <strong>Type*</strong>
-          </label>
           <div>
-            <select
-              className={styles.select}
-              id='messageType'
-              name='messageType'
-              value={formData.messageType}
-              onChange={handleInputChange}
-              required>
-              <option value=''>Select message type</option>
-              <option value='Just wanted to say hi'>
-                Just wanted to say hi{" "}
-              </option>
-              <option value='Issue/Bug'>Issue / Bug</option>
-              <option value='Feedback'>Feedback</option>
-              <option value='Feature Request'>Feature Request</option>
-              <option value='Else'>Else</option>
-            </select>
+            <label htmlFor='messageType'>
+              <strong>Type*</strong>
+            </label>
+            <div>
+              <select
+                className={styles.select}
+                id='messageType'
+                name='messageType'
+                value={formData.messageType}
+                onChange={handleInputChange}
+                required>
+                <option value=''>Select message type</option>
+                <option value='Just wanted to say hi'>
+                  Just wanted to say hi
+                </option>
+                <option value='Issue/Bug'>Issue / Bug</option>
+                <option value='Feedback'>Feedback</option>
+                <option value='Feature Request'>Feature Request</option>
+                <option value='Else'>Else</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div>
-          <label htmlFor='feedback'>
-            <strong>Message*</strong>
-          </label>
           <div>
-            <textarea
-              className={`${styles.inputField} ${styles.textArea}`}
-              id='feedback'
-              name='feedback'
-              value={formData.feedback}
-              onChange={handleInputChange}
-              placeholder='required'
-              rows='10'
-              required
-            />
+            <label htmlFor='feedback'>
+              <strong>Message*</strong>
+            </label>
+            <div>
+              <textarea
+                className={`${styles.inputField} ${styles.textArea}`}
+                id='feedback'
+                name='feedback'
+                value={formData.feedback}
+                onChange={handleInputChange}
+                placeholder='required'
+                rows='10'
+                required
+              />
+            </div>
           </div>
+          <button className={styles.button} type='submit'>
+            Submit
+          </button>
+        </form>
+      ) : (
+        <div>
+          <p>{feedbackMessage}</p>
         </div>
-        <button className={styles.button} type='submit'>
-          Submit
-        </button>
-      </form>
+      )}
     </main>
   );
 }
