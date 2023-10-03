@@ -25,7 +25,7 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
       />
       <NavigateFontAwesomeIcon
         icon={faMessage}
-        route={`/feedback/${groupName}/${groupCode}`}
+        route={`/feedback/${groupCode}`}
         tooltip={"Feedback"}
       />
 
