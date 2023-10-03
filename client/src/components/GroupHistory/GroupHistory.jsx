@@ -25,9 +25,9 @@ export default function GroupHistory({ groupCode }) {
           responseData.groupExpensesAndPayments &&
           responseData.groupExpensesAndPayments.length > 0
         ) {
-          // Create new properties
-          const modifiedData = responseData.groupExpensesAndPayments.map(
-            (item) => ({
+          // Create new properties and sort by createdAt in descending order
+          const modifiedData = responseData.groupExpensesAndPayments
+            .map((item) => ({
               ...item,
               itemId: item._id,
               // Determine and add 'itemType' based on the presence of properties
@@ -36,8 +36,11 @@ export default function GroupHistory({ groupCode }) {
                 : item.paymentAmount
                 ? "payment"
                 : "unknown",
-            })
-          );
+              // Convert createdAt to a Date object
+              createdAt: new Date(item.createdAt),
+            })) // Sort by createdAt in descending order
+            .sort((a, b) => b.createdAt - a.createdAt);
+          console.log(modifiedData);
           setGroupExpensesAndPayments(modifiedData);
         }
         setError(null);
@@ -89,7 +92,6 @@ export default function GroupHistory({ groupCode }) {
                     {item.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
                     {item.paymentRecipient.userName}
                   </strong>
-                  <div className={styles.date}></div>
                 </div>
               )}
             </li>
