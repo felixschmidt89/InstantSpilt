@@ -5,6 +5,7 @@ import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import emojiConstants from "../../constants/emojiConstants";
 import DeleteResourceButton from "../../components/DeleteResourceButton/DeleteResourceButton";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
+import SuggestSettlePayments from "../../components/biggerComponents/SuggestSettlePayments/SuggestSettlePayments";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -45,6 +46,7 @@ const PaymentPage = () => {
       ) : (
         <Spinner />
       )}
+      <SuggestSettlePayments />
     </main>
   );
 };

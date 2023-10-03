@@ -1,0 +1,13 @@
+.negativeBalance {
+  color: var(--color-error);
+}
+
+.userListItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.separator {
+  margin: 0 0.3rem;
+}

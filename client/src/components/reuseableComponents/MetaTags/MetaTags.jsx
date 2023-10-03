@@ -60,19 +60,10 @@ function MetaTags({
    This version is specifically targeting Chrome to use the IE rendering engine. */}
       <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
 
-      {/* Defines a Content Security Policy (CSP) for the website.
-   This policy specifies that content should only be loaded from the same origin ('self'). */}
-      <meta http-equiv='Content-Security-Policy' content="default-src 'self'" />
-
       {/* Specifies that the browser should not perform MIME type sniffing.
    This helps prevent browsers from interpreting certain responses as HTML or JavaScript
    when they shouldn't be, enhancing security. */}
       <meta http-equiv='X-Content-Type-Options' content='nosniff' />
-
-      {/* Sets the X-Frame-Options to 'deny'.
-   This prevents the webpage from being displayed in an iframe,
-   adding an extra layer of security to prevent clickjacking attacks. */}
-      <meta http-equiv='X-Frame-Options' content='deny' />
 
       {/* Specifies the referrer policy for requests made from this page.
    'no-referrer' indicates that no referrer information should be included
