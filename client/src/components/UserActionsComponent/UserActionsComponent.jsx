@@ -18,11 +18,6 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
       {isWebShareAPISupported ? (
         <>
           <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
-          <NavigateFontAwesomeIcon
-            icon={faShareNodes}
-            route={`/share-group/${groupName}/${groupCode}`}
-            tooltip="Invite & share group"
-          />
         </>
       ) : (
         <>
@@ -31,24 +26,25 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
             route={`/share-group/${groupName}/${groupCode}`}
             tooltip="Invite & share group"
           />
-          <NavigateFontAwesomeIcon
-            icon={faCircleInfo}
-            route={`/copy-groupcode/${groupName}/${groupCode}`}
-            tooltip={`GroupCode: ${groupCode}`}
-          />
-          <NavigateFontAwesomeIcon
-            icon={faMessage}
-            route={`/feedback/${groupCode}`}
-            tooltip="Feedback"
-          />
-          <NavigateFontAwesomeIcon
-            icon={faRightFromBracket}
-            route={`/leave-group/${groupName}/${groupCode}`}
-            tooltip="Leave group"
-          />
         </>
       )}
+      <NavigateFontAwesomeIcon
+        icon={faCircleInfo}
+        route={`/copy-groupcode/${groupName}/${groupCode}`}
+        tooltip={`GroupCode: ${groupCode}`}
+      />
+      <NavigateFontAwesomeIcon
+        icon={faMessage}
+        route={`/feedback/${groupCode}`}
+        tooltip="Feedback"
+      />
+      <NavigateFontAwesomeIcon
+        icon={faRightFromBracket}
+        route={`/leave-group/${groupName}/${groupCode}`}
+        tooltip="Leave group"
+      />
     </div>
   );
+};
 
 export default UserActionsContainer;
