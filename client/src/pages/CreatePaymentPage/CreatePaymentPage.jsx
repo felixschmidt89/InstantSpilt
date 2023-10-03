@@ -7,6 +7,7 @@ import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import styles from "./CreatePaymentPage.module.css";
 import emojiConstants from "../../constants/emojiConstants";
+import commaToDotDecimalSeparatorHelperFunction from "../../helpers/commaToDotDecimalSeparatorHelper";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -49,9 +50,9 @@ export default function CreatePaymentPage() {
     }
   };
 
-  // controlled component to set paymentAmount state
+  // controlled second input component to set paymentAmount state, converting comma separator to dot prior to posting
   const handlePaymentAmountChange = (e) => {
-    setPaymentAmount(e.target.value);
+    setPaymentAmount(commaToDotDecimalSeparatorHelperFunction(e.target.value));
   };
 
   // render back button to abort and input fields, conditionally render submit button
@@ -66,13 +67,12 @@ export default function CreatePaymentPage() {
       <form onSubmit={handleFormSubmit}>
         <input
           className={styles.inputField}
-          type='number'
+          type='text'
           value={paymentAmount}
           onChange={handlePaymentAmountChange}
           placeholder='amount'
           required
-          step='0.01'
-          min='0.01'
+          pattern='[0-9]+([,.][0-9]{1,2})?'
           ref={inputField}
         />
         <select

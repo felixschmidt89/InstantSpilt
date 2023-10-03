@@ -7,9 +7,17 @@ import styles from "./UserPage.module.css";
 import DeleteResourceButton from "../../components/DeleteResourceButton/DeleteResourceButton";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 
+// Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
+const BALANCE_THRESHOLD = 0.01;
+
 const UserPage = () => {
   const { userId } = useParams();
   const userInfo = useFetchUserInfo(userId);
+
+  // Set userBalance to 0 if it's less than or equal to BALANCE_THRESHOLD
+  if (userInfo && Math.abs(userInfo.userBalance) <= BALANCE_THRESHOLD) {
+    userInfo.userBalance = 0;
+  }
 
   // Visually indicate userBalance state
   const balanceClass =

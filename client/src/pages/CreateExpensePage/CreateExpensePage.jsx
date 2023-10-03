@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import styles from "./CreateExpensePage.module.css";
 import emojiConstants from "../../constants/emojiConstants";
+import commaToDotDecimalSeparatorHelper from "../../helpers/commaToDotDecimalSeparatorHelper";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -56,9 +57,9 @@ export default function CreateExpensePage() {
     setExpenseName(e.target.value);
   };
 
-  // controlled second input component to set expenseAmount state
+  // controlled second input component to set expenseAmount state, converting comma separator to dot prior to posting
   const handleExpenseAmountChange = (e) => {
-    setExpenseAmount(e.target.value);
+    setExpenseAmount(commaToDotDecimalSeparatorHelper(e.target.value));
   };
 
   // controlled select component to set expenseBeneficiaries state
@@ -98,13 +99,12 @@ export default function CreateExpensePage() {
         {/* Input field for expense amount */}
         <input
           className={styles.inputFieldTwo}
-          type='number'
+          type='text'
           value={expenseAmount}
           onChange={handleExpenseAmountChange}
           placeholder='0.00'
-          step='0.01'
-          min='0.01'
           required
+          pattern='[0-9]+([,.][0-9]{1,2})?'
         />
         {/* Dropdown to select the expense paye r */}
         <select
