@@ -16,7 +16,14 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
   return (
     <div className={styles.container}>
       {isWebShareAPISupported ? (
-        <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
+        <>
+          <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
+          <NavigateFontAwesomeIcon
+            icon={faShareNodes}
+            route={`/share-group/${groupName}/${groupCode}`}
+            tooltip="Invite & share group"
+          />
+        </>
       ) : (
         <>
           <NavigateFontAwesomeIcon
@@ -43,6 +50,5 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
       )}
     </div>
   );
-};
 
 export default UserActionsContainer;
