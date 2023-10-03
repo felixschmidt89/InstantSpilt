@@ -26,6 +26,7 @@ import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage
 import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 import CopyGroupCodePage from "./pages/CopyGroupCodePage/CopyGroupCodePage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
+import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroupExpensesPage";
 
 function App() {
   return (
@@ -60,6 +61,8 @@ function App() {
           path='create-users-inapp'
           element={<CreateUsersBackButtonPage />}
         />
+        <Route path='/settle-expenses' element={<SettleGroupExpensesPage />} />
+
         <Route path='/item-page' element={<ItemNavigatorPage />} />
         <Route path='/user-page/:userId' element={<UserPage />} />
         <Route path='/payment-page/:itemId' element={<PaymentPage />} />

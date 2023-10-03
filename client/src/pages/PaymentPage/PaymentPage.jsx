@@ -5,7 +5,6 @@ import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import emojiConstants from "../../constants/emojiConstants";
 import DeleteResourceButton from "../../components/DeleteResourceButton/DeleteResourceButton";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
-import SuggestSettlePayments from "../../components/biggerComponents/SuggestSettlePayments/SuggestSettlePayments";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -40,13 +39,13 @@ const PaymentPage = () => {
             {emojiConstants.created}{" "}
             {new Date(paymentDetails.createdAt).toLocaleString()}
           </p>
+          {/* TODO: activate when update payment functionality is implemented */}
           {/* <p>Updated: {new Date(paymentDetails.updatedAt).toLocaleString()}</p> */}
           <DeleteResourceButton resourceId={itemId} resourceType='payments' />
         </div>
       ) : (
         <Spinner />
       )}
-      <SuggestSettlePayments />
     </main>
   );
 };

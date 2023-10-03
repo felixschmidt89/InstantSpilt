@@ -20,6 +20,11 @@ const GroupActionsContainer = () => {
         buttonText={"+ user"}
         margin={"2px"}
       />
+      <NavigateButton
+        route={"settle-expenses"}
+        buttonText={"settle"}
+        margin={"2px"}
+      />
     </div>
   );
 };

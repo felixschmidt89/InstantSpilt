@@ -75,7 +75,9 @@ export default function GroupBalances() {
                       ? styles.positiveBalance
                       : styles.negativeBalance
                   }`}>
-                  {user.userBalance.toFixed(2)}€
+                  {user.userBalance === 0.01
+                    ? "0.00€"
+                    : user.userBalance.toFixed(2) + "€"}{" "}
                 </div>
               </div>
             </li>
