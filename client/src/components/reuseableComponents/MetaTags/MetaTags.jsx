@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import metaTagDefaultImg from "../../../../public/metaTagDefaultImg";
 
 /**
  * MetaTags reusable component
@@ -17,9 +16,9 @@ import metaTagDefaultImg from "../../../../public/metaTagDefaultImg";
  * @returns {React.JSX} - The MetaTags component.
  */
 function MetaTags({
-  title = "Instant Split",
-  description = "The hassle-free way to settle group expenses with no user registration or app download while sharing minimal data.",
-  image = metaTagDefaultImg,
+  title = "InstantSplit",
+  description = "A hassle-free solution for settling group expenses without the need for user registration or app downloads.",
+  image = "/metaTagDefaultImg.png",
   url = "https://instant-split.netlify.app",
   author = "Felix Schmidt",
 }) {

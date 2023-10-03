@@ -7,6 +7,7 @@ import GroupActionsContainer from "../../components/GroupActionsContainer/GroupA
 import useCheckGroupCodePresenceAndNavigateHome from "../../hooks/useCheckGroupCodePresenceAndNavigateHome";
 import UserActionsComponent from "../../components/UserActionsComponent/UserActionsComponent";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
+import MetaTags from "../../components/reuseableComponents/MetaTags/MetaTags";
 
 export default function InstantSplitPage() {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -29,6 +30,10 @@ export default function InstantSplitPage() {
   } else {
     return (
       <main>
+        <MetaTags
+          title='InstantSplit - main application'
+          description='Effortlessly settle group expenses with InstantSplit'
+        />
         <h1>{groupData.group.groupName}</h1>
         <UserActionsComponent
           groupCode={groupCode}
