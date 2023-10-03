@@ -1,6 +1,7 @@
 import React from "react";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
+import WebShareApiInvite from "../../components/WebShareApiInvite/WebShareApiInvite";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
@@ -26,6 +27,8 @@ const ShareGroupPage = () => {
         </p>
         <CopyToClipBoard infoTocopy={infoTocopy} inputFieldWidth='400px' />
       </div>
+      <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
+
     </main>
   );
 };
