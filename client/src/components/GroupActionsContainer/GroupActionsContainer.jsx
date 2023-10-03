@@ -8,22 +8,22 @@ const GroupActionsContainer = () => {
       <NavigateButton
         route={"create-expense"}
         buttonText={"+ expense"}
-        margin={"2px"}
+        margin={"5px"}
       />
       <NavigateButton
         route={"create-payment"}
         buttonText={"+ payment"}
-        margin={"2px"}
+        margin={"5px"}
       />
       <NavigateButton
         route={"create-users-inapp"}
         buttonText={"+ user"}
-        margin={"2px"}
+        margin={"5px"}
       />
       <NavigateButton
         route={"settle-expenses"}
         buttonText={"settle"}
-        margin={"2px"}
+        margin={"5px"}
       />
     </div>
   );
