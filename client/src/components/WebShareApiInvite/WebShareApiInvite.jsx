@@ -7,8 +7,8 @@ const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 const WebShareApiInvite = ({ groupCode, groupName }) => {
   const title = "InstantSplit invitation to settle group expenses";
-  const text = `InstantSplit invitation to settle group expenses: You've been invited to join ${groupName}`;
-  const url = `${baseUrl}/groups/join/${groupCode}`;
+  const text = `Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses `;
+  const url = `${baseUrl}/join/${groupCode}`;
 
   const handleShareClick = async () => {
     try {
