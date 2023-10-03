@@ -1,6 +1,11 @@
 h1 {
   margin-bottom: 1rem;
 }
+
+.container{
+  height: 50%;
+  overflow-y: auto;
+}
 .inputField,
 .select {
   color: var(--color-dark);

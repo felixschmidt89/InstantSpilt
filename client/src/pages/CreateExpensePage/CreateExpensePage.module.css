@@ -1,5 +1,5 @@
-h2 {
-  margin-bottom: 1rem;
+.header {
+  font-size: 2.3rem;
 }
 
 .inputFieldOne,
@@ -23,16 +23,14 @@ h2 {
   padding: 0.2rem;
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.5rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   text-align: center;
   outline: none;
 }
 
 .select {
-  width: 8rem;
   background-color: var(--color-main);
   border-radius: 0.5rem;
-  font-size: 1.6rem;
   text-align: center;
   outline: auto;
   outline-color: var(--color-grey);

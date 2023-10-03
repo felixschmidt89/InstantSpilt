@@ -63,8 +63,9 @@ export default function CreatePaymentPage() {
         buttonText={"back"}
         alignment={"left"}
       />
-      <h2 className={styles.h2}>Add payment {emojiConstants.payment}</h2>
+      <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>
       <form onSubmit={handleFormSubmit}>
+        <div>
         <input
           className={styles.inputField}
           type='text'
@@ -76,6 +77,7 @@ export default function CreatePaymentPage() {
           inputMode='numeric'
           ref={inputField}
         />
+        </div>
         <select
           className={styles.select}
           value={userName}

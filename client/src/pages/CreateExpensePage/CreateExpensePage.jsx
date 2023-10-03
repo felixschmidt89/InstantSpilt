@@ -86,13 +86,13 @@ export default function CreateExpensePage() {
         buttonText={"back"}
         alignment={"left"}
       />
-      <h2>Add expense {emojiConstants.expense}</h2>
+      <h2 className={styles.header}>Add expense {emojiConstants.expense}</h2>
       {isLoading ? (
         <Spinner />
       ) : (
         <form onSubmit={handleFormSubmit}>
           {/* Input field for expense name */}
-          <input
+          <div><input
             className={styles.inputFieldOne}
             type='text'
             value={expenseName}
@@ -103,8 +103,9 @@ export default function CreateExpensePage() {
             maxLength={50}
             ref={inputFieldOne}
           />
+          </div>
           {/* Input field for expense amount */}
-          <input
+          <div><input
             className={styles.inputFieldTwo}
             type='text'
             value={expenseAmount}
@@ -114,6 +115,7 @@ export default function CreateExpensePage() {
             pattern='[0-9]+([,.][0-9]{1,2})?'
             inputMode='numeric'
           />
+          </div>
           {/* Dropdown to select the expense paye r */}
           <select
             className={styles.select}

@@ -58,7 +58,7 @@ export default function FeedbackPage() {
       />
       <h1>Leave a message</h1>
       {showForm ? (
-        <form onSubmit={handleSubmit}>
+        <div className={styles.container}><form onSubmit={handleSubmit}>
           <div>
             <label htmlFor='name'>
               <strong>Name*</strong>
@@ -125,7 +125,7 @@ export default function FeedbackPage() {
                 value={formData.feedback}
                 onChange={handleInputChange}
                 placeholder='required'
-                rows='10'
+                rows='4'
                 required
               />
             </div>
@@ -134,6 +134,7 @@ export default function FeedbackPage() {
             Submit
           </button>
         </form>
+        </div>
       ) : (
         <div>
           <p>{feedbackMessage}</p>
