@@ -38,8 +38,10 @@ export default function SuggestSettlePayments() {
               userBalance: user.userBalance,
             }));
           setUserDetails(userDetails);
+        } else {
+          // If there are no users with positive or negative balances, set a message.
+          setUserDetails([]); // Clear userDetails
         }
-        setError(null);
         setIsLoading(false);
       } catch (error) {
         if (process.env.NODE_ENV === "development") {
@@ -71,50 +73,57 @@ export default function SuggestSettlePayments() {
         <Spinner />
       ) : (
         <div>
-          <h2>Needs to pay back:</h2>
-          <ul>
-            {negativeBalanceUsers.map((user) => (
-              <li key={user.userId} className={styles.userListItem}>
-                <div className={styles.userDetails}>
-                  <strong>
-                    {/* Link to the user page */}
-                    <Link
-                      className={styles.userName}
-                      to={`/user-page/${user.userId}`}>
-                      {user.userName}
-                    </Link>
-                  </strong>
-                  <span className={styles.separator}>owes:</span>
-                  <div
-                    className={`${styles.userBalance} ${styles.negativeBalance}`}>
-                    {Math.abs(user.userBalance).toFixed(2)}€
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <h2>Should get paid:</h2>
-          <ul>
-            {positiveBalanceUsers.map((user) => (
-              <li key={user.userId} className={styles.userListItem}>
-                <div className={styles.userDetails}>
-                  <strong>
-                    {/* Link to the user page */}
-                    <Link
-                      className={styles.userName}
-                      to={`/user-page/${user.userId}`}>
-                      {user.userName}
-                    </Link>
-                  </strong>
-                  <span className={styles.separator}>is owed:</span>
-                  <div
-                    className={`${styles.userBalance} ${styles.positiveBalance}`}>
-                    {user.userBalance.toFixed(2)}€
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+          {userDetails.length === 0 ? (
+            // Display a message when there are no users with positive or negative balances
+            <p>All settled. 🤝</p>
+          ) : (
+            <>
+              <h2>Needs to pay back:</h2>
+              <ul>
+                {negativeBalanceUsers.map((user) => (
+                  <li key={user.userId} className={styles.userListItem}>
+                    <div className={styles.userDetails}>
+                      <strong>
+                        {/* Link to the user page */}
+                        <Link
+                          className={styles.userName}
+                          to={`/user-page/${user.userId}`}>
+                          {user.userName}
+                        </Link>
+                      </strong>
+                      <span className={styles.separator}>owes:</span>
+                      <div
+                        className={`${styles.userBalance} ${styles.negativeBalance}`}>
+                        {Math.abs(user.userBalance).toFixed(2)}€
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <h2>Should get paid:</h2>
+              <ul>
+                {positiveBalanceUsers.map((user) => (
+                  <li key={user.userId} className={styles.userListItem}>
+                    <div className={styles.userDetails}>
+                      <strong>
+                        {/* Link to the user page */}
+                        <Link
+                          className={styles.userName}
+                          to={`/user-page/${user.userId}`}>
+                          {user.userName}
+                        </Link>
+                      </strong>
+                      <span className={styles.separator}>is owed:</span>
+                      <div
+                        className={`${styles.userBalance} ${styles.positiveBalance}`}>
+                        {user.userBalance.toFixed(2)}€
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
       )}
     </div>

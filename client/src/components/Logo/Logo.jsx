@@ -4,7 +4,7 @@ import styles from "./Logo.module.css";
 
 function Logo() {
   return (
-    <Link to='/homepage' className={styles.logoLink}>
+    <Link to='/' className={styles.logoLink}>
       <img src='/logo.png' alt='Logo' className={styles.logoImage} />
     </Link>
   );

@@ -29,12 +29,13 @@ export default function GroupBalances() {
           const userDetails = responseData.users.map((user) => ({
             userId: user._id,
             userName: user.userName,
-            userBalance: user.userBalance,
+            userBalance: +parseFloat(user.userBalance).toFixed(2), // round to 2 decimal places to avoid issues
           }));
           setUserDetails(userDetails);
         }
         setError(null);
         setIsLoading(false); // Set loading to false when data is fetched
+        console.log(responseData);
       } catch (error) {
         if (process.env.NODE_ENV === "development") {
           console.error("Error fetching data:", error);
@@ -49,7 +50,6 @@ export default function GroupBalances() {
     // Call the fetchUserDetails function
     fetchUserDetails();
   }, [groupCode]); // Include groupCode in the dependency array
-
   // Render spinner while loading then render user details,  link to user pages, and any error message
   return (
     <div className={styles.balances}>
@@ -75,6 +75,7 @@ export default function GroupBalances() {
                       ? styles.positiveBalance
                       : styles.negativeBalance
                   }`}>
+                  {/*Fix rounding issue in certain settling, e.g. 10€/3 will result in 3.33, 3.33, 3.4 */}
                   {user.userBalance === 0.01
                     ? "0.00€"
                     : user.userBalance.toFixed(2) + "€"}{" "}
