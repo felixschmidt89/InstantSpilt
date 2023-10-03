@@ -17,7 +17,7 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
     <div className={styles.container}>
       {isWebShareAPISupported ? (
         <>
-          <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
+      <div className={styles.WebShare}><WebShareApiInvite groupCode={groupCode} groupName={groupName} /></div>
         </>
       ) : (
         <>

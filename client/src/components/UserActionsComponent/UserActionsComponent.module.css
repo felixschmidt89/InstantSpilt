@@ -1,7 +1,5 @@
-.icon {
-  font-size: 3rem;
-}
-
 .container {
   margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
 }

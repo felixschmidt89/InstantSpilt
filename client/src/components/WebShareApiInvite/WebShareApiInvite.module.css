@@ -3,6 +3,7 @@
   color: var(--color-dark);
   font-size: 3rem;
   margin-right: 2rem;
+  transform: translateY(-0.3rem);
 }
 
 .icon:hover {
