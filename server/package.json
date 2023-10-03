@@ -7,8 +7,8 @@
   "scripts": {
     "start dev": "cross-env NODE_ENV=development nodemon server.js",
     "start prod": "cross-env NODE_ENV=production nodemon server.js",
-    "setup": "npm i && cd .. && cd client && npm i",
-    "build": "cd .. && cd client && npm run build"
+    "setup": "npm i",
+    "build": "npm i"
   },
   "repository": {
     "type": "git",
