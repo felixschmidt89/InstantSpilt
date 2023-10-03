@@ -1,5 +1,4 @@
 import React from "react";
-import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 

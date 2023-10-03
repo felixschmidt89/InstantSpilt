@@ -16,9 +16,9 @@ const nodeEnv = process.env.NODE_ENV;
 
 // Load environment variables based on initial NODE_ENV
 if (nodeEnv === 'production') {
-  dotenv.config({ path: '../config.prod.env' });
+  dotenv.config({ path: './config.prod.env' });
 } else {
-  dotenv.config({ path: '../config.dev.env' });
+  dotenv.config({ path: './config.dev.env' });
 }
 
 // Destructure loaded environment variables

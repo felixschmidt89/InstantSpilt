@@ -5,10 +5,10 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=development nodemon server.js",
-    "start:prod": "cross-env NODE_ENV=production nodemon server.js",
-    "setup": "npm i && cd client && npm i",
-    "build": "cd client && npm run build"
+    "start dev": "cross-env NODE_ENV=development nodemon server.js",
+    "start prod": "cross-env NODE_ENV=production nodemon server.js",
+    "setup": "npm i && cd .. && cd client && npm i",
+    "build": "cd .. && cd client && npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
   "author": "Felix Schmidt",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/felixschmidt89/InstantSplit/issues"
+    "url": "https://github.com/felixschmidt89/InstantSplit/"
   },
   "homepage": "https://github.com/felixschmidt89/InstantSplit#readme",
   "dependencies": {
