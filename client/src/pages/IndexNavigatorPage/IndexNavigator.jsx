@@ -14,7 +14,7 @@ const IndexNavigator = () => {
     }
   }, [navigate]);
 
-  return <div></div>;
+  return <main></main>;
 };
 
 export default IndexNavigator;
