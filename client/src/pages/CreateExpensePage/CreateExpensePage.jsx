@@ -5,6 +5,7 @@ import axios from "axios";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import { useNavigate } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import styles from "./CreateExpensePage.module.css";
 import emojiConstants from "../../constants/emojiConstants";
 import commaToDotDecimalSeparatorHelper from "../../helpers/commaToDotDecimalSeparatorHelper";
@@ -19,6 +20,7 @@ export default function CreateExpensePage() {
   const [expenseAmount, setExpenseAmount] = useState("");
   const [userName, setUserName] = useState("");
   const [selectedBeneficiaries, setSelectedBeneficiaries] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const groupCode = localStorage.getItem("activeGroupCode");
   const groupMembers = useFetchGroupMembers(groupCode);
 
@@ -44,10 +46,12 @@ export default function CreateExpensePage() {
         userName,
         expenseBeneficiariesNames: selectedBeneficiaries,
       });
+      setIsLoading(false);
       navigate("/instant-split");
     } catch (error) {
       if (process.env.NODE_ENV === "development") {
         console.error("Error creating expense:", error);
+        setIsLoading(false);
       }
     }
   };
@@ -83,71 +87,75 @@ export default function CreateExpensePage() {
         alignment={"left"}
       />
       <h2>Add expense {emojiConstants.expense}</h2>
-      <form onSubmit={handleFormSubmit}>
-        {/* Input field for expense name */}
-        <input
-          className={styles.inputFieldOne}
-          type='text'
-          value={expenseName}
-          onChange={handleExpenseNameChange}
-          placeholder='expense description'
-          required
-          minLength={3}
-          maxLength={50}
-          ref={inputFieldOne}
-        />
-        {/* Input field for expense amount */}
-        <input
-          className={styles.inputFieldTwo}
-          type='text'
-          value={expenseAmount}
-          onChange={handleExpenseAmountChange}
-          placeholder='0.00'
-          required
-          pattern='[0-9]+([,.][0-9]{1,2})?'
-          inputMode='numeric'
-        />
-        {/* Dropdown to select the expense paye r */}
-        <select
-          className={styles.select}
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-          required>
-          <option value='' disabled>
-            {emojiConstants.paidFor} by
-          </option>
-          {/* Map all group members to select beneficiaries */}
-          {groupMembers.map((member) => (
-            <option key={member} value={member}>
-              {member}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <form onSubmit={handleFormSubmit}>
+          {/* Input field for expense name */}
+          <input
+            className={styles.inputFieldOne}
+            type='text'
+            value={expenseName}
+            onChange={handleExpenseNameChange}
+            placeholder='expense description'
+            required
+            minLength={3}
+            maxLength={50}
+            ref={inputFieldOne}
+          />
+          {/* Input field for expense amount */}
+          <input
+            className={styles.inputFieldTwo}
+            type='text'
+            value={expenseAmount}
+            onChange={handleExpenseAmountChange}
+            placeholder='0.00'
+            required
+            pattern='[0-9]+([,.][0-9]{1,2})?'
+            inputMode='numeric'
+          />
+          {/* Dropdown to select the expense paye r */}
+          <select
+            className={styles.select}
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            required>
+            <option value='' disabled>
+              {emojiConstants.paidFor} by
             </option>
-          ))}
-        </select>
-        <h4>for </h4>
-        <div className={styles.beneficiaries}>
-          {/* (Un)check beneficiaries */}
-          {groupMembers.map((member) => (
-            <label className={styles.label} key={member}>
-              <input
-                type='checkbox'
-                value={member}
-                checked={selectedBeneficiaries.includes(member)}
-                onChange={handleCheckboxChange}
-              />
-              {member}
-            </label>
-          ))}
-        </div>
-        {/* Conditionally render submit button when expense amount, name, payer & min 1 beneficiary is given*/}
-        {expenseAmount &&
-          userName &&
-          expenseName &&
-          selectedBeneficiaries.length > 0 && (
-            <button className={styles.button} type='submit'>
-              +
-            </button>
-          )}
-      </form>
+            {/* Map all group members to select beneficiaries */}
+            {groupMembers.map((member) => (
+              <option key={member} value={member}>
+                {member}
+              </option>
+            ))}
+          </select>
+          <h4>for </h4>
+          <div className={styles.beneficiaries}>
+            {/* (Un)check beneficiaries */}
+            {groupMembers.map((member) => (
+              <label className={styles.label} key={member}>
+                <input
+                  type='checkbox'
+                  value={member}
+                  checked={selectedBeneficiaries.includes(member)}
+                  onChange={handleCheckboxChange}
+                />
+                {member}
+              </label>
+            ))}
+          </div>
+          {/* Conditionally render submit button when expense amount, name, payer & min 1 beneficiary is given*/}
+          {expenseAmount &&
+            userName &&
+            expenseName &&
+            selectedBeneficiaries.length > 0 && (
+              <button className={styles.button} type='submit'>
+                +
+              </button>
+            )}
+        </form>
+      )}
     </main>
   );
 }
