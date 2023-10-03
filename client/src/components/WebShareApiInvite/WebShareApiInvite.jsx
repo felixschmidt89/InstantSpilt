@@ -1,12 +1,13 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import styles from "./WebShareApiInvite.module.css";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 const WebShareApiInvite = ({ groupCode, groupName }) => {
   const title = "InstantSplit invitation to settle group expenses";
-  const text = `You've been invited to join ${groupName}`;
+  const text = `InstantSplit invitation to settle group expenses: You've been invited to join ${groupName}`;
   const url = `${baseUrl}/groups/join/${groupCode}`;
 
   const handleShareClick = async () => {
@@ -27,9 +28,9 @@ const WebShareApiInvite = ({ groupCode, groupName }) => {
   };
 
   return (
-    <button onClick={handleShareClick}>
+    <div className={styles.icon} onClick={handleShareClick}>
       <FontAwesomeIcon icon={faShareNodes} />
-    </button>
+    </div>
   );
 };
 

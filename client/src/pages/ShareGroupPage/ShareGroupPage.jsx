@@ -27,8 +27,6 @@ const ShareGroupPage = () => {
         </p>
         <CopyToClipBoard infoTocopy={infoTocopy} inputFieldWidth='400px' />
       </div>
-      <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
-
     </main>
   );
 };
