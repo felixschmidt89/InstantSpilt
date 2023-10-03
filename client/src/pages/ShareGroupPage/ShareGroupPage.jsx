@@ -1,6 +1,6 @@
 import React from "react";
-import CopyToClipboard from "../../components/CopyToClipboard/CopyToClipboard";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
@@ -24,7 +24,7 @@ const ShareGroupPage = () => {
           To invite others to join <strong>{groupName}</strong> or use
           InstantSplit on your other devices, just copy and share this link:
         </p>
-        <CopyToClipboard infoTocopy={infoTocopy} inputFieldWidth='400px' />
+        <CopyToClipBoard infoTocopy={infoTocopy} inputFieldWidth='400px' />
       </div>
     </main>
   );

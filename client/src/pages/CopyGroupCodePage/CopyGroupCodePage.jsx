@@ -1,6 +1,7 @@
 import React from "react";
-import CopyToClipboard from "../../components/CopyToClipboard/CopyToClipboard";
+import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 
 const CopyGroupCodePage = () => {
   const pathParts = window.location.pathname.split("/");
