@@ -2,6 +2,10 @@
   color: var(--color-error);
 }
 
+.errorText {
+  color: var(--color-error);
+}
+
 .userDetails {
   display: flex;
   flex-direction: row;

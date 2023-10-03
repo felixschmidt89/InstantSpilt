@@ -6,6 +6,9 @@ import Spinner from "../reuseableComponents/Spinner/Spinner";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+// Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
+const BALANCE_THRESHOLD = 0.01;
+
 export default function GroupBalances() {
   const groupCode = localStorage.getItem("activeGroupCode");
 
@@ -29,13 +32,15 @@ export default function GroupBalances() {
           const userDetails = responseData.users.map((user) => ({
             userId: user._id,
             userName: user.userName,
-            userBalance: +parseFloat(user.userBalance).toFixed(2), // round to 2 decimal places to avoid issues
+            userBalance:
+              Math.abs(user.userBalance) <= BALANCE_THRESHOLD
+                ? 0
+                : +parseFloat(user.userBalance).toFixed(2), // round to 2 decimal places
           }));
           setUserDetails(userDetails);
         }
         setError(null);
         setIsLoading(false); // Set loading to false when data is fetched
-        console.log(responseData);
       } catch (error) {
         if (process.env.NODE_ENV === "development") {
           console.error("Error fetching data:", error);
@@ -53,7 +58,7 @@ export default function GroupBalances() {
   // Render spinner while loading then render user details,  link to user pages, and any error message
   return (
     <div className={styles.balances}>
-      {isLoading ? ( // Display Spinner while loading
+      {isLoading ? (
         <Spinner />
       ) : (
         <ul>

@@ -6,6 +6,9 @@ import Spinner from "../../reuseableComponents/Spinner/Spinner";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+// Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
+const BALANCE_THRESHOLD = 0.01;
+
 export default function SuggestSettlePayments() {
   const groupCode = localStorage.getItem("activeGroupCode");
 
@@ -14,7 +17,7 @@ export default function SuggestSettlePayments() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Define fetch user details function, extract & format relevant data, set user details excluding those with (almost) 0 user balance (rounding hack).
+  // Define fetch user details function, extract & format relevant data, then set the user details
   useEffect(() => {
     async function fetchUserDetails() {
       try {
@@ -25,21 +28,19 @@ export default function SuggestSettlePayments() {
         const responseData = response.data.data;
 
         if (responseData.users && responseData.users.length > 0) {
-          const userDetails = responseData.users
-            .filter(
-              (user) =>
-                user.userBalance !== 0 &&
-                user.userBalance !== 0.01 &&
-                user.userBalance !== -0.01
-            )
-            .map((user) => ({
-              userId: user._id,
-              userName: user.userName,
-              userBalance: user.userBalance,
-            }));
-          setUserDetails(userDetails);
+          const userDetails = responseData.users.map((user) => ({
+            userId: user._id,
+            userName: user.userName,
+            userBalance: +parseFloat(user.userBalance).toFixed(2), // round to 2 decimal places
+          }));
+
+          // Apply the balance threshold and treat balances as settled if within the threshold
+          const unsettledUserDetails = userDetails.filter(
+            (user) => Math.abs(user.userBalance) > BALANCE_THRESHOLD
+          );
+          setUserDetails(unsettledUserDetails);
         } else {
-          // If there are no users with positive or negative balances, set a message.
+          // If there are no users with unsettled expenses, display a message.
           setUserDetails([]); // Clear userDetails
         }
         setIsLoading(false);
@@ -60,7 +61,7 @@ export default function SuggestSettlePayments() {
 
   // Separate users with positive and negative balances
   const positiveBalanceUsers = userDetails.filter(
-    (user) => user.userBalance >= 0
+    (user) => user.userBalance > 0
   );
   const negativeBalanceUsers = userDetails.filter(
     (user) => user.userBalance < 0
@@ -73,8 +74,11 @@ export default function SuggestSettlePayments() {
         <Spinner />
       ) : (
         <div>
-          {userDetails.length === 0 ? (
-            // Display a message when there are no users with positive or negative balances
+          {error ? (
+            // Display the error message when there's an error
+            <p className={styles.errorText}>{error}</p>
+          ) : userDetails.length === 0 ? (
+            // Display a message when there are no users
             <p>All settled. 🤝</p>
           ) : (
             <>
