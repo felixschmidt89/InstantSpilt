@@ -10,6 +10,10 @@ import {
   validateGroupExistence,
 } from '../controllers/groupController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
+import {
+  limiter,
+  handleRateLimitExceedance,
+} from '../middleware/handleRateLimitExceedanceMiddleware.js';
 import validateGroupCodeMiddleware from '../middleware/validateGroupCodeMiddleware.js';
 import { validateGroupNamePropertyPresenceMiddleware } from '../middleware/validateRequestBodyMiddleware.js';
 
@@ -27,12 +31,15 @@ router.get('/StoredGroupNames', listGroupNamesByStoredGroupCodes);
 router.get('/:groupCode', getGroupInfo);
 
 // Check if groupCode exists in database
-router.get('/:groupCode/validate-existence', validateGroupExistence);
+router.get(
+  '/:groupCode/validate-existence',
+  limiter,
+  handleRateLimitExceedance,
+  validateGroupExistence,
+);
 
 // List all expenses and payments of a group
 router.get('/:groupCode/expenses-and-payments', listExpensesAndPaymentsByGroup);
-
-// Add more routes for other group-related functionality
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 // List all groups
