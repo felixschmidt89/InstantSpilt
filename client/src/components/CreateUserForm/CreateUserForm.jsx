@@ -1,11 +1,11 @@
 // DONE adding only meaningful necessary comments
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import styles from "./CreateUser.module.css";
+import styles from "./CreateUserForm.module.css";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-export default function CreateUser({ toggleDataRefresh }) {
+export default function CreateUserForm({ toggleDataRefresh }) {
   const [userName, setUserName] = useState("");
   const [error, setError] = useState("");
   const inputRef = useRef(null);

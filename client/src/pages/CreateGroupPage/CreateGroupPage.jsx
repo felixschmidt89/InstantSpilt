@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import styles from "./CreateGroupPage.module.css";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 
 export default function CreateGroupPage() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;

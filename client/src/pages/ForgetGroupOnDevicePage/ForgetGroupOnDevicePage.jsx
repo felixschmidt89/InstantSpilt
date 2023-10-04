@@ -1,6 +1,6 @@
 import React from "react";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import { useNavigate, useParams } from "react-router-dom";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorage";
 import styles from "./ForgetGroupOnDevicePage.module.css";
 

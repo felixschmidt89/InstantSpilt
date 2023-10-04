@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import style from "./EnterGroupCodePage.module.css";
 
 const EnterGroupCode = () => {

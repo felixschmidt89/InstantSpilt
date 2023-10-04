@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;

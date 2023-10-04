@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import emojiConstants from "../../constants/emojiConstants";
-import DeleteResourceButton from "../../components/DeleteResourceButton/DeleteResourceButton";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
+import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
 
 const PaymentPage = () => {
   const { itemId } = useParams();

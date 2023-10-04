@@ -4,7 +4,7 @@ import styles from "./ValidateProvidedGroupCodePage.module.css";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import { StatusCodes } from "http-status-codes";
 import emojiConstants from "../../constants/emojiConstants";
 

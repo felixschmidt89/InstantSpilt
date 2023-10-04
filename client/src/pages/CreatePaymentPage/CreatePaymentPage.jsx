@@ -4,10 +4,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import styles from "./CreatePaymentPage.module.css";
 import emojiConstants from "../../constants/emojiConstants";
 import commaToDotDecimalSeparatorHelperFunction from "../../helpers/commaToDotDecimalSeparatorHelper";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -66,17 +66,17 @@ export default function CreatePaymentPage() {
       <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>
       <form onSubmit={handleFormSubmit}>
         <div>
-        <input
-          className={styles.inputField}
-          type='text'
-          value={paymentAmount}
-          onChange={handlePaymentAmountChange}
-          placeholder='amount'
-          required
-          pattern='[0-9]+([,.][0-9]{1,2})?'
-          inputMode='numeric'
-          ref={inputField}
-        />
+          <input
+            className={styles.inputField}
+            type='text'
+            value={paymentAmount}
+            onChange={handlePaymentAmountChange}
+            placeholder='amount'
+            required
+            pattern='[0-9]+([,.][0-9]{1,2})?'
+            inputMode='numeric'
+            ref={inputField}
+          />
         </div>
         <select
           className={styles.select}

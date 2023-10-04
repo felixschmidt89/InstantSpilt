@@ -1,7 +1,12 @@
+// DONE adding only meaningful necessary comments
+
 import React from "react";
-import NavigateButton from "../NavigateButton/NavigateButton";
+import NavigateButton from "../../reuseableComponents/NavigateButton/NavigateButton";
 import styles from "./GroupActionsContainer.module.css";
 
+/**
+ * Displays a set of navigation buttons for creating expenses, payments and users - and for settling expenses.
+ */
 const GroupActionsContainer = () => {
   return (
     <div className={styles.buttonContainer}>

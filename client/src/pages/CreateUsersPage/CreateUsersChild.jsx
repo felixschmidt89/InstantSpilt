@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import CreateUser from "../../components/CreateUser/CreateUser";
+import CreateUserForm from "../../components/CreateUserForm/CreateUserForm";
 import RenderUserNames from "../../components/RenderUserNames/RenderUserNames";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 
 function CreateUsersChild({ route, alignment, buttonText }) {
   const [refreshData, setRefreshData] = useState(false);
@@ -18,7 +18,7 @@ function CreateUsersChild({ route, alignment, buttonText }) {
         alignment={alignment}
         buttonText={buttonText}
       />
-      <CreateUser toggleDataRefresh={toggleDataRefresh} />
+      <CreateUserForm toggleDataRefresh={toggleDataRefresh} />
       <RenderUserNames refreshData={refreshData} />
     </main>
   );

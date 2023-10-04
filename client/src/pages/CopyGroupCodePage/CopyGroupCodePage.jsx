@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 
 const CopyGroupCodePage = () => {
   const { groupName, groupCode } = useParams();

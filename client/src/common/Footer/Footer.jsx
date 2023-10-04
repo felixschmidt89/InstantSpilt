@@ -1,5 +1,6 @@
+// DONE adding only meaningful necessary comments
+
 import React from "react";
-import NavigateFontAwesomeIcon from "../../components/NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
 import styles from "./Footer.module.css";
 import LinkFontAwesomeIcon from "../../components/reuseableComponents/LinkFontAwesomeIcon/LinkFontAwesomeIcon";
 import {
@@ -8,7 +9,12 @@ import {
   faScaleBalanced,
   faCode,
 } from "@fortawesome/free-solid-svg-icons";
+import NavigateFontAwesomeIcon from "../../components/reuseableComponents/NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
 
+/**
+ * footer component that displays and links essential information at the bottom of the page:
+ * LinkedIn, email, GitHub repository, and legal notice.
+ */
 export default function Footer() {
   return (
     <footer className={styles.footer}>

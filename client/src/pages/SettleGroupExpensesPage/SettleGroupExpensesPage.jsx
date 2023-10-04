@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SettleGroupExpensesPage.module.css";
-import SuggestSettlePayments from "../../components/biggerComponents/SuggestSettlePayments/SuggestSettlePayments";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
+import SuggestSettlePayments from "../../components/containerComponents/SuggestSettlePayments/SuggestSettlePayments";
 
 function SettleGroupExpensesPage() {
   return (

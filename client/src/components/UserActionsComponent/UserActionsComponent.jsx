@@ -7,9 +7,9 @@ import {
   faCircleInfo,
   faMessage,
 } from "@fortawesome/free-solid-svg-icons";
-import NavigateFontAwesomeIcon from "../NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
 import styles from "./UserActionsComponent.module.css";
 import WebShareApiInvite from "../WebShareApiInvite/WebShareApiInvite";
+import NavigateFontAwesomeIcon from "../reuseableComponents/NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
 
 /**
  * Container to hold and render all user related actions:

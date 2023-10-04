@@ -1,5 +1,5 @@
 import React from "react";
-import InlineNavigateButtons from "../../components/InlineNavigateButtons/InlineNavigateButtons";
+import InlineNavigateButtons from "../../components/reuseableComponents/InlineNavigateButtons/InlineNavigateButtons";
 import styles from "./GroupCodeExplanationPage.module.css";
 
 const GroupCodeExplanationPage = () => {

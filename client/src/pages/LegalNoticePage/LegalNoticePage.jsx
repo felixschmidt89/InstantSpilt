@@ -1,5 +1,5 @@
 import React from "react";
-import NavigateButton from "../../components/NavigateButton/NavigateButton";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import legalNoticeContent from "../../contents/legalNoticeContent";
 import styles from "./LegalNoticePage.module.css";
 

@@ -1,12 +1,14 @@
+// DONE adding only meaningful necessary comments
+
 import React, { useState } from "react";
 import GroupBalances from "../../components/GroupBalances/GroupBalances";
 import GroupHistory from "../../components/GroupHistory/GroupHistory";
 import styles from "./InstantSplitPage.module.css";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
-import GroupActionsContainer from "../../components/GroupActionsContainer/GroupActionsContainer";
 import useCheckGroupCodePresenceAndNavigateHome from "../../hooks/useCheckGroupCodePresenceAndNavigateHome";
 import UserActionsComponent from "../../components/UserActionsComponent/UserActionsComponent";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
+import GroupActionsContainer from "../../components/containerComponents/GroupActionsContainer/GroupActionsContainer";
 
 /**
  * Main component of the application, renders or links to all core features related to settling expenses.
@@ -37,6 +39,7 @@ export default function InstantSplitPage() {
       <main>
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
+        {/* Display UserActionsComponent */}
         <UserActionsComponent
           groupCode={groupCode}
           groupName={groupData.group.groupName}
@@ -62,6 +65,8 @@ export default function InstantSplitPage() {
           </button>
         </div>
         {view === "view1" ? <GroupHistory /> : <GroupBalances />}
+        {/* Display GroupActionsComponent */}
+
         <GroupActionsContainer />
       </main>
     );

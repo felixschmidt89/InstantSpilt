@@ -1,3 +1,5 @@
+// DONE adding only meaningful necessary comments
+
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -9,10 +11,14 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 // Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
 const BALANCE_THRESHOLD = 0.01;
 
+/**
+ * Displays each group members balance.
+ * Fetches user details, formats the data, handles rounding of edge case and renders the balances.
+ */
 export default function GroupBalances() {
   const groupCode = localStorage.getItem("activeGroupCode");
 
-  // States for user details, loading error messages
+  // States for user details, loading status and error messages
   const [userDetails, setUserDetails] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -33,8 +39,9 @@ export default function GroupBalances() {
             userId: user._id,
             userName: user.userName,
             userBalance:
+              // Check if the absolute value of userBalance is less than or equal to the defined threshold
               Math.abs(user.userBalance) <= BALANCE_THRESHOLD
-                ? 0
+                ? 0 // If true, set userBalance to 0 to treat such edge cases as settled
                 : +parseFloat(user.userBalance).toFixed(2), // round to 2 decimal places
           }));
           setUserDetails(userDetails);
@@ -54,15 +61,18 @@ export default function GroupBalances() {
 
     // Call the fetchUserDetails function
     fetchUserDetails();
-  }, [groupCode]); // Include groupCode in the dependency array
+  }, [groupCode]);
   // Render spinner while loading then render user details,  link to user pages, and any error message
   return (
     <div className={styles.balances}>
       {isLoading ? (
         <Spinner />
       ) : userDetails.length > 0 ? (
+        // Render the list of user balances if there are users
         <ul>
           {userDetails.map((user) => (
+            // Map through user details and render each user's balance
+
             <li key={user.userId} className={styles.userListItem}>
               <div className={styles.userDetails}>
                 <strong>
@@ -73,24 +83,25 @@ export default function GroupBalances() {
                     {user.userName}
                   </Link>
                 </strong>
-                {/* Visually indicate negative userBalance by rendering it in a different color */}
+                {/* Visually indicate negative userBalance by setting different CSS classes and later rendering it in a different color */}
                 <div
                   className={`${styles.userBalance} ${
                     user.userBalance >= 0
                       ? styles.positiveBalance
                       : styles.negativeBalance
                   }`}>
-                  {/* Fix rounding issue in certain settling, e.g., 10€/3 will result in 3.33, 3.33, 3.4 */}
+                  {/* Fix remaining rounding issue in certain settings, e.g., 100€/3 will result in 33.33, 33.33, 33.4 */}
                   {user.userBalance === 0.01
                     ? "0.00€"
-                    : user.userBalance.toFixed(2) + "€"}{" "}
+                    : user.userBalance.toFixed(2) + "€"}
                 </div>
               </div>
             </li>
           ))}
         </ul>
       ) : (
-        <p>Add users to start settling expenses...</p> // Display a message when there are no users
+        // Display a message if there are no users
+        <p>Add users to start settling expenses...</p>
       )}
       {error && <p>{error}</p>}{" "}
       {/* Display error message if there's an error */}
