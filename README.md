@@ -7,8 +7,8 @@ A MERN application designed for settling group expenses with a focus on function
   <img src="./client/public/app-image2.png" alt="App screenshot2" width="200px">
 </div>
 
-## Demo
-You can check out the live demo of the app [here](https://instantsplit.netlify.app/) once the MVP is deployed in Q4 2023.
+## Access the application
+You can check out the app [here](https://instantsplit.netlify.app/).
 
 ## Project Status
 - I had the project idea recently, after each of my friends had to download an app to settle our shared trip expenses.
