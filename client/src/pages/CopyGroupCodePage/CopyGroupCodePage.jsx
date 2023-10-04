@@ -1,12 +1,10 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import NavigateButton from "../../components/NavigateButton/NavigateButton";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 
 const CopyGroupCodePage = () => {
-  const pathParts = window.location.pathname.split("/");
-  const groupName = pathParts[pathParts.length - 2];
-  const groupCode = pathParts[pathParts.length - 1];
-
+  const { groupName, groupCode } = useParams();
   return (
     <main>
       <NavigateButton
