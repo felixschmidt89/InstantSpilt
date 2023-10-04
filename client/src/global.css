@@ -73,6 +73,10 @@ ul {
   list-style: none;
 }
 
+.errorMessage {
+  color: var(--color-error);
+}
+
 @media (max-width: 768px) {
   main {
     width: 100vw;

@@ -7,5 +7,6 @@ const emojiConstants = {
   paymentsReceived: "⬅️",
   created: "🕑",
   info: "💁",
+  error: "🚧",
 };
 export default emojiConstants;
