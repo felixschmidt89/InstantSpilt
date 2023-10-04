@@ -11,24 +11,6 @@ h1 {
   justify-content: center;
 }
 
-@media (max-width: 1200px) {
-  .container {
-    height: 40%;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    height: 55%;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    height: 40%;
-  }
-}
-
 .inputField,
 .select {
   color: var(--color-dark);

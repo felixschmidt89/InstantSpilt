@@ -80,8 +80,8 @@ ul {
 /* CSS for Small Tablets (768px and below in portrait mode) */
 @media (max-width: 768px) {
   main {
-    width: 100vw;
-    height: 85vh;
+    width: 98vw;
+    height: 70vh;
   }
 }
 
