@@ -1,3 +1,5 @@
+// DONE adding only meaningful necessary comments
+
 /**
  * Converts a number with a comma decimal separator to a dot decimal separator.
  *

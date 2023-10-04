@@ -1,7 +1,9 @@
+//DONE adding only meaningful necessary comments
+
 import React from "react";
 import {
   faRightFromBracket,
-  faShareNodes,
+  faUserPlus,
   faCircleInfo,
   faMessage,
 } from "@fortawesome/free-solid-svg-icons";
@@ -9,25 +11,30 @@ import NavigateFontAwesomeIcon from "../NavigateFontAwesomeIcon/NavigateFontAwes
 import styles from "./UserActionsComponent.module.css";
 import WebShareApiInvite from "../WebShareApiInvite/WebShareApiInvite";
 
+/**
+ * Container to hold and render all user related actions:
+ * Checks if Web Share API is supported on client's device, if so: renders WebShareApiInvite.
+ * Always renders Icon based links to 1) invite users, 2) copy groupCode, 3) send feedback, 4) delete groupCode from device
+ *
+ * @param {string} props.groupCode - The code of the group.
+ * @param {string} props.groupName - The name of the group.
+ */
 const UserActionsContainer = ({ groupCode, groupName }) => {
-  // Check if Web Share API is supported
+  // Check if Web Share API is supported on client's device
   const isWebShareAPISupported = navigator.share !== undefined;
 
   return (
     <div className={styles.container}>
-      {isWebShareAPISupported ? (
-        <>
-      <div className={styles.WebShare}><WebShareApiInvite groupCode={groupCode} groupName={groupName} /></div>
-        </>
-      ) : (
-        <>
-          <NavigateFontAwesomeIcon
-            icon={faShareNodes}
-            route={`/share-group/${groupName}/${groupCode}`}
-            tooltip="Invite & share group"
-          />
-        </>
+      {isWebShareAPISupported && (
+        <div className={styles.WebShare}>
+          <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
+        </div>
       )}
+      <NavigateFontAwesomeIcon
+        icon={faUserPlus}
+        route={`/share-group/${groupName}/${groupCode}`}
+        tooltip='Invite & share group'
+      />
       <NavigateFontAwesomeIcon
         icon={faCircleInfo}
         route={`/copy-groupcode/${groupName}/${groupCode}`}
@@ -36,12 +43,12 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
       <NavigateFontAwesomeIcon
         icon={faMessage}
         route={`/feedback/${groupCode}`}
-        tooltip="Feedback"
+        tooltip='Feedback'
       />
       <NavigateFontAwesomeIcon
         icon={faRightFromBracket}
         route={`/leave-group/${groupName}/${groupCode}`}
-        tooltip="Leave group"
+        tooltip='Leave group'
       />
     </div>
   );

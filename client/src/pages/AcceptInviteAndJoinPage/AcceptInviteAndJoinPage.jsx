@@ -1,4 +1,5 @@
 // DONE adding only meaningful necessary comments
+// TODO: HELMET META TAGS DON'T WORK.
 
 import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
@@ -38,27 +39,36 @@ const AcceptInviteAndJoinPage = () => {
         <meta
           name='description'
           content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
+          data-rh='true'
         />
         {/* Facebook tags */}
         <meta property='og:type' content={"website"} />
         <meta
           property='og:title'
           content={"InstantSplit invitation to settle group expenses"}
+          data-rh='true'
         />
         <meta
           property='og:description'
           content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
+          data-rh='true'
         />
         {/* Twitter tags */}
-        <meta name='twitter:creator' content={groupName} />
-        <meta name='twitter:card' content={"summary_large_image"} />
+        <meta name='twitter:creator' content={groupName} data-rh='true' />
+        <meta
+          name='twitter:card'
+          content={"summary_large_image"}
+          data-rh='true'
+        />
         <meta
           name='twitter:title'
           content={"InstantSplit invitation to settle group expenses"}
+          data-rh='true'
         />
         <meta
           name='twitter:description'
           content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
+          data-rh='true'
         />
         {/* End Twitter tags */}
       </Helmet>

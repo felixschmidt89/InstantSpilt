@@ -7,20 +7,25 @@ import GroupActionsContainer from "../../components/GroupActionsContainer/GroupA
 import useCheckGroupCodePresenceAndNavigateHome from "../../hooks/useCheckGroupCodePresenceAndNavigateHome";
 import UserActionsComponent from "../../components/UserActionsComponent/UserActionsComponent";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
-import MetaTags from "../../components/reuseableComponents/MetaTags/MetaTags";
 
+/**
+ * Main component of the application, renders or links to all core features related to settling expenses.
+ * First checks if groupCode is available (TODO: groupCode validation) and navigates home if not.
+ */
 export default function InstantSplitPage() {
   const groupCode = localStorage.getItem("activeGroupCode");
 
   useCheckGroupCodePresenceAndNavigateHome();
 
+  // Initialize the view state, fetch group data
   const [view, setView] = useState("view2");
   const groupData = useFetchGroupData(groupCode);
 
+  // Handle user view switches
   const handleSwitchView = () => {
     setView(view === "view1" ? "view2" : "view1");
   };
-
+  // Render spinner until data is fetched
   if (groupData === null) {
     return (
       <main>
@@ -30,17 +35,14 @@ export default function InstantSplitPage() {
   } else {
     return (
       <main>
-        <MetaTags
-          title='InstantSplit - main application'
-          description='Effortlessly settle group expenses with InstantSplit'
-          url='https://instantsplit.netlify.app/instant-split'
-        />
+        {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
         <UserActionsComponent
           groupCode={groupCode}
           groupName={groupData.group.groupName}
         />
         <div className={styles.buttonContainer}>
+          {/* Button to render group Balances view (default) */}
           <button
             className={`${styles.button} ${
               view === "view2" ? styles.expensesButton : styles.balancesButton
@@ -49,6 +51,7 @@ export default function InstantSplitPage() {
             disabled={view === "view2"}>
             Balances
           </button>
+          {/* Button to render group History view */}
           <button
             className={`${styles.button} ${
               view === "view1" ? styles.expensesButton : styles.balancesButton

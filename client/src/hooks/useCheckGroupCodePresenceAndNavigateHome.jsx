@@ -1,9 +1,10 @@
+// DONE adding only meaningful necessary comments
+
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 /** Checks if groupCode exists in localStorage and navigates to homepage if not
  */
-
 function useCheckGroupCodePresenceAndNavigateHome() {
   const navigate = useNavigate();
 

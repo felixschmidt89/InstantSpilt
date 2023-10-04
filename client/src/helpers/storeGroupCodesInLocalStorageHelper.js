@@ -1,9 +1,11 @@
+// DONE adding only meaningful necessary comments
+
 import logDevErrorHelper from "../../../server/helpers/logDevErrorHelper";
 
 /**
- * Adds groupCode to local storage if it doesn't already exist
+ * Adds groupCode to array of storedGroupCode in local storage if it doesn't already exist
  *
- * @param {string} groupCode - The groupCode to add to local storage.
+ * @param {string} groupCode - The groupCode to add to array
  * @returns {boolean} - Returns true if groupCode has been added to local storage, false in case of an error.
  */
 const storeGroupCodesInLocalStorageHelper = (groupCode) => {

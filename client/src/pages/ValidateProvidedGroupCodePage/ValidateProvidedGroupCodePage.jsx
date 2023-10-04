@@ -9,14 +9,16 @@ import { StatusCodes } from "http-status-codes";
 import emojiConstants from "../../constants/emojiConstants";
 
 /**
- * This component checks if the user-entered groupCode exists in the database.
- * If found, it stores the groupCode in the client's local storage and navigates to the main application.
- * If not found, it renders appropriate error messages.
+ * Checks if groupCode exists in the database.
+ * If found: it stores the groupCode in the client's local storage and navigates to the main application.
+ * If not: renders specific(NOT FOUND, TOO MANY REQUESTS) else generic error message
  */
 const ValidateProvideGroupCodePage = () => {
-  // Get groupCode from URL, initiate groupCode validation, destructure groupExistence boolean and statusCode.
+  // Get groupCode from URL initiate groupCode validation, destructure groupExistence boolean and statusCode.
   const { groupCode } = useParams();
+
   const [error, setError] = useState(null);
+  // Destructure groupExists and status code from groupCode validity check
   const [groupExists, , statusCode] = useValidateGroupExistence({
     groupCode,
   });
@@ -40,6 +42,7 @@ const ValidateProvideGroupCodePage = () => {
   console.log(groupExists, statusCode);
   return (
     <main>
+      {/* Back button to enter groupCode again */}
       <NavigateButton
         route={"enter-groupcode"}
         buttonText={"back"}
