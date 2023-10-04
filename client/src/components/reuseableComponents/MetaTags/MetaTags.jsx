@@ -18,7 +18,7 @@ import { Helmet } from "react-helmet";
 function MetaTags({
   title = "InstantSplit",
   description = "A hassle-free solution for settling group expenses without the need for user registration or app downloads.",
-  image = "/metaTagDefaultImg.png",
+  image = "https://instantsplit.netlify.app/metaTagDefaultImg.png",
   url,
   author = "Felix Schmidt",
 }) {

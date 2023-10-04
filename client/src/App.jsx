@@ -28,63 +28,72 @@ import CopyGroupCodePage from "./pages/CopyGroupCodePage/CopyGroupCodePage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroupExpensesPage";
 import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route index element={<IndexNavigator />} />
-        <Route path='/homepage' element={<HomePage />} />
-        <Route path='/legal-notice' element={<LegalNoticePage />} />
+      <HelmetProvider>
+        <Header />
+        <Routes>
+          <Route index element={<IndexNavigator />} />
+          <Route path='/homepage' element={<HomePage />} />
+          <Route path='/legal-notice' element={<LegalNoticePage />} />
 
-        <Route
-          path='/groupcode-explanation'
-          element={<GroupCodeExplanationPage />}
-        />
+          <Route
+            path='/groupcode-explanation'
+            element={<GroupCodeExplanationPage />}
+          />
 
-        <Route path='/create-group' element={<CreateGroupPage />} />
-        <Route
-          path='create-users-signup'
-          element={<CreateUsersNextButtonPage />}
-        />
-        <Route path='/enter-groupcode' element={<EnterGroupCode />} />
-        <Route
-          path='/groupCode-validator/:groupCode'
-          element={<ValidateProvidedGroupCodePage />}
-        />
-        <Route path='/join/:groupCode' element={<AcceptInviteAndJoinPage />} />
+          <Route path='/create-group' element={<CreateGroupPage />} />
+          <Route
+            path='create-users-signup'
+            element={<CreateUsersNextButtonPage />}
+          />
+          <Route path='/enter-groupcode' element={<EnterGroupCode />} />
+          <Route
+            path='/groupCode-validator/:groupCode'
+            element={<ValidateProvidedGroupCodePage />}
+          />
+          <Route
+            path='/join/:groupCode'
+            element={<AcceptInviteAndJoinPage />}
+          />
 
-        <Route path='/instant-split' element={<InstantSplitPage />} />
-        <Route path='/create-expense' element={<CreateExpensePage />} />
-        <Route path='/create-payment' element={<CreatePaymentPage />} />
-        <Route
-          path='create-users-inapp'
-          element={<CreateUsersBackButtonPage />}
-        />
-        <Route path='/settle-expenses' element={<SettleGroupExpensesPage />} />
+          <Route path='/instant-split' element={<InstantSplitPage />} />
+          <Route path='/create-expense' element={<CreateExpensePage />} />
+          <Route path='/create-payment' element={<CreatePaymentPage />} />
+          <Route
+            path='create-users-inapp'
+            element={<CreateUsersBackButtonPage />}
+          />
+          <Route
+            path='/settle-expenses'
+            element={<SettleGroupExpensesPage />}
+          />
 
-        <Route path='/item-page' element={<ItemNavigatorPage />} />
-        <Route path='/user-page/:userId' element={<UserPage />} />
-        <Route path='/payment-page/:itemId' element={<PaymentPage />} />
-        <Route path='/expense-page/:itemId' element={<ExpensePage />} />
-        <Route
-          path='/leave-group/:groupName/:groupCode'
-          element={<ForgetGroupOnDevicePage />}
-        />
-        <Route
-          path='/share-group/:groupName/:groupCode'
-          element={<ShareGroupPage />}
-        />
-        <Route
-          path='/copy-groupCode/:groupName/:groupCode'
-          element={<CopyGroupCodePage />}
-        />
-        <Route path='/feedback/:groupCode' element={<FeedbackPage />} />
+          <Route path='/item-page' element={<ItemNavigatorPage />} />
+          <Route path='/user-page/:userId' element={<UserPage />} />
+          <Route path='/payment-page/:itemId' element={<PaymentPage />} />
+          <Route path='/expense-page/:itemId' element={<ExpensePage />} />
+          <Route
+            path='/leave-group/:groupName/:groupCode'
+            element={<ForgetGroupOnDevicePage />}
+          />
+          <Route
+            path='/share-group/:groupName/:groupCode'
+            element={<ShareGroupPage />}
+          />
+          <Route
+            path='/copy-groupCode/:groupName/:groupCode'
+            element={<CopyGroupCodePage />}
+          />
+          <Route path='/feedback/:groupCode' element={<FeedbackPage />} />
 
-        <Route path='*' element={<PageNotFoundPage />} />
-      </Routes>
-      <Footer />
+          <Route path='*' element={<PageNotFoundPage />} />
+        </Routes>
+        <Footer />
+      </HelmetProvider>
     </BrowserRouter>
   );
 }
