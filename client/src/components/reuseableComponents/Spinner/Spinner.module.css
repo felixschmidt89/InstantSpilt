@@ -1,5 +1,6 @@
-.spinner {
-  fill: var(--color-signal);
-  width: 4rem;
-  height: 4rem;
+.spinner-container {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

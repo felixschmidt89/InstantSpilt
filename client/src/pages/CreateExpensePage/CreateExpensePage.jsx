@@ -92,29 +92,31 @@ export default function CreateExpensePage() {
       ) : (
         <form onSubmit={handleFormSubmit}>
           {/* Input field for expense name */}
-          <div><input
-            className={styles.inputFieldOne}
-            type='text'
-            value={expenseName}
-            onChange={handleExpenseNameChange}
-            placeholder='expense description'
-            required
-            minLength={3}
-            maxLength={50}
-            ref={inputFieldOne}
-          />
+          <div>
+            <input
+              className={styles.inputFieldOne}
+              type='text'
+              value={expenseName}
+              onChange={handleExpenseNameChange}
+              placeholder='expense description'
+              required
+              minLength={3}
+              maxLength={50}
+              ref={inputFieldOne}
+            />
           </div>
           {/* Input field for expense amount */}
-          <div><input
-            className={styles.inputFieldTwo}
-            type='text'
-            value={expenseAmount}
-            onChange={handleExpenseAmountChange}
-            placeholder='0.00'
-            required
-            pattern='[0-9]+([,.][0-9]{1,2})?'
-            inputMode='numeric'
-          />
+          <div>
+            <input
+              className={styles.inputFieldTwo}
+              type='text'
+              value={expenseAmount}
+              onChange={handleExpenseAmountChange}
+              placeholder='0.00'
+              required
+              pattern='[0-9]+([,.][0-9]{1,2})?'
+              inputMode='numeric'
+            />
           </div>
           {/* Dropdown to select the expense paye r */}
           <select
