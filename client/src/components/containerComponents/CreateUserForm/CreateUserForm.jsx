@@ -49,7 +49,7 @@ export default function CreateUserForm({ toggleDataRefresh }) {
   // render input field, conditionally render submit button and error message
   return (
     <div className={styles.container}>
-      <h1>Add user</h1>
+      <h1 className={styles.header}>Add user</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           type='text'

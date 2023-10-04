@@ -1,7 +1,27 @@
 .balances {
   margin-top: 0.8rem;
+  height: 70%;
+  overflow-y: auto;
+}
+
+/* Default styles */
+.balances {
+  margin-top: 0.8rem;
   height: 50%;
   overflow-y: auto;
+}
+
+/* Styles for screens with a maximum width of 768px */
+@media (max-width: 768px) {
+  .balances {
+    height: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .balances {
+    height: 40%;
+  }
 }
 
 .positiveBalance {
