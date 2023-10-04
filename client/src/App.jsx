@@ -56,7 +56,7 @@ function App() {
             element={<ValidateProvidedGroupCodePage />}
           />
           <Route
-            path='/join/:groupCode'
+            path='/join/:groupName/:groupCode'
             element={<AcceptInviteAndJoinPage />}
           />
 
