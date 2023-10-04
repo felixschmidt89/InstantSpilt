@@ -1,10 +1,9 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import CreateUserForm from "../../components/containerComponents/CreateUserForm/CreateUserForm";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import RenderUserNames from "../../components/containerComponents/RenderUserNames/RenderUserNames";
+import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 
-function CreateUsersChild({ route, alignment, buttonText }) {
+function CreateUsersInAppPage() {
   const [refreshData, setRefreshData] = useState(false);
 
   const toggleDataRefresh = () => {
@@ -14,9 +13,9 @@ function CreateUsersChild({ route, alignment, buttonText }) {
   return (
     <main>
       <NavigateButton
-        route={route}
-        alignment={alignment}
-        buttonText={buttonText}
+        route={"instant-split"}
+        alignment={"right"}
+        buttonText={"back"}
       />
       <CreateUserForm toggleDataRefresh={toggleDataRefresh} />
       <RenderUserNames refreshData={refreshData} />
@@ -24,4 +23,4 @@ function CreateUsersChild({ route, alignment, buttonText }) {
   );
 }
 
-export default CreateUsersChild;
+export default CreateUsersInAppPage;

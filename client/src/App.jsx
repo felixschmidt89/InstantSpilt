@@ -6,10 +6,6 @@ import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
 import HomePage from "./pages/HomePage/HomePage";
 import "./global.css";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
-import {
-  CreateUsersBackButtonPage,
-  CreateUsersNextButtonPage,
-} from "./pages/CreateUsersPage/CreateUsersPage";
 import InstantSplitPage from "./pages/InstantSplitPage/InstantSplitPage";
 import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
 import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
@@ -29,6 +25,8 @@ import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroupExpensesPage";
 import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
 import { HelmetProvider } from "react-helmet-async";
+import CreateUsersDuringSignUpPage from "./pages/CreateUsersDuringSignUpPage/CreateUsersDuringSignUpPage";
+import CreateUsersInAppPage from "./pages/CreateUsersInAppPage/CreateUsersInAppPage";
 
 function App() {
   return (
@@ -48,7 +46,7 @@ function App() {
           <Route path='/create-group' element={<CreateGroupPage />} />
           <Route
             path='create-users-signup'
-            element={<CreateUsersNextButtonPage />}
+            element={<CreateUsersDuringSignUpPage />}
           />
           <Route path='/enter-groupcode' element={<EnterGroupCode />} />
           <Route
@@ -63,10 +61,7 @@ function App() {
           <Route path='/instant-split' element={<InstantSplitPage />} />
           <Route path='/create-expense' element={<CreateExpensePage />} />
           <Route path='/create-payment' element={<CreatePaymentPage />} />
-          <Route
-            path='create-users-inapp'
-            element={<CreateUsersBackButtonPage />}
-          />
+          <Route path='create-users-inapp' element={<CreateUsersInAppPage />} />
           <Route
             path='/settle-expenses'
             element={<SettleGroupExpensesPage />}
