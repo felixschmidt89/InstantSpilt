@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./GroupHistory.module.css";
-import emojiConstants from "../../constants/emojiConstants";
-import Spinner from "../reuseableComponents/Spinner/Spinner";
+import emojiConstants from "../../../constants/emojiConstants";
+import Spinner from "../../reuseableComponents/Spinner/Spinner";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 

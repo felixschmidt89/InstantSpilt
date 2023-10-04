@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import CreateUserForm from "../../components/CreateUserForm/CreateUserForm";
-import RenderUserNames from "../../components/RenderUserNames/RenderUserNames";
+import CreateUserForm from "../../components/containerComponents/CreateUserForm/CreateUserForm";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
+import RenderUserNames from "../../components/containerComponents/RenderUserNames/RenderUserNames";
 
 function CreateUsersChild({ route, alignment, buttonText }) {
   const [refreshData, setRefreshData] = useState(false);

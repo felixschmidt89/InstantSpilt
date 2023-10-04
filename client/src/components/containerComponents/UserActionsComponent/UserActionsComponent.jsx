@@ -8,8 +8,8 @@ import {
   faMessage,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./UserActionsComponent.module.css";
-import WebShareApiInvite from "../WebShareApiInvite/WebShareApiInvite";
-import NavigateFontAwesomeIcon from "../reuseableComponents/NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
+import WebShareApiInvite from "../../singleComponents/WebShareApiInvite/WebShareApiInvite";
+import NavigateFontAwesomeIcon from "../../reuseableComponents/NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
 
 /**
  * Container to hold and render all user related actions:

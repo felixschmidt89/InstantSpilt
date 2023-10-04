@@ -1,14 +1,14 @@
 // DONE adding only meaningful necessary comments
 
 import React, { useState } from "react";
-import GroupBalances from "../../components/GroupBalances/GroupBalances";
-import GroupHistory from "../../components/GroupHistory/GroupHistory";
 import styles from "./InstantSplitPage.module.css";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useCheckGroupCodePresenceAndNavigateHome from "../../hooks/useCheckGroupCodePresenceAndNavigateHome";
-import UserActionsComponent from "../../components/UserActionsComponent/UserActionsComponent";
+import UserActionsComponent from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import GroupActionsContainer from "../../components/containerComponents/GroupActionsContainer/GroupActionsContainer";
+import GroupBalances from "../../components/containerComponents/GroupBalances/GroupBalances";
+import GroupHistory from "../../components/containerComponents/GroupHistory/GroupHistory";
 
 /**
  * Main component of the application, renders or links to all core features related to settling expenses.

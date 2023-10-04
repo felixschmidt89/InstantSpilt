@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./RenderUserNames.module.css";
-import Spinner from "../reuseableComponents/Spinner/Spinner";
+import Spinner from "../../reuseableComponents/Spinner/Spinner";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
