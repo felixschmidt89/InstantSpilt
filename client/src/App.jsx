@@ -28,17 +28,10 @@ import CopyGroupCodePage from "./pages/CopyGroupCodePage/CopyGroupCodePage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroupExpensesPage";
 import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
-import { Helmet } from "react-helmet";
-import MetaTags from "./components/reuseableComponents/MetaTags/MetaTags";
 
 function App() {
   return (
     <BrowserRouter>
-      <MetaTags
-        title='InstantSplit - homepage'
-        description='Effortlessly settle group expenses with Instant Split, a hassle-free solution that requires no registration or app downloads. Share minimal data and split bills with ease.'
-      />
-      <Helmet />
       <Header />
       <Routes>
         <Route index element={<IndexNavigator />} />

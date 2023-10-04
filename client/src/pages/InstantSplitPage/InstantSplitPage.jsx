@@ -33,6 +33,7 @@ export default function InstantSplitPage() {
         <MetaTags
           title='InstantSplit - main application'
           description='Effortlessly settle group expenses with InstantSplit'
+          url='https://instantsplit.netlify.app/instant-split'
         />
         <h1>{groupData.group.groupName}</h1>
         <UserActionsComponent

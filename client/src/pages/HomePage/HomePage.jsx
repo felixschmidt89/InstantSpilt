@@ -6,6 +6,13 @@ import styles from "./HomePage.module.css";
 const HomePage = () => {
   return (
     <main className={styles.container}>
+      <MetaTags
+        title={"InstantSplit - homepage"}
+        description={
+          "Effortlessly settle group expenses with Instant Split, a hassle-free solution that requires no registration or app downloads. Share minimal data and split bills with ease"
+        }
+        url={"https://instantsplit.netlify.app/homepage"}
+      />
       <div className={styles.introContainer}>
         <h1>Welcome to InstantSplit!</h1>
         <p>

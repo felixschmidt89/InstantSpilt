@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 
 /**
  * MetaTags reusable component
- *
+ * TODO: SADLY DOES NOT WORK AS EXPECTED CURRENTLY + twitter cards seem to require 2 images which the component does not support yet.
  * Provides a convenient way to set meta tags for SEO and social sharing
  * as well as default meta tags for consistency across the web application.
  *
@@ -19,7 +19,7 @@ function MetaTags({
   title = "InstantSplit",
   description = "A hassle-free solution for settling group expenses without the need for user registration or app downloads.",
   image = "/metaTagDefaultImg.png",
-  url = "https://instant-split.netlify.app",
+  url,
   author = "Felix Schmidt",
 }) {
   return (
