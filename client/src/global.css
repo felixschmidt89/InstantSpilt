@@ -53,12 +53,12 @@ body {
 }
 
 main {
+  border: 2px solid var(--color-signal-reduced-opacity);
   display: flex;
   flex-direction: column;
   background-color: var(--color-main);
-  height: 84vh;
   border-radius: 10px;
-  width: 75vw;
+  margin: 0 auto;
 }
 
 h1 {
@@ -77,24 +77,34 @@ ul {
   color: var(--color-error);
 }
 
+/* CSS for Small Tablets (768px and below in portrait mode) */
 @media (max-width: 768px) {
   main {
     width: 100vw;
+    height: 85vh;
   }
 }
 
-/* bigger devices */
-@media (min-width: 769px) and (max-width: 1600px) {
+/* CSS for Tablets (Between 768px and 1024px in portrait mode) */
+@media (min-width: 769px) and (max-width: 1024px) {
   main {
-    width: 70vw;
-    height: 64vh;
+    width: 50vw;
+    height: 85vh;
   }
 }
 
-/* large devices */
-@media (min-width: 1601px) {
+/* CSS for Laptops and Desktops (Between 1025px and 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) {
   main {
-    width: 45vw;
-    height: 65vh;
+    width: 40vw;
+    height: 85vh;
+  }
+}
+
+/* CSS for Large Screens (1281px and above) */
+@media (min-width: 1281px) {
+  main {
+    width: 30vw;
+    height: 85vh;
   }
 }

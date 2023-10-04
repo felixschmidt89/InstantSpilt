@@ -9,32 +9,7 @@
 }
 
 .logoImage {
-  width: 20vw;
-  height: auto;
-}
-
-/* small devices */
-@media (max-width: 576px) {
-  .logoImage {
-    width: 50%;
-    max-width: 500px;
-    transform: translate(0, 1vh);
-  }
-}
-
-/* bigger devices */
-
-@media (min-width: 577px) and (max-width: 1600px) {
-  .logoImage {
-    width: 40%;
-    max-width: 400px;
-    height: auto;
-  }
-}
-/* large devices */
-@media (min-width: 1601px) {
-  .logoImage {
-    width: 40%;
-    max-width: 500px;
-  }
+  width: 40%;
+  max-width: 500px;
+  transform: translate(0, 1vh);
 }

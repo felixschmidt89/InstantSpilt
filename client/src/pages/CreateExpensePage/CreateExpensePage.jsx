@@ -134,7 +134,7 @@ export default function CreateExpensePage() {
               </option>
             ))}
           </select>
-          <h4>for </h4>
+          <h3>Beneficiaries: </h3>
           <div className={styles.beneficiaries}>
             {/* (Un)check beneficiaries */}
             {groupMembers.map((member) => (

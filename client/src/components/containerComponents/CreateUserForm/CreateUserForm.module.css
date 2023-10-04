@@ -1,5 +1,6 @@
 .header {
   font-size: 2.3rem;
+  margin-top: 2rem;
 }
 
 .inputField {
@@ -8,7 +9,7 @@
   padding: 0.3rem;
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.5rem;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   text-align: center;
   outline: none;
   margin-bottom: 0.5rem;

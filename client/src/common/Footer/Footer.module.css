@@ -2,33 +2,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 3px solid var(--color-signal);
   font-size: 2rem;
-  height: 8vh;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   background-color: var(--color-body);
   z-index: 999;
-}
-
-/* Reset the positioning for larger screens */
-@media (min-width: 769px) {
-  .footer {
-    position: static;
-    margin-bottom: 10vh;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1600px) {
-  .footer {
-    height: 5vh;
-  }
-}
-
-@media (min-width: 1601px) {
-  .footer {
-    height: 4vh;
-  }
+  margin-top: 0.5rem;
+  position: static;
+  height: 3rem;
 }

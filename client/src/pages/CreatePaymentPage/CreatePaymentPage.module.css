@@ -1,5 +1,6 @@
 .header {
   font-size: 2.3rem;
+  padding-top: 0rem !important;
 }
 
 .inputField,
@@ -13,7 +14,8 @@
   font-size: 1.8rem;
   text-align: center;
   outline: none;
-  margin-right: 0.4rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
 }
 
 .select {
@@ -33,11 +35,10 @@
 }
 
 .paymentToEmoji {
-  margin-right: 0.4rem;
+  margin-right: 1rem;
 }
 
 .buttonContainer {
-  padding-top: 1rem;
   display: block;
   justify-content: center;
 }
