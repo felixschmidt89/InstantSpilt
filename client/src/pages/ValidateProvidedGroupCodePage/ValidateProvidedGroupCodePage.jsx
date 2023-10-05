@@ -10,7 +10,7 @@ import emojiConstants from "../../constants/emojiConstants";
 
 /**
  * Checks if groupCode exists in the database.
- * If found: it stores the groupCode in the client's local storage and navigates to the main application.
+ * If found: it stores the groupCode in the client's local storage and navigates to OnboardingPage.
  * If not: renders specific (NOT FOUND, TOO MANY REQUESTS) else generic error message
  */
 const ValidateProvideGroupCodePage = () => {

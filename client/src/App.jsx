@@ -58,7 +58,7 @@ function App() {
             path='/join/:groupName/:groupCode'
             element={<AcceptInviteAndJoinPage />}
           />
-          <Route path='/onboarding/' element={<OnboardingPage />} />
+          <Route path='/onboarding' element={<OnboardingPage />} />
 
           <Route path='/instant-split' element={<InstantSplitPage />} />
           <Route path='/create-expense' element={<CreateExpensePage />} />

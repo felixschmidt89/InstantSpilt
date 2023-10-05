@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorage";
 import styles from "./ForgetGroupOnDevicePage.module.css";
+import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
@@ -24,8 +25,9 @@ const ForgetGroupOnDevicePage = () => {
       <p>
         Are you sure you want to leave <strong>{groupName}</strong> on this
         device? <br />
-        If you ever wish to rejoin later, remember your GroupCode: <br />
-        <strong>{groupCode}</strong>
+        If you ever wish to rejoin later, remember your{" "}
+        <strong>GroupCode:</strong>
+        <CopyToClipboard infoToCopy={groupCode} />
       </p>{" "}
       <br />
       <button className={styles.button} onClick={handleConfirm}>
