@@ -13,7 +13,7 @@ const HomePage = () => {
         </p>
       </div>
       <div className={styles.groupContainer}>
-        <Link to='/groupcode-explanation' className={styles.groupLink}>
+        <Link to='/create-group' className={styles.groupLink}>
           <strong>Create a new group</strong>
         </Link>
         <Link to='/enter-groupcode' className={styles.groupLink}>

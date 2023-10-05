@@ -1,4 +1,9 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUserPlus,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import emojiConstants from "../../constants/emojiConstants";
 import styles from "./OnboardingPage.module.css";
@@ -16,7 +21,10 @@ function OnboardingPage() {
         <h2>Top Section</h2>
         <p>
           Contains features not directly related to settling expenses, such as
-          inviting others or leaving the group.
+          inviting others (
+          <FontAwesomeIcon icon={faUserPlus} />) or leaving the group (
+          <FontAwesomeIcon icon={faRightFromBracket} />
+          ).
         </p>
         <h2> Middle Section:</h2>
         <p>

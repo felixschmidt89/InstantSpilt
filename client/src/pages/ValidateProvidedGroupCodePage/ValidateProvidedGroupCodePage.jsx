@@ -28,7 +28,7 @@ const ValidateProvideGroupCodePage = () => {
     if (groupExists === true) {
       storeGroupCodesInLocalStorageHelper(groupCode);
       setGroupCodeToCurrentlyActiveHelper(groupCode);
-      navigate("/instant-split");
+      navigate("/onboarding");
     } else if (groupExists === false) {
       setError(
         `Oops, there's no group associated with the provided GroupCode.`

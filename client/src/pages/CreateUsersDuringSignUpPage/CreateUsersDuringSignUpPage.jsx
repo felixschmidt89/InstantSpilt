@@ -13,7 +13,7 @@ function CreateUsersDuringSignUpPage() {
   return (
     <main>
       <NavigateButton
-        route={"onboarding"}
+        route={"groupcode-explanation"}
         alignment={"right"}
         buttonText={"next"}
       />
