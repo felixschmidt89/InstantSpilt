@@ -59,7 +59,7 @@ export default function GroupHistory({ groupCode }) {
     fetchGroupExpensesAndPayments();
   }, [groupCode]);
   return (
-    <div className={styles.expenses}>
+    <div className={styles.container}>
       {isLoading ? (
         <Spinner />
       ) : groupExpensesAndPayments.length > 0 ? ( // Check if there are expenses or payments
@@ -67,20 +67,18 @@ export default function GroupHistory({ groupCode }) {
           {groupExpensesAndPayments.map((item) => (
             <li key={item._id}>
               {item.expenseName ? (
-                <div>
-                  <strong>
-                    {emojiConstants.expense} {item.expenseName}
-                  </strong>
-                  :{" "}
+                <div className={styles.expenses}>
+                  {emojiConstants.expense}
                   <Link
                     to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
                     {item.expenseAmount.toFixed(2)}€
                   </Link>{" "}
                   {emojiConstants.paidFor}{" "}
-                  <strong>{item.expensePayer.userName}</strong>
+                  <strong>{item.expensePayer.userName}</strong>:{" "}
+                  {item.expenseName}
                 </div>
               ) : (
-                <div>
+                <div className={styles.payments}>
                   <span>
                     {emojiConstants.payment}{" "}
                     <Link

@@ -39,71 +39,33 @@ const AcceptInviteAndJoinPage = () => {
   // Visually indicate fetching, render button to accept invitation when data is received
   return (
     <main>
-      <Helmet>
-        {/* Standard metadata tags */}
-        <title>InstantSplit invitation to settle group expenses</title>
-        <meta
-          name='description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
-          data-rh='true'
-        />
-        {/* Facebook tags */}
-        <meta property='og:type' content={"website"} />
-        <meta
-          property='og:title'
-          content={"InstantSplit invitation to settle group expenses"}
-          data-rh='true'
-        />
-        <meta
-          property='og:description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
-          data-rh='true'
-        />
-        {/* Twitter tags */}
-        <meta name='twitter:creator' content={groupName} data-rh='true' />
-        <meta
-          name='twitter:card'
-          content={"summary_large_image"}
-          data-rh='true'
-        />
-        <meta
-          name='twitter:title'
-          content={"InstantSplit invitation to settle group expenses"}
-          data-rh='true'
-        />
-        <meta
-          name='twitter:description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
-          data-rh='true'
-        />
-        {/* End Twitter tags */}
-      </Helmet>
-      <h1>Hey there!</h1>
-      {isLoading && <Spinner />}
-      {!isLoading && groupData && (
-        <div className={styles.explanationContainer}>
-          <p>
-            Someone has given you this link so you can access InstantSplit group{" "}
-            <strong>{groupData.group.groupName}.</strong>
-          </p>
-          <p className={styles.appExplanation}>
-            InstantSplit is the hassle-free way to settle group expenses with
-            <strong>
-              no user registration or app download while sharing minimal data.
-            </strong>
-          </p>
-          <p>
-            To join your peers' group <strong>{groupName}</strong>, and settle
-            expenses immediately, simply accept this invitation.
-          </p>
-          <h2>Are you in?</h2>
-          <button className={styles.button} onClick={handleAcceptInvitation}>
-            Sure!
-          </button>
-        </div>
-      )}
+      <div className={styles.explanationContainer}>
+        <h1>Hey there!</h1>
+        {isLoading && <Spinner />}
+        {!isLoading && groupData && (
+          <>
+            <p>
+              Someone invited you to join the InstantSplit group{" "}
+              <strong>{groupData.group.groupName}.</strong>
+            </p>
+            <p>
+              InstantSplit is the hassle-free way to settle group expenses with
+              <strong>
+                no user registration or app download while sharing minimal data.
+              </strong>
+            </p>
+            <p>
+              To join your peers' group <strong>{groupName}</strong>, and settle
+              expenses immediately, simply accept this invitation.
+            </p>
+            <h2>Are you in?</h2>
+            <button className={styles.button} onClick={handleAcceptInvitation}>
+              Sure!
+            </button>
+          </>
+        )}
+      </div>
     </main>
   );
 };
-
 export default AcceptInviteAndJoinPage;
