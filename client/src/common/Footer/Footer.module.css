@@ -11,4 +11,5 @@
   margin-top: 1rem;
   position: static;
   height: 3rem;
+  transform: translateX(1rem);
 }
