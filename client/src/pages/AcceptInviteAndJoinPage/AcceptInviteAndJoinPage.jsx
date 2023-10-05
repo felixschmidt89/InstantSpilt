@@ -29,11 +29,11 @@ const AcceptInviteAndJoinPage = () => {
     }
   }, [groupData]);
 
-  // On confirmation button click: store groupCode in client's localStorage and navigate to instant-split page
+  // On confirmation button click: store groupCode in client's localStorage and navigate to onboarding page
   const handleAcceptInvitation = () => {
     storeGroupCodesInLocalStorageHelper(groupCode);
     setGroupCodeToCurrentlyActiveHelper(groupCode);
-    navigate("/onboarding");
+    navigate("onboarding");
   };
 
   // Visually indicate fetching, render button to accept invitation when data is received

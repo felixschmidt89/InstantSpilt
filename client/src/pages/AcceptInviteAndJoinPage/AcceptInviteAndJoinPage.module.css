@@ -5,10 +5,11 @@
   margin-left: auto;
   margin-right: auto;
   align-items: center;
+  width: 80%;
 }
 
 .explanationContainer {
-  max-width: 80%;
+  width: 80%;
 }
 
 h2 {
