@@ -28,6 +28,7 @@ import { HelmetProvider } from "react-helmet-async";
 import CreateUsersDuringSignUpPage from "./pages/CreateUsersDuringSignUpPage/CreateUsersDuringSignUpPage";
 import CreateUsersInAppPage from "./pages/CreateUsersInAppPage/CreateUsersInAppPage";
 import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
+import TutorialPage from "./pages/TutorialPage/TutorialPage";
 
 function App() {
   return (
@@ -38,12 +39,10 @@ function App() {
           <Route index element={<IndexNavigator />} />
           <Route path='/homepage' element={<HomePage />} />
           <Route path='/legal-notice' element={<LegalNoticePage />} />
-
           <Route
             path='/groupcode-explanation'
             element={<GroupCodeExplanationPage />}
           />
-
           <Route path='/create-group' element={<CreateGroupPage />} />
           <Route
             path='create-users-signup'
@@ -59,6 +58,10 @@ function App() {
             element={<AcceptInviteAndJoinPage />}
           />
           <Route path='/onboarding' element={<OnboardingPage />} />
+          <Route
+            path='/tutorial/:groupName/:groupCode'
+            element={<TutorialPage />}
+          />
 
           <Route path='/instant-split' element={<InstantSplitPage />} />
           <Route path='/create-expense' element={<CreateExpensePage />} />
@@ -80,10 +83,6 @@ function App() {
           <Route
             path='/share-group/:groupName/:groupCode'
             element={<ShareGroupPage />}
-          />
-          <Route
-            path='/copy-groupCode/:groupName/:groupCode'
-            element={<CopyGroupCodePage />}
           />
           <Route path='/feedback/:groupCode' element={<FeedbackPage />} />
 

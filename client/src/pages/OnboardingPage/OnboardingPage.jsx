@@ -30,7 +30,7 @@ function OnboardingPage() {
         <p>
           <ul>
             <li>
-              <strong>Balances:</strong> Displays users' current balances; click
+              <strong>Balances</strong> Displays users' current balances; click
               a name for more details.
             </li>
             <li>
@@ -40,7 +40,7 @@ function OnboardingPage() {
           </ul>
         </p>
         <h2>
-          <strong>Bottom Section:</strong>
+          <strong>Bottom Section</strong>
         </h2>
         <p>
           Allows you to perform actions:

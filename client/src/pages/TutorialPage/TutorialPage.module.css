@@ -1,0 +1,21 @@
+.container {
+  width: 80%;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+h2 {
+  padding-top: 0.5rem;
+}
+
+h3 {
+  font-size: 1.7rem;
+}
+
+p {
+  margin-top: 0.5rem;
+}
+
+.instantSplit {
+  margin-top: 1.5rem;
+}

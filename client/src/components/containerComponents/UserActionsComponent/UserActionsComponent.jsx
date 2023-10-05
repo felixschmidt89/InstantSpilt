@@ -37,24 +37,19 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
         tooltip='Invite & share group'
       />
       <NavigateFontAwesomeIcon
-        icon={faCircleInfo}
-        route={`/copy-groupcode/${groupName}/${groupCode}`}
-        tooltip={`GroupCode: ${groupCode}`}
-      />
-      <NavigateFontAwesomeIcon
         icon={faMessage}
         route={`/feedback/${groupCode}`}
         tooltip='Feedback'
       />
       <NavigateFontAwesomeIcon
+        icon={faCircleQuestion}
+        route={`/tutorial/${groupName}/${groupCode}`}
+        tooltip='Tutorial'
+      />
+      <NavigateFontAwesomeIcon
         icon={faRightFromBracket}
         route={`/leave-group/${groupName}/${groupCode}`}
         tooltip='Leave group'
-      />
-      <NavigateFontAwesomeIcon
-        icon={faCircleQuestion}
-        route={`/tutorial/`}
-        tooltip='Tutorial'
       />
     </div>
   );

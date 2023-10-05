@@ -33,7 +33,7 @@ const AcceptInviteAndJoinPage = () => {
   const handleAcceptInvitation = () => {
     storeGroupCodesInLocalStorageHelper(groupCode);
     setGroupCodeToCurrentlyActiveHelper(groupCode);
-    navigate("onboarding");
+    navigate("/onboarding");
   };
 
   // Visually indicate fetching, render button to accept invitation when data is received
@@ -50,9 +50,8 @@ const AcceptInviteAndJoinPage = () => {
             </p>
             <p>
               InstantSplit is the hassle-free way to settle group expenses with
-              <strong>
-                no user registration or app download while sharing minimal data.
-              </strong>
+              <strong>no user registration or app download</strong> while
+              sharing minimal data.
             </p>
             <p>
               To join your peers' group <strong>{groupName}</strong>, and settle
