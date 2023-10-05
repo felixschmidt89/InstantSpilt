@@ -38,7 +38,7 @@ const AcceptInviteAndJoinPage = () => {
 
   // Visually indicate fetching, render button to accept invitation when data is received
   return (
-    <main className={styles.container}>
+    <main>
       <Helmet>
         {/* Standard metadata tags */}
         <title>InstantSplit invitation to settle group expenses</title>
@@ -83,20 +83,16 @@ const AcceptInviteAndJoinPage = () => {
       {!isLoading && groupData && (
         <div className={styles.explanationContainer}>
           <p>
-            <div>Someone has given you this link</div>{" "}
-            <div>so you can access</div>{" "}
+            Someone has given you this link so you can access{" "}
             <div>
-              InstantSplit group <strong>{groupData.group.groupName}</strong>
+              InstantSplit group <strong>{groupData.group.groupName}.</strong>
             </div>
-            on this device.{" "}
           </p>
           <p className={styles.appExplanation}>
-            <div>InstantSplit is the hassle-free way</div>{" "}
-            <div>to settle group expenses with </div>
+            InstantSplit is the hassle-free way to settle group expenses with
             <div>
               <strong>
-                no user registration or app download{" "}
-                <div>while sharing minimal data.</div>
+                no user registration or app download while sharing minimal data.
               </strong>
             </div>
           </p>
