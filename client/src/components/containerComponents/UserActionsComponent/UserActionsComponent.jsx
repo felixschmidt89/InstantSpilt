@@ -4,7 +4,6 @@ import React from "react";
 import {
   faRightFromBracket,
   faUserPlus,
-  faCircleInfo,
   faMessage,
   faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";

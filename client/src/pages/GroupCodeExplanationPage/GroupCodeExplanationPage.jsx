@@ -16,7 +16,7 @@ const GroupCodeExplanationPage = () => {
         buttonText={"next"}
       />
       <div className={styles.container}>
-        <h1>ℹ️ Crucial info for group creators ℹ️</h1>
+        <h1>Crucial info for group creators</h1>
         <p>
           The key to settling group expenses easily while sharing minimal data
           is the <strong>GroupCode</strong>. Here's yours:

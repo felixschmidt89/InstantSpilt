@@ -1,8 +1,7 @@
 // DONE adding only meaningful necessary comments
-// TODO: HELMET META TAGS DON'T WORK.
+// TODO: ADD HELMET META TAGS
 
 import React, { useState, useEffect } from "react";
-import { Helmet } from "react-helmet";
 import { useParams, useNavigate } from "react-router-dom";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
