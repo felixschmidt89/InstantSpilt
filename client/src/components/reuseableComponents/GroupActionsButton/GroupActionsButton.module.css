@@ -1,0 +1,38 @@
+.button {
+  background-color: var(--color-body);
+  color: var(--color-main);
+  border: 3px solid var(--color-signal-reduced-opacity);
+  padding: 0.3rem;
+  font-size: 3.1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+}
+
+.button:hover {
+  background-color: var(--color-signal-reduced-opacity);
+  box-shadow: 0 0 0.5rem var(--color-signal);
+}
+
+.container {
+  position: relative; /* Ensure the container is a positioning context */
+}
+
+.button {
+  position: relative; /* Ensure z-index works */
+}
+
+.tooltip {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1.6rem;
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-dark);
+  color: var(--color-body);
+  padding: 0.8rem 1rem;
+  border-radius: 0.4rem;
+  white-space: nowrap;
+  z-index: 1;
+}

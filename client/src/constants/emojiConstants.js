@@ -8,5 +8,7 @@ const emojiConstants = {
   created: "🕑",
   info: "💁",
   error: "🚧",
+  user: "👤",
+  settle: "📟",
 };
 export default emojiConstants;

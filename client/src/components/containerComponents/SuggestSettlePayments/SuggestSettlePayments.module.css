@@ -6,6 +6,11 @@
   color: var(--color-error);
 }
 
+.balancesSettled {
+  margin-top: 0.5rem;
+  font-size: 2rem;
+}
+
 .userDetails {
   display: flex;
   flex-direction: row;

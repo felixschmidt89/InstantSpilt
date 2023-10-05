@@ -1,34 +1,41 @@
-// DONE adding only meaningful necessary comments
-
 import React from "react";
 import NavigateButton from "../../reuseableComponents/NavigateButton/NavigateButton";
 import styles from "./GroupActionsContainer.module.css";
+import emojiConstants from "../../../constants/emojiConstants";
+import GroupActionButton from "../../reuseableComponents/GroupActionsButton/GroupActionsButton";
 
 /**
- * Displays a set of navigation buttons for creating expenses, payments and users - and for settling expenses.
+ * Displays a set of navigation buttons: for creating expenses, payments, and users - and for settling expenses.
  */
 const GroupActionsContainer = () => {
   return (
     <div className={styles.buttonContainer}>
-      <NavigateButton
+      {/* Button for creating expenses */}
+      <GroupActionButton
         route={"create-expense"}
-        buttonText={"+ expense"}
-        margin={"5px"}
+        buttonText={emojiConstants.expense}
+        tooltipText='add expense'
       />
-      <NavigateButton
+
+      {/* Button for creating payments */}
+      <GroupActionButton
         route={"create-payment"}
-        buttonText={"+ payment"}
-        margin={"5px"}
+        buttonText={<span>{emojiConstants.payment}</span>}
+        tooltipText='add payment'
       />
-      <NavigateButton
+
+      {/* Button for creating users */}
+      <GroupActionButton
         route={"create-users-inapp"}
-        buttonText={"+ user"}
-        margin={"5px"}
+        buttonText={<span>{emojiConstants.user}</span>}
+        tooltipText='add user'
       />
-      <NavigateButton
+
+      {/* Button for settling expenses */}
+      <GroupActionButton
         route={"settle-expenses"}
-        buttonText={"settle"}
-        margin={"5px"}
+        buttonText={<span>{emojiConstants.settle}</span>}
+        tooltipText='settle expenses'
       />
     </div>
   );

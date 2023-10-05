@@ -78,8 +78,8 @@ export default function SuggestSettlePayments() {
             // Display the error message when there's an error
             <p className={styles.errorText}>{error}</p>
           ) : userDetails.length === 0 ? (
-            // Display a message when there are no users
-            <p>All settled. 🤝</p>
+            // Display a message when there are no users with unsettled balances
+            <p className={styles.balancesSettled}>All settled. 🤝</p>
           ) : (
             <>
               <h2>Needs to pay back:</h2>

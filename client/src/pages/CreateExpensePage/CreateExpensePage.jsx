@@ -98,7 +98,7 @@ export default function CreateExpensePage() {
               type='text'
               value={expenseName}
               onChange={handleExpenseNameChange}
-              placeholder='expense description'
+              placeholder='description'
               required
               minLength={3}
               maxLength={50}
