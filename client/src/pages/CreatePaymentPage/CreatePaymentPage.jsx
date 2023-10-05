@@ -74,7 +74,7 @@ export default function CreatePaymentPage() {
             placeholder='0.00'
             required
             pattern='[0-9]+([,.][0-9]{1,2})?'
-            inputMode='numeric'
+            inputMode='decimal'
             ref={inputField}
           />
         </div>

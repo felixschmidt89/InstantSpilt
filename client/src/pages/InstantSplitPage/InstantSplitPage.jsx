@@ -6,9 +6,9 @@ import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useCheckGroupCodePresenceAndNavigateHome from "../../hooks/useCheckGroupCodePresenceAndNavigateHome";
 import UserActionsComponent from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
-import GroupActionsContainer from "../../components/containerComponents/GroupActionsContainer/GroupActionsContainer";
 import GroupBalances from "../../components/containerComponents/GroupBalances/GroupBalances";
 import GroupHistory from "../../components/containerComponents/GroupHistory/GroupHistory";
+import GroupActionsComponent from "../../components/containerComponents/GroupActionsComponent/GroupActionsComponent";
 
 /**
  * Main component of the application, renders or links to all core features related to settling expenses.
@@ -67,7 +67,7 @@ export default function InstantSplitPage() {
         {view === "view1" ? <GroupHistory /> : <GroupBalances />}
         {/* Display GroupActionsComponent */}
 
-        <GroupActionsContainer />
+        <GroupActionsComponent />
       </main>
     );
   }

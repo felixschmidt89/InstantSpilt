@@ -1,13 +1,12 @@
 import React from "react";
-import NavigateButton from "../../reuseableComponents/NavigateButton/NavigateButton";
-import styles from "./GroupActionsContainer.module.css";
+import styles from "./GroupActionsComponent.module.css";
 import emojiConstants from "../../../constants/emojiConstants";
 import GroupActionButton from "../../reuseableComponents/GroupActionsButton/GroupActionsButton";
 
 /**
- * Displays a set of navigation buttons: for creating expenses, payments, and users - and for settling expenses.
+ * Displays a set of navigation icons: for creating expenses, payments, and users - and for settling expenses.
  */
-const GroupActionsContainer = () => {
+const GroupActionsComponent = () => {
   return (
     <div className={styles.buttonContainer}>
       {/* Button for creating expenses */}
@@ -41,4 +40,4 @@ const GroupActionsContainer = () => {
   );
 };
 
-export default GroupActionsContainer;
+export default GroupActionsComponent;

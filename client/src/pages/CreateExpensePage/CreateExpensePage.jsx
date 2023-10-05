@@ -115,7 +115,7 @@ export default function CreateExpensePage() {
               placeholder='0.00'
               required
               pattern='[0-9]+([,.][0-9]{1,2})?'
-              inputMode='numeric'
+              inputMode='decimal'
             />
           </div>
           {/* Dropdown to select the expense paye r */}
