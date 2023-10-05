@@ -13,7 +13,7 @@ function CreateUsersDuringSignUpPage() {
   return (
     <main>
       <NavigateButton
-        route={"instant-split"}
+        route={"onboarding"}
         alignment={"right"}
         buttonText={"next"}
       />

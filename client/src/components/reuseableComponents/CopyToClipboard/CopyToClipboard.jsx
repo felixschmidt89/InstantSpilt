@@ -6,8 +6,7 @@ import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CopyToClipboard.module.css";
 
 /**
- * Allows for rendering information and easily copying it to the clipboard, providing a
- * CTA and related feedback to the user
+ * Allows for rendering information and easily copying it to the clipboard, providing an instruction to copy and related feedback to the user
  * @param {string} props.infoToCopy - The text to be copied to the clipboard.
  * @param {string} [props.inputFieldWidth="fit-content"] - The width of the input field.
  */
@@ -15,7 +14,7 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
   const [isCopied, setIsCopied] = useState(false);
   const inputRef = useRef(null);
 
-  // select input field, executes copy command, deselects the text and updates isCopied state
+  // select input field, execute copy command, deselect the text and update isCopied state
   const handleCopyClick = () => {
     inputRef.current.select();
     document.execCommand("copy");

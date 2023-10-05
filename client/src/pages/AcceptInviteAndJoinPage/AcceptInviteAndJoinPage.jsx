@@ -10,6 +10,12 @@ import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesIn
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import styles from "./AcceptInviteAndJoinPage.module.css";
 
+/**
+ * Addresses users joining a group via invitation link.
+ * Renders invitation info including groupName for recognition
+ * Renders a brief explanation of the application.
+ * Renders join button which triggers storing GroupCode in the client's local storage and navigate to main application
+ */
 const AcceptInviteAndJoinPage = () => {
   const { groupCode, groupName } = useParams();
   const navigate = useNavigate();
@@ -27,7 +33,7 @@ const AcceptInviteAndJoinPage = () => {
   const handleAcceptInvitation = () => {
     storeGroupCodesInLocalStorageHelper(groupCode);
     setGroupCodeToCurrentlyActiveHelper(groupCode);
-    navigate("/instant-split");
+    navigate("/onboarding");
   };
 
   // Visually indicate fetching, render button to accept invitation when data is received
@@ -77,9 +83,26 @@ const AcceptInviteAndJoinPage = () => {
       {!isLoading && groupData && (
         <div className={styles.explanationContainer}>
           <p>
-            Someone has given you this link so you can access{" "}
-            <strong>{groupData.group.groupName}</strong> - a group to settle
-            expenses - on this device.
+            <div>Someone has given you this link</div>{" "}
+            <div>so you can access</div>{" "}
+            <div>
+              InstantSplit group <strong>{groupData.group.groupName}</strong>
+            </div>
+            on this device.{" "}
+          </p>
+          <p className={styles.appExplanation}>
+            <div>InstantSplit is the hassle-free way</div>{" "}
+            <div>to settle group expenses with </div>
+            <div>
+              <strong>
+                no user registration or app download{" "}
+                <div>while sharing minimal data.</div>
+              </strong>
+            </div>
+          </p>
+          <p>
+            To join your peers' group <strong>{groupName}</strong>, and settle
+            expenses immediately, simply accept this invitation.
           </p>
           <h2>Are you in?</h2>
           <button className={styles.button} onClick={handleAcceptInvitation}>

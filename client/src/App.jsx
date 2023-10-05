@@ -27,6 +27,7 @@ import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
 import { HelmetProvider } from "react-helmet-async";
 import CreateUsersDuringSignUpPage from "./pages/CreateUsersDuringSignUpPage/CreateUsersDuringSignUpPage";
 import CreateUsersInAppPage from "./pages/CreateUsersInAppPage/CreateUsersInAppPage";
+import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
             path='/join/:groupName/:groupCode'
             element={<AcceptInviteAndJoinPage />}
           />
+          <Route path='/onboarding/' element={<OnboardingPage />} />
 
           <Route path='/instant-split' element={<InstantSplitPage />} />
           <Route path='/create-expense' element={<CreateExpensePage />} />
