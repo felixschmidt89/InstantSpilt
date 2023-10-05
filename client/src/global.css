@@ -78,13 +78,8 @@ ul {
   color: var(--color-error);
 }
 
-@media (max-with: 499px) {
-  width: 98vw;
-  height: 80vh;
-}
-
 /* CSS for cellphones and tablets */
-@media (min-width: 500px) and (max-width: 768px) {
+@media (max-width: 768px) {
   main {
     width: 90vw;
     height: 80vh;

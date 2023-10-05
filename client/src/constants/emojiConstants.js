@@ -9,6 +9,6 @@ const emojiConstants = {
   info: "💁",
   error: "🚧",
   user: "👤",
-  settle: "🧮",
+  settle: "🤝",
 };
 export default emojiConstants;

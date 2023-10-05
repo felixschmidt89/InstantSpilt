@@ -9,6 +9,7 @@ import userRouter from './routes/userRouter.js';
 import expenseRouter from './routes/expenseRouter.js';
 import paymentRouter from './routes/paymentRouter.js';
 import feedbackRouter from './routes/feedbackRouter.js';
+import healthRouter from './routes/healthRouter.js';
 
 // Create an express application
 const app = express();
@@ -44,5 +45,6 @@ app.use(`${API_BASEURL}/users`, userRouter);
 app.use(`${API_BASEURL}/expenses`, expenseRouter);
 app.use(`${API_BASEURL}/payments`, paymentRouter);
 app.use(`${API_BASEURL}/feedbacks`, feedbackRouter);
+app.use(`${API_BASEURL}/healthChecks`, healthRouter);
 
 export default app;

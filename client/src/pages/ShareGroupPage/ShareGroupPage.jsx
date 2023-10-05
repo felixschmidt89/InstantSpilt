@@ -4,10 +4,14 @@ import styles from "./ShareGroupPage.module.css";
 
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
+import WebShareApiInvite from "../../components/singleComponents/WebShareApiInvite/WebShareApiInvite";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 const ShareGroupPage = () => {
+  // Check if Web Share API is supported on client's device
+  const isWebShareAPISupported = navigator.share !== undefined;
+
   const { groupName, groupCode } = useParams();
 
   const urlEncodedGroupName = encodeURIComponent(groupName);
@@ -27,6 +31,11 @@ const ShareGroupPage = () => {
           InstantSplit on your other devices, just copy and share this link:
         </p>
         <CopyToClipBoard infoToCopy={infoToCopy} />
+        {isWebShareAPISupported && (
+          <div className={styles.WebShare}>
+            <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
+          </div>
+        )}
       </div>
     </main>
   );
