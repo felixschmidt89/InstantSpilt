@@ -12,3 +12,8 @@
 .expenses {
   transform: translateX(0.4rem);
 }
+
+.failMessage,
+.spinner {
+  margin: 0 auto;
+}

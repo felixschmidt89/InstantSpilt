@@ -96,7 +96,7 @@ export default function GroupHistory({ groupCode }) {
           ))}
         </ul>
       ) : (
-        <p>No expenses added yet...</p> // Display a message when there are no expenses or payments
+        <p className={styles.failMessage}>No expenses added yet...</p> // Display a message when there are no expenses or payments
       )}
       {error && <p className={styles.error}>{error}</p>}
     </div>
