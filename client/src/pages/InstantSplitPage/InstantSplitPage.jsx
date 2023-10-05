@@ -8,7 +8,7 @@ import UserActionsComponent from "../../components/containerComponents/UserActio
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import GroupBalances from "../../components/containerComponents/GroupBalances/GroupBalances";
 import GroupHistory from "../../components/containerComponents/GroupHistory/GroupHistory";
-import GroupActionsComponent from "../../components/containerComponents/GroupActionsComponent/GroupActionsComponent";
+import GroupActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
 
 /**
  * Main component of the application, renders or links to all core features related to settling expenses.

@@ -6,6 +6,7 @@ import {
   faUserPlus,
   faCircleInfo,
   faMessage,
+  faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./UserActionsComponent.module.css";
 import WebShareApiInvite from "../../singleComponents/WebShareApiInvite/WebShareApiInvite";
@@ -49,6 +50,11 @@ const UserActionsContainer = ({ groupCode, groupName }) => {
         icon={faRightFromBracket}
         route={`/leave-group/${groupName}/${groupCode}`}
         tooltip='Leave group'
+      />
+      <NavigateFontAwesomeIcon
+        icon={faCircleQuestion}
+        route={`/tutorial/`}
+        tooltip='Tutorial'
       />
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import styles from "./ShareGroupPage.module.css";
 
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
@@ -19,8 +20,8 @@ const ShareGroupPage = () => {
         buttonText='back'
         alignment='left'
       />
-      <div>
-        <h1>Invite & Share</h1>
+      <div className={styles.container}>
+        <h1>Invite & share</h1>
         <p>
           To invite others to join <strong>{groupName}</strong> or use
           InstantSplit on your other devices, just copy and share this link:

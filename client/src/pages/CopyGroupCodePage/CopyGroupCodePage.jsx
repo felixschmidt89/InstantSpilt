@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
+import styles from "./CopyGroupCodePage.module.css";
 
 const CopyGroupCodePage = () => {
   const { groupName, groupCode } = useParams();
@@ -12,7 +13,7 @@ const CopyGroupCodePage = () => {
         buttonText='back'
         alignment='left'
       />
-      <div>
+      <div className={styles.container}>
         <h1>Copy & save groupCode</h1>
         <p>
           To regain access to <strong>{groupName}</strong> on any device easily,

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./GroupActionsButton.module.css";
+import styles from "./SplitExpensesActionsButton.module.css";
 
 const GroupActionButton = ({ route, buttonText, tooltipText }) => {
   const navigate = useNavigate();

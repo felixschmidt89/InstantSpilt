@@ -83,18 +83,14 @@ const AcceptInviteAndJoinPage = () => {
       {!isLoading && groupData && (
         <div className={styles.explanationContainer}>
           <p>
-            Someone has given you this link so you can access{" "}
-            <div>
-              InstantSplit group <strong>{groupData.group.groupName}.</strong>
-            </div>
+            Someone has given you this link so you can access InstantSplit group{" "}
+            <strong>{groupData.group.groupName}.</strong>
           </p>
           <p className={styles.appExplanation}>
             InstantSplit is the hassle-free way to settle group expenses with
-            <div>
-              <strong>
-                no user registration or app download while sharing minimal data.
-              </strong>
-            </div>
+            <strong>
+              no user registration or app download while sharing minimal data.
+            </strong>
           </p>
           <p>
             To join your peers' group <strong>{groupName}</strong>, and settle
