@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+// DONE adding only meaningful necessary comments
+
+import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import styles from "./CopyToClipboard.module.css";
 
-const CopyToClipboard = ({ infoTocopy, inputFieldWidth = "fit-content" }) => {
+/**
+ * Allows for rendering information and easily copying it to the clipboard, providing a
+ * CTA and related feedback to the user
+ * @param {string} props.infoToCopy - The text to be copied to the clipboard.
+ * @param {string} [props.inputFieldWidth="fit-content"] - The width of the input field.
+ */
+const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
   const [isCopied, setIsCopied] = useState(false);
+  const inputRef = useRef(null);
 
+  // select input field, executes copy command, deselects the text and updates isCopied state
   const handleCopyClick = () => {
-    const textField = document.createElement("input");
-    textField.value = infoTocopy;
-    document.body.appendChild(textField);
-    textField.select();
+    inputRef.current.select();
     document.execCommand("copy");
-    textField.remove();
+    inputRef.current.blur();
     setIsCopied(true);
   };
 
@@ -21,17 +28,20 @@ const CopyToClipboard = ({ infoTocopy, inputFieldWidth = "fit-content" }) => {
       <input
         className={styles.inputField}
         type='text'
-        value={infoTocopy}
-        readOnly
+        value={infoToCopy}
+        readOnly // Make the input field read-only
         style={{ width: inputFieldWidth }}
+        ref={inputRef}
       />
       <br />
       <button
         className={styles.button}
         onClick={handleCopyClick}
-        disabled={isCopied}>
-        <FontAwesomeIcon icon={faCopy} />{" "}
-        {isCopied ? "Copied!" : "Copy to Clipboard"}
+        disabled={isCopied} // Disable the button if 'isCopied' is true
+      >
+        <FontAwesomeIcon icon={faCopy} /> {/* Display a copy icon */}
+        {/* Display "Copied!" or "Copy to Clipboard" based on 'isCopied' */}
+        {isCopied ? "Copied!" : "Copy to Clipboard"}{" "}
       </button>
     </div>
   );

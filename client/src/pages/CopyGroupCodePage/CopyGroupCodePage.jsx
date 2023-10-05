@@ -18,7 +18,7 @@ const CopyGroupCodePage = () => {
           To regain access to <strong>{groupName}</strong> on any device easily,
           store your groupCode somewhere safe:
         </p>
-        <CopyToClipboard infoTocopy={groupCode} />
+        <CopyToClipboard infoToCopy={groupCode} />
       </div>
     </main>
   );

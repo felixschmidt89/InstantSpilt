@@ -8,7 +8,9 @@ const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 const ShareGroupPage = () => {
   const { groupName, groupCode } = useParams();
-  const infoTocopy = `${baseUrl}/join/${groupName}/${groupCode}`;
+
+  const urlEncodedGroupName = encodeURIComponent(groupName);
+  const infoToCopy = `${baseUrl}/join/${urlEncodedGroupName}/${groupCode}`;
 
   return (
     <main>
@@ -23,7 +25,7 @@ const ShareGroupPage = () => {
           To invite others to join <strong>{groupName}</strong> or use
           InstantSplit on your other devices, just copy and share this link:
         </p>
-        <CopyToClipBoard infoTocopy={infoTocopy} inputFieldWidth='400px' />
+        <CopyToClipBoard infoToCopy={infoToCopy} inputFieldWidth='400px' />
       </div>
     </main>
   );

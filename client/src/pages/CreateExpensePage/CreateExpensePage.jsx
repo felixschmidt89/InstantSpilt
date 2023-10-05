@@ -118,7 +118,7 @@ export default function CreateExpensePage() {
               inputMode='decimal'
             />
           </div>
-          {/* Dropdown to select the expense paye r */}
+          {/* Dropdown to select the expense payer */}
           <select
             className={styles.select}
             value={userName}
