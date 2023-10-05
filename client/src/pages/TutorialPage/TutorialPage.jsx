@@ -38,8 +38,8 @@ function TutorialPage() {
           to avoid losing access to this group.
         </p>
         <section className={styles.instantSplit}>
-          <h2>Instant Split - main functionalities</h2>
-          <h3>Top Section</h3>
+          <h2>Main functionalities</h2>
+          <h3>Top section</h3>
           <p>
             Contains features not directly related to settling expenses, such as
             inviting others (
@@ -47,7 +47,7 @@ function TutorialPage() {
             <FontAwesomeIcon icon={faRightFromBracket} />
             ).
           </p>
-          <h3> Middle Section</h3>
+          <h3> Middle section</h3>
           <p>
             <ul>
               <li>
@@ -61,7 +61,7 @@ function TutorialPage() {
             </ul>
           </p>
           <h3>
-            <strong>Bottom Section</strong>
+            <strong>Bottom section</strong>
           </h3>
           <p>
             Allows you to perform actions:

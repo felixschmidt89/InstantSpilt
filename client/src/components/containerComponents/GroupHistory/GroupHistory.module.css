@@ -8,3 +8,7 @@
   text-align: left;
   padding-left: 2rem;
 }
+
+.expenses {
+  transform: translateX(0.4rem);
+}

@@ -13,7 +13,7 @@ h3 {
 }
 
 .inputFieldTwo {
-  width: 10rem;
+  width: 12rem;
 }
 
 .inputFieldOne,
@@ -36,6 +36,7 @@ h3 {
   text-align: center;
   outline: auto;
   outline-color: var(--color-grey);
+  width: 12rem;
 }
 
 .select:focus,

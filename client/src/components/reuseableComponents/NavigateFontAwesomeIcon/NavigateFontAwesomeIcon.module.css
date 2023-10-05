@@ -1,5 +1,4 @@
 .iconContainer {
-  margin-top: 0.5rem;
   position: relative;
   display: inline-block;
 }
@@ -7,7 +6,7 @@
 .icon {
   cursor: pointer;
   color: var(--color-dark);
-  font-size: 3rem;
+  font-size: 2rem;
   margin-right: 2rem;
 }
 

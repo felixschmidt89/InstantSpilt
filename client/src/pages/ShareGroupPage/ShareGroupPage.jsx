@@ -26,7 +26,7 @@ const ShareGroupPage = () => {
           To invite others to join <strong>{groupName}</strong> or use
           InstantSplit on your other devices, just copy and share this link:
         </p>
-        <CopyToClipBoard infoToCopy={infoToCopy} inputFieldWidth='400px' />
+        <CopyToClipBoard infoToCopy={infoToCopy} />
       </div>
     </main>
   );

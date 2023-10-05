@@ -5,6 +5,7 @@ import emojiConstants from "../../constants/emojiConstants";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
+import styles from "./ExpensePage.module.css";
 
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
@@ -31,6 +32,7 @@ const ExpensePage = () => {
           <p>Beneficiaries:</p>
           <ul>
             <li
+              className={styles.beneficiaries}
               key={expenseDetails.expenseBeneficiaries
                 .map((beneficiary) => beneficiary._id)
                 .join(", ")}>

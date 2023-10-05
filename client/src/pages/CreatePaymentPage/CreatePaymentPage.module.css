@@ -7,7 +7,7 @@
 .select {
   color: var(--color-dark);
   font-family: "Ubuntu", sans-serif;
-  width: 10rem;
+  width: 12rem;
   padding: 0.2rem;
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.5rem;
@@ -19,7 +19,6 @@
 }
 
 .select {
-  width: 8rem;
   background-color: var(--color-main);
   border-radius: 0.5rem;
   font-size: 1.8rem;

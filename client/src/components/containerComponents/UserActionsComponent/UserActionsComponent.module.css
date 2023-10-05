@@ -1,15 +1,12 @@
 .container {
-  margin-bottom: 1rem;
   display: flex;
   width: fit-content;
   margin: 0 auto;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   padding-left: 2rem;
   border: 1px solid var(--color-signal-reduced-opacity);
   background-color: var(--color-body);
   border-radius: 10px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .container:hover {

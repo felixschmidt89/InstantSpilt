@@ -18,7 +18,7 @@ function OnboardingPage() {
       />
       <div className={styles.container}>
         <h1>Brief explanation</h1>
-        <h2>Top Section</h2>
+        <h2>Top section</h2>
         <p>
           Contains features not directly related to settling expenses, such as
           inviting others (
@@ -26,7 +26,7 @@ function OnboardingPage() {
           <FontAwesomeIcon icon={faRightFromBracket} />
           ).
         </p>
-        <h2> Middle Section:</h2>
+        <h2> Middle section:</h2>
         <p>
           <ul>
             <li>
@@ -40,7 +40,7 @@ function OnboardingPage() {
           </ul>
         </p>
         <h2>
-          <strong>Bottom Section</strong>
+          <strong>Bottom section</strong>
         </h2>
         <p>
           Allows you to perform actions:

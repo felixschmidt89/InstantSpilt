@@ -2,14 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   background-color: var(--color-body);
   z-index: 999;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   position: static;
   height: 3rem;
 }
