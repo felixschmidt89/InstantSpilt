@@ -6,6 +6,8 @@ import styles from "./LegalNoticePage.module.css";
 const LegalNoticePage = () => {
   return (
     <main>
+      <title>InstantSplit - Invitation to join {groupName}</title>
+
       <NavigateButton
         route='instant-split'
         buttonText='back'

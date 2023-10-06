@@ -23,6 +23,10 @@ const AcceptInviteAndJoinPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const groupData = useFetchGroupData(groupCode);
 
+  const encodedGroupName = encodeURIComponent(groupName);
+  const encodedGroupCode = encodeURIComponent(groupCode);
+  const canonicalUrl = `https://instantsplit.netlify.app/join/${encodedGroupName}/${encodedGroupCode}`;
+
   // Set isLoading to false when group data is received.
   useEffect(() => {
     if (groupData !== null && groupData !== undefined) {
@@ -42,6 +46,9 @@ const AcceptInviteAndJoinPage = () => {
     <main>
       <Helmet>
         <title>InstantSplit - Invitation to join {groupName}</title>
+        <Helmet>
+          <link rel='canonical' href={canonicalUrl} />
+        </Helmet>
         <meta
           name='description'
           content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
