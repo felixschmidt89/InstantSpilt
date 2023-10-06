@@ -5,6 +5,7 @@ import emojiConstants from "../../constants/emojiConstants";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
+import { Helmet } from "react-helmet-async";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -12,6 +13,11 @@ const PaymentPage = () => {
 
   return (
     <main>
+      <Helmet>
+        <title>
+          InstantSplit - Payment <details></details>
+        </title>
+      </Helmet>
       <NavigateButton
         route={"instant-split"}
         buttonText={"back"}

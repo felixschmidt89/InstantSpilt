@@ -8,6 +8,7 @@ import styles from "./UserPage.module.css";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
+import { Helmet } from "react-helmet-async";
 
 // Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
 const BALANCE_THRESHOLD = 0.01;
@@ -33,6 +34,9 @@ const UserPage = () => {
 
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - User details</title>
+      </Helmet>
       {/* Button to go back to the "instant-split" page */}
       <NavigateButton
         route={"instant-split"}

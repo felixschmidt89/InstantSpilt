@@ -12,12 +12,16 @@ import styles from "./TutorialPage.module.css";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import UserActionsContainer from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
 import SplitExpensesActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
+import { Helmet } from "react-helmet-async";
 
 function TutorialPage() {
   const { groupName, groupCode } = useParams();
 
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - Tutorial</title>
+      </Helmet>
       <NavigateButton
         route={"instant-split"}
         alignment={"left"}

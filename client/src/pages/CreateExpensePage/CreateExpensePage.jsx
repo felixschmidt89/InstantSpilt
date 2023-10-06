@@ -9,6 +9,7 @@ import styles from "./CreateExpensePage.module.css";
 import emojiConstants from "../../constants/emojiConstants";
 import commaToDotDecimalSeparatorHelper from "../../helpers/commaToDotDecimalSeparatorHelper";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
+import { Helmet } from "react-helmet-async";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -81,6 +82,9 @@ export default function CreateExpensePage() {
   // render back button to abort and input fields, conditionally render submit button
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - Add expense</title>
+      </Helmet>
       <NavigateButton
         route={"instant-split"}
         buttonText={"back"}

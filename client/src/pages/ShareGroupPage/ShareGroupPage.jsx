@@ -5,6 +5,7 @@ import styles from "./ShareGroupPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import WebShareApiInvite from "../../components/singleComponents/WebShareApiInvite/WebShareApiInvite";
+import { Helmet } from "react-helmet-async";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
@@ -20,6 +21,9 @@ const ShareGroupPage = () => {
 
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - Invite & share {groupName}</title>
+      </Helmet>
       <NavigateButton
         route='instant-split'
         buttonText='back'

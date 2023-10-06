@@ -8,6 +8,7 @@ import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesIn
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import styles from "./CreateGroupPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
+import { Helmet } from "react-helmet-async";
 
 export default function CreateGroupPage() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -48,6 +49,9 @@ export default function CreateGroupPage() {
   // render back button to abort and input field, conditionally render submit button
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - Create group</title>
+      </Helmet>
       <NavigateButton
         route={"homepage"}
         buttonText={"back"}

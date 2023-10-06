@@ -7,6 +7,7 @@ import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import { StatusCodes } from "http-status-codes";
 import emojiConstants from "../../constants/emojiConstants";
+import { Helmet } from "react-helmet-async";
 
 /**
  * Checks if groupCode exists in the database.
@@ -41,6 +42,9 @@ const ValidateProvideGroupCodePage = () => {
   return (
     <main>
       {/* Back button to enter groupCode again */}
+      <Helmet>
+        <title>InstantSplit - Validate groupCode</title>
+      </Helmet>
       <NavigateButton
         route='enter-groupcode'
         buttonText='back'

@@ -6,6 +6,7 @@ import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
 import styles from "./ExpensePage.module.css";
+import { Helmet } from "react-helmet-async";
 
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
@@ -13,6 +14,9 @@ const ExpensePage = () => {
 
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - Expense details</title>
+      </Helmet>
       <NavigateButton
         route={"instant-split"}
         buttonText={"back"}

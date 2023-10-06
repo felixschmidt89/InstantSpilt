@@ -4,12 +4,16 @@ import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import styles from "./GroupCodeExplanationPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
+import { Helmet } from "react-helmet-async";
 
 const GroupCodeExplanationPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
 
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - GroupCode explanation</title>
+      </Helmet>
       <NavigateButton
         route={"onboarding"}
         alignment={"right"}

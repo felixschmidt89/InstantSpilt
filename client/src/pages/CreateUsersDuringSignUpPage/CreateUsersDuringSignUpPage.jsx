@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import CreateUserForm from "../../components/containerComponents/CreateUserForm/CreateUserForm";
 import RenderUserNames from "../../components/containerComponents/RenderUserNames/RenderUserNames";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
@@ -12,6 +13,9 @@ function CreateUsersDuringSignUpPage() {
 
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - Add user</title>
+      </Helmet>
       <NavigateButton
         route={"groupcode-explanation"}
         alignment={"right"}

@@ -1,10 +1,14 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
     <main className={styles.container}>
+      <Helmet>
+        <title>InstantSplit - Homepage</title>
+      </Helmet>
       <div className={styles.introContainer}>
         <h1>Welcome to InstantSplit!</h1>
         <p>

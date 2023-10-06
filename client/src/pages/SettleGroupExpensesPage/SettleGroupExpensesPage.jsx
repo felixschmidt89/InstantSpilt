@@ -2,10 +2,14 @@ import React from "react";
 import styles from "./SettleGroupExpensesPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import SuggestSettlePayments from "../../components/containerComponents/SuggestSettlePayments/SuggestSettlePayments";
+import { Helmet } from "react-helmet-async";
 
 function SettleGroupExpensesPage() {
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - Settle expenses</title>
+      </Helmet>
       <NavigateButton
         route={"instant-split"}
         buttonText={"back"}

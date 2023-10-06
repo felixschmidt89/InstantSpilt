@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 
 const IndexNavigator = () => {
@@ -14,7 +15,13 @@ const IndexNavigator = () => {
     }
   }, [navigate]);
 
-  return <main></main>;
+  return (
+    <main>
+      <Helmet>
+        <title>InstantSplit - Navigator</title>
+      </Helmet>
+    </main>
+  );
 };
 
 export default IndexNavigator;

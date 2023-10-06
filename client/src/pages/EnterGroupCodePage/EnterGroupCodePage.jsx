@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import style from "./EnterGroupCodePage.module.css";
@@ -20,6 +21,9 @@ const EnterGroupCode = () => {
 
   return (
     <main>
+      <Helmet>
+        <title>InstantSplit - Enter groupCode</title>
+      </Helmet>
       <NavigateButton
         route={"homepage"}
         buttonText={"back"}
