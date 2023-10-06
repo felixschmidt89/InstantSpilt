@@ -3,6 +3,12 @@
   padding-top: 0rem !important;
 }
 
+.container {
+  width: 90%;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
 .inputField,
 .select {
   color: var(--color-dark);
@@ -14,7 +20,7 @@
   text-align: center;
   outline: none;
   margin-right: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .select {

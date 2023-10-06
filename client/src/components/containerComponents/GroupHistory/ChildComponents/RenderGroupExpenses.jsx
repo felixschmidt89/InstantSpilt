@@ -6,12 +6,26 @@ import styles from "./RenderGroupExpenses.module.css";
 export default function RenderGroupExpenses({ item }) {
   return (
     <div className={styles.expenses}>
-      {emojiConstants.expense}
-      <Link to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
-        {item.expenseAmount.toFixed(2)}€
-      </Link>{" "}
-      {emojiConstants.paidFor} <strong>{item.expensePayer.userName}</strong>:{" "}
-      <div className={styles.item}>{item.expenseName}</div>
+      <div className={styles.leftColumn}>
+        <div className={styles.expenseEmoji}>{emojiConstants.expense}</div>
+        <div className={styles.expenseAmount}>
+          <Link
+            to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
+            {item.expenseAmount.toFixed(2)}€
+          </Link>
+        </div>
+      </div>
+      <div className={styles.rightColumn}>
+        <div>
+          {emojiConstants.paidFor} <strong>{item.expensePayer.userName}</strong>
+        </div>
+        <div>
+          <Link
+            to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
+            {item.expenseName}
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

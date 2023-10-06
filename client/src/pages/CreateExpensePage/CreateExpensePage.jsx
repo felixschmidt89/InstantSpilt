@@ -92,7 +92,7 @@ export default function CreateExpensePage() {
       ) : (
         <form onSubmit={handleFormSubmit}>
           {/* Input field for expense name */}
-          <div>
+          <div className={styles.container}>
             <input
               className={styles.inputFieldOne}
               type='text'

@@ -27,7 +27,7 @@ h3 {
   font-size: 1.8rem;
   text-align: center;
   outline: none;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .select {
@@ -88,11 +88,14 @@ input[type="checkbox"]:checked {
 .beneficiaries {
   display: flex;
   justify-content: center;
+  padding-left: 1rem;
   flex-wrap: wrap;
   width: 25rem;
   margin: 0 auto;
   border: 2px solid var(--color-grey);
   border-radius: 0.8rem;
+  overflow-y: auto;
+  height: 30%;
 }
 
 .beneficiaries:hover,

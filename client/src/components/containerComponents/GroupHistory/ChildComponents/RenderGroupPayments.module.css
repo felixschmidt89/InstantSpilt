@@ -1,2 +1,25 @@
-.styles {
+/* In your RenderGroupPayments.module.css file */
+.payments {
+  display: flex;
+}
+
+.leftColumn {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--color-signal-reduced-opacity);
+}
+
+.paymentEmoji {
+  margin-right: 2rem;
+}
+
+/* Ensure that numbers are right aligned to be easily readable */
+.paymentAmount {
+  text-align: right;
+  width: 8rem; /* white space on the left */
+}
+
+.rightColumn {
+  margin-left: 3rem;
+  border-bottom: 2px solid var(--color-signal-reduced-opacity);
 }

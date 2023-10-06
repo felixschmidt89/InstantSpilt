@@ -65,7 +65,7 @@ export default function CreatePaymentPage() {
       />
       <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>
       <form onSubmit={handleFormSubmit}>
-        <div>
+        <div className={styles.container}>
           <input
             className={styles.inputField}
             type='text'

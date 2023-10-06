@@ -30,7 +30,3 @@
   display: flex;
   justify-content: center;
 }
-
-.button:hover {
-  background-color: var(--color-success);
-}

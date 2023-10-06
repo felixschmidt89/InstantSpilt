@@ -23,3 +23,13 @@
   margin: 0 auto;
   margin-top: 2rem;
 }
+
+a {
+  font-weight: bold;
+  text-decoration: none;
+  curser: pointer;
+}
+
+a:hover {
+  color: var(--color-success);
+}
