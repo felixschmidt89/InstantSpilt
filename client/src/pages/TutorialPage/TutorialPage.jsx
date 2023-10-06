@@ -11,7 +11,6 @@ import emojiConstants from "../../constants/emojiConstants";
 import styles from "./TutorialPage.module.css";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import UserActionsContainer from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
-import SettleGroupExpensesPage from "../SettleGroupExpensesPage/SettleGroupExpensesPage";
 import SplitExpensesActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
 
 function TutorialPage() {

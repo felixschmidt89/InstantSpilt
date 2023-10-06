@@ -1,6 +1,6 @@
 // DONE adding only meaningful necessary comments
-
-import React, { useState } from "react";
+import React from "react";
+import useLocalStorage from "react-use-localstorage";
 import styles from "./InstantSplitPage.module.css";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useCheckGroupCodePresenceAndNavigateHome from "../../hooks/useCheckGroupCodePresenceAndNavigateHome";
@@ -19,9 +19,10 @@ export default function InstantSplitPage() {
 
   useCheckGroupCodePresenceAndNavigateHome();
 
-  // Initialize the view state, fetch group data
-  const [view, setView] = useState("view2");
+  // Fetch group group data
   const groupData = useFetchGroupData(groupCode);
+  // Use useLocalStorage to initialize and persist the view state with a default of "view2"
+  const [view, setView] = useLocalStorage("viewState", "view2");
 
   // Handle user view switches
   const handleSwitchView = () => {
