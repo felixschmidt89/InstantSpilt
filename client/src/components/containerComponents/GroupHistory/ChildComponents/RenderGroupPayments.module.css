@@ -16,7 +16,7 @@
 /* Ensure that numbers are right aligned to be easily readable */
 .paymentAmount {
   text-align: right;
-  width: 9rem; /* white space on the left */
+  width: 8rem; /* white space on the left */
 }
 
 .rightColumn {

@@ -41,38 +41,26 @@ const AcceptInviteAndJoinPage = () => {
   return (
     <main>
       <Helmet>
-        <title>
-          {groupData?.group.groupName
-            ? `InstantSplit - Invitation to join ${groupData.group.groupName}`
-            : "InstantSplit"}
-        </title>{" "}
+        <title>InstantSplit - Invitation to join {groupName}</title>
         <meta
           name='description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupData.group.groupName} to manage and settle expenses.`}
+          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
         />
         <meta
           property='og:title'
-          content={
-            groupData?.group.groupName
-              ? `InstantSplit - Invitation to join ${groupData.group.groupName}`
-              : "InstantSplit"
-          }
+          content={`InstantSplit - Invitation to join ${groupName}`}
         />
         <meta
           property='og:description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupData.group.groupName} to manage and settle expenses.`}
+          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
         />
         <meta
           name='twitter:title'
-          content={
-            groupData?.group.groupName
-              ? `InstantSplit - Invitation to join ${groupData.group.groupName}`
-              : "InstantSplit"
-          }
+          content={`InstantSplit - Invitation to join ${groupName}`}
         />
         <meta
           name='twitter:description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupData.group.groupName} to manage and settle expenses.`}
+          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
         />
       </Helmet>
       <div className={styles.explanationContainer}>
