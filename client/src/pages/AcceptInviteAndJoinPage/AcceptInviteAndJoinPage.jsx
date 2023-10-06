@@ -46,7 +46,7 @@ const AcceptInviteAndJoinPage = () => {
             <p>
               <div>
                 Someone invited you to join the InstantSplit group{" "}
-                <strong>{groupData.group.groupName}.</strong>.
+                <strong>{groupData.group.groupName}</strong>.
               </div>
             </p>
             <p>
@@ -55,8 +55,8 @@ const AcceptInviteAndJoinPage = () => {
               sharing minimal data.
             </p>
             <p>
-              To join your peers' group <strong>{groupName}</strong>, and settle
-              expenses immediately, simply accept this invitation.
+              To join <strong>{groupName}</strong>, and settle expenses
+              immediately, simply accept this invitation.
             </p>
             <h2>Are you in?</h2>
             <button className={styles.button} onClick={handleAcceptInvitation}>

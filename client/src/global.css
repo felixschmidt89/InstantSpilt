@@ -74,6 +74,12 @@ ul {
   list-style: none;
 }
 
+button,
+select,
+input {
+  font-family: "Ubuntu", sans-serif;
+}
+
 .errorMessage {
   color: var(--color-error);
 }

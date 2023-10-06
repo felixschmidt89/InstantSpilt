@@ -55,11 +55,10 @@ input[type="checkbox"] {
   border-radius: 4px;
   cursor: pointer;
   outline: none;
-  font-family: "Ubuntu", sans-serif;
   font-size: 1.6rem;
   outline: none;
   vertical-align: middle;
-  margin: 0.2rem;
+  margin: 0.3rem;
 }
 
 input[type="checkbox"]:checked {
@@ -69,17 +68,16 @@ input[type="checkbox"]:checked {
 }
 
 .button {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   background-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
   color: var(--color-main);
   font-weight: bold;
   border: none;
   width: 3rem;
-  padding: 0.4rem;
-  font-size: 1.5rem;
+  font-size: 1.9rem;
   cursor: pointer;
-  border-radius: 0.5rem;
-  margin-left: 0.5rem;
+  border-radius: 1rem;
 }
 
 .button:hover {
@@ -91,6 +89,18 @@ input[type="checkbox"]:checked {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 90%;
+  width: 50%;
   margin: 0 auto;
+  border: 2px solid var(--color-grey);
+  border-radius: 0.8rem;
+}
+
+.beneficiaries:hover,
+.beneficiaries:focus {
+  border-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+label {
+  margin-right: 0.6rem;
 }
