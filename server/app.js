@@ -45,6 +45,6 @@ app.use(`${API_BASEURL}/users`, userRouter);
 app.use(`${API_BASEURL}/expenses`, expenseRouter);
 app.use(`${API_BASEURL}/payments`, paymentRouter);
 app.use(`${API_BASEURL}/feedbacks`, feedbackRouter);
-app.use(`${API_BASEURL}/healthChecks`, healthRouter);
+app.use(`${API_BASEURL}/health`, healthRouter);
 
 export default app;
