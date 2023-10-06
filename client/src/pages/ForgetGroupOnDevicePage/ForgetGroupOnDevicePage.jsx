@@ -24,15 +24,18 @@ const ForgetGroupOnDevicePage = () => {
       <h1>Forget group on this device</h1>
       <p>
         Are you sure you want to leave <strong>{groupName}</strong> on this
-        device? <br />
+        device?
+      </p>
+      <p>
         If you ever wish to rejoin later, remember your{" "}
         <strong>GroupCode:</strong>
         <CopyToClipboard infoToCopy={groupCode} />
       </p>{" "}
-      <br />
-      <button className={styles.button} onClick={handleConfirm}>
-        Confirm
-      </button>
+      <div className={styles.buttonContainer}>
+        <button className={styles.button} onClick={handleConfirm}>
+          Confirm
+        </button>
+      </div>
     </main>
   );
 };

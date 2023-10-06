@@ -3,14 +3,25 @@
   color: var(--color-main);
   border: none;
   padding: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
   border-radius: 1rem;
   width: fit-content;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
   margin: 0 auto;
 }
 
 .button:hover {
   background-color: var(--color-error);
   box-shadow: 0 0 0.5rem var(--color-error);
+}
+
+/* Ensures confirmation button is not moved by copy group code element state change */
+.buttonContainer {
+  margin: 0 auto;
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
 }

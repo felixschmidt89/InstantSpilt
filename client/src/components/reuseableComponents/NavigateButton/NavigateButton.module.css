@@ -1,5 +1,6 @@
 .button {
   background-color: var(--color-grey);
+  font-family: "Ubuntu", sans-serif;
   color: var(--color-main);
   border: none;
   padding: 0.3rem;

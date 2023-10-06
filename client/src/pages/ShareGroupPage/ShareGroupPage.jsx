@@ -14,6 +14,7 @@ const ShareGroupPage = () => {
 
   const { groupName, groupCode } = useParams();
 
+  // Force passing URL-encoded groupNames
   const urlEncodedGroupName = encodeURIComponent(groupName);
   const infoToCopy = `${baseUrl}/join/${urlEncodedGroupName}/${groupCode}`;
 
@@ -26,15 +27,24 @@ const ShareGroupPage = () => {
       />
       <div className={styles.container}>
         <h1>Invite & share</h1>
-        <p>
-          To invite others to join <strong>{groupName}</strong> or use
-          InstantSplit on your other devices, just copy and share this link:
-        </p>
-        <CopyToClipBoard infoToCopy={infoToCopy} />
-        {isWebShareAPISupported && (
+        {isWebShareAPISupported ? (
           <div className={styles.WebShare}>
+            <p>
+              To invite others to join <strong>{groupName}</strong> or to access
+              InstantSplit on your other devices, you can use WebShare:
+            </p>
             <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
+            <p>
+              Or, simply copy and share this link:
+              <CopyToClipBoard infoToCopy={infoToCopy} />
+            </p>
           </div>
+        ) : (
+          <p>
+            To invite others to join <strong>{groupName}</strong> or to access
+            InstantSplit on your other devices, simply copy and share this link:
+            <CopyToClipBoard infoToCopy={infoToCopy} />
+          </p>
         )}
       </div>
     </main>
