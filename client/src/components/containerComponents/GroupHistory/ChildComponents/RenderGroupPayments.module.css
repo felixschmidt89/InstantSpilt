@@ -28,8 +28,13 @@
   border-bottom: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .rightColumn {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
+    border-bottom: none;
+  }
+  .leftColumn {
+    margin-right: 0.5rem;
+    border-bottom: none;
   }
 }

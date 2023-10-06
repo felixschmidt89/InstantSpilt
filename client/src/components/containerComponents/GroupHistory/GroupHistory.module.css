@@ -33,9 +33,12 @@ a:hover {
   color: var(--color-success);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .container {
     padding-left: 0rem;
     width: 95%;
+  }
+  li {
+    border-bottom: 1px solid var(--color-signal-reduced-opacity);
   }
 }
