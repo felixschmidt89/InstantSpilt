@@ -22,7 +22,6 @@
 .rightColumn {
   display: flex;
   flex-direction: column;
-  margin-right: 1rem;
   margin-left: 3rem;
   border-bottom: 2px solid var(--color-signal-reduced-opacity);
 }
@@ -35,4 +34,10 @@
 .rightColumn .expenseEmoji,
 .rightColumn strong {
   margin-bottom: 0.5rem; /* Increase the margin to create more space */
+}
+
+@media (max-width: 768px) {
+  .rightColumn {
+    margin-left: 1rem;
+  }
 }

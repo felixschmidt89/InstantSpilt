@@ -27,3 +27,9 @@
 .rightColumn > :empty {
   border-bottom: none;
 }
+
+@media (max-width: 768px) {
+  .rightColumn {
+    margin-left: 1rem;
+  }
+}
