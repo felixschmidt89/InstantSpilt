@@ -47,6 +47,6 @@
 
 @media (max-width: 500px) {
 }
-li {
-  border-top: none;
+.balancesContainer li {
+  border-bottom: none;
 }

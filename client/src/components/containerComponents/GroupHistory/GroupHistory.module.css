@@ -39,6 +39,6 @@ a:hover {
     width: 95%;
   }
   .container li {
-    border-top: 2px solid var(--color-signal-reduced-opacity);
+    border-top: 1.5px solid var(--color-signal-reduced-opacity);
   }
 }

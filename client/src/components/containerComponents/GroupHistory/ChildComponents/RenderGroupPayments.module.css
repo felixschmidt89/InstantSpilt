@@ -37,7 +37,4 @@
     margin-right: 0.5rem;
     border-top: none;
   }
-  li {
-    /* border-top: 2px solid var(--color-signal-reduced-opacity); */
-  }
 }
