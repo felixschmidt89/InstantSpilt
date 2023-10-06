@@ -3,6 +3,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
@@ -38,6 +40,41 @@ const AcceptInviteAndJoinPage = () => {
   // Visually indicate fetching, render button to accept invitation when data is received
   return (
     <main>
+      <Helmet>
+        <title>
+          {groupData?.group.groupName
+            ? `InstantSplit - Invitation to join ${groupData.group.groupName}`
+            : "InstantSplit"}
+        </title>{" "}
+        <meta
+          name='description'
+          content={`Hi! You're invited to join our InstantSplit group ${groupData.group.groupName} to manage and settle expenses.`}
+        />
+        <meta
+          property='og:title'
+          content={
+            groupData?.group.groupName
+              ? `InstantSplit - Invitation to join ${groupData.group.groupName}`
+              : "InstantSplit"
+          }
+        />
+        <meta
+          property='og:description'
+          content={`Hi! You're invited to join our InstantSplit group ${groupData.group.groupName} to manage and settle expenses.`}
+        />
+        <meta
+          name='twitter:title'
+          content={
+            groupData?.group.groupName
+              ? `InstantSplit - Invitation to join ${groupData.group.groupName}`
+              : "InstantSplit"
+          }
+        />
+        <meta
+          name='twitter:description'
+          content={`Hi! You're invited to join our InstantSplit group ${groupData.group.groupName} to manage and settle expenses.`}
+        />
+      </Helmet>
       <div className={styles.explanationContainer}>
         <h1>Hey there!</h1>
         {isLoading && <Spinner />}

@@ -6,7 +6,7 @@ TODO: Check issue why it won't work.
         <title>InstantSplit invitation to settle group expenses</title>
         <meta
           name='description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
+          content={}
           data-rh='true'
         />
         {/* Facebook tags */}

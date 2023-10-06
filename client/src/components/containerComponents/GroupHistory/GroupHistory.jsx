@@ -4,6 +4,7 @@ import styles from "./GroupHistory.module.css";
 import Spinner from "../../reuseableComponents/Spinner/Spinner";
 import RenderGroupExpenses from "./ChildComponents/RenderGroupExpenses";
 import RenderGroupPayments from "./ChildComponents/RenderGroupPayments";
+import emojiConstants from "../../../constants/emojiConstants";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -77,7 +78,10 @@ export default function GroupHistory({ groupCode }) {
           ))}
         </ul>
       ) : (
-        <p className={styles.failMessage}>No expenses added yet...</p>
+        <p className={styles.failMessage}>
+          Begin adding expenses ({emojiConstants.expense}) and payments (
+          {emojiConstants.payment})below 👇.
+        </p>
       )}
       {error && <p className={styles.error}>{error}</p>}
     </div>

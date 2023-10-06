@@ -17,14 +17,13 @@ export default function RenderGroupExpenses({ item }) {
       </div>
       <div className={styles.rightColumn}>
         <div>
-          {emojiConstants.paidFor} <strong>{item.expensePayer.userName}</strong>
-        </div>
-        <div>
+          {emojiConstants.paidFor} {item.expensePayer.userName}:{" "}
           <Link
             to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
             {item.expenseName}
           </Link>
         </div>
+        <div></div>
       </div>
     </div>
   );

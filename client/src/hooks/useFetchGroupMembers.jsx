@@ -13,6 +13,7 @@ const useFetchGroupMembers = (groupCode) => {
           `${apiUrl}/users/byGroupCode/${groupCode}`
         );
         const userData = response.data.data.users;
+        console.log(response.data.data.users);
         const userNames = userData.map((user) => user.userName);
         setGroupMembers(userNames);
       } catch (error) {

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./GroupBalances.module.css";
 import Spinner from "../../reuseableComponents/Spinner/Spinner";
+import emojiConstants from "../../../constants/emojiConstants";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -75,14 +76,12 @@ export default function GroupBalances() {
             <li key={user.userId} className={styles.userListItem}>
               <div className={styles.userDetails}>
                 <div className={styles.leftColumn}>
-                  <strong>
-                    {/* Link to the user page */}
-                    <Link
-                      className={styles.userName}
-                      to={`/user-page/${user.userId}`}>
-                      {user.userName}
-                    </Link>
-                  </strong>
+                  {/* Link to the user page */}
+                  <Link
+                    className={styles.userName}
+                    to={`/user-page/${user.userId}`}>
+                    {user.userName}
+                  </Link>
                 </div>
                 <div className={styles.rightColumn}>
                   {/* Visually indicate negative userBalance by setting different CSS classes and later rendering it in a different color */}
@@ -105,7 +104,8 @@ export default function GroupBalances() {
       ) : (
         // Display a message if there are no users
         <p className={styles.failMessage}>
-          Add users to start settling expenses...
+          Add users ({emojiConstants.user}) below 👇 to start settling expenses
+          .
         </p>
       )}
       {error && <p className={styles.error}>{error}</p>}

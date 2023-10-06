@@ -16,10 +16,8 @@ export default function RenderGroupExpenses({ item }) {
         </div>
       </div>
       <div className={styles.rightColumn}>
-        <strong>
-          {item.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
-          {item.paymentRecipient.userName}
-        </strong>
+        {item.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
+        {item.paymentRecipient.userName}
       </div>
     </div>
   );

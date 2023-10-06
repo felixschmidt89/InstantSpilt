@@ -1,5 +1,6 @@
 // DONE adding only meaningful necessary comments
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import useLocalStorage from "react-use-localstorage";
 import styles from "./InstantSplitPage.module.css";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
@@ -38,6 +39,13 @@ export default function InstantSplitPage() {
   } else {
     return (
       <main>
+        <Helmet>
+          <title>
+            {groupData?.group.groupName
+              ? `InstantSplit - ${groupData.group.groupName}`
+              : "InstantSplit"}
+          </title>{" "}
+        </Helmet>
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
         {/* Display UserActionsComponent */}
