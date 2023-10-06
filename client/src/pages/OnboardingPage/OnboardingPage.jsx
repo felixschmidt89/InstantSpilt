@@ -7,6 +7,8 @@ import {
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import emojiConstants from "../../constants/emojiConstants";
 import styles from "./OnboardingPage.module.css";
+import UserActionsContainer from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
+import SplitExpensesActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
 
 function OnboardingPage() {
   return (
@@ -19,6 +21,7 @@ function OnboardingPage() {
       <div className={styles.container}>
         <h1>Brief explanation</h1>
         <h2>Top section</h2>
+        <UserActionsContainer />
         <p>
           Contains features not directly related to settling expenses, such as
           inviting others (
@@ -30,17 +33,22 @@ function OnboardingPage() {
         <p>
           <ul>
             <li>
-              <strong>Balances</strong> Displays users' current balances; click
-              a name for more details.
+              <button className={styles.button}>Balances</button>
+              <div>
+                Displays users' current balances; click a name for more details.
+              </div>
             </li>
             <li>
-              <strong>History</strong>: Lists all expenses and payments; click
-              an amount for details.
+              <button className={styles.button}>History</button>
+              <div>
+                Lists all expenses and payments; click an amount for details.
+              </div>
             </li>
           </ul>
         </p>
         <h2>
           <strong>Bottom section</strong>
+          <SplitExpensesActionsComponent />
         </h2>
         <p>
           Allows you to perform actions:

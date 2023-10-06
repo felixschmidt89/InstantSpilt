@@ -10,6 +10,9 @@ import NavigateButton from "../../components/reuseableComponents/NavigateButton/
 import emojiConstants from "../../constants/emojiConstants";
 import styles from "./TutorialPage.module.css";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
+import UserActionsContainer from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
+import SettleGroupExpensesPage from "../SettleGroupExpensesPage/SettleGroupExpensesPage";
+import SplitExpensesActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
 
 function TutorialPage() {
   const { groupName, groupCode } = useParams();
@@ -24,6 +27,50 @@ function TutorialPage() {
       <div className={styles.container}>
         <h1>Tutorial</h1>
 
+        <section className={styles.instantSplit}>
+          <h2>Main functionalities</h2>
+          <h3>Top section</h3>
+          <UserActionsContainer />
+          <p>
+            Contains features not directly related to settling expenses, such as
+            inviting others (
+            <FontAwesomeIcon icon={faUserPlus} />) or leaving the group (
+            <FontAwesomeIcon icon={faRightFromBracket} />
+            ).
+          </p>
+          <h3> Middle section</h3>
+          <p>
+            <ul>
+              <li>
+                <button className={styles.button}>Balances</button>
+                <div>
+                  Displays users' current balances; click a name for more
+                  details.
+                </div>
+              </li>
+              <li>
+                <button className={styles.button}>History</button>
+                <div>
+                  Lists all expenses and payments; click an amount for details.
+                </div>
+              </li>
+            </ul>
+          </p>
+          <h3>
+            <strong>Bottom section</strong>
+            <SplitExpensesActionsComponent />
+          </h3>
+          <p>
+            Allows you to perform actions:
+            <ul>
+              <li>
+                add expenses ({emojiConstants.expense}), payments(
+                {emojiConstants.payment}) and users ({emojiConstants.user})
+              </li>
+              <li>View settlement suggestions({emojiConstants.settle})</li>
+            </ul>
+          </p>
+        </section>
         <h2>GroupCode</h2>
         <p>
           All you need to access this group is your <strong>Groupcode</strong>.
@@ -37,43 +84,6 @@ function TutorialPage() {
           </Link>{" "}
           to avoid losing access to this group.
         </p>
-        <section className={styles.instantSplit}>
-          <h2>Main functionalities</h2>
-          <h3>Top section</h3>
-          <p>
-            Contains features not directly related to settling expenses, such as
-            inviting others (
-            <FontAwesomeIcon icon={faUserPlus} />) or leaving the group (
-            <FontAwesomeIcon icon={faRightFromBracket} />
-            ).
-          </p>
-          <h3> Middle section</h3>
-          <p>
-            <ul>
-              <li>
-                <strong>Balances:</strong> Displays users' current balances;
-                click a name for more details.
-              </li>
-              <li>
-                <strong>History</strong>: Lists all expenses and payments; click
-                an amount for details.
-              </li>
-            </ul>
-          </p>
-          <h3>
-            <strong>Bottom section</strong>
-          </h3>
-          <p>
-            Allows you to perform actions:
-            <ul>
-              <li>
-                add expenses ({emojiConstants.expense}), payments(
-                {emojiConstants.payment}) and users ({emojiConstants.user})
-              </li>
-              <li>View settlement suggestions({emojiConstants.settle})</li>
-            </ul>
-          </p>
-        </section>
       </div>
     </main>
   );

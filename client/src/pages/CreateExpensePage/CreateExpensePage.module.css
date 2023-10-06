@@ -89,7 +89,7 @@ input[type="checkbox"]:checked {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 50%;
+  width: 25rem;
   margin: 0 auto;
   border: 2px solid var(--color-grey);
   border-radius: 0.8rem;

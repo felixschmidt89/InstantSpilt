@@ -10,6 +10,11 @@
   box-shadow: 0 0 0.5rem var(--color-signal);
 }
 
+.button:hover {
+  background-color: var(--color-success);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
+
 /* Your CSS module (styles.module.css) */
 .inactiveButton {
   opacity: 0.6;
@@ -19,9 +24,4 @@
 .inactiveButton:hover {
   opacity: 1; /* Restore full opacity on hover */
   filter: grayscale(0%); /* Remove grayscale filter on hover */
-}
-
-.button:hover {
-  background-color: var(--color-success);
-  box-shadow: 0 0 0.5rem var(--color-success);
 }
