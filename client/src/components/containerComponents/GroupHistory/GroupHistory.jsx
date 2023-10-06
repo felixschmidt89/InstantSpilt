@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import styles from "./GroupHistory.module.css";
-import emojiConstants from "../../../constants/emojiConstants";
 import Spinner from "../../reuseableComponents/Spinner/Spinner";
+import RenderGroupExpenses from "./ChildComponents/RenderGroupExpenses";
+import RenderGroupPayments from "./ChildComponents/RenderGroupPayments";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -58,45 +58,26 @@ export default function GroupHistory({ groupCode }) {
 
     fetchGroupExpensesAndPayments();
   }, [groupCode]);
-  return (
+  return isLoading ? (
+    <div className={styles.spinner}>
+      <Spinner />
+    </div>
+  ) : (
     <div className={styles.container}>
-      {isLoading ? (
-        <Spinner />
-      ) : groupExpensesAndPayments.length > 0 ? ( // Check if there are expenses or payments
+      {groupExpensesAndPayments.length > 0 ? (
         <ul>
           {groupExpensesAndPayments.map((item) => (
             <li key={item._id}>
               {item.expenseName ? (
-                <div className={styles.expenses}>
-                  {emojiConstants.expense}
-                  <Link
-                    to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
-                    {item.expenseAmount.toFixed(2)}€
-                  </Link>{" "}
-                  {emojiConstants.paidFor}{" "}
-                  <strong>{item.expensePayer.userName}</strong>:{" "}
-                  {item.expenseName}
-                </div>
+                <RenderGroupExpenses item={item} />
               ) : (
-                <div className={styles.payments}>
-                  <span>
-                    {emojiConstants.payment}{" "}
-                    <Link
-                      to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
-                      {item.paymentAmount.toFixed(2)}€
-                    </Link>
-                  </span>{" "}
-                  <strong>
-                    {item.paymentMaker.userName} {emojiConstants.paymentsMade}{" "}
-                    {item.paymentRecipient.userName}
-                  </strong>
-                </div>
+                <RenderGroupPayments item={item} />
               )}
             </li>
           ))}
         </ul>
       ) : (
-        <p className={styles.failMessage}>No expenses added yet...</p> // Display a message when there are no expenses or payments
+        <p className={styles.failMessage}>No expenses added yet...</p>
       )}
       {error && <p className={styles.error}>{error}</p>}
     </div>
