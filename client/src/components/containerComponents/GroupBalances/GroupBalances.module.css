@@ -1,32 +1,45 @@
-.balances {
-  margin-top: 0.8rem;
-  overflow-y: auto;
+.spinner {
   height: 75%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  margin: 0 auto;
+  margin-top: 2rem;
 }
 
-.positiveBalance {
-  padding-left: 0.4rem;
-  color: var(--color-dark);
+.balancesContainer {
+  height: 75%;
 }
 
-.negativeBalance {
-  padding-left: 0.4rem;
-  color: var(--color-error);
+.userListItem {
+  list-style: none;
+  margin-top: 0.8rem;
 }
 
 .userDetails {
+  /* Container for each user's details */
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftColumn {
+  margin-left: 7rem;
+}
+
+.rightColumn {
+  margin-right: 7rem;
 }
 
 .userName {
-  margin-right: 0.5rem;
+  text-decoration: none;
 }
 
 .userName:hover {
   color: var(--color-success);
+}
+
+.positiveBalance {
+  color: var(--color-dark);
+}
+
+.negativeBalance {
+  color: var(--color-error);
 }

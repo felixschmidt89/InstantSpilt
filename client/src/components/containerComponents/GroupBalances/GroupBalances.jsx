@@ -63,37 +63,40 @@ export default function GroupBalances() {
     fetchUserDetails();
   }, [groupCode]);
   // Render spinner while loading then render user details,  link to user pages, and any error message
-  return (
-    <div className={styles.balances}>
-      {isLoading ? (
-        <Spinner />
-      ) : userDetails.length > 0 ? (
-        // Render the list of user balances if there are users
+  return isLoading ? (
+    <div className={styles.spinner}>
+      <Spinner />
+    </div>
+  ) : (
+    <div className={styles.balancesContainer}>
+      {userDetails.length > 0 ? (
         <ul>
           {userDetails.map((user) => (
-            // Map through user details and render each user's balance
-
             <li key={user.userId} className={styles.userListItem}>
               <div className={styles.userDetails}>
-                <strong>
-                  {/* Link to the user page */}
-                  <Link
-                    className={styles.userName}
-                    to={`/user-page/${user.userId}`}>
-                    {user.userName}
-                  </Link>
-                </strong>
-                {/* Visually indicate negative userBalance by setting different CSS classes and later rendering it in a different color */}
-                <div
-                  className={`${styles.userBalance} ${
-                    user.userBalance >= 0
-                      ? styles.positiveBalance
-                      : styles.negativeBalance
-                  }`}>
-                  {/* Fix remaining rounding issue in certain settings, e.g., 100€/3 will result in 33.33, 33.33, 33.4 */}
-                  {user.userBalance === 0.01
-                    ? "0.00€"
-                    : user.userBalance.toFixed(2) + "€"}
+                <div className={styles.leftColumn}>
+                  <strong>
+                    {/* Link to the user page */}
+                    <Link
+                      className={styles.userName}
+                      to={`/user-page/${user.userId}`}>
+                      {user.userName}
+                    </Link>
+                  </strong>
+                </div>
+                <div className={styles.rightColumn}>
+                  {/* Visually indicate negative userBalance by setting different CSS classes and later rendering it in a different color */}
+                  <div
+                    className={`${styles.userBalance} ${
+                      user.userBalance >= 0
+                        ? styles.positiveBalance
+                        : styles.negativeBalance
+                    }`}>
+                    {/* Fix remaining rounding issue in certain settings, e.g., 100€/3 will result in 33.33, 33.33, 33.4 */}
+                    {user.userBalance === 0.01
+                      ? "0.00€"
+                      : user.userBalance.toFixed(2) + "€"}
+                  </div>
                 </div>
               </div>
             </li>
@@ -101,10 +104,11 @@ export default function GroupBalances() {
         </ul>
       ) : (
         // Display a message if there are no users
-        <p>Add users to start settling expenses...</p>
+        <p className={styles.failMessage}>
+          Add users to start settling expenses...
+        </p>
       )}
-      {error && <p>{error}</p>}{" "}
-      {/* Display error message if there's an error */}
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 }
