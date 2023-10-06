@@ -21,7 +21,7 @@
 .buttonContainer {
   margin: 0 auto;
   position: absolute;
-  bottom: 40%;
+  bottom: 25%;
   left: 50%;
   transform: translateX(-50%);
 }
