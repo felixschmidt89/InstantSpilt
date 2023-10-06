@@ -8,6 +8,7 @@ function PageNotFoundPage() {
     <main className={styles.pageNotFound}>
       <Helmet>
         <title>InstantSplit - Page not found</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <h1>🚧 404 - Page not found</h1>
       <p>The page you're looking for does not exist.</p>

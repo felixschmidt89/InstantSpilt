@@ -23,6 +23,7 @@ const ShareGroupPage = () => {
     <main>
       <Helmet>
         <title>InstantSplit - Invite & share {groupName}</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route='instant-split'

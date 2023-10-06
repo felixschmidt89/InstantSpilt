@@ -19,6 +19,7 @@ const ForgetGroupOnDevicePage = () => {
     <main>
       <Helmet>
         <title>InstantSplit - Forget group</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route='instant-split'

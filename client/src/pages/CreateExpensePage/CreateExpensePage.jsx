@@ -84,6 +84,7 @@ export default function CreateExpensePage() {
     <main>
       <Helmet>
         <title>InstantSplit - Add expense</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"instant-split"}

@@ -8,6 +8,7 @@ const HomePage = () => {
     <main className={styles.container}>
       <Helmet>
         <title>InstantSplit - Homepage</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <div className={styles.introContainer}>
         <h1>Welcome to InstantSplit!</h1>

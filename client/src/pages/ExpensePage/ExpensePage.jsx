@@ -16,6 +16,7 @@ const ExpensePage = () => {
     <main>
       <Helmet>
         <title>InstantSplit - Expense details</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"instant-split"}

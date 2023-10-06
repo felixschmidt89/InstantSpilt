@@ -46,6 +46,8 @@ const AcceptInviteAndJoinPage = () => {
     <main>
       <Helmet>
         <title>InstantSplit - Invitation to join {groupName}</title>
+        <meta name='fragment' content='!' />
+
         <link rel='canonical' href={canonicalUrl} />
         <meta
           name='description'

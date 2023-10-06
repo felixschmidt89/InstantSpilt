@@ -15,6 +15,7 @@ function CreateUsersDuringSignUpPage() {
     <main>
       <Helmet>
         <title>InstantSplit - Add user</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"groupcode-explanation"}

@@ -16,6 +16,7 @@ function CreateUsersInAppPage() {
     <main>
       <Helmet>
         <title>InstantSplit - Add user</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <div className={styles.container}>
         <NavigateButton

@@ -13,6 +13,7 @@ const GroupCodeExplanationPage = () => {
     <main>
       <Helmet>
         <title>InstantSplit - GroupCode explanation</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"onboarding"}

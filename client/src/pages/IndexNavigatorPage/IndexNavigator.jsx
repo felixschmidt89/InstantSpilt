@@ -19,6 +19,7 @@ const IndexNavigator = () => {
     <main>
       <Helmet>
         <title>InstantSplit - Navigator</title>
+        <meta name='fragment' content='!' />
       </Helmet>
     </main>
   );

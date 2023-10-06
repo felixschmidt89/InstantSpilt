@@ -44,7 +44,8 @@ export default function InstantSplitPage() {
             {groupData?.group.groupName
               ? `InstantSplit - ${groupData.group.groupName}`
               : "InstantSplit"}
-          </title>{" "}
+          </title>
+          <meta name='fragment' content='!' />
         </Helmet>
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>

@@ -54,6 +54,7 @@ export default function FeedbackPage() {
     <main>
       <Helmet>
         <title>InstantSplit - Contact</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"instant-split"}

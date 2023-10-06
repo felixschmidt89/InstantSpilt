@@ -9,6 +9,7 @@ function SettleGroupExpensesPage() {
     <main>
       <Helmet>
         <title>InstantSplit - Settle expenses</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"instant-split"}

@@ -13,6 +13,8 @@ const LegalNoticePage = () => {
           rel='canonical'
           href='https://instantsplit.netlify.app/legal-notice/'
         />
+        <meta name='fragment' content='!' />
+
         <meta
           name='description'
           content='InstantSplit Impressum as required by the Telemediengesetz for German websites.'

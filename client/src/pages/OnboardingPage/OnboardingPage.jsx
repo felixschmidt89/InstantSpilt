@@ -16,6 +16,7 @@ function OnboardingPage() {
     <main>
       <Helmet>
         <title>InstantSplit - Onboarding</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"instant-split"}
@@ -23,47 +24,50 @@ function OnboardingPage() {
         buttonText={"got it!"}
       />
       <div className={styles.container}>
-        <h1>Brief explanation</h1>
-        <h2>Top section</h2>
-        <UserActionsContainer />
-        <p>
-          Contains features not directly related to settling expenses, such as
-          inviting others (
-          <FontAwesomeIcon icon={faUserPlus} />) or leaving the group (
-          <FontAwesomeIcon icon={faRightFromBracket} />
-          ).
-        </p>
-        <h2> Middle section:</h2>
-        <p>
-          <ul>
-            <li>
-              <button className={styles.button}>Balances</button>
-              <div>
-                Displays users' current balances; click a name for more details.
-              </div>
-            </li>
-            <li>
-              <button className={styles.button}>History</button>
-              <div>
-                Lists all expenses and payments; click an amount for details.
-              </div>
-            </li>
-          </ul>
-        </p>
-        <h2>
-          <strong>Bottom section</strong>
-          <SplitExpensesActionsComponent />
-        </h2>
-        <p>
-          Allows you to perform actions:
-          <ul>
-            <li>
-              add expenses ({emojiConstants.expense}), payments(
-              {emojiConstants.payment}) and users ({emojiConstants.user})
-            </li>
-            <li>View settlement suggestions({emojiConstants.settle})</li>
-          </ul>
-        </p>
+        <div className={styles.overlay}>
+          <h1>Brief explanation</h1>
+          <h2>Top section</h2>
+          <UserActionsContainer />
+          <p>
+            Contains features not directly related to settling expenses, such as
+            inviting others (
+            <FontAwesomeIcon icon={faUserPlus} />) or leaving the group (
+            <FontAwesomeIcon icon={faRightFromBracket} />
+            ).
+          </p>
+          <h2> Middle section:</h2>
+          <p>
+            <ul>
+              <li>
+                <button className={styles.button}>Balances</button>
+                <div>
+                  Displays users' current balances; click a name for more
+                  details.
+                </div>
+              </li>
+              <li>
+                <button className={styles.button}>History</button>
+                <div>
+                  Lists all expenses and payments; click an amount for details.
+                </div>
+              </li>
+            </ul>
+          </p>
+          <h2>
+            <strong>Bottom section</strong>
+            <SplitExpensesActionsComponent />
+          </h2>
+          <p>
+            Allows you to perform actions:
+            <ul>
+              <li>
+                add expenses ({emojiConstants.expense}), payments(
+                {emojiConstants.payment}) and users ({emojiConstants.user})
+              </li>
+              <li>View settlement suggestions({emojiConstants.settle})</li>
+            </ul>
+          </p>
+        </div>
       </div>
     </main>
   );

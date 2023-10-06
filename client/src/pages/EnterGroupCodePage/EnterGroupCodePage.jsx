@@ -23,6 +23,7 @@ const EnterGroupCode = () => {
     <main>
       <Helmet>
         <title>InstantSplit - Enter groupCode</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"homepage"}

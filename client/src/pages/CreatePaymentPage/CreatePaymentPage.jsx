@@ -61,6 +61,7 @@ export default function CreatePaymentPage() {
     <main>
       <Helmet>
         <title>InstantSplit - Add payment</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"instant-split"}

@@ -51,6 +51,7 @@ export default function CreateGroupPage() {
     <main>
       <Helmet>
         <title>InstantSplit - Create group</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"homepage"}

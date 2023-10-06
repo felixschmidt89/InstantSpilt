@@ -44,6 +44,7 @@ const ValidateProvideGroupCodePage = () => {
       {/* Back button to enter groupCode again */}
       <Helmet>
         <title>InstantSplit - Validate groupCode</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route='enter-groupcode'

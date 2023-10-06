@@ -36,6 +36,7 @@ const UserPage = () => {
     <main>
       <Helmet>
         <title>InstantSplit - User details</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       {/* Button to go back to the "instant-split" page */}
       <NavigateButton

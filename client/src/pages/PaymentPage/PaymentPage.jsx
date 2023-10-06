@@ -14,9 +14,8 @@ const PaymentPage = () => {
   return (
     <main>
       <Helmet>
-        <title>
-          InstantSplit - Payment <details></details>
-        </title>
+        <title>InstantSplit - Payment details</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"instant-split"}

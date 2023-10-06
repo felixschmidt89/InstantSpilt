@@ -2,6 +2,10 @@
   width: 90%;
   margin: 0 auto;
   overflow-y: auto;
+}
+
+.overlay {
+  background-color: transparent;
   pointer-events: none;
 }
 

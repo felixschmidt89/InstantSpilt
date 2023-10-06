@@ -21,6 +21,7 @@ function TutorialPage() {
     <main>
       <Helmet>
         <title>InstantSplit - Tutorial</title>
+        <meta name='fragment' content='!' />
       </Helmet>
       <NavigateButton
         route={"instant-split"}
