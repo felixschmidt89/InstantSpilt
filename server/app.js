@@ -33,6 +33,12 @@ app.use(express.json());
 // Enable CORS for all routes
 app.use(cors());
 // Enable GZIP compression to reduce response size for faster loading
+
+// prerender.io
+app.use(
+  require('prerender-node').set('prerenderToken', '6EKmxRiVM54BkVvge9D1'),
+);
+
 app.use(compression());
 // Log requests in development
 if (NODE_ENV === 'development') {
