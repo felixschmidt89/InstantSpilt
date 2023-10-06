@@ -13,10 +13,6 @@
   margin-right: 1.7rem;
 }
 
-.rightColumn {
-  margin-right: 2rem;
-}
-
 /* Ensure that numbers are right aligned to be easily readable */
 .expenseAmount {
   text-align: right;
@@ -26,8 +22,13 @@
 .rightColumn {
   display: flex;
   flex-direction: column;
+  margin-right: 1rem;
   margin-left: 3rem;
   border-bottom: 2px solid var(--color-signal-reduced-opacity);
+}
+/* Remove the bottom border for empty elements */
+.rightColumn > :empty {
+  border-bottom: none;
 }
 
 /* Adjust the height of elements within rightColumn */

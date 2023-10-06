@@ -23,3 +23,7 @@
   margin-left: 3rem;
   border-bottom: 2px solid var(--color-signal-reduced-opacity);
 }
+
+.rightColumn > :empty {
+  border-bottom: none;
+}
