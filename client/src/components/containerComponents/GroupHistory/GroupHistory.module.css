@@ -38,7 +38,7 @@ a:hover {
     padding-left: 0rem;
     width: 95%;
   }
-  li {
-    border-bottom: 1px solid var(--color-signal-reduced-opacity);
+  .container li {
+    border-top: 2px solid var(--color-signal-reduced-opacity);
   }
 }

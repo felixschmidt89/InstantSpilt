@@ -6,7 +6,7 @@
 .leftColumn {
   display: flex;
   align-items: center;
-  border-bottom: 2px solid var(--color-signal-reduced-opacity);
+  border-top: 2px solid var(--color-signal-reduced-opacity);
 }
 
 .paymentEmoji {
@@ -21,7 +21,7 @@
 
 .rightColumn {
   margin-left: 3rem;
-  border-bottom: 2px solid var(--color-signal-reduced-opacity);
+  border-top: 2px solid var(--color-signal-reduced-opacity);
 }
 
 .rightColumn > :empty {
@@ -30,11 +30,14 @@
 
 @media (max-width: 500px) {
   .rightColumn {
-    margin-left: 0.5rem;
-    border-bottom: none;
+    margin-left: 1rem;
+    border-top: none;
   }
   .leftColumn {
     margin-right: 0.5rem;
-    border-bottom: none;
+    border-top: none;
+  }
+  li {
+    /* border-top: 2px solid var(--color-signal-reduced-opacity); */
   }
 }
