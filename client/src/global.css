@@ -87,8 +87,8 @@ input {
 /* CSS for cellphones and tablets */
 @media (max-width: 768px) {
   main {
-    width: 90vw;
-    height: 75vh;
+    width: 95vw;
+    height: 70vh;
   }
 }
 

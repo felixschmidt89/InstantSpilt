@@ -12,6 +12,8 @@ const ForgetGroupOnDevicePage = () => {
 
   const handleConfirm = () => {
     removeActiveGroupCodeFromLocalStorage();
+    // Set viewState in local storage to default, so that the user sees the default view when (re-)joining a(nother) group
+    localStorage.setItem("viewState", "view2");
     navigate("/homepage");
   };
 
@@ -32,7 +34,7 @@ const ForgetGroupOnDevicePage = () => {
         If you ever wish to rejoin later, remember your{" "}
         <strong>GroupCode:</strong>
         <CopyToClipboard infoToCopy={groupCode} />
-      </p>{" "}
+      </p>
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={handleConfirm}>
           Confirm

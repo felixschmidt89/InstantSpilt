@@ -21,11 +21,6 @@ const AcceptInviteAndJoinPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const groupData = useFetchGroupData(groupCode);
 
-  // TODO: Kept in case HelmetMetaTagNetlify component is too generic to work for this page. Delete if not.
-  // const encodedGroupName = encodeURIComponent(groupName);
-  // const encodedGroupCode = encodeURIComponent(groupCode);
-  // const canonicalUrl = `https://instantsplit.netlify.app/join/${encodedGroupName}/${encodedGroupCode}`;
-
   // Set isLoading to false when group data is received.
   useEffect(() => {
     if (groupData !== null && groupData !== undefined) {

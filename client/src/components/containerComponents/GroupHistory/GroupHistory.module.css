@@ -10,14 +10,13 @@
   padding-left: 8%;
   width: 90%;
   margin: 0 auto;
-  margin-top: 0.5rem;
 }
 
 .failMessage {
-  display: flex;
+  padding-top: 0.5rem;
   margin: 0 auto;
+  width: 90%;
   text-align: center;
-  padding-right: 8%;
 }
 
 .spinner {
