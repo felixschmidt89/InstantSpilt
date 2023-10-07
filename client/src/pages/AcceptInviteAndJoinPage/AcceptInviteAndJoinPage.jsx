@@ -1,15 +1,13 @@
 // DONE adding only meaningful necessary comments
-// TODO: ADD HELMET META TAGS
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import styles from "./AcceptInviteAndJoinPage.module.css";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 /**
  * Addresses users joining a group via invitation link.
@@ -23,9 +21,10 @@ const AcceptInviteAndJoinPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const groupData = useFetchGroupData(groupCode);
 
-  const encodedGroupName = encodeURIComponent(groupName);
-  const encodedGroupCode = encodeURIComponent(groupCode);
-  const canonicalUrl = `https://instantsplit.netlify.app/join/${encodedGroupName}/${encodedGroupCode}`;
+  // TODO: Kept in case HelmetMetaTagNetlify component is too generic to work for this page. Delete if not.
+  // const encodedGroupName = encodeURIComponent(groupName);
+  // const encodedGroupCode = encodeURIComponent(groupCode);
+  // const canonicalUrl = `https://instantsplit.netlify.app/join/${encodedGroupName}/${encodedGroupCode}`;
 
   // Set isLoading to false when group data is received.
   useEffect(() => {
@@ -41,35 +40,13 @@ const AcceptInviteAndJoinPage = () => {
     navigate("/onboarding");
   };
 
-  // Visually indicate fetching, render button to accept invitation when data is received
+  // Updating Visually indicate fetching, render button to accept invitation when data is received
   return (
     <main>
-      <Helmet>
-        <title>InstantSplit - Invitation to join {groupName}</title>
-        <meta name='fragment' content='!' />
-
-        <link rel='canonical' href={canonicalUrl} />
-        <meta
-          name='description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
-        />
-        <meta
-          property='og:title'
-          content={`InstantSplit - Invitation to join ${groupName}`}
-        />
-        <meta
-          property='og:description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
-        />
-        <meta
-          name='twitter:title'
-          content={`InstantSplit - Invitation to join ${groupName}`}
-        />
-        <meta
-          name='twitter:description'
-          content={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
-        />
-      </Helmet>
+      <HelmetMetaTagsNetlify
+        title={`Invitation to join ${groupName}`}
+        description={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
+      />
       <div className={styles.explanationContainer}>
         <h1>Hey there!</h1>
         {isLoading && <Spinner />}

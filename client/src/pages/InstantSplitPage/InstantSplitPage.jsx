@@ -1,6 +1,5 @@
 // DONE adding only meaningful necessary comments
 import React from "react";
-import { Helmet } from "react-helmet-async";
 import useLocalStorage from "react-use-localstorage";
 import styles from "./InstantSplitPage.module.css";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
@@ -10,6 +9,7 @@ import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import GroupBalances from "../../components/containerComponents/GroupBalances/GroupBalances";
 import GroupHistory from "../../components/containerComponents/GroupHistory/GroupHistory";
 import GroupActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 /**
  * Main component of the application, renders or links to all core features related to settling expenses.
@@ -39,14 +39,9 @@ export default function InstantSplitPage() {
   } else {
     return (
       <main>
-        <Helmet>
-          <title>
-            {groupData?.group.groupName
-              ? `InstantSplit - ${groupData.group.groupName}`
-              : "InstantSplit"}
-          </title>
-          <meta name='fragment' content='!' />
-        </Helmet>
+        <HelmetMetaTagsNetlify
+          title={`InstantSplit - Main (${groupData.group.groupName})`}
+        />
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
         {/* Display UserActionsComponent */}

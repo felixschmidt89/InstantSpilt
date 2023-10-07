@@ -8,7 +8,7 @@ import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesIn
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import styles from "./CreateGroupPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import { Helmet } from "react-helmet-async";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 export default function CreateGroupPage() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -49,10 +49,7 @@ export default function CreateGroupPage() {
   // render back button to abort and input field, conditionally render submit button
   return (
     <main>
-      <Helmet>
-        <title>InstantSplit - Create group</title>
-        <meta name='fragment' content='!' />
-      </Helmet>
+      <HelmetMetaTagsNetlify title='InstantSplit - Create group' />
       <NavigateButton
         route={"homepage"}
         buttonText={"back"}

@@ -1,23 +1,24 @@
-// HelmetMetaTags.js
+// DONE adding only meaningful necessary comments
+// TODO: Check
 
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 /**
- * HelmetMetaTags component for Netlify
+ * HelmetMetaTags component for SPA hosted on Netlify
+ * Long explanation as component might be useful for others to reuse and adapt for their needs.
+ *
+ * Generates meta tags and supports dynamic setting of title, description, image, path, and author meta tags based on provided props. It has default values for each, so none must be added, but the component must be added to each page, as otherwise there won't be meta tags on the page.
+ *
+ * Requires prerender beta to be set to activate in Netlify account, which again requires meta name='fragment' content='!' on each page (accomplished by calling this component). Be sure to use react-helmet-async and properly add it to the project.
  *
  *
- * Generates meta tags for a SPA hosted on Netlify. It supports dynamic setting of title, description, image, path, and author meta tags based on provided props. It has default values for each, so none must be added, but the component must be added to each page, as otherwise there won't be meta tags on the page.
- *
- * Requires Netlify prerendering to be activated, which requires <meta name='fragment' content='!' /> on each page (accomplished by calling this component)
- *
- *
- * @param {string} props.title - Page title.
- * @param {string} props.description - Page description.
- * @param {string} props.image - Page image URL.
- * @param {string} props.path - Additional path segments to append to the URL.
- * @param {string} props.author - Page author.
+ * @param {string} props.title -
+ * @param {string} props.description
+ * @param {string} props.image - Meta tags image absolute URL
+ * @param {string} props.path - Additional path segments to append to the default URL.
+ * @param {string} props.author
  *
  * @returns {JSX.Element} The HelmetMetaTags component.
  */
@@ -31,9 +32,11 @@ function HelmetMetaTagsNetlify({ title, description, image, path, author }) {
   const defaultUrl = "https://instantsplit.netlify.app/";
   const defaultAuthor = "Felix Schmidt";
 
+  // Retrieve params
   const { groupCode, groupName } = useParams();
 
-  // URL-Encode groupCode and groupName if they exist in the path
+  //TODO: Check if really necessary, might be overachieving
+  // URL-Encode groupCode and groupName params if they exist in the path
   const encodedGroupName = groupCode
     ? encodeURIComponent(groupName)
     : groupName;
@@ -61,6 +64,7 @@ function HelmetMetaTagsNetlify({ title, description, image, path, author }) {
       <meta property='og:description' content={pageDescription} />
       <meta property='og:image' content={pageImage} />
       <meta property='og:url' content={pageUrl} />
+      <meta property='og:type' content='website' />
       <meta name='twitter:title' content={pageTitle} />
       <meta name='twitter:description' content={pageDescription} />
       <meta name='twitter:image' content={pageImage} />

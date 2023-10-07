@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 const IndexNavigator = () => {
   const navigate = useNavigate();
@@ -17,10 +17,7 @@ const IndexNavigator = () => {
 
   return (
     <main>
-      <Helmet>
-        <title>InstantSplit - Navigator</title>
-        <meta name='fragment' content='!' />
-      </Helmet>
+      <HelmetMetaTagsNetlify title='InstantSplit' />
     </main>
   );
 };

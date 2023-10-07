@@ -8,7 +8,7 @@ import styles from "./CreatePaymentPage.module.css";
 import emojiConstants from "../../constants/emojiConstants";
 import commaToDotDecimalSeparatorHelperFunction from "../../helpers/commaToDotDecimalSeparatorHelper";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import { Helmet } from "react-helmet-async";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -59,10 +59,7 @@ export default function CreatePaymentPage() {
   // render back button to abort and input fields, conditionally render submit button
   return (
     <main>
-      <Helmet>
-        <title>InstantSplit - Add payment</title>
-        <meta name='fragment' content='!' />
-      </Helmet>
+      <HelmetMetaTagsNetlify title='InstantSplit - Add payment' />
       <NavigateButton
         route={"instant-split"}
         buttonText={"back"}

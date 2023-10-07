@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import styles from "./FeedbackPage.module.css/";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import { Helmet } from "react-helmet-async";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -52,10 +52,7 @@ export default function FeedbackPage() {
 
   return (
     <main>
-      <Helmet>
-        <title>InstantSplit - Contact</title>
-        <meta name='fragment' content='!' />
-      </Helmet>
+      <HelmetMetaTagsNetlify title='InstantSplit - Contact' />
       <NavigateButton
         route={"instant-split"}
         buttonText={"back"}

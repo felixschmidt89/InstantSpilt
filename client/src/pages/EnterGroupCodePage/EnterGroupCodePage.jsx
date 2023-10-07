@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import style from "./EnterGroupCodePage.module.css";
 
@@ -21,10 +21,7 @@ const EnterGroupCode = () => {
 
   return (
     <main>
-      <Helmet>
-        <title>InstantSplit - Enter groupCode</title>
-        <meta name='fragment' content='!' />
-      </Helmet>
+      <HelmetMetaTagsNetlify title='InstantSplit - Enter groupCode' />
       <NavigateButton
         route={"homepage"}
         buttonText={"back"}

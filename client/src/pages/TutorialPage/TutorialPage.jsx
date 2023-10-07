@@ -12,17 +12,14 @@ import styles from "./TutorialPage.module.css";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import UserActionsContainer from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
 import SplitExpensesActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
-import { Helmet } from "react-helmet-async";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 function TutorialPage() {
   const { groupName, groupCode } = useParams();
 
   return (
     <main>
-      <Helmet>
-        <title>InstantSplit - Tutorial</title>
-        <meta name='fragment' content='!' />
-      </Helmet>
+      <HelmetMetaTagsNetlify title='InstantSplit - Tutorial' />
       <NavigateButton
         route={"instant-split"}
         alignment={"left"}

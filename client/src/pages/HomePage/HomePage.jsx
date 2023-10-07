@@ -1,15 +1,12 @@
 import React from "react";
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
     <main className={styles.container}>
-      <Helmet>
-        <title>InstantSplit - Homepage</title>
-        <meta name='fragment' content='!' />
-      </Helmet>
+      <HelmetMetaTagsNetlify title='InstantSplit - Homepage' />
       <div className={styles.introContainer}>
         <h1>Welcome to InstantSplit!</h1>
         <p>

@@ -9,15 +9,13 @@ import emojiConstants from "../../constants/emojiConstants";
 import styles from "./OnboardingPage.module.css";
 import UserActionsContainer from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
 import SplitExpensesActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
-import { Helmet } from "react-helmet-async";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 function OnboardingPage() {
   return (
     <main>
-      <Helmet>
-        <title>InstantSplit - Onboarding</title>
-        <meta name='fragment' content='!' />
-      </Helmet>
+      <HelmetMetaTagsNetlify title='InstantSplit - Onboarding' />
+
       <NavigateButton
         route={"instant-split"}
         alignment={"right"}

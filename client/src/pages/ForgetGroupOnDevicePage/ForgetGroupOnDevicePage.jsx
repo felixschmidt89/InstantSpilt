@@ -4,7 +4,7 @@ import NavigateButton from "../../components/reuseableComponents/NavigateButton/
 import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorage";
 import styles from "./ForgetGroupOnDevicePage.module.css";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
-import { Helmet } from "react-helmet-async";
+import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
@@ -17,10 +17,7 @@ const ForgetGroupOnDevicePage = () => {
 
   return (
     <main>
-      <Helmet>
-        <title>InstantSplit - Forget group</title>
-        <meta name='fragment' content='!' />
-      </Helmet>
+      <HelmetMetaTagsNetlify title='InstantSplit - Forget group' />
       <NavigateButton
         route='instant-split'
         buttonText='back'
