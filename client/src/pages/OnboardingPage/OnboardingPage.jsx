@@ -30,10 +30,17 @@ function OnboardingPage() {
           <UserActionsContainer />
           <p>
             Contains features not directly related to settling expenses, such as
-            inviting others (
-            <FontAwesomeIcon icon={faUserPlus} />) or leaving the group (
-            <FontAwesomeIcon icon={faRightFromBracket} />
-            ).
+            inviting others{" "}
+            <span>
+              (
+              <FontAwesomeIcon icon={faUserPlus} />)
+            </span>{" "}
+            or leaving the group{" "}
+            <span>
+              (
+              <FontAwesomeIcon icon={faRightFromBracket} />)
+            </span>
+            .
           </p>
           <h2> Middle section:</h2>
           <p>
