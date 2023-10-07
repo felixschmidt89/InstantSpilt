@@ -103,7 +103,7 @@ input {
 /* Laptops and Desktops */
 @media (min-width: 1025px) and (max-width: 1280px) {
   main {
-    width: 35vw;
+    width: 30vw;
     height: 75vh;
   }
 }
