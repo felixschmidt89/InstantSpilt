@@ -1,129 +1,52 @@
-// DONE adding only meaningful necessary comments
-
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React from "react";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import styles from "./CreatePaymentPage.module.css";
 import emojiConstants from "../../constants/emojiConstants";
-import commaToDotDecimalSeparatorHelperFunction from "../../helpers/commaToDotDecimalSeparatorHelper";
+
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-
-const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+import RenderPaymentForm from "../../components/containerComponents/RenderPaymentForm/RenderPaymentForm";
+import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
+import GroupActionButton from "../../components/reuseableComponents/SplitExpensesActionsButton/SplitExpensesActionsButton";
 
 export default function CreatePaymentPage() {
-  const navigate = useNavigate();
-  const inputField = useRef(null);
-
-  // Define states for paymentAmount, userName, paymentRecipient and error message
-  const [paymentAmount, setPaymentAmount] = useState("");
-  const [userName, setUserName] = useState("");
-  const [paymentRecipientName, setPaymentRecipientName] = useState("");
-  const [error, setError] = useState("");
+  // Define states for paymentAmount, userName, paymentRecipient, and error message
   const groupCode = localStorage.getItem("activeGroupCode");
-  const groupMembers = useFetchGroupMembers(groupCode);
+  const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
 
-  // Autofocus the input field on mount
-  useEffect(() => {
-    inputField.current.focus();
-  }, []);
+  console.log(groupMembers);
 
-  // On form submission: post payment and navigate to instant-split page
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post(`${apiUrl}/payments`, {
-        userName,
-        groupCode,
-        paymentAmount,
-        paymentRecipientName,
-      });
-      navigate("/instant-split");
-    } catch (error) {
-      if (error.response && error.response.status === 409) {
-        setError(error.response.data.message);
-      } else {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error creating expense:", error);
-        }
-      }
-    }
-  };
-
-  // controlled second input component to set paymentAmount state, converting comma separator to dot prior to posting
-  const handlePaymentAmountChange = (e) => {
-    setPaymentAmount(commaToDotDecimalSeparatorHelperFunction(e.target.value));
-  };
-
-  // render back button to abort and input fields, conditionally render submit button
+  // Conditional rendering based on isFetched
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Add payment' />
+      {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
         buttonText={"back"}
         alignment={"left"}
       />
+
       <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className={styles.container}>
-          <input
-            className={styles.inputField}
-            type='text'
-            value={paymentAmount}
-            onChange={handlePaymentAmountChange}
-            placeholder='0.00'
-            required
-            pattern='[0-9]+([,.][0-9]{1,2})?'
-            inputMode='decimal'
-            ref={inputField}
+
+      {/* Conditional rendering based on isFetched */}
+      {!isFetched ? (
+        // Render a spinner while data is being fetched
+        <Spinner />
+      ) : groupMembers.length <= 1 ? (
+        // Render a message and a button when there are no or only 1 group member
+        <div>
+          <p>You need at least 2 users to make a payment. </p>
+          <GroupActionButton
+            route={"create-users-inapp"}
+            buttonText={<span>{emojiConstants.user}</span>}
+            tooltipText='add user'
           />
         </div>
-        <select
-          className={styles.select}
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-          required>
-          {/* Do not preselect user, indicate functionality instead */}
-          <option value='' disabled>
-            by
-          </option>
-          {groupMembers.map((member) => (
-            <option key={member} value={member}>
-              {member}
-            </option>
-          ))}
-        </select>
-        <span className={styles.paymentToEmoji}>
-          {emojiConstants.paymentsMade}
-        </span>
-        <select
-          className={styles.select}
-          value={paymentRecipientName}
-          onChange={(e) => setPaymentRecipientName(e.target.value)}
-          required>
-          {/* Do not preselect user, indicate functionality instead */}
-          <option value='' disabled>
-            to
-          </option>
-          {groupMembers.map((member) => (
-            <option key={member} value={member}>
-              {member}
-            </option>
-          ))}
-        </select>
-        {/* Conditionally render submit button when payment amount, payment maker and recipient is given*/}
-        <div className={styles.buttonContainer}>
-          {paymentAmount && userName && paymentRecipientName && (
-            <button className={styles.button} type='submit'>
-              +
-            </button>
-          )}
-          {error && <div className={styles.errorText}>{error}</div>}{" "}
-          {/* Render error message */}
-        </div>
-      </form>
+      ) : (
+        // Else render the payment
+        <RenderPaymentForm groupMembers={groupMembers} groupCode={groupCode} />
+      )}
     </main>
   );
 }
