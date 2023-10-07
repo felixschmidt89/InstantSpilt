@@ -122,3 +122,14 @@ input {
     height: 65vh;
   }
 }
+
+::-webkit-scrollbar,
+scrollbar {
+  width: 0.6rem;
+}
+
+::-webkit-scrollbar-thumb,
+scrollbar-thumb {
+  background-color: var(--color-signal-reduced-opacity);
+  border-radius: 0.5rem;
+}

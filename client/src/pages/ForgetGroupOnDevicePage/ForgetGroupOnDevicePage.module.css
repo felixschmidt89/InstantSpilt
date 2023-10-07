@@ -25,3 +25,10 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+/* Prevent button from disappearing south on very large screens */
+@media (min-width: 2001px) {
+  .buttonContainer {
+    bottom: 40%;
+  }
+}
