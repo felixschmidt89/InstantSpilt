@@ -19,10 +19,6 @@ export const createExpense = async (req, res) => {
       expenseBeneficiariesNames,
     } = req.body;
 
-    const errors = validationResult(req);
-
-    console.log(errors.array());
-
     const expensePayer = await User.findOne({ userName, groupCode });
 
     const expenseBeneficiaries = await User.find({
@@ -63,7 +59,7 @@ export const createExpense = async (req, res) => {
     });
   } catch (error) {
     if (error.name === 'ValidationError') {
-      // Handle validation errors (client errors)
+      // Handle validation errors
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
         message: 'Validation failed',
@@ -74,6 +70,94 @@ export const createExpense = async (req, res) => {
       });
     } else {
       logDevErrorHelper('Error creating expense:', error);
+      sendInternalErrorHelper(res);
+    }
+  }
+};
+
+export const updateExpense = async (req, res) => {
+  try {
+    const { expenseId } = req.params;
+
+    const {
+      userName,
+      groupCode,
+      expenseName,
+      expenseAmount,
+      expenseBeneficiariesNames,
+    } = req.body;
+
+    console.log(
+      userName,
+      groupCode,
+      expenseName,
+      expenseAmount,
+      expenseBeneficiariesNames,
+    );
+
+    const expensePayer = await User.findOne({ userName, groupCode });
+    const expenseBeneficiaries = await User.find({
+      userName: { $in: expenseBeneficiariesNames },
+      groupCode,
+    });
+
+    const expenseAmountPerBeneficiary =
+      expenseAmount / expenseBeneficiaries.length;
+    const beneficiaryIds = expenseBeneficiaries.map((user) => user._id);
+
+    const updatedExpenseData = {
+      expenseName,
+      expenseAmount,
+      expenseAmountPerBeneficiary,
+      groupCode,
+      expensePayer,
+      expenseBeneficiaries,
+    };
+
+    const updatedExpense = await Expense.findByIdAndUpdate(
+      expenseId,
+      updatedExpenseData,
+      { new: true }, // This option ensures that the updated document is returned
+    );
+
+    // Update total expenses benefitted from by expense beneficiaries concurrently
+    await Promise.all(
+      expenseBeneficiaries.map(async (beneficiary) => {
+        // Update total expenses paid by the beneficiary
+        await beneficiary.updateTotalExpensesPaid();
+        // Update total expenses benefitted from by the beneficiary
+        await beneficiary.updateTotalExpenseBenefitted();
+      }),
+    );
+    // Update total expenses paid by expense payer
+    await expensePayer.updateTotalExpensesPaid();
+    await expensePayer.updateTotalExpenseBenefitted();
+
+    if (!updatedExpense) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        status: 'error',
+        message: 'Expense not found',
+      });
+    }
+
+    return res.status(StatusCodes.OK).json({
+      status: 'success',
+      data: { expense: updatedExpense },
+      message: 'Expense updated successfully.',
+    });
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      // Handle validation errors
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'Validation failed',
+        errors: Object.keys(error.errors).map((field) => ({
+          field,
+          message: error.errors[field].message,
+        })),
+      });
+    } else {
+      logDevErrorHelper('Error updating expense:', error);
       sendInternalErrorHelper(res);
     }
   }

@@ -11,23 +11,21 @@ export default function RenderExpenseUpdateForm({
   expenseInfo,
   groupCode,
   groupMembers,
+  expenseId,
 }) {
-  console.log(expenseInfo, groupCode, groupMembers);
-
   const navigate = useNavigate();
   const inputFieldOne = useRef(null);
   const [expenseName, setExpenseName] = useState(expenseInfo.expenseName);
   const [expenseAmount, setExpenseAmount] = useState(expenseInfo.expenseAmount);
-  const [userName, setUserName] = useState(expenseInfo.expensePayer);
+  const [userName, setUserName] = useState(expenseInfo.expensePayer.userName);
   const [selectedBeneficiaries, setSelectedBeneficiaries] = useState(
     expenseInfo.expenseBeneficiaries.map((beneficiary) => beneficiary.userName)
   );
+
+  console.log(expenseInfo, groupCode, groupMembers, expenseId);
   // Define a state variable to track changes
   const [formChanged, setFormChanged] = useState(false);
-
   const [error, setError] = useState(null);
-
-  console.log(expenseInfo);
 
   // controlled first input component to set expenseName state
   const handleExpenseNameChange = (e) => {
@@ -60,7 +58,7 @@ export default function RenderExpenseUpdateForm({
     setError(null); // Clear previous error
 
     try {
-      await axios.post(`${apiUrl}/expenses`, {
+      await axios.put(`${apiUrl}/expenses/${expenseId}`, {
         expenseName,
         expenseAmount,
         groupCode,

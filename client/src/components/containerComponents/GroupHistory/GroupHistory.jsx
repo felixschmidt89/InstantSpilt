@@ -41,7 +41,6 @@ export default function GroupHistory({ groupCode }) {
               createdAt: new Date(item.createdAt),
             })) // Sort by createdAt in descending order
             .sort((a, b) => b.createdAt - a.createdAt);
-          console.log(modifiedData);
           setGroupExpensesAndPayments(modifiedData);
         }
         setError(null);

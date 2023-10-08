@@ -51,6 +51,7 @@ function UpdateExpensePage() {
               expenseInfo={expenseInfo}
               groupCode={groupCode}
               groupMembers={groupMembers}
+              expenseId={expenseId}
             />
           </div>
         </>

@@ -7,14 +7,18 @@ import {
   deleteAllExpenses,
   getExpenseInfo,
   deleteExpense,
+  updateExpense,
 } from '../controllers/expenseController.js';
 import { createExpenseValidator } from '../validators/expenseValidator.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 
 const router = express.Router();
 
-// Create a expense
+// Create an expense
 router.post('/', createExpenseValidator, createExpense);
+
+// Update an expense
+router.put('/:expenseId', createExpenseValidator, updateExpense);
 
 // Get expense info by id
 router.get('/:expenseId', getExpenseInfo);
