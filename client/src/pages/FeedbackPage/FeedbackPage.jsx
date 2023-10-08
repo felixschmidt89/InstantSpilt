@@ -94,17 +94,14 @@ export default function FeedbackPage() {
               </div>
             </div>
             <div>
-              <label htmlFor='messageType'>
-                <strong>Type*</strong>
-              </label>
+              <label htmlFor='messageType'>Type</label>
               <div>
                 <select
                   className={styles.select}
                   id='messageType'
                   name='messageType'
                   value={formData.messageType}
-                  onChange={handleInputChange}
-                  required>
+                  onChange={handleInputChange}>
                   <option value=''>Select message type</option>
                   <option value='Just wanted to say hi'>
                     Just wanted to say hi

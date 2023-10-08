@@ -1,5 +1,5 @@
 import express from 'express';
-import { check, validationResult } from 'express-validator';
+import { check } from 'express-validator';
 import {
   createPayment,
   listAllPayments,
@@ -8,7 +8,7 @@ import {
   deletePayment,
 } from '../controllers/paymentController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
-import handlePaymentValidationErrorsMiddleware from '../middleware/handleValidationErrors.js';
+import handlePaymentValidationErrorsMiddleware from '../middleware/handlePaymentValidationErrorsMiddleware.js';
 
 const router = express.Router();
 
@@ -32,11 +32,6 @@ router.get('/:paymentId', getPaymentInfo);
 
 // Delete payment
 router.delete('/:paymentId', deletePayment);
-
-// Delete payment
-router.delete('/:paymentId', deletePayment);
-
-// router.post('/', deletePayment);
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 //List all payments

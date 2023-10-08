@@ -7,13 +7,13 @@ const userSchema = new Schema(
     userName: {
       type: String,
       trim: true,
-      required: [true, 'The name of the user is required but missing.'],
+      required: [true, 'Missing user name'],
     },
     groupCode: {
       type: String,
       required: [
         true,
-        'The user cannot be created because no groupCode has been provided.',
+        'Missing groupCode',
       ],
     },
     totalExpensesPaidAmount: {

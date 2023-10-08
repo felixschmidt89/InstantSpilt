@@ -104,11 +104,14 @@ export default function RenderPaymentForm({ groupMembers, groupCode }) {
       </select>
       {/* Conditionally render submit button when payment amount, payment maker, and recipient is given*/}
       <div className={styles.buttonContainer}>
-        {paymentAmount && userName && paymentRecipientName && (
+        {/* {paymentAmount && userName && paymentRecipientName && (
           <button className={styles.button} type='submit'>
             +
           </button>
-        )}
+        )} */}
+        <button className={styles.button} type='submit'>
+          +
+        </button>
         {error && <div className={styles.errorText}>{error}</div>}{" "}
         {/* Render error message */}
       </div>

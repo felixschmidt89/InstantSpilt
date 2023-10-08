@@ -1,4 +1,5 @@
 import express from 'express';
+import { check } from 'express-validator';
 import {
   createExpense,
   listAllExpensesByGroupCode,
@@ -8,6 +9,7 @@ import {
   deleteExpense,
 } from '../controllers/expenseController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
+import handleExpenseValidationErrorsMiddleware from '../middleware/handlexpenseValidationErrorsMiddleware.js';
 
 const router = express.Router();
 

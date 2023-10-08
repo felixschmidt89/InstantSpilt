@@ -48,11 +48,10 @@ const handlePaymentValidationErrorsMiddleware = (req, res, next) => {
     // Return response with validation errors and schema-specific messages
     return res.status(StatusCodes.BAD_REQUEST).json({
       status: 'fail',
-      message: 'Validation failed',
+      message: 'Payment validation failed',
       errors: errors.array(),
     });
   }
-  // If no validation errors, proceed to the next middleware
   next();
 };
 

@@ -4,31 +4,22 @@ const paymentSchema = new Schema(
   {
     paymentAmount: {
       type: Number,
-      required: [true, 'The amount of the payment is required but missing'],
+      required: [true, 'Missing expense amount'],
       max: [9999.99, 'The payment amount may not exceed 9999.99.'],
     },
     paymentMaker: {
       type: Schema.Types.ObjectId,
       ref: 'User',
-      required: [
-        true,
-        'The name of the person who made the payment is required but missing.',
-      ],
+      required: [true, 'Missing ID of the person who made the payment'],
     },
     paymentRecipient: {
       type: Schema.Types.ObjectId,
       ref: 'User',
-      required: [
-        true,
-        'The name of the person who received the payment is required but missing.',
-      ],
+      required: [true, 'Missing ID of the person who received the payment'],
     },
     groupCode: {
       type: String,
-      required: [
-        true,
-        'The payment can not be created, because no groupCode has been provided.',
-      ],
+      required: [true, 'Missing groupCode'],
     },
   },
   { timestamps: true },
