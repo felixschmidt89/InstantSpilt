@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./SettleGroupExpensesPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import SuggestSettlePayments from "../../components/containerComponents/SuggestSettlePayments/SuggestSettlePayments";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import SettlementParent from "../../components/containerComponents/SettlementParent/SettlementParent";
 
 function SettleGroupExpensesPage() {
   return (
@@ -15,7 +15,7 @@ function SettleGroupExpensesPage() {
       />
       <div className={styles.container}>
         <h1>Settle group expenses</h1>
-        <SuggestSettlePayments />
+        <SettlementParent />
       </div>
     </main>
   );

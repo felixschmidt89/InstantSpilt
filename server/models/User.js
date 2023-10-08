@@ -42,12 +42,12 @@ const userSchema = new Schema(
 
 // Virtual properties
 userSchema.virtual('userBalance').get(function () {
-  return (
+  const balance =
     this.totalExpensesPaidAmount +
     this.totalPaymentsMadeAmount -
     this.totalExpenseBenefittedAmount -
-    this.totalPaymentsReceivedAmount
-  );
+    this.totalPaymentsReceivedAmount;
+  return Number(balance);
 });
 userSchema.virtual('expensesSettled').get(function () {
   return this.get('userBalance') === 0;
