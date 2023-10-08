@@ -61,13 +61,20 @@ export default function RenderExpenseForm({ groupMembers, groupCode }) {
       });
       navigate("/instant-split");
     } catch (error) {
-      setError("Error creating expense. Please try again."); // Set error message
-      if (process.env.NODE_ENV === "development") {
-        console.error("Error creating expense:", error);
+      if (error.response) {
+        // Handle bad requests
+        if (error.response.status === 400) {
+          console.log(error.response);
+          setError(error.response.data.errors[0].message);
+        } else {
+          setError("Error creating expense. Please try again."); // Set error message
+          if (process.env.NODE_ENV === "development") {
+            console.error("Error creating expense:", error);
+          }
+        }
       }
     }
   };
-
   // render back button to abort and input fields, conditionally render submit button
   return (
     <div>
@@ -81,9 +88,6 @@ export default function RenderExpenseForm({ groupMembers, groupCode }) {
               value={expenseName}
               onChange={handleExpenseNameChange}
               placeholder='description'
-              required
-              minLength={3}
-              maxLength={50}
               ref={inputFieldOne}
             />
           </div>
@@ -95,9 +99,9 @@ export default function RenderExpenseForm({ groupMembers, groupCode }) {
               value={expenseAmount}
               onChange={handleExpenseAmountChange}
               placeholder='0.00'
-              required
-              pattern='[0-9]+([,.][0-9]{1,2})?'
               inputMode='decimal'
+              pattern='[0-9]+([,.][0-9]{1,2})?'
+              title='Only digits, ".", and "," are allowed. Maximum value is 9999.99.'
             />
           </div>
           {/* Dropdown to select the expense payer */}

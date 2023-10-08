@@ -64,8 +64,9 @@ export default function RenderPaymentForm({ groupMembers, groupCode }) {
           value={paymentAmount}
           onChange={handlePaymentAmountChange}
           placeholder='0.00'
-          pattern='[0-9]+([,.][0-9]{1,2})?'
           inputMode='decimal'
+          pattern='[0-9]+([,.][0-9]{1,2})?'
+          title='Only digits, ".", and "," are allowed. Maximum value is 9999.99.'
           ref={inputField}
         />
       </div>

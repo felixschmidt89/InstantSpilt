@@ -14,6 +14,13 @@ const expenseSchema = new Schema(
     },
     expenseAmount: {
       type: Number,
+      validate: {
+        validator: (value) => {
+          const parsedValue = parseFloat(value);
+          return !isNaN(parsedValue) && isFinite(parsedValue);
+        },
+        message: 'Expense amount must be a valid number.',
+      },
       required: [true, 'Missing expense amount'],
       max: [9999.99, 'The expense amount may not exceed 9999.99.'],
     },

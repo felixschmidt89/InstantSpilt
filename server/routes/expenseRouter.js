@@ -8,13 +8,13 @@ import {
   getExpenseInfo,
   deleteExpense,
 } from '../controllers/expenseController.js';
+import { createExpenseValidator } from '../validators/expenseValidator.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
-import handleExpenseValidationErrorsMiddleware from '../middleware/handlexpenseValidationErrorsMiddleware.js';
 
 const router = express.Router();
 
 // Create a expense
-router.post('/', createExpense);
+router.post('/', createExpenseValidator, createExpense);
 
 // Get expense info by id
 router.get('/:expenseId', getExpenseInfo);

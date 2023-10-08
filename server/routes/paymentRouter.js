@@ -8,24 +8,12 @@ import {
   deletePayment,
 } from '../controllers/paymentController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
-import handlePaymentValidationErrorsMiddleware from '../middleware/handlePaymentValidationErrorsMiddleware.js';
+import { createPaymentValidator } from '../validators/paymentValidator.js';
 
 const router = express.Router();
 
 // Create payment
-router.post(
-  '/',
-  [
-    check('paymentAmount')
-      .isNumeric()
-      .custom((value) => value <= 9999.99),
-    check('paymentMaker').isMongoId(),
-    check('paymentRecipient').isMongoId(),
-    check('groupCode').notEmpty(),
-  ],
-  createPayment,
-  handlePaymentValidationErrorsMiddleware,
-);
+router.post('/', createPaymentValidator, createPayment);
 
 // Get payment info by id
 router.get('/:paymentId', getPaymentInfo);

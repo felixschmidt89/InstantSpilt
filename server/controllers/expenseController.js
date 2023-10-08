@@ -1,4 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
+import { validationResult } from 'express-validator';
+
 import Expense from '../models/Expense.js';
 import User from '../models/User.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
@@ -16,6 +18,10 @@ export const createExpense = async (req, res) => {
       expenseAmount,
       expenseBeneficiariesNames,
     } = req.body;
+
+    const errors = validationResult(req);
+
+    console.log(errors.array());
 
     const expensePayer = await User.findOne({ userName, groupCode });
 
@@ -56,8 +62,20 @@ export const createExpense = async (req, res) => {
       message: 'Expense created successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error creating expense:', error);
-    sendInternalErrorHelper(res);
+    if (error.name === 'ValidationError') {
+      // Handle validation errors (client errors)
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'Validation failed',
+        errors: Object.keys(error.errors).map((field) => ({
+          field,
+          message: error.errors[field].message,
+        })),
+      });
+    } else {
+      logDevErrorHelper('Error creating expense:', error);
+      sendInternalErrorHelper(res);
+    }
   }
 };
 
