@@ -97,6 +97,9 @@ export const updateExpense = async (req, res) => {
       groupCode,
     });
 
+    const groupUsers = await User.find({
+      groupCode,
+    });
     const expenseAmountPerBeneficiary =
       expenseAmount / expenseBeneficiaries.length;
     const beneficiaryIds = expenseBeneficiaries.map((user) => user._id);
@@ -118,7 +121,7 @@ export const updateExpense = async (req, res) => {
 
     // Update total expenses benefitted from by expense beneficiaries concurrently
     await Promise.all(
-      associatedUsers.map(async (userId) => {
+      groupUsers.map(async (userId) => {
         try {
           const user = await User.findById(userId);
           if (!user) {
