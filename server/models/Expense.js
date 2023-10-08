@@ -40,6 +40,13 @@ const expenseSchema = new Schema(
         required: [true, 'Invalid expense beneficiary ID'],
       },
     ],
+    associatedUsers: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: [true, 'Invalid expense beneficiary ID'],
+      },
+    ],
     groupCode: {
       type: String,
       required: [true, 'Missing groupCode'],

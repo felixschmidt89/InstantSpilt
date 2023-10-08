@@ -26,6 +26,8 @@ export const createExpense = async (req, res) => {
       groupCode,
     });
 
+    const associatedUsers = [expensePayer, ...expenseBeneficiaries];
+
     const expenseAmountPerBeneficiary =
       expenseAmount / expenseBeneficiaries.length;
 
@@ -38,6 +40,7 @@ export const createExpense = async (req, res) => {
       groupCode,
       expensePayer: expensePayer._id,
       expenseBeneficiaries: beneficiaryIds,
+      associatedUsers,
     });
 
     const expense = await newExpense.save();
@@ -85,6 +88,7 @@ export const updateExpense = async (req, res) => {
       expenseName,
       expenseAmount,
       expenseBeneficiariesNames,
+      associatedUsers,
     } = req.body;
 
     console.log(
@@ -120,18 +124,26 @@ export const updateExpense = async (req, res) => {
       { new: true }, // This option ensures that the updated document is returned
     );
 
+    console.log('aso', associatedUsers);
+
     // Update total expenses benefitted from by expense beneficiaries concurrently
     await Promise.all(
-      expenseBeneficiaries.map(async (beneficiary) => {
-        // Update total expenses paid by the beneficiary
-        await beneficiary.updateTotalExpensesPaid();
-        // Update total expenses benefitted from by the beneficiary
-        await beneficiary.updateTotalExpenseBenefitted();
+      associatedUsers.map(async (userId) => {
+        try {
+          const user = await User.findById(userId);
+          if (!user) {
+            // Handle the case where the user is not found
+            return;
+          }
+          // Update total expenses paid by the beneficiary
+          await user.updateTotalExpensesPaid();
+          // Update total expenses benefitted from by the beneficiary
+          await user.updateTotalExpenseBenefitted();
+        } catch (error) {
+          // Handle the error appropriately
+        }
       }),
     );
-    // Update total expenses paid by expense payer
-    await expensePayer.updateTotalExpensesPaid();
-    await expensePayer.updateTotalExpenseBenefitted();
 
     if (!updatedExpense) {
       return res.status(StatusCodes.NOT_FOUND).json({
