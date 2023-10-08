@@ -10,7 +10,7 @@ import styles from "./CreateExpensePage.module.css";
 
 export default function CreateExpensePage() {
   const groupCode = localStorage.getItem("activeGroupCode");
-  const { groupMembers, isFetched } = useFetchGroupMembers(groupCode); // Destructure isFetched from the hook
+  const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
 
   return (
     <main>

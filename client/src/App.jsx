@@ -28,6 +28,7 @@ import CreateUsersDuringSignUpPage from "./pages/CreateUsersDuringSignUpPage/Cre
 import CreateUsersInAppPage from "./pages/CreateUsersInAppPage/CreateUsersInAppPage";
 import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
 import TutorialPage from "./pages/TutorialPage/TutorialPage";
+import UpdateExpensePage from "./pages/UpdateExpensePage/UpdateExpensePage";
 
 function App() {
   return (
@@ -64,6 +65,10 @@ function App() {
 
           <Route path='/instant-split' element={<InstantSplitPage />} />
           <Route path='/create-expense' element={<CreateExpensePage />} />
+          <Route
+            path='/update-expense/:expenseId'
+            element={<UpdateExpensePage />}
+          />
           <Route path='/create-payment' element={<CreatePaymentPage />} />
           <Route path='create-users-inapp' element={<CreateUsersInAppPage />} />
           <Route

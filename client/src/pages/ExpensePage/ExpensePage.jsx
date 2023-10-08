@@ -11,6 +11,7 @@ import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMe
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
   const expenseDetails = useFetchExpenseInfo(expenseId);
+  console.log(expenseDetails);
 
   return (
     <main>
@@ -50,11 +51,17 @@ const ExpensePage = () => {
               ))}
             </li>
           </ul>
-
           <p>
             {emojiConstants.created}{" "}
             {new Date(expenseDetails.createdAt).toLocaleString()}
           </p>
+
+          <NavigateButton
+            route={`update-expense/${expenseId}`}
+            alignment={"center"}
+            buttonText={"update"}
+          />
+
           <DeleteResourceButton
             resourceId={expenseId}
             resourceType='expenses'
