@@ -16,7 +16,6 @@ export const createPayment = async (req, res) => {
       groupCode,
     });
 
-    // Check if paymentMaker and paymentRecipient are the same user
     if (
       paymentMaker &&
       paymentRecipient &&
@@ -46,8 +45,20 @@ export const createPayment = async (req, res) => {
       message: 'Payment created successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error creating expense:', error);
-    sendInternalErrorHelper(res);
+    if (error.name === 'ValidationError') {
+      // Handle validation errors (client errors)
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'Validation failed',
+        errors: Object.keys(error.errors).map((field) => ({
+          field,
+          message: error.errors[field].message,
+        })),
+      });
+    } else {
+      logDevErrorHelper('Error creating expense:', error);
+      sendInternalErrorHelper(res);
+    }
   }
 };
 

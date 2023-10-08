@@ -5,6 +5,7 @@ const paymentSchema = new Schema(
     paymentAmount: {
       type: Number,
       required: [true, 'The amount of the payment is required but missing'],
+      max: [9999.99, 'The payment amount may not exceed 9999.99.'],
     },
     paymentMaker: {
       type: Schema.Types.ObjectId,

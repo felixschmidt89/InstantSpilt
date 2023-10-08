@@ -33,8 +33,15 @@ export default function RenderPaymentForm({ groupMembers, groupCode }) {
       });
       navigate("/instant-split");
     } catch (error) {
-      if (error.response && error.response.status === 409) {
-        setError(error.response.data.message);
+      if (error.response) {
+        // Handle bad requests
+        if (error.response.status === 400) {
+          console.log(error.response);
+          setError(error.response.data.errors[0].message);
+        } else if (error.response.status === 409) {
+          // Handle conflict
+          setError(error.response.data.message);
+        }
       } else {
         if (process.env.NODE_ENV === "development") {
           console.error("Error creating expense:", error);
@@ -57,7 +64,6 @@ export default function RenderPaymentForm({ groupMembers, groupCode }) {
           value={paymentAmount}
           onChange={handlePaymentAmountChange}
           placeholder='0.00'
-          required
           pattern='[0-9]+([,.][0-9]{1,2})?'
           inputMode='decimal'
           ref={inputField}
