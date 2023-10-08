@@ -3,6 +3,7 @@ import Payment from '../models/Payment.js';
 import User from '../models/User.js';
 import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
+import Expense from '../models/Expense.js';
 
 export const createPayment = async (req, res) => {
   try {
@@ -35,6 +36,70 @@ export const createPayment = async (req, res) => {
     });
 
     const payment = await newPayment.save();
+
+    await paymentRecipient.updateTotalPaymentsReceived();
+    await paymentMaker.updateTotalPaymentsMadeAmount();
+
+    return res.status(StatusCodes.CREATED).json({
+      status: 'success',
+      data: { payment },
+      message: 'Payment created successfully',
+    });
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      // Handle validation errors (client errors)
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'Validation failed',
+        errors: Object.keys(error.errors).map((field) => ({
+          field,
+          message: error.errors[field].message,
+        })),
+      });
+    } else {
+      logDevErrorHelper('Error creating expense:', error);
+      sendInternalErrorHelper(res);
+    }
+  }
+};
+
+export const updatePayment = async (req, res) => {
+  try {
+    const { paymentId } = req.params;
+
+    const { userName, groupCode, paymentAmount, paymentRecipientName } =
+      req.body;
+
+    const paymentMaker = await User.findOne({ userName, groupCode });
+
+    const paymentRecipient = await User.findOne({
+      userName: { $eq: paymentRecipientName },
+      groupCode,
+    });
+
+    if (
+      paymentMaker &&
+      paymentRecipient &&
+      paymentMaker._id.equals(paymentRecipient._id)
+    ) {
+      return res.status(StatusCodes.CONFLICT).json({
+        status: 'fail',
+        message: 'Oops! Payer and recipient can not be the same person.',
+      });
+    }
+
+    const updatedPaymentData = {
+      paymentMaker: paymentMaker._id,
+      paymentRecipient: paymentRecipient.id,
+      groupCode,
+      paymentAmount,
+    };
+
+    const updatedPayment = await Expense.findByIdAndUpdate(
+      expenseId,
+      updatedExpenseData,
+      { new: true },
+    );
 
     await paymentRecipient.updateTotalPaymentsReceived();
     await paymentMaker.updateTotalPaymentsMadeAmount();

@@ -1,25 +1,41 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import styles from "./RenderPaymentForm.module.css";
+import styles from "./RenderPaymentUpdateForm.module.css";
 import commaToDotDecimalSeparatorHelperFunction from "../../../helpers/commaToDotDecimalSeparatorHelper";
 import emojiConstants from "../../../constants/emojiConstants";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-export default function RenderPaymentForm({ groupMembers, groupCode }) {
+export default function RenderPaymentUpdateForm({
+  groupMembers,
+  groupCode,
+  paymentDetails,
+}) {
   const inputField = useRef(null);
   const navigate = useNavigate();
 
-  const [paymentAmount, setPaymentAmount] = useState("");
-  const [userName, setUserName] = useState("");
-  const [paymentRecipientName, setPaymentRecipientName] = useState("");
+  const [paymentAmount, setPaymentAmount] = useState(
+    paymentDetails.paymentAmount
+  );
+  const [userName, setUserName] = useState(
+    paymentDetails.paymentMaker.userName
+  );
+  const [paymentRecipientName, setPaymentRecipientName] = useState(
+    paymentDetails.paymentRecipient.userName
+  );
   const [error, setError] = useState("");
+  const [formChanged, setFormChanged] = useState(false); // State to track form changes
 
-  // Autofocus the input field on mount
+  // useEffect to handle form changes
   useEffect(() => {
-    inputField.current.focus();
-  }, []);
+    const isFormChanged =
+      paymentAmount !== paymentDetails.paymentAmount ||
+      userName !== paymentDetails.paymentMaker.userName ||
+      paymentRecipientName !== paymentDetails.paymentRecipient.userName;
+
+    setFormChanged(isFormChanged);
+  }, [paymentAmount, userName, paymentRecipientName, paymentDetails]);
 
   // On form submission: post payment and navigate to instant-split page
   const handleFormSubmit = async (e) => {
@@ -75,11 +91,10 @@ export default function RenderPaymentForm({ groupMembers, groupCode }) {
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
         required>
-        {/* Do not preselect user, indicate functionality instead */}
         <option value='' disabled>
           by
         </option>
-        {groupMembers.map((member) => (
+        {groupMembers.groupMembers.map((member) => (
           <option key={member} value={member}>
             {member}
           </option>
@@ -93,25 +108,23 @@ export default function RenderPaymentForm({ groupMembers, groupCode }) {
         value={paymentRecipientName}
         onChange={(e) => setPaymentRecipientName(e.target.value)}
         required>
-        {/* Do not preselect user, indicate functionality instead */}
         <option value='' disabled>
           to
         </option>
-        {groupMembers.map((member) => (
+        {groupMembers.groupMembers.map((member) => (
           <option key={member} value={member}>
             {member}
           </option>
         ))}
       </select>
-      {/* Conditionally render submit button when payment amount, payment maker, and recipient is given*/}
+
       <div className={styles.buttonContainer}>
-        {paymentAmount && userName && paymentRecipientName && (
+        {formChanged && paymentAmount && userName && paymentRecipientName && (
           <button className={styles.button} type='submit'>
             +
           </button>
         )}
         {error && <div className={styles.errorText}>{error}</div>}{" "}
-        {/* Render error message */}
       </div>
     </form>
   );

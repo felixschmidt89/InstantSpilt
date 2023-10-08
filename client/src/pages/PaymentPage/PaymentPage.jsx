@@ -43,6 +43,11 @@ const PaymentPage = () => {
           </p>
           {/* TODO: activate when update payment functionality is implemented */}
           {/* <p>Updated: {new Date(paymentDetails.updatedAt).toLocaleString()}</p> */}
+          <NavigateButton
+            route={`update-payment/${itemId}`}
+            alignment={"center"}
+            buttonText={"update"}
+          />
           <DeleteResourceButton resourceId={itemId} resourceType='payments' />
         </div>
       ) : (

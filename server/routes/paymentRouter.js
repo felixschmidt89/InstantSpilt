@@ -6,6 +6,7 @@ import {
   deleteAllPayments,
   getPaymentInfo,
   deletePayment,
+  updatePayment,
 } from '../controllers/paymentController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 import { createPaymentValidator } from '../validators/paymentValidator.js';
@@ -14,6 +15,9 @@ const router = express.Router();
 
 // Create payment
 router.post('/', createPaymentValidator, createPayment);
+
+// Update payment
+router.put('/:paymentId', createPaymentValidator, updatePayment);
 
 // Get payment info by id
 router.get('/:paymentId', getPaymentInfo);

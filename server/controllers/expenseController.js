@@ -91,14 +91,6 @@ export const updateExpense = async (req, res) => {
       associatedUsers,
     } = req.body;
 
-    console.log(
-      userName,
-      groupCode,
-      expenseName,
-      expenseAmount,
-      expenseBeneficiariesNames,
-    );
-
     const expensePayer = await User.findOne({ userName, groupCode });
     const expenseBeneficiaries = await User.find({
       userName: { $in: expenseBeneficiariesNames },
@@ -121,10 +113,8 @@ export const updateExpense = async (req, res) => {
     const updatedExpense = await Expense.findByIdAndUpdate(
       expenseId,
       updatedExpenseData,
-      { new: true }, // This option ensures that the updated document is returned
+      { new: true },
     );
-
-    console.log('aso', associatedUsers);
 
     // Update total expenses benefitted from by expense beneficiaries concurrently
     await Promise.all(
@@ -139,9 +129,7 @@ export const updateExpense = async (req, res) => {
           await user.updateTotalExpensesPaid();
           // Update total expenses benefitted from by the beneficiary
           await user.updateTotalExpenseBenefitted();
-        } catch (error) {
-          // Handle the error appropriately
-        }
+        } catch (error) {}
       }),
     );
 

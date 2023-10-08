@@ -29,6 +29,7 @@ import CreateUsersInAppPage from "./pages/CreateUsersInAppPage/CreateUsersInAppP
 import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
 import TutorialPage from "./pages/TutorialPage/TutorialPage";
 import UpdateExpensePage from "./pages/UpdateExpensePage/UpdateExpensePage";
+import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
 
 function App() {
   return (
@@ -70,6 +71,10 @@ function App() {
             element={<UpdateExpensePage />}
           />
           <Route path='/create-payment' element={<CreatePaymentPage />} />
+          <Route
+            path='/update-payment/:itemId'
+            element={<UpdatePaymentPage />}
+          />
           <Route path='create-users-inapp' element={<CreateUsersInAppPage />} />
           <Route
             path='/settle-expenses'
