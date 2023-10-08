@@ -24,11 +24,6 @@ function UpdateExpensePage() {
     }
   }, [expenseInfo, isFetched]);
 
-  // Inside the UpdateExpensePage component
-  console.log("Expense ID:", expenseId);
-  console.log("group members", groupMembers);
-  // Check if the expenseInfo is available
-  console.log("Expense Info:", expenseInfo);
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Update expense' />

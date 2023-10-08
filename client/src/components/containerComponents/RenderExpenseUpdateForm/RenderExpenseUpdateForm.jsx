@@ -64,6 +64,7 @@ export default function RenderExpenseUpdateForm({
         groupCode,
         userName,
         expenseBeneficiariesNames: selectedBeneficiaries,
+        associatedUsers: expenseInfo.associatedUsers,
       });
       navigate("/instant-split");
     } catch (error) {
