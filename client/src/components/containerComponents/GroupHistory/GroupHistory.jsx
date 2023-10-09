@@ -78,8 +78,13 @@ export default function GroupHistory({ groupCode }) {
         </ul>
       ) : (
         <p className={styles.failMessage}>
-          Begin adding expenses ({emojiConstants.expense}) and payments (
-          {emojiConstants.payment})below 👇.
+          Begin adding expenses{" "}
+          <span className={styles.emojiParenthesis}>
+            ({emojiConstants.expense}) and payments{" "}
+            <span className={styles.emojiParenthesis}></span>(
+            {emojiConstants.payment})
+          </span>{" "}
+          below 👇.
         </p>
       )}
       {error && <p className={styles.error}>{error}</p>}

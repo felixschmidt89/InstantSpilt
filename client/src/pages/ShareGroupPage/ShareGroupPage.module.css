@@ -6,3 +6,7 @@
 .webShare {
   margin: 0 auto;
 }
+
+.icons {
+  white-space: nowrap;
+}

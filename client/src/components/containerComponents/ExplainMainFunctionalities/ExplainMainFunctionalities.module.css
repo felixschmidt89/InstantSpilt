@@ -10,6 +10,10 @@ h2 {
   padding-top: 0.5rem;
 }
 
+li {
+  font-size: 1.6rem;
+}
+
 .button {
   background-color: var(--color-signal);
   color: var(--color-main);

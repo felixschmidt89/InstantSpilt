@@ -3,11 +3,14 @@
   margin: 0 auto;
   overflow-y: auto;
   background-color: transparent;
-  pointer-events: none;
 }
 
 h2 {
   padding-top: 0.5rem;
+}
+
+li {
+  font-size: 1.6rem;
 }
 
 .button {

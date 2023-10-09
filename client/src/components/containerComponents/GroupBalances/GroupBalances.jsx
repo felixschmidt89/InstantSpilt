@@ -104,8 +104,11 @@ export default function GroupBalances() {
       ) : (
         // Display a message if there are no users
         <p className={styles.failMessage}>
-          Add users ({emojiConstants.user}) below 👇 to start settling expenses
-          .
+          Add users{" "}
+          <span className={styles.emojiParanthesis}>
+            ({emojiConstants.user})
+          </span>{" "}
+          below 👇 to start settling expenses .
         </p>
       )}
       {error && <p className={styles.error}>{error}</p>}

@@ -13,6 +13,10 @@ h3 {
   margin-bottom: 0rem;
 }
 
+.icons {
+  white-space: nowrap;
+}
+
 .instantSplit {
   pointer-events: none;
 }
@@ -37,4 +41,9 @@ h3 {
 .button:hover {
   background-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+.icons,
+.emojiParenthesis {
+  white-space: nowrap;
 }

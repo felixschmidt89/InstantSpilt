@@ -45,6 +45,10 @@
   color: var(--color-error);
 }
 
+.emojiParenthesis {
+  white-space: nowrap;
+}
+
 @media (max-width: 500px) {
 }
 .balancesContainer li {
