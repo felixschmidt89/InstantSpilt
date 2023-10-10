@@ -13,7 +13,9 @@ const ExplainMainFunctionalities = () => {
   return (
     <div className={styles.container}>
       <h2>Top section</h2>
-      <UserActionsContainer />
+      <div className={styles.noLink}>
+        <UserActionsContainer />
+      </div>
       <p className={styles.noWrap}>
         Contains features not directly related to settling expenses, such as
         inviting others{" "}
@@ -27,7 +29,7 @@ const ExplainMainFunctionalities = () => {
         .
       </p>
       <h2>Middle section:</h2>
-      <ul>
+      <ul className={styles.noLink}>
         <li>
           <button className={styles.button}>Balances</button>
           <div>
@@ -47,7 +49,7 @@ const ExplainMainFunctionalities = () => {
         <strong>Bottom section</strong>
         <SplitExpensesActionsComponent />
       </h2>
-      <p>
+      <p className={styles.noLink}>
         Perform split actions:
         <ul>
           <li>

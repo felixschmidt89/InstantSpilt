@@ -2,8 +2,6 @@
   width: 90%;
   margin: 0 auto;
   overflow-y: auto;
-  background-color: transparent;
-  pointer-events: none;
 }
 
 h2 {
