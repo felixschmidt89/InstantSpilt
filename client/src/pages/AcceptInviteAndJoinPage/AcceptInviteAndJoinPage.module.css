@@ -3,7 +3,8 @@
   flex-direction: column;
   margin: 0 auto;
   align-items: center;
-  width: 90%;
+  width: 85%;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -11,6 +12,14 @@ h2 {
   padding-top: 2rem;
   font-size: 2rem;
   margin-bottom: 0rem;
+}
+
+.noWrap {
+  white-space: nowrap;
+}
+
+.strong {
+  font-weight: bold;
 }
 
 p {

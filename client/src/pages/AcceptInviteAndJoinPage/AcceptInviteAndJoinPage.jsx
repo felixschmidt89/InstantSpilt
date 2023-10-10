@@ -49,14 +49,22 @@ const AcceptInviteAndJoinPage = () => {
           <>
             <p>
               <div>
-                Someone invited you to join the InstantSplit group{" "}
-                <strong>{groupData.group.groupName}</strong>.
+                Someone invited you to join the InstantSplit
+                <span className={styles.noWrap}>
+                  group <strong>{groupData.group.groupName}</strong>.
+                </span>
               </div>
             </p>
             <p>
-              InstantSplit is the hassle-free way to settle group expenses with{" "}
-              <strong>no user registration or app download</strong> while
-              sharing minimal data.
+              InstantSplit is the hassle-free way to settle group expenses with
+              no user registration or app download while sharing minimal data.
+              <div className={styles.strong}>
+                {" "}
+                <span className={styles.noWrap}>No cookies.</span>{" "}
+                <span className={styles.noWrap}>No tracking.</span>{" "}
+                <span className={styles.noWrap}>No monetization.</span>{" "}
+                <span className={styles.noWrap}>Ever.</span>
+              </div>
             </p>
             <p>
               To join <strong>{groupName}</strong>, and settle expenses
