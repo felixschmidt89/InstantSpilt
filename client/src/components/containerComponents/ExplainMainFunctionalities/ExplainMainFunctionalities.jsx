@@ -47,7 +47,10 @@ const ExplainMainFunctionalities = () => {
       </ul>
       <h2>
         <strong>Bottom section</strong>
-        <SplitExpensesActionsComponent />
+        <div className={styles.noLink}>
+          {" "}
+          <SplitExpensesActionsComponent />
+        </div>
       </h2>
       <p className={styles.noLink}>
         Perform split actions:
