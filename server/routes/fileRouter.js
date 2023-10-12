@@ -1,18 +1,14 @@
 import express from 'express';
 import multer from 'multer';
 import { uploadImage } from '../controllers/fileController.js';
-import { fileURLToPath } from 'url';
 
 const router = express.Router();
-
-const { API_BASEURL } = process.env;
-console.log(API_BASEURL);
 
 // Configure the storage settings for Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     // Specify the destination folder for storing uploaded files
-    cb(null, __dirname + '/uploads');
+    cb(null, './uploads');
   },
   filename: (req, file, cb) => {
     // Generate a unique filename based on the original filename and the current timestamp
