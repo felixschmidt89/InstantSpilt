@@ -3,9 +3,10 @@ import multer from 'multer';
 import { uploadImage } from '../controllers/fileController.js';
 import { fileURLToPath } from 'url';
 
-const { API_BASEURL } = process.env;
-
 const router = express.Router();
+
+const { API_BASEURL } = process.env;
+console.log(API_BASEURL);
 
 // Configure the storage settings for Multer
 const storage = multer.diskStorage({
