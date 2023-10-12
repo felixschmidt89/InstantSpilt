@@ -14,6 +14,9 @@ const fileSchema = new Schema(
     size: {
       type: Number,
     },
+    cloudinaryURL: {
+      type: String,
+    },
   },
   { timestamps: true },
 );

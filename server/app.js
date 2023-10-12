@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
+import multer from 'multer';
 import rateLimit from 'express-rate-limit';
 import groupRouter from './routes/groupRouter.js';
 import userRouter from './routes/userRouter.js';
@@ -33,6 +34,8 @@ const { API_BASEURL, NODE_ENV } = process.env;
 app.use(express.json());
 // Enable CORS
 app.use(cors());
+// Set up Multer for file uploads
+const upload = multer({ dest: 'uploads/' });
 // Enable GZIP compression to reduce response size for faster loading
 app.use(compression());
 // Log requests in development

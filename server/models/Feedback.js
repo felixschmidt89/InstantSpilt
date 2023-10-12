@@ -11,7 +11,6 @@ const feedbackSchema = new Schema(
     },
     email: {
       type: String,
-      required: [true, 'Email is required.'],
       trim: true,
       maxlength: [50, 'Email cannot exceed 50 characters.'],
     },
