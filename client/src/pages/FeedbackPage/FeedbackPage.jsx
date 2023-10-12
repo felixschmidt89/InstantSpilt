@@ -63,12 +63,7 @@ export default function FeedbackPage() {
         // Append the file to the FormData object with the key "file"
         fileData.append("file", file);
 
-        const responseFile = await axios.post(`${apiUrl}/files`, fileData, {
-          // specify binary file content type
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        const responseFile = await axios.post(`${apiUrl}/files`, fileData);
 
         // Add the file's ObjectId to the requestData for referencing
         requestData.fileId = responseFile.data.data.savedFile._id;

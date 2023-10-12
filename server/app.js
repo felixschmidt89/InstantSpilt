@@ -28,17 +28,11 @@ if (nodeEnv === 'production') {
 // Destructure loaded environment variables
 const { API_BASEURL, NODE_ENV } = process.env;
 
-// Set CORS options to allow requests from React application
-const corsOptions = {
-  origin: 'https://instantsplit.netlify.app',
-  optionsSuccessStatus: 200,
-};
-
 // MIDDLEWARES
 // Parse request bodies as JSON
 app.use(express.json());
 // Enable CORS
-app.use(cors(corsOptions));
+app.use(cors());
 // Enable GZIP compression to reduce response size for faster loading
 app.use(compression());
 // Log requests in development
