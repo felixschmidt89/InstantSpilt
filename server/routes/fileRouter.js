@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     // Get the absolute path to the 'uploads' directory using API_BASEURL
     const uploadPath = fileURLToPath(
-      new URL(`${API_BASEURL}/files`, import.meta.url),
+      new URL(`${API_BASEURL}/uploads`, import.meta.url),
     );
     cb(null, uploadPath);
   },
