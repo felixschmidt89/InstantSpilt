@@ -8,8 +8,10 @@ const router = express.Router();
 // Configure the storage settings for Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    // Get the path to the 'uploads' directory relative to the current module
-    const uploadPath = fileURLToPath(new URL('../uploads', import.meta.url));
+    // Get the absolute path to the 'uploads' directory using API_BASEURL
+    const uploadPath = fileURLToPath(
+      new URL(`${API_BASEURL}/files`, import.meta.url),
+    );
     cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
