@@ -26,7 +26,7 @@ export const createGroup = async (req, res) => {
 
     // Generate globally unique groupCode
     while (!isUnique) {
-      groupCode = nanoid(6);
+      groupCode = nanoid(8);
       // eslint-disable-next-line no-await-in-loop
       isUnique = await isGroupCodeUniqueHelper(groupCode);
     }

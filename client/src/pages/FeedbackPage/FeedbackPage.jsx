@@ -1,23 +1,33 @@
+// DONE adding only meaningful necessary comments
+
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import styles from "./FeedbackPage.module.css/";
+import styles from "./FeedbackPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
+// Define the API URL using environment variable
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+/**
+ * React component for the Feedback Page.
+ *
+ * Handles user feedback submissions, allowing them to leave different message types
+ * and optionally add image files for screenshots when reporting a bug.
+ *
+ */
 export default function FeedbackPage() {
   const { groupCode } = useParams();
 
-  // states to set user input data, to display form and message from server
+  // Define states to handle user input data & file, form visibility, and server response
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     messageType: "",
     feedback: "",
   });
-
+  const [file, setFile] = useState(null);
   const [showForm, setShowForm] = useState(true);
   const [feedbackMessage, setFeedbackMessage] = useState("");
 
@@ -30,20 +40,46 @@ export default function FeedbackPage() {
     });
   };
 
-  // On form submission: Post feedback, hide the form and render message from server instead
+  // Handle file input change
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      // Create an initial requestData object with common form data
       const requestData = {
         ...formData,
         groupCode,
       };
 
-      const response = await axios.post(`${apiUrl}/feedbacks`, requestData);
+      // If it exists: Send the attached file to a different endpoint
+      if (file) {
+        // Create a new FormData object to prepare the file for upload
+        const fileData = new FormData();
+        // Append the file to the FormData object with the key "file"
+        fileData.append("file", file);
 
-      setFeedbackMessage(response.data.message);
-      setShowForm(false); // Hide the form after successful submission
+        const responseFile = await axios.post(`${apiUrl}/files`, fileData, {
+          // specify binary file content type
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        // Add the file's ObjectId to the requestData for referencing
+        requestData.fileId = responseFile.data.data.savedFile._id;
+      }
+
+      // Post the feedback data
+      const responseForm = await axios.post(`${apiUrl}/feedbacks`, requestData);
+      // Set the feedback message from the server
+      setFeedbackMessage(responseForm.data.message);
+      // Hide the form after successful submission
+      setShowForm(false);
     } catch (error) {
       console.error("Error creating feedback:", error);
       setFeedbackMessage("Error creating feedback. Please try again.");
@@ -52,21 +88,28 @@ export default function FeedbackPage() {
 
   return (
     <main>
+      {/* Set page title and meta tags */}
       <HelmetMetaTagsNetlify title='InstantSplit - Contact' />
+      {/* Navigation button to go back to main*/}
+
       <NavigateButton
         route={"instant-split"}
         buttonText={"back"}
         alignment={"left"}
       />
       <h1>Leave a message</h1>
+      {/* Check if the form should be displayed */}
+
       {showForm ? (
         <div className={styles.container}>
-          <form onSubmit={handleSubmit}>
+          {/* Form for user feedback, with multipart/form-data encoding for file upload */}
+          <form onSubmit={handleSubmit} encType='multipart/form-data'>
             <div>
               <label htmlFor='name'>
                 <strong>Name*</strong>
               </label>
               <div>
+                {/* Mandatory input field for the user's name */}
                 <input
                   className={styles.inputField}
                   type='text'
@@ -80,11 +123,13 @@ export default function FeedbackPage() {
               </div>
             </div>
             <div>
+              {/* Optional input field for the user's email (optional) */}
+
               <label htmlFor='email'>Email</label>
               <div>
                 <input
                   className={styles.inputField}
-                  type='text' // so that field is *really* optional
+                  type='text' // so that the field is *really* optional
                   id='email'
                   name='email'
                   value={formData.email}
@@ -94,6 +139,7 @@ export default function FeedbackPage() {
               </div>
             </div>
             <div>
+              {/* Mandatory dropdown for selecting the message type */}
               <label htmlFor='messageType'>Type</label>
               <div>
                 <select
@@ -114,6 +160,8 @@ export default function FeedbackPage() {
               </div>
             </div>
             <div>
+              {/* Mandatory textarea for the user's feedback message */}
+
               <label htmlFor='feedback'>
                 <strong>Message*</strong>
               </label>
@@ -130,6 +178,22 @@ export default function FeedbackPage() {
                 />
               </div>
             </div>
+            {/* Render optional input field for uploading a screenshot (if the message type is Issue/Bug) */}
+            {formData.messageType === "Issue/Bug" && (
+              <div>
+                <label htmlFor='file'>Add a screenshot</label>
+                <div>
+                  <input
+                    className={styles.fileInputField}
+                    type='file'
+                    name='file'
+                    accept='image/*' // Accepts all image types
+                    onChange={handleFileChange}
+                  />
+                </div>
+              </div>
+            )}
+            {/* Submit button for the feedback form */}
             <button className={styles.button} type='submit'>
               Submit
             </button>
@@ -137,6 +201,7 @@ export default function FeedbackPage() {
         </div>
       ) : (
         <div>
+          {/* Display feedback message from the server */}
           <p>{feedbackMessage}</p>
         </div>
       )}

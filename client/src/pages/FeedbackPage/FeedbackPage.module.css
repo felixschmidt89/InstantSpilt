@@ -1,10 +1,10 @@
 .container {
-  margin-top: 0.8rem;
   overflow-y: auto;
   height: 75%;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  line-height: 2.5rem;
 }
 
 .inputField,
@@ -21,16 +21,28 @@
   margin-right: 0.4rem;
 }
 
-.select {
+.fileInputField {
   background-color: var(--color-main);
   border-radius: 0.5rem;
   font-size: 1.6rem;
+  width: 25rem;
   text-align: center;
   outline: auto;
   outline-color: var(--color-grey);
 }
 
-.select,
+.select {
+  background-color: var(--color-main);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  width: 20rem;
+  text-align: center;
+  outline: auto;
+  outline-color: var(--color-grey);
+}
+
+.fileInputField:focus,
+.select:focus,
 .inputField:focus {
   border-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-success);
@@ -63,5 +75,4 @@
 
 label {
   font-size: 1.8rem;
-  line-height: 1.2rem;
 }

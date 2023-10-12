@@ -6,7 +6,7 @@ import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
 // eslint-disable-next-line import/prefer-default-export
 export const createFeedback = async (req, res) => {
   try {
-    const { name, email, messageType, feedback, groupCode } = req.body;
+    const { name, email, messageType, feedback, groupCode, fileId } = req.body;
 
     const newFeedback = new Feedback({
       name,
@@ -14,6 +14,7 @@ export const createFeedback = async (req, res) => {
       messageType,
       feedback,
       groupCode,
+      fileId,
     });
 
     const savedFeedback = await newFeedback.save();

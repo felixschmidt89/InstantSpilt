@@ -10,6 +10,7 @@ import expenseRouter from './routes/expenseRouter.js';
 import paymentRouter from './routes/paymentRouter.js';
 import feedbackRouter from './routes/feedbackRouter.js';
 import healthRouter from './routes/healthRouter.js';
+import fileRouter from './routes/fileRouter.js';
 
 // Create an express application
 const app = express();
@@ -33,7 +34,6 @@ app.use(express.json());
 // Enable CORS for all routes
 app.use(cors());
 // Enable GZIP compression to reduce response size for faster loading
-
 app.use(compression());
 // Log requests in development
 if (NODE_ENV === 'development') {
@@ -47,5 +47,6 @@ app.use(`${API_BASEURL}/expenses`, expenseRouter);
 app.use(`${API_BASEURL}/payments`, paymentRouter);
 app.use(`${API_BASEURL}/feedbacks`, feedbackRouter);
 app.use(`${API_BASEURL}/health`, healthRouter);
+app.use(`${API_BASEURL}/files`, fileRouter);
 
 export default app;
