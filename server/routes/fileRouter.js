@@ -11,11 +11,8 @@ console.log(API_BASEURL);
 // Configure the storage settings for Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    // Get the absolute path to the 'uploads' directory using API_BASEURL
-    const uploadPath = fileURLToPath(
-      new URL(`${API_BASEURL}/uploads`, import.meta.url),
-    );
-    cb(null, uploadPath);
+    // Specify the destination folder for storing uploaded files
+    cb(null, __dirname + '/uploads');
   },
   filename: (req, file, cb) => {
     // Generate a unique filename based on the original filename and the current timestamp
