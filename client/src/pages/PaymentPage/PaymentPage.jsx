@@ -6,6 +6,8 @@ import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import UpdateResourceButton from "../../components/reuseableComponents/UpdateResourceButton/UpdateResourceButton";
+import styles from "./PaymentPage.module.css";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -25,29 +27,20 @@ const PaymentPage = () => {
           <h1>Payment {emojiConstants.payment}</h1>
           <h2>{paymentDetails.paymentAmount.toFixed(2)}€</h2>
           <p>
-            <strong>
-              <Link to={`/user-page/${paymentDetails.paymentMaker._id}`}>
-                {paymentDetails.paymentMaker.userName}
-              </Link>
-            </strong>{" "}
+            <Link to={`/user-page/${paymentDetails.paymentMaker._id}`}>
+              {paymentDetails.paymentMaker.userName}
+            </Link>{" "}
             {emojiConstants.paymentsMade}{" "}
-            <strong>
-              <Link to={`/user-page/${paymentDetails.paymentRecipient._id}`}>
-                {paymentDetails.paymentRecipient.userName}
-              </Link>
-            </strong>{" "}
+            <Link to={`/user-page/${paymentDetails.paymentRecipient._id}`}>
+              {paymentDetails.paymentRecipient.userName}
+            </Link>{" "}
           </p>
           <p>
             {emojiConstants.created}{" "}
             {new Date(paymentDetails.createdAt).toLocaleString()}
           </p>
-          {/* TODO: activate when update payment functionality is implemented */}
-          {/* <p>Updated: {new Date(paymentDetails.updatedAt).toLocaleString()}</p> */}
-          <NavigateButton
-            route={`update-payment/${itemId}`}
-            alignment={"center"}
-            buttonText={"update"}
-          />
+          <UpdateResourceButton route={`update-payment/${itemId}`} />
+
           <DeleteResourceButton resourceId={itemId} resourceType='payments' />
         </div>
       ) : (

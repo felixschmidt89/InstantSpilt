@@ -1,3 +1,8 @@
 .beneficiaries {
   font-size: 1.6rem;
+  font-weight: 400;
+}
+
+h2 {
+  padding-top: 0.5rem;
 }

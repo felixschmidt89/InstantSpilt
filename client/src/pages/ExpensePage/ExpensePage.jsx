@@ -7,6 +7,7 @@ import NavigateButton from "../../components/reuseableComponents/NavigateButton/
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
 import styles from "./ExpensePage.module.css";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import UpdateResourceButton from "../../components/reuseableComponents/UpdateResourceButton/UpdateResourceButton";
 
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
@@ -29,7 +30,7 @@ const ExpensePage = () => {
           <p>
             {emojiConstants.paidFor}{" "}
             <Link to={`/user-page/${expenseDetails.expensePayer._id}`}>
-              <strong>{expenseDetails.expensePayer.userName}</strong>
+              {expenseDetails.expensePayer.userName}
             </Link>
           </p>
           <p>Beneficiaries:</p>
@@ -42,11 +43,9 @@ const ExpensePage = () => {
               {expenseDetails.expenseBeneficiaries.map((beneficiary, index) => (
                 <React.Fragment key={beneficiary._id}>
                   {index > 0 && ", "}{" "}
-                  <strong>
-                    <Link to={`/user-page/${beneficiary._id}`}>
-                      {beneficiary.userName}
-                    </Link>
-                  </strong>
+                  <Link to={`/user-page/${beneficiary._id}`}>
+                    {beneficiary.userName}
+                  </Link>
                 </React.Fragment>
               ))}
             </li>
@@ -55,13 +54,7 @@ const ExpensePage = () => {
             {emojiConstants.created}{" "}
             {new Date(expenseDetails.createdAt).toLocaleString()}
           </p>
-
-          <NavigateButton
-            route={`update-expense/${expenseId}`}
-            alignment={"center"}
-            buttonText={"update"}
-          />
-
+          <UpdateResourceButton route={`update-expense/${expenseId}`} />
           <DeleteResourceButton
             resourceId={expenseId}
             resourceType='expenses'

@@ -43,11 +43,7 @@ const ValidateProvideGroupCodePage = () => {
     <main>
       {/* Back button to enter groupCode again */}
       <HelmetMetaTagsNetlify title='InstantSplit - Validate groupCode' />
-      <NavigateButton
-        route='enter-groupcode'
-        buttonText='back'
-        alignment='left'
-      />
+      <NavigateButton route='enter-groupcode' buttonText='⬅' alignment='left' />
       <div className={styles.container}>
         <h1>GroupCode Validation</h1>
         {groupExists === false && !error && (

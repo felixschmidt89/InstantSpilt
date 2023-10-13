@@ -6,6 +6,7 @@ const emojiConstants = {
   paymentsMade: "➡️",
   paymentsReceived: "⬅️",
   created: "🕑",
+  updated: "📝",
   info: "💁",
   error: "🚧",
   user: "👤",

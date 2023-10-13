@@ -3,11 +3,9 @@
   font-family: "Ubuntu", sans-serif;
   color: var(--color-main);
   border: none;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0rem;
-  padding-bottom: 0rem;
-  font-size: 2.5rem;
+  padding-left: 0.2rem;
+  padding-right: 0.4rem;
+  font-size: 2.2rem;
   font-weight: bold;
   cursor: pointer;
   border-radius: 0.5rem;
