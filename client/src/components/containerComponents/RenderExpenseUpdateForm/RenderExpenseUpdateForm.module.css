@@ -78,13 +78,14 @@ input[type="checkbox"]:checked {
 }
 
 .button {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
+  padding: 0.2rem;
   background-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
   color: var(--color-main);
   border: none;
   width: 8rem;
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   cursor: pointer;
   border-radius: 1rem;
 }

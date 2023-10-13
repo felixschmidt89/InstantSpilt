@@ -107,7 +107,7 @@ export default function RenderPaymentForm({ groupMembers, groupCode }) {
       <div className={styles.buttonContainer}>
         {paymentAmount && userName && paymentRecipientName && (
           <button className={styles.button} type='submit'>
-            +
+            +{" "}
           </button>
         )}
         {error && <div className={styles.errorText}>{error}</div>}{" "}

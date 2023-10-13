@@ -5,6 +5,7 @@ import styles from "./TutorialPage.module.css";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import ExplainMainFunctionalities from "../../components/containerComponents/ExplainMainFunctionalities/ExplainMainFunctionalities";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 function TutorialPage() {
   const { groupName, groupCode } = useParams();
@@ -14,8 +15,9 @@ function TutorialPage() {
       <HelmetMetaTagsNetlify title='InstantSplit - Tutorial' />
       <NavigateButton
         route={"instant-split"}
+        buttonText={faLeftLong}
         alignment={"left"}
-        buttonText={"⇦"}
+        isIcon={true}
       />
       <div className={styles.container}>
         <h1>Tutorial</h1>

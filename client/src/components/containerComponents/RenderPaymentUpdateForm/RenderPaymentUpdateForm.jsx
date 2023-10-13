@@ -121,7 +121,7 @@ export default function RenderPaymentUpdateForm({
       <div className={styles.buttonContainer}>
         {formChanged && paymentAmount && userName && paymentRecipientName && (
           <button className={styles.button} type='submit'>
-            +
+            update
           </button>
         )}
         {error && <div className={styles.errorText}>{error}</div>}{" "}

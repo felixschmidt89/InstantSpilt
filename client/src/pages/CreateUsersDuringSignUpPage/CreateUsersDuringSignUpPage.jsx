@@ -3,6 +3,7 @@ import CreateUserForm from "../../components/containerComponents/CreateUserForm/
 import RenderUserNames from "../../components/containerComponents/RenderUserNames/RenderUserNames";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
+import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 
 function CreateUsersDuringSignUpPage() {
   const [refreshData, setRefreshData] = useState(false);
@@ -16,8 +17,9 @@ function CreateUsersDuringSignUpPage() {
       <HelmetMetaTagsNetlify title='InstantSplit - Add user' />
       <NavigateButton
         route={"groupcode-explanation"}
+        buttonText={faRightLong}
         alignment={"right"}
-        buttonText={"⇨"}
+        isIcon={true}
       />
       <CreateUserForm toggleDataRefresh={toggleDataRefresh} />
       <RenderUserNames refreshData={refreshData} />

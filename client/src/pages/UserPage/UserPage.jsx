@@ -9,6 +9,7 @@ import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 // Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
 const BALANCE_THRESHOLD = 0.01;
@@ -38,8 +39,9 @@ const UserPage = () => {
       {/* Button to go back to the "instant-split" page */}
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⇦"}
+        buttonText={faLeftLong}
         alignment={"left"}
+        isIcon={true}
       />
       {userInfo ? (
         <div>

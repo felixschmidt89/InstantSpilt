@@ -1,70 +1,68 @@
 .header {
-    font-size: 2.3rem;
-    padding-top: 0rem !important;
-  }
-  
-  .container {
-    width: 90%;
-    margin: 0 auto;
-    overflow-y: auto;
-  }
-  
-  .inputField,
-  .select {
-    color: var(--color-dark);
-    width: 12rem;
-    padding: 0.2rem;
-    border: 0.2rem solid var(--color-grey);
-    border-radius: 0.5rem;
-    font-size: 1.8rem;
-    text-align: center;
-    outline: none;
-    margin-right: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .select {
-    background-color: var(--color-main);
-    border-radius: 0.5rem;
-    font-size: 1.8rem;
-    text-align: center;
-    outline: auto;
-    outline-color: var(--color-grey);
-  }
-  
-  .select,
-  .inputField:focus {
-    border-color: var(--color-signal);
-    box-shadow: 0 0 0.5rem var(--color-success);
-  }
-  
-  .paymentToEmoji {
-    margin-right: 1rem;
-  }
-  
-  .buttonContainer {
-    display: block;
-    justify-content: center;
-  }
-  .button {
-    background-color: var(--color-signal);
-    box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
-    color: var(--color-main);
-    font-weight: bold;
-    border: none;
-    width: 3rem;
-    font-size: 1.9rem;
-    cursor: pointer;
-    border-radius: 1rem;
-    transform: translateX(-0.4rem);
-  }
-  
-  .button:hover {
-    background-color: var(--color-success);
-    box-shadow: 0 0 0.5rem var(--color-success);
-  }
-  
-  .errorText {
-    color: var(--color-error);
-  }
-  
+  font-size: 2.3rem;
+  padding-top: 0rem !important;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+.inputField,
+.select {
+  color: var(--color-dark);
+  width: 12rem;
+  padding: 0.2rem;
+  border: 0.2rem solid var(--color-grey);
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+  outline: none;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.select {
+  background-color: var(--color-main);
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+  outline: auto;
+  outline-color: var(--color-grey);
+}
+
+.select,
+.inputField:focus {
+  border-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+.paymentToEmoji {
+  margin-right: 1rem;
+}
+
+.buttonContainer {
+  display: block;
+  justify-content: center;
+}
+.button {
+  margin-top: 0rem;
+  padding: 0.2rem;
+  background-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
+  color: var(--color-main);
+  border: none;
+  width: 8rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+.button:hover {
+  background-color: var(--color-success);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+.errorText {
+  color: var(--color-error);
+}

@@ -9,6 +9,7 @@ import emojiConstants from "../../constants/emojiConstants";
 import useFetchExpenseInfo from "../../hooks/uesFetchExpenseInfo";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import styles from "./UpdateExpensePage.module.css";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 function UpdateExpensePage() {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -30,8 +31,9 @@ function UpdateExpensePage() {
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⇦"}
+        buttonText={faLeftLong}
         alignment={"left"}
+        isIcon={true}
       />
 
       {isLoading ? (

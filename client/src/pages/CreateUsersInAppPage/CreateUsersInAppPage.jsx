@@ -4,6 +4,7 @@ import RenderUserNames from "../../components/containerComponents/RenderUserName
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import styles from "./CreateUsersInAppPage.module.css";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 function CreateUsersInAppPage() {
   const [refreshData, setRefreshData] = useState(false);
@@ -18,8 +19,9 @@ function CreateUsersInAppPage() {
       <div className={styles.container}>
         <NavigateButton
           route={"instant-split"}
+          buttonText={faLeftLong}
           alignment={"left"}
-          buttonText={"⇦"}
+          isIcon={true}
         />
         <CreateUserForm toggleDataRefresh={toggleDataRefresh} />
         <RenderUserNames refreshData={refreshData} />

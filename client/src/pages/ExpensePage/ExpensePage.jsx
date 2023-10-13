@@ -8,6 +8,7 @@ import DeleteResourceButton from "../../components/reuseableComponents/DeleteRes
 import styles from "./ExpensePage.module.css";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import UpdateResourceButton from "../../components/reuseableComponents/UpdateResourceButton/UpdateResourceButton";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
@@ -19,8 +20,9 @@ const ExpensePage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - Expense details' />
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⇦"}
+        buttonText={faLeftLong}
         alignment={"left"}
+        isIcon={true}
       />
       <h1>Expense {emojiConstants.expense}</h1>
       {expenseDetails ? (

@@ -8,6 +8,7 @@ import DeleteResourceButton from "../../components/reuseableComponents/DeleteRes
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import UpdateResourceButton from "../../components/reuseableComponents/UpdateResourceButton/UpdateResourceButton";
 import styles from "./PaymentPage.module.css";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -18,8 +19,9 @@ const PaymentPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - Payment details' />
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⇦"}
+        buttonText={faLeftLong}
         alignment={"left"}
+        isIcon={true}
       />
 
       {paymentDetails ? (

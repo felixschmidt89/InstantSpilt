@@ -6,6 +6,7 @@ import NavigateButton from "../../components/reuseableComponents/NavigateButton/
 import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import WebShareApiInvite from "../../components/singleComponents/WebShareApiInvite/WebShareApiInvite";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
@@ -24,7 +25,12 @@ const ShareGroupPage = () => {
       <HelmetMetaTagsNetlify
         title={`InstantSplit - Invite & share ${groupName}`}
       />
-      <NavigateButton route='instant-split' buttonText='⇦' alignment='left' />
+      <NavigateButton
+        route={"instant-split"}
+        buttonText={faLeftLong}
+        alignment={"left"}
+        isIcon={true}
+      />{" "}
       <div className={styles.container}>
         <h1>Invite & share</h1>
         {isWebShareAPISupported ? (

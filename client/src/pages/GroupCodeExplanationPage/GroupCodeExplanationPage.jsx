@@ -5,6 +5,7 @@ import styles from "./GroupCodeExplanationPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 
 const GroupCodeExplanationPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -14,8 +15,9 @@ const GroupCodeExplanationPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - GroupCode explanation' />
       <NavigateButton
         route={"onboarding"}
+        buttonText={faRightLong}
         alignment={"right"}
-        buttonText={"⇨"}
+        isIcon={true}
       />
       <div className={styles.container}>
         <h1>Crucial info for group creators</h1>

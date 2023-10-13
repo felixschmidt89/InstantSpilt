@@ -7,6 +7,7 @@ import GroupActionButton from "../../components/reuseableComponents/SplitExpense
 import emojiConstants from "../../constants/emojiConstants";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import styles from "./CreateExpensePage.module.css";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 export default function CreateExpensePage() {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -18,10 +19,10 @@ export default function CreateExpensePage() {
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⇦"}
+        buttonText={faLeftLong}
         alignment={"left"}
+        isIcon={true}
       />
-
       <h2 className={styles.header}>Add expense {emojiConstants.expense}</h2>
 
       {/* Conditional rendering based on isFetched */}

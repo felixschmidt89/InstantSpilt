@@ -8,6 +8,7 @@ import RenderPaymentUpdateForm from "../../components/containerComponents/Render
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 export default function UpdatePaymentPage() {
   const { itemId } = useParams();
@@ -33,8 +34,9 @@ export default function UpdatePaymentPage() {
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⇦"}
+        buttonText={faLeftLong}
         alignment={"left"}
+        isIcon={true}
       />
       <h2 className={styles.header}>Update payment {emojiConstants.payment}</h2>
       {isLoading ? (

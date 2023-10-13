@@ -6,6 +6,7 @@ import axios from "axios";
 import styles from "./FeedbackPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 // Define the API URL using environment variable
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -89,8 +90,9 @@ export default function FeedbackPage() {
 
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⇦"}
+        buttonText={faLeftLong}
         alignment={"left"}
+        isIcon={true}
       />
       <h1>Leave a message</h1>
       {/* Check if the form should be displayed */}

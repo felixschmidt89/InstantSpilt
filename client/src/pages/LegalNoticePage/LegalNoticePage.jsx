@@ -3,6 +3,7 @@ import NavigateButton from "../../components/reuseableComponents/NavigateButton/
 import legalNoticeContent from "../../contents/legalNoticeContent";
 import styles from "./LegalNoticePage.module.css";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const LegalNoticePage = () => {
   return (
@@ -11,7 +12,12 @@ const LegalNoticePage = () => {
         title='InstantSplit - Impressum'
         description='Legal Notice as required by the Telemediengesetz for German websites.'
       />
-      <NavigateButton route='instant-split' buttonText='⇦' alignment='left' />
+      <NavigateButton
+        route={"instant-split"}
+        buttonText={faLeftLong}
+        alignment={"left"}
+        isIcon={true}
+      />{" "}
       <div className={styles.container}>
         <h1>Legal notice (Impressum)</h1>
         <p className={styles.note}>

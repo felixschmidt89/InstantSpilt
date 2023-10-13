@@ -8,6 +8,7 @@ import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMe
 import RenderPaymentForm from "../../components/containerComponents/RenderPaymentForm/RenderPaymentForm";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import GroupActionButton from "../../components/reuseableComponents/SplitExpensesActionsButton/SplitExpensesActionsButton";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 export default function CreatePaymentPage() {
   // Define states for paymentAmount, userName, paymentRecipient, and error message
@@ -23,8 +24,9 @@ export default function CreatePaymentPage() {
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⇦"}
+        buttonText={faLeftLong}
         alignment={"left"}
+        isIcon={true}
       />
 
       <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>

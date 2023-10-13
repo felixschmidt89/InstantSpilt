@@ -1,5 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesomeIcon
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+
 import styles from "./NavigateButton.module.css";
 
 export default function NavigateButton({
@@ -7,6 +10,7 @@ export default function NavigateButton({
   buttonText,
   alignment = "center",
   margin = "10px",
+  isIcon = false,
 }) {
   const navigate = useNavigate();
 
@@ -33,7 +37,11 @@ export default function NavigateButton({
         className={styles.button}
         onClick={handleNextClick}
         style={buttonStyle}>
-        {buttonText}
+        {isIcon ? ( // Check if it's an icon
+          <FontAwesomeIcon icon={buttonText} />
+        ) : (
+          buttonText // Render as text
+        )}
       </button>
     </div>
   );
