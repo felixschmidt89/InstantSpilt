@@ -18,7 +18,7 @@ const PaymentPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - Payment details' />
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⬅"}
+        buttonText={"⇦"}
         alignment={"left"}
       />
 

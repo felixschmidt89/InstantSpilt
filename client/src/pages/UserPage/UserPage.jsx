@@ -38,7 +38,7 @@ const UserPage = () => {
       {/* Button to go back to the "instant-split" page */}
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⬅"}
+        buttonText={"⇦"}
         alignment={"left"}
       />
       {userInfo ? (

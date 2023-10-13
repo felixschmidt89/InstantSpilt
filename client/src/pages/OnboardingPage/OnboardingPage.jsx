@@ -10,7 +10,7 @@ function OnboardingPage() {
       <NavigateButton
         route={"instant-split"}
         alignment={"right"}
-        buttonText={"got it!"}
+        buttonText={"⇨"}
       />
       <h1>Brief explanation</h1>
       <ExplainMainFunctionalities />

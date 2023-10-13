@@ -19,7 +19,7 @@ const ExpensePage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - Expense details' />
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⬅"}
+        buttonText={"⇦"}
         alignment={"left"}
       />
       <h1>Expense {emojiConstants.expense}</h1>

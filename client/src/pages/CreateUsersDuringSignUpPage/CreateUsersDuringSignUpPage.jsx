@@ -17,7 +17,7 @@ function CreateUsersDuringSignUpPage() {
       <NavigateButton
         route={"groupcode-explanation"}
         alignment={"right"}
-        buttonText={"next"}
+        buttonText={"⇨"}
       />
       <CreateUserForm toggleDataRefresh={toggleDataRefresh} />
       <RenderUserNames refreshData={refreshData} />

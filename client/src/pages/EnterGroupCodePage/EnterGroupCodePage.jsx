@@ -22,7 +22,7 @@ const EnterGroupCode = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Enter groupCode' />
-      <NavigateButton route={"homepage"} buttonText={"⬅"} alignment={"left"} />
+      <NavigateButton route={"homepage"} buttonText={"⇦"} alignment={"left"} />
       <div className={style.container}>
         <h1>Enter groupCode</h1>
         <form onSubmit={handleFormSubmit}>

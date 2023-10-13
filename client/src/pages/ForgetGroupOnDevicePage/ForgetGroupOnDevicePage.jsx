@@ -20,7 +20,7 @@ const ForgetGroupOnDevicePage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Forget group' />
-      <NavigateButton route='instant-split' buttonText='⬅' alignment='left' />
+      <NavigateButton route='instant-split' buttonText='⇦' alignment='left' />
       <h1>Forget group on this device</h1>
       <p>
         Are you sure you want to leave <strong>{groupName}</strong> on this

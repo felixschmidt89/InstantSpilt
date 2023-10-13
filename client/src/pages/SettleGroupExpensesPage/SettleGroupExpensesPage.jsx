@@ -10,7 +10,7 @@ function SettleGroupExpensesPage() {
       <HelmetMetaTagsNetlify title='InstantSplit - Settle expenses' />
       <NavigateButton
         route={"instant-split"}
-        buttonText={"⬅"}
+        buttonText={"⇦"}
         alignment={"left"}
       />
       <div className={styles.container}>

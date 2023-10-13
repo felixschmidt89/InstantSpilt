@@ -13,7 +13,8 @@ h3 {
 
 .inputFieldOne,
 .inputFieldTwo,
-.select {
+.select,
+.toggleButton {
   color: var(--color-dark);
   font-family: "Ubuntu", sans-serif;
   padding: 0.2rem;
@@ -23,6 +24,11 @@ h3 {
   text-align: center;
   outline: none;
   margin-bottom: 0.5rem;
+}
+
+.toggleButton {
+  background-color: var(--color-main);
+  width: 5.5rem;
 }
 
 .select {
@@ -36,7 +42,8 @@ h3 {
 
 .select:focus,
 .inputFieldOne:focus,
-.inputFieldTwo:focus {
+.inputFieldTwo:focus,
+.toggleButton:focus {
   border-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-success);
 }

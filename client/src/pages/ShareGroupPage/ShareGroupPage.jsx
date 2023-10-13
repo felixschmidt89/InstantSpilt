@@ -24,7 +24,7 @@ const ShareGroupPage = () => {
       <HelmetMetaTagsNetlify
         title={`InstantSplit - Invite & share ${groupName}`}
       />
-      <NavigateButton route='instant-split' buttonText='⬅' alignment='left' />
+      <NavigateButton route='instant-split' buttonText='⇦' alignment='left' />
       <div className={styles.container}>
         <h1>Invite & share</h1>
         {isWebShareAPISupported ? (

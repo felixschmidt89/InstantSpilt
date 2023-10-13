@@ -15,7 +15,7 @@ const GroupCodeExplanationPage = () => {
       <NavigateButton
         route={"onboarding"}
         alignment={"right"}
-        buttonText={"next"}
+        buttonText={"⇨"}
       />
       <div className={styles.container}>
         <h1>Crucial info for group creators</h1>

@@ -46,6 +46,16 @@ export default function RenderExpenseForm({ groupMembers, groupCode }) {
     }
   };
 
+  const toggleBeneficiaries = () => {
+    if (selectedBeneficiaries.length === groupMembers.length) {
+      // If all are selected, deselect all
+      setSelectedBeneficiaries([]);
+    } else {
+      // If not all are selected, select all
+      setSelectedBeneficiaries([...groupMembers]);
+    }
+  };
+
   // On form submission: Post expense and navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -121,6 +131,14 @@ export default function RenderExpenseForm({ groupMembers, groupCode }) {
             ))}
           </select>
           <h3>Beneficiaries: </h3>
+          <button
+            className={styles.toggleButton}
+            type='button' // Set the type to "button" to prevent form submission
+            onClick={toggleBeneficiaries}>
+            {selectedBeneficiaries.length === groupMembers.length
+              ? "none"
+              : "all"}
+          </button>
           <div className={styles.beneficiaries}>
             {/* (Un)check beneficiaries */}
             {groupMembers.map((member) => (
@@ -135,6 +153,7 @@ export default function RenderExpenseForm({ groupMembers, groupCode }) {
               </label>
             ))}
           </div>
+
           {/* Conditionally render submit button when expense amount, name, payer & min 1 beneficiary is given*/}
           {expenseAmount &&
             userName &&
