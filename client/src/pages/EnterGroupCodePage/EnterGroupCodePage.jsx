@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import style from "./EnterGroupCodePage.module.css";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const EnterGroupCode = () => {
   const [groupCode, setGroupCode] = useState("");
@@ -14,7 +15,7 @@ const EnterGroupCode = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-    if (groupCode.length === 6) {
+    if (groupCode.length >= 6) {
       navigate(`/groupCode-validator/${groupCode}`);
     }
   };
@@ -22,7 +23,12 @@ const EnterGroupCode = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Enter groupCode' />
-      <NavigateButton route={"homepage"} buttonText={"⇦"} alignment={"left"} />
+      <NavigateButton
+        route={"homepage"}
+        buttonText={faLeftLong}
+        alignment={"left"}
+        isIcon={true}
+      />
       <div className={style.container}>
         <h1>Enter groupCode</h1>
         <form onSubmit={handleFormSubmit}>
@@ -33,7 +39,7 @@ const EnterGroupCode = () => {
             value={groupCode}
             onChange={handleInputChange}
           />
-          {groupCode.length === 6 && (
+          {groupCode.length >= 6 && (
             <div className={style.buttonContainer}>
               <button type='submit' className={style.button}>
                 join

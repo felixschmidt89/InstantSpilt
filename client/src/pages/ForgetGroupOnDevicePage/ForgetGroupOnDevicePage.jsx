@@ -5,6 +5,7 @@ import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGro
 import styles from "./ForgetGroupOnDevicePage.module.css";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
@@ -20,7 +21,12 @@ const ForgetGroupOnDevicePage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Forget group' />
-      <NavigateButton route='instant-split' buttonText='⇦' alignment='left' />
+      <NavigateButton
+        route={"instant-split"}
+        buttonText={faLeftLong}
+        alignment={"left"}
+        isIcon={true}
+      />
       <h1>Forget group on this device</h1>
       <p>
         Are you sure you want to leave <strong>{groupName}</strong> on this
