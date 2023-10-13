@@ -89,7 +89,7 @@ export default function FeedbackPage() {
 
       <NavigateButton
         route={"instant-split"}
-        buttonText={"back"}
+        buttonText={"⬅"}
         alignment={"left"}
       />
       <h1>Leave a message</h1>

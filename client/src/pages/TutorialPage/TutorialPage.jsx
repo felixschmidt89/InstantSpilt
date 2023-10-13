@@ -15,7 +15,7 @@ function TutorialPage() {
       <NavigateButton
         route={"instant-split"}
         alignment={"left"}
-        buttonText={"back"}
+        buttonText={"⬅"}
       />
       <div className={styles.container}>
         <h1>Tutorial</h1>

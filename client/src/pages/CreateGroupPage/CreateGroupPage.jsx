@@ -50,11 +50,7 @@ export default function CreateGroupPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Create group' />
-      <NavigateButton
-        route={"homepage"}
-        buttonText={"back"}
-        alignment={"left"}
-      />
+      <NavigateButton route={"homepage"} buttonText={"⬅"} alignment={"left"} />
       <h2>Create a group</h2>
       <form onSubmit={handleFormSubmit}>
         <input

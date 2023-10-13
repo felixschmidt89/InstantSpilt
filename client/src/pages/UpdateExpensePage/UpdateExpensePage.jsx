@@ -30,7 +30,7 @@ function UpdateExpensePage() {
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
-        buttonText={"back"}
+        buttonText={"⬅"}
         alignment={"left"}
       />
 

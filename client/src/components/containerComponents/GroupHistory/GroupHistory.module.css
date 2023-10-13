@@ -41,7 +41,7 @@ a:hover {
 
 @media (max-width: 500px) {
   .container {
-    padding-left: 0rem;
+    padding-left: 0;
     width: 95%;
   }
   .container li {

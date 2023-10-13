@@ -15,7 +15,6 @@
 }
 
 .userDetails {
-  /* Container for each user's details */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -50,14 +49,22 @@
 }
 
 @media (max-width: 500px) {
-}
-.balancesContainer li {
-  border-bottom: none;
-}
+  .leftColumn {
+    margin-left: 3rem;
+  }
 
-.failMessage {
-  padding-top: 0.5rem;
-  margin: 0 auto;
-  width: 90%;
-  text-align: center;
+  .rightColumn {
+    margin-right: 3rem;
+  }
+
+  .balancesContainer li {
+    border-bottom: none;
+  }
+
+  .failMessage {
+    padding-top: 0.5rem;
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+  }
 }

@@ -19,7 +19,7 @@ function CreateUsersInAppPage() {
         <NavigateButton
           route={"instant-split"}
           alignment={"left"}
-          buttonText={"back"}
+          buttonText={"⬅"}
         />
         <CreateUserForm toggleDataRefresh={toggleDataRefresh} />
         <RenderUserNames refreshData={refreshData} />

@@ -133,7 +133,7 @@ const RenderSettlementPaymentSuggestions = () => {
         {settlements.map((settlement, index) => (
           <li key={index} className={styles.paymentSuggestions}>
             <span>
-              {settlement.from} {emojiConstants.paymentsMade} {settlement.to}
+              {settlement.from} {emojiConstants.paymentsMade} {settlement.to}:
             </span>{" "}
             <span>
               <u>{settlement.amount}</u>€

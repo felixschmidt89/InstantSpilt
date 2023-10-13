@@ -33,7 +33,7 @@ export default function UpdatePaymentPage() {
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
-        buttonText={"back"}
+        buttonText={"⬅"}
         alignment={"left"}
       />
       <h2 className={styles.header}>Update payment {emojiConstants.payment}</h2>

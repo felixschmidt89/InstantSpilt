@@ -23,7 +23,7 @@ export default function CreatePaymentPage() {
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
-        buttonText={"back"}
+        buttonText={"⬅"}
         alignment={"left"}
       />
 
