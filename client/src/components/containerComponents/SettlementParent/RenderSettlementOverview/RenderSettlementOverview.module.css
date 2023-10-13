@@ -1,4 +1,4 @@
-.negativeBalance {
+/* .negativeBalance {
   color: var(--color-error);
 }
 
@@ -6,25 +6,37 @@
   color: var(--color-error);
 }
 
-.balancesSettled {
-  margin-top: 0.5rem;
-  font-size: 2rem;
-}
 
-.userDetails {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
 
-.separator {
-  margin: 0 0.3rem;
-}
 
 .balances {
   margin: 0 auto;
 }
 
 a {
+  ;
+} */
+
+.userListItem {
+  list-style: none;
+  margin-top: 0.8rem;
+}
+
+.userDetails {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userName {
+  text-decoration: none;
   font-weight: 400;
+}
+
+.userName:hover {
+  color: var(--color-success);
+}
+
+.negativeBalance {
+  color: var(--color-error);
 }

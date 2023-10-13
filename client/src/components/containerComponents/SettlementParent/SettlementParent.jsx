@@ -99,7 +99,7 @@ export default function SettlementParent() {
             // Display a message when there are no users with unsettled balances
             <p className={styles.balancesSettled}>All settled. 🤝</p>
           ) : (
-            <div>
+            <div className={styles.container}>
               <RenderSettlementOverview
                 negativeBalanceUsers={negativeBalanceUsers}
                 positiveBalanceUsers={positiveBalanceUsers}

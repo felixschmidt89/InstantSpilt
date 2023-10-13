@@ -19,7 +19,6 @@ export default function RenderSettlementOverview({
                   {user.userName}
                 </Link>
               </strong>
-              <span className={styles.separator}>owes:</span>
               <div
                 className={`${styles.userBalance} ${styles.negativeBalance}`}>
                 {Math.abs(user.userBalance).toFixed(2)}€
@@ -41,7 +40,6 @@ export default function RenderSettlementOverview({
                   {user.userName}
                 </Link>
               </strong>
-              <span className={styles.separator}>is owed:</span>
               <div
                 className={`${styles.userBalance} ${styles.positiveBalance}`}>
                 {user.userBalance.toFixed(2)}€
