@@ -87,9 +87,11 @@ export default function SettlementParent() {
 
   // Render spinner while loading, then render user details, link to user pages
   return (
-    <div className={styles.balances}>
+    <div>
       {isLoading ? ( // Display Spinner while loading
-        <Spinner />
+        <div className={styles.spinner}>
+          <Spinner />
+        </div>
       ) : (
         <div>
           {error ? (

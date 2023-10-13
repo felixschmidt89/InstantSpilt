@@ -2,3 +2,16 @@
   width: 60%;
   margin: 0 auto;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

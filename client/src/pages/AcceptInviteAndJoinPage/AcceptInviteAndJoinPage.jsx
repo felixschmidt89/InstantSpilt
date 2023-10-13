@@ -49,7 +49,7 @@ const AcceptInviteAndJoinPage = () => {
           <>
             <p>
               <div>
-                Someone invited you to join the InstantSplit
+                Someone invited you to join the InstantSplit{" "}
                 <span className={styles.noWrap}>
                   group <strong>{groupData.group.groupName}</strong>.
                 </span>

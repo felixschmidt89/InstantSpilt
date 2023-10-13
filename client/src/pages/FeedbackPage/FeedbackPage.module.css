@@ -29,6 +29,7 @@
   text-align: center;
   outline: auto;
   outline-color: var(--color-grey);
+  margin-bottom: 0.5rem;
 }
 
 .select {

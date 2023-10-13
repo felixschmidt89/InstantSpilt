@@ -19,7 +19,6 @@ import GroupCodeExplanationPage from "./pages/GroupCodeExplanationPage/GroupCode
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
 import ShareGroupPage from "./pages/ShareGroupPage/ShareGroupPage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
-import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroupExpensesPage";
 import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
@@ -30,6 +29,7 @@ import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
 import TutorialPage from "./pages/TutorialPage/TutorialPage";
 import UpdateExpensePage from "./pages/UpdateExpensePage/UpdateExpensePage";
 import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
+import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 
 function App() {
   return (
