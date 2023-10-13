@@ -1,19 +1,28 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorage";
+import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
 
 const IndexNavigator = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const groupCode = localStorage.getItem("activeGroupCode");
+  const groupCode = localStorage.getItem("activeGroupCode");
 
-    if (groupCode) {
+  const [groupExists] = useValidateGroupExistence({
+    groupCode,
+  });
+
+  console.log(groupExists);
+
+  useEffect(() => {
+    if (groupExists === false) {
+      removeActiveGroupCodeFromLocalStorage();
+      navigate("/homepage/");
+    } else if (groupExists === true) {
       navigate("/instant-split");
-    } else {
-      navigate("/homepage");
     }
-  }, [navigate]);
+  }, [navigate, groupExists]);
 
   return (
     <main>

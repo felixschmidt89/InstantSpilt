@@ -1,27 +1,43 @@
 // DONE adding only meaningful necessary comments
-import React from "react";
+import React, { useEffect } from "react";
 import useLocalStorage from "react-use-localstorage";
 import styles from "./InstantSplitPage.module.css";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
-import useCheckGroupCodePresenceAndNavigateHome from "../../hooks/useCheckGroupCodePresenceAndNavigateHome";
+import { useNavigate } from "react-router-dom";
 import UserActionsComponent from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import GroupBalances from "../../components/containerComponents/GroupBalances/GroupBalances";
 import GroupHistory from "../../components/containerComponents/GroupHistory/GroupHistory";
 import GroupActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorage";
+import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
 
 /**
- * Main component of the application, renders or links to all core features related to settling expenses.
- * First checks if groupCode is available (TODO: groupCode validation) and navigates home if not.
+ * Main component of the application. Checks on mount whether active groupCode exists in database. If not, groupCode will
+ * be deleted from LocalStorage and navigated to homepage.
+ * Renders or links to all core features related to settling expenses.
  */
 export default function InstantSplitPage() {
   const groupCode = localStorage.getItem("activeGroupCode");
+  const navigate = useNavigate();
 
-  useCheckGroupCodePresenceAndNavigateHome();
+  // Check if active groupCode is valid
+  const [groupExists] = useValidateGroupExistence({
+    groupCode,
+  });
+
+  // If not, delete it from LocalSpace and navigate to homepage
+  useEffect(() => {
+    if (groupExists === false) {
+      removeActiveGroupCodeFromLocalStorage();
+      navigate("/homepage/");
+    }
+  }, [navigate, groupExists]);
 
   // Fetch group group data
   const groupData = useFetchGroupData(groupCode);
+
   // Use useLocalStorage to initialize and persist the view state with a default of "view2"
   const [view, setView] = useLocalStorage("viewState", "view2");
 
@@ -36,7 +52,7 @@ export default function InstantSplitPage() {
         <Spinner />
       </main>
     );
-  } else {
+  } else if (groupData && groupData.group) {
     return (
       <main>
         <HelmetMetaTagsNetlify

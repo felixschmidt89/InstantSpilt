@@ -4,7 +4,7 @@ import rateLimit from 'express-rate-limit';
 // Define the rate limiting config:
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // Limit each IP to 5 requests per windowMs
+  max: 10, // Limit each IP to 5 requests per windowMs
 });
 
 /**
