@@ -43,8 +43,8 @@ h3 {
 
 input[type="checkbox"] {
   appearance: none;
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
   background-color: var(--color-main);
   border: 2px solid var(--color-grey);
   border-radius: 4px;
@@ -53,13 +53,18 @@ input[type="checkbox"] {
   font-size: 1.6rem;
   outline: none;
   vertical-align: middle;
-  margin: 0.3rem;
+  margin: 0.2rem;
 }
 
 input[type="checkbox"]:checked {
-  background-color: var(--color-signal-reduced-opacity);
+  background-color: var(--color-signal);
   border-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
+  height: 1.6rem;
+  width: 1.6rem;
+  margin: 0.3rem;
+
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
 
 .button {
