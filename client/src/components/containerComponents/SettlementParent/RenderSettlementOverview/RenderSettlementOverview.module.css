@@ -1,25 +1,5 @@
-/* .negativeBalance {
-  color: var(--color-error);
-}
-
-.errorText {
-  color: var(--color-error);
-}
-
-
-
-
-.balances {
-  margin: 0 auto;
-}
-
-a {
-  ;
-} */
-
 .userListItem {
   list-style: none;
-  margin-top: 0.8rem;
 }
 
 .userDetails {

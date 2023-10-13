@@ -1,0 +1,11 @@
+.paymentSuggestions {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.userName {
+  text-decoration: none;
+  font-weight: 400;
+}
