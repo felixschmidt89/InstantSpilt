@@ -15,7 +15,7 @@ const HomePage = () => {
           <div className={styles.strong}>
             {" "}
             <span className={styles.noWrap}>No cookies.</span>{" "}
-            <span className={styles.noWrap}>No tracking.</span>{" "}
+            <span className={styles.noWrap}>No visitors tracking.</span>{" "}
             <span className={styles.noWrap}>No monetization.</span>{" "}
             <span className={styles.noWrap}>Ever.</span>
           </div>
