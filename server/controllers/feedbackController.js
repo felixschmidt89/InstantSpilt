@@ -42,10 +42,13 @@ export const createFeedback = async (req, res) => {
       subject: 'New InstantSplit feedback created',
       text: `A new feedback has been created by ${name}.
       
-      Type: ${messageType}
-      Text: ${feedback}
-      Groupcode: ${groupCode}
-      FileId: ${fileId}
+      Type: "${messageType}"
+
+      Text: "${feedback}"
+
+      Groupcode: "${groupCode}"
+      
+      FileId: "${fileId || 'No file attached'}"
       `,
     };
 
