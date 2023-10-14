@@ -8,7 +8,10 @@ import winston from 'winston';
  * @type {winston.Logger}
  */ const winstonLogger = winston.createLogger({
   level: 'error',
-  format: winston.format.json(),
+  format: winston.format.combine(
+    winston.format.timestamp(),
+    winston.format.json(),
+  ),
   transports: [],
 });
 

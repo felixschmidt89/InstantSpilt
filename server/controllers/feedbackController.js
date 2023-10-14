@@ -27,7 +27,7 @@ export const createFeedback = async (req, res) => {
     // Create a transporter using your email service's SMTP settings
     const transporter = nodemailer.createTransport({
       host: 'smtp.strato.de',
-      port: 587,
+      port: 465,
       secure: true,
       auth: {
         user: process.env.EMAIL_USER,
@@ -37,7 +37,7 @@ export const createFeedback = async (req, res) => {
 
     // Send an email notification
     const mailOptions = {
-      from: 'instantsplit@gmx.de',
+      from: 'admin@instantsplit.de',
       to: 'felix.schmidt@directbox.com',
       subject: 'New InstantSplit feedback created',
       text: `A new feedback has been created by ${name}.
