@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 import File from '../models/File.js';
-import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
-import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
+import logDevErrorHelper from '../utils/logDevErrorHelper.js';
+import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
 import cloudinary from 'cloudinary'; // Import Cloudinary
 
 // Initialize Cloudinary with your credentials

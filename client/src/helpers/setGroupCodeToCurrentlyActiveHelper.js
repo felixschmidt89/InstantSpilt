@@ -1,6 +1,7 @@
 // DONE adding only meaningful necessary comments
 
-import logDevErrorHelper from "../../../server/helpers/logDevErrorHelper";
+import logDevErrorHelper from "../../../server/utils/logDevErrorHelper";
+
 /**
  * Sets groupCode as currently active in local storage.
  *

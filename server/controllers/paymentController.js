@@ -1,8 +1,8 @@
 import { StatusCodes } from 'http-status-codes';
 import Payment from '../models/Payment.js';
 import User from '../models/User.js';
-import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
-import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
+import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
+import logDevErrorHelper from '../utils/logDevErrorHelper.js';
 import Expense from '../models/Expense.js';
 
 export const createPayment = async (req, res) => {

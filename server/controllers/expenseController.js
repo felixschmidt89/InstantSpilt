@@ -3,8 +3,8 @@ import { validationResult } from 'express-validator';
 
 import Expense from '../models/Expense.js';
 import User from '../models/User.js';
-import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
-import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
+import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
+import logDevErrorHelper from '../utils/logDevErrorHelper.js';
 
 /** Creates a new expense
  *  Updates totalExpenseAmountPaid by expense payer and totalExpenseBenefittedAmount from by expense beneficiaries

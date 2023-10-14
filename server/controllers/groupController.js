@@ -3,9 +3,9 @@ import { customAlphabet } from 'nanoid';
 import Group from '../models/Group.js';
 import Expense from '../models/Expense.js';
 import Payment from '../models/Payment.js';
-import sendInternalErrorHelper from '../helpers/sendInternalErrorHelper.js';
-import isGroupCodeUniqueHelper from '../helpers/isGroupCodeUniqueHelper.js';
-import logDevErrorHelper from '../helpers/logDevErrorHelper.js';
+import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
+import isGroupCodeUniqueHelper from '../utils/isGroupCodeUniqueHelper.js';
+import logDevErrorHelper from '../utils/logDevErrorHelper.js';
 
 // Defines customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)
 const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
