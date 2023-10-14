@@ -26,8 +26,8 @@ export const createFeedback = async (req, res) => {
 
     // Create a transporter using your email service's SMTP settings
     const transporter = nodemailer.createTransport({
-      host: 'smtp.gmx.net',
-      port: 465,
+      host: 'smtp.strato.de',
+      port: 587,
       secure: true,
       auth: {
         user: process.env.EMAIL_USER,
