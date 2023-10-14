@@ -10,8 +10,8 @@ A MERN application designed for settling group expenses with a focus on function
 
 ## Access the main application or try a demo.
 
-- Start from scratch [here](https://instantsplit.netlify.app/), create your own group, and start adding users, expenses and settle payments.
-- Alternatively, [join](https://instantsplit.netlify.app/join/Italy%20Trip%20(Public%20Demo)/EOUEPI) the DemoGroup with test data for a better immediate understanding of the application's main functionalities.
+- Access the application starting from scratch [here](https://www.instantsplit.de/), create your own group, and start adding users, expenses and settle payments.
+- Alternatively, [join](https://www.instantsplit.de/share-group/Italy%20Trip%20(Public%20Demo)/EOUEPI) the DemoGroup with test data for a better immediate understanding of the application's main functionalities.
 
 ## Project Status
 - Status: MVP deployed (03/10/2023), this project will continue in ongoing development.
