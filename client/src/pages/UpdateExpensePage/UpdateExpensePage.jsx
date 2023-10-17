@@ -10,6 +10,7 @@ import useFetchExpenseInfo from "../../hooks/uesFetchExpenseInfo";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import styles from "./UpdateExpensePage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 function UpdateExpensePage() {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -28,6 +29,7 @@ function UpdateExpensePage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Update expense' />
+      <PiratePx COUNT_IDENTIFIER={"update-expense/:expenseId"} />;
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
@@ -35,7 +37,6 @@ function UpdateExpensePage() {
         alignment={"left"}
         isIcon={true}
       />
-
       {isLoading ? (
         <Spinner />
       ) : (

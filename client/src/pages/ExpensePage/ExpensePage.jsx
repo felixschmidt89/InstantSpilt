@@ -9,6 +9,7 @@ import styles from "./ExpensePage.module.css";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import UpdateResourceButton from "../../components/reuseableComponents/UpdateResourceButton/UpdateResourceButton";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
@@ -18,6 +19,7 @@ const ExpensePage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Expense details' />
+      <PiratePx COUNT_IDENTIFIER={"expense-page/:itemId"} />;
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

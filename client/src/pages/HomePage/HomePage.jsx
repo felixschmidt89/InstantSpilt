@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
     <main className={styles.container}>
       <HelmetMetaTagsNetlify title='InstantSplit - Homepage' />
+      <PiratePx COUNT_IDENTIFIER={"homepage"} />
       <div className={styles.introContainer}>
         <h1>Welcome to InstantSplit!</h1>
         <p>

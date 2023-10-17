@@ -4,6 +4,7 @@ import RenderUserNames from "../../components/containerComponents/RenderUserName
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 function CreateUsersDuringSignUpPage() {
   const [refreshData, setRefreshData] = useState(false);
@@ -15,6 +16,8 @@ function CreateUsersDuringSignUpPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Add user' />
+      <PiratePx COUNT_IDENTIFIER={"create-users-signup"} />
+
       <NavigateButton
         route={"groupcode-explanation"}
         buttonText={faRightLong}

@@ -10,6 +10,7 @@ import styles from "./CreateGroupPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 export default function CreateGroupPage() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -51,6 +52,7 @@ export default function CreateGroupPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Create group' />
+      <PiratePx COUNT_IDENTIFIER={"create-group"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

@@ -4,6 +4,7 @@ import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMe
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import style from "./EnterGroupCodePage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 const EnterGroupCode = () => {
   const [groupCode, setGroupCode] = useState("");
@@ -29,6 +30,7 @@ const EnterGroupCode = () => {
         alignment={"left"}
         isIcon={true}
       />
+      <PiratePx COUNT_IDENTIFIER={"enter-groupcode"} />;
       <div className={style.container}>
         <h1>Enter groupCode</h1>
         <form onSubmit={handleFormSubmit}>

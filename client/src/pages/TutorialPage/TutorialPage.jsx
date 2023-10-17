@@ -6,6 +6,7 @@ import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboar
 import ExplainMainFunctionalities from "../../components/containerComponents/ExplainMainFunctionalities/ExplainMainFunctionalities";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 function TutorialPage() {
   const { groupName, groupCode } = useParams();
@@ -19,6 +20,7 @@ function TutorialPage() {
         alignment={"left"}
         isIcon={true}
       />
+      <PiratePx COUNT_IDENTIFIER={"tutorial/:groupName/:groupCode"} />;
       <div className={styles.container}>
         <h1>Tutorial</h1>
         <ExplainMainFunctionalities />

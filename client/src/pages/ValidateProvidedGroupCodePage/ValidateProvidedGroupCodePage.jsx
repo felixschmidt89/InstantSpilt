@@ -9,6 +9,7 @@ import { StatusCodes } from "http-status-codes";
 import emojiConstants from "../../constants/emojiConstants";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 /**
  * Checks if groupCode exists in the database.
@@ -44,13 +45,13 @@ const ValidateProvideGroupCodePage = () => {
     <main>
       {/* Back button to enter groupCode again */}
       <HelmetMetaTagsNetlify title='InstantSplit - Validate groupCode' />
+      <PiratePx COUNT_IDENTIFIER={"groupCode-validator/:groupCode"} />;
       <NavigateButton
         route={"enter-groupcode"}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
       />
-
       <div className={styles.container}>
         <h1>GroupCode Validation</h1>
         {groupExists === false && !error && (

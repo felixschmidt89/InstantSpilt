@@ -9,6 +9,7 @@ import RenderPaymentForm from "../../components/containerComponents/RenderPaymen
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import GroupActionButton from "../../components/reuseableComponents/SplitExpensesActionsButton/SplitExpensesActionsButton";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 export default function CreatePaymentPage() {
   // Define states for paymentAmount, userName, paymentRecipient, and error message
@@ -21,6 +22,7 @@ export default function CreatePaymentPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Add payment' />
+      <PiratePx COUNT_IDENTIFIER={"create-payment"} />;
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
@@ -28,9 +30,7 @@ export default function CreatePaymentPage() {
         alignment={"left"}
         isIcon={true}
       />
-
       <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>
-
       {/* Conditional rendering based on isFetched */}
       {!isFetched ? (
         // Render a spinner while data is being fetched

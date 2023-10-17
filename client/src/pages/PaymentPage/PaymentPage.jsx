@@ -9,6 +9,7 @@ import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMe
 import UpdateResourceButton from "../../components/reuseableComponents/UpdateResourceButton/UpdateResourceButton";
 import styles from "./PaymentPage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -17,13 +18,13 @@ const PaymentPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Payment details' />
+      <PiratePx COUNT_IDENTIFIER={"payment-page/:itemId"} />;
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
       />
-
       {paymentDetails ? (
         <div>
           <h1>Payment {emojiConstants.payment}</h1>

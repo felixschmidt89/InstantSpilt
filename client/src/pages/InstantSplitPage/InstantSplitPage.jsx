@@ -12,6 +12,7 @@ import GroupActionsComponent from "../../components/containerComponents/SplitExp
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorage";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 /**
  * Main component of the application. Checks on mount whether active groupCode exists in database. If not, groupCode will
@@ -58,6 +59,7 @@ export default function InstantSplitPage() {
         <HelmetMetaTagsNetlify
           title={`InstantSplit - Main (${groupData.group.groupName})`}
         />
+        <PiratePx COUNT_IDENTIFIER={"instant-split"} />;
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
         {/* Display UserActionsComponent */}
@@ -87,8 +89,11 @@ export default function InstantSplitPage() {
         </div>
         {view === "view1" ? <GroupHistory /> : <GroupBalances />}
         {/* Display GroupActionsComponent */}
-
         <GroupActionsComponent />
+        <img
+          src='https://app.piratepx.com/ship?p=95f30bde-a982-4fc5-9e60-1cc14ea53069'
+          alt='Privacy first analytics'
+        />
       </main>
     );
   }

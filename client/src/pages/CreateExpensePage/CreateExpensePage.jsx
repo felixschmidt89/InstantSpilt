@@ -8,6 +8,7 @@ import emojiConstants from "../../constants/emojiConstants";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import styles from "./CreateExpensePage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 export default function CreateExpensePage() {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -16,6 +17,7 @@ export default function CreateExpensePage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Add payment' />
+      <PiratePx COUNT_IDENTIFIER={"create-expense"} />;
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
@@ -24,7 +26,6 @@ export default function CreateExpensePage() {
         isIcon={true}
       />
       <h2 className={styles.header}>Add expense {emojiConstants.expense}</h2>
-
       {/* Conditional rendering based on isFetched */}
       {!isFetched ? (
         // Render a spinner while data is being fetched

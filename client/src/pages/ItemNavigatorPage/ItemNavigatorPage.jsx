@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 const ItemNavigatorPage = () => {
   const location = useLocation();
@@ -23,7 +24,11 @@ const ItemNavigatorPage = () => {
     }
   }, [location, navigate]);
 
-  return <main></main>;
+  return (
+    <main>
+      <PiratePx COUNT_IDENTIFIER={"item-page"} />;
+    </main>
+  );
 };
 
 export default ItemNavigatorPage;

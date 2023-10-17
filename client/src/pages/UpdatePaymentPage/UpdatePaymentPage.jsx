@@ -9,6 +9,7 @@ import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 export default function UpdatePaymentPage() {
   const { itemId } = useParams();
@@ -31,6 +32,7 @@ export default function UpdatePaymentPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Update payment' />
+      <PiratePx COUNT_IDENTIFIER={"update-payment/:itemId"} />;
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}

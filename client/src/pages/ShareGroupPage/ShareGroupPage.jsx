@@ -7,6 +7,7 @@ import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboar
 import WebShareApiInvite from "../../components/singleComponents/WebShareApiInvite/WebShareApiInvite";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
@@ -25,6 +26,7 @@ const ShareGroupPage = () => {
       <HelmetMetaTagsNetlify
         title={`InstantSplit - Invite & share ${groupName}`}
       />
+      <PiratePx COUNT_IDENTIFIER={"share-group/:groupName/:groupCode"} />;
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

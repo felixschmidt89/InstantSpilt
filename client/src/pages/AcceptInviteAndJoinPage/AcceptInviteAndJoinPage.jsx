@@ -8,6 +8,7 @@ import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesIn
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import styles from "./AcceptInviteAndJoinPage.module.css";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 /**
  * Addresses users joining a group via invitation link.
@@ -42,6 +43,7 @@ const AcceptInviteAndJoinPage = () => {
         title={`Invitation to join ${groupName}`}
         description={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
       />
+      <PiratePx COUNT_IDENTIFIER={"/join/:groupName/:groupCode"} />;
       <div className={styles.explanationContainer}>
         <h1>Hey there!</h1>
         {isLoading && <Spinner />}

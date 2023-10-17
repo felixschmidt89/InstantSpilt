@@ -6,6 +6,7 @@ import NavigateButton from "../../components/reuseableComponents/NavigateButton/
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 const GroupCodeExplanationPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -13,6 +14,7 @@ const GroupCodeExplanationPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - GroupCode explanation' />
+      <PiratePx COUNT_IDENTIFIER={"groupcode-explanation"} />
       <NavigateButton
         route={"onboarding"}
         buttonText={faRightLong}

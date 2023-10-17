@@ -10,6 +10,7 @@ import NavigateButton from "../../components/reuseableComponents/NavigateButton/
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 // Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
 const BALANCE_THRESHOLD = 0.01;
@@ -37,6 +38,7 @@ const UserPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - User details' />
       {/* Button to go back to the "instant-split" page */}
+      <PiratePx COUNT_IDENTIFIER={"user-page/:userId"} />;
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

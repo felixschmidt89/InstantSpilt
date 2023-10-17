@@ -6,6 +6,7 @@ import styles from "./ForgetGroupOnDevicePage.module.css";
 import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
@@ -21,6 +22,7 @@ const ForgetGroupOnDevicePage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Forget group' />
+      <PiratePx COUNT_IDENTIFIER={"leave-group/:groupName/:groupCode"} />;
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

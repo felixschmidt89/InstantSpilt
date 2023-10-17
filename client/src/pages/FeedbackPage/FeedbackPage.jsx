@@ -7,6 +7,7 @@ import styles from "./FeedbackPage.module.css";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 // Define the API URL using environment variable
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -87,7 +88,7 @@ export default function FeedbackPage() {
       {/* Set page title and meta tags */}
       <HelmetMetaTagsNetlify title='InstantSplit - Contact' />
       {/* Navigation button to go back to main*/}
-
+      <PiratePx COUNT_IDENTIFIER={"feedback/:groupCode"} />;
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
@@ -96,7 +97,6 @@ export default function FeedbackPage() {
       />
       <h1>Leave a message</h1>
       {/* Check if the form should be displayed */}
-
       {showForm ? (
         <div className={styles.container}>
           {/* Form for user feedback, with multipart/form-data encoding for file upload */}
@@ -202,6 +202,7 @@ export default function FeedbackPage() {
           <p>{feedbackMessage}</p>
         </div>
       )}
+      <PiratePx COUNT_IDENTIFIER={"feedback/:groupCode"} />
     </main>
   );
 }
