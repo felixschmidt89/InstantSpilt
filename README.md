@@ -11,15 +11,21 @@ A MERN application designed for settling group expenses with a focus on function
 ## Access the main application or try a demo.
 
 - Access the application starting from scratch [here](https://www.instantsplit.de/), create your own group, and start adding users, expenses and settle payments.
-- Alternatively, [join](https://www.instantsplit.de/share-group/Italy%20Trip%20(Public%20Demo)/EOUEPI) the DemoGroup with test data for a better immediate understanding of the application's main functionalities.
+- Alternatively, [join](<https://www.instantsplit.de/share-group/Italy%20Trip%20(Public%20Demo)/EOUEPI>) the DemoGroup with test data for a better immediate understanding of the application's main functionalities.
 
 ## Project Status
+
 - Status: MVP deployed (03/10/2023), this project will continue in ongoing development.
 - I'm delighted to announce that, with the release of the MVP, I've successfully implemented the fundamental functionality for easy expense splitting, and the app is ready for use.
 - I had the project idea recently, after each of my friends had to download an app to settle our shared trip expenses.
 - As a web development student open to internships and entry-level developer roles, I embarked on this project with the dual purpose of learning and showcasing my skills, while also creating a valuable tool for others to benefit from.
 
+## Acknowledgements
+
+- Shoutouts to @jstayton and his truly amazing [piratepx](https://github.com/piratepx) tool. It's a super simple to implement yet powerful beauty providing exactly what I needed: privacy-respecting usage insights without spying on my user(s). I just love it, thanks!
+
 ## Learnings
+
 - Swiftly grasped the advantages of establishing a modular project structure aligned with industry best practices and conventions. This approach significantly accelerated my progress once I initially set up the server and database.
 - Furthermore, the experience of building a Full Stack App from scratch provided me with profound insights into the fundamental mechanics of web applications.
 - While I had acquired knowledge in JavaScript and related technologies for both Frontend and Backend, I grappled with uncertainty regarding my career path. However, as I delved into the development of this app, I swiftly developed an appreciation for the immediate rewards of actually seeing results and recognized the beauty of React. Consequently, I've chosen to initially focus on Frontend as my primary career path.
