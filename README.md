@@ -22,7 +22,7 @@ A MERN application designed for settling group expenses with a focus on function
 
 ## Acknowledgements
 
-- Shoutouts to @jstayton and his truly amazing [piratepx](https://github.com/piratepx) tool. It's a super simple to implement yet powerful beauty providing exactly what I needed: privacy-respecting usage insights without spying on my user(s). I just love it, thanks!
+- Shoutouts to [@jstayton](https://github.com/jstayton) and his truly amazing [piratepx](https://github.com/piratepx) tool. It's a super simple to implement yet powerful beauty providing exactly what I needed: privacy-respecting usage insights without spying on my user(s). I just love it, thanks!
 
 ## Learnings
 
