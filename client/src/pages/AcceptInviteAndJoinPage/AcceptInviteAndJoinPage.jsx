@@ -72,6 +72,10 @@ const AcceptInviteAndJoinPage = () => {
               To join <strong>{groupName}</strong>, and settle expenses
               immediately, simply accept this invitation.
             </p>
+            <h2>Are you in?</h2>
+            <button className={styles.button} onClick={handleAcceptInvitation}>
+              Sure!
+            </button>
             <p className={styles.terms}>
               By using InstantSplit you agree to our{" "}
               <span className={styles.noWrap}>
@@ -81,10 +85,6 @@ const AcceptInviteAndJoinPage = () => {
                 .
               </span>
             </p>
-            <h2>Are you in?</h2>
-            <button className={styles.button} onClick={handleAcceptInvitation}>
-              Sure!
-            </button>
           </>
         )}
       </div>

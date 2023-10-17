@@ -25,7 +25,8 @@ const TermsAndConditionsPage = () => {
         <p className={styles.note}>
           By using InstantSplit, you acknowledge and accept our terms and
           conditions. If you do not agree with these terms, please do not use
-          the application.
+          the application. These terms and conditions were last updated on{" "}
+          <strong>17/10/2023</strong>.
         </p>
         {termsAndConditionsContent.map((section) => (
           <div key={section.key}>
@@ -34,10 +35,6 @@ const TermsAndConditionsPage = () => {
           </div>
         ))}
       </div>
-      <p className={styles.note}>
-        These terms and conditions were last updated on{" "}
-        <strong>17/11/2023</strong>.
-      </p>
     </main>
   );
 };
