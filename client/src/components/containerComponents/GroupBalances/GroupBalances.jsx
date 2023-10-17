@@ -6,6 +6,7 @@ import axios from "axios";
 import styles from "./GroupBalances.module.css";
 import Spinner from "../../reuseableComponents/Spinner/Spinner";
 import emojiConstants from "../../../constants/emojiConstants";
+import PiratePx from "../../reuseableComponents/PiratePx/PiratePx";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -67,6 +68,7 @@ export default function GroupBalances() {
   return isLoading ? (
     <div className={styles.spinner}>
       <Spinner />
+      <PiratePx COUNT_IDENTIFIER={"group-balances"} />
     </div>
   ) : (
     <div className={styles.balancesContainer}>

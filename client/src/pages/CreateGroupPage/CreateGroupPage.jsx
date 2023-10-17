@@ -52,7 +52,6 @@ export default function CreateGroupPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Create group' />
-      <PiratePx COUNT_IDENTIFIER={"create-group"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
@@ -82,6 +81,7 @@ export default function CreateGroupPage() {
           </div>
         )}
       </form>
+      <PiratePx COUNT_IDENTIFIER={"create-group"} />
     </main>
   );
 }

@@ -17,7 +17,8 @@ export default function CreateExpensePage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Add payment' />
-      <PiratePx COUNT_IDENTIFIER={"create-expense"} />;
+      <PiratePx COUNT_IDENTIFIER={"create-expense"} />
+
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}

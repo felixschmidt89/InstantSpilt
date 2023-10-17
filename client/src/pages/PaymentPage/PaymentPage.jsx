@@ -18,7 +18,7 @@ const PaymentPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Payment details' />
-      <PiratePx COUNT_IDENTIFIER={"payment-page/:itemId"} />;
+      <PiratePx COUNT_IDENTIFIER={"payment-page/:itemId"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

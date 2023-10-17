@@ -32,7 +32,8 @@ export default function UpdatePaymentPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Update payment' />
-      <PiratePx COUNT_IDENTIFIER={"update-payment/:itemId"} />;
+      <PiratePx COUNT_IDENTIFIER={"update-payment/:itemId"} />
+
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}

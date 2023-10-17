@@ -43,7 +43,7 @@ const AcceptInviteAndJoinPage = () => {
         title={`Invitation to join ${groupName}`}
         description={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
       />
-      <PiratePx COUNT_IDENTIFIER={"/join/:groupName/:groupCode"} />;
+      <PiratePx COUNT_IDENTIFIER={"/join/:groupName/:groupCode"} />
       <div className={styles.explanationContainer}>
         <h1>Hey there!</h1>
         {isLoading && <Spinner />}

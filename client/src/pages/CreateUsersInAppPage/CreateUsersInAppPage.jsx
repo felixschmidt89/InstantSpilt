@@ -17,7 +17,7 @@ function CreateUsersInAppPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Add user' />
-      <PiratePx COUNT_IDENTIFIER={"create-users-inapp"} />;
+      <PiratePx COUNT_IDENTIFIER={"create-users-inapp"} />
       <div className={styles.container}>
         <NavigateButton
           route={"instant-split"}

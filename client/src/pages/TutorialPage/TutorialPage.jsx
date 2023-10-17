@@ -14,13 +14,13 @@ function TutorialPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Tutorial' />
+      <PiratePx COUNT_IDENTIFIER={"tutorial/:groupName/:groupCode"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
       />
-      <PiratePx COUNT_IDENTIFIER={"tutorial/:groupName/:groupCode"} />;
       <div className={styles.container}>
         <h1>Tutorial</h1>
         <ExplainMainFunctionalities />

@@ -17,7 +17,6 @@ function CreateUsersDuringSignUpPage() {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Add user' />
       <PiratePx COUNT_IDENTIFIER={"create-users-signup"} />
-
       <NavigateButton
         route={"groupcode-explanation"}
         buttonText={faRightLong}

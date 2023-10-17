@@ -10,7 +10,7 @@ function SettleGroupExpensesPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Settle expenses' />
-      <PiratePx COUNT_IDENTIFIER={"settle-expenses"} />;
+      <PiratePx COUNT_IDENTIFIER={"settle-expenses"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

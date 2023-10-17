@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./PiratePx.module.css";
 
 /**
  * PiratePx component rendering a transparent image to get a simple, privacy-respecting, no cookie, zero JavaScript usage counter. Incremented by one, whenever the page is rendered. No session or single user identification.
@@ -12,6 +13,7 @@ const projectId = import.meta.env.VITE_PIRATEPX_PROJECT_ID;
 const PiratePx = ({ COUNT_IDENTIFIER }) => {
   return (
     <img
+      className={styles.piratePx}
       src={`https://app.piratepx.com/ship?p=${projectId}&i=${COUNT_IDENTIFIER}`}
       alt=''
     />

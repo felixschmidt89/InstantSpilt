@@ -87,8 +87,8 @@ export default function FeedbackPage() {
     <main>
       {/* Set page title and meta tags */}
       <HelmetMetaTagsNetlify title='InstantSplit - Contact' />
+      <PiratePx COUNT_IDENTIFIER={"feedback/:groupCode"} />
       {/* Navigation button to go back to main*/}
-      <PiratePx COUNT_IDENTIFIER={"feedback/:groupCode"} />;
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
@@ -202,7 +202,6 @@ export default function FeedbackPage() {
           <p>{feedbackMessage}</p>
         </div>
       )}
-      <PiratePx COUNT_IDENTIFIER={"feedback/:groupCode"} />
     </main>
   );
 }

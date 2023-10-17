@@ -26,7 +26,7 @@ const ItemNavigatorPage = () => {
 
   return (
     <main>
-      <PiratePx COUNT_IDENTIFIER={"item-page"} />;
+      <PiratePx COUNT_IDENTIFIER={"item-page"} />
     </main>
   );
 };

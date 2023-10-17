@@ -24,13 +24,13 @@ const EnterGroupCode = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Enter groupCode' />
+      <PiratePx COUNT_IDENTIFIER={"enter-groupcode"} />
       <NavigateButton
         route={"homepage"}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
       />
-      <PiratePx COUNT_IDENTIFIER={"enter-groupcode"} />;
       <div className={style.container}>
         <h1>Enter groupCode</h1>
         <form onSubmit={handleFormSubmit}>

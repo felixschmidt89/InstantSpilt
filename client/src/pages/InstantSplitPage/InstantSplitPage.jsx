@@ -59,7 +59,8 @@ export default function InstantSplitPage() {
         <HelmetMetaTagsNetlify
           title={`InstantSplit - Main (${groupData.group.groupName})`}
         />
-        <PiratePx COUNT_IDENTIFIER={"instant-split"} />;
+        <PiratePx COUNT_IDENTIFIER={"instant-split"} />
+
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
         {/* Display UserActionsComponent */}
@@ -90,10 +91,6 @@ export default function InstantSplitPage() {
         {view === "view1" ? <GroupHistory /> : <GroupBalances />}
         {/* Display GroupActionsComponent */}
         <GroupActionsComponent />
-        <img
-          src='https://app.piratepx.com/ship?p=95f30bde-a982-4fc5-9e60-1cc14ea53069'
-          alt='Privacy first analytics'
-        />
       </main>
     );
   }

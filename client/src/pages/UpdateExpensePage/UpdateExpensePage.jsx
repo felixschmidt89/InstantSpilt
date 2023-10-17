@@ -29,7 +29,7 @@ function UpdateExpensePage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Update expense' />
-      <PiratePx COUNT_IDENTIFIER={"update-expense/:expenseId"} />;
+      <PiratePx COUNT_IDENTIFIER={"update-expense/:expenseId"} />
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}

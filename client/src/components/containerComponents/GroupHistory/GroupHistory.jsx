@@ -5,6 +5,7 @@ import Spinner from "../../reuseableComponents/Spinner/Spinner";
 import RenderGroupExpenses from "./ChildComponents/RenderGroupExpenses";
 import RenderGroupPayments from "./ChildComponents/RenderGroupPayments";
 import emojiConstants from "../../../constants/emojiConstants";
+import PiratePx from "../../reuseableComponents/PiratePx/PiratePx";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -61,6 +62,7 @@ export default function GroupHistory({ groupCode }) {
   return isLoading ? (
     <div className={styles.spinner}>
       <Spinner />
+      <PiratePx COUNT_IDENTIFIER={"group-history"} />
     </div>
   ) : (
     <div className={styles.container}>

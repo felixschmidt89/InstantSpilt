@@ -37,8 +37,8 @@ const UserPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - User details' />
+      <PiratePx COUNT_IDENTIFIER={"user-page/:userId"} />
       {/* Button to go back to the "instant-split" page */}
-      <PiratePx COUNT_IDENTIFIER={"user-page/:userId"} />;
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
