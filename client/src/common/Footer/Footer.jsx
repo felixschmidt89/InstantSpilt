@@ -8,6 +8,7 @@ import {
   faCopyright,
   faScaleBalanced,
   faCode,
+  faFileLines,
 } from "@fortawesome/free-solid-svg-icons";
 import NavigateFontAwesomeIcon from "../../components/reuseableComponents/NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
 
@@ -32,6 +33,11 @@ export default function Footer() {
         icon={faCode}
         url={"https://github.com/felixschmidt89/InstantSpilt"}
         tooltip={"GitHub repository"}
+      />
+      <NavigateFontAwesomeIcon
+        icon={faFileLines}
+        route={"/terms-and-conditions/"}
+        tooltip={"Terms and Conditions"}
       />
       <NavigateFontAwesomeIcon
         icon={faScaleBalanced}

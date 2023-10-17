@@ -30,6 +30,7 @@ import TutorialPage from "./pages/TutorialPage/TutorialPage";
 import UpdateExpensePage from "./pages/UpdateExpensePage/UpdateExpensePage";
 import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
 import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
+import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
 
 function App() {
   return (
@@ -94,6 +95,10 @@ function App() {
             element={<ShareGroupPage />}
           />
           <Route path='/feedback/:groupCode' element={<FeedbackPage />} />
+          <Route
+            path='/terms-and-conditions'
+            element={<TermsAndConditionsPage />}
+          />
 
           <Route path='*' element={<PageNotFoundPage />} />
         </Routes>

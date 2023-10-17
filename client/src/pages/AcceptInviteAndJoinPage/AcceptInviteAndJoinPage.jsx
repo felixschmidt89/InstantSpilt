@@ -1,7 +1,7 @@
 // DONE adding only meaningful necessary comments
 
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
@@ -71,6 +71,15 @@ const AcceptInviteAndJoinPage = () => {
             <p>
               To join <strong>{groupName}</strong>, and settle expenses
               immediately, simply accept this invitation.
+            </p>
+            <p className={styles.terms}>
+              By using InstantSplit you agree to our{" "}
+              <span className={styles.noWrap}>
+                <Link to='/terms-and-conditions/' target='_blank'>
+                  terms and conditions
+                </Link>
+                .
+              </span>
             </p>
             <h2>Are you in?</h2>
             <button className={styles.button} onClick={handleAcceptInvitation}>

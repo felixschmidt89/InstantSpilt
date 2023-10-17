@@ -11,6 +11,13 @@
   margin-bottom: 2rem;
 }
 
+.terms {
+  font-style: italic;
+  width: 90%;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+
 .noWrap {
   white-space: nowrap;
 }
@@ -26,6 +33,7 @@
 
 .groupLink {
   text-decoration: none;
+  font-size: 1.7rem;
 }
 
 .groupLink:focus,
@@ -36,4 +44,8 @@
 
 .groupLink:hover {
   color: var(--color-success);
+}
+
+h2 {
+  font-size: 2rem;
 }

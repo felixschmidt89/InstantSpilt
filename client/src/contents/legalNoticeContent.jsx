@@ -1,7 +1,3 @@
-/** @format */
-
-import React from "react";
-
 const legalNoticeContent = [
   {
     key: "section1",
@@ -13,9 +9,13 @@ const legalNoticeContent = [
           Paul-Grasse-Straße 2 <br />
           10409 Berlin <br />
         </address>
-        <h3>Vertreten durch</h3>
+        <div>
+          <strong>Vertreten durch</strong>
+        </div>
         <p>Felix Schmidt</p>
-        <h3>Kontakt</h3>
+        <p>
+          <strong>Kontakt</strong>
+        </p>
         <p>
           Telefon: 030-98354489 <br />
           E-Mail:{" "}

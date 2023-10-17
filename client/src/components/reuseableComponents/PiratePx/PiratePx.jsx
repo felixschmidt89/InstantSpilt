@@ -1,15 +1,15 @@
 import React from "react";
 import styles from "./PiratePx.module.css";
 
+// Get piratepx project ID from environment variable
+const projectId = import.meta.env.VITE_PIRATEPX_PROJECT_ID;
+
 /**
  * PiratePx component rendering a transparent image to get a simple, privacy-respecting, no cookie, zero JavaScript usage counter. Incremented by one, whenever the page is rendered. No session or single user identification.
  *
  * @param {string} COUNT_IDENTIFIER - Unique identifier for the page/ component/ action to be incremented by one
  * @returns {JSX.Element} - transparent image.
  */
-
-const projectId = import.meta.env.VITE_PIRATEPX_PROJECT_ID;
-
 const PiratePx = ({ COUNT_IDENTIFIER }) => {
   return (
     <img

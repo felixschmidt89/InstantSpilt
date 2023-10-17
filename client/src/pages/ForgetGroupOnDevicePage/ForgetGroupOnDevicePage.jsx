@@ -23,23 +23,24 @@ const ForgetGroupOnDevicePage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Forget group' />
       <PiratePx COUNT_IDENTIFIER={"leave-group/:groupName/:groupCode"} />
-
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
       />
-      <h1>Forget group on this device</h1>
-      <p>
-        Are you sure you want to leave <strong>{groupName}</strong> on this
-        device?
-      </p>
-      <p>
-        If you ever wish to rejoin later, remember your{" "}
-        <strong>GroupCode:</strong>
-        <CopyToClipboard infoToCopy={groupCode} />
-      </p>
+      <div className={styles.contentContainer}>
+        <h1>Forget group on this device</h1>
+        <p>
+          Are you sure you want to leave <strong>{groupName}</strong> on this
+          device?
+        </p>
+        <p>
+          If you ever wish to rejoin later, remember your{" "}
+          <strong>GroupCode:</strong>
+          <CopyToClipboard infoToCopy={groupCode} />
+        </p>
+      </div>
       <div className={styles.buttonContainer}>
         <button className={styles.button} onClick={handleConfirm}>
           Confirm

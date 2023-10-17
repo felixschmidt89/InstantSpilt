@@ -27,8 +27,8 @@ const LegalNoticePage = () => {
         </p>
         {legalNoticeContent.map((section) => (
           <div key={section.key}>
-            <h2>{section.title}</h2>
-            {section.content}
+            <h2 className={styles.header}>{section.title}</h2>
+            <p>{section.content}</p>
           </div>
         ))}
       </div>

@@ -8,16 +8,15 @@ const HomePage = () => {
   return (
     <main className={styles.container}>
       <HelmetMetaTagsNetlify title='InstantSplit - Homepage' />
-      <PiratePx COUNT_IDENTIFIER={"homepage"} />
+      <PiratePx COUNT_IDENTIFIER='homepage' />
       <div className={styles.introContainer}>
         <h1>Welcome to InstantSplit!</h1>
         <p>
           InstantSplit is the hassle-free way to settle group expenses with no
           user registration or app download while sharing minimal data.
           <div className={styles.strong}>
-            {" "}
             <span className={styles.noWrap}>No cookies.</span>{" "}
-            <span className={styles.noWrap}>No visitors tracking.</span>{" "}
+            <span className={styles.noWrap}>No visitor tracking.</span>{" "}
             <span className={styles.noWrap}>No monetization.</span>{" "}
             <span className={styles.noWrap}>Ever.</span>
           </div>
@@ -32,6 +31,12 @@ const HomePage = () => {
           <strong>Join an existing group</strong>
         </Link>
       </div>
+      <p className={styles.terms}>
+        By using InstantSplit you agree to our{" "}
+        <span className={styles.noWrap}>
+          <Link to='/terms-and-conditions/'>terms and conditions</Link>.
+        </span>
+      </p>
     </main>
   );
 };

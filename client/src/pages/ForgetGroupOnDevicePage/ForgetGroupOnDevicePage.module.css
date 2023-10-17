@@ -1,3 +1,8 @@
+.contentContainer {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .button {
   background-color: var(--color-error);
   color: var(--color-main);
