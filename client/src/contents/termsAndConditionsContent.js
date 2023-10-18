@@ -1,4 +1,6 @@
-const termsAndConditionsContent = [
+export const lastUpdateDate = "17/10/2023";
+
+export const sections = [
   {
     key: "section1",
     title: "No Liability",
@@ -78,5 +80,3 @@ const termsAndConditionsContent = [
       "These terms and conditions constitute the entire agreement between you and InstantSplit concerning your use of the application, superseding any prior or contemporaneous agreements or understandings.",
   },
 ];
-
-export default termsAndConditionsContent;

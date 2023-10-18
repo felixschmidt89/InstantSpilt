@@ -79,7 +79,8 @@ const AcceptInviteAndJoinPage = () => {
             <p className={styles.terms}>
               By using InstantSplit you agree to our{" "}
               <span className={styles.noWrap}>
-                <Link to='/terms-and-conditions/' target='_blank'>
+                <Link
+                  to={`/terms-and-conditions/invite/${groupName}/${groupCode}`}>
                   terms and conditions
                 </Link>
                 .

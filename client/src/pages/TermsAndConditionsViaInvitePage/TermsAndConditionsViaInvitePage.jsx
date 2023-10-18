@@ -1,8 +1,6 @@
-// DONE adding only meaningful necessary comments
-
 import React from "react";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import styles from "./TermsAndConditions.module.css";
+import styles from "./TermsAndConditionsViaInvitePage.module.css";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
@@ -10,7 +8,13 @@ import {
   sections,
   lastUpdateDate,
 } from "../../contents/termsAndConditionsContent";
-const TermsAndConditionsPage = () => {
+import { useParams } from "react-router-dom";
+
+/**
+ * TermsAndConditions page for users joining a group via invite link, ensuring that the back button renders the URL associated with the group they have been invited to.
+ */
+const TermsAndConditionsViaInvitePage = () => {
+  const { groupName, groupCode } = useParams();
   return (
     <main>
       {/* Set meta tags for the page */}
@@ -19,10 +23,10 @@ const TermsAndConditionsPage = () => {
         description={`Instant Split - Terms and Conditions. Last updated on ${lastUpdateDate}.`}
       />
       {/* Track page renders */}
-      <PiratePx COUNT_IDENTIFIER={"terms-and-conditions"} />
-      {/* Create a button for navigating to homepage */}
+      <PiratePx COUNT_IDENTIFIER={"terms-and-conditions-via-invite"} />
+      {/* Create a button for navigating back to invite URL */}
       <NavigateButton
-        route={"homepage"}
+        route={`join/${groupName}/${groupCode}`}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
@@ -49,4 +53,4 @@ const TermsAndConditionsPage = () => {
   );
 };
 
-export default TermsAndConditionsPage;
+export default TermsAndConditionsViaInvitePage;
