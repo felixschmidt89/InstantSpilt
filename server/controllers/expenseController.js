@@ -26,8 +26,6 @@ export const createExpense = async (req, res) => {
       groupCode,
     });
 
-    const associatedUsers = [expensePayer, ...expenseBeneficiaries];
-
     const expenseAmountPerBeneficiary =
       expenseAmount / expenseBeneficiaries.length;
 
@@ -40,7 +38,6 @@ export const createExpense = async (req, res) => {
       groupCode,
       expensePayer: expensePayer._id,
       expenseBeneficiaries: beneficiaryIds,
-      associatedUsers,
     });
 
     const expense = await newExpense.save();

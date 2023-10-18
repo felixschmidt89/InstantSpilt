@@ -10,9 +10,11 @@ import GroupBalances from "../../components/containerComponents/GroupBalances/Gr
 import GroupHistory from "../../components/containerComponents/GroupHistory/GroupHistory";
 import GroupActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorage";
+import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
 import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import removeActiveGroupCodeFromLocalStorageHelper from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
+import removeViewStateFromLocalStorageHelper from "../../helpers/removeViewStateFromLocalStorageHelper";
 
 /**
  * Main component of the application. Checks on mount whether active groupCode exists in database. If not, groupCode will
@@ -31,7 +33,9 @@ export default function InstantSplitPage() {
   // If not, delete it from LocalSpace and navigate to homepage
   useEffect(() => {
     if (groupExists === false) {
+      removeActiveGroupCodeFromLocalStorageHelper(groupCode);
       removeActiveGroupCodeFromLocalStorage();
+      removeViewStateFromLocalStorageHelper();
       navigate("/homepage/");
     }
   }, [navigate, groupExists]);

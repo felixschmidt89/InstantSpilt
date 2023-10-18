@@ -4,9 +4,11 @@
  * Removes the 'activeGroupCode' property from local storage.
  * @returns {boolean} - Returns true if 'activeGroupCode' was successfully removed, false if there was an error.
  */
-const removeActiveGroupCodeFromLocalStorage = () => {
+const removeActiveGroupCodeFromLocalStorageHelper = () => {
   try {
-    localStorage.removeItem("activeGroupCode");
+    if (localStorage.getItem("activeGroupCode")) {
+      localStorage.removeItem("activeGroupCode");
+    }
     return true;
   } catch (error) {
     console.error("Error removing activeGroupCode from local storage:", error);
@@ -14,4 +16,4 @@ const removeActiveGroupCodeFromLocalStorage = () => {
   }
 };
 
-export default removeActiveGroupCodeFromLocalStorage;
+export default removeActiveGroupCodeFromLocalStorageHelper;

@@ -9,8 +9,9 @@
 const removeActiveGroupCodeFromStoredGroupCodesHelper = (groupCode) => {
   try {
     // Get the storedGroupCodes array from local storage
-    const storedGroupCodes =
-      JSON.parse(localStorage.getItem("storedGroupCodes")) || [];
+    const storedGroupCodes = JSON.parse(
+      localStorage.getItem("storedGroupCodes")
+    );
 
     // Find the index of the activeGroupCode in the array
     const index = storedGroupCodes.findIndex((code) => code === groupCode);
