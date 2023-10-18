@@ -5,6 +5,7 @@ import Expense from '../models/Expense.js';
 import User from '../models/User.js';
 import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../utils/logDevErrorHelper.js';
+import setLastActiveHelper from '../utils/setLastActiveHelper.js';
 
 /** Creates a new expense
  *  Updates totalExpenseAmountPaid by expense payer and totalExpenseBenefittedAmount from by expense beneficiaries
@@ -51,6 +52,9 @@ export const createExpense = async (req, res) => {
         await beneficiary.updateTotalExpenseBenefitted();
       }),
     );
+
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
