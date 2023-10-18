@@ -4,11 +4,15 @@ import User from '../models/User.js';
 import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../utils/logDevErrorHelper.js';
 import Expense from '../models/Expense.js';
+import setLastActiveHelper from '../utils/setLastActiveHelper.js';
 
 export const createPayment = async (req, res) => {
   try {
     const { userName, groupCode, paymentAmount, paymentRecipientName } =
       req.body;
+
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
 
     const paymentMaker = await User.findOne({ userName, groupCode });
 
@@ -70,6 +74,9 @@ export const updatePayment = async (req, res) => {
     const { userName, groupCode, paymentAmount, paymentRecipientName } =
       req.body;
 
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
+
     const paymentMaker = await User.findOne({ userName, groupCode });
 
     const paymentRecipient = await User.findOne({
@@ -90,14 +97,14 @@ export const updatePayment = async (req, res) => {
 
     const updatedPaymentData = {
       paymentMaker: paymentMaker._id,
-      paymentRecipient: paymentRecipient.id,
+      paymentRecipient: paymentRecipient._id,
       groupCode,
       paymentAmount,
     };
 
-    const updatedPayment = await Expense.findByIdAndUpdate(
-      expenseId,
-      updatedExpenseData,
+    const updatedPayment = await Payment.findByIdAndUpdate(
+      paymentId,
+      updatedPaymentData,
       { new: true },
     );
 
@@ -106,8 +113,8 @@ export const updatePayment = async (req, res) => {
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
-      data: { payment },
-      message: 'Payment created successfully',
+      data: { payment: updatedPayment },
+      message: 'Payment updated successfully',
     });
   } catch (error) {
     if (error.name === 'ValidationError') {
@@ -121,7 +128,7 @@ export const updatePayment = async (req, res) => {
         })),
       });
     } else {
-      logDevErrorHelper('Error creating expense:', error);
+      logDevErrorHelper('Error updating payment:', error);
       sendInternalErrorHelper(res);
     }
   }
@@ -133,6 +140,10 @@ export const getPaymentInfo = async (req, res) => {
     const payment = await Payment.findById(paymentId)
       .populate('paymentMaker', 'userName')
       .populate('paymentRecipient', 'userName');
+
+    // Set the lastActive property of the group to now
+    const groupCode = payment.groupCode;
+    setLastActiveHelper(groupCode);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
@@ -153,7 +164,9 @@ export const deletePayment = async (req, res) => {
       .populate('paymentRecipient')
       .populate('paymentMaker');
 
-    console.log(paymentToDelete);
+    // Set the lastActive property of the group to now
+    const groupCode = paymentToDelete.groupCode;
+    setLastActiveHelper(groupCode);
 
     const { paymentRecipient, paymentMaker } = paymentToDelete;
 

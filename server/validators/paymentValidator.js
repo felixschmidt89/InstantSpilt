@@ -1,6 +1,6 @@
 import { check } from 'express-validator';
 
-export const createPaymentValidator = [
+export const paymentValidator = [
   check('paymentAmount')
     .isNumeric()
     .custom((value) => value <= 9999.99),

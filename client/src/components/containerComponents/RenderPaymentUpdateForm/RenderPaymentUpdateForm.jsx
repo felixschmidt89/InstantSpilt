@@ -14,6 +14,7 @@ export default function RenderPaymentUpdateForm({
 }) {
   const inputField = useRef(null);
   const navigate = useNavigate();
+  const paymentId = paymentDetails._id;
 
   const [paymentAmount, setPaymentAmount] = useState(
     paymentDetails.paymentAmount
@@ -41,7 +42,7 @@ export default function RenderPaymentUpdateForm({
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${apiUrl}/payments`, {
+      await axios.put(`${apiUrl}/payments/${paymentId}`, {
         userName,
         groupCode,
         paymentAmount,

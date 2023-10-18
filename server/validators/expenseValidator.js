@@ -1,6 +1,6 @@
 import { check } from 'express-validator';
 
-export const createExpenseValidator = [
+export const expenseValidator = [
   check('expenseName').trim().isLength({ min: 1, max: 100 }),
   check('expenseAmount').isFloat({ max: 9999.99 }),
   check('expenseAmountPerBeneficiary').isNumeric(),

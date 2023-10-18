@@ -6,6 +6,7 @@ import Payment from '../models/Payment.js';
 import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
 import isGroupCodeUniqueHelper from '../utils/isGroupCodeUniqueHelper.js';
 import logDevErrorHelper from '../utils/logDevErrorHelper.js';
+import setLastActiveHelper from '../utils/setLastActiveHelper.js';
 
 // Defines customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)
 const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
@@ -31,6 +32,9 @@ export const createGroup = async (req, res) => {
       isUnique = await isGroupCodeUniqueHelper(groupCode);
     }
 
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
+
     const group = await Group.create({ groupName, groupCode });
 
     res.status(StatusCodes.CREATED).json({
@@ -48,6 +52,9 @@ export const changeGroupName = async (req, res) => {
   try {
     const { groupCode, groupName } = req.body;
     const group = await Group.findOneAndUpdate({ groupCode });
+
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
 
     const updatedGroup = await Group.findByIdAndUpdate(
       group._id,
@@ -88,6 +95,8 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
 export const listExpensesAndPaymentsByGroup = async (req, res) => {
   try {
     const { groupCode } = req.params;
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
     const [expenses, payments] = await Promise.all([
       Expense.find({ groupCode }).populate('expensePayer', 'userName'),
       Payment.find({ groupCode })
@@ -114,6 +123,8 @@ export const getGroupInfo = async (req, res) => {
   try {
     const { groupCode } = req.params;
 
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
     const group = await Group.findOne({ groupCode });
 
     res.status(StatusCodes.OK).json({

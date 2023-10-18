@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer';
 import Feedback from '../models/Feedback.js';
 import logDevErrorHelper from '../utils/logDevErrorHelper.js';
 import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
+import setLastActiveHelper from '../utils/setLastActiveHelper.js';
 import winstonLogger from '../utils/winstonLogger.js';
 
 const emailUser = process.env.EMAIL_USER;
@@ -16,6 +17,9 @@ const emailPass = process.env.EMAIL_PASS;
 export const createFeedback = async (req, res) => {
   try {
     const { name, email, messageType, feedback, groupCode, fileId } = req.body;
+
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
 
     const newFeedback = new Feedback({
       name,

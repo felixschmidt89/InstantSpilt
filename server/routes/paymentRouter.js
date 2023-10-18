@@ -9,15 +9,15 @@ import {
   updatePayment,
 } from '../controllers/paymentController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
-import { createPaymentValidator } from '../validators/paymentValidator.js';
+import { paymentValidator } from '../validators/paymentValidator.js';
 
 const router = express.Router();
 
 // Create payment
-router.post('/', createPaymentValidator, createPayment);
+router.post('/', paymentValidator, createPayment);
 
 // Update payment
-router.put('/:paymentId', createPaymentValidator, updatePayment);
+router.put('/:paymentId', paymentValidator, updatePayment);
 
 // Get payment info by id
 router.get('/:paymentId', getPaymentInfo);

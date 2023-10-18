@@ -120,6 +120,9 @@ export const updateExpense = async (req, res) => {
       { new: true },
     );
 
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
+
     // Update total expenses benefitted from by expense beneficiaries concurrently
     await Promise.all(
       groupUsers.map(async (userId) => {
@@ -174,6 +177,11 @@ export const getExpenseInfo = async (req, res) => {
       .populate('expensePayer', 'userName')
       .populate('expenseBeneficiaries', 'userName');
 
+    // Set the lastActive property of the group to now
+    const groupCode = expense.groupCode;
+    console.log(groupCode);
+    setLastActiveHelper(groupCode);
+
     res.status(StatusCodes.OK).json({
       status: 'success',
       data: { expense },
@@ -193,7 +201,10 @@ export const deleteExpense = async (req, res) => {
       .populate('expensePayer')
       .populate('expenseBeneficiaries');
 
-    const { expensePayer, expenseBeneficiaries } = expenseToDelete;
+    const { expensePayer, expenseBeneficiaries, groupCode } = expenseToDelete;
+
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
 
     // Delete the expense using the retrieved _id
     await Expense.deleteOne({ _id: expenseToDelete._id });
@@ -221,6 +232,10 @@ export const deleteExpense = async (req, res) => {
 export const listAllExpensesByGroupCode = async (req, res) => {
   try {
     const { groupCode } = req.params;
+
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
+
     const expenses = await Expense.find({ groupCode });
     res.status(StatusCodes.OK).json({
       status: 'success',

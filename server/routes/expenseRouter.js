@@ -9,16 +9,16 @@ import {
   deleteExpense,
   updateExpense,
 } from '../controllers/expenseController.js';
-import { createExpenseValidator } from '../validators/expenseValidator.js';
+import { expenseValidator } from '../validators/expenseValidator.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 
 const router = express.Router();
 
 // Create an expense
-router.post('/', createExpenseValidator, createExpense);
+router.post('/', expenseValidator, createExpense);
 
 // Update an expense
-router.put('/:expenseId', createExpenseValidator, updateExpense);
+router.put('/:expenseId', expenseValidator, updateExpense);
 
 // Get expense info by id
 router.get('/:expenseId', getExpenseInfo);

@@ -4,10 +4,13 @@ import Expense from '../models/Expense.js';
 import Payment from '../models/Payment.js';
 import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
 import logDevErrorHelper from '../utils/logDevErrorHelper.js';
+import setLastActiveHelper from '../utils/setLastActiveHelper.js';
 
 export const createUser = async (req, res) => {
   try {
     const { userName, groupCode } = req.body;
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
 
     // Check if a user with the same name and group code already exists
     const existingUser = await User.findOne({ userName, groupCode });
@@ -36,6 +39,10 @@ export const getUserInfo = async (req, res) => {
   try {
     const { userId } = req.params;
     const user = await User.findById(userId);
+    const groupCode = user.groupCode;
+
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
@@ -51,6 +58,8 @@ export const getUserInfo = async (req, res) => {
 export const changeUserName = async (req, res) => {
   try {
     const { groupCode, userName, newUserName } = req.body;
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
 
     const updatedUser = await User.findOneAndUpdate(
       { userName, groupCode },
@@ -127,6 +136,10 @@ export const deleteUser = async (req, res) => {
       _id: userId,
     });
 
+    const groupCode = userToDelete.groupCode;
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
+
     await User.deleteOne({ _id: userToDelete._id });
 
     res.status(StatusCodes.NO_CONTENT).json({
@@ -142,6 +155,8 @@ export const deleteUser = async (req, res) => {
 export const listAllUsersByGroupCode = async (req, res) => {
   try {
     const { groupCode } = req.params;
+    // Set the lastActive property of the group to now
+    setLastActiveHelper(groupCode);
     const users = await User.find({ groupCode });
 
     res.status(StatusCodes.OK).json({
