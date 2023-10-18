@@ -7,15 +7,17 @@ import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboar
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import removeActiveGroupCodeFromStoredGroupCodesHelper from "../../helpers/removeActiveGroupCodeFromStoredGroupCodesHelper";
+import removeViewStateFromLocalStorageHelper from "../../helpers/removeViewStateFromLocalStorageHelper";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
   const navigate = useNavigate();
 
   const handleConfirm = () => {
+    removeActiveGroupCodeFromStoredGroupCodesHelper(groupCode);
     removeActiveGroupCodeFromLocalStorage();
-    // Set viewState in local storage to default, so that the user sees the default view when (re-)joining a(nother) group
-    localStorage.setItem("viewState", "view2");
+    removeViewStateFromLocalStorageHelper();
     navigate("/homepage");
   };
 
