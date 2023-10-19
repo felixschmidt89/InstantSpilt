@@ -32,6 +32,9 @@ import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
 import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
 import TermsAndConditionsViaInvitePage from "./pages/TermsAndConditionsViaInvitePage/TermsAndConditionsViaInvitePage";
+import UserHistory from "./pages/UserHistoryPage/UserHistoryPage";
+import UserHistoryPage from "./pages/UserHistoryPage/UserHistoryPage";
+import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/ItemNavigatorUserHistoryPage";
 
 function App() {
   return (
@@ -84,7 +87,14 @@ function App() {
           />
 
           <Route path='/item-page' element={<ItemNavigatorPage />} />
+          <Route
+            path='/user-history-item-page'
+            element={<ItemNavigatorUserHistoryPage />}
+          />
+
           <Route path='/user-page/:userId' element={<UserPage />} />
+          <Route path='/user-history/:userId' element={<UserHistoryPage />} />
+
           <Route path='/payment-page/:itemId' element={<PaymentPage />} />
           <Route path='/expense-page/:itemId' element={<ExpensePage />} />
           <Route

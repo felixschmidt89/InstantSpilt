@@ -84,10 +84,14 @@ export const listExpensesAndPaymentsByUser = async (req, res) => {
     const [expenses, payments] = await Promise.all([
       Expense.find({
         $or: [{ expensePayer: userId }, { expenseBeneficiaries: userId }],
-      }),
+      })
+        .populate('expensePayer', 'userName')
+        .populate('expenseBeneficiaries', 'userName'),
       Payment.find({
         $or: [{ paymentMaker: userId }, { paymentRecipient: userId }],
-      }),
+      })
+        .populate('paymentMaker', 'userName')
+        .populate('paymentRecipient', 'userName'),
     ]);
 
     const userExpensesAndPayments = [...expenses, ...payments];

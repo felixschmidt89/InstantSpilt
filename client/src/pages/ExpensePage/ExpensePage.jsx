@@ -14,7 +14,6 @@ import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
   const expenseDetails = useFetchExpenseInfo(expenseId);
-  console.log(expenseDetails);
 
   return (
     <main>

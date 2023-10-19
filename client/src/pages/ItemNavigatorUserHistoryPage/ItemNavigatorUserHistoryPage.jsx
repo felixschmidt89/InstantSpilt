@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
-const ItemNavigatorPage = () => {
+const ItemNavigatorUserHistoryPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -14,10 +14,10 @@ const ItemNavigatorPage = () => {
     // Check the itemType and navigate accordingly
     if (itemType === "expense") {
       // Navigate to the expense component route
-      navigate(`/expense-page/${itemId}`);
+      navigate(`/user-history-expense-page/${itemId}`);
     } else if (itemType === "payment") {
       // Navigate to the payment component route
-      navigate(`/payment-page/${itemId}`);
+      navigate(`/user-history-payment-page/${itemId}`);
     } else {
       // Handle other itemTypes or no itemType
       navigate("/not-found");
@@ -26,9 +26,9 @@ const ItemNavigatorPage = () => {
 
   return (
     <main>
-      <PiratePx COUNT_IDENTIFIER={"item-navigator-page"} />
+      <PiratePx COUNT_IDENTIFIER={"user-history-item-page"} />
     </main>
   );
 };
 
-export default ItemNavigatorPage;
+export default ItemNavigatorUserHistoryPage;
