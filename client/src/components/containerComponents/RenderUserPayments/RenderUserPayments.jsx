@@ -5,8 +5,7 @@ import DeleteResourceText from "../../reuseableComponents/DeleteResourceText/Del
 import styles from "./RenderUserPayments.module.css";
 import { useParams } from "react-router-dom";
 
-export default function RenderUserPayments({ item }) {
-  const { userId } = useParams();
+export default function RenderUserPayments({ item, handleRerender }) {
   return (
     <div className={styles.payments}>
       <div className={styles.leftColumn}>
@@ -20,7 +19,7 @@ export default function RenderUserPayments({ item }) {
           <DeleteResourceText
             resourceId={item.itemId}
             resourceType={`${item.itemType}s`}
-            route={`/user-history/${userId}`}
+            handleRerender={handleRerender}
           />
         </div>
       </div>

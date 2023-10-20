@@ -1,12 +1,9 @@
-import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import emojiConstants from "../../../constants/emojiConstants";
 import DeleteResourceText from "../../reuseableComponents/DeleteResourceText/DeleteResourceText";
 import styles from "./RenderUserExpenses.module.css";
 
 export default function RenderUserExpenses({ item, handleRerender }) {
-  const { userId } = useParams();
-
   return (
     <div className={styles.expenses}>
       <div className={styles.leftColumn}>
@@ -15,7 +12,7 @@ export default function RenderUserExpenses({ item, handleRerender }) {
           <p>{item.expenseAmount.toFixed(2)}€</p>
           <Link
             to={`/user-history-item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
-            update
+            edit
           </Link>
           <DeleteResourceText
             resourceId={item.itemId}
@@ -27,21 +24,16 @@ export default function RenderUserExpenses({ item, handleRerender }) {
       <div className={styles.rightColumn}>
         <div className={styles.borderedContent}>
           <ul>
+            <li>paid by: {item.expensePayer.userName}</li>
+            <li>description: {item.expenseName}</li>
             <li>
-              <strong>paid by</strong>: {item.expensePayer.userName}
-            </li>
-            <li>
-              <strong>description</strong>: {item.expenseName}
-            </li>
-            <li>
-              <strong>beneficiaries</strong>:{" "}
+              beneficiaries:{" "}
               {item.expenseBeneficiaries
                 .map((beneficiary) => beneficiary.userName)
                 .join(", ")}
             </li>
             <li>
-              <strong>amount benefitted</strong>:{" "}
-              {item.expenseAmountPerBeneficiary.toFixed(2)}€
+              amount benefitted: {item.expenseAmountPerBeneficiary.toFixed(2)}€
             </li>
           </ul>
         </div>

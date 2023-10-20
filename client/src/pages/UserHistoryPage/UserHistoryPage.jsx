@@ -4,7 +4,6 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "axios";
 import styles from "./UserHistoryPage.module.css";
-import emojiConstants from "../../constants/emojiConstants";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import RenderUserExpenses from "../../components/containerComponents/RenderUserExpenses/RenderUserExpenses";
 import RenderUserPayments from "../../components/containerComponents/RenderUserPayments/RenderUserPayments";
@@ -66,10 +65,13 @@ export default function UserHistoryPage() {
     fetchUserExpensesAndPayments();
   }, [userId, rerender]);
 
-  // Function to trigger re-render
+  // Trigger rerender
   const handleRerender = () => {
     setRerender((prevValue) => prevValue + 1);
   };
+
+  console.log(userExpensesAndPayments);
+
   return isLoading ? (
     <main>
       <NavigateButton
@@ -78,9 +80,9 @@ export default function UserHistoryPage() {
         alignment={"left"}
         isIcon={true}
       />
+      <h1>User history</h1>
       <div className={styles.spinner}>
         <Spinner />
-        <PiratePx COUNT_IDENTIFIER={"user-history"} />
       </div>
     </main>
   ) : (
@@ -91,6 +93,9 @@ export default function UserHistoryPage() {
         alignment={"left"}
         isIcon={true}
       />
+      <PiratePx COUNT_IDENTIFIER={"user-history"} />
+      <h1>User history</h1>
+
       <div className={styles.container}>
         {userExpensesAndPayments.length > 0 ? (
           <ul>
@@ -111,7 +116,9 @@ export default function UserHistoryPage() {
             ))}
           </ul>
         ) : (
-          <p className={styles.failMessage}>No expenses nor payments.</p>
+          <p className={styles.failMessage}>
+            No associated expenses or payments.
+          </p>
         )}
         {error && <p className={styles.error}>{error}</p>}
       </div>
