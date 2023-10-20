@@ -105,11 +105,13 @@ export default function UserHistoryPage() {
                   <RenderUserExpenses
                     item={item}
                     handleRerender={handleRerender}
+                    userId={userId}
                   />
                 ) : (
                   <RenderUserPayments
                     item={item}
                     handleRerender={handleRerender}
+                    userId={userId}
                   />
                 )}
               </li>

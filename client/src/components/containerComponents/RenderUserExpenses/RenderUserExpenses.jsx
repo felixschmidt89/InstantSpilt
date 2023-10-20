@@ -3,7 +3,7 @@ import emojiConstants from "../../../constants/emojiConstants";
 import DeleteResourceText from "../../reuseableComponents/DeleteResourceText/DeleteResourceText";
 import styles from "./RenderUserExpenses.module.css";
 
-export default function RenderUserExpenses({ item, handleRerender }) {
+export default function RenderUserExpenses({ item, handleRerender, userId }) {
   return (
     <div className={styles.expenses}>
       <div className={styles.leftColumn}>
@@ -11,7 +11,7 @@ export default function RenderUserExpenses({ item, handleRerender }) {
         <div className={styles.expenseAmount}>
           <p>{item.expenseAmount.toFixed(2)}€</p>
           <Link
-            to={`/user-history-item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
+            to={`/user-history-item-page?itemId=${item.itemId}&itemType=${item.itemType}&userId=${userId}`}>
             edit
           </Link>
           <DeleteResourceText

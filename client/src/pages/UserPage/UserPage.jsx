@@ -1,16 +1,17 @@
 // DONE adding only meaningful necessary comments
 
 import React from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useFetchUserInfo from "../../hooks/useFetchUserInfo";
 import emojiConstants from "../../constants/emojiConstants";
 import styles from "./UserPage.module.css";
 import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
+import RouteButton from "../../components/reuseableComponents/RouteButton/RouteButton";
 
 // Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
 const BALANCE_THRESHOLD = 0.01;
@@ -50,16 +51,14 @@ const UserPage = () => {
           <h1>{userInfo.userName}</h1>
           <h2>
             {/* Display the userBalance with different color depending on the value */}
-            Balance:
+            balance:
             <span className={balanceClass}>
               {userInfo.userBalance.toFixed(2)}€
             </span>
           </h2>
-          <br />
           <div>
             {/* Display the total expenses paid for and benefitted from */}
-
-            <h3>Expenses {emojiConstants.expense}</h3>
+            <h3>expense totals {emojiConstants.expense}</h3>
             <p>
               paid for: {userInfo.totalExpensesPaidAmount.toFixed(2)}€{" "}
               {emojiConstants.paidFor}
@@ -72,23 +71,30 @@ const UserPage = () => {
           </div>
           <div>
             {/* Display the total sum of payments made and received */}
-            <h3>Payments {emojiConstants.payment}</h3>
+            <h3>payments totals {emojiConstants.payment}</h3>
             <p>
-              Payments made: {userInfo.totalPaymentsMadeAmount.toFixed(2)}€{" "}
+              payments made: {userInfo.totalPaymentsMadeAmount.toFixed(2)}€{" "}
               {emojiConstants.paymentsMade}
             </p>
             <p>
-              Payments received:{" "}
+              payments received:{" "}
               {userInfo.totalPaymentsReceivedAmount.toFixed(2)}€{" "}
               {emojiConstants.paymentsReceived}
             </p>
+            <h3>single expenses and payments </h3>
+            <RouteButton
+              route={`user-history/${userId}`}
+              buttonText='view history'
+            />
+            <h3>Delete user</h3>
           </div>
-          <br />
         </div>
       ) : (
         <Spinner />
       )}
-      <DeleteResourceButton resourceId={userId} resourceType='users' />{" "}
+      <span className={styles.deleteButton}>
+        <DeleteResourceButton resourceId={userId} resourceType='users' />{" "}
+      </span>
     </main>
   );
 };

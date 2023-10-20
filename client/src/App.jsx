@@ -35,6 +35,8 @@ import TermsAndConditionsViaInvitePage from "./pages/TermsAndConditionsViaInvite
 import UserHistory from "./pages/UserHistoryPage/UserHistoryPage";
 import UserHistoryPage from "./pages/UserHistoryPage/UserHistoryPage";
 import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/ItemNavigatorUserHistoryPage";
+import UpdateUserExpensePage from "./pages/UpdateExpenseUserPage/UpdateExpenseUserPage";
+import UpdatePaymentUserPage from "./pages/UpdatePaymentUserPage/UpdatePaymentUserPage";
 
 function App() {
   return (
@@ -75,10 +77,18 @@ function App() {
             path='/update-expense/:expenseId'
             element={<UpdateExpensePage />}
           />
+          <Route
+            path='/update-user-expense/:userId/:expenseId'
+            element={<UpdateUserExpensePage />}
+          />
           <Route path='/create-payment' element={<CreatePaymentPage />} />
           <Route
             path='/update-payment/:itemId'
             element={<UpdatePaymentPage />}
+          />
+          <Route
+            path='/update-user-payment/:userId/:itemId'
+            element={<UpdatePaymentUserPage />}
           />
           <Route path='create-users-inapp' element={<CreateUsersInAppPage />} />
           <Route

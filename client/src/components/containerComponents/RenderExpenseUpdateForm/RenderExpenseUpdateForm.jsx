@@ -12,6 +12,7 @@ export default function RenderExpenseUpdateForm({
   groupCode,
   groupMembers,
   expenseId,
+  route = "/instant-split",
 }) {
   const navigate = useNavigate();
   const inputFieldOne = useRef(null);
@@ -60,6 +61,7 @@ export default function RenderExpenseUpdateForm({
       // If not all are selected, select all
       setSelectedBeneficiaries([...groupMembers]);
     }
+    setFormChanged(true);
   };
 
   // On form submission: Post expense and navigate to instant-split page
@@ -75,7 +77,7 @@ export default function RenderExpenseUpdateForm({
         userName,
         expenseBeneficiariesNames: selectedBeneficiaries,
       });
-      navigate("/instant-split");
+      navigate(route);
     } catch (error) {
       if (error.response) {
         // Handle bad requests
@@ -142,7 +144,7 @@ export default function RenderExpenseUpdateForm({
           <h3>Beneficiaries: </h3>
           <button
             className={styles.toggleButton}
-            type='button' // Set the type to "button" to prevent form submission
+            type='button'
             onClick={toggleBeneficiaries}>
             {selectedBeneficiaries.length === groupMembers.length
               ? "none"

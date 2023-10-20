@@ -11,6 +11,8 @@ export default function RenderPaymentUpdateForm({
   groupMembers,
   groupCode,
   paymentDetails,
+  itemId,
+  route = "/instant-split",
 }) {
   const inputField = useRef(null);
   const navigate = useNavigate();
@@ -48,7 +50,7 @@ export default function RenderPaymentUpdateForm({
         paymentAmount,
         paymentRecipientName,
       });
-      navigate("/instant-split");
+      navigate(route);
     } catch (error) {
       if (error.response) {
         // Handle bad requests

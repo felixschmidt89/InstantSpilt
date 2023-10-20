@@ -10,14 +10,15 @@ const ItemNavigatorUserHistoryPage = () => {
     const searchParams = new URLSearchParams(location.search);
     const itemId = searchParams.get("itemId");
     const itemType = searchParams.get("itemType");
+    const userId = searchParams.get("userId");
 
     // Check the itemType and navigate accordingly
     if (itemType === "expense") {
       // Navigate to the expense component route
-      navigate(`/user-history-expense-page/${itemId}`);
+      navigate(`/update-user-expense/${userId}/${itemId}`);
     } else if (itemType === "payment") {
       // Navigate to the payment component route
-      navigate(`/user-history-payment-page/${itemId}`);
+      navigate(`/update-user-payment/${userId}/${itemId}`);
     } else {
       // Handle other itemTypes or no itemType
       navigate("/not-found");

@@ -7,9 +7,9 @@ import NavigateButton from "../../components/reuseableComponents/NavigateButton/
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
 import styles from "./ExpensePage.module.css";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import UpdateResourceButton from "../../components/reuseableComponents/UpdateResourceButton/UpdateResourceButton";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import RouteButton from "../../components/reuseableComponents/RouteButton/RouteButton";
 
 const ExpensePage = () => {
   const { itemId: expenseId } = useParams(); //
@@ -58,7 +58,7 @@ const ExpensePage = () => {
             {emojiConstants.created}{" "}
             {new Date(expenseDetails.createdAt).toLocaleString()}
           </p>
-          <UpdateResourceButton route={`update-expense/${expenseId}`} />
+          <RouteButton route={`update-expense/${expenseId}`} />
           <DeleteResourceButton
             resourceId={expenseId}
             resourceType='expenses'

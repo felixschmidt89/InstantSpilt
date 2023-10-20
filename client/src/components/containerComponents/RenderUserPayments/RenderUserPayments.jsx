@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import emojiConstants from "../../../constants/emojiConstants";
 import DeleteResourceText from "../../reuseableComponents/DeleteResourceText/DeleteResourceText";
 import styles from "./RenderUserPayments.module.css";
-import { useParams } from "react-router-dom";
 
-export default function RenderUserPayments({ item, handleRerender }) {
+export default function RenderUserPayments({ item, handleRerender, userId }) {
   return (
     <div className={styles.payments}>
       <div className={styles.leftColumn}>
@@ -13,7 +12,7 @@ export default function RenderUserPayments({ item, handleRerender }) {
         <div className={styles.paymentAmount}>
           <p>{item.paymentAmount.toFixed(2)}€</p>
           <Link
-            to={`/user-history-item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
+            to={`/user-history-item-page?itemId=${item.itemId}&itemType=${item.itemType}&userId=${userId}`}>
             edit
           </Link>
           <DeleteResourceText

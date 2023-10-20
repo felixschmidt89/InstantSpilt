@@ -6,10 +6,10 @@ import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
 import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
 import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import UpdateResourceButton from "../../components/reuseableComponents/UpdateResourceButton/UpdateResourceButton";
 import styles from "./PaymentPage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import RouteButton from "../../components/reuseableComponents/RouteButton/RouteButton";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -42,7 +42,7 @@ const PaymentPage = () => {
             {emojiConstants.created}{" "}
             {new Date(paymentDetails.createdAt).toLocaleString()}
           </p>
-          <UpdateResourceButton route={`update-payment/${itemId}`} />
+          <RouteButton route={`update-payment/${itemId}`} />
 
           <DeleteResourceButton resourceId={itemId} resourceType='payments' />
         </div>
