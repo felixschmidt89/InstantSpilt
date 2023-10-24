@@ -25,6 +25,8 @@ const DeleteResourceButton = ({
   // Set error State to display error message
   const [error, setError] = useState(null);
 
+  const resourceTypeName = resourceType.slice(0, -1); // Remove the last character ('s')
+
   // Handle delete request and appropriate errors message if applicable
   const handleDelete = async () => {
     try {
@@ -49,7 +51,7 @@ const DeleteResourceButton = ({
   return (
     <div>
       <button className={styles.button} onClick={handleDelete}>
-        delete
+        delete {resourceTypeName}
       </button>
       {error && <p className={styles.errorMessage}>{error}</p>}
     </div>

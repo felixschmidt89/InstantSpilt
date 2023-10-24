@@ -56,38 +56,45 @@ const UserPage = () => {
               {userInfo.userBalance.toFixed(2)}€
             </span>
           </h2>
-          <div>
-            {/* Display the total expenses paid for and benefitted from */}
-            <h3>{emojiConstants.expense} expense totals </h3>
-            <p>
+          {/* Display the total expenses paid for and benefitted from */}
+          <h3>{emojiConstants.expense} expense totals </h3>
+          <ul>
+            <li>
+              {" "}
               paid for: {userInfo.totalExpensesPaidAmount.toFixed(2)}€{" "}
               {emojiConstants.paidFor}
-            </p>
-            <p>
+            </li>
+            <li>
+              {" "}
               benefitted from:{" "}
               {userInfo.totalExpenseBenefittedAmount.toFixed(2)}€{" "}
               {emojiConstants.benefittedFrom}
-            </p>
-          </div>
-          <div>
-            {/* Display the total sum of payments made and received */}
-            <h3>{emojiConstants.payment} payments totals </h3>
-            <p>
+            </li>
+          </ul>
+          <p></p>
+
+          {/* Display the total sum of payments made and received */}
+          <h3>{emojiConstants.payment} payments totals </h3>
+          <ul>
+            <li>
+              {" "}
               payments made: {userInfo.totalPaymentsMadeAmount.toFixed(2)}€{" "}
               {emojiConstants.paymentsMade}
-            </p>
-            <p>
+            </li>
+            <li>
+              {" "}
               payments received:{" "}
               {userInfo.totalPaymentsReceivedAmount.toFixed(2)}€{" "}
               {emojiConstants.paymentsReceived}
-            </p>
-            <h3>single expenses and payments </h3>
-            <RouteButton
-              route={`user-history/${userId}`}
-              buttonText='view history'
-            />
-            <h3>Delete user</h3>
-          </div>
+            </li>
+          </ul>
+
+          <h3>single expenses and payments </h3>
+          <RouteButton
+            route={`user-history/${userId}`}
+            buttonText='view history'
+            margin='0px'
+          />
         </div>
       ) : (
         <Spinner />
