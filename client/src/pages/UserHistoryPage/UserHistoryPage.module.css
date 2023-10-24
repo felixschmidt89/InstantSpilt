@@ -43,7 +43,7 @@ a:hover {
     padding-left: 0;
     width: 95%;
   }
-  .container li {
+  .item {
     border-top: 1.5px solid var(--color-signal-reduced-opacity);
   }
 }

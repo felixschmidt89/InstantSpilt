@@ -100,7 +100,7 @@ export default function UserHistoryPage() {
         {userExpensesAndPayments.length > 0 ? (
           <ul>
             {userExpensesAndPayments.map((item) => (
-              <li key={item._id}>
+              <li className={styles.item} key={item._id}>
                 {item.expenseName ? (
                   <RenderUserExpenses
                     item={item}
