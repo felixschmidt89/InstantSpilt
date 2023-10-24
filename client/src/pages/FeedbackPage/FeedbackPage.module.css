@@ -60,7 +60,7 @@
   border: none;
   width: 8rem;
   padding: 0.4rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
   border-radius: 0.5rem;
 }
@@ -75,5 +75,5 @@
 }
 
 label {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
 }

@@ -10,7 +10,7 @@
 
 h2 {
   padding-top: 2rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
   margin-bottom: 0rem;
 }
 
@@ -21,7 +21,7 @@ h2 {
 .terms {
   font-style: italic;
   width: 90%;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-top: 2rem;
 }
 
@@ -38,7 +38,7 @@ p {
   color: var(--color-main);
   border: none;
   padding: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
   border-radius: 1rem;
   width: 7rem;

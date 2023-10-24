@@ -20,7 +20,7 @@ h3 {
   padding: 0.2rem;
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.5rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   text-align: center;
   outline: none;
   margin-bottom: 0.5rem;
@@ -53,8 +53,8 @@ h3 {
 
 input[type="checkbox"] {
   appearance: none;
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
   background-color: var(--color-main);
   border: 2px solid var(--color-grey);
   border-radius: 4px;
@@ -85,7 +85,7 @@ input[type="checkbox"]:checked {
   color: var(--color-main);
   border: none;
   width: 8rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   cursor: pointer;
   border-radius: 1rem;
 }

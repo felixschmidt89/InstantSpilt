@@ -51,14 +51,14 @@ const UserPage = () => {
           <h1>{userInfo.userName}</h1>
           <h2>
             {/* Display the userBalance with different color depending on the value */}
-            balance:
+            balance:{" "}
             <span className={balanceClass}>
               {userInfo.userBalance.toFixed(2)}€
             </span>
           </h2>
           <div>
             {/* Display the total expenses paid for and benefitted from */}
-            <h3>expense totals {emojiConstants.expense}</h3>
+            <h3>{emojiConstants.expense} expense totals </h3>
             <p>
               paid for: {userInfo.totalExpensesPaidAmount.toFixed(2)}€{" "}
               {emojiConstants.paidFor}
@@ -71,7 +71,7 @@ const UserPage = () => {
           </div>
           <div>
             {/* Display the total sum of payments made and received */}
-            <h3>payments totals {emojiConstants.payment}</h3>
+            <h3>{emojiConstants.payment} payments totals </h3>
             <p>
               payments made: {userInfo.totalPaymentsMadeAmount.toFixed(2)}€{" "}
               {emojiConstants.paymentsMade}

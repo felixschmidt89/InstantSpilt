@@ -48,7 +48,7 @@ body {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   text-align: center;
 }
 
@@ -63,16 +63,20 @@ main {
 }
 
 h1 {
-  font-size: 2.1rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.6rem;
+}
+
+h3 {
+  font-size: 1.7rem;
 }
 
 p,
 li {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 ul {
