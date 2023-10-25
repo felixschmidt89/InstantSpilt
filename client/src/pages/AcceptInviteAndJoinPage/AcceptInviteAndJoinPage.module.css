@@ -9,7 +9,6 @@
 }
 
 h2 {
-  padding-top: 2rem;
   font-size: 1.6rem;
   margin-bottom: 0rem;
 }
@@ -27,10 +26,6 @@ h2 {
 
 .strong {
   font-weight: bold;
-}
-
-p {
-  margin-top: 1rem;
 }
 
 .button {

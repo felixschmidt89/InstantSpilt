@@ -164,12 +164,16 @@ export default function RenderExpenseUpdateForm({
               </label>
             ))}
           </div>
-          {/* Conditionally render button when there has been a change */}
-          {formChanged && (
-            <button className={styles.button} type='submit'>
-              update
-            </button>
-          )}
+          {/* Conditionally render button when there has been a change & minimum requirements are met*/}
+          {formChanged &&
+            expenseAmount &&
+            userName &&
+            expenseName &&
+            selectedBeneficiaries.length > 0 && (
+              <button className={styles.button} type='submit'>
+                update
+              </button>
+            )}
         </div>
       </form>
       {/* Display error message if there's an error */}

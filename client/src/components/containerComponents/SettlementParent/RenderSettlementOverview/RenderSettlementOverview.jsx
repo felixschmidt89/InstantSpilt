@@ -34,9 +34,7 @@ export default function RenderSettlementOverview({
             <div className={styles.userDetails}>
               <strong>
                 {/* Link to the user page */}
-                <Link
-                  className={styles.userName}
-                  to={`/user-page/${user.userId}`}>
+                <Link className={styles.userName} to={`/user-page/${user.id}`}>
                   {user.userName}
                 </Link>
               </strong>
