@@ -1,3 +1,13 @@
+# Enable clean URLs in deployed Netlify SPA
+[[redirects]]
+  # Redirect all paths to the "index.html" file
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
 [build]
-  command = "npm run build"
+  # Specify the build command
+    command = "npm run build"
+
+  # Define directory to publish or deploy after the build
   publish = "dist"
