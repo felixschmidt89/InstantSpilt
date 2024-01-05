@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import CreateUserForm from "../../components/containerComponents/CreateUserForm/CreateUserForm";
-import RenderUserNames from "../../components/containerComponents/RenderUserNames/RenderUserNames";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import RenderUserNames from "../../components/features/RenderUserNames/RenderUserNames";
+import CreateUser from "../../components/features/CreateUser/CreateUser";
 
-function CreateUsersDuringSignUpPage() {
+const CreateUsersDuringSignUpPage = () => {
   const [refreshData, setRefreshData] = useState(false);
 
   const toggleDataRefresh = () => {
@@ -15,7 +15,7 @@ function CreateUsersDuringSignUpPage() {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - Add user' />
+      <HelmetMetaTagsNetlify title='InstantSplit - add user' />
       <PiratePx COUNT_IDENTIFIER={"create-users-signup"} />
       <NavigateButton
         route={"groupcode-explanation"}
@@ -23,10 +23,10 @@ function CreateUsersDuringSignUpPage() {
         alignment={"right"}
         isIcon={true}
       />
-      <CreateUserForm toggleDataRefresh={toggleDataRefresh} />
+      <CreateUser toggleDataRefresh={toggleDataRefresh} />
       <RenderUserNames refreshData={refreshData} />
     </main>
   );
-}
+};
 
 export default CreateUsersDuringSignUpPage;

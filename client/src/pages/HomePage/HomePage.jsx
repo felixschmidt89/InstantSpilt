@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
 import styles from "./HomePage.module.css";
 
 const HomePage = () => {

@@ -4,16 +4,16 @@ import styles from "./ValidateProvidedGroupCodePage.module.css";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import { StatusCodes } from "http-status-codes";
 import emojiConstants from "../../constants/emojiConstants";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 
 /**
  * Checks if groupCode exists in the database.
- * If found: it stores the groupCode in the client's local storage and navigates to OnboardingPage.
+ * If found: stores the groupCode in the client's local storage and navigates to OnboardingPage.
  * If not: renders specific (NOT FOUND, TOO MANY REQUESTS) else generic error message
  */
 const ValidateProvideGroupCodePage = () => {

@@ -1,15 +1,14 @@
 import React from "react";
-import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
-import styles from "./CreatePaymentPage.module.css";
-import emojiConstants from "../../constants/emojiConstants";
-
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import RenderPaymentForm from "../../components/containerComponents/RenderPaymentForm/RenderPaymentForm";
-import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
-import GroupActionButton from "../../components/reuseableComponents/SplitExpensesActionsButton/SplitExpensesActionsButton";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
+import emojiConstants from "../../constants/emojiConstants";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import Spinner from "../../components/common/Spinner/Spinner";
+import RenderPaymentForm from "../../components/features/CreatePayment/CreatePayment";
+import GroupActionsButton from "../../components/common/GroupActionsButton/GroupActionsButton";
+import styles from "./CreatePaymentPage.module.css";
 
 export default function CreatePaymentPage() {
   // Define states for paymentAmount, userName, paymentRecipient, and error message
@@ -40,7 +39,7 @@ export default function CreatePaymentPage() {
         // Render a message and a button when there are no or only 1 group member
         <div>
           <p>You need at least 2 users to make a payment. </p>
-          <GroupActionButton
+          <GroupActionsButton
             route={"create-users-inapp"}
             buttonText={<span>{emojiConstants.user}</span>}
             tooltipText='add user'

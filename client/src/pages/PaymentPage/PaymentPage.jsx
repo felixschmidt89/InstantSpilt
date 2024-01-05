@@ -1,15 +1,15 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import emojiConstants from "../../constants/emojiConstants";
-import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import Spinner from "../../components/common/Spinner/Spinner";
+import DeleteResourceButton from "../../components/common/DeleteResourceButton/DeleteResourceButton";
+import RouteButton from "../../components/common/RouteButton/RouteButton";
 import styles from "./PaymentPage.module.css";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
-import RouteButton from "../../components/reuseableComponents/RouteButton/RouteButton";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -17,8 +17,8 @@ const PaymentPage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - Payment details' />
-      <PiratePx COUNT_IDENTIFIER={"payment-page/:itemId"} />
+      <HelmetMetaTagsNetlify title='InstantSplit - payment details' />
+      <PiratePx COUNT_IDENTIFIER={"payment-page"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
@@ -26,7 +26,7 @@ const PaymentPage = () => {
         isIcon={true}
       />
       {paymentDetails ? (
-        <div>
+        <div className={styles.container}>
           <h1>Payment {emojiConstants.payment}</h1>
           <h2>{paymentDetails.paymentAmount.toFixed(2)}€</h2>
           <p>

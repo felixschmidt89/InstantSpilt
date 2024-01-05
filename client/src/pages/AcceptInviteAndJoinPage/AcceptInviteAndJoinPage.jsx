@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import Spinner from "../../components/common/Spinner/Spinner";
 import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
 import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import styles from "./AcceptInviteAndJoinPage.module.css";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 /**
  * Addresses users joining a group via invitation link.

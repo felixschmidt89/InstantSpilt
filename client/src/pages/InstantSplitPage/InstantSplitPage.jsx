@@ -1,20 +1,19 @@
-// DONE adding only meaningful necessary comments
 import React, { useEffect } from "react";
 import useLocalStorage from "react-use-localstorage";
-import styles from "./InstantSplitPage.module.css";
-import useFetchGroupData from "../../hooks/useFetchGroupData";
 import { useNavigate } from "react-router-dom";
-import UserActionsComponent from "../../components/containerComponents/UserActionsComponent/UserActionsComponent";
-import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
-import GroupBalances from "../../components/containerComponents/GroupBalances/GroupBalances";
-import GroupHistory from "../../components/containerComponents/GroupHistory/GroupHistory";
-import GroupActionsComponent from "../../components/containerComponents/SplitExpensesActionsComponent/SplitExpensesActionsComponent";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import Spinner from "../../components/common/Spinner/Spinner";
+import useFetchGroupData from "../../hooks/useFetchGroupData";
+import UserActionsBar from "../../components/features/UserActionsBar/UserActionsBar";
+import GroupBalances from "../../components/features/GroupBalances/GroupBalances";
+import GroupHistory from "../../components/features/GroupHistory/GroupHistory";
+import GroupActionsBar from "../../components/common/GroupActionsBar/GroupActionsBar";
 import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 import removeActiveGroupCodeFromLocalStorageHelper from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
 import removeViewStateFromLocalStorageHelper from "../../helpers/removeViewStateFromLocalStorageHelper";
+import styles from "./InstantSplitPage.module.css";
 
 /**
  * Main component of the application. Checks on mount whether active groupCode exists in database. If not, groupCode will
@@ -61,14 +60,14 @@ export default function InstantSplitPage() {
     return (
       <main>
         <HelmetMetaTagsNetlify
-          title={`InstantSplit - Main (${groupData.group.groupName})`}
+          title={`InstantSplit - main (${groupData.group.groupName})`}
         />
         <PiratePx COUNT_IDENTIFIER={"instant-split"} />
 
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
         {/* Display UserActionsComponent */}
-        <UserActionsComponent
+        <UserActionsBar
           groupCode={groupCode}
           groupName={groupData.group.groupName}
         />
@@ -94,7 +93,7 @@ export default function InstantSplitPage() {
         </div>
         {view === "view1" ? <GroupHistory /> : <GroupBalances />}
         {/* Display GroupActionsComponent */}
-        <GroupActionsComponent />
+        <GroupActionsBar />
       </main>
     );
   }

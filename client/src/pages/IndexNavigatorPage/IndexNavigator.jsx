@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import removeActiveGroupCodeFromLocalStorageHelper from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
 import removeActiveGroupCodeFromStoredGroupCodesHelper from "../../helpers/removeActiveGroupCodeFromStoredGroupCodesHelper";
 import removeViewStateFromLocalStorageHelper from "../../helpers/removeViewStateFromLocalStorageHelper";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
 
-const IndexNavigator = () => {
+const IndexNavigatorPage = () => {
   const navigate = useNavigate();
 
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -33,4 +33,4 @@ const IndexNavigator = () => {
   );
 };
 
-export default IndexNavigator;
+export default IndexNavigatorPage;

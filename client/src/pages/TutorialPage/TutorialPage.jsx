@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import styles from "./TutorialPage.module.css";
-import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
-import ExplainMainFunctionalities from "../../components/containerComponents/ExplainMainFunctionalities/ExplainMainFunctionalities";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import CopyToClipboard from "../../components/common/CopyToClipboard/CopyToClipboard";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import styles from "./TutorialPage.module.css";
+import ExplainMainFunctionalities from "../../components/features/ExplainMainFunctionalities/ExplainMainFunctionalities";
 
 function TutorialPage() {
   const { groupName, groupCode } = useParams();
@@ -14,7 +14,7 @@ function TutorialPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Tutorial' />
-      <PiratePx COUNT_IDENTIFIER={"tutorial/:groupName/:groupCode"} />
+      <PiratePx COUNT_IDENTIFIER={"tutorial"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

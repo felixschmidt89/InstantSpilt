@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import RenderExpenseUpdateForm from "../../components/containerComponents/RenderExpenseUpdateForm/RenderExpenseUpdateForm";
-
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
+import RenderExpenseUpdateForm from "../../components/features/UpdateExpense/UpdateExpense";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import Spinner from "../../components/common/Spinner/Spinner";
 import emojiConstants from "../../constants/emojiConstants";
 import useFetchExpenseInfo from "../../hooks/uesFetchExpenseInfo";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import styles from "./UpdateExpenseUserPage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 function UpdateUserExpensePage() {
   const groupCode = localStorage.getItem("activeGroupCode");

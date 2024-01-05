@@ -4,11 +4,12 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "axios";
 import styles from "./UserHistoryPage.module.css";
-import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
-import RenderUserExpenses from "../../components/containerComponents/RenderUserExpenses/RenderUserExpenses";
-import RenderUserPayments from "../../components/containerComponents/RenderUserPayments/RenderUserPayments";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
+import RenderUserExpenses from "../../components/features/RenderUserExpenses/RenderUserExpenses";
+import RenderUserPayments from "../../components/features/RenderUserPayments/RenderUserPayments";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import Spinner from "../../components/common/Spinner/Spinner";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -87,15 +88,15 @@ export default function UserHistoryPage() {
     </main>
   ) : (
     <main>
+      <HelmetMetaTagsNetlify title='InstantSplit - user history' />
+      <PiratePx COUNT_IDENTIFIER={"user-history"} />
       <NavigateButton
         route={`user-page/${userId}`}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
       />
-      <PiratePx COUNT_IDENTIFIER={"user-history"} />
       <h1>User history</h1>
-
       <div className={styles.container}>
         {userExpensesAndPayments.length > 0 ? (
           <ul>

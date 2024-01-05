@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import style from "./EnterGroupCodePage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import style from "./EnterGroupCodePage.module.css";
 
-const EnterGroupCode = () => {
+const EnterGroupCodePage = () => {
   const [groupCode, setGroupCode] = useState("");
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const EnterGroupCode = () => {
   };
 
   const handleFormSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault();
     if (groupCode.length >= 6) {
       navigate(`/groupCode-validator/${groupCode}`);
     }
@@ -54,4 +54,4 @@ const EnterGroupCode = () => {
   );
 };
 
-export default EnterGroupCode;
+export default EnterGroupCodePage;

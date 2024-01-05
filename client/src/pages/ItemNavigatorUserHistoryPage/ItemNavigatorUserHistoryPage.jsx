@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
 
 const ItemNavigatorUserHistoryPage = () => {
   const location = useLocation();

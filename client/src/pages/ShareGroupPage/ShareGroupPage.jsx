@@ -1,13 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import styles from "./ShareGroupPage.module.css";
-
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import CopyToClipBoard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
-import WebShareApiInvite from "../../components/singleComponents/WebShareApiInvite/WebShareApiInvite";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import CopyToClipBoard from "../../components/common/CopyToClipboard/CopyToClipboard";
+import WebShareApiInvite from "../../components/common/WebShareApiInvite/WebShareApiInvite";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 

@@ -1,17 +1,17 @@
 // DONE adding only meaningful necessary comments
 
 import React from "react";
-import { Link, useParams } from "react-router-dom";
-import useFetchUserInfo from "../../hooks/useFetchUserInfo";
-import emojiConstants from "../../constants/emojiConstants";
-import styles from "./UserPage.module.css";
-import Spinner from "../../components/reuseableComponents/Spinner/Spinner";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import { useParams } from "react-router-dom";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
-import DeleteResourceButton from "../../components/reuseableComponents/DeleteResourceButton/DeleteResourceButton";
-import RouteButton from "../../components/reuseableComponents/RouteButton/RouteButton";
+import emojiConstants from "../../constants/emojiConstants";
+import useFetchUserInfo from "../../hooks/useFetchUserInfo";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import Spinner from "../../components/common/Spinner/Spinner";
+import DeleteResourceButton from "../../components/common/DeleteResourceButton/DeleteResourceButton";
+import RouteButton from "../../components/common/RouteButton/RouteButton";
+import styles from "./UserPage.module.css";
 
 // Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
 const BALANCE_THRESHOLD = 0.01;

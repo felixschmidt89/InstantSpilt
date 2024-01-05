@@ -1,19 +1,19 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import styles from "./GroupCodeExplanationPage.module.css";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import styles from "./GroupCodeExplanationPage.module.css";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import CopyToClipboard from "../../components/common/CopyToClipboard/CopyToClipboard";
 
 const GroupCodeExplanationPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - GroupCode explanation' />
+      <HelmetMetaTagsNetlify title='InstantSplit - groupCode explanation' />
       <PiratePx COUNT_IDENTIFIER={"groupcode-explanation"} />
       <NavigateButton
         route={"onboarding"}

@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
 import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
 import styles from "./ForgetGroupOnDevicePage.module.css";
-import CopyToClipboard from "../../components/reuseableComponents/CopyToClipboard/CopyToClipboard";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import CopyToClipboard from "../../components/common/CopyToClipboard/CopyToClipboard";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 import removeActiveGroupCodeFromStoredGroupCodesHelper from "../../helpers/removeActiveGroupCodeFromStoredGroupCodesHelper";
 import removeViewStateFromLocalStorageHelper from "../../helpers/removeViewStateFromLocalStorageHelper";
 
@@ -23,8 +23,8 @@ const ForgetGroupOnDevicePage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - Forget group' />
-      <PiratePx COUNT_IDENTIFIER={"leave-group/:groupName/:groupCode"} />
+      <HelmetMetaTagsNetlify title='InstantSplit - forget group on device' />
+      <PiratePx COUNT_IDENTIFIER={"leave-group"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

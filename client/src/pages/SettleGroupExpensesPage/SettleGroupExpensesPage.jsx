@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./SettleGroupExpensesPage.module.css";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import SettlementParent from "../../components/containerComponents/SettlementParent/SettlementParent";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import SettleExpenses from "../../components/features/SettleExpenses/SettleExpenses";
 
 function SettleGroupExpensesPage() {
   return (
@@ -19,7 +19,7 @@ function SettleGroupExpensesPage() {
       />
       <div className={styles.container}>
         <h1>Settle group expenses</h1>
-        <SettlementParent />
+        <SettleExpenses />
       </div>
     </main>
   );

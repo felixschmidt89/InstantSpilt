@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import CreateUserForm from "../../components/containerComponents/CreateUserForm/CreateUserForm";
-import RenderUserNames from "../../components/containerComponents/RenderUserNames/RenderUserNames";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import styles from "./CreateUsersInAppPage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import CreateUser from "../../components/features/CreateUser/CreateUser";
+import RenderUserNames from "../../components/features/RenderUserNames/RenderUserNames";
+import styles from "./CreateUsersInAppPage.module.css";
 
 function CreateUsersInAppPage() {
   const [refreshData, setRefreshData] = useState(false);
@@ -25,7 +25,7 @@ function CreateUsersInAppPage() {
           alignment={"left"}
           isIcon={true}
         />
-        <CreateUserForm toggleDataRefresh={toggleDataRefresh} />
+        <CreateUser toggleDataRefresh={toggleDataRefresh} />
         <RenderUserNames refreshData={refreshData} />
       </div>
     </main>

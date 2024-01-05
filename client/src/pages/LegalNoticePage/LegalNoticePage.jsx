@@ -1,10 +1,10 @@
 import React from "react";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import legalNoticeContent from "../../contents/legalNoticeContent";
 import styles from "./LegalNoticePage.module.css";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
 
 const LegalNoticePage = () => {
   return (

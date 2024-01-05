@@ -1,14 +1,14 @@
 import React from "react";
-import NavigateButton from "../../components/reuseableComponents/NavigateButton/NavigateButton";
-import HelmetMetaTagsNetlify from "../../components/reuseableComponents/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import ExplainMainFunctionalities from "../../components/containerComponents/ExplainMainFunctionalities/ExplainMainFunctionalities";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
+import PiratePx from "../../components/common/PiratePx/PiratePx";
+import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-import PiratePx from "../../components/reuseableComponents/PiratePx/PiratePx";
+import ExplainMainFunctionalities from "../../components/features/ExplainMainFunctionalities/ExplainMainFunctionalities";
 
 function OnboardingPage() {
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - Onboarding' />
+      <HelmetMetaTagsNetlify title='InstantSplit - onboarding' />
       <PiratePx COUNT_IDENTIFIER={"onboarding"} />
       <NavigateButton
         route={"instant-split"}
