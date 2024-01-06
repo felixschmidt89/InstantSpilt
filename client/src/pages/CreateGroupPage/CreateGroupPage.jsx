@@ -1,18 +1,19 @@
-// DONE adding only meaningful necessary comments
-
 import React from "react";
-import { useState, useEffect, useRef } from "react"; // Import `useRef`
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
-import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
+import {
+  setGroupCodeToCurrentlyActive,
+  storeGroupCodeInLocalStorage,
+} from "../../utils/localStorageUtils";
+
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import styles from "./CreateGroupPage.module.css";
 
-export default function CreateGroupPage() {
+const CreateGroupPage = () => {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
   const navigate = useNavigate();
   const inputRef = useRef(null);
@@ -32,8 +33,8 @@ export default function CreateGroupPage() {
         groupName,
       });
       const { groupCode } = res.data.data.group;
-      storeGroupCodesInLocalStorageHelper(groupCode);
-      setGroupCodeToCurrentlyActiveHelper(groupCode);
+      storeGroupCodeInLocalStorage(groupCode);
+      setGroupCodeToCurrentlyActive(groupCode);
       setGroupName("");
       navigate("/create-users-signup");
     } catch (error) {
@@ -84,4 +85,6 @@ export default function CreateGroupPage() {
       <PiratePx COUNT_IDENTIFIER={"create-group"} />
     </main>
   );
-}
+};
+
+export default CreateGroupPage;

@@ -15,7 +15,7 @@ import styles from "./Footer.module.css";
  * footer component that displays and links essential information at the bottom of the page:
  * LinkedIn, email, GitHub repository, and legal notice.
  */
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className={styles.footer}>
       <LinkFontAwesomeIcon
@@ -45,4 +45,6 @@ export default function Footer() {
       />
     </footer>
   );
-}
+};
+
+export default Footer;

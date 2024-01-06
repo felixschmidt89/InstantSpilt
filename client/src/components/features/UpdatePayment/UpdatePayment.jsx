@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import styles from "./UpdatePayment.module.css";
-import commaToDotDecimalSeparatorHelperFunction from "../../../helpers/commaToDotDecimalSeparatorHelper";
+
 import emojiConstants from "../../../constants/emojiConstants";
+import { commaToDotDecimalSeparator } from "../../../utils/formatUtils";
+
+import styles from "./UpdatePayment.module.css";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -71,7 +73,7 @@ const UpdatePayment = ({
 
   // controlled second input component to set paymentAmount state, converting comma separator to dot prior to posting
   const handlePaymentAmountChange = (e) => {
-    setPaymentAmount(commaToDotDecimalSeparatorHelperFunction(e.target.value));
+    setPaymentAmount(commaToDotDecimalSeparator(e.target.value));
   };
 
   return (

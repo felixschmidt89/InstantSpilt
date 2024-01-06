@@ -11,7 +11,7 @@ import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
-export default function UpdatePaymentUserPage() {
+const UpdatePaymentUserPage = () => {
   const { userId, itemId } = useParams();
   const groupCode = localStorage.getItem("activeGroupCode");
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +30,7 @@ export default function UpdatePaymentUserPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Update payment' />
-      <PiratePx COUNT_IDENTIFIER={"update-user-payment/:itemId"} />
+      <PiratePx COUNT_IDENTIFIER={"update-user-payment"} />
 
       {/* Render a back button */}
       <NavigateButton
@@ -54,4 +54,6 @@ export default function UpdatePaymentUserPage() {
       )}
     </main>
   );
-}
+};
+
+export default UpdatePaymentUserPage;

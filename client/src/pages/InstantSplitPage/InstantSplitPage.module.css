@@ -6,7 +6,7 @@
   margin: 0.2rem;
   font-size: 2rem;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 0.4rem;
   box-shadow: 0 0 0.5rem var(--color-signal);
 }
 

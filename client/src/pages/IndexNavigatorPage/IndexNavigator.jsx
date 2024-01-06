@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
-import removeActiveGroupCodeFromLocalStorageHelper from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
-import removeActiveGroupCodeFromStoredGroupCodesHelper from "../../helpers/removeActiveGroupCodeFromStoredGroupCodesHelper";
-import removeViewStateFromLocalStorageHelper from "../../helpers/removeViewStateFromLocalStorageHelper";
+import {
+  removeActiveGroupCodeFromLocalStorage,
+  removeActiveGroupCodeFromStoredGroupCodes,
+  removeViewStateFromLocalStorage,
+} from "../../utils/localStorageUtils";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
+import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 const IndexNavigatorPage = () => {
   const navigate = useNavigate();
@@ -17,9 +19,9 @@ const IndexNavigatorPage = () => {
 
   useEffect(() => {
     if (groupExists === false) {
-      removeActiveGroupCodeFromStoredGroupCodesHelper(groupCode);
-      removeActiveGroupCodeFromLocalStorageHelper();
-      removeViewStateFromLocalStorageHelper();
+      removeActiveGroupCodeFromStoredGroupCodes(groupCode);
+      removeActiveGroupCodeFromLocalStorage();
+      removeViewStateFromLocalStorage();
       navigate("/homepage/");
     } else if (groupExists === true) {
       navigate("/instant-split");

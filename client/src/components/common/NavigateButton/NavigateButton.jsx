@@ -1,17 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./NavigateButton.module.css";
 
-export default function NavigateButton({
+const NavigateButton = ({
   route,
   buttonText,
   alignment = "center",
-  margin = "10px",
+  margin = "1rem",
   isIcon = false,
-}) {
+}) => {
   const navigate = useNavigate();
 
   const handleNextClick = () => {
@@ -45,4 +44,6 @@ export default function NavigateButton({
       </button>
     </div>
   );
-}
+};
+
+export default NavigateButton;

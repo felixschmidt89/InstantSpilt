@@ -9,7 +9,7 @@ import styles from "./GroupHistory.module.css";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-export default function GroupHistory({ groupCode }) {
+const GroupHistory = ({ groupCode }) => {
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -92,4 +92,6 @@ export default function GroupHistory({ groupCode }) {
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );
-}
+};
+
+export default GroupHistory;

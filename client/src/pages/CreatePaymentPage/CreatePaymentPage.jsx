@@ -10,7 +10,7 @@ import RenderPaymentForm from "../../components/features/CreatePayment/CreatePay
 import GroupActionsButton from "../../components/common/GroupActionsButton/GroupActionsButton";
 import styles from "./CreatePaymentPage.module.css";
 
-export default function CreatePaymentPage() {
+const CreatePaymentPage = () => {
   // Define states for paymentAmount, userName, paymentRecipient, and error message
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
@@ -51,4 +51,6 @@ export default function CreatePaymentPage() {
       )}
     </main>
   );
-}
+};
+
+export default CreatePaymentPage;

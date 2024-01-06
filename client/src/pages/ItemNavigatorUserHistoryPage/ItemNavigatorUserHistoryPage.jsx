@@ -27,7 +27,7 @@ const ItemNavigatorUserHistoryPage = () => {
 
   return (
     <main>
-      <PiratePx COUNT_IDENTIFIER={"user-history-item-page"} />
+      <PiratePx COUNT_IDENTIFIER={"user-history-item-navigator"} />
     </main>
   );
 };

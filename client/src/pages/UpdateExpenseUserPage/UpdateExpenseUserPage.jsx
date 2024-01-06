@@ -6,7 +6,7 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
 import emojiConstants from "../../constants/emojiConstants";
-import useFetchExpenseInfo from "../../hooks/uesFetchExpenseInfo";
+import useFetchExpenseInfo from "../../hooks/useFetchExpenseInfo";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import styles from "./UpdateExpenseUserPage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
@@ -28,7 +28,7 @@ function UpdateUserExpensePage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Update expense' />
-      <PiratePx COUNT_IDENTIFIER={"update-user-expense/:userId/:expenseId"} />
+      <PiratePx COUNT_IDENTIFIER={"update-expense"} />
       {/* Render a back button */}
       <NavigateButton
         route={`user-history/${userId}`}

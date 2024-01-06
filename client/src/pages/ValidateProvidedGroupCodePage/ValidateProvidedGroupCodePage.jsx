@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import styles from "./ValidateProvidedGroupCodePage.module.css";
-import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
-import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
-import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { StatusCodes } from "http-status-codes";
 import emojiConstants from "../../constants/emojiConstants";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import {
+  setGroupCodeToCurrentlyActive,
+  storeGroupCodeInLocalStorage,
+} from "../../utils/localStorageUtils";
+import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import styles from "./ValidateProvidedGroupCodePage.module.css";
 
 /**
  * Checks if groupCode exists in the database.
@@ -29,8 +31,8 @@ const ValidateProvideGroupCodePage = () => {
 
   useEffect(() => {
     if (groupExists === true) {
-      storeGroupCodesInLocalStorageHelper(groupCode);
-      setGroupCodeToCurrentlyActiveHelper(groupCode);
+      storeGroupCodeInLocalStorage(groupCode);
+      setGroupCodeToCurrentlyActive(groupCode);
       navigate("/onboarding/");
     } else if (groupExists === false) {
       setError(
@@ -44,8 +46,8 @@ const ValidateProvideGroupCodePage = () => {
   return (
     <main>
       {/* Back button to enter groupCode again */}
-      <HelmetMetaTagsNetlify title='InstantSplit - Validate groupCode' />
-      <PiratePx COUNT_IDENTIFIER={"groupCode-validator/:groupCode"} />
+      <HelmetMetaTagsNetlify title='InstantSplit - validate groupCode' />
+      <PiratePx COUNT_IDENTIFIER={"groupCode-validator"} />
       <NavigateButton
         route={"enter-groupcode"}
         buttonText={faLeftLong}

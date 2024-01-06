@@ -32,13 +32,12 @@ import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
 import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
 import TermsAndConditionsViaInvitePage from "./pages/TermsAndConditionsViaInvitePage/TermsAndConditionsViaInvitePage";
-import UserHistory from "./pages/UserHistoryPage/UserHistoryPage";
 import UserHistoryPage from "./pages/UserHistoryPage/UserHistoryPage";
 import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/ItemNavigatorUserHistoryPage";
 import UpdateUserExpensePage from "./pages/UpdateExpenseUserPage/UpdateExpenseUserPage";
 import UpdatePaymentUserPage from "./pages/UpdatePaymentUserPage/UpdatePaymentUserPage";
 
-function App() {
+const App = () => {
   return (
     <BrowserRouter>
       <HelmetProvider>
@@ -131,6 +130,6 @@ function App() {
       </HelmetProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

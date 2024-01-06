@@ -53,8 +53,8 @@ input[type="checkbox"] {
   width: 1.6rem;
   height: 1.6rem;
   background-color: var(--color-main);
-  border: 2px solid var(--color-grey);
-  border-radius: 4px;
+  border: 0.2rem solid var(--color-grey);
+  border-radius: 0.4rem;
   cursor: pointer;
   outline: none;
   font-size: 1.6rem;
@@ -97,7 +97,7 @@ input[type="checkbox"]:checked {
   flex-wrap: wrap;
   width: 25rem;
   margin: 0 auto;
-  border: 2px solid var(--color-grey);
+  border: 0.2rem solid var(--color-grey);
   border-radius: 0.8rem;
   overflow-y: auto;
   height: 30%;

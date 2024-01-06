@@ -1,23 +1,25 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
-import styles from "./ForgetGroupOnDevicePage.module.css";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import CopyToClipboard from "../../components/common/CopyToClipboard/CopyToClipboard";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import removeActiveGroupCodeFromStoredGroupCodesHelper from "../../helpers/removeActiveGroupCodeFromStoredGroupCodesHelper";
-import removeViewStateFromLocalStorageHelper from "../../helpers/removeViewStateFromLocalStorageHelper";
+import styles from "./ForgetGroupOnDevicePage.module.css";
+import {
+  removeActiveGroupCodeFromLocalStorage,
+  removeActiveGroupCodeFromStoredGroupCodes,
+  removeViewStateFromLocalStorage,
+} from "../../utils/localStorageUtils";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
   const navigate = useNavigate();
 
   const handleConfirm = () => {
-    removeActiveGroupCodeFromStoredGroupCodesHelper(groupCode);
+    removeActiveGroupCodeFromStoredGroupCodes(groupCode);
     removeActiveGroupCodeFromLocalStorage();
-    removeViewStateFromLocalStorageHelper();
+    removeViewStateFromLocalStorage();
     navigate("/homepage");
   };
 

@@ -10,7 +10,7 @@ import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import CreateExpense from "../../components/features/CreateExpense/CreateExpense";
 import styles from "./CreateExpensePage.module.css";
 
-export default function CreateExpensePage() {
+const CreateExpensePage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
 
@@ -48,4 +48,6 @@ export default function CreateExpensePage() {
       )}
     </main>
   );
-}
+};
+
+export default CreateExpensePage;

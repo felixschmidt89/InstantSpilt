@@ -3,7 +3,7 @@ import emojiConstants from "../../../constants/emojiConstants";
 import DeleteResourceText from "../../common/DeleteResourceText/DeleteResourceText";
 import styles from "./RenderUserExpenses.module.css";
 
-export default function RenderUserExpenses({ item, handleRerender, userId }) {
+const RenderUserExpenses = ({ item, handleRerender, userId }) => {
   return (
     <div className={styles.expenses}>
       <div className={styles.leftColumn}>
@@ -40,4 +40,6 @@ export default function RenderUserExpenses({ item, handleRerender, userId }) {
       </div>
     </div>
   );
-}
+};
+
+export default RenderUserExpenses;

@@ -12,11 +12,7 @@ import styles from "./RouteButton.module.css";
  * @param {string} [props.margin="1rem"] - The margin applied to the button in rem units.
  * @returns {JSX.Element} - The rendered RouteButton component.
  */
-export default function RouteButton({
-  route,
-  buttonText = "update",
-  margin = "1rem",
-}) {
+const RouteButton = ({ route, buttonText = "update", margin = "1rem" }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -36,4 +32,6 @@ export default function RouteButton({
       </button>
     </div>
   );
-}
+};
+
+export default RouteButton;

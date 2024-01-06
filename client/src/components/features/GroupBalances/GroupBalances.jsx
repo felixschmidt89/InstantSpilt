@@ -17,7 +17,7 @@ const BALANCE_THRESHOLD = 0.01;
  * Displays each group members balance.
  * Fetches user details, formats the data, handles rounding of edge case and renders the balances.
  */
-export default function GroupBalances() {
+const GroupBalances = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
 
   // States for user details, loading status and error messages
@@ -116,4 +116,6 @@ export default function GroupBalances() {
       {error && <p className={styles.error}>{error}</p>}
     </div>
   );
-}
+};
+
+export default GroupBalances;

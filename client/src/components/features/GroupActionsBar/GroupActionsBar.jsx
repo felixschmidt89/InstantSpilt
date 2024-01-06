@@ -1,6 +1,6 @@
 import React from "react";
 import emojiConstants from "../../../constants/emojiConstants";
-import GroupActionsButton from "../GroupActionsButton/GroupActionsButton";
+import GroupActionsButton from "../../common/GroupActionsButton/GroupActionsButton";
 import styles from "./GroupActionsBar.module.css";
 
 /**

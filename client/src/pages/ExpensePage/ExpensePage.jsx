@@ -1,15 +1,19 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import styles from "./ExpensePage.module.css";
+
 import emojiConstants from "../../constants/emojiConstants";
-import useFetchExpenseInfo from "../../hooks/uesFetchExpenseInfo";
+
+import useFetchExpenseInfo from "../../hooks/useFetchExpenseInfo";
+
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
 import DeleteResourceButton from "../../components/common/DeleteResourceButton/DeleteResourceButton";
 import RouteButton from "../../components/common/RouteButton/RouteButton";
+
+import styles from "./ExpensePage.module.css";
 
 /**
  * Page for displaying expense details.
@@ -26,7 +30,7 @@ const ExpensePage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - expense details' />
-      <PiratePx COUNT_IDENTIFIER={"expense-page/"} />
+      <PiratePx COUNT_IDENTIFIER={"expense-page"} />
       {/* NavigateButton component for returning to the main page */}
       <NavigateButton
         route={"instant-split"}

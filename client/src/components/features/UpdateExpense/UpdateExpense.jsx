@@ -1,8 +1,10 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 import emojiConstants from "../../../constants/emojiConstants";
-import commaToDotDecimalSeparatorHelperFunction from "../../../helpers/commaToDotDecimalSeparatorHelper";
+import { commaToDotDecimalSeparator } from "../../../utils/formatUtils";
+
 import styles from "./UpdateExpense.module.css";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -36,7 +38,7 @@ const UpdateExpense = ({
 
   // controlled second input component to set expenseAmount state, converting comma separator to dot prior to posting
   const handleExpenseAmountChange = (e) => {
-    setExpenseAmount(commaToDotDecimalSeparatorHelperFunction(e.target.value));
+    setExpenseAmount(commaToDotDecimalSeparator(e.target.value));
     setFormChanged(true); // Set formChanged to true when the input changes
   };
 

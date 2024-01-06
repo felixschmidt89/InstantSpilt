@@ -1,6 +1,3 @@
-// DONE adding only meaningful necessary comments
-// TODO: Check
-
 import React from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -22,14 +19,14 @@ import { Helmet } from "react-helmet-async";
  *
  * @returns {JSX.Element} The HelmetMetaTags component.
  */
-function HelmetMetaTagsNetlify({ title, description, image, path, author }) {
+const HelmetMetaTagsNetlify = ({ title, description, image, path, author }) => {
   // Define default values
   const defaultDescription =
     "Effortlessly settle group expenses with InstantSplit, a hassle-free solution that requires no registration or app downloads. Share minimal data and split bills with ease.";
   const defaultTitle =
     "InstantSplit - simplified group expense sharing and settlement";
-  const defaultImage = "https://instantsplit.netlify.app/metaTagDefaultImg.png";
-  const defaultUrl = "https://instantsplit.netlify.app/";
+  const defaultImage = "https://instantsplit.de/metaTagDefaultImg.png";
+  const defaultUrl = "https://www.instantsplit.de/";
   const defaultAuthor = "Felix Schmidt";
 
   // Retrieve params
@@ -73,6 +70,6 @@ function HelmetMetaTagsNetlify({ title, description, image, path, author }) {
       <meta name='fragment' content='!' />
     </Helmet>
   );
-}
+};
 
 export default HelmetMetaTagsNetlify;

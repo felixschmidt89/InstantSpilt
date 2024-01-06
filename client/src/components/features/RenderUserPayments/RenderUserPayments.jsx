@@ -4,7 +4,7 @@ import emojiConstants from "../../../constants/emojiConstants";
 import DeleteResourceText from "../../common/DeleteResourceText/DeleteResourceText";
 import styles from "./RenderUserPayments.module.css";
 
-export default function RenderUserPayments({ item, handleRerender, userId }) {
+const RenderUserPayments = ({ item, handleRerender, userId }) => {
   return (
     <div className={styles.payments}>
       <div className={styles.leftColumn}>
@@ -28,4 +28,6 @@ export default function RenderUserPayments({ item, handleRerender, userId }) {
       </div>
     </div>
   );
-}
+};
+
+export default RenderUserPayments;

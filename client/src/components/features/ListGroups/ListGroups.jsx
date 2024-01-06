@@ -3,7 +3,7 @@ import axios from "axios";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-export default function ListGroups() {
+const ListGroups = () => {
   const [groupNames, setGroupNames] = useState([]);
   const [error, setError] = useState(null);
 
@@ -49,4 +49,6 @@ export default function ListGroups() {
       </ul>
     </div>
   );
-}
+};
+
+export default ListGroups;

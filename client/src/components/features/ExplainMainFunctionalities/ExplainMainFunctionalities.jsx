@@ -6,8 +6,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import emojiConstants from "../../../constants/emojiConstants";
 import UserActionsBar from "../UserActionsBar/UserActionsBar";
-import GroupActionsBar from "../../common/GroupActionsBar/GroupActionsBar";
 import styles from "./ExplainMainFunctionalities.module.css";
+import GroupActionsBar from "../GroupActionsBar/GroupActionsBar";
 
 const ExplainMainFunctionalities = () => {
   return (

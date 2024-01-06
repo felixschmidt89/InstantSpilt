@@ -1,18 +1,23 @@
 import React, { useEffect } from "react";
-import useLocalStorage from "react-use-localstorage";
 import { useNavigate } from "react-router-dom";
+import useLocalStorage from "react-use-localstorage";
+
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
-import useFetchGroupData from "../../hooks/useFetchGroupData";
 import UserActionsBar from "../../components/features/UserActionsBar/UserActionsBar";
 import GroupBalances from "../../components/features/GroupBalances/GroupBalances";
 import GroupHistory from "../../components/features/GroupHistory/GroupHistory";
-import GroupActionsBar from "../../components/common/GroupActionsBar/GroupActionsBar";
-import removeActiveGroupCodeFromLocalStorage from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
+import GroupActionsBar from "../../components/features/GroupActionsBar/GroupActionsBar";
+
+import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
-import removeActiveGroupCodeFromLocalStorageHelper from "../../helpers/removeActiveGroupCodeFromLocalStorageHelper";
-import removeViewStateFromLocalStorageHelper from "../../helpers/removeViewStateFromLocalStorageHelper";
+
+import {
+  removeActiveGroupCodeFromLocalStorage,
+  removeViewStateFromLocalStorage,
+} from "../../utils/localStorageUtils";
+
 import styles from "./InstantSplitPage.module.css";
 
 /**
@@ -20,7 +25,7 @@ import styles from "./InstantSplitPage.module.css";
  * be deleted from LocalStorage and navigated to homepage.
  * Renders or links to all core features related to settling expenses.
  */
-export default function InstantSplitPage() {
+const InstantSplitPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const navigate = useNavigate();
 
@@ -32,9 +37,8 @@ export default function InstantSplitPage() {
   // If not, delete it from LocalSpace and navigate to homepage
   useEffect(() => {
     if (groupExists === false) {
-      removeActiveGroupCodeFromLocalStorageHelper(groupCode);
-      removeActiveGroupCodeFromLocalStorage();
-      removeViewStateFromLocalStorageHelper();
+      removeActiveGroupCodeFromLocalStorage(groupCode);
+      removeViewStateFromLocalStorage();
       navigate("/homepage/");
     }
   }, [navigate, groupExists]);
@@ -62,7 +66,7 @@ export default function InstantSplitPage() {
         <HelmetMetaTagsNetlify
           title={`InstantSplit - main (${groupData.group.groupName})`}
         />
-        <PiratePx COUNT_IDENTIFIER={"instant-split"} />
+        <PiratePx COUNT_IDENTIFIER={"main"} />
 
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
@@ -97,4 +101,6 @@ export default function InstantSplitPage() {
       </main>
     );
   }
-}
+};
+
+export default InstantSplitPage;

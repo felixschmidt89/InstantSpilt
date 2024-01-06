@@ -25,7 +25,7 @@ const ShareGroupPage = () => {
       <HelmetMetaTagsNetlify
         title={`InstantSplit - Invite & share ${groupName}`}
       />
-      <PiratePx COUNT_IDENTIFIER={"share-group/:groupName/:groupCode"} />
+      <PiratePx COUNT_IDENTIFIER={"share-group"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

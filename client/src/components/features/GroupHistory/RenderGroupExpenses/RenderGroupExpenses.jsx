@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import emojiConstants from "../../../../constants/emojiConstants";
 import styles from "./RenderGroupExpenses.module.css";
 
-export default function RenderGroupExpenses({ item }) {
+const RenderGroupExpenses = ({ item }) => {
   return (
     <div className={styles.expenses}>
       <div className={styles.leftColumn}>
@@ -26,4 +26,6 @@ export default function RenderGroupExpenses({ item }) {
       </div>
     </div>
   );
-}
+};
+
+export default RenderGroupExpenses;

@@ -1,5 +1,3 @@
-// DONE adding only meaningful necessary comments
-
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -9,7 +7,7 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
-// Define the API URL using environment variable
+// Define API URL using environment variable
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
@@ -19,7 +17,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * and optionally add image files for screenshots when reporting a bug.
  *
  */
-export default function FeedbackPage() {
+const FeedbackPage = () => {
   const { groupCode } = useParams();
 
   // Define states to handle user input data & file, form visibility, and server response
@@ -87,7 +85,7 @@ export default function FeedbackPage() {
     <main>
       {/* Set page title and meta tags */}
       <HelmetMetaTagsNetlify title='InstantSplit - Contact' />
-      <PiratePx COUNT_IDENTIFIER={"feedback/:groupCode"} />
+      <PiratePx COUNT_IDENTIFIER={"feedback"} />
       {/* Navigation button to go back to main*/}
       <NavigateButton
         route={"instant-split"}
@@ -204,4 +202,6 @@ export default function FeedbackPage() {
       )}
     </main>
   );
-}
+};
+
+export default FeedbackPage;

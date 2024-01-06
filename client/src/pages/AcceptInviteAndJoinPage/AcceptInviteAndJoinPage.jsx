@@ -1,13 +1,13 @@
-// DONE adding only meaningful necessary comments
-
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
-import setGroupCodeToCurrentlyActiveHelper from "../../helpers/setGroupCodeToCurrentlyActiveHelper";
-import storeGroupCodesInLocalStorageHelper from "../../helpers/storeGroupCodesInLocalStorageHelper";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
+import {
+  storeGroupCodeInLocalStorage,
+  setGroupCodeToCurrentlyActive,
+} from "../../utils/localStorageUtils";
 import styles from "./AcceptInviteAndJoinPage.module.css";
 
 /**
@@ -31,8 +31,8 @@ const AcceptInviteAndJoinPage = () => {
 
   // On confirmation button click: store groupCode in client's localStorage and navigate to onboarding page
   const handleAcceptInvitation = () => {
-    storeGroupCodesInLocalStorageHelper(groupCode);
-    setGroupCodeToCurrentlyActiveHelper(groupCode);
+    storeGroupCodeInLocalStorage(groupCode);
+    setGroupCodeToCurrentlyActive(groupCode);
     navigate("/onboarding");
   };
 
@@ -43,7 +43,7 @@ const AcceptInviteAndJoinPage = () => {
         title={`Invitation to join ${groupName}`}
         description={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
       />
-      <PiratePx COUNT_IDENTIFIER={"/join/:groupName/:groupCode"} />
+      <PiratePx COUNT_IDENTIFIER={"join"} />
       <div className={styles.explanationContainer}>
         <h1>Hey there!</h1>
         {isLoading && <Spinner />}
