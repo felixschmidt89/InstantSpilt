@@ -4,7 +4,7 @@ import { StatusCodes } from "http-status-codes";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-function useValidateGroupExistence({ groupCode }) {
+function useValidateGroupExistence({ groupCode, limited = false }) {
   const [groupExists, setGroupExists] = useState(null);
   const [error, setError] = useState(null);
   const [statusCode, setStatusCode] = useState(null);
@@ -12,9 +12,12 @@ function useValidateGroupExistence({ groupCode }) {
   useEffect(() => {
     const validateGroup = async () => {
       try {
-        const response = await axios.get(
-          `${apiUrl}/groups/${groupCode}/validate-existence`
-        );
+        const endpoint = limited
+          ? `${apiUrl}/groups/${groupCode}/limited-validate-existence`
+          : `${apiUrl}/groups/${groupCode}/continuous-validate-existence`;
+
+        const response = await axios.get(endpoint);
+
         if (response.data.data === false) {
           setGroupExists(false);
         } else {
@@ -22,10 +25,13 @@ function useValidateGroupExistence({ groupCode }) {
         }
       } catch (error) {
         if (
+          limited &&
           error.response &&
           error.response.status === StatusCodes.TOO_MANY_REQUESTS
         ) {
-          setError("Too many requests. Please try again later.");
+          setError(
+            "Too many requests for limited validation. Please try again later."
+          );
           setStatusCode(StatusCodes.TOO_MANY_REQUESTS);
         } else {
           console.error("Error validating group code:", error);
@@ -36,7 +42,7 @@ function useValidateGroupExistence({ groupCode }) {
     };
 
     validateGroup();
-  }, [groupCode]);
+  }, [groupCode, limited]);
 
   return [groupExists, error, statusCode];
 }

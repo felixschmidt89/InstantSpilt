@@ -1,14 +1,13 @@
+import cloudinary from 'cloudinary';
 import { StatusCodes } from 'http-status-codes';
 import File from '../models/File.js';
-import logDevErrorHelper from '../utils/logDevErrorHelper.js';
-import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
-import cloudinary from 'cloudinary'; // Import Cloudinary
+import { errorLog, sendInternalError } from '../utils/errorUtils.js';
 
-// Initialize Cloudinary with your credentials
+// Initialize Cloudinary
 cloudinary.config({
-  cloud_name: 'dxmri7ajq',
-  api_key: '993928482631351',
-  api_secret: 'BzFqDCAbK06RzFO-QZh13ucnQ2k',
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 export const uploadImage = async (req, res) => {
@@ -20,33 +19,35 @@ export const uploadImage = async (req, res) => {
     }
 
     // Use Cloudinary to upload the file
-    cloudinary.uploader.upload(req.file.path, async (result) => {
-      // Handle the Cloudinary response as needed, e.g., store the URL in a database
-      const cloudinaryURL = result.secure_url;
+    const result = await cloudinary.uploader.upload(req.file.path);
+    const cloudinaryURL = result.secure_url;
 
-      // Retrieve necessary information from the request or request body
-      const { originalname, path, mimetype, size } = req.file;
+    // Retrieve necessary information from the request or request body
+    const { originalname, path, mimetype, size } = req.file;
 
-      // Create a new File document
-      const newFile = new File({
-        filename: originalname,
-        filePath: path,
-        fileMimetype: mimetype,
-        size,
-        cloudinaryURL,
-      });
+    // Create a new File document
+    const newFile = new File({
+      filename: originalname,
+      filePath: path,
+      fileMimetype: mimetype,
+      size,
+      cloudinaryURL,
+    });
 
-      const savedFile = await newFile.save();
+    const savedFile = await newFile.save();
 
-      return res.status(StatusCodes.CREATED).json({
-        status: 'success',
-        data: { savedFile },
-        message: 'Image stored successfully',
-        cloudinaryURL,
-      });
+    return res.status(StatusCodes.CREATED).json({
+      status: 'success',
+      data: { savedFile },
+      message: 'Image stored successfully',
+      cloudinaryURL,
     });
   } catch (error) {
-    logDevErrorHelper('Error uploading image:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error uploading image:',
+      'Failed to upload image. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };

@@ -3,13 +3,9 @@ import { customAlphabet } from 'nanoid';
 import Group from '../models/Group.js';
 import Expense from '../models/Expense.js';
 import Payment from '../models/Payment.js';
-import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
-import isGroupCodeUniqueHelper from '../utils/isGroupCodeUniqueHelper.js';
-import logDevErrorHelper from '../utils/logDevErrorHelper.js';
-import setLastActiveHelper from '../utils/setLastActiveHelper.js';
-
-// Defines customAlphabet for groupCode generation (excluding those numbers and uppercase letters that are easily confused)
-const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
+import { setLastActive } from '../utils/databaseUtils.js';
+import { devLog, errorLog, sendInternalError } from '../utils/errorUtils.js';
+import { generateUniqueGroupCode } from '../utils/groupCodeUtils.js';
 
 /**
  * Creates a new group with a globally unique group ID
@@ -22,20 +18,12 @@ const nanoid = customAlphabet('ACDEFGHIJKLMNOPQRSTUVWXYZ346789');
 export const createGroup = async (req, res) => {
   try {
     const { groupName } = req.body;
-    let groupCode;
-    let isUnique = false;
-
-    // Generate globally unique groupCode
-    while (!isUnique) {
-      groupCode = nanoid(8);
-      // eslint-disable-next-line no-await-in-loop
-      isUnique = await isGroupCodeUniqueHelper(groupCode);
-    }
-
-    // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    const groupCode = await generateUniqueGroupCode();
 
     const group = await Group.create({ groupName, groupCode });
+
+    // Set the lastActive property of the group to now
+    setLastActive(groupCode);
 
     res.status(StatusCodes.CREATED).json({
       status: 'success',
@@ -43,8 +31,12 @@ export const createGroup = async (req, res) => {
       message: 'Group created',
     });
   } catch (error) {
-    logDevErrorHelper('Error creating group:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error creating group:',
+      'Failed to create the group. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -54,7 +46,7 @@ export const changeGroupName = async (req, res) => {
     const group = await Group.findOneAndUpdate({ groupCode });
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     const updatedGroup = await Group.findByIdAndUpdate(
       group._id,
@@ -67,10 +59,12 @@ export const changeGroupName = async (req, res) => {
       message: 'Group name updated successfully',
     });
   } catch (error) {
-    if (process.env.NODE_ENV === 'development') {
-      logDevErrorHelper('Error updating group name:', error);
-      sendInternalErrorHelper(res);
-    }
+    errorLog(
+      error,
+      'Error updating group name:',
+      'Failed to update group name. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -87,8 +81,12 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
       message: 'Group names retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing group names:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error listing group names:',
+      'Failed to list group names. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -96,7 +94,7 @@ export const listExpensesAndPaymentsByGroup = async (req, res) => {
   try {
     const { groupCode } = req.params;
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
     const [expenses, payments] = await Promise.all([
       Expense.find({ groupCode }).populate('expensePayer', 'userName'),
       Payment.find({ groupCode })
@@ -114,8 +112,12 @@ export const listExpensesAndPaymentsByGroup = async (req, res) => {
       message: 'All group expenses and payments retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing expenses and payments', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error listing expenses and payments:',
+      'Failed to list expenses and payments. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -124,7 +126,7 @@ export const getGroupInfo = async (req, res) => {
     const { groupCode } = req.params;
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
     const group = await Group.findOne({ groupCode });
 
     res.status(StatusCodes.OK).json({
@@ -133,8 +135,12 @@ export const getGroupInfo = async (req, res) => {
       message: 'Group info retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error fetching group info:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error fetching group info:',
+      'Failed to fetch group information. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -164,8 +170,12 @@ export const validateGroupExistence = async (req, res) => {
       });
     }
   } catch (error) {
-    logDevErrorHelper('Error fetching group info:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error fetching group info:',
+      'Failed to fetch group information. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -181,8 +191,12 @@ export const listAllGroups = async (req, res) => {
       message: 'All groups retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing all groups:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error listing all groups:',
+      'Failed to list all groups. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -195,7 +209,11 @@ export const deleteAllGroups = async (req, res) => {
       message: 'All groups deleted successfully.',
     });
   } catch (error) {
-    logDevErrorHelper('Error deleting all groups:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error deleting all groups:',
+      'Failed to delete all groups. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };

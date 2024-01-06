@@ -26,6 +26,7 @@ const ValidateProvideGroupCodePage = () => {
   // Destructure groupExists and status code from groupCode validity check
   const [groupExists, , statusCode] = useValidateGroupExistence({
     groupCode,
+    limited: true,
   });
   const navigate = useNavigate();
 

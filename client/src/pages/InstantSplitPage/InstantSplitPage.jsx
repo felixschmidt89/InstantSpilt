@@ -15,6 +15,7 @@ import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence
 
 import {
   removeActiveGroupCodeFromLocalStorage,
+  removeActiveGroupCodeFromStoredGroupCodes,
   removeViewStateFromLocalStorage,
 } from "../../utils/localStorageUtils";
 
@@ -37,7 +38,8 @@ const InstantSplitPage = () => {
   // If not, delete it from LocalSpace and navigate to homepage
   useEffect(() => {
     if (groupExists === false) {
-      removeActiveGroupCodeFromLocalStorage(groupCode);
+      removeActiveGroupCodeFromStoredGroupCodes(groupCode);
+      removeActiveGroupCodeFromLocalStorage();
       removeViewStateFromLocalStorage();
       navigate("/homepage/");
     }

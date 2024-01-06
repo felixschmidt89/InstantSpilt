@@ -2,15 +2,14 @@ import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
 import Expense from '../models/Expense.js';
 import Payment from '../models/Payment.js';
-import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
-import logDevErrorHelper from '../utils/logDevErrorHelper.js';
-import setLastActiveHelper from '../utils/setLastActiveHelper.js';
+import { setLastActive } from '../utils/databaseUtils.js';
+import { errorLog, sendInternalError } from '../utils/errorUtils.js';
 
 export const createUser = async (req, res) => {
   try {
     const { userName, groupCode } = req.body;
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     // Check if a user with the same name and group code already exists
     const existingUser = await User.findOne({ userName, groupCode });
@@ -30,8 +29,12 @@ export const createUser = async (req, res) => {
       message: 'User created successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error creating user:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error creating user:',
+      'Failed to create user. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -42,7 +45,7 @@ export const getUserInfo = async (req, res) => {
     const groupCode = user.groupCode;
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
@@ -50,8 +53,12 @@ export const getUserInfo = async (req, res) => {
       message: 'User info retrieved successfully.',
     });
   } catch (error) {
-    logDevErrorHelper('Error retrieving user info', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error retrieving user info:',
+      'Failed to retrieve user information. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -59,7 +66,7 @@ export const changeUserName = async (req, res) => {
   try {
     const { groupCode, userName, newUserName } = req.body;
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     const updatedUser = await User.findOneAndUpdate(
       { userName, groupCode },
@@ -73,8 +80,12 @@ export const changeUserName = async (req, res) => {
       message: 'User name updated successfully.',
     });
   } catch (error) {
-    logDevErrorHelper('Error updating user name', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error updating user name:',
+      'Failed to update user name. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -108,8 +119,12 @@ export const listExpensesAndPaymentsByUser = async (req, res) => {
       message: 'All user expenses and payments retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing user expenses and payments', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error listing user expenses and payments:',
+      'Failed to list user expenses and payments. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -142,7 +157,7 @@ export const deleteUser = async (req, res) => {
 
     const groupCode = userToDelete.groupCode;
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     await User.deleteOne({ _id: userToDelete._id });
 
@@ -151,8 +166,12 @@ export const deleteUser = async (req, res) => {
       data: null,
     });
   } catch (error) {
-    logDevErrorHelper('Error deleting user', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error deleting user:',
+      'Failed to delete user. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -160,7 +179,7 @@ export const listAllUsersByGroupCode = async (req, res) => {
   try {
     const { groupCode } = req.params;
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
     const users = await User.find({ groupCode });
 
     res.status(StatusCodes.OK).json({
@@ -170,8 +189,12 @@ export const listAllUsersByGroupCode = async (req, res) => {
       message: 'User list retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing group members by groupCode', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error listing group members by groupCode:',
+      'Failed to list group members. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -187,8 +210,12 @@ export const listAllUsers = async (req, res) => {
       message: 'All users retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing users', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error listing all users:',
+      'Failed to list all users. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -201,7 +228,11 @@ export const deleteAllUsers = async (req, res) => {
       message: 'All users deleted successfully.',
     });
   } catch (error) {
-    logDevErrorHelper('Error deleting all users:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error deleting all users:',
+      'Failed to delete all users. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };

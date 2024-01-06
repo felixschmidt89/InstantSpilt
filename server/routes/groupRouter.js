@@ -31,8 +31,11 @@ router.get('/StoredGroupNames', listGroupNamesByStoredGroupCodes);
 router.get('/:groupCode', getGroupInfo);
 
 // Check if groupCode exists in database
+router.get('/:groupCode/continuous-validate-existence', validateGroupExistence);
+
+// Check if groupCode exists in database (limited)
 router.get(
-  '/:groupCode/validate-existence',
+  '/:groupCode/limited-validate-existence',
   limiter,
   handleRateLimitExceedance,
   validateGroupExistence,

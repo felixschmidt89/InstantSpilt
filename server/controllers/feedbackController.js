@@ -1,11 +1,14 @@
+// 1. React and Third-Party Libraries
 import { StatusCodes } from 'http-status-codes';
 import nodemailer from 'nodemailer';
-import Feedback from '../models/Feedback.js';
-import logDevErrorHelper from '../utils/logDevErrorHelper.js';
-import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
-import setLastActiveHelper from '../utils/setLastActiveHelper.js';
-import winstonLogger from '../utils/winstonLogger.js';
 
+import Feedback from '../models/Feedback.js';
+
+import { setLastActive } from '../utils/databaseUtils.js';
+
+import { errorLog, sendInternalError } from '../utils/errorUtils.js';
+
+// Get email credentials from environment variables
 const emailUser = process.env.EMAIL_USER;
 const emailPass = process.env.EMAIL_PASS;
 
@@ -19,7 +22,7 @@ export const createFeedback = async (req, res) => {
     const { name, email, messageType, feedback, groupCode, fileId } = req.body;
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     const newFeedback = new Feedback({
       name,
@@ -60,10 +63,14 @@ export const createFeedback = async (req, res) => {
       `,
     };
 
-    // Log error using winston, else send
+    // Log error, else send
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        winstonLogger.error('Error sending email:', error);
+        errorLog(
+          error,
+          'Error sending feedback email:',
+          'Failed to send feedback email. Please try again later.',
+        );
       } else {
         console.log('Email sent:', info.response);
       }
@@ -75,7 +82,11 @@ export const createFeedback = async (req, res) => {
       message: 'Feedback received successfully - thanks!',
     });
   } catch (error) {
-    logDevErrorHelper('Error creating feedback:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error creating feedback:',
+      'Failed to create feedback. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };

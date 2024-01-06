@@ -3,9 +3,9 @@ import { validationResult } from 'express-validator';
 
 import Expense from '../models/Expense.js';
 import User from '../models/User.js';
-import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
-import logDevErrorHelper from '../utils/logDevErrorHelper.js';
-import setLastActiveHelper from '../utils/setLastActiveHelper.js';
+
+import { devLog, errorLog, sendInternalError } from '../utils/errorUtils.js';
+import { setLastActive } from '../utils/databaseUtils.js';
 
 /** Creates a new expense
  *  Updates totalExpenseAmountPaid by expense payer and totalExpenseBenefittedAmount from by expense beneficiaries
@@ -54,7 +54,7 @@ export const createExpense = async (req, res) => {
     );
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
@@ -73,8 +73,12 @@ export const createExpense = async (req, res) => {
         })),
       });
     } else {
-      logDevErrorHelper('Error creating expense:', error);
-      sendInternalErrorHelper(res);
+      errorLog(
+        error,
+        'Error creating expense:',
+        'Failed to create the expense. Please try again later.',
+      );
+      sendInternalError(res);
     }
   }
 };
@@ -121,7 +125,7 @@ export const updateExpense = async (req, res) => {
     );
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     // Update total expenses benefitted from by expense beneficiaries concurrently
     await Promise.all(
@@ -164,8 +168,12 @@ export const updateExpense = async (req, res) => {
         })),
       });
     } else {
-      logDevErrorHelper('Error updating expense:', error);
-      sendInternalErrorHelper(res);
+      errorLog(
+        error,
+        'Error updating expense:',
+        'Failed to update the expense. Please try again later.',
+      );
+      sendInternalError(res);
     }
   }
 };
@@ -179,8 +187,8 @@ export const getExpenseInfo = async (req, res) => {
 
     // Set the lastActive property of the group to now
     const groupCode = expense.groupCode;
-    console.log(groupCode);
-    setLastActiveHelper(groupCode);
+    devLog('Expense groupCode', groupCode);
+    setLastActive(groupCode);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
@@ -188,8 +196,12 @@ export const getExpenseInfo = async (req, res) => {
       message: 'Expense info retrieved successfully.',
     });
   } catch (error) {
-    logDevErrorHelper('Error retrieving expense info', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error retrieving expense info:',
+      'Failed to retrieve the expense info. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -204,7 +216,7 @@ export const deleteExpense = async (req, res) => {
     const { expensePayer, expenseBeneficiaries, groupCode } = expenseToDelete;
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     // Delete the expense using the retrieved _id
     await Expense.deleteOne({ _id: expenseToDelete._id });
@@ -224,8 +236,12 @@ export const deleteExpense = async (req, res) => {
       data: null,
     });
   } catch (error) {
-    logDevErrorHelper('Error deleting expense', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error deleting expense:',
+      'Failed to delete the expense. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -234,7 +250,7 @@ export const listAllExpensesByGroupCode = async (req, res) => {
     const { groupCode } = req.params;
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     const expenses = await Expense.find({ groupCode });
     res.status(StatusCodes.OK).json({
@@ -244,8 +260,12 @@ export const listAllExpensesByGroupCode = async (req, res) => {
       message: 'Group expenses retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing expenses', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error listing expenses:',
+      'Failed to list group expenses. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -261,8 +281,12 @@ export const listAllExpenses = async (req, res) => {
       message: 'All expenses retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing all expenses', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error listing all expenses:',
+      'Failed to list all expenses. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -280,7 +304,11 @@ export const deleteAllExpenses = async (req, res) => {
       message: 'All expenses deleted successfully.',
     });
   } catch (error) {
-    logDevErrorHelper('Error deleting all expenses:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error deleting all expenses:',
+      'Failed to delete all expenses. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };

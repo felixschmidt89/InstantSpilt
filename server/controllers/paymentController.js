@@ -1,10 +1,9 @@
 import { StatusCodes } from 'http-status-codes';
 import Payment from '../models/Payment.js';
 import User from '../models/User.js';
-import sendInternalErrorHelper from '../utils/sendInternalErrorHelper.js';
-import logDevErrorHelper from '../utils/logDevErrorHelper.js';
 import Expense from '../models/Expense.js';
-import setLastActiveHelper from '../utils/setLastActiveHelper.js';
+import { setLastActive } from '../utils/databaseUtils.js';
+import { sendInternalError } from '../utils/errorUtils.js';
 
 export const createPayment = async (req, res) => {
   try {
@@ -12,7 +11,7 @@ export const createPayment = async (req, res) => {
       req.body;
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     const paymentMaker = await User.findOne({ userName, groupCode });
 
@@ -61,8 +60,12 @@ export const createPayment = async (req, res) => {
         })),
       });
     } else {
-      logDevErrorHelper('Error creating expense:', error);
-      sendInternalErrorHelper(res);
+      errorLog(
+        error,
+        'Error creating expense:',
+        'Failed to create expense. Please try again later.',
+      );
+      sendInternalError(res);
     }
   }
 };
@@ -75,7 +78,7 @@ export const updatePayment = async (req, res) => {
       req.body;
 
     // Set the lastActive property of the group to now
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     const paymentMaker = await User.findOne({ userName, groupCode });
 
@@ -128,8 +131,12 @@ export const updatePayment = async (req, res) => {
         })),
       });
     } else {
-      logDevErrorHelper('Error updating payment:', error);
-      sendInternalErrorHelper(res);
+      errorLog(
+        error,
+        'Error updating payment:',
+        'Failed to update payment. Please try again later.',
+      );
+      sendInternalError(res);
     }
   }
 };
@@ -143,7 +150,7 @@ export const getPaymentInfo = async (req, res) => {
 
     // Set the lastActive property of the group to now
     const groupCode = payment.groupCode;
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
@@ -151,8 +158,12 @@ export const getPaymentInfo = async (req, res) => {
       message: 'Payment info retrieved successfully.',
     });
   } catch (error) {
-    logDevErrorHelper('Error retrieving payment info', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error retrieving payment info',
+      'Failed to retrieve payment information. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -166,7 +177,7 @@ export const deletePayment = async (req, res) => {
 
     // Set the lastActive property of the group to now
     const groupCode = paymentToDelete.groupCode;
-    setLastActiveHelper(groupCode);
+    setLastActive(groupCode);
 
     const { paymentRecipient, paymentMaker } = paymentToDelete;
 
@@ -179,8 +190,12 @@ export const deletePayment = async (req, res) => {
       data: null,
     });
   } catch (error) {
-    logDevErrorHelper('Error deleting payment:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error deleting payment:',
+      'Failed to delete payment. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -196,8 +211,12 @@ export const listAllPayments = async (req, res) => {
       message: 'Payments retrieved successfully',
     });
   } catch (error) {
-    logDevErrorHelper('Error listing all payments', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error listing all payments',
+      'Failed to list payments. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };
 
@@ -215,7 +234,11 @@ export const deleteAllPayments = async (req, res) => {
       message: 'All payments deleted successfully.',
     });
   } catch (error) {
-    logDevErrorHelper('Error deleting all payments:', error);
-    sendInternalErrorHelper(res);
+    errorLog(
+      error,
+      'Error deleting all payments:',
+      'Failed to delete all payments. Please try again later.',
+    );
+    sendInternalError(res);
   }
 };

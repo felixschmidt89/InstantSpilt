@@ -1,14 +1,18 @@
 /**
- * Utility function to log in development environment only.
+ * Utility function to log messages or errors in development environment only.
  *
  * @param {string} [message="devLog"] - message to be logged.
- * @param {*} [data] - optional data to be logged.
+ * @param {*} [data] - optional data to be logged. If an error object is provided, it will be logged as an error.
  * @returns {void}
  */
 export const devLog = (message = "devLog", data) => {
   if (process.env.NODE_ENV === "development") {
     if (data !== undefined) {
-      console.log(message, data);
+      if (data instanceof Error) {
+        console.error(message, data);
+      } else {
+        console.log(message, data);
+      }
     }
   }
 };
