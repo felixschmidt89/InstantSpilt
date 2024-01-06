@@ -47,12 +47,11 @@ const ExplainMainFunctionalities = () => {
       </ul>
       <h2>
         <strong>Bottom section</strong>
-        <div className={styles.noLink}>
-          {" "}
-          <GroupActionsBar />
-        </div>
       </h2>
-      <p className={styles.noLink}>
+      <div className={styles.noLink}>
+        <GroupActionsBar />
+      </div>
+      <div className={styles.noLink}>
         Perform split actions:
         <ul>
           <li>
@@ -77,7 +76,7 @@ const ExplainMainFunctionalities = () => {
             </span>
           </li>
         </ul>
-      </p>
+      </div>
     </div>
   );
 };

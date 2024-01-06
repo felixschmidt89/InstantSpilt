@@ -1,10 +1,14 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+
+// Import Components
 import Header from "./components/common/Header/Header";
 import Footer from "./components/common/Footer/Footer";
+
+// Import Pages
 import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
 import HomePage from "./pages/HomePage/HomePage";
-import "./global.css";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
 import InstantSplitPage from "./pages/InstantSplitPage/InstantSplitPage";
 import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
@@ -22,7 +26,6 @@ import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroupExpensesPage";
 import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
-import { HelmetProvider } from "react-helmet-async";
 import CreateUsersDuringSignUpPage from "./pages/CreateUsersDuringSignUpPage/CreateUsersDuringSignUpPage";
 import CreateUsersInAppPage from "./pages/CreateUsersInAppPage/CreateUsersInAppPage";
 import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
@@ -36,6 +39,8 @@ import UserHistoryPage from "./pages/UserHistoryPage/UserHistoryPage";
 import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/ItemNavigatorUserHistoryPage";
 import UpdateUserExpensePage from "./pages/UpdateExpenseUserPage/UpdateExpenseUserPage";
 import UpdatePaymentUserPage from "./pages/UpdatePaymentUserPage/UpdatePaymentUserPage";
+
+import "./App.css";
 
 const App = () => {
   return (
@@ -52,7 +57,7 @@ const App = () => {
           />
           <Route path='/create-group' element={<CreateGroupPage />} />
           <Route
-            path='create-users-signup'
+            path='/create-users-signup'
             element={<CreateUsersDuringSignUpPage />}
           />
           <Route path='/enter-groupcode' element={<EnterGroupCode />} />
@@ -89,7 +94,10 @@ const App = () => {
             path='/update-user-payment/:userId/:itemId'
             element={<UpdatePaymentUserPage />}
           />
-          <Route path='create-users-inapp' element={<CreateUsersInAppPage />} />
+          <Route
+            path='/create-users-inapp'
+            element={<CreateUsersInAppPage />}
+          />
           <Route
             path='/settle-expenses'
             element={<SettleGroupExpensesPage />}
