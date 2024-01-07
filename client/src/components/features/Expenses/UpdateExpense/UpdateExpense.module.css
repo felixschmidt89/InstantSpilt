@@ -3,7 +3,7 @@
 }
 
 .button {
-  margin-top: 1.6rem;
+  margin-top: 1rem;
   background-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
   color: var(--color-main);

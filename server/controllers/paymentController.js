@@ -3,17 +3,20 @@ import Payment from '../models/Payment.js';
 import User from '../models/User.js';
 import Expense from '../models/Expense.js';
 import { setLastActive } from '../utils/databaseUtils.js';
-import { sendInternalError } from '../utils/errorUtils.js';
+import { errorLog, sendInternalError } from '../utils/errorUtils.js';
 
 export const createPayment = async (req, res) => {
   try {
-    const { userName, groupCode, paymentAmount, paymentRecipientName } =
+    const { paymentMakerName, groupCode, paymentAmount, paymentRecipientName } =
       req.body;
 
     // Set the lastActive property of the group to now
     setLastActive(groupCode);
 
-    const paymentMaker = await User.findOne({ userName, groupCode });
+    const paymentMaker = await User.findOne({
+      userName: { $eq: paymentMakerName },
+      groupCode,
+    });
 
     const paymentRecipient = await User.findOne({
       userName: { $eq: paymentRecipientName },
@@ -74,13 +77,16 @@ export const updatePayment = async (req, res) => {
   try {
     const { paymentId } = req.params;
 
-    const { userName, groupCode, paymentAmount, paymentRecipientName } =
+    const { paymentMakerName, groupCode, paymentAmount, paymentRecipientName } =
       req.body;
 
     // Set the lastActive property of the group to now
     setLastActive(groupCode);
 
-    const paymentMaker = await User.findOne({ userName, groupCode });
+    const paymentMaker = await User.findOne({
+      userName: { $eq: paymentMakerName },
+      groupCode,
+    });
 
     const paymentRecipient = await User.findOne({
       userName: { $eq: paymentRecipientName },

@@ -1,7 +1,12 @@
+// React and Third-Party Libraries
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+
+// Components
 import CopyToClipboard from "../../components/common/CopyToClipboard/CopyToClipboard";
+
+// Styles
 import styles from "./GroupCodeExplanationPage.module.css";
 
 const ExplainGroupCode = () => {

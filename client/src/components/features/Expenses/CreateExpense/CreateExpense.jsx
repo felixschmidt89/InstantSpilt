@@ -1,13 +1,23 @@
+// React and Third-Party Libraries
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+// Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
+
+// Hooks
+
+// Components
 import ExpenseBeneficiaries from "../ExpenseBeneficiaries/ExpenseBeneficiaries";
 import ExpensePayer from "../ExpensePayer/ExpensePayer";
 import ExpenseAmount from "../ExpenseAmount/ExpenseAmount";
 import ExpenseDescription from "../ExpenseDescription/ExpenseDescription";
+
+// Styles
 import styles from "./CreateExpense.module.css";
 
+// API
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const CreateExpense = ({ groupMembers, groupCode }) => {
@@ -27,9 +37,6 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
     expensePayerName &&
     expenseDescription &&
     selectedBeneficiaries.length > 0;
-
-  devLog("expensePayerName:", expensePayerName);
-  devLog("expenseBeneficiariesNames:", selectedBeneficiaries);
 
   // On form submission: Post expense and navigate to instant-split page
   const handleFormSubmit = async (e) => {

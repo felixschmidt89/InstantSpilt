@@ -1,15 +1,21 @@
+// React and Third-Party Libraries
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+// Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
+
+// Components
 import ExpenseBeneficiaries from "../ExpenseBeneficiaries/ExpenseBeneficiaries";
 import ExpensePayer from "../ExpensePayer/ExpensePayer";
 import ExpenseAmount from "../ExpenseAmount/ExpenseAmount";
 import ExpenseDescription from "../ExpenseDescription/ExpenseDescription";
 
+// Styles
 import styles from "./UpdateExpense.module.css";
 
+// API
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const UpdateExpense = ({
@@ -17,7 +23,7 @@ const UpdateExpense = ({
   groupCode,
   groupMembers,
   expenseId,
-  route,
+  route = "/instant-split",
 }) => {
   const navigate = useNavigate();
 
@@ -61,13 +67,10 @@ const UpdateExpense = ({
       if (error.response) {
         // Handle bad requests
         if (error.response.status === 400) {
-          devLog(error.response);
           setError(error.response.data.errors[0].message);
         } else {
           setError("Error creating expense. Please try again.");
-          if (process.env.NODE_ENV === "development") {
-            console.error("Error creating expense:", error);
-          }
+          devLog("Error creating expense:", error);
         }
       }
     }

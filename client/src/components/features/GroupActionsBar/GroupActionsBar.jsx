@@ -8,7 +8,7 @@ import styles from "./GroupActionsBar.module.css";
  */
 const GroupActionsBar = () => {
   return (
-    <div className={styles.buttonContainer}>
+    <div className={styles.groupActionsBar}>
       {/* Button for creating expenses */}
       <GroupActionsButton
         route={"create-expense"}

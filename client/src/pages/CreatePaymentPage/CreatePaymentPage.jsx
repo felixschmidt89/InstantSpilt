@@ -6,23 +6,19 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
-import RenderPaymentForm from "../../components/features/CreatePayment/CreatePayment";
 import GroupActionsButton from "../../components/common/GroupActionsButton/GroupActionsButton";
 import styles from "./CreatePaymentPage.module.css";
+import CreatePayment from "../../components/features/Payments/CreatePayment/CreatePayment";
 
 const CreatePaymentPage = () => {
   // Define states for paymentAmount, userName, paymentRecipient, and error message
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
 
-  console.log(groupMembers);
-
-  // Conditional rendering based on isFetched
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - Add payment' />
       <PiratePx COUNT_IDENTIFIER={"create-payment"} />
-
       {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
@@ -47,7 +43,7 @@ const CreatePaymentPage = () => {
         </div>
       ) : (
         // Else render the payment
-        <RenderPaymentForm groupMembers={groupMembers} groupCode={groupCode} />
+        <CreatePayment groupMembers={groupMembers} groupCode={groupCode} />
       )}
     </main>
   );

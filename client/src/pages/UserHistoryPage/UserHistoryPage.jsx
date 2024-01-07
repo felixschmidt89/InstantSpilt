@@ -10,6 +10,7 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
+import { devLog } from "../../utils/errorUtils";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
@@ -71,7 +72,7 @@ export default function UserHistoryPage() {
     setRerender((prevValue) => prevValue + 1);
   };
 
-  console.log(userExpensesAndPayments);
+  devLog(userExpensesAndPayments);
 
   return isLoading ? (
     <main>

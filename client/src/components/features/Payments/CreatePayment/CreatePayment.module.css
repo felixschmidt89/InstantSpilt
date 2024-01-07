@@ -1,9 +1,13 @@
+.paymentToEmoji {
+  margin-right: 1rem;
+}
+
 .errorMessage {
   color: var(--color-error);
 }
 
 .button {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   background-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
   color: var(--color-main);

@@ -6,10 +6,10 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
-import RenderPaymentUpdateForm from "../../components/features/UpdatePayment/UpdatePayment";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import UpdatePayment from "../../components/features/Payments/UpdatePayment/UpdatePayment";
 
 const UpdatePaymentPage = () => {
   const { itemId } = useParams();
@@ -17,17 +17,15 @@ const UpdatePaymentPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const paymentDetails = useFetchPaymentInfo(itemId);
-  const groupMembers = useFetchGroupMembers(groupCode);
+  const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
 
   // useEffect to handle isLoading
   useEffect(() => {
     // Check if both paymentDetails and groupMembers are available
-    if (paymentDetails && groupMembers) {
+    if (paymentDetails && isFetched) {
       setIsLoading(false);
     }
-  }, [paymentDetails, groupMembers]);
-
-  console.log(paymentDetails, groupMembers);
+  }, [paymentDetails, isFetched]);
 
   return (
     <main>
@@ -45,8 +43,7 @@ const UpdatePaymentPage = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        // Render the form when isLoading is false
-        <RenderPaymentUpdateForm
+        <UpdatePayment
           groupMembers={groupMembers}
           groupCode={groupCode}
           paymentDetails={paymentDetails}
