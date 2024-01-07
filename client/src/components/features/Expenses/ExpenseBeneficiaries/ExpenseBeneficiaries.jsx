@@ -5,15 +5,17 @@ const ExpenseBeneficiaries = ({
   selectedBeneficiaries,
   groupMembers,
   onSelectedBeneficiariesChange,
+  setFormChanged,
 }) => {
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
-    if (checked) {
-      onSelectedBeneficiariesChange([...selectedBeneficiaries, value]);
-    } else {
-      onSelectedBeneficiariesChange(
-        selectedBeneficiaries.filter((member) => member !== value)
-      );
+    onSelectedBeneficiariesChange(
+      checked
+        ? [...selectedBeneficiaries, value]
+        : selectedBeneficiaries.filter((member) => member !== value)
+    );
+    if (setFormChanged) {
+      setFormChanged(true);
     }
   };
 
@@ -23,6 +25,9 @@ const ExpenseBeneficiaries = ({
         ? []
         : [...groupMembers]
     );
+    if (setFormChanged) {
+      setFormChanged(true);
+    }
   };
 
   return (

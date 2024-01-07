@@ -1,0 +1,21 @@
+.errorMessage {
+  color: var(--color-error);
+}
+
+.button {
+  margin-top: 1.6rem;
+  background-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
+  color: var(--color-main);
+  font-weight: bold;
+  border: none;
+  width: 3rem;
+  font-size: 1.9rem;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.button:hover {
+  background-color: var(--color-success);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}

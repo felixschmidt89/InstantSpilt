@@ -7,7 +7,7 @@ import NavigateButton from "../../components/common/NavigateButton/NavigateButto
 import Spinner from "../../components/common/Spinner/Spinner";
 import GroupActionsButton from "../../components/common/GroupActionsButton/GroupActionsButton";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
-import CreateExpense from "../../components/features/CreateExpense/CreateExpense";
+import CreateExpense from "../../components/features/Expenses/CreateExpense/CreateExpense";
 import styles from "./CreateExpensePage.module.css";
 
 const CreateExpensePage = () => {

@@ -2,9 +2,12 @@ import React from "react";
 import { commaToDotDecimalSeparator } from "../../../../utils/formatUtils";
 import styles from "./ExpenseAmount.module.css";
 
-const ExpenseAmount = ({ value, onAmountChange }) => {
+const ExpenseAmount = ({ value, onAmountChange, setFormChanged }) => {
   const handleExpenseAmountChange = (e) => {
     onAmountChange(commaToDotDecimalSeparator(e.target.value));
+    if (setFormChanged) {
+      setFormChanged(true);
+    }
   };
   return (
     <div>

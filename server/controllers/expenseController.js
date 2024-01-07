@@ -13,14 +13,17 @@ import { setLastActive } from '../utils/databaseUtils.js';
 export const createExpense = async (req, res) => {
   try {
     const {
-      expensePayer,
+      expensePayerName,
       groupCode,
       expenseDescription,
       expenseAmount,
       expenseBeneficiariesNames,
     } = req.body;
 
-    const expensePayerUser = await User.findOne({ expensePayer, groupCode });
+    const expensePayer = await User.findOne({
+      userName: { $in: expensePayerName },
+      groupCode,
+    });
 
     const expenseBeneficiaries = await User.find({
       userName: { $in: expenseBeneficiariesNames },
@@ -37,14 +40,14 @@ export const createExpense = async (req, res) => {
       expenseAmount,
       expenseAmountPerBeneficiary,
       groupCode,
-      expensePayer: expensePayerUser._id,
+      expensePayer: expensePayer._id,
       expenseBeneficiaries: beneficiaryIds,
     });
 
     const expense = await newExpense.save();
 
     // Update total expenses paid by expense payer
-    await expensePayerUser.updateTotalExpensesPaid();
+    await expensePayer.updateTotalExpensesPaid();
 
     // Update total expenses benefitted from by expense beneficiaries concurrently
     await Promise.all(
@@ -88,14 +91,18 @@ export const updateExpense = async (req, res) => {
     const { expenseId } = req.params;
 
     const {
-      expensePayer,
+      expensePayerName,
       groupCode,
       expenseDescription,
       expenseAmount,
       expenseBeneficiariesNames,
     } = req.body;
 
-    const expensePayerUser = await User.findOne({ expensePayer, groupCode });
+    const expensePayer = await User.findOne({
+      userName: { $in: expensePayerName },
+      groupCode,
+    });
+
     const expenseBeneficiaries = await User.find({
       userName: { $in: expenseBeneficiariesNames },
       groupCode,
@@ -104,6 +111,7 @@ export const updateExpense = async (req, res) => {
     const groupUsers = await User.find({
       groupCode,
     });
+
     const expenseAmountPerBeneficiary =
       expenseAmount / expenseBeneficiaries.length;
     const beneficiaryIds = expenseBeneficiaries.map((user) => user._id);
@@ -113,7 +121,7 @@ export const updateExpense = async (req, res) => {
       expenseAmount,
       expenseAmountPerBeneficiary,
       groupCode,
-      expensePayer: expensePayerUser._id,
+      expensePayer: expensePayer._id,
       expenseBeneficiaries: beneficiaryIds,
     };
 

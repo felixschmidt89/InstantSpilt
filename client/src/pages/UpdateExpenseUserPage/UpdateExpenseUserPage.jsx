@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import RenderExpenseUpdateForm from "../../components/features/UpdateExpense/UpdateExpense";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
@@ -10,6 +9,7 @@ import useFetchExpenseInfo from "../../hooks/useFetchExpenseInfo";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import styles from "./UpdateExpenseUserPage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import UpdateExpense from "../../components/features/Expenses/UpdateExpense/UpdateExpense";
 
 function UpdateUserExpensePage() {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -44,7 +44,7 @@ function UpdateUserExpensePage() {
             <h1 className={styles.header}>
               Update expense {emojiConstants.expense}
             </h1>
-            <RenderExpenseUpdateForm
+            <UpdateExpense
               expenseInfo={expenseInfo}
               groupCode={groupCode}
               groupMembers={groupMembers}
