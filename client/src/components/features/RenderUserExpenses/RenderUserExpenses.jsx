@@ -25,7 +25,7 @@ const RenderUserExpenses = ({ item, handleRerender, userId }) => {
         <div className={styles.borderedContent}>
           <ul>
             <li>paid by: {item.expensePayer.userName}</li>
-            <li>description: {item.expenseName}</li>
+            <li>description: {item.expenseDescription}</li>
             <li>
               beneficiaries:{" "}
               {item.expenseBeneficiaries

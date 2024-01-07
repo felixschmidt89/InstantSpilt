@@ -13,6 +13,7 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import DeleteResourceButton from "../../components/common/DeleteResourceButton/DeleteResourceButton";
 import RouteButton from "../../components/common/RouteButton/RouteButton";
 
+import { devLog } from "../../../../server/utils/errorUtils";
 import styles from "./ExpensePage.module.css";
 
 /**
@@ -26,6 +27,7 @@ const ExpensePage = () => {
   const { itemId: expenseId } = useParams();
   // fetch expense details
   const expenseDetails = useFetchExpenseInfo(expenseId);
+  devLog(expenseDetails);
 
   return (
     <main>
@@ -44,7 +46,7 @@ const ExpensePage = () => {
         <div>
           {/* Displaying expense details with 2 decimal places */}
           <h2>{expenseDetails.expenseAmount.toFixed(2)}€</h2>
-          <p>Description: {expenseDetails.expenseName}</p>
+          <p>Description: {expenseDetails.expenseDescription}</p>
           <p>
             {emojiConstants.paidFor}{" "}
             {/* Link to the user page of the expense payer */}

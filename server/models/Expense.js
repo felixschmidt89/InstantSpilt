@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 const expenseSchema = new Schema(
   {
-    expenseName: {
+    expenseDescription: {
       type: String,
       trim: true,
       required: [true, 'Missing expense description.'],

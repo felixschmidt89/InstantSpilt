@@ -1,5 +1,3 @@
-// DONE adding only meaningful necessary comments
-
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./DeleteResourceText.module.css";
@@ -43,7 +41,7 @@ const DeleteResourceText = ({ resourceId, resourceType, handleRerender }) => {
   // Render button and error message in case of an error
   return (
     <div>
-      <a className={styles.link} onClick={handleDelete}>
+      <a className={styles.link} onClick={handleDelete} href='#'>
         delete
       </a>
       {error && <p className={styles.errorMessage}>{error}</p>}

@@ -11,13 +11,15 @@ const projectId = import.meta.env.VITE_PIRATEPX_PROJECT_ID;
  * @returns {JSX.Element} - transparent image.
  */
 const PiratePx = ({ COUNT_IDENTIFIER }) => {
-  return (
-    <img
-      className={styles.piratePx}
-      src={`https://app.piratepx.com/ship?p=${projectId}&i=${COUNT_IDENTIFIER}`}
-      alt=''
-    />
-  );
+  // Render the component only in production environment
+  if (process.env.NODE_ENV === "production")
+    return (
+      <img
+        className={styles.piratePx}
+        src={`https://app.piratepx.com/ship?p=${projectId}&i=${COUNT_IDENTIFIER}`}
+        alt=''
+      />
+    );
 };
 
 export default PiratePx;

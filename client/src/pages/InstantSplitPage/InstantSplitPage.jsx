@@ -43,7 +43,7 @@ const InstantSplitPage = () => {
       removeViewStateFromLocalStorage();
       navigate("/homepage/");
     }
-  }, [navigate, groupExists]);
+  }, [navigate, groupCode, groupExists]);
 
   // Fetch group group data
   const groupData = useFetchGroupData(groupCode);

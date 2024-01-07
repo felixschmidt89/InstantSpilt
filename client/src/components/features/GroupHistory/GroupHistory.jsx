@@ -33,7 +33,7 @@ const GroupHistory = ({ groupCode }) => {
               ...item,
               itemId: item._id,
               // Determine and add 'itemType' based on the presence of properties
-              itemType: item.expenseName
+              itemType: item.expenseDescription
                 ? "expense"
                 : item.paymentAmount
                 ? "payment"
@@ -59,6 +59,7 @@ const GroupHistory = ({ groupCode }) => {
 
     fetchGroupExpensesAndPayments();
   }, [groupCode]);
+
   return isLoading ? (
     <div className={styles.spinner}>
       <Spinner />
@@ -70,7 +71,7 @@ const GroupHistory = ({ groupCode }) => {
         <ul>
           {groupExpensesAndPayments.map((item) => (
             <li key={item._id}>
-              {item.expenseName ? (
+              {item.expenseDescription ? (
                 <RenderGroupExpenses item={item} />
               ) : (
                 <RenderGroupPayments item={item} />

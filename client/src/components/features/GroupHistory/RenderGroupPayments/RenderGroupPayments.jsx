@@ -11,7 +11,8 @@ const RenderGroupPayments = ({ item }) => {
         <div className={styles.paymentAmount}>
           <Link
             to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
-            {item.paymentAmount.toFixed(2)}€
+            {/* {item.paymentAmount.toFixed(2)}€ */}
+            {item.paymentAmount}€
           </Link>
         </div>
       </div>

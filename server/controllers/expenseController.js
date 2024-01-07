@@ -13,14 +13,14 @@ import { setLastActive } from '../utils/databaseUtils.js';
 export const createExpense = async (req, res) => {
   try {
     const {
-      userName,
+      expensePayer,
       groupCode,
-      expenseName,
+      expenseDescription,
       expenseAmount,
       expenseBeneficiariesNames,
     } = req.body;
 
-    const expensePayer = await User.findOne({ userName, groupCode });
+    const expensePayerUser = await User.findOne({ expensePayer, groupCode });
 
     const expenseBeneficiaries = await User.find({
       userName: { $in: expenseBeneficiariesNames },
@@ -33,18 +33,18 @@ export const createExpense = async (req, res) => {
     const beneficiaryIds = expenseBeneficiaries.map((user) => user._id);
 
     const newExpense = new Expense({
-      expenseName,
+      expenseDescription,
       expenseAmount,
       expenseAmountPerBeneficiary,
       groupCode,
-      expensePayer: expensePayer._id,
+      expensePayer: expensePayerUser._id,
       expenseBeneficiaries: beneficiaryIds,
     });
 
     const expense = await newExpense.save();
 
     // Update total expenses paid by expense payer
-    await expensePayer.updateTotalExpensesPaid();
+    await expensePayerUser.updateTotalExpensesPaid();
 
     // Update total expenses benefitted from by expense beneficiaries concurrently
     await Promise.all(
@@ -88,15 +88,14 @@ export const updateExpense = async (req, res) => {
     const { expenseId } = req.params;
 
     const {
-      userName,
+      expensePayer,
       groupCode,
-      expenseName,
+      expenseDescription,
       expenseAmount,
       expenseBeneficiariesNames,
-      associatedUsers,
     } = req.body;
 
-    const expensePayer = await User.findOne({ userName, groupCode });
+    const expensePayerUser = await User.findOne({ expensePayer, groupCode });
     const expenseBeneficiaries = await User.find({
       userName: { $in: expenseBeneficiariesNames },
       groupCode,
@@ -110,12 +109,12 @@ export const updateExpense = async (req, res) => {
     const beneficiaryIds = expenseBeneficiaries.map((user) => user._id);
 
     const updatedExpenseData = {
-      expenseName,
+      expenseDescription,
       expenseAmount,
       expenseAmountPerBeneficiary,
       groupCode,
-      expensePayer,
-      expenseBeneficiaries,
+      expensePayer: expensePayerUser._id,
+      expenseBeneficiaries: beneficiaryIds,
     };
 
     const updatedExpense = await Expense.findByIdAndUpdate(

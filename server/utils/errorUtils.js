@@ -7,7 +7,7 @@ import { StatusCodes } from 'http-status-codes';
  * @param {*} [data] - optional data to be logged. If an error object is provided, it will be logged as an error.
  * @returns {void}
  */
-export const devLog = (message = 'devLog', data) => {
+export const devLog = (message = 'devLog', data = undefined) => {
   if (process.env.NODE_ENV === 'development') {
     if (data !== undefined) {
       if (data instanceof Error) {
@@ -61,7 +61,7 @@ export const sendInternalError = (res) => {
  *
  * @param {object} res - The response object.
  */
-export const sendValidationError = (res) => {
+export const sendValidationError = (res, error) => {
   res.status(StatusCodes.BAD_REQUEST).json({
     status: 'fail',
     message: 'Validation failed',

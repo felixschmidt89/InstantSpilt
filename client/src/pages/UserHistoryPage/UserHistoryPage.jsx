@@ -39,7 +39,7 @@ export default function UserHistoryPage() {
               ...item,
               itemId: item._id,
               // Determine and add 'itemType' based on the presence of properties
-              itemType: item.expenseName
+              itemType: item.expenseDescription
                 ? "expense"
                 : item.paymentAmount
                 ? "payment"
@@ -102,7 +102,7 @@ export default function UserHistoryPage() {
           <ul>
             {userExpensesAndPayments.map((item) => (
               <li className={styles.item} key={item._id}>
-                {item.expenseName ? (
+                {item.expenseDescription ? (
                   <RenderUserExpenses
                     item={item}
                     handleRerender={handleRerender}

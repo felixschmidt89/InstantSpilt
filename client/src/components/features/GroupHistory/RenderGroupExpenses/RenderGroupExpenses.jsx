@@ -20,7 +20,7 @@ const RenderGroupExpenses = ({ item }) => {
           {emojiConstants.paidFor} {item.expensePayer.userName}:{" "}
           <Link
             to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
-            {item.expenseName}
+            {item.expenseDescription}
           </Link>
         </div>
       </div>

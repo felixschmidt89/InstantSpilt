@@ -1,0 +1,19 @@
+.amount {
+  color: var(--color-dark);
+  background-color: var(--color-main);
+  font-family: "Ubuntu", sans-serif;
+  padding: 0.2rem;
+  border: 0.2rem solid var(--color-grey);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  text-align: center;
+  outline: none;
+  margin-bottom: 0.5rem;
+  width: 12rem;
+  outline-color: var(--color-grey);
+}
+
+.amount:focus {
+  border-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
