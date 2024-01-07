@@ -11,10 +11,7 @@ const userSchema = new Schema(
     },
     groupCode: {
       type: String,
-      required: [
-        true,
-        'Missing groupCode',
-      ],
+      required: [true, 'Missing groupCode'],
     },
     totalExpensesPaidAmount: {
       type: Number,

@@ -36,14 +36,14 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
     e.preventDefault();
     setError(null); // Clear previous error
     try {
-      await axios.post(`${apiUrl}/expenses`, {
+      const response = await axios.post(`${apiUrl}/expenses`, {
         expenseDescription,
         expenseAmount,
         groupCode,
         expensePayerName,
         expenseBeneficiariesNames: selectedBeneficiaries,
       });
-      devLog("Expense created:", expenseDescription);
+      devLog("Expense created:", response);
       navigate("/instant-split");
     } catch (error) {
       if (error.response) {

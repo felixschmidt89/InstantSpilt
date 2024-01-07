@@ -28,7 +28,7 @@ A MERN application designed for settling group expenses with a focus on function
 ## Access the application or try the demo.
 
 - Access the [application](https://www.instantsplit.de/): Create your own group, start adding users, expenses and settle payments.
-- Alternatively, [join](<https://www.instantsplit.de/join/Italy%20Trip%20(Public%20Demo)/EOUEPI>) the demo group with test data for a better immediate understanding of the application's main functionalities. Feel free to explore and add or amend test data.
+- Alternatively, [join](<https://instantsplit.de/join/Italy%20Trip%20(Public%20GitHub%20Demo)/TYTNCIS7>) the demo group with test data for a better immediate understanding of the application's main functionalities. Feel free to explore and add or amend test data.
 
 ## Acknowledgements
 

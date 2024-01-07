@@ -48,14 +48,14 @@ const UpdateExpense = ({
     setError(null); // Clear previous error
 
     try {
-      await axios.put(`${apiUrl}/expenses/${expenseId}`, {
+      const response = await axios.put(`${apiUrl}/expenses/${expenseId}`, {
         expenseDescription,
         expenseAmount,
         groupCode,
         expensePayerName,
         expenseBeneficiariesNames: selectedBeneficiaries,
       });
-      devLog("Expense updated:", expenseDescription);
+      devLog("Expense updated:", response);
       navigate(route);
     } catch (error) {
       if (error.response) {
