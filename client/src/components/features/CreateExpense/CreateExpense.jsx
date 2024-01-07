@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { commaToDotDecimalSeparator } from "../../../utils/formatUtils";
 import emojiConstants from "../../../constants/emojiConstants";
 import { devLog } from "../../../utils/errorUtils";
@@ -14,16 +14,29 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
   const [expenseName, setExpenseName] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
   const [userName, setUserName] = useState("");
+
+  const [error, setError] = useState(null);
   // Preselect all group members as beneficiaries
   const [selectedBeneficiaries, setSelectedBeneficiaries] = useState([
     ...groupMembers,
   ]);
-  const [error, setError] = useState(null); // Declare error state variable
+
+  const isSubmitButtonVisible =
+    expenseAmount &&
+    userName &&
+    expenseName &&
+    selectedBeneficiaries.length > 0;
+
+  // Log props for debugging in development environment
+  devLog("groupMembers:", groupMembers);
+  devLog("groupCode:", groupCode);
 
   // Autofocus first input field on mount
   useEffect(() => {
-    inputFieldOne.current.focus();
-  }, []);
+    if (inputFieldOne.current) {
+      inputFieldOne.current.focus();
+    }
+  }, [inputFieldOne]);
 
   // controlled first input component to set expenseName state
   const handleExpenseNameChange = (e) => {
@@ -82,91 +95,87 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
         }
       }
     }
-    // render back button to abort and input fields, conditionally render submit button
-    return (
-      <div>
-        <form onSubmit={handleFormSubmit}>
-          <div>
-            {/* Input field for expense name */}
-            <div className={styles.container}>
-              <input
-                className={styles.inputFieldOne}
-                type='text'
-                value={expenseName}
-                onChange={handleExpenseNameChange}
-                placeholder='description'
-                ref={inputFieldOne}
-              />
-            </div>
-            {/* Input field for expense amount */}
-            <div>
-              <input
-                className={styles.inputFieldTwo}
-                type='text'
-                value={expenseAmount}
-                onChange={handleExpenseAmountChange}
-                placeholder='0.00'
-                inputMode='decimal'
-                pattern='[0-9]+([,.][0-9]{1,2})?'
-                title='Only digits, ".", and "," are allowed. Maximum value is 9999.99.'
-              />
-            </div>
-            {/* Dropdown to select the expense payer */}
-            <select
-              className={styles.select}
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              required>
-              <option value='' disabled>
-                {emojiConstants.paidFor} by
-              </option>
-              {/* Map all group members to select beneficiaries */}
-              {groupMembers.map((member) => (
-                <option key={member} value={member}>
-                  {member}
-                </option>
-              ))}
-            </select>
-            <h3>Beneficiaries: </h3>
-            <button
-              className={styles.toggleButton}
-              type='button' // Set the type to "button" to prevent form submission
-              onClick={toggleBeneficiaries}>
-              {selectedBeneficiaries.length === groupMembers.length
-                ? "none"
-                : "all"}
-            </button>
-            <div className={styles.beneficiaries}>
-              {/* (Un)check beneficiaries */}
-              {groupMembers.map((member) => (
-                <label className={styles.label} key={member}>
-                  <input
-                    type='checkbox'
-                    value={member}
-                    checked={selectedBeneficiaries.includes(member)}
-                    onChange={handleCheckboxChange}
-                  />
-                  {member}
-                </label>
-              ))}
-            </div>
-
-            {/* Conditionally render submit button when expense amount, name, payer & min 1 beneficiary is given*/}
-            {expenseAmount &&
-              userName &&
-              expenseName &&
-              selectedBeneficiaries.length > 0 && (
-                <button className={styles.button} type='submit'>
-                  +
-                </button>
-              )}
-          </div>
-        </form>
-        {/* Display error message if there's an error */}
-        {error && <p className={styles.errorMessage}>{error}</p>}
-      </div>
-    );
   };
+
+  return (
+    <div>
+      <form onSubmit={handleFormSubmit}>
+        <div>
+          {/* Input field for expense name */}
+          <div className={styles.container}>
+            <input
+              className={styles.inputFieldOne}
+              type='text'
+              value={expenseName}
+              onChange={handleExpenseNameChange}
+              placeholder='description'
+              ref={inputFieldOne}
+            />
+          </div>
+          {/* Input field for expense amount */}
+          <div>
+            <input
+              className={styles.inputFieldTwo}
+              type='text'
+              value={expenseAmount}
+              onChange={handleExpenseAmountChange}
+              placeholder='0.00'
+              inputMode='decimal'
+              pattern='[0-9]+([,.][0-9]{1,2})?'
+              title='Only digits, ".", and "," are allowed. Maximum value is 9999.99.'
+            />
+          </div>
+          {/* Dropdown to select the expense payer */}
+          <select
+            className={styles.select}
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            required>
+            <option value='' disabled>
+              {emojiConstants.paidFor} by
+            </option>
+            {/* Map all group members to select beneficiaries */}
+            {groupMembers.map((member) => (
+              <option key={member} value={member}>
+                {member}
+              </option>
+            ))}
+          </select>
+          <h3>Beneficiaries: </h3>
+          <button
+            className={styles.toggleButton}
+            type='button' // Set the type to "button" to prevent form submission
+            onClick={toggleBeneficiaries}>
+            {selectedBeneficiaries.length === groupMembers.length
+              ? "none"
+              : "all"}
+          </button>
+          <div className={styles.beneficiaries}>
+            {/* (Un)check beneficiaries */}
+            {groupMembers.map((member) => (
+              <label className={styles.label} key={member}>
+                <input
+                  type='checkbox'
+                  value={member}
+                  checked={selectedBeneficiaries.includes(member)}
+                  onChange={handleCheckboxChange}
+                />
+                {member}
+              </label>
+            ))}
+          </div>
+          {/* Conditionally render submit button */}
+          {isSubmitButtonVisible && (
+            <button className={styles.button} type='submit'>
+              +
+            </button>
+          )}
+        </div>
+      </form>
+      {/* Display error message if there's an error */}
+      {error && <p className={styles.errorMessage}>{error}</p>}
+    </div>
+  );
 };
 
 export default CreateExpense;

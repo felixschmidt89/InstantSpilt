@@ -17,7 +17,7 @@ import UserPage from "./pages/UserPage/UserPage";
 import ItemNavigatorPage from "./pages/ItemNavigatorPage/ItemNavigatorPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import ExpensePage from "./pages/ExpensePage/ExpensePage";
-import IndexNavigator from "./pages/IndexNavigatorPage/IndexNavigator";
+import IndexNavigatorPage from "./pages/IndexNavigatorPage/IndexNavigator";
 import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 import GroupCodeExplanationPage from "./pages/GroupCodeExplanationPage/GroupCodeExplanationPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
@@ -48,7 +48,7 @@ const App = () => {
       <HelmetProvider>
         <Header />
         <Routes>
-          <Route index element={<IndexNavigator />} />
+          <Route index element={<IndexNavigatorPage />} />
           <Route path='/homepage' element={<HomePage />} />
           <Route path='/legal-notice' element={<LegalNoticePage />} />
           <Route

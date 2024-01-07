@@ -25,7 +25,7 @@ const GroupCodeExplanationPage = () => {
         <h1>Crucial info for group creators</h1>
         <p>
           The key to settling group expenses easily while sharing minimal data
-          is the <strong>GroupCode</strong>. Here's yours:
+          is the <strong>GroupCode</strong>. Here&rsquo;s yours:
         </p>
         <p></p>
         <CopyToClipboard infoToCopy={groupCode} />

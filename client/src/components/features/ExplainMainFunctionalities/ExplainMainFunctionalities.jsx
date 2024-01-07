@@ -33,7 +33,7 @@ const ExplainMainFunctionalities = () => {
         <li>
           <button className={styles.button}>Balances</button>
           <div>
-            Displays users' current balances; click a name for more user
+            Displays users&rsquo; current balances; click a name for more user
             details.
           </div>
         </li>

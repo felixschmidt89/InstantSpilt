@@ -60,8 +60,8 @@ const ValidateProvideGroupCodePage = () => {
         {groupExists === false && !error && (
           <div>
             <p className={styles.errorMessage}>
-              {emojiConstants.error} Oops, there's no group associated with the
-              provided <strong>GroupCode</strong>.
+              {emojiConstants.error} Oops, there&rsquo;s no group associated
+              with the provided <strong>GroupCode</strong>.
             </p>
             <Link to='/homepage'>Go to main</Link>
           </div>

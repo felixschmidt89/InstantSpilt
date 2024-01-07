@@ -1,14 +1,7 @@
-import cloudinary from 'cloudinary';
 import { StatusCodes } from 'http-status-codes';
+import cloudinary from '../config/cloudinaryConfig.js';
 import File from '../models/File.js';
 import { errorLog, sendInternalError } from '../utils/errorUtils.js';
-
-// Initialize Cloudinary
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 
 export const uploadImage = async (req, res) => {
   try {

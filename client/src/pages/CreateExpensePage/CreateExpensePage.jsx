@@ -42,8 +42,7 @@ const CreateExpensePage = () => {
           />
         </div>
       ) : (
-        // Else render the payment form
-
+        // Else render the expense form
         <CreateExpense groupMembers={groupMembers} groupCode={groupCode} />
       )}
     </main>
