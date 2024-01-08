@@ -1,5 +1,3 @@
-// DONE adding only meaningful necessary comments
-
 import React from "react";
 import NavigateButton from "../NavigateButton/NavigateButton";
 import styles from "./InlineNavigateButtons.module.css";

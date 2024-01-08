@@ -21,7 +21,7 @@ const useFetchPaymentInfo = (paymentId) => {
       try {
         const response = await axios.get(`${apiUrl}/payments/${paymentId}`);
         const paymentData = response.data.payment;
-        devLog("Payment info fetched:", paymentData);
+        devLog("Payment info fetched:", response);
         setPaymentInfo(paymentData);
       } catch (error) {
         devLog("Error fetching payment info:", error);

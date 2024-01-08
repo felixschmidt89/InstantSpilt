@@ -17,10 +17,10 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import UpdatePayment from "../../components/features/Payments/UpdatePayment/UpdatePayment";
 
 // Styles
-import styles from "./UpdatePaymentPage.module.css";
+import styles from "./UserHistoryUpdatePaymentPage.module.css";
 
-const UpdatePaymentPage = () => {
-  const { itemId } = useParams();
+const UserHistoryUpdatePaymentPage = () => {
+  const { userId, itemId } = useParams();
   // Use custom hook to manage payment update logic
   const { isLoading, groupCode, paymentInfo, groupMembers } =
     usePaymentUpdate(itemId);
@@ -28,9 +28,9 @@ const UpdatePaymentPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - update payment' />
-      <PiratePx COUNT_IDENTIFIER={"update-payment"} />
+      <PiratePx COUNT_IDENTIFIER={"user-history-update-payment"} />
       <NavigateButton
-        route={"instant-split"}
+        route={`user-history/${userId}`}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
@@ -43,9 +43,12 @@ const UpdatePaymentPage = () => {
           groupMembers={groupMembers}
           groupCode={groupCode}
           paymentDetails={paymentInfo}
+          expenseId={itemId}
+          route={`/user-history/${userId}`}
         />
       )}
     </main>
   );
 };
-export default UpdatePaymentPage;
+
+export default UserHistoryUpdatePaymentPage;

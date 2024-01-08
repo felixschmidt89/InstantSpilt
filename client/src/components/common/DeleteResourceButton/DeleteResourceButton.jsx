@@ -1,10 +1,10 @@
-// DONE adding only meaningful necessary comments
-
 import React, { useState } from "react";
 import axios from "axios";
 import styles from "./DeleteResourceButton.module.css";
 import { StatusCodes } from "http-status-codes";
 import { useNavigate } from "react-router-dom";
+import { devLog } from "../../../utils/errorUtils";
+import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
 // Get API URL from environment variables
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -14,7 +14,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  *
  * @param {string} props.resourceId  The unique identifier of the resource.
  * @param {string} props.resourceType - The type of the resource (e.g., "expenses").
- * @param {string} props.route - The route to navigate to after successful deletion (default is to instant split man application page).
+ * @param {string} props.route - The route to navigate to after successful deletion (default: instant split main application).
  */
 const DeleteResourceButton = ({
   resourceId,
@@ -25,7 +25,8 @@ const DeleteResourceButton = ({
   // Set error State to display error message
   const [error, setError] = useState(null);
 
-  const resourceTypeName = resourceType.slice(0, -1); // Remove the last character ('s')
+  // Remove the last character ('s')
+  const resourceTypeName = resourceType.slice(0, -1);
 
   // Handle delete request and appropriate errors message if applicable
   const handleDelete = async () => {
@@ -36,12 +37,19 @@ const DeleteResourceButton = ({
 
       if (response.status === StatusCodes.NO_CONTENT) {
         setError(null);
+        devLog(
+          `Resource (${resourceTypeName} ${resourceId}) has been deleted.`
+        );
         navigate(route);
       }
     } catch (error) {
       if (error.response && error.response.status === StatusCodes.BAD_REQUEST) {
         setError(error.response.data.message);
       } else {
+        devLog(
+          `Error deleting resource (${resourceType} ${resourceId}):`,
+          error
+        );
         setError(`An error occurred while deleting the ${resourceType}.`);
       }
     }
@@ -53,7 +61,7 @@ const DeleteResourceButton = ({
       <button className={styles.button} onClick={handleDelete}>
         delete {resourceTypeName}
       </button>
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      <ErrorDisplay error={error} />
     </div>
   );
 };

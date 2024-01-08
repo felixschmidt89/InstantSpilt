@@ -12,8 +12,8 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import UpdateExpense from "../../components/features/Expenses/UpdateExpense/UpdateExpense";
 
 function UpdateUserExpensePage() {
-  const groupCode = localStorage.getItem("activeGroupCode");
   const { userId, expenseId } = useParams();
+  const groupCode = localStorage.getItem("activeGroupCode");
   const expenseInfo = useFetchExpenseInfo(expenseId);
   const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
   const [isLoading, setIsLoading] = useState(true);

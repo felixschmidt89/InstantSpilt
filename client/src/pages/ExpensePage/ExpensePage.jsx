@@ -26,7 +26,7 @@ const ExpensePage = () => {
   // useParams hook to extract and rename the 'itemId' parameter from the current URL
   const { itemId: expenseId } = useParams();
   // fetch expense details
-  const expenseDetails = useFetchExpenseInfo(expenseId);
+  const { expenseDetails } = useFetchExpenseInfo(expenseId);
   devLog(expenseDetails);
 
   return (

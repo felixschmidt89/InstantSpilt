@@ -1,5 +1,3 @@
-// DONE adding only meaningful necessary comments
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./GroupActionsButton.module.css";

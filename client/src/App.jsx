@@ -13,7 +13,7 @@ import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
 import InstantSplitPage from "./pages/InstantSplitPage/InstantSplitPage";
 import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
 import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
-import UserPage from "./pages/UserPage/UserPage";
+import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
 import ItemNavigatorPage from "./pages/ItemNavigatorPage/ItemNavigatorPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import ExpensePage from "./pages/ExpensePage/ExpensePage";
@@ -38,7 +38,7 @@ import TermsAndConditionsViaInvitePage from "./pages/TermsAndConditionsViaInvite
 import UserHistoryPage from "./pages/UserHistoryPage/UserHistoryPage";
 import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/ItemNavigatorUserHistoryPage";
 import UpdateUserExpensePage from "./pages/UpdateExpenseUserPage/UpdateExpenseUserPage";
-import UpdatePaymentUserPage from "./pages/UpdatePaymentUserPage/UpdatePaymentUserPage";
+import UserHistoryUpdatePaymentPage from "./pages/UserHistoryUpdatePaymentPage/UserHistoryUpdatePaymentPage";
 
 import "./App.css";
 
@@ -92,7 +92,7 @@ const App = () => {
           />
           <Route
             path='/update-user-payment/:userId/:itemId'
-            element={<UpdatePaymentUserPage />}
+            element={<UserHistoryUpdatePaymentPage />}
           />
           <Route
             path='/create-users-inapp'
@@ -109,7 +109,7 @@ const App = () => {
             element={<ItemNavigatorUserHistoryPage />}
           />
 
-          <Route path='/user-page/:userId' element={<UserPage />} />
+          <Route path='/user-page/:userId' element={<UserDetailsPage />} />
           <Route path='/user-history/:userId' element={<UserHistoryPage />} />
 
           <Route path='/payment-page/:itemId' element={<PaymentPage />} />
