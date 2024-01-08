@@ -28,7 +28,7 @@ export default function UserHistoryPage() {
         const response = await axios.get(
           `${apiUrl}/users/${userId}/expenses-and-payments`
         );
-        const responseData = response.data.data;
+        const responseData = response.data;
 
         if (
           responseData.userExpensesAndPayments &&

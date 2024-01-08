@@ -1,0 +1,18 @@
+.emojiParenthesis {
+  white-space: nowrap;
+}
+
+.failMessage {
+  overflow-y: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 500px) {
+  .failMessage {
+    padding-top: 0.5rem;
+    margin: 0 auto;
+    width: 90%;
+    text-align: center;
+  }
+}

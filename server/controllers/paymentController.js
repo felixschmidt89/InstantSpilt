@@ -48,7 +48,7 @@ export const createPayment = async (req, res) => {
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
-      data: { payment },
+      payment,
       message: 'Payment created successfully',
     });
   } catch (error) {
@@ -120,9 +120,9 @@ export const updatePayment = async (req, res) => {
     await paymentRecipient.updateTotalPaymentsReceived();
     await paymentMaker.updateTotalPaymentsMadeAmount();
 
-    return res.status(StatusCodes.CREATED).json({
+    return res.status(StatusCodes.OK).json({
       status: 'success',
-      data: { payment: updatedPayment },
+      updatedPayment,
       message: 'Payment updated successfully',
     });
   } catch (error) {
@@ -160,7 +160,7 @@ export const getPaymentInfo = async (req, res) => {
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: { payment },
+      payment,
       message: 'Payment info retrieved successfully.',
     });
   } catch (error) {
@@ -213,7 +213,7 @@ export const listAllPayments = async (req, res) => {
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: payments.length,
-      data: { payments },
+      payments,
       message: 'Payments retrieved successfully',
     });
   } catch (error) {

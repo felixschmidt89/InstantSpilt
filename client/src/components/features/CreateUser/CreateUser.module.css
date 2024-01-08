@@ -1,8 +1,3 @@
-.header {
-  font-size: 2rem;
-  margin-top: 2rem;
-}
-
 .inputField {
   font-family: "Ubuntu", sans-serif;
   width: 15rem;
@@ -36,8 +31,4 @@
 .button:hover {
   background-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
-}
-
-.errorText {
-  color: var(--color-error);
 }

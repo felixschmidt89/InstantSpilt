@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import emojiConstants from "../../../constants/emojiConstants";
-import RenderGroupExpenses from "./RenderGroupExpenses/RenderGroupExpenses";
-import RenderGroupPayments from "./RenderGroupPayments/RenderGroupPayments";
-import Spinner from "../../common/Spinner/Spinner";
-import PiratePx from "../../common/PiratePx/PiratePx";
-import styles from "./GroupHistory.module.css";
+import styles from "./RenderGroupHistory.module.css";
+import NoTransactions from "../NoTransactions/NoTransactions";
+import RenderGroupExpenses from "../RenderGroupExpenses/RenderGroupExpenses";
+import RenderGroupPayments from "../RenderGroupPayments/RenderGroupPayments";
+import Spinner from "../../../common/Spinner/Spinner";
+import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-const GroupHistory = ({ groupCode }) => {
+const RenderGroupHistory = ({ groupCode }) => {
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +22,7 @@ const GroupHistory = ({ groupCode }) => {
         const response = await axios.get(
           `${apiUrl}/groups/${groupCode}/expenses-and-payments`
         );
-        const responseData = response.data.data;
+        const responseData = response.data;
         if (
           responseData.groupExpensesAndPayments &&
           responseData.groupExpensesAndPayments.length > 0
@@ -63,7 +63,6 @@ const GroupHistory = ({ groupCode }) => {
   return isLoading ? (
     <div className={styles.spinner}>
       <Spinner />
-      <PiratePx COUNT_IDENTIFIER={"group-history"} />
     </div>
   ) : (
     <div className={styles.container}>
@@ -80,19 +79,11 @@ const GroupHistory = ({ groupCode }) => {
           ))}
         </ul>
       ) : (
-        <p className={styles.failMessage}>
-          Begin adding expenses{" "}
-          <span className={styles.emojiParenthesis}>
-            ({emojiConstants.expense}) and payments{" "}
-            <span className={styles.emojiParenthesis}></span>(
-            {emojiConstants.payment})
-          </span>{" "}
-          below 👇.
-        </p>
+        <NoTransactions />
       )}
-      {error && <p className={styles.error}>{error}</p>}
+      <ErrorDisplay error={error} remWidth={20} />
     </div>
   );
 };
 
-export default GroupHistory;
+export default RenderGroupHistory;

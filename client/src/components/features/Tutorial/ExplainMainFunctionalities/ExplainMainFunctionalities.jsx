@@ -1,13 +1,20 @@
+// React and Third-Party Libraries
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUserPlus,
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import emojiConstants from "../../../constants/emojiConstants";
-import UserActionsBar from "../UserActionsBar/UserActionsBar";
+
+// Constants and Utils
+import emojiConstants from "../../../../constants/emojiConstants";
+
+// Components
+import UserActionsBar from "../../UserActionsBar/UserActionsBar";
+import GroupActionsBar from "../../GroupActionsBar/GroupActionsBar";
+
+// Styles
 import styles from "./ExplainMainFunctionalities.module.css";
-import GroupActionsBar from "../GroupActionsBar/GroupActionsBar";
 
 const ExplainMainFunctionalities = () => {
   return (

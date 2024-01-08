@@ -26,7 +26,7 @@ const SettleExpenses = () => {
           `${apiUrl}/users/byGroupCode/${groupCode}`
         );
 
-        const responseData = response.data.data;
+        const responseData = response.data;
 
         if (responseData.users && responseData.users.length > 0) {
           // Modify user details to include userBalanceCalculated

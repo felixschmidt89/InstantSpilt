@@ -1,59 +1,72 @@
+// React and Third-Party Libraries
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+
+// Constants and Utils
+import { devLog } from "../../../utils/errorUtils";
+
+// Components
+import ErrorDisplay from "../../common/ErrorDisplay/ErrorDisplay";
+
+// Styles
 import styles from "./CreateUser.module.css";
 
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+/**
+ * Component for creating a new user within a group.
+ *
+ * @component
+ * @param {Object} props - The properties of the component.
+ * @param {function} props.toggleDataRefresh - Function to toggle data refresh in the parent component.
+ * @returns {JSX.Element} - React component.
+ */
 const CreateUser = ({ toggleDataRefresh }) => {
+  const inputRef = useRef(null);
+
+  const groupCode = localStorage.getItem("activeGroupCode");
+
   const [userName, setUserName] = useState("");
   const [error, setError] = useState("");
-  const inputRef = useRef(null);
 
   // Autofocus input field on mount
   useEffect(() => {
     inputRef.current.focus();
   }, []);
 
-  const groupCode = localStorage.getItem("activeGroupCode");
-
   // On form submission: Provide groupCode for authentication, post unique user within group, clear form & trigger a parent component refresh
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${apiUrl}/users`, {
+      const response = await axios.post(`${apiUrl}/users`, {
         userName,
         groupCode,
       });
+      devLog("User created:", response);
       setUserName("");
+      // toggle refresh in parent component to rerender user list
       toggleDataRefresh();
       setError("");
     } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        console.error("Error creating user:", error);
-      }
       // Render conflict status message if there is already a group member with same name
       if (error.response && error.response.status === 409) {
         setError(error.response.data.message);
       } else {
+        devLog("Error creating user.", error);
         setError("Error creating user. Please try again.");
       }
     }
   };
 
-  // controlled input component to set userName state
-  const handleUserNameChange = (e) => {
-    setUserName(e.target.value);
-  };
-
-  // render input field, conditionally render submit button and error message
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>Add user</h1>
+      <h1>Add user</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           type='text'
           value={userName}
-          onChange={handleUserNameChange}
+          onChange={(e) => setUserName(e.target.value)}
           placeholder='user name'
           required
           minLength={1}
@@ -63,13 +76,14 @@ const CreateUser = ({ toggleDataRefresh }) => {
           ref={inputRef}
           autoFocus
         />
+        {/* Conditionally render submit button (only when user name has at least 1 character) */}
         {userName.length >= 1 && (
           <button type='submit' className={styles.button}>
             +
           </button>
         )}
       </form>
-      {error && <p className={styles.errorText}>{error}</p>}
+      <ErrorDisplay error={error} remWidth={20} />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
-import ExplainMainFunctionalities from "../../components/features/ExplainMainFunctionalities/ExplainMainFunctionalities";
+import ExplainMainFunctionalities from "../../components/features/Tutorial/ExplainMainFunctionalities/ExplainMainFunctionalities";
 
 function OnboardingPage() {
   return (

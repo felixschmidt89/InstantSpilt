@@ -1,6 +1,10 @@
+// React and Third-Party Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
+// Constants and Utils
+import { devLog } from "../utils/errorUtils";
 
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const useFetchGroupMembers = (groupCode) => {
@@ -13,14 +17,13 @@ const useFetchGroupMembers = (groupCode) => {
         const response = await axios.get(
           `${apiUrl}/users/byGroupCode/${groupCode}`
         );
-        const userData = response.data.data.users;
+        const userData = response.data.users;
         const userNames = userData.map((user) => user.userName);
+        devLog("Group members fetched:", response);
         setGroupMembers(userNames);
         setIsFetched(true);
       } catch (error) {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error fetching group members:", error);
-        }
+        devLog("Error fetching group members:", error);
       }
     }
 

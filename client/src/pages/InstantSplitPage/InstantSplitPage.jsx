@@ -6,9 +6,9 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
 import UserActionsBar from "../../components/features/UserActionsBar/UserActionsBar";
-import GroupBalances from "../../components/features/GroupBalances/GroupBalances";
-import GroupHistory from "../../components/features/GroupHistory/GroupHistory";
 import GroupActionsBar from "../../components/features/GroupActionsBar/GroupActionsBar";
+import RenderGroupBalances from "../../components/features/GroupBalances/RenderGroupBalances/RenderGroupBalances";
+import RenderGroupHistory from "../../components/features/GroupHistory/RenderGroupHistory/RenderGroupHistory";
 
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
@@ -20,11 +20,12 @@ import {
 } from "../../utils/localStorageUtils";
 
 import styles from "./InstantSplitPage.module.css";
+import SwitchViewButtonsBar from "../../components/features/SwitchViewButtonsBar/SwitchViewButtonsBar";
 
 /**
  * Main component of the application. Checks on mount whether active groupCode exists in database. If not, groupCode will
  * be deleted from LocalStorage and navigated to homepage.
- * Renders or links to all core features related to settling expenses.
+ * Renders or links to all core features.
  */
 const InstantSplitPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -35,7 +36,7 @@ const InstantSplitPage = () => {
     groupCode,
   });
 
-  // If not, delete it from LocalSpace and navigate to homepage
+  // If not, delete it from LocalStorage and navigate to homepage
   useEffect(() => {
     if (groupExists === false) {
       removeActiveGroupCodeFromStoredGroupCodes(groupCode);
@@ -72,33 +73,12 @@ const InstantSplitPage = () => {
 
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
-        {/* Display UserActionsComponent */}
         <UserActionsBar
           groupCode={groupCode}
           groupName={groupData.group.groupName}
         />
-        <div className={styles.buttonContainer}>
-          {/* Button to render group Balances view (default) */}
-          <button
-            className={`${styles.button} ${
-              view === "view2" ? styles.expensesButton : styles.balancesButton
-            } ${view === "view2" ? "" : styles.inactiveButton}`}
-            onClick={handleSwitchView}
-            disabled={view === "view2"}>
-            Balances
-          </button>
-          {/* Button to render group History view */}
-          <button
-            className={`${styles.button} ${
-              view === "view1" ? styles.expensesButton : styles.balancesButton
-            } ${view === "view1" ? "" : styles.inactiveButton}`}
-            onClick={handleSwitchView}
-            disabled={view === "view1"}>
-            History
-          </button>
-        </div>
-        {view === "view1" ? <GroupHistory /> : <GroupBalances />}
-        {/* Display GroupActionsComponent */}
+        <SwitchViewButtonsBar view={view} handleSwitchView={handleSwitchView} />
+        {view === "view1" ? <RenderGroupHistory /> : <RenderGroupBalances />}
         <GroupActionsBar />
       </main>
     );

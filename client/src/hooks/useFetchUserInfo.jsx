@@ -1,28 +1,40 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { devLog } from "../utils/errorUtils";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-const useFetchUserInfo = (userId) => {
-  const [userInfo, setUserInfo] = useState(null);
+/**
+ * Custom hook for fetching a user's data.
+ *
+ * @param {string} userId - The ID of the user to fetch.
+ * @returns {Object} An object containing user data and potential error.
+ * @property {Object|null} userData - The fetched user data.
+ * @property {string|null} error - An error message in case of an error during fetching.
+ */
+const useFetchUserData = (userId) => {
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchUserInfo() {
+    async function fetchUserData() {
       try {
         const response = await axios.get(`${apiUrl}/users/${userId}`);
-        const userData = response.data.data.user;
-        setUserInfo(userData);
+        const userData = response.data.user;
+        devLog("User data fetched:", userData);
+        setUserData(userData);
       } catch (error) {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error fetching user info:", error);
-        }
+        devLog("Error fetching user data:", error);
+        setError(
+          "An error occurred while fetching user data. Please try again later."
+        );
       }
     }
 
-    fetchUserInfo();
+    fetchUserData();
   }, [userId]);
 
-  return userInfo;
+  return { userData, error };
 };
 
-export default useFetchUserInfo;
+export default useFetchUserData;

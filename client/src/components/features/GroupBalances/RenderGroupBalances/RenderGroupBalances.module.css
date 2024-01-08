@@ -1,0 +1,13 @@
+.balancesContainer {
+  height: 75%;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.spinner {
+  height: 75%;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+

@@ -18,15 +18,7 @@ const NavigateButton = ({
   };
 
   // Determine & add the appropriate class based on the 'alignment' prop
-  let containerClass = styles.container;
-
-  if (alignment === "left") {
-    containerClass = `${containerClass} ${styles.leftAligned}`;
-  } else if (alignment === "right") {
-    containerClass = `${containerClass} ${styles.rightAligned}`;
-  } else if (alignment === "center") {
-    containerClass = `${containerClass} ${styles.centerAligned}`;
-  }
+  const containerClass = `${styles.container} ${styles[`${alignment}Aligned`]}`;
 
   const buttonStyle = { margin };
 

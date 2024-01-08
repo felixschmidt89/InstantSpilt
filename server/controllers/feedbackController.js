@@ -78,7 +78,7 @@ export const createFeedback = async (req, res) => {
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
-      data: { savedFeedback },
+      savedFeedback,
       message: 'Feedback received successfully - thanks!',
     });
   } catch (error) {

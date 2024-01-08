@@ -1,24 +1,10 @@
-.container {
-  width: 90%;
-  margin: 0 auto;
-}
-
-h2 {
-  padding-top: 0.5rem;
-  font-size: 1.6rem;
-}
-
-li {
-  font-size: 1.6rem;
-}
-
 .button {
   background-color: var(--color-signal);
   color: var(--color-main);
   border: none;
-  padding: 0.5rem;
+  padding: 0.2rem;
   margin: 0.2rem;
-  font-size: 1.6rem;
+  font-size: 2rem;
   cursor: pointer;
   border-radius: 0.4rem;
   box-shadow: 0 0 0.5rem var(--color-signal);
@@ -29,7 +15,13 @@ li {
   box-shadow: 0 0 0.5rem var(--color-success);
 }
 
-.icons,
-.emojiParenthesis {
-  white-space: nowrap;
+/* Your CSS module (styles.module.css) */
+.inactiveButton {
+  opacity: 0.6;
+  filter: grayscale(15%);
+}
+
+.inactiveButton:hover {
+  opacity: 1; /* Restore full opacity on hover */
+  filter: grayscale(0%); /* Remove grayscale filter on hover */
 }

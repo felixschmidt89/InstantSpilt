@@ -1,8 +1,8 @@
 /**
- * Utility function to log messages or errors in development environment only.
+ * Utility function to log messages and/or errors in the development environment only.
  *
- * @param {string} [message="devLog"] - message to be logged.
- * @param {*} [data] - optional data to be logged. If an error object is provided, it will be logged as an error.
+ * @param {string} [message="devLog"] - Message to be logged.
+ * @param {*} [data] - Optional data to be logged. If an error object is provided, it will be logged as an error.
  * @returns {void}
  */
 export const devLog = (message = "devLog", data) => {
@@ -13,6 +13,8 @@ export const devLog = (message = "devLog", data) => {
       } else {
         console.log(message, data);
       }
+    } else {
+      console.log(message);
     }
   }
 };

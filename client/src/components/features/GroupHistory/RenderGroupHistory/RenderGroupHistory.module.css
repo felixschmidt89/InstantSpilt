@@ -13,21 +13,14 @@
   margin-bottom: 0.5rem;
 }
 
-.failMessage {
-  padding-top: 0.5rem;
-  margin: 0 auto;
-  width: 90%;
-  text-align: center;
-}
-
-.emojiParenthesis {
-  white-space: nowrap;
-}
-
 .spinner {
   height: 75%;
   margin: 0 auto;
   margin-top: 2rem;
+}
+
+.emojiParenthesis {
+  white-space: nowrap;
 }
 
 a {

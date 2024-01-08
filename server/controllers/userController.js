@@ -25,7 +25,7 @@ export const createUser = async (req, res) => {
     const user = await User.create({ userName, groupCode });
     res.status(StatusCodes.CREATED).json({
       status: 'success',
-      data: { user },
+      user,
       message: 'User created successfully',
     });
   } catch (error) {
@@ -49,7 +49,7 @@ export const getUserInfo = async (req, res) => {
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: { user },
+      user,
       message: 'User info retrieved successfully.',
     });
   } catch (error) {
@@ -76,7 +76,7 @@ export const changeUserName = async (req, res) => {
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: { updatedUser },
+      updatedUser,
       message: 'User name updated successfully.',
     });
   } catch (error) {
@@ -110,12 +110,10 @@ export const listExpensesAndPaymentsByUser = async (req, res) => {
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: {
-        results: userExpensesAndPayments.length,
-        expenseCount: expenses.length,
-        paymentCount: payments.length,
-        userExpensesAndPayments,
-      },
+      results: userExpensesAndPayments.length,
+      expenseCount: expenses.length,
+      paymentCount: payments.length,
+      userExpensesAndPayments,
       message: 'All user expenses and payments retrieved successfully',
     });
   } catch (error) {
@@ -185,7 +183,7 @@ export const listAllUsersByGroupCode = async (req, res) => {
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: users.length,
-      data: { users },
+      users,
       message: 'User list retrieved successfully',
     });
   } catch (error) {
@@ -206,7 +204,7 @@ export const listAllUsers = async (req, res) => {
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: users.length,
-      data: { users },
+      users,
       message: 'All users retrieved successfully',
     });
   } catch (error) {

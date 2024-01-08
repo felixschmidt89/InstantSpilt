@@ -32,7 +32,7 @@ const CreateGroupPage = () => {
       const res = await axios.post(`${apiUrl}/groups`, {
         groupName,
       });
-      const { groupCode } = res.data.data.group;
+      const { groupCode } = res.data.group;
       storeGroupCodeInLocalStorage(groupCode);
       setGroupCodeToCurrentlyActive(groupCode);
       setGroupName("");

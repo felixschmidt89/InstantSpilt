@@ -66,7 +66,7 @@ const FeedbackPage = () => {
         const responseFile = await axios.post(`${apiUrl}/files`, fileData);
 
         // Add the file's ObjectId to the requestData for referencing
-        requestData.fileId = responseFile.data.data.savedFile._id;
+        requestData.fileId = responseFile.data.savedFile._id;
       }
 
       // Post the feedback data

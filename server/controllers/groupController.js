@@ -27,7 +27,7 @@ export const createGroup = async (req, res) => {
 
     res.status(StatusCodes.CREATED).json({
       status: 'success',
-      data: { group },
+      group,
       message: 'Group created',
     });
   } catch (error) {
@@ -55,7 +55,7 @@ export const changeGroupName = async (req, res) => {
     );
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: { updatedGroup },
+      updatedGroup,
       message: 'Group name updated successfully',
     });
   } catch (error) {
@@ -77,7 +77,7 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: groupNames.length,
-      data: { groupNames },
+      groupNames,
       message: 'Group names retrieved successfully',
     });
   } catch (error) {
@@ -108,7 +108,7 @@ export const listExpensesAndPaymentsByGroup = async (req, res) => {
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: { groupExpensesAndPayments },
+      groupExpensesAndPayments,
       message: 'All group expenses and payments retrieved successfully',
     });
   } catch (error) {
@@ -131,7 +131,7 @@ export const getGroupInfo = async (req, res) => {
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: { group },
+      group,
       message: 'Group info retrieved successfully',
     });
   } catch (error) {
@@ -187,7 +187,7 @@ export const listAllGroups = async (req, res) => {
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: groups.length,
-      data: { groups },
+      groups,
       message: 'All groups retrieved successfully',
     });
   } catch (error) {

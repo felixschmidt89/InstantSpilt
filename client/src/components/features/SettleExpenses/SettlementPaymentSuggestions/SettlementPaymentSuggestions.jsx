@@ -31,7 +31,7 @@ const SettlementPaymentSuggestions = () => {
           `${apiUrl}/users/byGroupCode/${groupCode}`
         );
 
-        const responseData = response.data.data;
+        const responseData = response.data;
 
         if (responseData.users && responseData.users.length > 0) {
           const userDetails = responseData.users.map((user) => {

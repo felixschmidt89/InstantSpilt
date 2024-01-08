@@ -61,7 +61,7 @@ export const createExpense = async (req, res) => {
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
-      data: { expense },
+      expense,
       message: 'Expense created successfully',
     });
   } catch (error) {
@@ -160,7 +160,7 @@ export const updateExpense = async (req, res) => {
 
     return res.status(StatusCodes.OK).json({
       status: 'success',
-      data: { expense: updatedExpense },
+      updatedExpense,
       message: 'Expense updated successfully.',
     });
   } catch (error) {
@@ -199,7 +199,7 @@ export const getExpenseInfo = async (req, res) => {
 
     res.status(StatusCodes.OK).json({
       status: 'success',
-      data: { expense },
+      expense,
       message: 'Expense info retrieved successfully.',
     });
   } catch (error) {
@@ -263,7 +263,7 @@ export const listAllExpensesByGroupCode = async (req, res) => {
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: expenses.length,
-      data: { expenses },
+      expenses,
       message: 'Group expenses retrieved successfully',
     });
   } catch (error) {
@@ -284,7 +284,7 @@ export const listAllExpenses = async (req, res) => {
     res.status(StatusCodes.OK).json({
       status: 'success',
       results: expenses.length,
-      data: { expenses },
+      expenses,
       message: 'All expenses retrieved successfully',
     });
   } catch (error) {

@@ -22,7 +22,7 @@ const RenderUserNames = ({ refreshData }) => {
         const response = await axios.get(
           `${apiUrl}/users/byGroupCode/${groupCode}`
         );
-        const responseData = response.data.data;
+        const responseData = response.data;
         if (responseData.users && responseData.users.length > 0) {
           const userNames = responseData.users.map((user) => user.userName);
           setUserNames(userNames);

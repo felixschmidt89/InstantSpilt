@@ -10,7 +10,7 @@ const useFetchExpenseInfo = (expenseId) => {
     async function fetchExpenseInfo() {
       try {
         const response = await axios.get(`${apiUrl}/expenses/${expenseId}`);
-        const expenseData = response.data.data.expense;
+        const expenseData = response.data.expense;
         setExpenseInfo(expenseData);
       } catch (error) {
         if (process.env.NODE_ENV === "development") {

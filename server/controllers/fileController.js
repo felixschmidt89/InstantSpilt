@@ -31,7 +31,7 @@ export const uploadImage = async (req, res) => {
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
-      data: { savedFile },
+      savedFile,
       message: 'Image stored successfully',
       cloudinaryURL,
     });

@@ -1,6 +1,7 @@
 .errorMessage {
   color: var(--color-error);
   font-weight: 900;
+  max-width: 90%;
   margin: 0 auto;
   text-align: center;
 }

@@ -24,9 +24,7 @@ const ListGroups = () => {
           `${apiUrl}/groups/StoredGroupNames?storedGroupCodes=${groupCodesString}`
         );
 
-        const names = response.data.data.groupNames.map(
-          (groupName) => groupName
-        );
+        const names = response.data.groupNames.map((groupName) => groupName);
         setGroupNames(names);
       } catch (error) {
         console.error("Error fetching data:", error);
