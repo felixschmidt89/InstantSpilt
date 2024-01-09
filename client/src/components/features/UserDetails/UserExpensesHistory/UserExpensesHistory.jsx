@@ -3,7 +3,7 @@ import emojiConstants from "../../../../constants/emojiConstants";
 import DeleteResourceText from "../../../common/DeleteResourceText/DeleteResourceText";
 import styles from "./UserExpensesHistory.module.css";
 
-const UserExpensesHistory = ({ item, handleRerender, userId }) => {
+const UserExpensesHistory = ({ item, userId, onDelete }) => {
   return (
     <div className={styles.expenses}>
       <div className={styles.leftColumn}>
@@ -17,7 +17,7 @@ const UserExpensesHistory = ({ item, handleRerender, userId }) => {
           <DeleteResourceText
             resourceId={item.itemId}
             resourceType={`${item.itemType}s`}
-            handleRerender={handleRerender}
+            onDelete={onDelete}
           />
         </div>
       </div>

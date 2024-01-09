@@ -1,7 +1,7 @@
 import React from "react";
 import useTriggerRerender from "../../../../hooks/useTriggerRerender";
 import RenderUserNames from "../RenderUserNames/RenderUserNames";
-import CreateUsersInAppPage from "../../../../pages/CreateUsersInAppPage/CreateUsersInAppPage";
+import CreateUserForm from "../CreateUserForm/CreateUserForm";
 
 const CreateUser = () => {
   // Custom hook to get groupCode and trigger rerender logic
@@ -9,10 +9,7 @@ const CreateUser = () => {
 
   return (
     <div>
-      <CreateUsersInAppPage
-        toggleRerender={toggleRerender}
-        groupCode={groupCode}
-      />
+      <CreateUserForm toggleRerender={toggleRerender} groupCode={groupCode} />
       <RenderUserNames
         rerenderTrigger={rerenderTrigger}
         groupCode={groupCode}

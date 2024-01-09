@@ -7,10 +7,10 @@ import { useState, useEffect } from "react";
  */
 const useTriggerRerender = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
-  const [rerenderTrigger, setRerenderTrigger] = useState(false);
+  const [rerenderTrigger, setRerenderTrigger] = useState(1);
 
   const toggleRerender = () => {
-    setRerenderTrigger((prevTrigger) => !prevTrigger);
+    setRerenderTrigger((prevValue) => prevValue + 1);
   };
 
   useEffect(() => {}, [groupCode, rerenderTrigger]);

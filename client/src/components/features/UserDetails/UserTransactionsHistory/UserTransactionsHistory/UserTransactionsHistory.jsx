@@ -2,11 +2,12 @@ import React from "react";
 import styles from "./UserTransactionsHistory.module.css";
 import UserPaymentsHistory from "../../UserPaymentsHistory/UserPaymentsHistory";
 import UserExpensesHistory from "../../UserExpensesHistory/UserExpensesHistory";
-import useTriggerRerender from "../../../../../hooks/useTriggerRerender";
 
-const UserTransactionsHistory = ({ userExpensesAndPayments, userId }) => {
-  // Custom hook to get groupCode and trigger rerender logic
-  const { rerenderTrigger, toggleRerender } = useTriggerRerender();
+const UserTransactionsHistory = ({
+  userExpensesAndPayments,
+  userId,
+  onDeleteItem,
+}) => {
   return (
     <div className={styles.container}>
       {userExpensesAndPayments.length > 0 ? (
@@ -16,14 +17,14 @@ const UserTransactionsHistory = ({ userExpensesAndPayments, userId }) => {
               {item.expenseDescription ? (
                 <UserExpensesHistory
                   item={item}
-                  handleRerender={toggleRerender}
                   userId={userId}
+                  onDelete={() => onDeleteItem(item.itemId)}
                 />
               ) : (
                 <UserPaymentsHistory
                   item={item}
-                  handleRerender={toggleRerender}
                   userId={userId}
+                  onDelete={() => onDeleteItem(item.itemId)}
                 />
               )}
             </li>

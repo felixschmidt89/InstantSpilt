@@ -4,7 +4,7 @@ import emojiConstants from "../../../../constants/emojiConstants";
 import DeleteResourceText from "../../../common/DeleteResourceText/DeleteResourceText";
 import styles from "./UserPaymentsHistory.module.css";
 
-const UserPaymentsHistory = ({ item, handleRerender, userId }) => {
+const UserPaymentsHistory = ({ item, onDelete, userId }) => {
   return (
     <div className={styles.payments}>
       <div className={styles.leftColumn}>
@@ -18,7 +18,7 @@ const UserPaymentsHistory = ({ item, handleRerender, userId }) => {
           <DeleteResourceText
             resourceId={item.itemId}
             resourceType={`${item.itemType}s`}
-            handleRerender={handleRerender}
+            onDelete={onDelete}
           />
         </div>
       </div>

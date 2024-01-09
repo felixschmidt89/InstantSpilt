@@ -25,7 +25,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {Function} props.handleRerender - Callback function to trigger a page rerender.
  * @returns {JSX.Element} - Rendered component.
  */
-const DeleteResourceText = ({ resourceId, resourceType, handleRerender }) => {
+const DeleteResourceText = ({ resourceId, resourceType, onDelete }) => {
   const [error, setError] = useState(null);
 
   const handleDelete = async () => {
@@ -37,8 +37,7 @@ const DeleteResourceText = ({ resourceId, resourceType, handleRerender }) => {
       if (response.status === StatusCodes.NO_CONTENT) {
         setError(null);
         devLog(`Resource (${resourceType} ${resourceId}) has been deleted.`);
-        handleRerender();
-        devLog("Page rerender has been triggered.");
+        onDelete();
       }
     } catch (error) {
       if (error.response && error.response.status === StatusCodes.BAD_REQUEST) {

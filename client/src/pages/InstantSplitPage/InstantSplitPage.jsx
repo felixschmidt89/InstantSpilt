@@ -1,7 +1,12 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// React and Third-Party Libraries
+import React from "react";
 import useLocalStorage from "react-use-localstorage";
 
+// Hooks
+import useAuthenticateUsersActiveGroupCode from "../../hooks/useAuthenticateUsersActiveGroupCode";
+import useFetchGroupData from "../../hooks/useFetchGroupData";
+
+// Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
@@ -9,16 +14,6 @@ import UserActionsBar from "../../components/features/UserActionsBar/UserActions
 import GroupActionsBar from "../../components/features/GroupActionsBar/GroupActionsBar";
 import RenderGroupBalances from "../../components/features/GroupBalances/RenderGroupBalances/RenderGroupBalances";
 import RenderGroupHistory from "../../components/features/GroupHistory/RenderGroupHistory/RenderGroupHistory";
-
-import useFetchGroupData from "../../hooks/useFetchGroupData";
-import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
-
-import {
-  removeActiveGroupCodeFromLocalStorage,
-  removeActiveGroupCodeFromStoredGroupCodes,
-  removeViewStateFromLocalStorage,
-} from "../../utils/localStorageUtils";
-
 import SwitchViewButtonsBar from "../../components/features/SwitchViewButtonsBar/SwitchViewButtonsBar";
 
 /**
@@ -28,33 +23,16 @@ import SwitchViewButtonsBar from "../../components/features/SwitchViewButtonsBar
  */
 const InstantSplitPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
-  const navigate = useNavigate();
-
-  // Check if active groupCode is valid
-  const [groupExists] = useValidateGroupExistence({
-    groupCode,
-  });
-
-  // If not, delete it from LocalStorage and navigate to homepage
-  useEffect(() => {
-    if (groupExists === false) {
-      removeActiveGroupCodeFromStoredGroupCodes(groupCode);
-      removeActiveGroupCodeFromLocalStorage();
-      removeViewStateFromLocalStorage();
-      navigate("/homepage/");
-    }
-  }, [navigate, groupCode, groupExists]);
-
-  // Fetch group group data
   const groupData = useFetchGroupData(groupCode);
-
-  // Use useLocalStorage to initialize and persist the view state with a default of "view2"
+  // Retrieve the 'view' value from localStorage or set the default value
   const [view, setView] = useLocalStorage("viewState", "view2");
 
-  // Handle user view switches
+  useAuthenticateUsersActiveGroupCode(groupCode);
+
   const handleSwitchView = () => {
     setView(view === "view1" ? "view2" : "view1");
   };
+
   // Render spinner until data is fetched
   if (groupData === null) {
     return (
@@ -69,7 +47,6 @@ const InstantSplitPage = () => {
           title={`InstantSplit - main (${groupData.group.groupName})`}
         />
         <PiratePx COUNT_IDENTIFIER={"main"} />
-
         {/* Display group name */}
         <h1>{groupData.group.groupName}</h1>
         <UserActionsBar

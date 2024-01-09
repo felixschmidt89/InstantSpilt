@@ -57,7 +57,15 @@ const UpdatePayment = ({
       paymentRecipientName !== storedPaymentRecipientName;
 
     setFormChanged(isFormChanged);
-  }, [paymentAmount, paymentMakerName, paymentRecipientName, paymentDetails]);
+  }, [
+    paymentAmount,
+    paymentMakerName,
+    paymentRecipientName,
+    paymentDetails,
+    storedPaymentAmount,
+    storedPaymentMakerName,
+    storedPaymentRecipientName,
+  ]);
 
   // On form submission: post payment and navigate to instant-split page
   const handleFormSubmit = async (e) => {

@@ -9,7 +9,7 @@ import { devLog } from "../../../../utils/errorUtils";
 import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 // Styles
-import styles from "./CreateUser.module.css";
+import styles from "./CreateUserForm.module.css";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -22,7 +22,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {function} props.toggleRerender - Function to toggle rerender in parent component.
  * @returns {JSX.Element} - React component.
  */
-const CreateUser = ({ toggleRerender, groupCode }) => {
+const CreateUserForm = ({ toggleRerender, groupCode }) => {
   const inputRef = useRef(null);
 
   const [userName, setUserName] = useState("");
@@ -86,4 +86,4 @@ const CreateUser = ({ toggleRerender, groupCode }) => {
   );
 };
 
-export default CreateUser;
+export default CreateUserForm;

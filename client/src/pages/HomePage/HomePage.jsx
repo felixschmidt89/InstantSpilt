@@ -14,13 +14,13 @@ const HomePage = () => {
         <p>
           InstantSplit is the hassle-free way to settle group expenses with no
           user registration or app download while sharing minimal data.
-          <div className={styles.strong}>
-            <span className={styles.noWrap}>No cookies.</span>{" "}
-            <span className={styles.noWrap}>No visitor tracking.</span>{" "}
-            <span className={styles.noWrap}>No monetization.</span>{" "}
-            <span className={styles.noWrap}>Ever.</span>
-          </div>
         </p>
+        <div className={styles.strong}>
+          <span className={styles.noWrap}>No cookies.</span>{" "}
+          <span className={styles.noWrap}>No visitor tracking.</span>{" "}
+          <span className={styles.noWrap}>No monetization.</span>{" "}
+          <span className={styles.noWrap}>Ever.</span>
+        </div>
       </div>
       <h2>Get started</h2>
       <div className={styles.groupContainer}>

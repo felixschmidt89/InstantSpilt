@@ -50,7 +50,9 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
   return (
     <div className={styles.container}>
       {isLoading ? (
-        <Spinner />
+        <div className={styles.spinner}>
+          <Spinner />
+        </div>
       ) : (
         <ul className={styles.userList}>
           {userNames.map((userName) => (

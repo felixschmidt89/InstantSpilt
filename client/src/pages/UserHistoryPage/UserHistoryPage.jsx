@@ -28,6 +28,14 @@ const UserHistoryPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Function to update state after item deletion
+  const handleDeleteItem = (itemId) => {
+    const updatedItems = userExpensesAndPayments.filter(
+      (item) => item.itemId !== itemId
+    );
+    setUserExpensesAndPayments(updatedItems);
+  };
+
   useEffect(() => {
     const fetchUserExpensesAndPayments = async () => {
       try {
@@ -74,7 +82,6 @@ const UserHistoryPage = () => {
 
     fetchUserExpensesAndPayments();
   }, [userId]);
-
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - user history' />
@@ -96,6 +103,7 @@ const UserHistoryPage = () => {
             <UserTransactionsHistory
               userExpensesAndPayments={userExpensesAndPayments}
               userId={userId}
+              onDeleteItem={handleDeleteItem}
             />
           ) : (
             <p className={styles.noTransactions}>
