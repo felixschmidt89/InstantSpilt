@@ -25,13 +25,8 @@ const UserHistoryPage = () => {
   const { userId } = useParams();
 
   const [userExpensesAndPayments, setUserExpensesAndPayments] = useState([]);
-  const [rerender, setRerender] = useState(0);
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  const handleRerender = () => {
-    setRerender((prevValue) => prevValue + 1);
-  };
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserExpensesAndPayments = async () => {
@@ -78,22 +73,9 @@ const UserHistoryPage = () => {
     };
 
     fetchUserExpensesAndPayments();
-  }, [userId, rerender]);
+  }, [userId]);
 
-  return isLoading ? (
-    <main>
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
-      <h1>User history</h1>
-      <div className={styles.spinner}>
-        <Spinner />
-      </div>
-    </main>
-  ) : (
+  return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - user history' />
       <PiratePx COUNT_IDENTIFIER={"user-history"} />
@@ -104,18 +86,25 @@ const UserHistoryPage = () => {
         isIcon={true}
       />
       <h1>User history</h1>
-      {userExpensesAndPayments.length > 0 ? (
-        <UserTransactionsHistory
-          userExpensesAndPayments={userExpensesAndPayments}
-          handleRerender={handleRerender}
-          userId={userId}
-        />
+      {isLoading ? (
+        <div className={styles.spinner}>
+          <Spinner />
+        </div>
       ) : (
-        <p className={styles.failMessage}>
-          No associated expenses or payments.
-        </p>
+        <div className={styles.container}>
+          {userExpensesAndPayments.length > 0 ? (
+            <UserTransactionsHistory
+              userExpensesAndPayments={userExpensesAndPayments}
+              userId={userId}
+            />
+          ) : (
+            <p className={styles.noTransactions}>
+              No associated expenses or payments.
+            </p>
+          )}
+          <ErrorDisplay error={error} />
+        </div>
       )}
-      <ErrorDisplay error={error} />
     </main>
   );
 };

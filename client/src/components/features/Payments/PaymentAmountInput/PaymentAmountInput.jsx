@@ -26,7 +26,7 @@ const PaymentAmountInput = ({
     }
   }, [inputRef]);
 
-  // controlled input component to set paymentAmount state, converting comma separator to dot prior to posting
+  // controlled input component to set payment amount state in parent component, converting comma separator to dot prior to posting
   const handlePaymentAmountChange = (e) => {
     onAmountChange(commaToDotDecimalSeparator(e.target.value));
     if (setFormChanged) {

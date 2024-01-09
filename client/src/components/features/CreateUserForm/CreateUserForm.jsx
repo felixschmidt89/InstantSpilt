@@ -3,10 +3,10 @@ import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
 // Constants and Utils
-import { devLog } from "../../../utils/errorUtils";
+import { devLog } from "../../../../utils/errorUtils";
 
 // Components
-import ErrorDisplay from "../../common/ErrorDisplay/ErrorDisplay";
+import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 // Styles
 import styles from "./CreateUser.module.css";
@@ -19,10 +19,10 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  *
  * @component
  * @param {Object} props - The properties of the component.
- * @param {function} props.toggleDataRefresh - Function to toggle data refresh in the parent component.
+ * @param {function} props.toggleRerender - Function to toggle rerender in parent component.
  * @returns {JSX.Element} - React component.
  */
-const CreateUser = ({ toggleDataRefresh, groupCode }) => {
+const CreateUser = ({ toggleRerender, groupCode }) => {
   const inputRef = useRef(null);
 
   const [userName, setUserName] = useState("");
@@ -43,8 +43,8 @@ const CreateUser = ({ toggleDataRefresh, groupCode }) => {
       });
       devLog("User created:", response);
       setUserName("");
-      // toggle refresh in parent component to rerender user list
-      toggleDataRefresh();
+      // toggle rerender in parent component to rerender user list
+      toggleRerender();
       setError("");
     } catch (error) {
       // Render conflict status message if there is already a group member with same name

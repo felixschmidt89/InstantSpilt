@@ -1,7 +1,21 @@
 import React, { useEffect, useRef } from "react";
-import styles from "./ExpenseDescription.module.css";
+import styles from "./ExpenseDescriptionInput.module.css";
 
-const ExpenseDescription = ({ value, onDescriptionChange, setFormChanged }) => {
+/**
+ * Input component for handling expense description when creating or updating expenses.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.value - The current value of the input.
+ * @param {Function} props.onDescriptionChange - Callback function to handle changes in the input.
+ * @param {Function} props.setFormChanged - Callback function to indicate changes in the form.
+ * @returns {JSX.Element} - Rendered component.
+ */
+const ExpenseDescriptionInput = ({
+  value,
+  onDescriptionChange,
+  setFormChanged,
+}) => {
   const inputRef = useRef(null);
 
   // Autofocus input field on mount
@@ -11,7 +25,6 @@ const ExpenseDescription = ({ value, onDescriptionChange, setFormChanged }) => {
     }
   }, [inputRef]);
 
-  // controlled input component to set expenseDescription state
   const handleExpenseDescriptionChange = (e) => {
     onDescriptionChange(e.target.value);
     if (setFormChanged) {
@@ -33,4 +46,4 @@ const ExpenseDescription = ({ value, onDescriptionChange, setFormChanged }) => {
   );
 };
 
-export default ExpenseDescription;
+export default ExpenseDescriptionInput;

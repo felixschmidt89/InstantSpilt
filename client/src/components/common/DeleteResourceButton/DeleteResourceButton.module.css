@@ -14,7 +14,3 @@
   background-color: var(--color-error);
   box-shadow: 0 0 0.5rem var(--color-error);
 }
-
-.errorMessage {
-  color: var(--color-error);
-}

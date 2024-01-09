@@ -1,24 +1,33 @@
+// React and Third-Party Libraries
 import React, { useState } from "react";
 import axios from "axios";
-import styles from "./DeleteResourceText.module.css";
 import { StatusCodes } from "http-status-codes";
+
+// Constants and Utils
 import { devLog } from "../../../utils/errorUtils";
 
-// Get API URL from environment variables
+// Components
+import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
+
+// Styles
+import styles from "./DeleteResourceText.module.css";
+
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
- * Reusable text component to delete a resource of a given type and navigate to route upon deletion
+ * Component for displaying a text to delete a resource.
  *
- * @param {string} props.resourceId  The unique identifier of the resource.
- * @param {string} props.resourceType - The type of the resource (e.g., "expenses").
- * @param {string} props.route - The route to navigate to after successful deletion (default is to instant split man application page).
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.resourceId - The ID of the resource to delete.
+ * @param {string} props.resourceType - The type of the resource to delete.
+ * @param {Function} props.handleRerender - Callback function to trigger a page rerender.
+ * @returns {JSX.Element} - Rendered component.
  */
 const DeleteResourceText = ({ resourceId, resourceType, handleRerender }) => {
-  // Set error State to display error message
   const [error, setError] = useState(null);
 
-  // Handle delete request and appropriate errors message if applicable
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
@@ -44,13 +53,12 @@ const DeleteResourceText = ({ resourceId, resourceType, handleRerender }) => {
     }
   };
 
-  // Render button and error message in case of an error
   return (
     <div>
-      <a className={styles.link} onClick={handleDelete} href='#'>
+      <span className={styles.link} onClick={handleDelete} href='#'>
         delete
-      </a>
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      </span>
+      <ErrorDisplay error={error} />
     </div>
   );
 };

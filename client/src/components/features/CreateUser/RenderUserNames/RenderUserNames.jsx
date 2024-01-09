@@ -1,12 +1,19 @@
+// React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Spinner from "../../common/Spinner/Spinner";
+
+// Constants and Utils
+import { devLog } from "../../../../utils/errorUtils";
+
+// Components
+import Spinner from "../../../common/Spinner/Spinner";
+
+// Styles
 import styles from "./RenderUserNames.module.css";
-import { devLog } from "../../../utils/errorUtils";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-const RenderUserNames = ({ refreshData, groupCode }) => {
+const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
   const [userNames, setUserNames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -38,7 +45,7 @@ const RenderUserNames = ({ refreshData, groupCode }) => {
     };
 
     fetchUserDetails();
-  }, [refreshData]);
+  }, [rerenderTrigger, groupCode]);
 
   return (
     <div className={styles.container}>

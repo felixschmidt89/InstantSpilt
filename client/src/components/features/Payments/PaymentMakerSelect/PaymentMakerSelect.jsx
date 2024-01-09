@@ -15,12 +15,6 @@ const PaymentMakerSelect = ({
   onPaymentMakerChange,
   groupMembers,
 }) => {
-  const options = groupMembers.map((member) => (
-    <option key={member} value={member}>
-      {member}
-    </option>
-  ));
-
   return (
     <select
       className={styles.paymentMaker}
@@ -31,7 +25,11 @@ const PaymentMakerSelect = ({
       <option value='' disabled>
         by
       </option>
-      {options}
+      {groupMembers.map((member) => (
+        <option key={member} value={member}>
+          {member}
+        </option>
+      ))}
     </select>
   );
 };

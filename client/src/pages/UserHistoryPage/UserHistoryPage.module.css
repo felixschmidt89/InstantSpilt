@@ -4,8 +4,6 @@
   margin-top: 2rem;
 }
 
-.failMessage {
+.noTransactions {
   margin: 0 auto;
-  text-align: center;
-  transform: translateX(-8%);
 }

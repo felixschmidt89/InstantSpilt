@@ -1,3 +1,8 @@
 .link {
   color: var(--color-error);
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--color-success);
 }

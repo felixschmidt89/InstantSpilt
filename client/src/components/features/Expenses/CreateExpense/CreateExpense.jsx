@@ -9,10 +9,10 @@ import { devLog } from "../../../../utils/errorUtils";
 // Hooks
 
 // Components
-import ExpenseBeneficiaries from "../ExpenseBeneficiaries/ExpenseBeneficiaries";
-import ExpensePayer from "../ExpensePayer/ExpensePayer";
-import ExpenseAmount from "../ExpenseAmount/ExpenseAmount";
-import ExpenseDescription from "../ExpenseDescription/ExpenseDescription";
+import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
+import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
+import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescriptionInput";
+import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 
 // Styles
 import styles from "./CreateExpense.module.css";
@@ -69,20 +69,20 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
     <div>
       <form onSubmit={handleFormSubmit}>
         <div className={styles.container}>
-          <ExpenseDescription
+          <ExpenseDescriptionInput
             value={expenseDescription}
             onDescriptionChange={(value) => setExpenseDescription(value)}
           />
-          <ExpenseAmount
+          <ExpenseAmountInput
             value={expenseAmount}
             onAmountChange={(value) => setExpenseAmount(value)}
           />
-          <ExpensePayer
+          <ExpensePayerSelect
             expensePayerName={expensePayerName}
             onPayerChange={(value) => setExpensePayerName(value)}
             groupMembers={groupMembers}
           />
-          <ExpenseBeneficiaries
+          <ExpenseBeneficiariesInput
             selectedBeneficiaries={selectedBeneficiaries}
             groupMembers={groupMembers}
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}

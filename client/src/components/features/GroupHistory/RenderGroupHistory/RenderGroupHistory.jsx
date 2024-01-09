@@ -7,8 +7,8 @@ import { devLog } from "../../../../utils/errorUtils";
 
 // Components
 import NoTransactions from "../NoTransactions/NoTransactions";
-import RenderGroupExpenses from "../RenderGroupExpenses/RenderGroupExpenses";
-import RenderGroupPayments from "../RenderGroupPayments/RenderGroupPayments";
+import RenderGroupExpense from "../RenderGroupExpense/RenderGroupExpense";
+import RenderGroupPayments from "../RenderGroupPayment/RenderGroupPayment";
 import Spinner from "../../../common/Spinner/Spinner";
 import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
@@ -82,25 +82,30 @@ const RenderGroupHistory = ({ groupCode }) => {
     </div>
   ) : (
     // Render container with group expenses and payments or display a message if there are no such transactions
-    <div className={styles.container}>
+    <>
       {groupExpensesAndPayments.length > 0 ? (
-        <ul>
-          {/* Map through group expenses and payments */}
-          {groupExpensesAndPayments.map((item) => (
-            <li key={item._id}>
-              {item.expenseDescription ? (
-                <RenderGroupExpenses item={item} />
-              ) : (
-                <RenderGroupPayments item={item} />
-              )}
-            </li>
-          ))}
-        </ul>
+        <div className={styles.container}>
+          <ul>
+            {/* Map through group expenses and payments */}
+            {groupExpensesAndPayments.map((item) => (
+              <li key={item._id}>
+                {item.expenseDescription ? (
+                  <RenderGroupExpense item={item} />
+                ) : (
+                  <RenderGroupPayments item={item} />
+                )}
+              </li>
+            ))}
+          </ul>
+          <ErrorDisplay error={error} remWidth={20} />
+        </div>
       ) : (
-        <NoTransactions />
+        <div className={styles.noTransactions}>
+          <NoTransactions />
+          <ErrorDisplay error={error} remWidth={20} />
+        </div>
       )}
-      <ErrorDisplay error={error} remWidth={20} />
-    </div>
+    </>
   );
 };
 

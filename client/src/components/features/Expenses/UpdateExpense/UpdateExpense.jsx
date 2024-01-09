@@ -7,10 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { devLog } from "../../../../utils/errorUtils";
 
 // Components
-import ExpenseBeneficiaries from "../ExpenseBeneficiaries/ExpenseBeneficiaries";
-import ExpensePayer from "../ExpensePayer/ExpensePayer";
-import ExpenseAmount from "../ExpenseAmount/ExpenseAmount";
-import ExpenseDescription from "../ExpenseDescription/ExpenseDescription";
+import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescriptionInput";
+import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
+import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
+import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
+import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 // Styles
 import styles from "./UpdateExpense.module.css";
@@ -60,7 +61,7 @@ const UpdateExpense = ({
   // On form submission: Put expense and navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setError(null); // Clear previous error
+    setError(null);
 
     try {
       const response = await axios.put(`${apiUrl}/expenses/${expenseId}`, {
@@ -91,23 +92,23 @@ const UpdateExpense = ({
     <div>
       <form onSubmit={handleFormSubmit}>
         <div className={styles.container}>
-          <ExpenseDescription
+          <ExpenseDescriptionInput
             value={expenseDescription}
             onDescriptionChange={(value) => setExpenseDescription(value)}
             setFormChanged={setFormChanged}
           />
-          <ExpenseAmount
+          <ExpenseAmountInput
             value={expenseAmount}
             onAmountChange={(value) => setExpenseAmount(value)}
             setFormChanged={setFormChanged}
           />
-          <ExpensePayer
+          <ExpensePayerSelect
             expensePayerName={expensePayerName}
             onPayerChange={(value) => setExpensePayerName(value)}
             groupMembers={groupMembers}
             setFormChanged={setFormChanged}
           />
-          <ExpenseBeneficiaries
+          <ExpenseBeneficiariesInput
             selectedBeneficiaries={selectedBeneficiaries}
             groupMembers={groupMembers}
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}
@@ -121,8 +122,7 @@ const UpdateExpense = ({
           )}
         </div>
       </form>
-      {/* Display error message if there's an error */}
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      <ErrorDisplay error={error} />
     </div>
   );
 };

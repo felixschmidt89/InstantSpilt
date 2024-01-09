@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import emojiConstants from "../../../../constants/emojiConstants";
-import styles from "./RenderGroupPayments.module.css";
+import styles from "./RenderGroupPayment.module.css";
 
 /**
- * Component for displaying single group payments.
+ * Component for rendering a single group payment.
  *
  * @component
  * @param {Object} props - The component properties.
  * @param {Object} props.item - The payment item to be rendered.
  * @returns {JSX.Element} - Rendered component.
  */
-const RenderGroupPayments = ({ item }) => {
+const RenderGroupPayment = ({ item }) => {
   return (
     <div className={styles.payments}>
       {/* Left column with payment emoji and amount */}
@@ -35,4 +35,4 @@ const RenderGroupPayments = ({ item }) => {
   );
 };
 
-export default RenderGroupPayments;
+export default RenderGroupPayment;

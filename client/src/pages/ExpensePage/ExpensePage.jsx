@@ -1,20 +1,24 @@
+// React and Third-Party Libraries
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
+// Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
 
+// Hooks
 import useFetchExpenseInfo from "../../hooks/useFetchExpenseInfo";
 
+//Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
 import DeleteResourceButton from "../../components/common/DeleteResourceButton/DeleteResourceButton";
 import RouteButton from "../../components/common/RouteButton/RouteButton";
-
-import { devLog } from "../../../../server/utils/errorUtils";
-import styles from "./ExpensePage.module.css";
+import RenderExpenseBeneficiaries from "../../components/features/Expenses/RenderExpenseBeneficiaries/RenderExpenseBeneficiaries";
+import RenderExpenseDetails from "../../components/features/Expenses/RenderExpenseDetails/RenderExpenseDetails";
+import RenderResourceCreated from "../../components/common/RenderResourceCreated/RenderResourceCreated";
 
 /**
  * Page for displaying expense details.
@@ -25,15 +29,12 @@ import styles from "./ExpensePage.module.css";
 const ExpensePage = () => {
   // useParams hook to extract and rename the 'itemId' parameter from the current URL
   const { itemId: expenseId } = useParams();
-  // fetch expense details
-  const { expenseInfo } = useFetchExpenseInfo(expenseId);
-  devLog(expenseInfo);
 
+  const { expenseInfo } = useFetchExpenseInfo(expenseId);
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - expense details' />
       <PiratePx COUNT_IDENTIFIER={"expense-page"} />
-      {/* NavigateButton component for returning to the main page */}
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
@@ -41,46 +42,13 @@ const ExpensePage = () => {
         isIcon={true}
       />
       <h1>Expense {emojiConstants.expense}</h1>
-      {/* Conditional rendering based on whether expenseInfo is available */}
       {expenseInfo ? (
         <div>
-          {/* Displaying expense details with 2 decimal places */}
-          <h2>{expenseInfo.expenseAmount.toFixed(2)}€</h2>
-          <p>Description: {expenseInfo.expenseDescription}</p>
-          <p>
-            {emojiConstants.paidFor}{" "}
-            {/* Link to the user page of the expense payer */}
-            <Link to={`/user-page/${expenseInfo.expensePayer._id}`}>
-              {expenseInfo.expensePayer.userName}
-            </Link>
-          </p>
-          {/* Displaying beneficiaries list */}
-          <p>Beneficiaries:</p>
-          <ul>
-            <li
-              className={styles.beneficiaries}
-              // Generating a unique key for the list item based on beneficiary IDs
-              key={expenseInfo.expenseBeneficiaries
-                .map((beneficiary) => beneficiary._id)
-                .join(", ")}>
-              {expenseInfo.expenseBeneficiaries.map((beneficiary, index) => (
-                // Using a React.Fragment to wrap multiple elements without adding extra nodes
-                <React.Fragment key={beneficiary._id}>
-                  {/* Adding a comma and space between beneficiaries (except for the first one) */}
-                  {index > 0 && ", "}{" "}
-                  {/* Link to the user page of each beneficiary */}
-                  <Link to={`/user-page/${beneficiary._id}`}>
-                    {beneficiary.userName}
-                  </Link>
-                </React.Fragment>
-              ))}
-            </li>
-          </ul>
-          {/* Displaying creation date */}
-          <p>
-            {emojiConstants.created}{" "}
-            {new Date(expenseInfo.createdAt).toLocaleString()}
-          </p>
+          <RenderExpenseDetails expenseInfo={expenseInfo} />
+          <RenderExpenseBeneficiaries
+            expenseBeneficiaries={expenseInfo.expenseBeneficiaries}
+          />
+          <RenderResourceCreated createdAt={expenseInfo.createdAt} />
           <RouteButton route={`update-expense/${expenseId}`} />
           <DeleteResourceButton
             resourceId={expenseId}
@@ -95,3 +63,4 @@ const ExpensePage = () => {
 };
 
 export default ExpensePage;
+// useParams hook to extract and rename the 'itemId' parameter from the current URL
