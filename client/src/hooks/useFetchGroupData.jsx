@@ -8,7 +8,7 @@ const useFetchGroupData = (groupCode) => {
   const [groupData, setGroupData] = useState(null);
 
   useEffect(() => {
-    async function fetchGroupData() {
+    const fetchGroupData = async () => {
       try {
         const response = await axios.get(`${apiUrl}/groups/${groupCode}`);
         const fetchedGroupData = response.data;
@@ -17,7 +17,7 @@ const useFetchGroupData = (groupCode) => {
       } catch (error) {
         devLog("Error fetching group data:", error);
       }
-    }
+    };
 
     fetchGroupData();
   }, [groupCode]);

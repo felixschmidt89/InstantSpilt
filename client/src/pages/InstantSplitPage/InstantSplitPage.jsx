@@ -19,7 +19,6 @@ import {
   removeViewStateFromLocalStorage,
 } from "../../utils/localStorageUtils";
 
-import styles from "./InstantSplitPage.module.css";
 import SwitchViewButtonsBar from "../../components/features/SwitchViewButtonsBar/SwitchViewButtonsBar";
 
 /**
@@ -78,7 +77,11 @@ const InstantSplitPage = () => {
           groupName={groupData.group.groupName}
         />
         <SwitchViewButtonsBar view={view} handleSwitchView={handleSwitchView} />
-        {view === "view1" ? <RenderGroupHistory /> : <RenderGroupBalances />}
+        {view === "view1" ? (
+          <RenderGroupHistory groupCode={groupCode} />
+        ) : (
+          <RenderGroupBalances />
+        )}
         <GroupActionsBar />
       </main>
     );

@@ -55,7 +55,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
     } catch (error) {
       if (error.response) {
         if (error.response.status === 400) {
-          console.log(error.response);
+          devLog("Error creating expense:", error.response);
           setError(error.response.data.errors[0].message);
         } else {
           setError("Error creating expense. Please try again.");

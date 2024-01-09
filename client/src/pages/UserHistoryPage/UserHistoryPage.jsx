@@ -1,35 +1,48 @@
+// React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-
 import axios from "axios";
-import styles from "./UserHistoryPage.module.css";
-import RenderUserExpenses from "../../components/features/RenderUserExpenses/RenderUserExpenses";
-import RenderUserPayments from "../../components/features/RenderUserPayments/RenderUserPayments";
+
+// Constants and Utils
+import { devLog } from "../../utils/errorUtils";
+
+// Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
-import { devLog } from "../../utils/errorUtils";
+import ErrorDisplay from "../../components/common/ErrorDisplay/ErrorDisplay";
+import UserTransactionsHistory from "../../components/features/UserDetails/UserTransactionsHistory/UserTransactionsHistory/UserTransactionsHistory";
 
+// Styles
+import styles from "./UserHistoryPage.module.css";
+
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-export default function UserHistoryPage() {
-  const [userExpensesAndPayments, setUserExpensesAndPayments] = useState([]);
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [rerender, setRerender] = useState(0);
-
+const UserHistoryPage = () => {
   const { userId } = useParams();
 
+  const [userExpensesAndPayments, setUserExpensesAndPayments] = useState([]);
+  const [rerender, setRerender] = useState(0);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleRerender = () => {
+    setRerender((prevValue) => prevValue + 1);
+  };
+
   useEffect(() => {
-    async function fetchUserExpensesAndPayments() {
+    const fetchUserExpensesAndPayments = async () => {
       try {
         const response = await axios.get(
           `${apiUrl}/users/${userId}/expenses-and-payments`
         );
+        devLog(`User ${userId} expenses and payments fetched:`, response);
         const responseData = response.data;
 
+        // Check if userExpensesAndPayments array exists and has items
         if (
           responseData.userExpensesAndPayments &&
           responseData.userExpensesAndPayments.length > 0
@@ -39,40 +52,33 @@ export default function UserHistoryPage() {
             .map((item) => ({
               ...item,
               itemId: item._id,
+
               // Determine and add 'itemType' based on the presence of properties
               itemType: item.expenseDescription
                 ? "expense"
                 : item.paymentAmount
                 ? "payment"
                 : "unknown",
-              // Convert createdAt to a Date object
+
+              // Convert createdAt to a Date object, sort by descending order
               createdAt: new Date(item.createdAt),
-            })) // Sort by createdAt in descending order
+            }))
             .sort((a, b) => b.createdAt - a.createdAt);
           setUserExpensesAndPayments(modifiedData);
         }
         setError(null);
         setIsLoading(false);
       } catch (error) {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error fetching user expenses and payments:", error);
-        }
+        devLog("Error fetching user expenses and payments:", error);
         setError(
           "An error occurred while fetching user expenses and payments. Please try again later."
         );
-        setIsLoading(false); // Set loading to false when data is fetched
+        setIsLoading(false);
       }
-    }
+    };
 
     fetchUserExpensesAndPayments();
   }, [userId, rerender]);
-
-  // Trigger rerender
-  const handleRerender = () => {
-    setRerender((prevValue) => prevValue + 1);
-  };
-
-  devLog(userExpensesAndPayments);
 
   return isLoading ? (
     <main>
@@ -98,34 +104,20 @@ export default function UserHistoryPage() {
         isIcon={true}
       />
       <h1>User history</h1>
-      <div className={styles.container}>
-        {userExpensesAndPayments.length > 0 ? (
-          <ul>
-            {userExpensesAndPayments.map((item) => (
-              <li className={styles.item} key={item._id}>
-                {item.expenseDescription ? (
-                  <RenderUserExpenses
-                    item={item}
-                    handleRerender={handleRerender}
-                    userId={userId}
-                  />
-                ) : (
-                  <RenderUserPayments
-                    item={item}
-                    handleRerender={handleRerender}
-                    userId={userId}
-                  />
-                )}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className={styles.failMessage}>
-            No associated expenses or payments.
-          </p>
-        )}
-        {error && <p className={styles.error}>{error}</p>}
-      </div>
+      {userExpensesAndPayments.length > 0 ? (
+        <UserTransactionsHistory
+          userExpensesAndPayments={userExpensesAndPayments}
+          handleRerender={handleRerender}
+          userId={userId}
+        />
+      ) : (
+        <p className={styles.failMessage}>
+          No associated expenses or payments.
+        </p>
+      )}
+      <ErrorDisplay error={error} />
     </main>
   );
-}
+};
+
+export default UserHistoryPage;

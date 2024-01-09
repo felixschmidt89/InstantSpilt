@@ -3,17 +3,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-// Styles
-import styles from "./CreatePayment.module.css";
-
-// Components
-import PaymentAmount from "../PaymentAmount/PaymentAmount";
-import PaymentMaker from "../PaymentMaker/PaymentMaker";
-import emojiConstants from "../../../../constants/emojiConstants";
-import PaymentRecipient from "../PaymentRecipient/PaymentRecipient";
-
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
+import emojiConstants from "../../../../constants/emojiConstants";
+
+// Components
+import PaymentAmountInput from "../PaymentAmountInput/PaymentAmountInput";
+import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
+import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
+
+// Styles
+import styles from "./CreatePayment.module.css";
 
 // API
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -58,12 +58,12 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <PaymentAmount
+      <PaymentAmountInput
         paymentAmount={paymentAmount}
         onAmountChange={setPaymentAmount}
       />
 
-      <PaymentMaker
+      <PaymentMakerSelect
         paymentMakerName={paymentMakerName}
         onPaymentMakerChange={setPaymentMakerName}
         groupMembers={groupMembers}
@@ -71,7 +71,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       <span className={styles.paymentToEmoji}>
         {emojiConstants.paymentsMade}
       </span>
-      <PaymentRecipient
+      <PaymentRecipientSelect
         paymentRecipientName={paymentRecipientName}
         onRecipientChange={setPaymentRecipientName}
         groupMembers={groupMembers}

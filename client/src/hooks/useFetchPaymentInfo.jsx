@@ -17,7 +17,7 @@ const useFetchPaymentInfo = (paymentId) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchPaymentInfo() {
+    const fetchPaymentInfo = async () => {
       try {
         const response = await axios.get(`${apiUrl}/payments/${paymentId}`);
         const paymentData = response.data.payment;
@@ -29,7 +29,7 @@ const useFetchPaymentInfo = (paymentId) => {
           "An error occurred while fetching payment info. Please try again later."
         );
       }
-    }
+    };
 
     fetchPaymentInfo();
   }, [paymentId]);

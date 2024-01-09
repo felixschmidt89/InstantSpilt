@@ -2,22 +2,21 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "../../common/Spinner/Spinner";
 import styles from "./RenderUserNames.module.css";
+import { devLog } from "../../../utils/errorUtils";
 
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-const RenderUserNames = ({ refreshData }) => {
+const RenderUserNames = ({ refreshData, groupCode }) => {
   const [userNames, setUserNames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const groupCode = localStorage.getItem("activeGroupCode");
-
     if (!groupCode) {
       return;
     }
 
-    async function fetchUserDetails() {
+    const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
           `${apiUrl}/users/byGroupCode/${groupCode}`
@@ -30,15 +29,13 @@ const RenderUserNames = ({ refreshData }) => {
         setError(null);
         setIsLoading(false);
       } catch (error) {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error fetching data:", error);
-        }
+        devLog("Error fetching group users:", error);
         setError(
           "An error occurred while fetching group users. Please try again later."
         );
         setIsLoading(false);
       }
-    }
+    };
 
     fetchUserDetails();
   }, [refreshData]);

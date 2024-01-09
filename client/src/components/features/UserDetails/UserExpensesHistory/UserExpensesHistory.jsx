@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import emojiConstants from "../../../constants/emojiConstants";
-import DeleteResourceText from "../../common/DeleteResourceText/DeleteResourceText";
-import styles from "./RenderUserExpenses.module.css";
+import emojiConstants from "../../../../constants/emojiConstants";
+import DeleteResourceText from "../../../common/DeleteResourceText/DeleteResourceText";
+import styles from "./UserExpensesHistory.module.css";
 
-const RenderUserExpenses = ({ item, handleRerender, userId }) => {
+const UserExpensesHistory = ({ item, handleRerender, userId }) => {
   return (
     <div className={styles.expenses}>
       <div className={styles.leftColumn}>
@@ -42,4 +42,4 @@ const RenderUserExpenses = ({ item, handleRerender, userId }) => {
   );
 };
 
-export default RenderUserExpenses;
+export default UserExpensesHistory;

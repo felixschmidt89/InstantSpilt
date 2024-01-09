@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import emojiConstants from "../../../constants/emojiConstants";
-import DeleteResourceText from "../../common/DeleteResourceText/DeleteResourceText";
-import styles from "./RenderUserPayments.module.css";
+import emojiConstants from "../../../../constants/emojiConstants";
+import DeleteResourceText from "../../../common/DeleteResourceText/DeleteResourceText";
+import styles from "./UserPaymentsHistory.module.css";
 
-const RenderUserPayments = ({ item, handleRerender, userId }) => {
+const UserPaymentsHistory = ({ item, handleRerender, userId }) => {
   return (
     <div className={styles.payments}>
       <div className={styles.leftColumn}>
@@ -30,4 +30,4 @@ const RenderUserPayments = ({ item, handleRerender, userId }) => {
   );
 };
 
-export default RenderUserPayments;
+export default UserPaymentsHistory;

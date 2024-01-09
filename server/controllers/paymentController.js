@@ -77,14 +77,30 @@ export const updatePayment = async (req, res) => {
   try {
     const { paymentId } = req.params;
 
-    const { paymentMakerName, groupCode, paymentAmount, paymentRecipientName } =
-      req.body;
+    const {
+      groupCode,
+      storedPaymentMakerName,
+      storedPaymentRecipientName,
+      paymentAmount,
+      paymentMakerName,
+      paymentRecipientName,
+    } = req.body;
 
     // Set the lastActive property of the group to now
     setLastActive(groupCode);
 
+    const storedPaymentMaker = await User.findOne({
+      userName: { $eq: storedPaymentMakerName },
+      groupCode,
+    });
+
     const paymentMaker = await User.findOne({
       userName: { $eq: paymentMakerName },
+      groupCode,
+    });
+
+    const storedPaymentRecipient = await User.findOne({
+      userName: { $eq: storedPaymentRecipientName },
       groupCode,
     });
 
@@ -117,8 +133,13 @@ export const updatePayment = async (req, res) => {
       { new: true },
     );
 
-    await paymentRecipient.updateTotalPaymentsReceived();
-    await paymentMaker.updateTotalPaymentsMadeAmount();
+    // Update payments totals
+    await Promise.all([
+      paymentRecipient.updateTotalPaymentsReceived(),
+      storedPaymentRecipient.updateTotalPaymentsReceived(),
+      paymentMaker.updateTotalPaymentsMadeAmount(),
+      storedPaymentMaker.updateTotalPaymentsMadeAmount(),
+    ]);
 
     return res.status(StatusCodes.OK).json({
       status: 'success',

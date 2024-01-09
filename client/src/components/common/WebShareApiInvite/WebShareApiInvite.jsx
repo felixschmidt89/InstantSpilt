@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 import styles from "./WebShareApiInvite.module.css";
+import { devLog } from "../../../utils/errorUtils";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
@@ -18,12 +19,10 @@ const WebShareApiInvite = ({ groupCode, groupName }) => {
           text,
           url,
         });
-        console.log("Successfully shared.");
-      } else {
-        console.log("Web Share API is not supported on this device.");
+        devLog("Invite shared successfully via WebShareApi.");
       }
     } catch (error) {
-      console.error("Error sharing:", error);
+      devLog("Error sharing invite via WebShareApi:", error);
     }
   };
 

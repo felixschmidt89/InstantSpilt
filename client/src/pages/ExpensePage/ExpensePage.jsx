@@ -26,8 +26,8 @@ const ExpensePage = () => {
   // useParams hook to extract and rename the 'itemId' parameter from the current URL
   const { itemId: expenseId } = useParams();
   // fetch expense details
-  const { expenseDetails } = useFetchExpenseInfo(expenseId);
-  devLog(expenseDetails);
+  const { expenseInfo } = useFetchExpenseInfo(expenseId);
+  devLog(expenseInfo);
 
   return (
     <main>
@@ -41,17 +41,17 @@ const ExpensePage = () => {
         isIcon={true}
       />
       <h1>Expense {emojiConstants.expense}</h1>
-      {/* Conditional rendering based on whether expenseDetails is available */}
-      {expenseDetails ? (
+      {/* Conditional rendering based on whether expenseInfo is available */}
+      {expenseInfo ? (
         <div>
           {/* Displaying expense details with 2 decimal places */}
-          <h2>{expenseDetails.expenseAmount.toFixed(2)}€</h2>
-          <p>Description: {expenseDetails.expenseDescription}</p>
+          <h2>{expenseInfo.expenseAmount.toFixed(2)}€</h2>
+          <p>Description: {expenseInfo.expenseDescription}</p>
           <p>
             {emojiConstants.paidFor}{" "}
             {/* Link to the user page of the expense payer */}
-            <Link to={`/user-page/${expenseDetails.expensePayer._id}`}>
-              {expenseDetails.expensePayer.userName}
+            <Link to={`/user-page/${expenseInfo.expensePayer._id}`}>
+              {expenseInfo.expensePayer.userName}
             </Link>
           </p>
           {/* Displaying beneficiaries list */}
@@ -60,10 +60,10 @@ const ExpensePage = () => {
             <li
               className={styles.beneficiaries}
               // Generating a unique key for the list item based on beneficiary IDs
-              key={expenseDetails.expenseBeneficiaries
+              key={expenseInfo.expenseBeneficiaries
                 .map((beneficiary) => beneficiary._id)
                 .join(", ")}>
-              {expenseDetails.expenseBeneficiaries.map((beneficiary, index) => (
+              {expenseInfo.expenseBeneficiaries.map((beneficiary, index) => (
                 // Using a React.Fragment to wrap multiple elements without adding extra nodes
                 <React.Fragment key={beneficiary._id}>
                   {/* Adding a comma and space between beneficiaries (except for the first one) */}
@@ -79,7 +79,7 @@ const ExpensePage = () => {
           {/* Displaying creation date */}
           <p>
             {emojiConstants.created}{" "}
-            {new Date(expenseDetails.createdAt).toLocaleString()}
+            {new Date(expenseInfo.createdAt).toLocaleString()}
           </p>
           <RouteButton route={`update-expense/${expenseId}`} />
           <DeleteResourceButton

@@ -22,10 +22,8 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {function} props.toggleDataRefresh - Function to toggle data refresh in the parent component.
  * @returns {JSX.Element} - React component.
  */
-const CreateUser = ({ toggleDataRefresh }) => {
+const CreateUser = ({ toggleDataRefresh, groupCode }) => {
   const inputRef = useRef(null);
-
-  const groupCode = localStorage.getItem("activeGroupCode");
 
   const [userName, setUserName] = useState("");
   const [error, setError] = useState("");

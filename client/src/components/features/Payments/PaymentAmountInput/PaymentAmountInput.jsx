@@ -1,8 +1,22 @@
 import React, { useEffect, useRef } from "react";
 import { commaToDotDecimalSeparator } from "../../../../utils/formatUtils";
-import styles from "./PaymentAmount.module.css";
+import styles from "./PaymentAmountInput.module.css";
 
-const PaymentAmount = ({ paymentAmount, onAmountChange, setFormChanged }) => {
+/**
+ * Input component for handling payment amount when creating or updating payments.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.paymentAmount - The current payment amount.
+ * @param {Function} props.onAmountChange - Callback function to handle changes in payment amount.
+ * @param {Function} props.setFormChanged - Optional callback function to indicate form changes.
+ * @returns {JSX.Element} - Rendered component.
+ */
+const PaymentAmountInput = ({
+  paymentAmount,
+  onAmountChange,
+  setFormChanged,
+}) => {
   const inputRef = useRef(null);
 
   // Autofocus input field on mount
@@ -37,4 +51,4 @@ const PaymentAmount = ({ paymentAmount, onAmountChange, setFormChanged }) => {
   );
 };
 
-export default PaymentAmount;
+export default PaymentAmountInput;

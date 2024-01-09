@@ -10,8 +10,8 @@ import DeleteResourceButton from "../../components/common/DeleteResourceButton/D
 import RouteButton from "../../components/common/RouteButton/RouteButton";
 import styles from "./UserDetailsPage.module.css";
 import useFetchUserData from "../../hooks/useFetchUserInfo";
-import UserExpenseTotals from "../../components/features/UserDetails/UserExpenseTotals/UserExpenseTotals";
-import UserPaymentTotals from "../../components/features/UserDetails/UserPaymentTotals/UserPaymentTotals";
+import UserExpenseTotals from "../../components/features/UserDetails/UserExpensesTotals/UserExpensesTotals";
+import UserPaymentTotals from "../../components/features/UserDetails/UserPaymentsTotals/UserPaymentsTotals";
 
 // Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
 const BALANCE_THRESHOLD = 0.01;

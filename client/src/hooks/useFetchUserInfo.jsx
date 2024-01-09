@@ -17,7 +17,7 @@ const useFetchUserData = (userId) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchUserData() {
+    const fetchUserData = async () => {
       try {
         const response = await axios.get(`${apiUrl}/users/${userId}`);
         const userData = response.data.user;
@@ -29,7 +29,7 @@ const useFetchUserData = (userId) => {
           "An error occurred while fetching user data. Please try again later."
         );
       }
-    }
+    };
 
     fetchUserData();
   }, [userId]);

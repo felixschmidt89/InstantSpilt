@@ -9,7 +9,7 @@ import emojiConstants from "../../../../constants/emojiConstants";
  * @param {Object} props.userData - User data containing payment totals.
  * @returns {JSX.Element} - Rendered component.
  */
-const UserPaymentTotals = ({ userData }) => {
+const UserPaymentsTotals = ({ userData }) => {
   return (
     <div role='region' aria-label='User Payments Totals'>
       <h3>{emojiConstants.payment} payment totals </h3>
@@ -30,4 +30,4 @@ const UserPaymentTotals = ({ userData }) => {
   );
 };
 
-export default UserPaymentTotals;
+export default UserPaymentsTotals;

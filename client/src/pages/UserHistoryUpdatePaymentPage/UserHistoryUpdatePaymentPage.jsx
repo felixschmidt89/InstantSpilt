@@ -19,6 +19,12 @@ import UpdatePayment from "../../components/features/Payments/UpdatePayment/Upda
 // Styles
 import styles from "./UserHistoryUpdatePaymentPage.module.css";
 
+/**
+ * Page for updating a payment via user history page.
+ *
+ * @component
+ * @returns {JSX.Element} - Rendered component.
+ */
 const UserHistoryUpdatePaymentPage = () => {
   const { userId, itemId } = useParams();
   // Use custom hook to manage payment update logic
@@ -35,7 +41,7 @@ const UserHistoryUpdatePaymentPage = () => {
         alignment={"left"}
         isIcon={true}
       />
-      <h2 className={styles.header}>Update payment {emojiConstants.payment}</h2>
+      <h1 className={styles.header}>Update payment {emojiConstants.payment}</h1>
       {isLoading ? (
         <Spinner />
       ) : (

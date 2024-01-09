@@ -17,7 +17,7 @@ const useFetchExpenseInfo = (expenseId) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function fetchExpenseInfo() {
+    const fetchExpenseInfo = async () => {
       try {
         const response = await axios.get(`${apiUrl}/expenses/${expenseId}`);
         const expenseData = response.data.expense;
@@ -29,7 +29,7 @@ const useFetchExpenseInfo = (expenseId) => {
           "An error occurred while fetching expense info. Please try again later."
         );
       }
-    }
+    };
 
     fetchExpenseInfo();
   }, [expenseId]);

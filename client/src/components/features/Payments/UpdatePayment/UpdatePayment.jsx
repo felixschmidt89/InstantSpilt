@@ -8,9 +8,9 @@ import { devLog } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
 
 // Components
-import PaymentAmount from "../PaymentAmount/PaymentAmount";
-import PaymentMaker from "../PaymentMaker/PaymentMaker";
-import PaymentRecipient from "../PaymentRecipient/PaymentRecipient";
+import PaymentAmount from "../PaymentAmountInput/PaymentAmountInput";
+import PaymentMaker from "../PaymentMakerSelect/PaymentMakerSelect";
+import PaymentRecipient from "../PaymentRecipientSelect/PaymentRecipientSelect";
 
 // Styles
 import styles from "./UpdatePayment.module.css";
@@ -26,20 +26,24 @@ const UpdatePayment = ({
   route = "/instant-split",
 }) => {
   const navigate = useNavigate();
-
   const paymentId = paymentDetails._id;
 
-  const [paymentAmount, setPaymentAmount] = useState(
-    paymentDetails.paymentAmount
-  );
+  // Values stored in database
+  const storedPaymentAmount = paymentDetails.paymentAmount;
+  const storedPaymentMakerName = paymentDetails.paymentMaker.userName;
+  const storedPaymentRecipientName = paymentDetails.paymentRecipient.userName;
+
+  // States to manage to be updated properties
+
+  const [paymentAmount, setPaymentAmount] = useState(storedPaymentAmount);
   const [paymentMakerName, setPaymentMakerName] = useState(
-    paymentDetails.paymentMaker.userName
+    storedPaymentMakerName
   );
   const [paymentRecipientName, setPaymentRecipientName] = useState(
-    paymentDetails.paymentRecipient.userName
+    storedPaymentRecipientName
   );
-  const [formChanged, setFormChanged] = useState(false);
 
+  const [formChanged, setFormChanged] = useState(false);
   const [error, setError] = useState("");
 
   const isSubmitButtonVisible =
@@ -48,9 +52,9 @@ const UpdatePayment = ({
   // useEffect to handle form changes
   useEffect(() => {
     const isFormChanged =
-      paymentAmount !== paymentDetails.paymentAmount ||
-      paymentMakerName !== paymentDetails.paymentMaker.userName ||
-      paymentRecipientName !== paymentDetails.paymentRecipient.userName;
+      paymentAmount !== storedPaymentAmount ||
+      paymentMakerName !== storedPaymentMakerName ||
+      paymentRecipientName !== storedPaymentRecipientName;
 
     setFormChanged(isFormChanged);
   }, [paymentAmount, paymentMakerName, paymentRecipientName, paymentDetails]);
@@ -60,10 +64,12 @@ const UpdatePayment = ({
     e.preventDefault();
     try {
       const response = await axios.put(`${apiUrl}/payments/${paymentId}`, {
-        paymentMakerName,
         groupCode,
         paymentAmount,
+        paymentMakerName,
         paymentRecipientName,
+        storedPaymentMakerName,
+        storedPaymentRecipientName,
       });
       devLog("Payment updated:", response);
       navigate(route);
@@ -102,7 +108,6 @@ const UpdatePayment = ({
         onRecipientChange={setPaymentRecipientName}
         groupMembers={groupMembers}
       />
-
       <div className={styles.buttonContainer}>
         {isSubmitButtonVisible && (
           <button className={styles.button} type='submit'>

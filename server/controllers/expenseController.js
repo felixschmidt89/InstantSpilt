@@ -134,20 +134,24 @@ export const updateExpense = async (req, res) => {
     // Set the lastActive property of the group to now
     setLastActive(groupCode);
 
-    // Update total expenses benefitted from by expense beneficiaries concurrently
+    // Update total expenses paid and total expenses benefitted for all users of the group
     await Promise.all(
       groupUsers.map(async (userId) => {
         try {
           const user = await User.findById(userId);
           if (!user) {
-            // Handle the case where the user is not found
             return;
           }
-          // Update total expenses paid by the beneficiary
           await user.updateTotalExpensesPaid();
-          // Update total expenses benefitted from by the beneficiary
           await user.updateTotalExpenseBenefitted();
-        } catch (error) {}
+        } catch (error) {
+          errorLog(
+            error,
+            "Error updating group users' total expenses paid and benefitted",
+            'Failed to update expense. Please try again later.',
+          );
+          sendInternalError(res);
+        }
       }),
     );
 

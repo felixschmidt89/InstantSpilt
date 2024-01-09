@@ -9,7 +9,7 @@ import emojiConstants from "../../../../constants/emojiConstants";
  * @param {Object} props.userData - User data containing expense totals.
  * @returns {JSX.Element} - Rendered component.
  */
-const UserExpenseTotals = ({ userData }) => {
+const UserExpensesTotals = ({ userData }) => {
   return (
     <div role='region' aria-label='User Expense Totals'>
       <h3>{emojiConstants.expense} expense totals </h3>
@@ -30,4 +30,4 @@ const UserExpenseTotals = ({ userData }) => {
   );
 };
 
-export default UserExpenseTotals;
+export default UserExpensesTotals;

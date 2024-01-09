@@ -27,15 +27,24 @@ const UpdateExpense = ({
 }) => {
   const navigate = useNavigate();
 
-  const [expenseDescription, setExpenseDescription] = useState(
-    expenseInfo.expenseDescription
+  // Values stored in database
+  const storedExpenseDescription = expenseInfo.expenseDescription;
+  const storedExpenseAmount = expenseInfo.expenseAmount;
+  const storedExpensePayerName = expenseInfo.expensePayer.userName;
+  const storedBeneficiariesNames = expenseInfo.expenseBeneficiaries.map(
+    (beneficiary) => beneficiary.userName
   );
-  const [expenseAmount, setExpenseAmount] = useState(expenseInfo.expenseAmount);
+
+  // States to manage to be updated properties
+  const [expenseDescription, setExpenseDescription] = useState(
+    storedExpenseDescription
+  );
+  const [expenseAmount, setExpenseAmount] = useState(storedExpenseAmount);
   const [expensePayerName, setExpensePayerName] = useState(
-    expenseInfo.expensePayer.userName
+    storedExpensePayerName
   );
   const [selectedBeneficiaries, setSelectedBeneficiaries] = useState(
-    expenseInfo.expenseBeneficiaries.map((beneficiary) => beneficiary.userName)
+    storedBeneficiariesNames
   );
 
   const [formChanged, setFormChanged] = useState(false);
@@ -60,6 +69,8 @@ const UpdateExpense = ({
         groupCode,
         expensePayerName,
         expenseBeneficiariesNames: selectedBeneficiaries,
+        storedExpensePayerName,
+        storedBeneficiariesNames,
       });
       devLog("Expense updated:", response);
       navigate(route);

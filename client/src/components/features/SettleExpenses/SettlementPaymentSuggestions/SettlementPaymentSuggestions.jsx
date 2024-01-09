@@ -25,7 +25,7 @@ const SettlementPaymentSuggestions = () => {
 
   // Fetch user details function, extract & format relevant data, then set the user details
   useEffect(() => {
-    async function fetchUserDetails() {
+    const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
           `${apiUrl}/users/byGroupCode/${groupCode}`
@@ -63,7 +63,7 @@ const SettlementPaymentSuggestions = () => {
         );
         setIsLoading(false); // Set loading to false on error
       }
-    }
+    };
     fetchUserDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

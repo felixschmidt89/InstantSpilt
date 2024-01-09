@@ -8,7 +8,7 @@ const ListGroups = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    async function getGroups() {
+    const getGroups = async () => {
       try {
         const groupCodesArray = JSON.parse(
           localStorage.getItem("storedGroupCodes")
@@ -32,7 +32,7 @@ const ListGroups = () => {
           "An error occurred while fetching group names. Please try again later."
         );
       }
-    }
+    };
 
     getGroups();
   }, []);

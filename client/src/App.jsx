@@ -1,12 +1,13 @@
+// React and Third-Party Libraries
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
-// Import Components
+// Components
 import Header from "./components/common/Header/Header";
 import Footer from "./components/common/Footer/Footer";
 
-// Import Pages
+// Pages
 import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
 import HomePage from "./pages/HomePage/HomePage";
 import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
@@ -40,6 +41,7 @@ import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/I
 import UpdateUserExpensePage from "./pages/UpdateExpenseUserPage/UpdateExpenseUserPage";
 import UserHistoryUpdatePaymentPage from "./pages/UserHistoryUpdatePaymentPage/UserHistoryUpdatePaymentPage";
 
+// Styles
 import "./App.css";
 
 const App = () => {

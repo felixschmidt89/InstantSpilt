@@ -1,33 +1,51 @@
+// React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import styles from "./RenderGroupHistory.module.css";
+
+// Constants and Utils
+import { devLog } from "../../../../utils/errorUtils";
+
+// Components
 import NoTransactions from "../NoTransactions/NoTransactions";
 import RenderGroupExpenses from "../RenderGroupExpenses/RenderGroupExpenses";
 import RenderGroupPayments from "../RenderGroupPayments/RenderGroupPayments";
 import Spinner from "../../../common/Spinner/Spinner";
 import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
+// Styles
+import styles from "./RenderGroupHistory.module.css";
+
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+/**
+ * Component for displaying expenses and payments history of a group.
+ *
+ * @component
+ * @param {Object} props - The component properties.
+ * @param {string} props.groupCode - The groupCode of the group to display expenses and payments.
+ * @returns {JSX.Element} - Rendered component.
+ */
 const RenderGroupHistory = ({ groupCode }) => {
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const groupCode = localStorage.getItem("activeGroupCode");
-
-    async function fetchGroupExpensesAndPayments() {
+    const fetchGroupExpensesAndPayments = async () => {
       try {
         const response = await axios.get(
           `${apiUrl}/groups/${groupCode}/expenses-and-payments`
         );
         const responseData = response.data;
+        devLog("Group expenses and payments data fetched:", response);
+
+        // Check if groupExpensesAndPayments array exists and has items
         if (
           responseData.groupExpensesAndPayments &&
           responseData.groupExpensesAndPayments.length > 0
         ) {
-          // Create new properties and sort by createdAt in descending order
+          // Add new properties and sort by createdAt in descending order
           const modifiedData = responseData.groupExpensesAndPayments
             .map((item) => ({
               ...item,
@@ -38,25 +56,23 @@ const RenderGroupHistory = ({ groupCode }) => {
                 : item.paymentAmount
                 ? "payment"
                 : "unknown",
-              // Convert createdAt to a Date object
+              // Convert createdAt to date object and sort by in descending order
               createdAt: new Date(item.createdAt),
-            })) // Sort by createdAt in descending order
+            }))
             .sort((a, b) => b.createdAt - a.createdAt);
+          devLog("Group expenses and payments data modified:", modifiedData);
           setGroupExpensesAndPayments(modifiedData);
         }
         setError(null);
         setIsLoading(false);
       } catch (error) {
-        if (process.env.NODE_ENV === "development") {
-          console.error("Error fetching group expenses and payments:", error);
-        }
+        devLog("Error fetching group expenses and payments:", error);
         setError(
           "An error occurred while fetching group expenses and payments. Please try again later."
         );
-        setIsLoading(false); // Set loading to false when data is fetched
+        setIsLoading(false);
       }
-    }
-
+    };
     fetchGroupExpensesAndPayments();
   }, [groupCode]);
 
@@ -65,9 +81,11 @@ const RenderGroupHistory = ({ groupCode }) => {
       <Spinner />
     </div>
   ) : (
+    // Render container with group expenses and payments or display a message if there are no such transactions
     <div className={styles.container}>
       {groupExpensesAndPayments.length > 0 ? (
         <ul>
+          {/* Map through group expenses and payments */}
           {groupExpensesAndPayments.map((item) => (
             <li key={item._id}>
               {item.expenseDescription ? (

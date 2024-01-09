@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styles from "./DeleteResourceText.module.css";
 import { StatusCodes } from "http-status-codes";
+import { devLog } from "../../../utils/errorUtils";
 
 // Get API URL from environment variables
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -26,14 +27,19 @@ const DeleteResourceText = ({ resourceId, resourceType, handleRerender }) => {
 
       if (response.status === StatusCodes.NO_CONTENT) {
         setError(null);
+        devLog(`Resource (${resourceType} ${resourceId}) has been deleted.`);
         handleRerender();
-        console.log("Rerendered!"); // Add a debug log
+        devLog("Page rerender has been triggered.");
       }
     } catch (error) {
       if (error.response && error.response.status === StatusCodes.BAD_REQUEST) {
         setError(error.response.data.message);
       } else {
         setError(`An error occurred while deleting the ${resourceType}.`);
+        devLog(
+          `Error deleting resource (${resourceType} ${resourceId}):`,
+          error
+        );
       }
     }
   };

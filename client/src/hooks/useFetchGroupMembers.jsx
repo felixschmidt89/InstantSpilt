@@ -12,7 +12,7 @@ const useFetchGroupMembers = (groupCode) => {
   const [isFetched, setIsFetched] = useState(false);
 
   useEffect(() => {
-    async function fetchGroupMembers() {
+    const fetchGroupMembers = async () => {
       try {
         const response = await axios.get(
           `${apiUrl}/users/byGroupCode/${groupCode}`
@@ -25,7 +25,7 @@ const useFetchGroupMembers = (groupCode) => {
       } catch (error) {
         devLog("Error fetching group members:", error);
       }
-    }
+    };
 
     fetchGroupMembers();
   }, [groupCode]);

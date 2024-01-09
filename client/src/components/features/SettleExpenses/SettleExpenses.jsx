@@ -20,7 +20,7 @@ const SettleExpenses = () => {
 
   // Define fetch user details function, extract & format relevant data, then set the user details
   useEffect(() => {
-    async function fetchUserDetails() {
+    const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
           `${apiUrl}/users/byGroupCode/${groupCode}`
@@ -64,7 +64,7 @@ const SettleExpenses = () => {
         );
         setIsLoading(false); // Set loading to false on error
       }
-    }
+    };
 
     // Call the fetchUserDetails function when dependencies change
     fetchUserDetails();

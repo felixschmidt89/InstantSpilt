@@ -34,7 +34,7 @@ const RenderGroupBalances = () => {
 
   // Define fetch user details function, extract & format relevant data, then set the user details
   useEffect(() => {
-    async function fetchUserDetails() {
+    const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
           `${apiUrl}/users/byGroupCode/${groupCode}`
@@ -65,7 +65,7 @@ const RenderGroupBalances = () => {
         );
         setIsLoading(false);
       }
-    }
+    };
 
     fetchUserDetails();
   }, [groupCode]);
