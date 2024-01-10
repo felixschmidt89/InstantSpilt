@@ -7,3 +7,9 @@
 .noTransactions {
   margin: 0 auto;
 }
+
+.container {
+  height: 80%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

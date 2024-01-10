@@ -1,6 +1,11 @@
+// React and Third-Party Libraries
 import React from "react";
 import { Link } from "react-router-dom";
-import emojiConstants from "../../../../constants/emojiConstants";
+
+// Constants and Utils
+import emojiConstants from "../../../../../constants/emojiConstants";
+
+// Styles
 import styles from "./RenderGroupPayment.module.css";
 
 /**
@@ -21,8 +26,7 @@ const RenderGroupPayment = ({ item }) => {
           {/* Link to the item page with item details */}
           <Link
             to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
-            {/* {item.paymentAmount.toFixed(2)}€ */}
-            {item.paymentAmount}€
+            {item.paymentAmount.toFixed(2)}€
           </Link>
         </div>
       </div>

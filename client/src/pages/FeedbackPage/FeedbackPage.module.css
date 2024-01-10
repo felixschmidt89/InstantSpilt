@@ -1,6 +1,8 @@
 .container {
   overflow-y: auto;
-  height: 75%;
+  margin: 0 auto;
+  height: 80%;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -63,15 +65,12 @@
   font-size: 1.6rem;
   cursor: pointer;
   border-radius: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .button:hover {
   background-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
-}
-
-.errorText {
-  color: var(--color-error);
 }
 
 label {

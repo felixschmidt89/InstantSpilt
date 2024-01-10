@@ -12,9 +12,7 @@ import styles from "./UserDetailsPage.module.css";
 import useFetchUserData from "../../hooks/useFetchUserInfo";
 import UserExpenseTotals from "../../components/features/UserDetails/UserExpensesTotals/UserExpensesTotals";
 import UserPaymentTotals from "../../components/features/UserDetails/UserPaymentsTotals/UserPaymentsTotals";
-
-// Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
-const BALANCE_THRESHOLD = 0.01;
+import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
 
 /**
  * Fetches and renders detailed information about a user, including name, balance, total expenses and payments.
@@ -46,7 +44,7 @@ const UserDetailsPage = () => {
         isIcon={true}
       />
       {userData ? (
-        <div>
+        <div className={styles.container}>
           <h1>{userData.userName}</h1>
           <h2>
             {/* Display the userBalance with different color depending on the value */}
@@ -63,13 +61,13 @@ const UserDetailsPage = () => {
             buttonText='view history'
             margin='0px'
           />
+          <div className={styles.deleteButton}>
+            <DeleteResourceButton resourceId={userId} resourceType='users' />{" "}
+          </div>
         </div>
       ) : (
         <Spinner />
       )}
-      <span className={styles.deleteButton}>
-        <DeleteResourceButton resourceId={userId} resourceType='users' />{" "}
-      </span>
     </main>
   );
 };

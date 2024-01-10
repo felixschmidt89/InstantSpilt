@@ -13,7 +13,7 @@ import styles from "./GroupActionsButton.module.css";
  * @returns {JSX.Element} - The rendered GroupActionButton component.
  */
 
-const GroupActionsButton = ({ route, buttonText, tooltipText }) => {
+const GroupActionsButton = ({ route, buttonText, tooltipText, ariaLabel }) => {
   const navigate = useNavigate();
 
   // State to manage tooltip visibility
@@ -29,12 +29,11 @@ const GroupActionsButton = ({ route, buttonText, tooltipText }) => {
       <button
         className={styles.button}
         onClick={handleClick}
-        onMouseEnter={() => setShowTooltip(true)} // Show tooltip on mouse enter
-        onMouseLeave={() => setShowTooltip(false)}>
-        {/* Hide tooltip on mouse leave */}
-        {buttonText} {/* Display button text */}
+        onMouseEnter={() => setShowTooltip(true)}
+        onMouseLeave={() => setShowTooltip(false)}
+        aria-label={ariaLabel}>
+        {buttonText}
         {showTooltip && <div className={styles.tooltip}>{tooltipText}</div>}
-        {/* Display tooltip if showTooltip is true */}
       </button>
     </div>
   );

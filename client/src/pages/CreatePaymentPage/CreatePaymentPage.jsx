@@ -1,14 +1,23 @@
+// React and Third-Party Libraries
 import React from "react";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
+
+// Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
+
+// Hooks
+import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
+
+// Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
-import GroupActionsButton from "../../components/common/GroupActionsButton/GroupActionsButton";
-import styles from "./CreatePaymentPage.module.css";
 import CreatePayment from "../../components/features/Payments/CreatePayment/CreatePayment";
+import CreateUserCTA from "../../components/common/CreateUserCTA/CreateUserCTA";
+
+// Styles
+import styles from "./CreatePaymentPage.module.css";
 
 const CreatePaymentPage = () => {
   // Define states for paymentAmount, userName, paymentRecipient, and error message
@@ -19,7 +28,6 @@ const CreatePaymentPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - add payment' />
       <PiratePx COUNT_IDENTIFIER={"create-payment"} />
-      {/* Render a back button */}
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
@@ -27,22 +35,12 @@ const CreatePaymentPage = () => {
         isIcon={true}
       />
       <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>
-      {/* Conditional rendering based on isFetched */}
       {!isFetched ? (
-        // Render a spinner while data is being fetched
         <Spinner />
-      ) : groupMembers.length <= 1 ? (
-        // Render a message and a button when there are no or only 1 group member
-        <div>
-          <p>You need at least 2 users to make a payment. </p>
-          <GroupActionsButton
-            route={"create-users-inapp"}
-            buttonText={<span>{emojiConstants.user}</span>}
-            tooltipText='add user'
-          />
-        </div>
+      ) : // Check if there are at least 2 group members
+      groupMembers.length <= 1 ? (
+        <CreateUserCTA />
       ) : (
-        // Else render the payment
         <CreatePayment groupMembers={groupMembers} groupCode={groupCode} />
       )}
     </main>

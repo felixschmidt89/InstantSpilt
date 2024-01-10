@@ -1,4 +1,7 @@
+// React and Third-Party Libraries
 import React from "react";
+
+// Styles
 import styles from "./SwitchViewButtonsBar.module.css";
 
 /**
@@ -16,7 +19,7 @@ const SwitchViewButtonsBar = ({ view, handleSwitchView }) => {
       <button
         className={`${styles.button} ${
           view === "view2" ? styles.expensesButton : styles.balancesButton
-        } ${view === "view2" ? "" : styles.inactiveButton}`}
+        } ${view === "view2" ? "" : styles.inactiveButton}`} //
         onClick={handleSwitchView}
         disabled={view === "view2"}>
         Balances

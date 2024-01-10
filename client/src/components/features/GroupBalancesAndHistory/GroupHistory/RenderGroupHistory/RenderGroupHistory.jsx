@@ -3,14 +3,19 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 // Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
+import { devLog } from "../../../../../utils/errorUtils";
+import { genericErrorMessage } from "../../../../../constants/errorConstants";
+
+// Hooks
+import useFetchGroupMembers from "../../../../../hooks/useFetchGroupMembers";
 
 // Components
-import NoTransactions from "../NoTransactions/NoTransactions";
+import Spinner from "../../../../common/Spinner/Spinner";
+import ErrorDisplay from "../../../../common/ErrorDisplay/ErrorDisplay";
 import RenderGroupExpense from "../RenderGroupExpense/RenderGroupExpense";
-import RenderGroupPayments from "../RenderGroupPayment/RenderGroupPayment";
-import Spinner from "../../../common/Spinner/Spinner";
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
+import RenderGroupPayment from "../RenderGroupPayment/RenderGroupPayment";
+import NoTransactions from "../NoTransactions/NoTransactions";
+import NotEnoughUsers from "../../NotEnoughUsers/NotEnoughUsers";
 
 // Styles
 import styles from "./RenderGroupHistory.module.css";
@@ -27,6 +32,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @returns {JSX.Element} - Rendered component.
  */
 const RenderGroupHistory = ({ groupCode }) => {
+  const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -67,9 +73,7 @@ const RenderGroupHistory = ({ groupCode }) => {
         setIsLoading(false);
       } catch (error) {
         devLog("Error fetching group expenses and payments:", error);
-        setError(
-          "An error occurred while fetching group expenses and payments. Please try again later."
-        );
+        setError(genericErrorMessage);
         setIsLoading(false);
       }
     };
@@ -81,7 +85,7 @@ const RenderGroupHistory = ({ groupCode }) => {
       <Spinner />
     </div>
   ) : (
-    // Render container with group expenses and payments or display a message if there are no such transactions
+    // Render container with group expenses and payments or display  messages if there are either no such transactions or not at least 2 users in the group
     <>
       {groupExpensesAndPayments.length > 0 ? (
         <div className={styles.container}>
@@ -92,7 +96,7 @@ const RenderGroupHistory = ({ groupCode }) => {
                 {item.expenseDescription ? (
                   <RenderGroupExpense item={item} />
                 ) : (
-                  <RenderGroupPayments item={item} />
+                  <RenderGroupPayment item={item} />
                 )}
               </li>
             ))}
@@ -100,8 +104,12 @@ const RenderGroupHistory = ({ groupCode }) => {
           <ErrorDisplay error={error} remWidth={20} />
         </div>
       ) : (
-        <div className={styles.noTransactions}>
-          <NoTransactions />
+        <div className={styles.issue}>
+          {isFetched && groupMembers.length > 1 ? (
+            <NoTransactions />
+          ) : (
+            <NotEnoughUsers />
+          )}
           <ErrorDisplay error={error} remWidth={20} />
         </div>
       )}

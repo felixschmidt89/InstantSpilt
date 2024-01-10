@@ -15,10 +15,12 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} userId - The ID of the user to fetch data for.
  * @returns {Object} An object containing user data and potential error.
  * @property {Object|null} userData - The fetched user data.
+ *  @property {boolean} isFetched - Indicates whether the user's data has been successfully fetched.
  * @property {string|null} error - An error message in case of an error during fetching.
  */
 const useFetchUserData = (userId) => {
   const [userData, setUserData] = useState(null);
+  const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -28,6 +30,7 @@ const useFetchUserData = (userId) => {
         const userData = response.data.user;
         devLog("User data fetched:", userData);
         setUserData(userData);
+        setIsFetched(true);
       } catch (error) {
         devLog("Error fetching user data:", error);
         setError(genericErrorMessage);
@@ -37,7 +40,7 @@ const useFetchUserData = (userId) => {
     fetchUserData();
   }, [userId]);
 
-  return { userData, error };
+  return { userData, isFetched, error };
 };
 
 export default useFetchUserData;

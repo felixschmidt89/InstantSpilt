@@ -4,12 +4,11 @@ import Spinner from "../../common/Spinner/Spinner";
 import RenderSettlementOverview from "./SettlementOverview/SettlementOverview";
 import RenderSettlementPaymentSuggestions from "./SettlementPaymentSuggestions/SettlementPaymentSuggestions";
 import styles from "./SettleExpenses.module.css";
+import { genericErrorMessage } from "../../../constants/errorConstants";
+import { BALANCE_THRESHOLD } from "../../../constants/dataConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-
-// Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)
-const BALANCE_THRESHOLD = 0.01;
 
 const SettleExpenses = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -60,9 +59,7 @@ const SettleExpenses = () => {
         if (process.env.NODE_ENV === "development") {
           console.error("Error fetching data:", error);
         }
-        setError(
-          "An error occurred while fetching group users. Please try again later."
-        );
+        setError(genericErrorMessage);
         setIsLoading(false); // Set loading to false on error
       }
     };

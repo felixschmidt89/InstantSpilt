@@ -5,8 +5,7 @@ import axios from "axios";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
-
-// Hooks
+import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Components
 import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
@@ -16,21 +15,31 @@ import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 
 // Styles
 import styles from "./CreateExpense.module.css";
+import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+/**
+ * Parent component for creating a new expense.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {Array} props.groupMembers - An array of group members.
+ * @param {string} props.groupCode - The groupCode identifying the group.
+ * @returns {JSX.Element} The rendered Create Expense component.
+ */
 const CreateExpense = ({ groupMembers, groupCode }) => {
   const navigate = useNavigate();
 
   const [expenseDescription, setExpenseDescription] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
   const [expensePayerName, setExpensePayerName] = useState("");
-  const [error, setError] = useState(null);
   // Preselect all group members as beneficiaries
   const [selectedBeneficiaries, setSelectedBeneficiaries] = useState([
     ...groupMembers,
   ]);
+  const [error, setError] = useState(null);
 
   const isSubmitButtonVisible =
     expenseAmount &&
@@ -41,7 +50,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
   // On form submission: Post expense and navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    setError(null); // Clear previous error
+    setError(null);
     try {
       const response = await axios.post(`${apiUrl}/expenses`, {
         expenseDescription,
@@ -58,7 +67,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
           devLog("Error creating expense:", error.response);
           setError(error.response.data.errors[0].message);
         } else {
-          setError("Error creating expense. Please try again.");
+          setError(genericErrorMessage);
           devLog("Error creating expense:", error);
         }
       }
@@ -95,8 +104,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
           )}
         </div>
       </form>
-      {/* Display error message if there's an error */}
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      <ErrorDisplay error={error} />
     </div>
   );
 };

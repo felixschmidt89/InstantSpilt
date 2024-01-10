@@ -1,8 +1,14 @@
+.container {
+  height: 80%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .negativeBalance {
   padding-left: 0.4rem;
   color: var(--color-error);
 }
 
 .deleteButton {
-  padding-top: 6rem;
+  padding-top: 5rem;
 }

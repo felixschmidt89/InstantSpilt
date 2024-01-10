@@ -1,5 +1,13 @@
+// React and Third-Party Libraries
 import React from "react";
+
+// Constants and Utils
 import emojiConstants from "../../../constants/emojiConstants";
+
+// Components
+import Emoji from "../Emoji/Emoji";
+
+// Styles
 import styles from "./RenderResourceCreated.module.css";
 
 /**
@@ -12,7 +20,10 @@ import styles from "./RenderResourceCreated.module.css";
 const RenderResourceCreated = ({ createdAt }) => {
   return (
     <p className={styles.createdText}>
-      {emojiConstants.created} {new Date(createdAt).toLocaleString()}
+      <Emoji
+        label={"Resource created emoji"}
+        emoji={emojiConstants.created}></Emoji>{" "}
+      {new Date(createdAt).toLocaleString()}
     </p>
   );
 };

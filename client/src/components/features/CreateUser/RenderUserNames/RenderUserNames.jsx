@@ -4,9 +4,11 @@ import axios from "axios";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
+import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Components
 import Spinner from "../../../common/Spinner/Spinner";
+import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 // Styles
 import styles from "./RenderUserNames.module.css";
@@ -14,6 +16,15 @@ import styles from "./RenderUserNames.module.css";
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+/**
+ * Renders a list of all user names of a group.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {number} props.rerenderTrigger - Trigger for re-rendering the component.
+ * @param {string} props.groupCode - The groupCode of the group.
+ * @returns {JSX.Element} The rendered component displaying user names.
+ */
 const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
   const [userNames, setUserNames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -30,7 +41,10 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
           `${apiUrl}/users/byGroupCode/${groupCode}`
         );
         const responseData = response.data;
+        devLog("User details fetched:", response);
+        // Check if there's at least 1 user
         if (responseData.users && responseData.users.length > 0) {
+          // Extract usernames
           const userNames = responseData.users.map((user) => user.userName);
           setUserNames(userNames);
         }
@@ -38,9 +52,7 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
         setIsLoading(false);
       } catch (error) {
         devLog("Error fetching group users:", error);
-        setError(
-          "An error occurred while fetching group users. Please try again later."
-        );
+        setError(genericErrorMessage);
         setIsLoading(false);
       }
     };
@@ -55,6 +67,7 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
           <Spinner />
         </div>
       ) : (
+        // Display the list of user names when data is loaded
         <ul className={styles.userList}>
           {userNames.map((userName) => (
             <li key={userName}>
@@ -65,7 +78,7 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
           ))}
         </ul>
       )}
-      {error && <p>{error}</p>}
+      <ErrorDisplay error={error} />
     </div>
   );
 };

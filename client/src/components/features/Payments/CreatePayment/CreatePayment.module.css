@@ -2,10 +2,6 @@
   margin-right: 1rem;
 }
 
-.errorMessage {
-  color: var(--color-error);
-}
-
 .button {
   margin-top: 0.5rem;
   background-color: var(--color-signal);

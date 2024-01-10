@@ -1,11 +1,4 @@
-.paymentSuggestions {
-  margin-top: 0.8rem;
+.spinner {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.userName {
-  text-decoration: none;
-  font-weight: 400;
+  justify-content: center;
 }

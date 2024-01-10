@@ -6,11 +6,14 @@ import axios from "axios";
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
+import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Components
 import PaymentAmount from "../PaymentAmountInput/PaymentAmountInput";
 import PaymentMaker from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipient from "../PaymentRecipientSelect/PaymentRecipientSelect";
+import Emoji from "../../../common/Emoji/Emoji";
+import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 // Styles
 import styles from "./UpdatePayment.module.css";
@@ -18,6 +21,18 @@ import styles from "./UpdatePayment.module.css";
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+/**
+ * Parent component for updating a payment.
+ *
+ * @component
+ * @param {Object} props - The properties of the component.
+ * @param {Object[]} props.groupMembers - An array of group members.
+ * @param {string} props.groupCode - The grouCode identifying the group.
+ * @param {Object} props.paymentDetails - The details of the payment stored in the database prior to being updated.
+ * @param {string} props.itemId - The unique identifier of the payment.
+ * @param {string} [props.route="/instant-split"] - The route to navigate to after updating the payment.
+ * @returns {JSX.Element} - React component.
+ */
 const UpdatePayment = ({
   groupMembers,
   groupCode,
@@ -91,7 +106,7 @@ const UpdatePayment = ({
           setError(error.response.data.message);
         }
       } else {
-        setError("Error updating payment. Please try again.");
+        setError(genericErrorMessage);
         devLog("Error updating payment:", error);
       }
     }
@@ -109,7 +124,9 @@ const UpdatePayment = ({
         groupMembers={groupMembers}
       />
       <span className={styles.paymentToEmoji}>
-        {emojiConstants.paymentsMade}
+        <Emoji
+          label={"Payment to someone emoji"}
+          emoji={emojiConstants.paymentsMade}></Emoji>
       </span>
       <PaymentRecipient
         paymentRecipientName={paymentRecipientName}
@@ -122,7 +139,7 @@ const UpdatePayment = ({
             update
           </button>
         )}
-        {error && <div className={styles.errorText}>{error}</div>}{" "}
+        <ErrorDisplay error={error} />
       </div>
     </form>
   );

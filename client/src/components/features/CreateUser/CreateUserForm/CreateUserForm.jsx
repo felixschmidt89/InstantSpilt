@@ -4,6 +4,7 @@ import axios from "axios";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
+import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Components
 import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
@@ -52,7 +53,7 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
         setError(error.response.data.message);
       } else {
         devLog("Error creating user.", error);
-        setError("Error creating user. Please try again.");
+        setError(genericErrorMessage);
       }
     }
   };

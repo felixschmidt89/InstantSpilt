@@ -15,11 +15,13 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} expenseId - The ID of the expense to fetch.
  * @returns {Object} An object containing expense information and potential error.
  * @property {Object|null} expenseInfo - The fetched expense information.
- * @property {Error|null} error - The error object if an error occurred
+ * @property {boolean} isFetched - Indicates whether the expense info has been successfully fetched. 
+* @property {Error|null} error - The error object if an error occurred
 
  */
 const useFetchExpenseInfo = (expenseId) => {
   const [expenseInfo, setExpenseInfo] = useState(null);
+  const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -29,6 +31,7 @@ const useFetchExpenseInfo = (expenseId) => {
         const expenseData = response.data.expense;
         devLog("Expense info fetched:", response);
         setExpenseInfo(expenseData);
+        setIsFetched(true);
       } catch (error) {
         devLog("Error fetching expense info:", error);
         setError(genericErrorMessage);
@@ -38,7 +41,7 @@ const useFetchExpenseInfo = (expenseId) => {
     fetchExpenseInfo();
   }, [expenseId]);
 
-  return { expenseInfo, error };
+  return { expenseInfo, isFetched, error };
 };
 
 export default useFetchExpenseInfo;

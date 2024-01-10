@@ -15,10 +15,12 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} paymentId - The ID of the payment to fetch.
  * @returns {Object} An object containing payment information and potential error.
  * @property {Object|null} paymentInfo - The fetched payment information.
+ *  @property {boolean} isFetched - Indicates whether the payment info has been successfully fetched.
  * @property {string|null} error - An error message in case of an error during fetching.
  */
 const useFetchPaymentInfo = (paymentId) => {
   const [paymentInfo, setPaymentInfo] = useState(null);
+  const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -28,6 +30,7 @@ const useFetchPaymentInfo = (paymentId) => {
         const paymentData = response.data.payment;
         devLog("Payment info fetched:", response);
         setPaymentInfo(paymentData);
+        setIsFetched(true);
       } catch (error) {
         devLog("Error fetching payment info:", error);
         setError(genericErrorMessage);
@@ -37,7 +40,7 @@ const useFetchPaymentInfo = (paymentId) => {
     fetchPaymentInfo();
   }, [paymentId]);
 
-  return { paymentInfo, error };
+  return { paymentInfo, isFetched, error };
 };
 
 export default useFetchPaymentInfo;

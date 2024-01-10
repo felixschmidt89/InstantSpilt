@@ -1,0 +1,20 @@
+.container {
+  background-color: var(--color-main);
+  color: var(--color-dark);
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 0 0.2rem var(--color-signal),
+    0.8rem 0.8rem 0 0 var(--color-signal-reduced-opacity);
+}
+.paymentSuggestions {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.settlementAmount {
+  text-decoration: underline;
+  font-weight: 900;
+}

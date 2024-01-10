@@ -1,15 +1,21 @@
+// React and Third-Party Libraries
 import React from "react";
-import styles from "./UserDetails.module.css";
 import { Link } from "react-router-dom";
 
+// Constants and Utils
+import { BALANCE_THRESHOLD } from "../../../../../constants/dataConstants";
+
+// Styles
+import styles from "./RenderUserNameAndBalance.module.css";
+
 /**
- * Component to nicely render user details
+ * Component for rendering username and user balance
  *
  * @component
  * @param {Object[]} userDetails - The array of user details.
  * @returns {JSX.Element} - React component.
  */
-const UserDetails = ({ userDetails }) => (
+const RenderUserNameAndBalance = ({ userDetails }) => (
   <div className={styles.balancesContainer}>
     <ul>
       {userDetails.map((user) => (
@@ -24,7 +30,7 @@ const UserDetails = ({ userDetails }) => (
               </Link>
             </div>
             <div className={styles.rightColumn}>
-              {/* Visually indicate negative userBalance by setting different CSS classes and later rendering it in a different color */}
+              {/* Visually indicate negative userBalance*/}
               <div
                 className={`${styles.userBalance} ${
                   user.userBalance >= 0
@@ -32,7 +38,8 @@ const UserDetails = ({ userDetails }) => (
                     : styles.negativeBalance
                 }`}>
                 {/* Fix remaining rounding issue in certain settings, e.g., 100€/3 will result in 33.33, 33.33, 33.4 */}
-                {user.userBalance === 0.01
+                {user.userBalance === BALANCE_THRESHOLD ||
+                user.userBalance === -BALANCE_THRESHOLD
                   ? "0.00€"
                   : user.userBalance.toFixed(2) + "€"}
               </div>
@@ -44,4 +51,4 @@ const UserDetails = ({ userDetails }) => (
   </div>
 );
 
-export default UserDetails;
+export default RenderUserNameAndBalance;

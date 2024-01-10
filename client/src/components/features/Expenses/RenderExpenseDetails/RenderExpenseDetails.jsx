@@ -1,6 +1,14 @@
+// React and Third-Party Libraries
 import React from "react";
 import { Link } from "react-router-dom";
+
+// Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
+
+// Components
+import Emoji from "../../../common/Emoji/Emoji";
+
+// Styles
 import styles from "./RenderExpenseDetails.module.css";
 
 /**
@@ -17,7 +25,7 @@ const RenderExpenseDetails = ({ expenseInfo }) => {
       <h2>{expenseInfo.expenseAmount.toFixed(2)}€</h2>
       <p>Description: {expenseInfo.expenseDescription}</p>
       <p>
-        {emojiConstants.paidFor}{" "}
+        <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidFor}></Emoji>{" "}
         {/* Link to the user page of the expense payer */}
         <Link to={`/user-page/${expenseInfo.expensePayer._id}`}>
           {expenseInfo.expensePayer.userName}

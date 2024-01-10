@@ -5,10 +5,10 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
-import GroupActionsButton from "../../components/common/GroupActionsButton/GroupActionsButton";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import CreateExpense from "../../components/features/Expenses/CreateExpense/CreateExpense";
 import styles from "./CreateExpensePage.module.css";
+import CreateUserCTA from "../../components/common/CreateUserCTA/CreateUserCTA";
 
 const CreateExpensePage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -27,22 +27,12 @@ const CreateExpensePage = () => {
         isIcon={true}
       />
       <h2 className={styles.header}>Add expense {emojiConstants.expense}</h2>
-      {/* Conditional rendering based on isFetched */}
       {!isFetched ? (
-        // Render a spinner while data is being fetched
         <Spinner />
-      ) : groupMembers.length <= 1 ? (
-        // Render a message and a button when there are no or only 1 group member
-        <div>
-          <p>You need at least 2 users to add an expense. </p>
-          <GroupActionsButton
-            route={"create-users-inapp"}
-            buttonText={<span>{emojiConstants.user}</span>}
-            tooltipText='add user'
-          />
-        </div>
+      ) : // Check if there are at least 2 group members
+      groupMembers.length <= 1 ? (
+        <CreateUserCTA isPayment={false} />
       ) : (
-        // Else render the expense form
         <CreateExpense groupMembers={groupMembers} groupCode={groupCode} />
       )}
     </main>

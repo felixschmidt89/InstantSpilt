@@ -33,24 +33,26 @@ const ForgetGroupOnDevicePage = () => {
         alignment={"left"}
         isIcon={true}
       />
-      <div className={styles.contentContainer}>
-        <h1>Forget group on this device</h1>
-        <p>
-          Are you sure you want to leave <strong>{groupName}</strong> on this
-          device?
-        </p>
-        <div>
+      <div className={styles.container}>
+        <div className={styles.contentContainer}>
+          <h1>Forget group on this device</h1>
           <p>
-            If you ever wish to rejoin later, remember your{" "}
-            <strong>GroupCode:</strong>
+            Are you sure you want to leave <strong>{groupName}</strong> on this
+            device?
           </p>
-          <CopyToClipboard infoToCopy={groupCode} />
+          <div>
+            <p>
+              If you ever wish to rejoin later, remember your{" "}
+              <strong>GroupCode:</strong>
+            </p>
+            <CopyToClipboard infoToCopy={groupCode} />
+          </div>
         </div>
-      </div>
-      <div className={styles.buttonContainer}>
-        <button className={styles.button} onClick={handleConfirm}>
-          Confirm
-        </button>
+        <div className={styles.buttonContainer}>
+          <button className={styles.button} onClick={handleConfirm}>
+            Confirm
+          </button>
+        </div>
       </div>
     </main>
   );

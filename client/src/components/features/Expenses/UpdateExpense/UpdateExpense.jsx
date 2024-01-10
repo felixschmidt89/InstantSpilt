@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
+import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Components
 import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescriptionInput";
@@ -19,6 +20,17 @@ import styles from "./UpdateExpense.module.css";
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+/**
+ * Parent component for updating an expense.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.expenseInfo - Information about the expense to be updated.
+ * @param {string} props.groupCode - The groupCode identifying the group.
+ * @param {Array} props.groupMembers - An array of group members.
+ * @param {string} props.expenseId - The unique identifier of the expense.
+ * @param {string} [props.route="/instant-split"] - The route to navigate to after updating the expense.
+ * @returns {JSX.Element} The rendered Update Expense component.
+ */
 const UpdateExpense = ({
   expenseInfo,
   groupCode,
@@ -81,7 +93,7 @@ const UpdateExpense = ({
         if (error.response.status === 400) {
           setError(error.response.data.errors[0].message);
         } else {
-          setError("Error creating expense. Please try again.");
+          setError(genericErrorMessage);
           devLog("Error creating expense:", error);
         }
       }
@@ -114,7 +126,6 @@ const UpdateExpense = ({
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}
             setFormChanged={setFormChanged}
           />
-          {/* Conditionally render submit button */}
           {isSubmitButtonVisible && (
             <button className={styles.button} type='submit'>
               +

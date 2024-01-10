@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./SettlementPaymentSuggestions.module.css";
 import emojiConstants from "../../../../constants/emojiConstants";
+import { genericErrorMessage } from "../../../../constants/errorConstants";
+import { BALANCE_THRESHOLD } from "../../../../constants/dataConstants";
+import Spinner from "../../../common/Spinner/Spinner";
+import RenderSettlementPaymentSuggestions from "../RenderSettlementPaymentSuggestions/RenderSettlementPaymentSuggestions";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-// Set threshold for considering balances as settled
-const BALANCE_THRESHOLD = 0.01;
 /**
  * Renders settlement payment suggestions for users with unsettled balances, applying a treshold
  * Separates them into two groups, sorting them from highest to lowest unsettled balance. Suggests the highest possible
@@ -50,16 +52,14 @@ const SettlementPaymentSuggestions = () => {
             (user) => Math.abs(user.userBalanceCalculated) > BALANCE_THRESHOLD
           );
           setUserDetails(unsettledUserDetails);
-          setIsLoading(false); // Set loading to false after a successful fetch
+          setIsLoading(false);
         }
       } catch (error) {
         if (process.env.NODE_ENV === "development") {
           console.error("Error fetching data:", error);
         }
-        setError(
-          "An error occurred while fetching group users. Please try again later."
-        );
-        setIsLoading(false); // Set loading to false on error
+        setError(genericErrorMessage);
+        setIsLoading(false);
       }
     };
     fetchUserDetails();
@@ -126,19 +126,14 @@ const SettlementPaymentSuggestions = () => {
 
   return (
     <div>
-      <h2>Suggested payments {emojiConstants.payment}</h2>
-      <ul>
-        {settlements.map((settlement, index) => (
-          <li key={index} className={styles.paymentSuggestions}>
-            <span>
-              {settlement.from} {emojiConstants.paymentsMade} {settlement.to}:
-            </span>{" "}
-            <span>
-              <u>{settlement.amount}</u>€
-            </span>
-          </li>
-        ))}
-      </ul>
+      <h2>Suggested settlement payments {emojiConstants.payment}</h2>
+      {isLoading ? (
+        <div className={styles.spinner}>
+          <Spinner />
+        </div>
+      ) : (
+        <RenderSettlementPaymentSuggestions settlements={settlements} />
+      )}
     </div>
   );
 };

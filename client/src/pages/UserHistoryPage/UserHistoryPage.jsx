@@ -6,6 +6,7 @@ import axios from "axios";
 
 // Constants and Utils
 import { devLog } from "../../utils/errorUtils";
+import { genericErrorMessage } from "../../constants/errorConstants";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -73,9 +74,7 @@ const UserHistoryPage = () => {
         setIsLoading(false);
       } catch (error) {
         devLog("Error fetching user expenses and payments:", error);
-        setError(
-          "An error occurred while fetching user expenses and payments. Please try again later."
-        );
+        setError(genericErrorMessage);
         setIsLoading(false);
       }
     };

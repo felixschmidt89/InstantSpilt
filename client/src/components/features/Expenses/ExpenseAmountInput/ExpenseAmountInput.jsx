@@ -13,8 +13,8 @@ import styles from "./ExpenseAmountInput.module.css";
  * @returns {JSX.Element} - Rendered component.
  */
 const ExpenseAmountInput = ({ value, onAmountChange, setFormChanged }) => {
-  // controlled input component to set expense amount state in parent component, converting comma separator to dot prior to posting
   const handleExpenseAmountChange = (e) => {
+    // update expense amount state and convert separator
     onAmountChange(commaToDotDecimalSeparator(e.target.value));
     if (setFormChanged) {
       setFormChanged(true);

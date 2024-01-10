@@ -15,10 +15,12 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} groupCode - The groupCode of the group to fetch members for.
  * @returns {Object} - Object containing group members and fetch status.
  * @property {string[]} groupMembers - Array of group members' usernames.
+ * @property {boolean} isFetched - Indicates whether the group members have been successfully fetched.
  * @property {Error|null} error - The error object if an error occurred during fetching, otherwise null.
  */
 const useFetchGroupMembers = (groupCode) => {
   const [groupMembers, setGroupMembers] = useState([]);
+  const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -31,6 +33,7 @@ const useFetchGroupMembers = (groupCode) => {
         const userNames = userData.map((user) => user.userName);
         devLog("Group members fetched:", response);
         setGroupMembers(userNames);
+        setIsFetched(true);
       } catch (error) {
         devLog("Error fetching group members:", error);
         setError(genericErrorMessage);
@@ -40,7 +43,7 @@ const useFetchGroupMembers = (groupCode) => {
     fetchGroupMembers();
   }, [groupCode]);
 
-  return { groupMembers, error };
+  return { groupMembers, isFetched, error };
 };
 
 export default useFetchGroupMembers;

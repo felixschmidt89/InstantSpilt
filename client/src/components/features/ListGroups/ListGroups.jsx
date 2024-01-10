@@ -1,5 +1,9 @@
+// TODO: Check if needed
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { devLog } from "../../../utils/errorUtils";
+import { genericErrorMessage } from "../../../constants/errorConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -28,10 +32,8 @@ const ListGroups = () => {
         const names = response.data.groupNames.map((groupName) => groupName);
         setGroupNames(names);
       } catch (error) {
-        console.error("Error fetching data:", error);
-        setError(
-          "An error occurred while fetching group names. Please try again later."
-        );
+        devLog("Error fetching data:", error);
+        setError(genericErrorMessage);
       }
     };
 

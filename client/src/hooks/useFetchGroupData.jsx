@@ -15,11 +15,13 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} groupCode - The groupCode of the group to fetch data for
  * @returns {Object} - An object containing group information and potential error.
  * @property {Object|null} groupData - The fetched group data
+ *  @property {boolean} isFetched - Indicates whether the group data has been successfully fetched.
  * @property {Error|null} error - The error object if an error occurred
  *
  */
 const useFetchGroupData = (groupCode) => {
   const [groupData, setGroupData] = useState(null);
+  const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -29,6 +31,7 @@ const useFetchGroupData = (groupCode) => {
         const fetchedGroupData = response.data;
         devLog("GroupData fetched:", response);
         setGroupData(fetchedGroupData);
+        setIsFetched(true);
       } catch (error) {
         devLog("Error fetching group data:", error);
         setError(genericErrorMessage);
@@ -38,7 +41,7 @@ const useFetchGroupData = (groupCode) => {
     fetchGroupData();
   }, [groupCode]);
 
-  return { groupData, error };
+  return { groupData, isFetched, error };
 };
 
 export default useFetchGroupData;

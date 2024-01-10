@@ -4,8 +4,7 @@ import GroupActionsButton from "../../common/GroupActionsButton/GroupActionsButt
 import styles from "./GroupActionsBar.module.css";
 
 /**
- * Toolbar displaying a set of navigation icons for creating expenses, payments, and users,
- * and for settling expenses within a group.
+ * Toolbar displaying a set of navigation icons for creating expenses, payments, and users, and for settling expenses within a group.
  *
  * @component
  * @returns {JSX.Element} - React component.
@@ -21,7 +20,7 @@ const GroupActionsBar = () => {
         route={"create-expense"}
         buttonText={emojiConstants.expense}
         tooltipText='add expense'
-        aria-label='add expense'
+        ariaLabel='add expense emoji'
       />
 
       {/* Button for creating payments */}
@@ -29,7 +28,7 @@ const GroupActionsBar = () => {
         route={"create-payment"}
         buttonText={<span>{emojiConstants.payment}</span>}
         tooltipText='add payment'
-        aria-label='add payment'
+        ariaLabel='add payment emoji'
       />
 
       {/* Button for creating users */}
@@ -37,7 +36,7 @@ const GroupActionsBar = () => {
         route={"create-users-inapp"}
         buttonText={<span>{emojiConstants.user}</span>}
         tooltipText='add user'
-        aria-label='add user'
+        ariaLabel='add user emoji'
       />
 
       {/* Button for settling expenses */}
@@ -45,7 +44,7 @@ const GroupActionsBar = () => {
         route={"settle-expenses"}
         buttonText={<span>{emojiConstants.settle}</span>}
         tooltipText='settle expenses'
-        aria-label='settle expenses'
+        ariaLabel='settle expenses emoji'
       />
     </div>
   );

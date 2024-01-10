@@ -6,10 +6,10 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+import CreateUserAndRenderUserList from "../../components/features/CreateUser/CreateUserAndRenderUserList/CreateUserAndRenderUserList";
 
 // Styles
 import styles from "./CreateUsersInAppPage.module.css";
-import CreateUser from "../../components/features/CreateUser/CreateUser/CreateUser";
 
 /**
  * Page for creating users within the main application.
@@ -29,7 +29,7 @@ function CreateUsersInAppPage() {
           alignment={"left"}
           isIcon={true}
         />
-        <CreateUser />
+        <CreateUserAndRenderUserList />
       </div>
     </main>
   );

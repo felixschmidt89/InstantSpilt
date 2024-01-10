@@ -6,7 +6,7 @@ import { faRightLong } from "@fortawesome/free-solid-svg-icons";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
-import CreateUser from "../../components/features/CreateUser/CreateUser/CreateUser";
+import CreateUserAndRenderUserList from "../../components/features/CreateUser/CreateUserAndRenderUserList/CreateUserAndRenderUserList";
 
 // Styles
 import styles from "./CreateUsersDuringSignUpPage.module.css";
@@ -23,7 +23,7 @@ const CreateUsersDuringSignUpPage = () => {
           alignment={"right"}
           isIcon={true}
         />
-        <CreateUser />
+        <CreateUserAndRenderUserList />
       </div>
     </main>
   );
