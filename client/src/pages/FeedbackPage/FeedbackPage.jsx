@@ -7,7 +7,7 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
-// Define API URL using environment variable
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
@@ -84,8 +84,8 @@ const FeedbackPage = () => {
   return (
     <main>
       {/* Set page title and meta tags */}
-      <HelmetMetaTagsNetlify title='InstantSplit - Contact' />
-      <PiratePx COUNT_IDENTIFIER={"feedback"} />
+      <HelmetMetaTagsNetlify title='InstantSplit - contact' />
+      <PiratePx COUNT_IDENTIFIER={"contact"} />
       {/* Navigation button to go back to main*/}
       <NavigateButton
         route={"instant-split"}

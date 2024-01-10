@@ -3,7 +3,7 @@ import axios from "axios";
 import styles from "./SettlementPaymentSuggestions.module.css";
 import emojiConstants from "../../../../constants/emojiConstants";
 
-// Define the API URL from environment variables
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 // Set threshold for considering balances as settled
@@ -15,10 +15,8 @@ const BALANCE_THRESHOLD = 0.01;
  * up until unsettled user balances equal the sum of all settlement payments suggestions in the array.
  * Then renders each settlement payment suggestion **/
 const SettlementPaymentSuggestions = () => {
-  // Get the active group code from local storage
   const groupCode = localStorage.getItem("activeGroupCode");
 
-  // States for user details, loading error messages
   const [userDetails, setUserDetails] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);

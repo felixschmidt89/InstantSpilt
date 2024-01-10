@@ -15,7 +15,7 @@ import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSe
 // Styles
 import styles from "./CreatePayment.module.css";
 
-// API
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const CreatePayment = ({ groupMembers, groupCode }) => {

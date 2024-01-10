@@ -8,7 +8,7 @@ function PageNotFoundPage() {
   return (
     <main className={styles.pageNotFound}>
       <HelmetMetaTagsNetlify title='InstantSplit - page not found' />
-      <PiratePx COUNT_IDENTIFIER={"not-found-page"} />
+      <PiratePx COUNT_IDENTIFIER={"page-not-found"} />
       <h1>🚧 404 - Page not found</h1>
       <p>The page you&rsquo;re looking for does not exist.</p>
       <Link to='/'>Go to main</Link>

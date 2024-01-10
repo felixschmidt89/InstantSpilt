@@ -9,7 +9,7 @@ import SettleExpenses from "../../components/features/SettleExpenses/SettleExpen
 function SettleGroupExpensesPage() {
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - Settle expenses' />
+      <HelmetMetaTagsNetlify title='InstantSplit - settle expenses' />
       <PiratePx COUNT_IDENTIFIER={"settle-expenses"} />
       <NavigateButton
         route={"instant-split"}

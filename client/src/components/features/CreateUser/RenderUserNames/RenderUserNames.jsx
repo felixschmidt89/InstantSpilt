@@ -11,6 +11,7 @@ import Spinner from "../../../common/Spinner/Spinner";
 // Styles
 import styles from "./RenderUserNames.module.css";
 
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const RenderUserNames = ({ rerenderTrigger, groupCode }) => {

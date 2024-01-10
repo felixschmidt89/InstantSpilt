@@ -5,6 +5,7 @@ import RenderSettlementOverview from "./SettlementOverview/SettlementOverview";
 import RenderSettlementPaymentSuggestions from "./SettlementPaymentSuggestions/SettlementPaymentSuggestions";
 import styles from "./SettleExpenses.module.css";
 
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 // Set threshold for considering balances as settled (for certain rounding situations, e.g., 10€ to be split among 3 users.)

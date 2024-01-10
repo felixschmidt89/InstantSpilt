@@ -19,10 +19,10 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  *
  * @component
  * @param {Object} props - The properties of the component.
- * @param {function} props.toggleRerender - Function to toggle rerender in parent component.
+ * @param {function} props.incrementRerenderTrigger - Function to trigger rerender in parent component.
  * @returns {JSX.Element} - React component.
  */
-const CreateUserForm = ({ toggleRerender, groupCode }) => {
+const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
   const inputRef = useRef(null);
 
   const [userName, setUserName] = useState("");
@@ -43,8 +43,8 @@ const CreateUserForm = ({ toggleRerender, groupCode }) => {
       });
       devLog("User created:", response);
       setUserName("");
-      // toggle rerender in parent component to rerender user list
-      toggleRerender();
+      // Increment rerenderTrigger in parent component to rerender user list
+      incrementRerenderTrigger();
       setError("");
     } catch (error) {
       // Render conflict status message if there is already a group member with same name

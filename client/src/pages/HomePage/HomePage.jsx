@@ -7,7 +7,7 @@ import styles from "./HomePage.module.css";
 const HomePage = () => {
   return (
     <main className={styles.container}>
-      <HelmetMetaTagsNetlify title='InstantSplit - Homepage' />
+      <HelmetMetaTagsNetlify title='InstantSplit - homepage' />
       <PiratePx COUNT_IDENTIFIER='homepage' />
       <div className={styles.introContainer}>
         <h1>Welcome to InstantSplit!</h1>

@@ -25,8 +25,8 @@ const ForgetGroupOnDevicePage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - forget group on device' />
-      <PiratePx COUNT_IDENTIFIER={"leave-group"} />
+      <HelmetMetaTagsNetlify title='InstantSplit - forget group on this device' />
+      <PiratePx COUNT_IDENTIFIER={"forget-group"} />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}

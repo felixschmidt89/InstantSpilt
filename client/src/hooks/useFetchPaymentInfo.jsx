@@ -1,7 +1,12 @@
+// React and Third-Party Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { devLog } from "../utils/errorUtils";
 
+// Constants and Utils
+import { devLog } from "../utils/errorUtils";
+import { genericErrorMessage } from "../constants/errorConstants";
+
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
@@ -25,9 +30,7 @@ const useFetchPaymentInfo = (paymentId) => {
         setPaymentInfo(paymentData);
       } catch (error) {
         devLog("Error fetching payment info:", error);
-        setError(
-          "An error occurred while fetching payment info. Please try again later."
-        );
+        setError(genericErrorMessage);
       }
     };
 

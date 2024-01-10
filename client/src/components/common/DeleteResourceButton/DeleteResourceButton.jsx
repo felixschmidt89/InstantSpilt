@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { devLog } from "../../../utils/errorUtils";
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
-// Get API URL from environment variables
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**

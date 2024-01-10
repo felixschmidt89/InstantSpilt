@@ -23,7 +23,7 @@ const EnterGroupCodePage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - Enter groupCode' />
+      <HelmetMetaTagsNetlify title='InstantSplit - enter groupCode' />
       <PiratePx COUNT_IDENTIFIER={"enter-groupcode"} />
       <NavigateButton
         route={"homepage"}

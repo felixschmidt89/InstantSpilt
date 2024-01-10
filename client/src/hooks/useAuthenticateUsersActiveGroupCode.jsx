@@ -14,7 +14,7 @@ import useValidateGroupExistence from "./useValidateGroupCodeExistence";
 /**
  * Custom hook to authenticate the active group code of a user.
  *
- * @param {string} groupCode - The group code to be authenticated.
+ * @param {string} groupCode - The groupCode to be authenticated.
  */
 const useAuthenticateUsersActiveGroupCode = (groupCode) => {
   const navigate = useNavigate();
@@ -24,9 +24,7 @@ const useAuthenticateUsersActiveGroupCode = (groupCode) => {
   }
 
   // Check if groupCode is valid
-  const [groupExists] = useValidateGroupExistence({
-    groupCode,
-  });
+  const [groupExists] = useValidateGroupExistence(groupCode);
 
   // If not, delete it from LocalStorage and navigate to homepage
   useEffect(() => {

@@ -23,7 +23,8 @@ import SwitchViewButtonsBar from "../../components/features/SwitchViewButtonsBar
  */
 const InstantSplitPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
-  const groupData = useFetchGroupData(groupCode);
+  const { groupData, error: fetchGroupDataError } =
+    useFetchGroupData(groupCode);
   // Retrieve the 'view' value from localStorage or set the default value
   const [view, setView] = useLocalStorage("viewState", "view2");
 

@@ -16,7 +16,7 @@ import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 // Styles
 import styles from "./UpdateExpense.module.css";
 
-// API
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const UpdateExpense = ({

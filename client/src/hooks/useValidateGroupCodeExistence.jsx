@@ -1,14 +1,27 @@
+// React and Third-Party Libraries
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { StatusCodes } from "http-status-codes";
-import { devLog } from "../utils/errorUtils";
 
+// Constants and Utils
+import { devLog } from "../utils/errorUtils";
+import { genericErrorMessage } from "../constants/errorConstants";
+
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-function useValidateGroupExistence({ groupCode, limited = false }) {
+/**
+ * Custom hook for validating the existence of a groupCode in the database.
+ *
+ * @param {string} groupCode - The groupCode to validate.
+ * @param {boolean} [limited=false] - Whether to perform limited validation (limited attempts per IP address).
+ * @returns {Array} - An array containing groupExists state and error state.
+ * @property {boolean|null} groupExists - Indicates whether the group code exists.
+ * @property {string|null} error - An error message in case of an error during validation.
+ */
+function useValidateGroupExistence(groupCode, limited = false) {
   const [groupExists, setGroupExists] = useState(null);
   const [error, setError] = useState(null);
-  const [statusCode, setStatusCode] = useState(null);
 
   useEffect(() => {
     const validateGroup = async () => {
@@ -36,12 +49,10 @@ function useValidateGroupExistence({ groupCode, limited = false }) {
           setError(
             "Too many requests for limited validation. Please try again later."
           );
-          setStatusCode(StatusCodes.TOO_MANY_REQUESTS);
           devLog(`Too many limited validation requests from this IP address.`);
         } else {
           devLog("Error validating group code:", error);
-          setError("An error occurred. Please try again later.");
-          setStatusCode(null);
+          setError(genericErrorMessage);
         }
       }
     };
@@ -49,7 +60,7 @@ function useValidateGroupExistence({ groupCode, limited = false }) {
     validateGroup();
   }, [groupCode, limited]);
 
-  return [groupExists, error, statusCode];
+  return [groupExists, error];
 }
 
 export default useValidateGroupExistence;

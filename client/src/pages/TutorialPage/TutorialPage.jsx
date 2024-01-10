@@ -19,7 +19,7 @@ function TutorialPage() {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - Tutorial' />
+      <HelmetMetaTagsNetlify title='InstantSplit - tutorial' />
       <PiratePx COUNT_IDENTIFIER={"tutorial"} />
       <NavigateButton
         route={"instant-split"}

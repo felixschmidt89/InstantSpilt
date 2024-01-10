@@ -5,11 +5,15 @@ import CreateUserForm from "../CreateUserForm/CreateUserForm";
 
 const CreateUser = () => {
   // Custom hook to get groupCode and trigger rerender logic
-  const { groupCode, rerenderTrigger, toggleRerender } = useTriggerRerender();
+  const { groupCode, rerenderTrigger, incrementRerenderTrigger } =
+    useTriggerRerender();
 
   return (
     <div>
-      <CreateUserForm toggleRerender={toggleRerender} groupCode={groupCode} />
+      <CreateUserForm
+        incrementRerenderTrigger={incrementRerenderTrigger}
+        groupCode={groupCode}
+      />
       <RenderUserNames
         rerenderTrigger={rerenderTrigger}
         groupCode={groupCode}

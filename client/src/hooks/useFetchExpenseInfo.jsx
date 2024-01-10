@@ -1,7 +1,12 @@
+// React and Third-Party Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { devLog } from "../utils/errorUtils";
 
+// Constants and Utils
+import { devLog } from "../utils/errorUtils";
+import { genericErrorMessage } from "../constants/errorConstants";
+
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
@@ -10,7 +15,8 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} expenseId - The ID of the expense to fetch.
  * @returns {Object} An object containing expense information and potential error.
  * @property {Object|null} expenseInfo - The fetched expense information.
- * @property {string|null} error - An error message in case of an error during fetching.
+ * @property {Error|null} error - The error object if an error occurred
+
  */
 const useFetchExpenseInfo = (expenseId) => {
   const [expenseInfo, setExpenseInfo] = useState(null);
@@ -25,9 +31,7 @@ const useFetchExpenseInfo = (expenseId) => {
         setExpenseInfo(expenseData);
       } catch (error) {
         devLog("Error fetching expense info:", error);
-        setError(
-          "An error occurred while fetching expense info. Please try again later."
-        );
+        setError(genericErrorMessage);
       }
     };
 

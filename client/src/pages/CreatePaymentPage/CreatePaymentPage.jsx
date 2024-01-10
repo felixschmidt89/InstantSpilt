@@ -17,7 +17,7 @@ const CreatePaymentPage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - Add payment' />
+      <HelmetMetaTagsNetlify title='InstantSplit - add payment' />
       <PiratePx COUNT_IDENTIFIER={"create-payment"} />
       {/* Render a back button */}
       <NavigateButton

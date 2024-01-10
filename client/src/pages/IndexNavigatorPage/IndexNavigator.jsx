@@ -9,10 +9,8 @@ import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 
 const IndexNavigatorPage = () => {
-  const navigate = useNavigate();
-
   const groupCode = localStorage.getItem("activeGroupCode");
-
+  const navigate = useNavigate();
   const [groupExists] = useValidateGroupExistence({
     groupCode,
   });
@@ -26,7 +24,7 @@ const IndexNavigatorPage = () => {
     } else if (groupExists === true) {
       navigate("/instant-split");
     }
-  }, [navigate, groupExists]);
+  }, [navigate, groupExists, groupCode]);
 
   return (
     <main>

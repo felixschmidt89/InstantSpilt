@@ -17,7 +17,7 @@ import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 // Styles
 import styles from "./CreateExpense.module.css";
 
-// API
+// API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const CreateExpense = ({ groupMembers, groupCode }) => {

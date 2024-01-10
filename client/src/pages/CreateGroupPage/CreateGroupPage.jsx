@@ -13,8 +13,10 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import styles from "./CreateGroupPage.module.css";
 
+// API URL
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
 const CreateGroupPage = () => {
-  const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
   const navigate = useNavigate();
   const inputRef = useRef(null);
 
@@ -52,14 +54,14 @@ const CreateGroupPage = () => {
   // render back button to abort and input field, conditionally render submit button
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - Create group' />
+      <HelmetMetaTagsNetlify title='InstantSplit - create group' />
       <NavigateButton
         route={"instant-split"}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
       />{" "}
-      <h2>Create a group</h2>
+      <h1>Create a group</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           className={styles.inputField}
