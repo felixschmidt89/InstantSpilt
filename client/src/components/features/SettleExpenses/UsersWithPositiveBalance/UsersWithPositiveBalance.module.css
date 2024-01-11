@@ -1,0 +1,20 @@
+  
+  .userListItem {
+    list-style: none;
+  }
+  
+  .userDetails {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .userName {
+    text-decoration: none;
+    font-weight: 400;
+  }
+  
+  .userName:hover {
+    color: var(--color-success);
+  }
+  

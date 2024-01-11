@@ -46,7 +46,6 @@ const ValidateProvideGroupCodePage = () => {
 
   return (
     <main>
-      {/* Back button to enter groupCode again */}
       <HelmetMetaTagsNetlify title='InstantSplit - validate groupCode' />
       <PiratePx COUNT_IDENTIFIER={"groupCode-validator"} />
       <NavigateButton

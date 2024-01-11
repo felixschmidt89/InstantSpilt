@@ -4,7 +4,7 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
-import SettleExpenses from "../../components/features/SettleExpenses/SettleExpenses";
+import SettleExpenses from "../../components/features/SettleExpenses/SettleExpenses/SettleExpenses";
 
 function SettleGroupExpensesPage() {
   return (

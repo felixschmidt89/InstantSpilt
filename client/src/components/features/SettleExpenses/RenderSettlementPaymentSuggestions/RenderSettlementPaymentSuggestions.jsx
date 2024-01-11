@@ -1,8 +1,9 @@
 // React and Third-Party Libraries
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
+import { calculateSuggestedSettlementPayments } from "../../../../utils/settlementUtils";
 
 // Components
 import Emoji from "../../../common/Emoji/Emoji";
@@ -15,23 +16,43 @@ import styles from "./RenderSettlementPaymentSuggestions.module.css";
  *
  * @component
  * @param {Object} props - The properties of the component.
- * @param {Object[]} props.settlements - An array of settlement objects.
+ * @param {Object[]} props.negativeBalanceUsers - An array of users with negative balances.
+ * @param {Object[]} props.positiveBalanceUsers - An array of users with positive balances.
  * @returns {JSX.Element} - React component.
  */
-const RenderSettlementPaymentSuggestions = ({ settlements }) => {
+const RenderSettlementPaymentSuggestions = ({
+  negativeBalanceUsers,
+  positiveBalanceUsers,
+}) => {
+  const [settlementPaymentSuggestions, setSettlementPaymentSuggestions] =
+    useState([]);
+
+  useEffect(() => {
+    setSettlementPaymentSuggestions(
+      calculateSuggestedSettlementPayments(
+        negativeBalanceUsers,
+        positiveBalanceUsers
+      )
+    );
+  }, [negativeBalanceUsers, positiveBalanceUsers]);
+
   return (
     <div className={styles.container}>
       <ul>
-        {settlements.map((settlement, index) => (
+        {settlementPaymentSuggestions.map((settlement, index) => (
           <li key={index} className={styles.paymentSuggestions}>
-            <span>
-              {settlement.from}{" "}
+            <div className={styles.makerAndRecipient}>
+              <span aria-label={`Payment maker name`}>{settlement.from} </span>
               <Emoji
-                label={"Payment to someone emoji"}
+                label={"Payment to emoji"}
                 emoji={emojiConstants.paymentsMade}></Emoji>{" "}
-              {settlement.to}:
-            </span>{" "}
-            <span className={styles.settlementAmount}>
+              <span aria-label={`Payment recipient name`}>
+                {settlement.to}{" "}
+              </span>
+            </div>
+            <span
+              className={styles.settlementAmount}
+              aria-label={`Settlement payment amount`}>
               {settlement.amount}€
             </span>
           </li>
