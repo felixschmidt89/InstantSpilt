@@ -7,7 +7,7 @@ import {
   sections,
   lastUpdateDate,
 } from "../../contents/termsAndConditionsContent";
-import TermsAndConditions from "../../components/features/TermsAndConditions/TermsAndConditions";
+import TermsAndConditions from "../../components/features/TermsAndConditions/TermsAndConditions/TermsAndConditions";
 const TermsAndConditionsPage = () => {
   return (
     <main>

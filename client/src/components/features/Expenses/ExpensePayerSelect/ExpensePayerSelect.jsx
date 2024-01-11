@@ -33,7 +33,7 @@ const ExpensePayerSelect = ({
       required>
       {/* Default option */}
       <option value='' disabled>
-        {emojiConstants.paidFor} by
+        {emojiConstants.paidBy} by
       </option>
       {/* Map group members to select beneficiaries */}
       {groupMembers.map((member) => (

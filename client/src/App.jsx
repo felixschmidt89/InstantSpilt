@@ -20,7 +20,8 @@ import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import ExpensePage from "./pages/ExpensePage/ExpensePage";
 import IndexNavigatorPage from "./pages/IndexNavigatorPage/IndexNavigator";
 import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
-import GroupCodeExplanationPage from "./pages/GroupCodeExplanationPage/GroupCodeExplanationPage";
+import OnboardingTutorialPage from "./pages/OnboardingTutorialPage/OnboardingTutorialPage";
+import OnboardingGroupCodeExplanationPage from "./pages/OnboardingGroupCodeExplanationPage/OnboardingGroupCodeExplanationPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
 import ShareGroupPage from "./pages/ShareGroupPage/ShareGroupPage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
@@ -29,7 +30,6 @@ import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroup
 import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
 import CreateUsersDuringSignUpPage from "./pages/CreateUsersDuringSignUpPage/CreateUsersDuringSignUpPage";
 import CreateUsersInAppPage from "./pages/CreateUsersInAppPage/CreateUsersInAppPage";
-import OnboardingPage from "./pages/OnboardingPage/OnboardingPage";
 import TutorialPage from "./pages/TutorialPage/TutorialPage";
 import UpdateExpensePage from "./pages/UpdateExpensePage/UpdateExpensePage";
 import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
@@ -54,8 +54,8 @@ const App = () => {
           <Route path='/homepage' element={<HomePage />} />
           <Route path='/legal-notice' element={<LegalNoticePage />} />
           <Route
-            path='/groupcode-explanation'
-            element={<GroupCodeExplanationPage />}
+            path='/onboarding-groupcode-explanation'
+            element={<OnboardingGroupCodeExplanationPage />}
           />
           <Route path='/create-group' element={<CreateGroupPage />} />
           <Route
@@ -71,7 +71,10 @@ const App = () => {
             path='/join/:groupName/:groupCode'
             element={<AcceptInviteAndJoinPage />}
           />
-          <Route path='/onboarding' element={<OnboardingPage />} />
+          <Route
+            path='/onboarding-tutorial'
+            element={<OnboardingTutorialPage />}
+          />
           <Route
             path='/tutorial/:groupName/:groupCode'
             element={<TutorialPage />}

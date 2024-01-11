@@ -78,7 +78,7 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
           ))}
         </ul>
       )}
-      <ErrorDisplay error={error} />
+      <ErrorDisplay error={error} setError={setError} />
     </div>
   );
 };

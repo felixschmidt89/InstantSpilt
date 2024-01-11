@@ -1,3 +1,4 @@
+// React and Third-Party Libraries
 import React from "react";
 import {
   faAt,
@@ -6,14 +7,19 @@ import {
   faCode,
   faFileLines,
 } from "@fortawesome/free-solid-svg-icons";
+// Constants and Utils
+import { currentYear } from "../../../constants/dateConstants";
+
+// Components
 import LinkFontAwesomeIcon from "../LinkFontAwesomeIcon/LinkFontAwesomeIcon";
 import NavigateFontAwesomeIcon from "../NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
-import { currentYear } from "../../../constants/dateConstants";
+
+// Styles
 import styles from "./Footer.module.css";
 
 /**
  * footer component that displays and links essential information at the bottom of the page:
- * LinkedIn, email, GitHub repository, and legal notice.
+ * LinkedIn, email, GitHub repository, terms and conditions and legal notice.
  */
 const Footer = () => {
   return (

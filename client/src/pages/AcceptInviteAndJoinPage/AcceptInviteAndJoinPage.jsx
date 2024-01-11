@@ -33,7 +33,7 @@ const AcceptInviteAndJoinPage = () => {
   const handleAcceptInvitation = () => {
     storeGroupCodeInLocalStorage(groupCode);
     setGroupCodeToCurrentlyActive(groupCode);
-    navigate("/onboarding");
+    navigate("/onboarding-tutorial");
   };
 
   // Updating Visually indicate fetching, render button to accept invitation when data is received

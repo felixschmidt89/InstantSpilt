@@ -1,0 +1,7 @@
+.noLink {
+  pointer-events: none;
+}
+
+.icons {
+  white-space: nowrap;
+}

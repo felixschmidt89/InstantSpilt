@@ -2,7 +2,7 @@ import React from "react";
 import emojiConstants from "../../../../constants/emojiConstants";
 
 /**
- * Displays a user's expense totals: expenses paid and expenses benefitted from
+ * Renders a user's expense totals: expenses paid and expenses benefitted from
  *
  * @component
  * @param {Object} props - The properties passed to the component.
@@ -17,7 +17,7 @@ const UserExpensesTotals = ({ userData }) => {
         {/* total expenses paid amount with 2 decimal places */}
         <li>
           paid for: {userData.totalExpensesPaidAmount.toFixed(2)}€{" "}
-          {emojiConstants.paidFor}
+          {emojiConstants.paidBy}
         </li>
         <li>
           {/* total expenses benefitted from amount with 2 decimal places */}

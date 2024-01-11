@@ -7,14 +7,15 @@ import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
-import ExplainMainFunctionalities from "../../components/features/Tutorial/ExplainMainFunctionalities/ExplainMainFunctionalities";
-import ExplainGroupCode from "../../components/features/Tutorial/ExplainGroupCode/ExplainGroupCode";
+import GroupCodeExplanation from "../../components/features/Tutorial/GroupCodeExplanation/GroupCodeExplanation";
+import TopSectionExplanation from "../../components/features/Tutorial/TopSectionExplanation/TopSectionExplanation";
+import MiddleSectionExplanation from "../../components/features/Tutorial/MiddleSectionExplanation/MiddleSectionExplanation";
+import BottomSectionExplanation from "../../components/features/Tutorial/BottomSectionExplanation/BottomSectionExplanation";
 
 // Styles
 import styles from "./TutorialPage.module.css";
 
 function TutorialPage() {
-  // Destructure parameters from URL
   const { groupName, groupCode } = useParams();
 
   return (
@@ -29,8 +30,10 @@ function TutorialPage() {
       />
       <div className={styles.container}>
         <h1>Tutorial</h1>
-        <ExplainMainFunctionalities />
-        <ExplainGroupCode groupName={groupName} groupCode={groupCode} />
+        <TopSectionExplanation />
+        <MiddleSectionExplanation />
+        <BottomSectionExplanation />
+        <GroupCodeExplanation groupName={groupName} groupCode={groupCode} />
       </div>
     </main>
   );

@@ -14,7 +14,8 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
 import ErrorDisplay from "../../components/common/ErrorDisplay/ErrorDisplay";
-import UserTransactionsHistory from "../../components/features/UserDetails/UserTransactionsHistory/UserTransactionsHistory/UserTransactionsHistory";
+import UserTransactionsHistory from "../../components/features/UserTransactionsHistory/UserTransactionsHistory/UserTransactionsHistory";
+import NoUserTransactions from "../../components/features/UserTransactionsHistory/NoUserTransactions/NoUserTransactions";
 
 // Styles
 import styles from "./UserHistoryPage.module.css";
@@ -105,9 +106,7 @@ const UserHistoryPage = () => {
               onDeleteItem={handleDeleteItem}
             />
           ) : (
-            <p className={styles.noTransactions}>
-              No associated expenses or payments.
-            </p>
+            <NoUserTransactions />
           )}
           <ErrorDisplay error={error} />
         </div>

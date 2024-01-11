@@ -1,0 +1,7 @@
+.emojiParenthesis {
+  white-space: nowrap;
+}
+
+.noLink {
+  pointer-events: none;
+}

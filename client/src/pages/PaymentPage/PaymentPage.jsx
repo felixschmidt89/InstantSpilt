@@ -7,13 +7,13 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
-import DeleteResourceButton from "../../components/common/DeleteResourceButton/DeleteResourceButton";
 import RouteButton from "../../components/common/RouteButton/RouteButton";
 import styles from "./PaymentPage.module.css";
+import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
-  const { paymentInfo, error } = useFetchPaymentInfo(itemId);
+  const { paymentInfo } = useFetchPaymentInfo(itemId);
 
   return (
     <main>
@@ -44,7 +44,7 @@ const PaymentPage = () => {
           </p>
           <RouteButton route={`update-payment/${itemId}`} />
 
-          <DeleteResourceButton resourceId={itemId} resourceType='payments' />
+          <DeleteResource resourceId={itemId} resourceType='payments' />
         </div>
       ) : (
         <Spinner />

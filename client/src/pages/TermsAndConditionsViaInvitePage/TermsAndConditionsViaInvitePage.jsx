@@ -8,7 +8,7 @@ import {
   sections,
   lastUpdateDate,
 } from "../../contents/termsAndConditionsContent";
-import TermsAndConditions from "../../components/features/TermsAndConditions/TermsAndConditions";
+import TermsAndConditions from "../../components/features/TermsAndConditions/TermsAndConditions/TermsAndConditions";
 
 /**
  * TermsAndConditions page for users joining a group via invite link, ensuring that the back button renders the URL associated with the group they have been invited to.

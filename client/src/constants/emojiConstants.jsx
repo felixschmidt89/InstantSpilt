@@ -20,7 +20,7 @@
 const emojiConstants = {
   expense: "🛒",
   payment: "💸",
-  paidFor: "💳",
+  paidBy: "💳",
   benefittedFrom: "😄",
   paymentsMade: "➡️",
   paymentsReceived: "⬅️",

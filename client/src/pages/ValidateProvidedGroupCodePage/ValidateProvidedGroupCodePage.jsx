@@ -34,7 +34,7 @@ const ValidateProvideGroupCodePage = () => {
     if (groupExists === true) {
       storeGroupCodeInLocalStorage(groupCode);
       setGroupCodeToCurrentlyActive(groupCode);
-      navigate("/onboarding/");
+      navigate("/onboarding-tuturial/");
     } else if (groupExists === false) {
       setError(
         `Oops, there's no group associated with the provided GroupCode.`

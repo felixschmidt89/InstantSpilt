@@ -14,11 +14,11 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
-import DeleteResourceButton from "../../components/common/DeleteResourceButton/DeleteResourceButton";
 import RouteButton from "../../components/common/RouteButton/RouteButton";
 import RenderExpenseBeneficiaries from "../../components/features/Expenses/RenderExpenseBeneficiaries/RenderExpenseBeneficiaries";
 import RenderExpenseDetails from "../../components/features/Expenses/RenderExpenseDetails/RenderExpenseDetails";
 import RenderResourceCreated from "../../components/common/RenderResourceCreated/RenderResourceCreated";
+import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 
 /**
  * Page for displaying expense details.
@@ -50,10 +50,7 @@ const ExpensePage = () => {
           />
           <RenderResourceCreated createdAt={expenseInfo.createdAt} />
           <RouteButton route={`update-expense/${expenseId}`} />
-          <DeleteResourceButton
-            resourceId={expenseId}
-            resourceType='expenses'
-          />
+          <DeleteResource resourceId={expenseId} resourceType='expenses' />
         </div>
       ) : (
         <Spinner />

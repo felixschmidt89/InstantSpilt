@@ -15,10 +15,10 @@ const CreateUsersDuringSignUpPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - add user' />
-      <PiratePx COUNT_IDENTIFIER={"create-users-groupcreation"} />
+      <PiratePx COUNT_IDENTIFIER={"create-users-during-signup"} />
       <div className={styles.container}>
         <NavigateButton
-          route={"groupcode-explanation"}
+          route={"onboarding-groupcode-explanation"}
           buttonText={faRightLong}
           alignment={"right"}
           isIcon={true}

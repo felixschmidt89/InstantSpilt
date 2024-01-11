@@ -1,3 +1,4 @@
+// React and Third-Party Libraries
 import React from "react";
 import {
   faRightFromBracket,
@@ -5,15 +6,24 @@ import {
   faMessage,
   faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
-import styles from "./UserActionsBar.module.css";
+// Components
 import NavigateFontAwesomeIcon from "../../common/NavigateFontAwesomeIcon/NavigateFontAwesomeIcon";
 
+// Styles
+import styles from "./UserActionsBar.module.css";
+
 /**
- * Container to hold and render user related actions:
- links to 1) invite users, 2) send feedback, 3) tutorial, 4) delete groupCode from device
+ * Component for rendering a bar with user-related actions icons:
+ * - Invite users
+ * - Send feedback
+ * - View tutorial
+ * - Delete groupCode from the device
  *
- * @param {string} props.groupCode - The code of the group.
- * @param {string} props.groupName - The name of the group.
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.groupCode
+ * @param {string} props.groupName
+ * @returns {JSX.Element} - UserActionsBar component
  */
 const UserActionsBar = ({ groupCode, groupName }) => {
   return (

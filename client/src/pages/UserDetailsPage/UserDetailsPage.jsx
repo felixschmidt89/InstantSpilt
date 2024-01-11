@@ -1,18 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import emojiConstants from "../../constants/emojiConstants";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
-import DeleteResourceButton from "../../components/common/DeleteResourceButton/DeleteResourceButton";
 import RouteButton from "../../components/common/RouteButton/RouteButton";
 import styles from "./UserDetailsPage.module.css";
 import useFetchUserData from "../../hooks/useFetchUserInfo";
 import UserExpenseTotals from "../../components/features/UserDetails/UserExpensesTotals/UserExpensesTotals";
 import UserPaymentTotals from "../../components/features/UserDetails/UserPaymentsTotals/UserPaymentsTotals";
 import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
+import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 
 /**
  * Fetches and renders detailed information about a user, including name, balance, total expenses and payments.
@@ -62,7 +61,7 @@ const UserDetailsPage = () => {
             margin='0px'
           />
           <div className={styles.deleteButton}>
-            <DeleteResourceButton resourceId={userId} resourceType='users' />{" "}
+            <DeleteResource resourceId={userId} resourceType='users' />{" "}
           </div>
         </div>
       ) : (

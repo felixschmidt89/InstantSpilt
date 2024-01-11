@@ -1,0 +1,48 @@
+.expenses {
+  display: flex;
+  transform: translateX(0.3rem);
+}
+
+.leftColumn {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid var(--color-signal-reduced-opacity);
+}
+
+.expenseEmoji {
+  margin-right: 1.7rem;
+}
+
+.expenseAmount {
+  text-align: right;
+  width: 8rem;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3rem;
+  margin-right: 1rem;
+  width: 80%;
+  border-top: 2px solid var(--color-signal-reduced-opacity);
+}
+
+.rightColumn .expenseEmoji,
+.rightColumn {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 500px) {
+  .rightColumn {
+    margin-left: 1rem;
+    border-top: none;
+  }
+  .leftColumn {
+    margin-right: 0.5rem;
+    border-top: none;
+  }
+}
+
+.key {
+  color: var(--color-grey);
+}

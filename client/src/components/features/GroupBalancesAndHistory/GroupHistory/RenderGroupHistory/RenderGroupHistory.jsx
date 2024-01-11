@@ -14,8 +14,8 @@ import Spinner from "../../../../common/Spinner/Spinner";
 import ErrorDisplay from "../../../../common/ErrorDisplay/ErrorDisplay";
 import RenderGroupExpense from "../RenderGroupExpense/RenderGroupExpense";
 import RenderGroupPayment from "../RenderGroupPayment/RenderGroupPayment";
-import NoTransactions from "../NoTransactions/NoTransactions";
 import NotEnoughUsers from "../../NotEnoughUsers/NotEnoughUsers";
+import NoGroupTransactions from "../NoGroupTransactions/NoGroupTransactions";
 
 // Styles
 import styles from "./RenderGroupHistory.module.css";
@@ -106,7 +106,7 @@ const RenderGroupHistory = ({ groupCode }) => {
       ) : (
         <div className={styles.issue}>
           {isFetched && groupMembers.length > 1 ? (
-            <NoTransactions />
+            <NoGroupTransactions />
           ) : (
             <NotEnoughUsers />
           )}

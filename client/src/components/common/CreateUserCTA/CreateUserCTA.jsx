@@ -26,7 +26,7 @@ const CreateUserCTA = ({ isPayment = true }) => {
       </p>
       <GroupActionsButton
         route={"create-users-inapp"}
-        buttonText={<span>{emojiConstants.user}</span>}
+        buttonText={emojiConstants.user}
         tooltipText='add user'
         ariaLabel='add user emoji'
       />
