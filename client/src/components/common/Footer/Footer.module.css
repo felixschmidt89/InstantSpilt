@@ -12,4 +12,5 @@
   position: static;
   height: 3rem;
   transform: translateX(1rem);
+  gap: 0.5rem;
 }

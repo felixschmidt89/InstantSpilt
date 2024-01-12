@@ -9,6 +9,7 @@ import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import CreateExpense from "../../components/features/Expenses/CreateExpense/CreateExpense";
 import styles from "./CreateExpensePage.module.css";
 import CreateUserCTA from "../../components/common/CreateUserCTA/CreateUserCTA";
+import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 const CreateExpensePage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -18,14 +19,7 @@ const CreateExpensePage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - add payment' />
       <PiratePx COUNT_IDENTIFIER={"create-expense"} />
-
-      {/* Render a back button */}
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+      <InAppNavigationBar back={true} backRoute='/instant-split' />
       <h2 className={styles.header}>Add expense {emojiConstants.expense}</h2>
       {!isFetched ? (
         <Spinner />

@@ -19,7 +19,7 @@ import styles from "./DeleteResource.module.css";
  * @param {boolean} props.isButton - If true, render a button; if false, render a span (default: true).
  * @param {boolean} props.navigateOnDelete - If true, navigate to the specified route on deletion; if false, no navigation (default: true).
  * @param {boolean} props.showResourceType - If true, display the resourceType in the button/span; if false, hide it (default: true).
- * @param {function} props.onDeleteResource - Callback function to trigger rerender in parent component.
+ * @param {function} props.onDeleteResource - Optional callback function to trigger rerender in parent component.
  */
 const DeleteResource = ({
   resourceId,

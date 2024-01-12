@@ -1,7 +1,8 @@
-// ReactIconNavigate.jsx
-
+// React and Third-Party Libraries
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Styles
 import styles from "./ReactIconNavigate.module.css";
 
 /**
@@ -10,51 +11,64 @@ import styles from "./ReactIconNavigate.module.css";
  * @param {Object} props - The component props.
  * @param {string} props.route - The route to navigate to.
  * @param {Function} props.onClick - The onClick function for the icon.
- * @param {number} props.size - The size of the icon in rem units.
+ * @param {number} props.fontSize - The size of the icon in rem units.
  * @param {React.Component} props.icon - The React icon component to render.
- * @param {number} props.margin - The margin around the icon in rem units.
+ * @param {string} props.marginTop - The margin top for the icon in rem units.
+ * @param {string} props.marginRight - The margin right for the icon in rem units.
  * @param {string} props.tooltip - The tooltip text to display on hover.
- * @param {number} props.tooltipSize - The size of the tooltip text in rem units.
+ * @param {number} props.tooltipFontSize - The size of the tooltip text in rem units.
+ * @param {string} props.email - The email address to open in the default email client.
+ * @param {string} props.url - The URL to open in a new tab.
  * @returns {React.Component} The rendered ReactIconNavigate component.
  */
 const ReactIconNavigate = ({
   route,
   onClick,
-  size = 2.5,
+  fontSize = "2.5rem",
   icon: IconComponent,
-  margin = 0.5,
+  marginTop = "0.5rem",
+  marginRight = "0",
   tooltip,
-  tooltipSize = 2,
+  tooltipFontSize = "1.6rem",
+  email,
+  url,
 }) => {
-  // State to manage tooltip visibility
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
-
-  // Access navigation function
   const navigate = useNavigate();
 
-  // Callback function to navigate to the specified route
   const navigateToRoute = () => {
     navigate(route);
   };
 
+  const handleIconClick = () => {
+    if (email) {
+      window.location.href = `mailto:${email}`;
+    } else if (url) {
+      window.open(url, "_blank");
+    } else {
+      onClick || navigateToRoute();
+    }
+  };
+
   return (
-    // Container for the icon with tooltip
     <div
       className={styles.iconContainer}
       onMouseEnter={() => setIsTooltipVisible(true)}
       onMouseLeave={() => setIsTooltipVisible(false)}>
       {isTooltipVisible && tooltip && (
-        <div
-          className={styles.tooltip}
-          style={{ fontSize: `${tooltipSize}rem` }}>
+        <div className={styles.tooltip} style={{ fontSize: tooltipFontSize }}>
           {tooltip}
         </div>
       )}
       {/* Render React icon  */}
       <IconComponent
-        onClick={onClick || navigateToRoute}
+        onClick={handleIconClick}
         className={styles.customIcon}
-        style={{ fontSize: `${size}rem`, margin: `${margin}rem` }}
+        style={{
+          fontSize: fontSize,
+          marginTop: marginTop,
+          marginRight: marginRight,
+        }}
       />
     </div>
   );

@@ -11,13 +11,13 @@ import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
 import CreatePayment from "../../components/features/Payments/CreatePayment/CreatePayment";
 import CreateUserCTA from "../../components/common/CreateUserCTA/CreateUserCTA";
 
 // Styles
 import styles from "./CreatePaymentPage.module.css";
+import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 const CreatePaymentPage = () => {
   // Define states for paymentAmount, userName, paymentRecipient, and error message
@@ -28,12 +28,8 @@ const CreatePaymentPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - add payment' />
       <PiratePx COUNT_IDENTIFIER={"create-payment"} />
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+      <InAppNavigationBar back={true} backRoute='/instant-split' />
+
       <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>
       {!isFetched ? (
         <Spinner />

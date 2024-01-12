@@ -8,6 +8,7 @@ import {
   lastUpdateDate,
 } from "../../contents/termsAndConditionsContent";
 import TermsAndConditions from "../../components/features/TermsAndConditions/TermsAndConditions/TermsAndConditions";
+import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 const TermsAndConditionsPage = () => {
   return (
     <main>
@@ -19,12 +20,8 @@ const TermsAndConditionsPage = () => {
       {/* Track page renders */}
       <PiratePx COUNT_IDENTIFIER={"terms-and-conditions"} />
       {/* Create a button for navigating to homepage */}
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />{" "}
+      <InAppNavigationBar back={true} backRoute='/instant-split' />
+
       <TermsAndConditions lastUpdateDate={lastUpdateDate} sections={sections} />
     </main>
   );

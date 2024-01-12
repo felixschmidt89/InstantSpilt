@@ -12,6 +12,7 @@ import UserExpenseTotals from "../../components/features/UserDetails/UserExpense
 import UserPaymentTotals from "../../components/features/UserDetails/UserPaymentsTotals/UserPaymentsTotals";
 import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
+import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 /**
  * Fetches and renders detailed information about a user, including name, balance, total expenses and payments.
@@ -36,12 +37,8 @@ const UserDetailsPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - user details' />
       <PiratePx COUNT_IDENTIFIER={"user-details"} />
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+      <InAppNavigationBar back={true} backRoute='/instant-split' />
+
       {userData ? (
         <div className={styles.container}>
           <h1>{userData.userName}</h1>

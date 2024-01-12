@@ -10,6 +10,7 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import RouteButton from "../../components/common/RouteButton/RouteButton";
 import styles from "./PaymentPage.module.css";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
+import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -19,12 +20,8 @@ const PaymentPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - payment details' />
       <PiratePx COUNT_IDENTIFIER={"payment-details"} />
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+      <InAppNavigationBar back={true} backRoute='/instant-split' />
+
       {paymentInfo ? (
         <div className={styles.container}>
           <h1>Payment {emojiConstants.payment}</h1>

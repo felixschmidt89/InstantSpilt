@@ -18,6 +18,7 @@ import UpdateExpense from "../../components/features/Expenses/UpdateExpense/Upda
 
 // Styles
 import styles from "./UpdateExpenseUserPage.module.css";
+import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 /**
  * Page for updating an expense via user history page.
@@ -42,6 +43,11 @@ function UserHistoryUpdateExpensePage() {
         alignment={"left"}
         isIcon={true}
       />
+      <InAppNavigationBar
+        back={true}
+        backRoute={`user-transaction-history/${userId}`}
+      />
+
       {isLoading ? (
         <Spinner />
       ) : (

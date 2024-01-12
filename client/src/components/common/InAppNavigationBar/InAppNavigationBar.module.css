@@ -1,0 +1,23 @@
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+/* Center home icon*/
+.navContainer > .home-icon {
+  margin: 0 auto;
+}
+
+.icon {
+  font-family: "Ubuntu", sans-serif;
+  color: var(--color-signal);
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: var(--color-success);
+}

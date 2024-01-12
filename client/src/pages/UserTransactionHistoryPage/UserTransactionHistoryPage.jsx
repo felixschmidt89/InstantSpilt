@@ -19,6 +19,7 @@ import NoUserTransactions from "../../components/features/UserTransactionsHistor
 
 // Styles
 import styles from "./UserTransactionHistoryPage.module.css";
+import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -64,12 +65,8 @@ const UserTransactionHistoryPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - user history' />
       <PiratePx COUNT_IDENTIFIER={"user-transaction-history"} />
-      <NavigateButton
-        route={`user-page/${userId}`}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+      <InAppNavigationBar back={true} backRoute='/instant-split' />
+
       <h1>Transaction history</h1>
       {isLoading ? (
         <div className={styles.spinner}>

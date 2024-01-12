@@ -5,6 +5,7 @@ import NavigateButton from "../../components/common/NavigateButton/NavigateButto
 import legalNoticeContent from "../../contents/legalNoticeContent";
 import styles from "./LegalNoticePage.module.css";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 const LegalNoticePage = () => {
   return (
@@ -14,12 +15,8 @@ const LegalNoticePage = () => {
         description='Legal Notice as required by the Telemediengesetz for German websites.'
       />
       <PiratePx COUNT_IDENTIFIER={"legal-notice"} />
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />{" "}
+      <InAppNavigationBar back={true} backRoute='/instant-split' />
+
       <div className={styles.container}>
         <h1>Legal notice (Impressum)</h1>
         <p className={styles.note}>

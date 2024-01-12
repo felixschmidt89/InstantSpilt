@@ -1,7 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 // Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
@@ -12,13 +12,13 @@ import useFetchExpenseInfo from "../../hooks/useFetchExpenseInfo";
 //Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
 import RouteButton from "../../components/common/RouteButton/RouteButton";
 import RenderExpenseBeneficiaries from "../../components/features/Expenses/RenderExpenseBeneficiaries/RenderExpenseBeneficiaries";
 import RenderExpenseDetails from "../../components/features/Expenses/RenderExpenseDetails/RenderExpenseDetails";
 import RenderResourceCreated from "../../components/common/RenderResourceCreated/RenderResourceCreated";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
+import InAppNavigation from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 /**
  * Page for displaying expense details.
@@ -35,12 +35,7 @@ const ExpensePage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - expense details' />
       <PiratePx COUNT_IDENTIFIER={"expense-page"} />
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+      <InAppNavigation back={true} backRoute='/instant-split' />
       <h1>Expense {emojiConstants.expense}</h1>
       {expenseInfo ? (
         <div>

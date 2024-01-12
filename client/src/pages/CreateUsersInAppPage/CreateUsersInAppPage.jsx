@@ -10,6 +10,7 @@ import CreateUserAndRenderUserList from "../../components/features/CreateUser/Cr
 
 // Styles
 import styles from "./CreateUsersInAppPage.module.css";
+import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 /**
  * Page for creating users within the main application.
@@ -22,13 +23,9 @@ function CreateUsersInAppPage() {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - add user' />
       <PiratePx COUNT_IDENTIFIER={"create-users-inapp"} />
+      <InAppNavigationBar back={true} backRoute='/instant-split' />
+
       <div className={styles.container}>
-        <NavigateButton
-          route={"instant-split"}
-          buttonText={faLeftLong}
-          alignment={"left"}
-          isIcon={true}
-        />
         <CreateUserAndRenderUserList />
       </div>
     </main>

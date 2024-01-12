@@ -13,21 +13,18 @@
 }
 
 .tooltip {
+  font-size: 1.6rem;
   position: absolute;
-  text-align: center;
-  font-weight: 900;
-  bottom: 95%;
+  bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--color-hover);
+  background: var(--color-dark);
   color: var(--color-body);
-  border-radius: 1rem;
-  padding: 0.1rem 0.5rem;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease-in-out;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  white-space: nowrap;
+  z-index: 1;
 }
-
 .iconContainer:hover .tooltip {
   opacity: 1;
   visibility: visible;
