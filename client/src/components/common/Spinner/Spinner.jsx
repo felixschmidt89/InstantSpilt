@@ -1,18 +1,37 @@
+// React and Third-Party Libraries
 import React from "react";
+// Styles
 import styles from "./Spinner.module.css";
 
-const Spinner = ({ color = "rgba(85, 156, 173, 0.3", size = 40 }) => {
+/**
+ * Spinner component displaying a rotating SVG spinner.
+ *
+ * @component
+ * @param {string} [color="rgba(85, 156, 173, 0.3)"] - Color of the spinner.
+ * @param {number} [size=40] - Size of the spinner in pixels.
+ * @param {string} [marginTop="16px"] - Margin-top value for the spinner container in px.
+ * @param {string} [height="75%"] - Height value for the spinner container in %.
+ * @returns {JSX.Element} - The Spinner component.
+ */
+const Spinner = ({
+  color = "rgba(85, 156, 173, 0.3)",
+  size = 40,
+  marginTop = "16px",
+  height = "75%",
+}) => {
   return (
-    <div className={styles["spinner-container"]}>
+    <div
+      className={styles.spinnerContainer}
+      style={{ marginTop: marginTop, height: height }}>
       <svg
         width={size}
         height={size}
         viewBox='0 0 24 24'
         xmlns='http://www.w3.org/2000/svg'
-        className={styles["spinner-svg"]}
+        className={styles.spinnerSvg}
         style={{
-          "--spinner-color": color, // Set the color using the prop
-          "--spinner-size": size + "px", // Set the size using the prop
+          "--spinner-color": color,
+          "--spinner-size": size + "px",
         }}>
         <style>
           {`.spinner_DupU {

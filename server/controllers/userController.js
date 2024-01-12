@@ -92,20 +92,35 @@ export const changeUserName = async (req, res) => {
 export const listExpensesAndPaymentsByUser = async (req, res) => {
   try {
     const { userId } = req.params;
-    const [expenses, payments] = await Promise.all([
-      Expense.find({
-        $or: [{ expensePayer: userId }, { expenseBeneficiaries: userId }],
-      })
-        .populate('expensePayer', 'userName')
-        .populate('expenseBeneficiaries', 'userName'),
-      Payment.find({
-        $or: [{ paymentMaker: userId }, { paymentRecipient: userId }],
-      })
-        .populate('paymentMaker', 'userName')
-        .populate('paymentRecipient', 'userName'),
-    ]);
+    const expenses = await Expense.find({
+      $or: [{ expensePayer: userId }, { expenseBeneficiaries: userId }],
+    })
+      .populate('expensePayer', 'userName')
+      .populate('expenseBeneficiaries', 'userName')
+      .lean(); // get JavaScript objects instead of Mongoose documents
 
-    const userExpensesAndPayments = [...expenses, ...payments];
+    const payments = await Payment.find({
+      $or: [{ paymentMaker: userId }, { paymentRecipient: userId }],
+    })
+      .populate('paymentMaker', 'userName')
+      .populate('paymentRecipient', 'userName')
+      .lean(); // get JavaScript objects instead of Mongoose documents
+
+    // Add 'itemType' property
+    const userExpensesAndPayments = [
+      ...expenses.map((item) => ({ ...item, itemType: 'expense' })),
+      ...payments.map((item) => ({ ...item, itemType: 'payment' })),
+    ];
+
+    // Sort userExpensesAndPayments by createdAt
+    userExpensesAndPayments.sort((a, b) => a.createdAt - b.createdAt);
+
+    // Convert createdAt values to Date objects
+    userExpensesAndPayments.forEach((item) => {
+      item.createdAt = new Date(item.createdAt);
+    });
+
+    // Sort userExpensesAndPayments by createdAt
     userExpensesAndPayments.sort((a, b) => a.createdAt - b.createdAt);
 
     res.status(StatusCodes.OK).json({

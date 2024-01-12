@@ -7,19 +7,12 @@
   cursor: pointer;
   border-radius: 0.5rem;
   margin-left: 1rem;
+  position: relative;
 }
 
 .button:hover {
   background-color: var(--color-signal-reduced-opacity);
   box-shadow: 0 0 0.5rem var(--color-signal);
-}
-
-.container {
-  position: relative; /* Ensure the container is a positioning context */
-}
-
-.button {
-  position: relative; /* Ensure z-index works */
 }
 
 .tooltip {
@@ -34,5 +27,5 @@
   padding: 0.8rem 1rem;
   border-radius: 0.4rem;
   white-space: nowrap;
-  z-index: 1;
+  z-index: 100;
 }

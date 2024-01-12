@@ -1,25 +1,26 @@
+// React and Third-Party Libraries
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./GroupActionsButton.module.css";
+
+// Styles
+import styles from "./GroupActionsEmojiButton.module.css";
 
 /**
- * Button component rendering text and tooltips and navigates to a specified route when clicked.
+ * Renders a button component with an emoji, tooltips, and navigates to a specified route on click.
  *
  * @component
  * @param {Object} props - The properties of the component.
  * @param {string} props.route - The route to navigate to when the button is clicked.
- * @param {string} props.buttonText - The text content of the button.
- * @param {string} props.tooltipText - The text content of the tooltip.
- * @returns {JSX.Element} - The rendered GroupActionButton component.
+ * @param {string} props.emoji - The emoji to be rendered.
+ * @param {string} props.tooltipText - The text of the tooltip.
+ * @param {string} props.ariaLabel - The ARIA label for accessibility.
+ * @returns {JSX.Element} - The rendered GroupActionsEmojiButton component.
  */
-
-const GroupActionsButton = ({ route, buttonText, tooltipText, ariaLabel }) => {
+const GroupActionsEmojiButton = ({ route, emoji, tooltipText, ariaLabel }) => {
   const navigate = useNavigate();
 
-  // State to manage tooltip visibility
   const [showTooltip, setShowTooltip] = useState(false);
 
-  // handle button click, navigates to specified route
   const handleClick = () => {
     navigate(`/${route}`);
   };
@@ -32,11 +33,11 @@ const GroupActionsButton = ({ route, buttonText, tooltipText, ariaLabel }) => {
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
         aria-label={ariaLabel}>
-        {buttonText}
+        {emoji}
         {showTooltip && <div className={styles.tooltip}>{tooltipText}</div>}
       </button>
     </div>
   );
 };
 
-export default GroupActionsButton;
+export default GroupActionsEmojiButton;

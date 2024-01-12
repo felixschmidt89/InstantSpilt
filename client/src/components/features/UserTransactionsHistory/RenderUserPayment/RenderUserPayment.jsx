@@ -21,8 +21,7 @@ import styles from "./RenderUserPayment.module.css";
  * @param {Function} props.onDelete - Callback function for deleting the payment.
  * @returns {JSX.Element} - RenderUserPayment component.
  */
-const RenderUserPayment = ({ item, userId, onDelete }) => {
-  console.log("item", item);
+const RenderUserPayment = ({ item, userId, onDeleteResource }) => {
   return (
     <div className={styles.payments}>
       {/* Left Column */}
@@ -40,14 +39,16 @@ const RenderUserPayment = ({ item, userId, onDelete }) => {
           </div>
           {/* Link to edit expense details */}
           <Link
-            to={`/user-history-item-page?itemId=${item.itemId}&itemType=${item.itemType}&userId=${userId}`}>
+            to={`/user-history-item-page?itemId=${item._id}&itemType=${item.itemType}&userId=${userId}`}>
             edit
           </Link>
           <DeleteResource
-            resourceId={item.itemId}
-            resourceType={`${item.itemType}s`}
-            onDelete={onDelete}
+            resourceId={item._id}
+            resourceType={"payments"}
+            onDeleteResource={onDeleteResource}
             isButton={false}
+            navigateOnDelete={false}
+            showResourceType={false}
           />
         </div>
       </div>

@@ -5,7 +5,7 @@ import React from "react";
 import emojiConstants from "../../../constants/emojiConstants";
 
 // Components
-import GroupActionsButton from "../GroupActionsButton/GroupActionsButton";
+import GroupActionsEmojiButton from "../GroupActionsEmojiButton/GroupActionsEmojiButton";
 
 // Styles
 import styles from "./CreateUserCTA.module.css";
@@ -24,9 +24,9 @@ const CreateUserCTA = ({ isPayment = true }) => {
         <br />
         Please click the user icon below to proceed.
       </p>
-      <GroupActionsButton
+      <GroupActionsEmojiButton
         route={"create-users-inapp"}
-        buttonText={emojiConstants.user}
+        emoji={emojiConstants.user}
         tooltipText='add user'
         ariaLabel='add user emoji'
       />

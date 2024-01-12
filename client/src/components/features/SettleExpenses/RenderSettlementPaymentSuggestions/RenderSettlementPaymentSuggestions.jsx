@@ -21,8 +21,8 @@ import styles from "./RenderSettlementPaymentSuggestions.module.css";
  * @returns {JSX.Element} - React component.
  */
 const RenderSettlementPaymentSuggestions = ({
-  negativeBalanceUsers,
   positiveBalanceUsers,
+  negativeBalanceUsers,
 }) => {
   const [settlementPaymentSuggestions, setSettlementPaymentSuggestions] =
     useState([]);
@@ -30,8 +30,8 @@ const RenderSettlementPaymentSuggestions = ({
   useEffect(() => {
     setSettlementPaymentSuggestions(
       calculateSuggestedSettlementPayments(
-        negativeBalanceUsers,
-        positiveBalanceUsers
+        positiveBalanceUsers,
+        negativeBalanceUsers
       )
     );
   }, [negativeBalanceUsers, positiveBalanceUsers]);

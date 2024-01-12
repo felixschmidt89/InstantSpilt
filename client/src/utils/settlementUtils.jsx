@@ -58,11 +58,11 @@ export const calculateSuggestedSettlementPayments = (
     if (debtor.userBalanceCalculated === 0) {
       negativeBalanceUsers.shift();
     }
-    devLog(
-      "Suggested settlement payments calculated:",
-      suggestedSettlementPayments
-    );
   }
+  devLog(
+    "Suggested settlement payments calculated:",
+    suggestedSettlementPayments
+  );
   return suggestedSettlementPayments;
 };
 
@@ -108,14 +108,12 @@ export const groupUsersPerPositiveOrNegativeUserBalance = (unsettledUsers) => {
     .filter((user) => user.userBalanceCalculated > 0)
     .map((user) => ({
       ...user,
-      userBalanceCalculated: user.userBalanceCalculated,
     }));
 
   const negativeBalanceUsers = unsettledUsers
     .filter((user) => user.userBalanceCalculated < 0)
     .map((user) => ({
       ...user,
-      userBalanceCalculated: user.userBalanceCalculated,
     }));
   devLog("Users with positive balance calculated:", positiveBalanceUsers);
   devLog("Users with negative balance calculated:", negativeBalanceUsers);

@@ -20,29 +20,29 @@ import styles from "./UserTransactionsHistory.module.css";
 const UserTransactionsHistory = ({
   userExpensesAndPayments,
   userId,
-  onDeleteItem,
+  onDeleteResource,
 }) => {
   if (userExpensesAndPayments.length === 0) {
     return null;
   }
+  console.log(userExpensesAndPayments);
 
   return (
     <div className={styles.container}>
       <ul>
         {userExpensesAndPayments.map((item) => (
           <li className={styles.item} key={item._id}>
-            {/* Render depending on whether item is an expense or payment */}
-            {item.expenseDescription ? (
+            {item.itemType === "expense" ? (
               <RenderUserExpense
                 item={item}
                 userId={userId}
-                onDelete={() => onDeleteItem(item.itemId)}
+                onDeleteResource={onDeleteResource}
               />
             ) : (
               <RenderUserPayment
                 item={item}
                 userId={userId}
-                onDelete={() => onDeleteItem(item.itemId)}
+                onDeleteResource={onDeleteResource}
               />
             )}
           </li>

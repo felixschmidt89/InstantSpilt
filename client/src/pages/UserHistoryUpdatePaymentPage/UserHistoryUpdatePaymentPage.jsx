@@ -36,7 +36,7 @@ const UserHistoryUpdatePaymentPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - update payment' />
       <PiratePx COUNT_IDENTIFIER={"user-history-update-payment"} />
       <NavigateButton
-        route={`user-history/${userId}`}
+        route={`user-transaction-history/${userId}`}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
@@ -50,7 +50,7 @@ const UserHistoryUpdatePaymentPage = () => {
           groupCode={groupCode}
           paymentDetails={paymentInfo}
           expenseId={itemId}
-          route={`/user-history/${userId}`}
+          route={`/user-transaction-history/${userId}`}
         />
       )}
     </main>

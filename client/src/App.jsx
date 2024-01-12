@@ -4,8 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
 // Components
-import Header from "./components/common/Header/Header";
 import Footer from "./components/common/Footer/Footer";
+import Header from "./components/common/Header/Header/Header";
 
 // Pages
 import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
@@ -36,7 +36,7 @@ import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
 import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
 import TermsAndConditionsViaInvitePage from "./pages/TermsAndConditionsViaInvitePage/TermsAndConditionsViaInvitePage";
-import UserHistoryPage from "./pages/UserHistoryPage/UserHistoryPage";
+import UserTransactionHistoryPage from "./pages/UserTransactionHistoryPage/UserTransactionHistoryPage";
 import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/ItemNavigatorUserHistoryPage";
 import UpdateUserExpensePage from "./pages/UpdateExpenseUserPage/UpdateExpenseUserPage";
 import UserHistoryUpdatePaymentPage from "./pages/UserHistoryUpdatePaymentPage/UserHistoryUpdatePaymentPage";
@@ -115,7 +115,10 @@ const App = () => {
           />
 
           <Route path='/user-page/:userId' element={<UserDetailsPage />} />
-          <Route path='/user-history/:userId' element={<UserHistoryPage />} />
+          <Route
+            path='/user-transaction-history/:userId'
+            element={<UserTransactionHistoryPage />}
+          />
 
           <Route path='/payment-page/:itemId' element={<PaymentPage />} />
           <Route path='/expense-page/:itemId' element={<ExpensePage />} />

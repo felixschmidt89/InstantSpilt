@@ -25,12 +25,12 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const useDeleteResource = (resourceType, resourceId, route) => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const resourceTypePlural = resourceType.concat("s");
+  const resourceTypeSingular = resourceType.slice(0, -1);
 
   const deleteResource = async () => {
     try {
       const response = await axios.delete(
-        `${apiUrl}/${resourceTypePlural}/${resourceId}`
+        `${apiUrl}/${resourceType}/${resourceId}`
       );
       if (response.status === StatusCodes.NO_CONTENT) {
         setError(null);
@@ -50,7 +50,7 @@ const useDeleteResource = (resourceType, resourceId, route) => {
     }
   };
 
-  return { deleteResource, resourceTypePlural, error };
+  return { deleteResource, resourceTypeSingular, error };
 };
 
 export default useDeleteResource;

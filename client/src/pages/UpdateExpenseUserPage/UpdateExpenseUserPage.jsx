@@ -34,10 +34,10 @@ function UserHistoryUpdateExpensePage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - update expense' />
-      <PiratePx COUNT_IDENTIFIER={"user-history-update-expense"} />
+      <PiratePx COUNT_IDENTIFIER={"user-transaction-history-update-expense"} />
       {/* Render a back button */}
       <NavigateButton
-        route={`user-history/${userId}`}
+        route={`user-transaction-history/${userId}`}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
@@ -55,7 +55,7 @@ function UserHistoryUpdateExpensePage() {
               groupCode={groupCode}
               groupMembers={groupMembers}
               expenseId={expenseId}
-              route={`/user-history/${userId}`}
+              route={`/user-transaction-history/${userId}`}
             />
           </div>
         </>

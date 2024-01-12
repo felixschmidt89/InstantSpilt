@@ -92,8 +92,8 @@ const SettleExpenses = () => {
                 positiveBalanceUsers={positiveBalanceUsers}
               />
               <RenderSettlementPaymentSuggestions
-                negativeBalanceUsers={negativeBalanceUsers}
                 positiveBalanceUsers={positiveBalanceUsers}
+                negativeBalanceUsers={negativeBalanceUsers}
               />
             </div>
           ) : (

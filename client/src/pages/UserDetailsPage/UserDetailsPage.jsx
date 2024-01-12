@@ -54,14 +54,14 @@ const UserDetailsPage = () => {
           </h2>
           <UserExpenseTotals userData={userData} />
           <UserPaymentTotals userData={userData} />
-          <h3>single expenses and payments </h3>
+          <h3>transaction history</h3>
           <RouteButton
-            route={`user-history/${userId}`}
+            route={`user-transaction-history/${userId}`}
             buttonText='view history'
             margin='0px'
           />
           <div className={styles.deleteButton}>
-            <DeleteResource resourceId={userId} resourceType='users' />{" "}
+            <DeleteResource resourceId={userId} resourceType='users' />
           </div>
         </div>
       ) : (

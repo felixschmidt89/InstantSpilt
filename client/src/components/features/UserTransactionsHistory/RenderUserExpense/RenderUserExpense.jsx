@@ -21,7 +21,7 @@ import styles from "./RenderUserExpense.module.css";
  * @param {Function} props.onDelete - Callback function for deleting the expense.
  * @returns {JSX.Element} - RenderUserExpense component.
  */
-const RenderUserExpense = ({ item, userId, onDelete }) => {
+const RenderUserExpense = ({ item, userId, onDeleteResource }) => {
   const beneficiaryNames = item.expenseBeneficiaries
     .map((beneficiary) => beneficiary.userName)
     .join(", ");
@@ -43,14 +43,16 @@ const RenderUserExpense = ({ item, userId, onDelete }) => {
           </div>
           {/* Link to edit expense details */}
           <Link
-            to={`/user-history-item-page?itemId=${item.itemId}&itemType=${item.itemType}&userId=${userId}`}>
+            to={`/user-history-item-page?itemId=${item._id}&itemType=${item.itemType}&userId=${userId}`}>
             edit
           </Link>
           <DeleteResource
-            resourceId={item.itemId}
-            resourceType={item.itemType}
-            onDelete={onDelete}
+            resourceId={item._id}
+            resourceType={"expenses"}
+            onDeleteResource={onDeleteResource}
             isButton={false}
+            navigateOnDelete={false}
+            showResourceType={false}
           />
         </div>
       </div>

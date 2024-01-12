@@ -42,8 +42,10 @@ const PaymentPage = () => {
             {emojiConstants.created}{" "}
             {new Date(paymentInfo.createdAt).toLocaleString()}
           </p>
-          <RouteButton route={`update-payment/${itemId}`} />
-
+          <RouteButton
+            route={`update-payment/${itemId}`}
+            buttonText={"update"}
+          />
           <DeleteResource resourceId={itemId} resourceType='payments' />
         </div>
       ) : (

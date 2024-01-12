@@ -18,23 +18,23 @@ import UserTransactionsHistory from "../../components/features/UserTransactionsH
 import NoUserTransactions from "../../components/features/UserTransactionsHistory/NoUserTransactions/NoUserTransactions";
 
 // Styles
-import styles from "./UserHistoryPage.module.css";
+import styles from "./UserTransactionHistoryPage.module.css";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-const UserHistoryPage = () => {
+const UserTransactionHistoryPage = () => {
   const { userId } = useParams();
-
   const [userExpensesAndPayments, setUserExpensesAndPayments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Function to update state after item deletion
-  const handleDeleteItem = (itemId) => {
+  // Function to update state to trigger page rerender after resource deletion
+  const updateUserExpensesAndPaymentsAfterResourceDeletion = (itemId) => {
     const updatedItems = userExpensesAndPayments.filter(
-      (item) => item.itemId !== itemId
+      (item) => item._id !== itemId
     );
+    devLog("User expenses and payments updated:", updatedItems);
     setUserExpensesAndPayments(updatedItems);
   };
 
@@ -45,34 +45,12 @@ const UserHistoryPage = () => {
           `${apiUrl}/users/${userId}/expenses-and-payments`
         );
         devLog(`User ${userId} expenses and payments fetched:`, response);
-        const responseData = response.data;
+        const userTransactionalData = response.data.userExpensesAndPayments;
 
-        // Check if userExpensesAndPayments array exists and has items
-        if (
-          responseData.userExpensesAndPayments &&
-          responseData.userExpensesAndPayments.length > 0
-        ) {
-          // Create new properties and sort by createdAt in descending order
-          const modifiedData = responseData.userExpensesAndPayments
-            .map((item) => ({
-              ...item,
-              itemId: item._id,
-
-              // Determine and add 'itemType' based on the presence of properties
-              itemType: item.expenseDescription
-                ? "expense"
-                : item.paymentAmount
-                ? "payment"
-                : "unknown",
-
-              // Convert createdAt to a Date object, sort by descending order
-              createdAt: new Date(item.createdAt),
-            }))
-            .sort((a, b) => b.createdAt - a.createdAt);
-          setUserExpensesAndPayments(modifiedData);
-        }
+        setUserExpensesAndPayments(userTransactionalData);
         setError(null);
         setIsLoading(false);
+        console.log("userExpensesAndPayments:", userTransactionalData);
       } catch (error) {
         devLog("Error fetching user expenses and payments:", error);
         setError(genericErrorMessage);
@@ -85,14 +63,14 @@ const UserHistoryPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - user history' />
-      <PiratePx COUNT_IDENTIFIER={"user-history"} />
+      <PiratePx COUNT_IDENTIFIER={"user-transaction-history"} />
       <NavigateButton
         route={`user-page/${userId}`}
         buttonText={faLeftLong}
         alignment={"left"}
         isIcon={true}
       />
-      <h1>User history</h1>
+      <h1>Transaction history</h1>
       {isLoading ? (
         <div className={styles.spinner}>
           <Spinner />
@@ -103,7 +81,9 @@ const UserHistoryPage = () => {
             <UserTransactionsHistory
               userExpensesAndPayments={userExpensesAndPayments}
               userId={userId}
-              onDeleteItem={handleDeleteItem}
+              onDeleteResource={
+                updateUserExpensesAndPaymentsAfterResourceDeletion
+              }
             />
           ) : (
             <NoUserTransactions />
@@ -115,4 +95,4 @@ const UserHistoryPage = () => {
   );
 };
 
-export default UserHistoryPage;
+export default UserTransactionHistoryPage;
