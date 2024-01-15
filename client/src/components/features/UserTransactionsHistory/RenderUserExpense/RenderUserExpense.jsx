@@ -17,11 +17,11 @@ import styles from "./RenderUserExpense.module.css";
  * Component for rendering details of a user's single expense.
  * @param {Object} props - The component props.
  * @param {Object} props.item - The expense item object.
- * @param {string} props.userId - The ID of the user.
+ *  @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDelete - Callback function for deleting the expense.
  * @returns {JSX.Element} - RenderUserExpense component.
  */
-const RenderUserExpense = ({ item, userId, onDeleteResource }) => {
+const RenderUserExpense = ({ item, groupCode, onDeleteResource }) => {
   const beneficiaryNames = item.expenseBeneficiaries
     .map((beneficiary) => beneficiary.userName)
     .join(", ");
@@ -42,7 +42,7 @@ const RenderUserExpense = ({ item, userId, onDeleteResource }) => {
             <span>€</span>
           </div>
           <LinkToPage
-            to={`/user-history-item-page?itemId=${item._id}&itemType=${item.itemType}&userId=${userId}`}
+            to={`/update-expense/${groupCode}/${item._id}`}
             setNestedPreviousRoute={true}>
             edit
           </LinkToPage>

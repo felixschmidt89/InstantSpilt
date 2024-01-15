@@ -16,7 +16,7 @@ import styles from "./RenderGroupPayment.module.css";
  * @param {Object} props.item - The payment item to be rendered.
  * @returns {JSX.Element} - Rendered component.
  */
-const RenderGroupPayment = ({ item }) => {
+const RenderGroupPayment = ({ item, groupCode }) => {
   return (
     <div className={styles.payments}>
       {/* Left column with payment emoji and amount */}
@@ -24,8 +24,7 @@ const RenderGroupPayment = ({ item }) => {
         <div className={styles.paymentEmoji}>{emojiConstants.payment}</div>
         <div className={styles.paymentAmount}>
           {/* Link to the item page with item details */}
-          <Link
-            to={`/item-page?itemId=${item.itemId}&itemType=${item.itemType}`}>
+          <Link to={`/payment-page/${groupCode}/${item.itemId}`}>
             {item.paymentAmount.toFixed(2)}€
           </Link>
         </div>

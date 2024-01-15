@@ -10,11 +10,12 @@ import RouteButton from "../../components/common/InAppNavigation/RouteButton/Rou
 import styles from "./PaymentPage.module.css";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
-import useSetPreviousRouteInLocalStorage from "../../hooks/useSetPreviousRouteInLocalStorage";
 
 const PaymentPage = () => {
-  const { itemId } = useParams();
+  const { groupCode, itemId } = useParams();
   const { paymentInfo } = useFetchPaymentInfo(itemId);
+
+  console.log(paymentInfo);
 
   return (
     <main>
@@ -26,11 +27,13 @@ const PaymentPage = () => {
           <h1>Payment {emojiConstants.payment}</h1>
           <h2>{paymentInfo.paymentAmount.toFixed(2)}€</h2>
           <p>
-            <Link to={`/user-page/${paymentInfo.paymentMaker._id}`}>
+            <Link
+              to={`/user-page/${groupCode}/${paymentInfo.paymentMaker._id}`}>
               {paymentInfo.paymentMaker.userName}
             </Link>{" "}
             {emojiConstants.paymentsMade}{" "}
-            <Link to={`/user-page/${paymentInfo.paymentRecipient._id}`}>
+            <Link
+              to={`/user-page/${groupCode}/${paymentInfo.paymentRecipient._id}`}>
               {paymentInfo.paymentRecipient.userName}
             </Link>{" "}
           </p>
@@ -39,7 +42,7 @@ const PaymentPage = () => {
             {new Date(paymentInfo.createdAt).toLocaleString()}
           </p>
           <RouteButton
-            route={`update-payment/${itemId}`}
+            route={`update-payment/${groupCode}/${itemId}`}
             buttonText={"update"}
             setPreviousRoute={true}
           />

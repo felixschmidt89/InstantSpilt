@@ -13,9 +13,10 @@ import styles from "./RenderUserNameAndBalance.module.css";
  *
  * @component
  * @param {Object[]} userDetails - The array of user details.
+ *  @param {string} props.groupCode - The groupCode of the group.
  * @returns {JSX.Element} - React component.
  */
-const RenderUserNameAndBalance = ({ userDetails }) => (
+const RenderUserNameAndBalance = ({ userDetails, groupCode }) => (
   <div className={styles.balancesContainer}>
     <ul>
       {userDetails.map((user) => (
@@ -25,7 +26,7 @@ const RenderUserNameAndBalance = ({ userDetails }) => (
               {/* Link to the user page */}
               <Link
                 className={styles.userName}
-                to={`/user-page/${user.userId}`}>
+                to={`/user-page/${groupCode}/${user.userId}`}>
                 {user.userName}
               </Link>
             </div>

@@ -1,28 +1,33 @@
-// React and Third-Party Libraries
-import { useEffect, useState } from "react";
-
-// Constants and Utils
+import { useState, useEffect } from "react";
 import { getRouteFromLocalStorage } from "../utils/localStorageUtils";
 
 /**
- * Custom hook to get previousRoute from localStorage.
- * @param {string} [key="previousRoute"] - The key under which the previousRoute is stored in localStorage. Defaults to "previousRoute". For further nested pages, use "nestedPreviousRoute" as key.
- *  @returns {[string, boolean]} The retrieved previousRoute and a boolean indicating whether the retrieval was successful.
+ * Custom hook to get previous routes from localStorage.
+ * @returns {{ previousRoute: string, nestedPreviousRoute: string, isRetrieved: boolean }} The retrieved previous routes and a boolean indicating whether the retrieval was successful.
  */
-const useGetPreviousRouteFromLocalStorage = (key = "previousRoute") => {
+const useGetPreviousRoutesFromLocalStorage = () => {
   const [previousRoute, setPreviousRoute] = useState("");
+  const [nestedPreviousRoute, setNestedPreviousRoute] = useState("");
   const [isRetrieved, setIsRetrieved] = useState(false);
 
   useEffect(() => {
-    const retrievedRoute = getRouteFromLocalStorage(key);
-    if (retrievedRoute !== null) {
-      setPreviousRoute(retrievedRoute);
-    }
-    setPreviousRoute("No previous route stored.");
-    setIsRetrieved(true);
-  }, [key]);
+    const retrievedPreviousRoute = getRouteFromLocalStorage("previousRoute");
+    const retrievedNestedPreviousRoute = getRouteFromLocalStorage(
+      "nestedPreviousRoute"
+    );
 
-  return { previousRoute, isRetrieved };
+    if (retrievedPreviousRoute !== null) {
+      setPreviousRoute(retrievedPreviousRoute);
+    }
+
+    if (retrievedNestedPreviousRoute !== null) {
+      setNestedPreviousRoute(retrievedNestedPreviousRoute);
+    }
+
+    setIsRetrieved(true);
+  }, []);
+
+  return { previousRoute, nestedPreviousRoute, isRetrieved };
 };
 
-export default useGetPreviousRouteFromLocalStorage;
+export default useGetPreviousRoutesFromLocalStorage;

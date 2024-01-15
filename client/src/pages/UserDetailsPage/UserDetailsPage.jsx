@@ -11,14 +11,13 @@ import UserPaymentTotals from "../../components/features/UserDetails/UserPayment
 import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
-import useSetPreviousRouteInLocalStorage from "../../hooks/useSetPreviousRouteInLocalStorage";
 
 /**
  * Fetches and renders detailed information about a user, including name, balance, total expenses and payments.
  * allows for user deletion if user is not associated with any payment or expense
  */
 const UserDetailsPage = () => {
-  const { userId } = useParams();
+  const { groupCode, userId } = useParams();
   const { userData } = useFetchUserData(userId);
 
   // Set userBalance to 0 if it's less than or equal to BALANCE_THRESHOLD so balance is considered settled
@@ -52,7 +51,7 @@ const UserDetailsPage = () => {
           <UserPaymentTotals userData={userData} />
           <h3>transaction history</h3>
           <RouteButton
-            route={`user-transaction-history/${userId}`}
+            route={`user-transaction-history/${groupCode}/${userId}`}
             buttonText='view history'
             setPreviousRoute={true}
             margin='0px'

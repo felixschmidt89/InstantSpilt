@@ -13,13 +13,13 @@ import styles from "./UserTransactionsHistory.module.css";
  * @component
  * @param {Object} props - The component props.
  * @param {Array} props.userExpensesAndPayments - An array of user expenses and payments.
- * @param {string} props.userId - The ID of the user.
+ * @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDeleteItem - Callback function to handle deletion of an expense or a payment.
  * @returns {JSX.Element|null} - UserTransactionsHistory component or null if no transactions.
  */
 const UserTransactionsHistory = ({
   userExpensesAndPayments,
-  userId,
+  groupCode,
   onDeleteResource,
 }) => {
   if (userExpensesAndPayments.length === 0) {
@@ -34,13 +34,13 @@ const UserTransactionsHistory = ({
             {item.itemType === "expense" ? (
               <RenderUserExpense
                 item={item}
-                userId={userId}
+                groupCode={groupCode}
                 onDeleteResource={onDeleteResource}
               />
             ) : (
               <RenderUserPayment
                 item={item}
-                userId={userId}
+                groupCode={groupCode}
                 onDeleteResource={onDeleteResource}
               />
             )}

@@ -15,7 +15,6 @@ import InstantSplitPage from "./pages/InstantSplitPage/InstantSplitPage";
 import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
 import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
 import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
-import ItemNavigatorPage from "./pages/ItemNavigatorPage/ItemNavigatorPage";
 import PaymentPage from "./pages/PaymentPage/PaymentPage";
 import ExpensePage from "./pages/ExpensePage/ExpensePage";
 import IndexNavigatorPage from "./pages/IndexNavigatorPage/IndexNavigator";
@@ -37,8 +36,6 @@ import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInvit
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
 import UserTransactionHistoryPage from "./pages/UserTransactionHistoryPage/UserTransactionHistoryPage";
 import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/ItemNavigatorUserHistoryPage";
-import UpdateUserExpensePage from "./pages/UpdateExpenseUserPage/UpdateExpenseUserPage";
-import UserHistoryUpdatePaymentPage from "./pages/UserHistoryUpdatePaymentPage/UserHistoryUpdatePaymentPage";
 
 // Styles
 import "./App.css";
@@ -82,21 +79,13 @@ const App = () => {
           <Route path='/instant-split' element={<InstantSplitPage />} />
           <Route path='/create-expense' element={<CreateExpensePage />} />
           <Route
-            path='/update-expense/:expenseId'
+            path='/update-expense/:groupCode/:expenseId'
             element={<UpdateExpensePage />}
-          />
-          <Route
-            path='/update-user-expense/:userId/:expenseId'
-            element={<UpdateUserExpensePage />}
           />
           <Route path='/create-payment' element={<CreatePaymentPage />} />
           <Route
-            path='/update-payment/:itemId'
+            path='/update-payment/:groupCode/:paymentId'
             element={<UpdatePaymentPage />}
-          />
-          <Route
-            path='/update-user-payment/:userId/:itemId'
-            element={<UserHistoryUpdatePaymentPage />}
           />
           <Route
             path='/create-users-inapp'
@@ -106,21 +95,28 @@ const App = () => {
             path='/settle-expenses'
             element={<SettleGroupExpensesPage />}
           />
-
-          <Route path='/item-page' element={<ItemNavigatorPage />} />
           <Route
             path='/user-history-item-page'
             element={<ItemNavigatorUserHistoryPage />}
           />
 
-          <Route path='/user-page/:userId' element={<UserDetailsPage />} />
           <Route
-            path='/user-transaction-history/:userId'
+            path='/user-page/:groupCode/:userId'
+            element={<UserDetailsPage />}
+          />
+          <Route
+            path='/user-transaction-history/:groupCode/:userId'
             element={<UserTransactionHistoryPage />}
           />
 
-          <Route path='/payment-page/:itemId' element={<PaymentPage />} />
-          <Route path='/expense-page/:itemId' element={<ExpensePage />} />
+          <Route
+            path='/payment-page/:groupCode/:itemId'
+            element={<PaymentPage />}
+          />
+          <Route
+            path='/expense-page/:groupCode/:itemId'
+            element={<ExpensePage />}
+          />
           <Route
             path='/leave-group/:groupName/:groupCode'
             element={<ForgetGroupOnDevicePage />}

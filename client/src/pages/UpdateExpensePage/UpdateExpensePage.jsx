@@ -1,7 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 // Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
@@ -16,20 +15,32 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import UpdateExpense from "../../components/features/Expenses/UpdateExpense/UpdateExpense";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
+// Hooks
+import useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory from "../../hooks/useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory";
+
 // Styles
 import styles from "./UpdateExpensePage.module.css";
 
 function UpdateExpensePage() {
-  const { expenseId } = useParams();
+  const { groupCode, expenseId } = useParams();
+
+  // Use custom hook to specify previous page to render appropriate InAppNavigation
+  const { isChecked, openedViaGroupHistory, openedViaUserTransactionsHistory } =
+    useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory();
+
   // Use custom hook to manage expense update logic
-  const { isLoading, groupCode, expenseInfo, groupMembers } =
-    useExpenseUpdate(expenseId);
+  const { isLoading, expenseInfo, groupMembers } = useExpenseUpdate(expenseId);
 
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - update expense' />
-      <PiratePx COUNT_IDENTIFIER={"update-expense-page"} />
-      <InAppNavigationBar previousRoute={true} home={true} />
+      <PiratePx COUNT_IDENTIFIER={"update-expense"} />
+      {isChecked && openedViaGroupHistory && (
+        <InAppNavigationBar previousRoute={true} home={true} />
+      )}
+      {isChecked && openedViaUserTransactionsHistory && (
+        <InAppNavigationBar nestedPreviousRoute={true} home={true} />
+      )}
       {isLoading ? (
         <Spinner />
       ) : (
@@ -39,10 +50,10 @@ function UpdateExpensePage() {
               Update expense {emojiConstants.expense}
             </h1>
             <UpdateExpense
-              expenseInfo={expenseInfo}
               groupCode={groupCode}
               groupMembers={groupMembers}
               expenseId={expenseId}
+              expenseInfo={expenseInfo}
               route={`/instant-split`}
             />
           </div>

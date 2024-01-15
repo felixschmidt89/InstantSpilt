@@ -11,9 +11,10 @@ import styles from "./UsersWithNegativeBalance.module.css";
  * @component
  * @param {Object} props - The component props.
  * @param {Array} props.negativeBalanceUsers - An array of users with negative balance.
+ *  @param {string} props.groupCode - The groupCode identifying the group.
  * @returns {JSX.Element} - React component.
  */
-const UsersWithNegativeBalance = ({ negativeBalanceUsers }) => {
+const UsersWithNegativeBalance = ({ negativeBalanceUsers, groupCode }) => {
   if (negativeBalanceUsers.length === 0) {
     return null;
   }
@@ -27,7 +28,9 @@ const UsersWithNegativeBalance = ({ negativeBalanceUsers }) => {
             <div className={styles.userDetails}>
               <strong>
                 {/* Link to the user page */}
-                <Link className={styles.userName} to={`/user-page/${user.id}`}>
+                <Link
+                  className={styles.userName}
+                  to={`/user-page/${groupCode}/${user.id}`}>
                   {user.userName}
                 </Link>
               </strong>

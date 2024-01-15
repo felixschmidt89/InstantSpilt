@@ -22,7 +22,7 @@ const useFetchPaymentInfo = (paymentId) => {
   const [paymentInfo, setPaymentInfo] = useState(null);
   const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
-
+  console.log("paymentId:", paymentId);
   useEffect(() => {
     const fetchPaymentInfo = async () => {
       try {

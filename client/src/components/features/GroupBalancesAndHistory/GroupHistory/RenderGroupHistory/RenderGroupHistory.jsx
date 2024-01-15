@@ -94,9 +94,9 @@ const RenderGroupHistory = ({ groupCode }) => {
             {groupExpensesAndPayments.map((item) => (
               <li key={item._id}>
                 {item.expenseDescription ? (
-                  <RenderGroupExpense item={item} />
+                  <RenderGroupExpense item={item} groupCode={groupCode} />
                 ) : (
-                  <RenderGroupPayment item={item} />
+                  <RenderGroupPayment item={item} groupCode={groupCode} />
                 )}
               </li>
             ))}

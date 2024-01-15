@@ -23,7 +23,7 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const UserTransactionHistoryPage = () => {
-  const { userId } = useParams();
+  const { groupCode, userId } = useParams();
   const [userExpensesAndPayments, setUserExpensesAndPayments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -75,7 +75,7 @@ const UserTransactionHistoryPage = () => {
           {userExpensesAndPayments.length > 0 ? (
             <UserTransactionsHistory
               userExpensesAndPayments={userExpensesAndPayments}
-              userId={userId}
+              groupCode={groupCode}
               onDeleteResource={
                 updateUserExpensesAndPaymentsAfterResourceDeletion
               }

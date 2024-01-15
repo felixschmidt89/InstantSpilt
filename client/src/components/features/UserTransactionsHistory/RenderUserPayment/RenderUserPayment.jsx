@@ -17,11 +17,11 @@ import styles from "./RenderUserPayment.module.css";
  * Component for rendering details of a user's single payment.
  * @param {Object} props - The component props.
  * @param {Object} props.item - The payment item object.
- * @param {string} props.userId - The ID of the user.
+ * @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDelete - Callback function for deleting the payment.
  * @returns {JSX.Element} - RenderUserPayment component.
  */
-const RenderUserPayment = ({ item, userId, onDeleteResource }) => {
+const RenderUserPayment = ({ item, groupCode, onDeleteResource }) => {
   return (
     <div className={styles.payments}>
       {/* Left Column */}
@@ -38,7 +38,7 @@ const RenderUserPayment = ({ item, userId, onDeleteResource }) => {
             <span>€</span>
           </div>
           <LinkToPage
-            to={`/user-history-item-page?itemId=${item._id}&itemType=${item.itemType}&userId=${userId}`}
+            to={`/update-payment/${groupCode}/${item._id}`}
             setNestedPreviousRoute={true}>
             edit
           </LinkToPage>

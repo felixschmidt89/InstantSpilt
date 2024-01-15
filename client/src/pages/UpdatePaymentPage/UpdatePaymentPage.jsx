@@ -15,20 +15,32 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import UpdatePayment from "../../components/features/Payments/UpdatePayment/UpdatePayment";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
+// Hooks
+import useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory from "../../hooks/useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory";
+
 // Styles
 import styles from "./UpdatePaymentPage.module.css";
 
 const UpdatePaymentPage = () => {
-  const { itemId } = useParams();
+  const { groupCode, paymentId } = useParams();
+
+  // Use custom hook to specify previous page to render appropriate InAppNavigation
+  const { isChecked, openedViaGroupHistory, openedViaUserTransactionsHistory } =
+    useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory();
+
   // Use custom hook to manage payment update logic
-  const { isLoading, groupCode, paymentInfo, groupMembers } =
-    usePaymentUpdate(itemId);
+  const { isLoading, paymentInfo, groupMembers } = usePaymentUpdate(paymentId);
 
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - update payment' />
       <PiratePx COUNT_IDENTIFIER={"update-payment"} />
-      <InAppNavigationBar previousRoute={true} home={true} />
+      {isChecked && openedViaGroupHistory && (
+        <InAppNavigationBar previousRoute={true} home={true} />
+      )}
+      {isChecked && openedViaUserTransactionsHistory && (
+        <InAppNavigationBar nestedPreviousRoute={true} home={true} />
+      )}
       <h2 className={styles.header}>Update payment {emojiConstants.payment}</h2>
       {isLoading ? (
         <Spinner />
