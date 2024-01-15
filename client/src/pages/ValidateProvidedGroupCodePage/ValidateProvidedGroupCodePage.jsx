@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { StatusCodes } from "http-status-codes";
 import emojiConstants from "../../constants/emojiConstants";
 import {
   setGroupCodeToCurrentlyActive,

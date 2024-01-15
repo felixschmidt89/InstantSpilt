@@ -12,6 +12,7 @@ import { devLog } from "../../utils/errorUtils";
 const TermsAndConditionsPage = () => {
   // Check whether user was redirected from invitation link
   const { previousRoute, isRetrieved } = useGetPreviousRouteFromLocalStorage();
+
   const isRegularUser = !previousRoute.includes("join-instantsplit-group/");
   if (isRetrieved) {
     devLog("Current user is a regular user:", isRegularUser);

@@ -74,7 +74,7 @@ const AcceptInviteAndJoinPage = () => {
               <span className={styles.noWrap}>
                 <LinkToPage
                   setCustomPreviousRoute={true}
-                  customRoute={`join-instantsplit-group/${groupName}/${groupCode}`}>
+                  customRoute={"/terms-and-conditions"}>
                   terms and conditions
                 </LinkToPage>
               </span>

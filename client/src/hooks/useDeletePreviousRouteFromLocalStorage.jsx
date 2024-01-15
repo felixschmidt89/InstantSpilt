@@ -11,7 +11,7 @@ import { deleteRouteFromLocalStorage } from "../utils/localStorageUtils";
 const useDeleteRouteFromLocalStorage = (key = "previousRoute") => {
   useEffect(() => {
     deleteRouteFromLocalStorage(key);
-  }, []);
+  }, [key]);
 };
 
 export default useDeleteRouteFromLocalStorage;
