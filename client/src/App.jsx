@@ -35,7 +35,6 @@ import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
 import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
 import UserTransactionHistoryPage from "./pages/UserTransactionHistoryPage/UserTransactionHistoryPage";
-import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/ItemNavigatorUserHistoryPage";
 
 // Styles
 import "./App.css";
@@ -96,11 +95,6 @@ const App = () => {
             element={<SettleGroupExpensesPage />}
           />
           <Route
-            path='/user-history-item-page'
-            element={<ItemNavigatorUserHistoryPage />}
-          />
-
-          <Route
             path='/user-page/:groupCode/:userId'
             element={<UserDetailsPage />}
           />
@@ -108,7 +102,6 @@ const App = () => {
             path='/user-transaction-history/:groupCode/:userId'
             element={<UserTransactionHistoryPage />}
           />
-
           <Route
             path='/payment-page/:groupCode/:itemId'
             element={<PaymentPage />}

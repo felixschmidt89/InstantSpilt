@@ -25,8 +25,6 @@ function useValidateGroupExistence(groupCode, validationType = "continuous") {
   const [error, setError] = useState(null);
   const [isValidated, setIsValidated] = useState(false);
 
-  console.log("Groupcode:", groupCode);
-
   useEffect(() => {
     const validateGroup = async () => {
       try {
