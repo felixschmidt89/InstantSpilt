@@ -72,10 +72,8 @@ const AcceptInviteAndJoinPage = () => {
             <p className={styles.terms}>
               By using InstantSplit you agree to our{" "}
               <span className={styles.noWrap}>
-                <LinkToPage
-                  setCustomPreviousRoute={true}
-                  customRoute={"/terms-and-conditions"}>
-                  terms and conditions
+                <LinkToPage to={"/terms-and-conditions"}>
+                  terms and conditions setPreviousRoute={true}
                 </LinkToPage>
               </span>
             </p>

@@ -6,18 +6,33 @@ import MiddleSectionExplanation from "../../components/features/Tutorial/MiddleS
 import BottomSectionExplanation from "../../components/features/Tutorial/BottomSectionExplanation/BottomSectionExplanation";
 import styles from "./OnboardingTutorialPage.module.css";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
+import { devLog } from "../../utils/errorUtils";
 
 function OnboardingTutorialPage() {
+  // Check whether user was redirected from invitation link
+  const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
+
+  const isRegularUser = !previousRoute.includes("join-instantsplit-group/");
+  if (isRetrieved) {
+    devLog("Current user is a regular user:", isRegularUser);
+  }
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - onboarding tutorial' />
       <PiratePx COUNT_IDENTIFIER={"onboarding-tutorial"} />
-      <InAppNavigationBar
-        back={true}
-        backRoute='/onboarding-groupcode-explanation'
-        forward={true}
-        forwardRoute='/instant-split'
-      />
+      {isRetrieved && isRegularUser ? (
+        <InAppNavigationBar
+          back={true}
+          backRoute='/onboarding-groupcode-explanation'
+          forward={true}
+          forwardRoute='/instant-split'
+        />
+      ) : (
+        // Disallow back navigation for invited users
+        <InAppNavigationBar forward={true} forwardRoute='/instant-split' />
+      )}
+
       <div className={styles.container}>
         <h1>Brief explanation</h1>
         <TopSectionExplanation />
