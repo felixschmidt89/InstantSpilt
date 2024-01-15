@@ -5,8 +5,7 @@ import CopyToClipBoard from "../../components/common/CopyToClipboard/CopyToClipb
 import WebShareApiInvite from "../../components/common/WebShareApiInvite/WebShareApiInvite";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
@@ -18,7 +17,7 @@ const ShareGroupPage = () => {
 
   // Force passing URL-encoded groupNames
   const urlEncodedGroupName = encodeURIComponent(groupName);
-  const infoToCopy = `${baseUrl}/join/${urlEncodedGroupName}/${groupCode}`;
+  const infoToCopy = `${baseUrl}/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
 
   return (
     <main>
@@ -26,12 +25,7 @@ const ShareGroupPage = () => {
         title={`InstantSplit - Invite & share ${groupName}`}
       />
       <PiratePx COUNT_IDENTIFIER={"share-group"} />
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />{" "}
+      <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>Invite & share</h1>
         {isWebShareAPISupported ? (

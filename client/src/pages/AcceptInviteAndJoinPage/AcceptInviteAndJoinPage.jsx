@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
@@ -9,6 +9,7 @@ import {
   setGroupCodeToCurrentlyActive,
 } from "../../utils/localStorageUtils";
 import styles from "./AcceptInviteAndJoinPage.module.css";
+import LinkToPage from "../../components/common/InAppNavigation/LinkToPage/LinkToPage";
 
 /**
  * Addresses users joining a group via invitation link.
@@ -19,15 +20,7 @@ import styles from "./AcceptInviteAndJoinPage.module.css";
 const AcceptInviteAndJoinPage = () => {
   const { groupCode, groupName } = useParams();
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
-  const groupData = useFetchGroupData(groupCode);
-
-  // Set isLoading to false when group data is received.
-  useEffect(() => {
-    if (groupData !== null && groupData !== undefined) {
-      setIsLoading(false);
-    }
-  }, [groupData]);
+  const { groupData, isFetched } = useFetchGroupData(groupCode);
 
   // On confirmation button click: store groupCode in client's localStorage and navigate to onboarding page
   const handleAcceptInvitation = () => {
@@ -46,8 +39,8 @@ const AcceptInviteAndJoinPage = () => {
       <PiratePx COUNT_IDENTIFIER={"join"} />
       <div className={styles.explanationContainer}>
         <h1>Hey there!</h1>
-        {isLoading && <Spinner />}
-        {!isLoading && groupData && (
+        {!isFetched && <Spinner />}
+        {isFetched && groupData && (
           <>
             <p>
               <div>
@@ -79,11 +72,11 @@ const AcceptInviteAndJoinPage = () => {
             <p className={styles.terms}>
               By using InstantSplit you agree to our{" "}
               <span className={styles.noWrap}>
-                <Link
-                  to={`/terms-and-conditions/invite/${groupName}/${groupCode}`}>
+                <LinkToPage
+                  setCustomPreviousRoute={true}
+                  customRoute={`join-instantsplit-group/${groupName}/${groupCode}`}>
                   terms and conditions
-                </Link>
-                .
+                </LinkToPage>
               </span>
             </p>
           </>

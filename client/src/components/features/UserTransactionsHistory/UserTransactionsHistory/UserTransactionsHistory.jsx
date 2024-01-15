@@ -25,7 +25,6 @@ const UserTransactionsHistory = ({
   if (userExpensesAndPayments.length === 0) {
     return null;
   }
-  console.log(userExpensesAndPayments);
 
   return (
     <div className={styles.container}>

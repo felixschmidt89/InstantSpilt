@@ -1,11 +1,9 @@
 import React from "react";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import legalNoticeContent from "../../contents/legalNoticeContent";
 import styles from "./LegalNoticePage.module.css";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 const LegalNoticePage = () => {
   return (
@@ -15,7 +13,7 @@ const LegalNoticePage = () => {
         description='Legal Notice as required by the Telemediengesetz for German websites.'
       />
       <PiratePx COUNT_IDENTIFIER={"legal-notice"} />
-      <InAppNavigationBar back={true} backRoute='/instant-split' />
+      <InAppNavigationBar back={true} />
 
       <div className={styles.container}>
         <h1>Legal notice (Impressum)</h1>

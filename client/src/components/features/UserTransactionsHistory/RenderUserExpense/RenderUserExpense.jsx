@@ -1,6 +1,5 @@
 // React and Third-Party Libraries
 import React from "react";
-import { Link } from "react-router-dom";
 
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
@@ -9,6 +8,7 @@ import emojiConstants from "../../../../constants/emojiConstants";
 import DeleteResource from "../../../common/DeleteResource/DeleteResource";
 import Emoji from "../../../common/Emoji/Emoji";
 import RenderDataAttributeWithAriaLabel from "../../../common/RenderDataAttributeWithAriaLabel/RenderDataAttributeWithAriaLabel";
+import LinkToPage from "../../../common/InAppNavigation/LinkToPage/LinkToPage";
 
 // Styles
 import styles from "./RenderUserExpense.module.css";
@@ -41,11 +41,11 @@ const RenderUserExpense = ({ item, userId, onDeleteResource }) => {
             />
             <span>€</span>
           </div>
-          {/* Link to edit expense details */}
-          <Link
-            to={`/user-history-item-page?itemId=${item._id}&itemType=${item.itemType}&userId=${userId}`}>
+          <LinkToPage
+            to={`/user-history-item-page?itemId=${item._id}&itemType=${item.itemType}&userId=${userId}`}
+            setNestedPreviousRoute={true}>
             edit
-          </Link>
+          </LinkToPage>
           <DeleteResource
             resourceId={item._id}
             resourceType={"expenses"}

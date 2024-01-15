@@ -24,7 +24,7 @@ const useAuthenticateUsersActiveGroupCode = (groupCode) => {
   }
 
   // Check if groupCode is valid
-  const [groupExists] = useValidateGroupExistence(groupCode);
+  const { groupExists } = useValidateGroupExistence(groupCode, "continuous");
 
   // If not, delete it from LocalStorage and navigate to homepage
   useEffect(() => {

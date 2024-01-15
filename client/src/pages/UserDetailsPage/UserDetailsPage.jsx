@@ -1,18 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
-import RouteButton from "../../components/common/RouteButton/RouteButton";
+import RouteButton from "../../components/common/InAppNavigation/RouteButton/RouteButton";
 import styles from "./UserDetailsPage.module.css";
 import useFetchUserData from "../../hooks/useFetchUserInfo";
 import UserExpenseTotals from "../../components/features/UserDetails/UserExpensesTotals/UserExpensesTotals";
 import UserPaymentTotals from "../../components/features/UserDetails/UserPaymentsTotals/UserPaymentsTotals";
 import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
-import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import useSetPreviousRouteInLocalStorage from "../../hooks/useSetPreviousRouteInLocalStorage";
 
 /**
  * Fetches and renders detailed information about a user, including name, balance, total expenses and payments.
@@ -37,7 +36,7 @@ const UserDetailsPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - user details' />
       <PiratePx COUNT_IDENTIFIER={"user-details"} />
-      <InAppNavigationBar back={true} backRoute='/instant-split' />
+      <InAppNavigationBar back={true} />
 
       {userData ? (
         <div className={styles.container}>
@@ -55,6 +54,7 @@ const UserDetailsPage = () => {
           <RouteButton
             route={`user-transaction-history/${userId}`}
             buttonText='view history'
+            setPreviousRoute={true}
             margin='0px'
           />
           <div className={styles.deleteButton}>

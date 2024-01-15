@@ -14,10 +14,10 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
 import CreatePayment from "../../components/features/Payments/CreatePayment/CreatePayment";
 import CreateUserCTA from "../../components/common/CreateUserCTA/CreateUserCTA";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 // Styles
 import styles from "./CreatePaymentPage.module.css";
-import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
 
 const CreatePaymentPage = () => {
   // Define states for paymentAmount, userName, paymentRecipient, and error message

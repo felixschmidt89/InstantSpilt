@@ -15,6 +15,7 @@ import GroupActionsBar from "../../components/features/GroupActionsBar/GroupActi
 import SwitchViewButtonsBar from "../../components/features/GroupBalancesAndHistory/SwitchViewButtonsBar/SwitchViewButtonsBar";
 import RenderGroupHistory from "../../components/features/GroupBalancesAndHistory/GroupHistory/RenderGroupHistory/RenderGroupHistory";
 import RenderGroupBalances from "../../components/features/GroupBalancesAndHistory/GroupBalances/RenderGroupBalances/RenderGroupBalances";
+import useDeletePreviousRouteFromLocalStorage from "../../hooks/useDeletePreviousRouteFromLocalStorage";
 
 // Styles
 import styles from "./InstantSplitPage.module.css";
@@ -29,6 +30,9 @@ const InstantSplitPage = () => {
   const { groupData, isFetched } = useFetchGroupData(groupCode);
   // Retrieve the 'view' value from localStorage or set the default value
   const [view, setView] = useLocalStorage("viewState", "view2");
+  // Remove nested routes from localStorage
+  useDeletePreviousRouteFromLocalStorage();
+  useDeletePreviousRouteFromLocalStorage("nestedPreviousRoute");
 
   useAuthenticateUsersActiveGroupCode(groupCode);
 

@@ -159,13 +159,13 @@ export const validateGroupExistence = async (req, res) => {
     if (group) {
       res.status(StatusCodes.OK).json({
         status: 'success',
-        data: true,
+        exists: true,
         message: 'The group exists',
       });
     } else {
       res.status(StatusCodes.OK).json({
         status: 'success',
-        data: false,
+        exists: false,
         message: 'The group does not exist',
       });
     }

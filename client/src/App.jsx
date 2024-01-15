@@ -35,7 +35,6 @@ import UpdateExpensePage from "./pages/UpdateExpensePage/UpdateExpensePage";
 import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
 import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
-import TermsAndConditionsViaInvitePage from "./pages/TermsAndConditionsViaInvitePage/TermsAndConditionsViaInvitePage";
 import UserTransactionHistoryPage from "./pages/UserTransactionHistoryPage/UserTransactionHistoryPage";
 import ItemNavigatorUserHistoryPage from "./pages/ItemNavigatorUserHistoryPage/ItemNavigatorUserHistoryPage";
 import UpdateUserExpensePage from "./pages/UpdateExpenseUserPage/UpdateExpenseUserPage";
@@ -68,7 +67,7 @@ const App = () => {
             element={<ValidateProvidedGroupCodePage />}
           />
           <Route
-            path='/join/:groupName/:groupCode'
+            path='/join-instantsplit-group/:groupName/:groupCode'
             element={<AcceptInviteAndJoinPage />}
           />
           <Route
@@ -135,11 +134,6 @@ const App = () => {
             path='/terms-and-conditions'
             element={<TermsAndConditionsPage />}
           />
-          <Route
-            path='/terms-and-conditions/invite/:groupName/:groupCode'
-            element={<TermsAndConditionsViaInvitePage />}
-          />
-
           <Route path='*' element={<PageNotFoundPage />} />
         </Routes>
         <Footer />

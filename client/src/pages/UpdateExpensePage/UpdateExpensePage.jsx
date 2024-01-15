@@ -12,9 +12,9 @@ import useExpenseUpdate from "../../hooks/useExpenseUpdate";
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
 import UpdateExpense from "../../components/features/Expenses/UpdateExpense/UpdateExpense";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 // Styles
 import styles from "./UpdateExpensePage.module.css";
@@ -29,12 +29,7 @@ function UpdateExpensePage() {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - update expense' />
       <PiratePx COUNT_IDENTIFIER={"update-expense-page"} />
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+      <InAppNavigationBar previousRoute={true} home={true} />
       {isLoading ? (
         <Spinner />
       ) : (

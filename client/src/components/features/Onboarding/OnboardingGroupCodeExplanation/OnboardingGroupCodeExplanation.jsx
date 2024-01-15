@@ -24,7 +24,7 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
           The key to settling group expenses easily while sharing minimal data
           is the <strong>GroupCode</strong>. Here&rsquo;s yours:
         </p>
-        <CopyToClipboard infoToCopy={groupCode} />
+        <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"12rem"} />
       </div>
       <div className={styles.saveGroupCode}>
         <p>Be sure to write it down in a safe place.</p>

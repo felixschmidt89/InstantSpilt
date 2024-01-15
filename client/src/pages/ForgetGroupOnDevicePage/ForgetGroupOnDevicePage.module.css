@@ -1,6 +1,9 @@
 .container {
-  margin: 0 auto;
-  height: 80%;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: space-between;
+  align-items: center;
   overflow-y: auto;
 }
 
@@ -20,7 +23,6 @@
   width: fit-content;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
-  margin: 0 auto;
 }
 
 .button:hover {
@@ -28,18 +30,8 @@
   box-shadow: 0 0 0.5rem var(--color-error);
 }
 
-/* Ensures confirmation button is not moved by copy group code element state change */
 .buttonContainer {
   margin: 0 auto;
-  position: absolute;
-  bottom: 25%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* Prevent button from disappearing south on very large screens */
-@media (min-width: 2001px) {
-  .buttonContainer {
-    bottom: 40%;
-  }
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }

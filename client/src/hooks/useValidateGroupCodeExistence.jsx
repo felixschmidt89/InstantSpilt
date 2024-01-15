@@ -14,42 +14,48 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * Custom hook for validating the existence of a groupCode in the database.
  *
  * @param {string} groupCode - The groupCode to validate.
- * @param {boolean} [limited=false] - Whether to perform limited validation (limited attempts per IP address).
- * @returns {Array} - An array containing groupExists state and error state.
+ * @param {string} [validationType="continuous"] - The type of validation to perform ("continuous" or "limited").
+ * @returns {Object} - An object containing groupExists state, error state, and isValidated state.
  * @property {boolean|null} groupExists - Indicates whether the group code exists.
  * @property {string|null} error - An error message in case of an error during validation.
+ * @property {boolean} isValidated - Indicates whether the validation has been completed.
  */
-function useValidateGroupExistence(groupCode, limited = false) {
+function useValidateGroupExistence(groupCode, validationType = "continuous") {
   const [groupExists, setGroupExists] = useState(null);
   const [error, setError] = useState(null);
+  const [isValidated, setIsValidated] = useState(false);
+
+  console.log("Groupcode:", groupCode);
 
   useEffect(() => {
     const validateGroup = async () => {
       try {
-        devLog(`Validating code ${groupCode} in database`);
-        const endpoint = limited
-          ? `${apiUrl}/groups/${groupCode}/limited-validate-existence`
-          : `${apiUrl}/groups/${groupCode}/continuous-validate-existence`;
+        devLog(`Validating groupCode ${groupCode} in database`);
+        const endpoint =
+          validationType === "limited"
+            ? `${apiUrl}/groups/${groupCode}/limited-validate-existence`
+            : `${apiUrl}/groups/${groupCode}/continuous-validate-existence`;
 
         const response = await axios.get(endpoint);
+        console.log(response);
 
-        if (response.data === false) {
-          setGroupExists(false);
-          devLog(`Groupcode ${groupCode} does not exist.`);
-        } else {
+        if (response.data.exists === true) {
           setGroupExists(true);
-          devLog(`Groupcode ${groupCode} does exist.`);
+          setIsValidated(true);
+          devLog(`Groupcode ${groupCode} exists.`);
+        } else {
+          setGroupExists(false);
+          setIsValidated(true);
+          devLog(`Groupcode ${groupCode} does not exist.`);
         }
       } catch (error) {
         if (
-          limited &&
+          validationType === "limited" &&
           error.response &&
           error.response.status === StatusCodes.TOO_MANY_REQUESTS
         ) {
-          setError(
-            "Too many requests for limited validation. Please try again later."
-          );
-          devLog(`Too many limited validation requests from this IP address.`);
+          setError("Too many requests. Please try again later.");
+          devLog("Too many validation requests from this IP address.", error);
         } else {
           devLog("Error validating group code:", error);
           setError(genericErrorMessage);
@@ -58,9 +64,9 @@ function useValidateGroupExistence(groupCode, limited = false) {
     };
 
     validateGroup();
-  }, [groupCode, limited]);
+  }, [groupCode, validationType]);
 
-  return [groupExists, error];
+  return { groupExists, error, isValidated };
 }
 
 export default useValidateGroupExistence;

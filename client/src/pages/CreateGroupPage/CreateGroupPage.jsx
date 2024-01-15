@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import {
   setGroupCodeToCurrentlyActive,
   storeGroupCodeInLocalStorage,
@@ -10,8 +9,8 @@ import {
 
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import styles from "./CreateGroupPage.module.css";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -55,12 +54,7 @@ const CreateGroupPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - create group' />
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />{" "}
+      <InAppNavigationBar back={true} backRoute={"/homepage"} />
       <h1>Create a group</h1>
       <form onSubmit={handleFormSubmit}>
         <input

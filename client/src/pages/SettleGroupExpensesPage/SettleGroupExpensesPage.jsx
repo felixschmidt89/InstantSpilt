@@ -1,11 +1,9 @@
 import React from "react";
 import styles from "./SettleGroupExpensesPage.module.css";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import SettleExpenses from "../../components/features/SettleExpenses/SettleExpenses/SettleExpenses";
-import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 function SettleGroupExpensesPage() {
   return (

@@ -23,7 +23,7 @@ const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 const GroupCodeExplanation = ({ groupName, groupCode }) => {
   // Force passing URL-encoded groupNames
   const urlEncodedGroupName = encodeURIComponent(groupName);
-  const invitationUrl = `${baseUrl}/join/${urlEncodedGroupName}/${groupCode}`;
+  const invitationUrl = `${baseUrl}/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
 
   return (
     <>
@@ -33,7 +33,7 @@ const GroupCodeExplanation = ({ groupName, groupCode }) => {
           All you need to access this group is your <strong>Groupcode</strong>.
           So be sure to write it down in a safe place.
         </p>
-        <CopyToClipboard infoToCopy={groupCode} />
+        <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"12rem"} />
         <p>
           Alternatively, bookmark the{" "}
           {/* Link to the invitation URL opening new tab */}

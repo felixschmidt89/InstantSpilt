@@ -1,16 +1,16 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import useFetchPaymentInfo from "../../hooks/useFetchPaymentInfo";
 import emojiConstants from "../../constants/emojiConstants";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
+
 import Spinner from "../../components/common/Spinner/Spinner";
-import RouteButton from "../../components/common/RouteButton/RouteButton";
+import RouteButton from "../../components/common/InAppNavigation/RouteButton/RouteButton";
 import styles from "./PaymentPage.module.css";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
-import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import useSetPreviousRouteInLocalStorage from "../../hooks/useSetPreviousRouteInLocalStorage";
 
 const PaymentPage = () => {
   const { itemId } = useParams();
@@ -20,8 +20,7 @@ const PaymentPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - payment details' />
       <PiratePx COUNT_IDENTIFIER={"payment-details"} />
-      <InAppNavigationBar back={true} backRoute='/instant-split' />
-
+      <InAppNavigationBar back={true} />
       {paymentInfo ? (
         <div className={styles.container}>
           <h1>Payment {emojiConstants.payment}</h1>
@@ -42,6 +41,7 @@ const PaymentPage = () => {
           <RouteButton
             route={`update-payment/${itemId}`}
             buttonText={"update"}
+            setPreviousRoute={true}
           />
           <DeleteResource resourceId={itemId} resourceType='payments' />
         </div>

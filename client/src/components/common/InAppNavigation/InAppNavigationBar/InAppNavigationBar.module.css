@@ -1,14 +1,10 @@
 .navContainer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: 1rem;
-}
-
-/* Center home icon*/
-.navContainer > .home-icon {
-  margin: 0 auto;
 }
 
 .icon {
@@ -20,4 +16,12 @@
 
 .icon:hover {
   color: var(--color-success);
+}
+
+.leftAlignedIcon {
+  margin-right: auto;
+}
+
+.rightAlignedIcon {
+  margin-left: auto;
 }

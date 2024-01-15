@@ -4,8 +4,7 @@ import axios from "axios";
 import styles from "./FeedbackPage.module.css";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -87,12 +86,7 @@ const FeedbackPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - contact' />
       <PiratePx COUNT_IDENTIFIER={"contact"} />
       {/* Navigation button to go back to main*/}
-      <NavigateButton
-        route={"instant-split"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+      <InAppNavigationBar back={true} />
       <h1>Leave a message</h1>
       {/* Check if the form should be displayed */}
       {showForm ? (

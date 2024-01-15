@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import style from "./EnterGroupCodePage.module.css";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 const EnterGroupCodePage = () => {
   const [groupCode, setGroupCode] = useState("");
@@ -25,12 +24,7 @@ const EnterGroupCodePage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - enter groupCode' />
       <PiratePx COUNT_IDENTIFIER={"enter-groupcode"} />
-      <NavigateButton
-        route={"homepage"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+      <InAppNavigationBar back={true} backRoute='/homepage' />
       <div className={style.container}>
         <h1>Enter groupCode</h1>
         <form onSubmit={handleFormSubmit}>

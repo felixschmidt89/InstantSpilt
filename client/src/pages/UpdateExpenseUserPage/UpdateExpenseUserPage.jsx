@@ -1,7 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 // Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
@@ -12,13 +11,12 @@ import useExpenseUpdate from "../../hooks/useExpenseUpdate";
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
 import UpdateExpense from "../../components/features/Expenses/UpdateExpense/UpdateExpense";
 
 // Styles
 import styles from "./UpdateExpenseUserPage.module.css";
-import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 /**
  * Page for updating an expense via user history page.
@@ -36,18 +34,7 @@ function UserHistoryUpdateExpensePage() {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - update expense' />
       <PiratePx COUNT_IDENTIFIER={"user-transaction-history-update-expense"} />
-      {/* Render a back button */}
-      <NavigateButton
-        route={`user-transaction-history/${userId}`}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
-      <InAppNavigationBar
-        back={true}
-        backRoute={`user-transaction-history/${userId}`}
-      />
-
+      <InAppNavigationBar nestedPreviousRoute={true} home={true} />
       {isLoading ? (
         <Spinner />
       ) : (

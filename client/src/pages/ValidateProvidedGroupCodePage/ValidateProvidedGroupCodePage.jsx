@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { StatusCodes } from "http-status-codes";
 import emojiConstants from "../../constants/emojiConstants";
 import {
@@ -10,50 +9,40 @@ import {
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import styles from "./ValidateProvidedGroupCodePage.module.css";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
-/**
- * Checks if groupCode exists in the database.
- * If found: stores the groupCode in the client's local storage and navigates to OnboardingPage.
- * If not: renders specific (NOT FOUND, TOO MANY REQUESTS) else generic error message
- */
 const ValidateProvideGroupCodePage = () => {
-  // Get groupCode from URL, initiate groupCode validation, and destructure groupExistence boolean and statusCode.
   const { groupCode } = useParams();
-
+  console.log(groupCode);
   const [error, setError] = useState(null);
   // Destructure groupExists and status code from groupCode validity check
-  const [groupExists, , statusCode] = useValidateGroupExistence({
+  const { groupExists, error: validationError } = useValidateGroupExistence(
     groupCode,
-    limited: true,
-  });
+    "limited"
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
     if (groupExists === true) {
       storeGroupCodeInLocalStorage(groupCode);
       setGroupCodeToCurrentlyActive(groupCode);
-      navigate("/onboarding-tuturial/");
+      navigate("/onboarding-tutorial/");
     } else if (groupExists === false) {
       setError(
-        `Oops, there's no group associated with the provided GroupCode.`
+        "Oops, there's no group associated with the provided GroupCode."
       );
-    } else if (statusCode === StatusCodes.TOO_MANY_REQUESTS) {
-      setError(`Too many requests. Please try again later.`);
+    } else {
+      setError(validationError);
     }
-  }, [groupExists, groupCode, navigate, statusCode]);
+  }, [groupExists, groupCode, navigate, validationError]);
 
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - validate groupCode' />
       <PiratePx COUNT_IDENTIFIER={"groupCode-validator"} />
-      <NavigateButton
-        route={"enter-groupcode"}
-        buttonText={faLeftLong}
-        alignment={"left"}
-        isIcon={true}
-      />
+
+      <InAppNavigationBar back={true} backRoute={"/enter-groupcode"} />
       <div className={styles.container}>
         <h1>GroupCode Validation</h1>
         {groupExists === false && !error && (

@@ -1,15 +1,13 @@
 import React from "react";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import emojiConstants from "../../constants/emojiConstants";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import NavigateButton from "../../components/common/NavigateButton/NavigateButton";
 import Spinner from "../../components/common/Spinner/Spinner";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import CreateExpense from "../../components/features/Expenses/CreateExpense/CreateExpense";
 import styles from "./CreateExpensePage.module.css";
 import CreateUserCTA from "../../components/common/CreateUserCTA/CreateUserCTA";
-import InAppNavigationBar from "../../components/common/InAppNavigationBar/InAppNavigationBar";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 const CreateExpensePage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
