@@ -4,18 +4,17 @@
   flex-wrap: wrap;
   text-align: left;
   padding-left: 8%;
-  width: 90%;
   margin: 0 auto;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
 }
 
 @media (max-width: 500px) {
   .container {
-    padding-left: 0;
-    width: 95%;
+    padding: 0 0.5rem; /* Limiting width while keeping scrollbar on the border */
   }
   .item {
-    border-top: 1.5px solid var(--color-signal-reduced-opacity);
+    border-top: 0.15rem solid var(--color-signal-reduced-opacity);
   }
 }

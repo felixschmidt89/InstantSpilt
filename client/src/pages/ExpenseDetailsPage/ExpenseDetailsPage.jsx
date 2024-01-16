@@ -18,6 +18,9 @@ import RenderResourceCreated from "../../components/common/RenderResourceCreated
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 import InAppNavigation from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
+// Styles
+import styles from "./ExpenseDetailsPage.module.css";
+
 const ExpenseDetailsPage = () => {
   const { groupCode, itemId } = useParams();
   const { expenseInfo, isFetched } = useFetchExpenseInfo(itemId);
@@ -26,25 +29,27 @@ const ExpenseDetailsPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - expense details' />
       <PiratePx COUNT_IDENTIFIER={"expense-details"} />
-      <InAppNavigation back={true} />
-      <h1>Expense {emojiConstants.expense}</h1>
-      {isFetched ? (
-        <div>
-          <RenderExpenseDetails expenseInfo={expenseInfo} />
-          <RenderExpenseBeneficiaries
-            expenseBeneficiaries={expenseInfo.expenseBeneficiaries}
-          />
-          <RenderResourceCreated createdAt={expenseInfo.createdAt} />
-          <RouteButton
-            route={`update-expense/${groupCode}/${itemId}`}
-            buttonText={"update"}
-            setPreviousRoute={true}
-          />
-          <DeleteResource resourceId={itemId} resourceType='expenses' />
-        </div>
-      ) : (
-        <Spinner />
-      )}
+      <div className={styles.container}>
+        <InAppNavigation back={true} />
+        <h1>Expense {emojiConstants.expense}</h1>
+        {isFetched ? (
+          <>
+            <RenderExpenseDetails expenseInfo={expenseInfo} />
+            <RenderExpenseBeneficiaries
+              expenseBeneficiaries={expenseInfo.expenseBeneficiaries}
+            />
+            <RenderResourceCreated createdAt={expenseInfo.createdAt} />
+            <RouteButton
+              route={`update-expense/${groupCode}/${itemId}`}
+              buttonText={"update"}
+              setPreviousRoute={true}
+            />
+            <DeleteResource resourceId={itemId} resourceType='expenses' />
+          </>
+        ) : (
+          <Spinner />
+        )}
+      </div>
     </main>
   );
 };

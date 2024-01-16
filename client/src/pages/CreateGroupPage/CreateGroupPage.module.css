@@ -1,6 +1,11 @@
+.container {
+  overflow-y: auto;
+  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
+  padding-bottom: 1rem;
+}
+
 .inputField {
   font-family: "Ubuntu", sans-serif;
-
   width: 15rem;
   padding: 0.3rem;
   border: 0.2rem solid var(--color-grey);
@@ -8,7 +13,6 @@
   font-size: 1.6rem;
   text-align: center;
   outline: none;
-  margin-bottom: 0.5rem;
 }
 
 .inputField:focus {

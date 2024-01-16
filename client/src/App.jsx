@@ -32,11 +32,11 @@ import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
 import UserTransactionHistoryPage from "./pages/UserTransactionHistoryPage/UserTransactionHistoryPage";
 import AcceptGroupInvitationAndJoinPage from "./pages/AcceptGroupInvitationAndJoinPage/AcceptGroupInvitationAndJoinPage";
+import EnterGroupCodePage from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 
 // Styles
 import "./App.css";
-import ContactPage from "./pages/ContactPage/ContactPage";
-import EnterGroupCodePage from "./pages/EnterGroupCodePage/EnterGroupCodePage";
+// import ContactPage from "./pages/ContactPage/ContactPage";
 
 const App = () => {
   return (
@@ -110,7 +110,7 @@ const App = () => {
             path='/share-group/:groupName/:groupCode'
             element={<ShareGroupPage />}
           />
-          <Route path='/contact/:groupCode' element={<ContactPage />} />
+          {/* <Route path='/contact/:groupCode' element={<ContactPage />} /> */}
           <Route
             path='/terms-and-conditions'
             element={<TermsAndConditionsPage />}

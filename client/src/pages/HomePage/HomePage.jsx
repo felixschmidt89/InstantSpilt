@@ -13,12 +13,14 @@ import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
-    <main className={styles.container}>
-      <HelmetMetaTagsNetlify title='InstantSplit - homepage' />
-      <PiratePx COUNT_IDENTIFIER='homepage' />
-      <HomeIntroSection />
-      <HomeGetStartedSection />
-      <HomeTermsAndConditionsSection />
+    <main>
+      <div className={styles.container}>
+        <HelmetMetaTagsNetlify title='InstantSplit - homepage' />
+        <PiratePx COUNT_IDENTIFIER='homepage' />
+        <HomeIntroSection />
+        <HomeGetStartedSection />
+        <HomeTermsAndConditionsSection />
+      </div>
     </main>
   );
 };

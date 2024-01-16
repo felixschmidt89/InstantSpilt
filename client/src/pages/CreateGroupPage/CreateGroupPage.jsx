@@ -61,29 +61,31 @@ const CreateGroupPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - create group' />
       <PiratePx COUNT_IDENTIFIER={"create-group"} />
       <InAppNavigationBar back={true} backRoute={"/homepage"} />
-      <h1>Create a group</h1>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          className={styles.inputField}
-          type='text'
-          value={groupName}
-          onChange={(e) => setGroupName(e.target.value)}
-          placeholder='group name'
-          required
-          minLength={1}
-          maxLength={50}
-          pattern='.*\S+.*'
-          ref={inputRef}
-          autoFocus
-        />
-        {groupName.length >= 1 && (
-          <div className={styles.buttonContainer}>
-            <button className={styles.button} type='submit'>
-              +
-            </button>
-          </div>
-        )}
-      </form>
+      <div className={styles.container}>
+        <h1>Create a group</h1>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            className={styles.inputField}
+            type='text'
+            value={groupName}
+            onChange={(e) => setGroupName(e.target.value)}
+            placeholder='group name'
+            required
+            minLength={1}
+            maxLength={50}
+            pattern='.*\S+.*'
+            ref={inputRef}
+            autoFocus
+          />
+          {groupName.length >= 1 && (
+            <div className={styles.buttonContainer}>
+              <button className={styles.button} type='submit'>
+                +
+              </button>
+            </div>
+          )}
+        </form>
+      </div>
       <ErrorDisplay error={error} />
     </main>
   );

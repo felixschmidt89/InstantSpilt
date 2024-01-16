@@ -1,16 +1,8 @@
 .container {
-  width: 90%;
   margin: 0 auto;
   overflow-y: auto;
-}
-
-h2 {
-  font-size: 1.6rem;
-}
-
-h3 {
-  font-size: 1.7rem;
-  margin-bottom: 0rem;
+  height: 90%;
+  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
 }
 
 .icons {

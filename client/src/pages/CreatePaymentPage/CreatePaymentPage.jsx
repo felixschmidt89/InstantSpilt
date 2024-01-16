@@ -27,15 +27,17 @@ const CreatePaymentPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - add payment' />
       <PiratePx COUNT_IDENTIFIER={"create-payment"} />
       <InAppNavigationBar back={true} />
-      <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>
-      {!isFetched ? (
-        <Spinner />
-      ) : // Check if there are at least 2 group members
-      groupMembers.length <= 1 ? (
-        <CreateUserCTA />
-      ) : (
-        <CreatePayment groupMembers={groupMembers} groupCode={groupCode} />
-      )}
+      <div className={styles.container}>
+        <h1>Add payment {emojiConstants.payment}</h1>
+        {!isFetched ? (
+          <Spinner />
+        ) : // Check if there are at least 2 group members
+        groupMembers.length <= 1 ? (
+          <CreateUserCTA />
+        ) : (
+          <CreatePayment groupMembers={groupMembers} groupCode={groupCode} />
+        )}
+      </div>
     </main>
   );
 };

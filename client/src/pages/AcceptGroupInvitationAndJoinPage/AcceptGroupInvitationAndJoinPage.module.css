@@ -1,9 +1,7 @@
 .explanationContainer {
-  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding: 0 2rem;
   overflow-y: auto;
-  height: 95%;
+  padding: 1rem 2rem; /* Limiting width while keeping scrollbar on the border */
 }

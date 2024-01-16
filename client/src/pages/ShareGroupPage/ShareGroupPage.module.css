@@ -1,9 +1,9 @@
 .container {
-  width: 90%;
+  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
+  padding-bottom: 1rem;
   margin: 0 auto;
-  height: 80%;
+  height: 90%;
   overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .icons {

@@ -1,7 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
 import { IoPersonAddOutline } from "react-icons/io5";
-import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { IoHelpCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 
@@ -14,7 +13,6 @@ import styles from "./UserActionsBar.module.css";
 /**
  * Renders a bar with icons for user-related actions:
  * - Invite others to join the group
- * - Contact developer
  * - View tutorial
  * - Forget group on device
  *
@@ -33,15 +31,6 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoPersonAddOutline}
           tooltip='Invite & share group'
           route={`/share-group/${groupName}/${groupCode}`}
-          marginTop='0.1rem'
-        />
-      </span>
-      <span className={styles.icon}>
-        {/* Icon navigating to feedback page */}
-        <ReactIconNavigate
-          icon={IoChatboxEllipsesOutline}
-          tooltip='Contact'
-          route={`/contact/${groupCode}`}
           marginTop='0.1rem'
         />
       </span>

@@ -30,7 +30,7 @@ const InstantSplitPage = () => {
   const { groupData, isFetched } = useFetchGroupData(groupCode);
   // Retrieve the 'view' value from localStorage or set the default value
   const [view, setView] = useLocalStorage("viewState", "view2");
-  // Clear nested routes in localStorage
+  // Clear nested routes  localStorage
   useDeletePreviousRouteFromLocalStorage();
   useDeletePreviousRouteFromLocalStorage("nestedPreviousRoute");
 

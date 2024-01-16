@@ -39,18 +39,22 @@ const UpdatePaymentPage = () => {
       {isChecked && openedViaUserTransactionsHistory && (
         <InAppNavigationBar nestedPreviousRoute={true} home={true} />
       )}
-      <h2 className={styles.header}>Update payment {emojiConstants.payment}</h2>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        <div className={styles.container}>
-          <UpdatePayment
-            groupMembers={groupMembers}
-            groupCode={groupCode}
-            paymentDetails={paymentInfo}
-          />
-        </div>
-      )}
+      <div className={styles.container}>
+        <h2 className={styles.header}>
+          Update payment {emojiConstants.payment}
+        </h2>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <div className={styles.innerContainer}>
+            <UpdatePayment
+              groupMembers={groupMembers}
+              groupCode={groupCode}
+              paymentDetails={paymentInfo}
+            />
+          </div>
+        )}
+      </div>
     </main>
   );
 };

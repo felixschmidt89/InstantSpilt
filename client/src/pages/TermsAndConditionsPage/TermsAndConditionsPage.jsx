@@ -14,6 +14,9 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import TermsAndConditions from "../../components/features/TermsAndConditions/TermsAndConditions/TermsAndConditions";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
+// Styles
+import styles from "./TermsAndConditionsPage.module.css";
+
 const TermsAndConditionsPage = () => {
   // Check if current user is a new user, ie is redirected from join-instantsplit-group route
   const { previousRoute, isRetrieved } = useGetPreviousRouteFromLocalStorage();
@@ -46,8 +49,10 @@ const TermsAndConditionsPage = () => {
         <InAppNavigationBar back={true} backRoute={"/homepage/"} />
       ) : (
         <InAppNavigationBar back={true} />
-      )}
-      <TermsAndConditions />
+      )}{" "}
+      <div className={styles.container}>
+        <TermsAndConditions />
+      </div>
     </main>
   );
 };

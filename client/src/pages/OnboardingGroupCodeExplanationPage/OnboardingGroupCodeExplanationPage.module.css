@@ -1,5 +1,6 @@
 .container {
-  width: 90%;
   margin: 0 auto;
+  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
+  padding-bottom: 1rem;
   overflow-y: auto;
 }
