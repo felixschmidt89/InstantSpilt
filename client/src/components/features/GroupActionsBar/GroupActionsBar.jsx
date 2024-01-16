@@ -40,7 +40,7 @@ const GroupActionsBar = () => {
 
       {/* Button for navigating to adding users */}
       <GroupActionsEmojiButton
-        route={"create-users-inapp"}
+        route={"create-users"}
         emoji={emojiConstants.user}
         tooltipText='add user'
         ariaLabel='add user emoji'

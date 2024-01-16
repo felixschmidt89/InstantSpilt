@@ -24,7 +24,7 @@ const RenderGroupPayment = ({ item, groupCode }) => {
         <div className={styles.paymentEmoji}>{emojiConstants.payment}</div>
         <div className={styles.paymentAmount}>
           {/* Link to the item page with item details */}
-          <Link to={`/payment-page/${groupCode}/${item.itemId}`}>
+          <Link to={`/payment-details/${groupCode}/${item.itemId}`}>
             {item.paymentAmount.toFixed(2)}€
           </Link>
         </div>

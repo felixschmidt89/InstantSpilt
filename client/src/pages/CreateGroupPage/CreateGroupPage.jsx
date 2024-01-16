@@ -1,16 +1,26 @@
+// React and Third-Party Libraries
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+// Constants and Utils
 import {
   setGroupCodeToCurrentlyActive,
+  setRouteInLocalStorage,
   storeGroupCodeInLocalStorage,
 } from "../../utils/localStorageUtils";
+import { devLog } from "../../utils/errorUtils";
+import { genericErrorMessage } from "../../constants/errorConstants";
 
+// Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import styles from "./CreateGroupPage.module.css";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import ErrorDisplay from "../../components/common/ErrorDisplay/ErrorDisplay";
+
+// Styles
+import styles from "./CreateGroupPage.module.css";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -18,42 +28,38 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const CreateGroupPage = () => {
   const navigate = useNavigate();
   const inputRef = useRef(null);
-
   const [groupName, setGroupName] = useState("");
+  const [error, setError] = useState(null);
 
   // Autofocus input field on mount
   useEffect(() => {
     inputRef.current.focus();
   }, []);
 
-  // On form submission: store provided group name in database, get related groupCode in exchange, store groupCode in the client's localStorage and navigate to next page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${apiUrl}/groups`, {
+      const response = await axios.post(`${apiUrl}/groups`, {
         groupName,
       });
-      const { groupCode } = res.data.group;
+      devLog("Group created:", response);
+      const { groupCode } = response.data.group;
       storeGroupCodeInLocalStorage(groupCode);
       setGroupCodeToCurrentlyActive(groupCode);
+      // Necessary for appropriate InAppNavigationBar conditional rendering on navigated to route:
+      setRouteInLocalStorage(window.location.pathname, "previousRoute");
       setGroupName("");
-      navigate("/create-users-signup");
+      navigate("/create-users");
     } catch (error) {
-      if (process.env.NODE_ENV === "development") {
-        console.error("Error creating group:", error);
-      }
+      devLog("Error creating group:", error);
+      setError(genericErrorMessage);
     }
   };
 
-  // controlled component to set groupName state
-  const handleGroupNameChange = (e) => {
-    setGroupName(e.target.value);
-  };
-
-  // render back button to abort and input field, conditionally render submit button
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - create group' />
+      <PiratePx COUNT_IDENTIFIER={"create-group"} />
       <InAppNavigationBar back={true} backRoute={"/homepage"} />
       <h1>Create a group</h1>
       <form onSubmit={handleFormSubmit}>
@@ -61,7 +67,7 @@ const CreateGroupPage = () => {
           className={styles.inputField}
           type='text'
           value={groupName}
-          onChange={handleGroupNameChange}
+          onChange={(e) => setGroupName(e.target.value)}
           placeholder='group name'
           required
           minLength={1}
@@ -78,7 +84,7 @@ const CreateGroupPage = () => {
           </div>
         )}
       </form>
-      <PiratePx COUNT_IDENTIFIER={"create-group"} />
+      <ErrorDisplay error={error} />
     </main>
   );
 };

@@ -8,9 +8,9 @@ import { FaFileLines } from "react-icons/fa6";
 
 // Constants and Utils
 import { currentYear } from "../../../constants/dateConstants";
+import ReactIconNavigate from "../InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 
 // Components
-import ReactIconNavigate from "../ReactIconNavigate/ReactIconNavigate";
 
 // Styles
 import styles from "./Footer.module.css";

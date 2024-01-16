@@ -26,7 +26,9 @@ const UsersWithPositiveBalance = ({ positiveBalanceUsers }) => {
           <li key={user.id} className={styles.userListItem}>
             <div className={styles.userDetails}>
               <strong>
-                <Link className={styles.userName} to={`/user-page/${user.id}`}>
+                <Link
+                  className={styles.userName}
+                  to={`/user-details/${user.id}`}>
                   {user.userName}
                 </Link>
               </strong>

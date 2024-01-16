@@ -14,11 +14,10 @@ import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
 import InstantSplitPage from "./pages/InstantSplitPage/InstantSplitPage";
 import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
 import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
+import ExpenseDetailsPage from "./pages/ExpenseDetailsPage/ExpenseDetailsPage";
+import PaymentDetailsPage from "./pages/PaymentDetailsPage/PaymentDetailsPage";
 import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
-import PaymentPage from "./pages/PaymentPage/PaymentPage";
-import ExpensePage from "./pages/ExpensePage/ExpensePage";
 import IndexNavigatorPage from "./pages/IndexNavigatorPage/IndexNavigator";
-import EnterGroupCode from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 import OnboardingTutorialPage from "./pages/OnboardingTutorialPage/OnboardingTutorialPage";
 import OnboardingGroupCodeExplanationPage from "./pages/OnboardingGroupCodeExplanationPage/OnboardingGroupCodeExplanationPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
@@ -26,18 +25,18 @@ import ShareGroupPage from "./pages/ShareGroupPage/ShareGroupPage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroupExpensesPage";
-import FeedbackPage from "./pages/FeedbackPage/FeedbackPage";
-import CreateUsersDuringSignUpPage from "./pages/CreateUsersDuringSignUpPage/CreateUsersDuringSignUpPage";
-import CreateUsersInAppPage from "./pages/CreateUsersInAppPage/CreateUsersInAppPage";
+import CreateUsersPage from "./pages/CreateUsersPage/CreateUsersPage";
 import TutorialPage from "./pages/TutorialPage/TutorialPage";
 import UpdateExpensePage from "./pages/UpdateExpensePage/UpdateExpensePage";
 import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
-import AcceptInviteAndJoinPage from "./pages/AcceptInviteAndJoinPage/AcceptInviteAndJoinPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
 import UserTransactionHistoryPage from "./pages/UserTransactionHistoryPage/UserTransactionHistoryPage";
+import AcceptGroupInvitationAndJoinPage from "./pages/AcceptGroupInvitationAndJoinPage/AcceptGroupInvitationAndJoinPage";
 
 // Styles
 import "./App.css";
+import ContactPage from "./pages/ContactPage/ContactPage";
+import EnterGroupCodePage from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 
 const App = () => {
   return (
@@ -53,18 +52,14 @@ const App = () => {
             element={<OnboardingGroupCodeExplanationPage />}
           />
           <Route path='/create-group' element={<CreateGroupPage />} />
-          <Route
-            path='/create-users-signup'
-            element={<CreateUsersDuringSignUpPage />}
-          />
-          <Route path='/enter-groupcode' element={<EnterGroupCode />} />
+          <Route path='/enter-groupcode' element={<EnterGroupCodePage />} />
           <Route
             path='/groupCode-validator/:groupCode'
             element={<ValidateProvidedGroupCodePage />}
           />
           <Route
             path='/join-instantsplit-group/:groupName/:groupCode'
-            element={<AcceptInviteAndJoinPage />}
+            element={<AcceptGroupInvitationAndJoinPage />}
           />
           <Route
             path='/onboarding-tutorial'
@@ -86,16 +81,13 @@ const App = () => {
             path='/update-payment/:groupCode/:paymentId'
             element={<UpdatePaymentPage />}
           />
-          <Route
-            path='/create-users-inapp'
-            element={<CreateUsersInAppPage />}
-          />
+          <Route path='/create-users' element={<CreateUsersPage />} />
           <Route
             path='/settle-expenses'
             element={<SettleGroupExpensesPage />}
           />
           <Route
-            path='/user-page/:groupCode/:userId'
+            path='/user-details/:groupCode/:userId'
             element={<UserDetailsPage />}
           />
           <Route
@@ -103,12 +95,12 @@ const App = () => {
             element={<UserTransactionHistoryPage />}
           />
           <Route
-            path='/payment-page/:groupCode/:itemId'
-            element={<PaymentPage />}
+            path='/payment-details/:groupCode/:itemId'
+            element={<PaymentDetailsPage />}
           />
           <Route
-            path='/expense-page/:groupCode/:itemId'
-            element={<ExpensePage />}
+            path='/expense-details/:groupCode/:itemId'
+            element={<ExpenseDetailsPage />}
           />
           <Route
             path='/leave-group/:groupName/:groupCode'
@@ -118,7 +110,7 @@ const App = () => {
             path='/share-group/:groupName/:groupCode'
             element={<ShareGroupPage />}
           />
-          <Route path='/feedback/:groupCode' element={<FeedbackPage />} />
+          <Route path='/contact/:groupCode' element={<ContactPage />} />
           <Route
             path='/terms-and-conditions'
             element={<TermsAndConditionsPage />}

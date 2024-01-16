@@ -26,7 +26,7 @@ const RenderUserNameAndBalance = ({ userDetails, groupCode }) => (
               {/* Link to the user page */}
               <Link
                 className={styles.userName}
-                to={`/user-page/${groupCode}/${user.userId}`}>
+                to={`/user-details/${groupCode}/${user.userId}`}>
                 {user.userName}
               </Link>
             </div>

@@ -1,43 +1,55 @@
+// React and Third-Party Libraries
 import React from "react";
+
+// Constants and Utils
+import { lastUpdateDate } from "../../contents/termsAndConditionsContent";
+import { devLog } from "../../utils/errorUtils";
+
+// Hooks
+import useGetPreviousRouteFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
+
+// Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import {
-  sections,
-  lastUpdateDate,
-} from "../../contents/termsAndConditionsContent";
 import TermsAndConditions from "../../components/features/TermsAndConditions/TermsAndConditions/TermsAndConditions";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
-import useGetPreviousRouteFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
-import { devLog } from "../../utils/errorUtils";
+
 const TermsAndConditionsPage = () => {
-  // Check whether user was redirected from invitation link
+  // Check if current user is a new user, ie is redirected from join-instantsplit-group route
   const { previousRoute, isRetrieved } = useGetPreviousRouteFromLocalStorage();
 
-  const isRegularUser = !previousRoute.includes("join-instantsplit-group/");
+  const isNewUser = previousRoute.includes("join-instantsplit-group/");
   if (isRetrieved) {
-    devLog("Current user is a regular user:", isRegularUser);
+    devLog("Current user is a new user:", isNewUser);
+  }
 
-    return (
-      <main>
-        {/* Set meta tags for the page */}
-        <HelmetMetaTagsNetlify
-          title='InstantSplit - Terms and Conditions'
-          description={`Instant Split - Terms and Conditions. Last updated on ${lastUpdateDate}.`}
-        />
-        <PiratePx COUNT_IDENTIFIER={"terms-and-conditions"} />
-        {isRetrieved && isRegularUser ? (
-          <InAppNavigationBar back={true} />
-        ) : (
-          // Navigate invited users back to specified join instantsplit group page
-          <InAppNavigationBar previousRoute={true} />
-        )}
-        <TermsAndConditions
-          lastUpdateDate={lastUpdateDate}
-          sections={sections}
-        />
-      </main>
+  // Check if current user is a not associated with any group, ie is redirected from homepage route
+  const isNotAssociatedWithAnyGroup = previousRoute.includes(
+    "No previousRoute stored."
+  );
+  if (isRetrieved) {
+    devLog(
+      "Current user is not associated with any group:",
+      isNotAssociatedWithAnyGroup
     );
   }
+
+  return (
+    <main>
+      <HelmetMetaTagsNetlify
+        title='InstantSplit - Terms and Conditions'
+        description={`Instant Split - Terms and Conditions. Last updated on ${lastUpdateDate}.`}
+      />
+      <PiratePx COUNT_IDENTIFIER={"terms-and-conditions"} />
+      {isRetrieved && isNewUser && <InAppNavigationBar previousRoute={true} />}
+      {isRetrieved && isNotAssociatedWithAnyGroup ? (
+        <InAppNavigationBar back={true} backRoute={"/homepage/"} />
+      ) : (
+        <InAppNavigationBar back={true} />
+      )}
+      <TermsAndConditions />
+    </main>
+  );
 };
 
 export default TermsAndConditionsPage;

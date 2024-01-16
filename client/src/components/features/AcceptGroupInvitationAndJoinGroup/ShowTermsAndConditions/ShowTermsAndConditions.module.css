@@ -1,0 +1,10 @@
+.terms {
+  display: flex;
+  flex-direction: column;
+  font-style: italic;
+  margin-top: 2rem;
+}
+
+.noWrap {
+  white-space: nowrap;
+}

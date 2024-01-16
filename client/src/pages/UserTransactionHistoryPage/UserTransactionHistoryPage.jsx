@@ -14,10 +14,10 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import ErrorDisplay from "../../components/common/ErrorDisplay/ErrorDisplay";
 import UserTransactionsHistory from "../../components/features/UserTransactionsHistory/UserTransactionsHistory/UserTransactionsHistory";
 import NoUserTransactions from "../../components/features/UserTransactionsHistory/NoUserTransactions/NoUserTransactions";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 // Styles
 import styles from "./UserTransactionHistoryPage.module.css";
-import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -28,7 +28,11 @@ const UserTransactionHistoryPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Function to update state to trigger page rerender after resource deletion
+  /**
+   * Updates userExpensesAndPayments state to trigger a page rerender after the deletion of a resource.
+   *
+   * @param {string} itemId - The ID of the deleted resource.
+   */
   const updateUserExpensesAndPaymentsAfterResourceDeletion = (itemId) => {
     const updatedItems = userExpensesAndPayments.filter(
       (item) => item._id !== itemId
@@ -45,11 +49,10 @@ const UserTransactionHistoryPage = () => {
         );
         devLog(`User ${userId} expenses and payments fetched:`, response);
         const userTransactionalData = response.data.userExpensesAndPayments;
-
+        devLog("userExpensesAndPayments:", userTransactionalData);
         setUserExpensesAndPayments(userTransactionalData);
         setError(null);
         setIsLoading(false);
-        console.log("userExpensesAndPayments:", userTransactionalData);
       } catch (error) {
         devLog("Error fetching user expenses and payments:", error);
         setError(genericErrorMessage);
@@ -64,7 +67,6 @@ const UserTransactionHistoryPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - user history' />
       <PiratePx COUNT_IDENTIFIER={"user-transaction-history"} />
       <InAppNavigationBar previousRoute={true} home={true} />
-
       <h1>Transaction history</h1>
       {isLoading ? (
         <div className={styles.spinner}>

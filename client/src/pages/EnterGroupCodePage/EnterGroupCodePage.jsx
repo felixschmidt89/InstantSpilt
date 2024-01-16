@@ -1,23 +1,22 @@
+// React and Third-Party Libraries
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import style from "./EnterGroupCodePage.module.css";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+
+// Styles
+import style from "./EnterGroupCodePage.module.css";
 
 const EnterGroupCodePage = () => {
   const [groupCode, setGroupCode] = useState("");
   const navigate = useNavigate();
 
-  const handleInputChange = (e) => {
-    setGroupCode(e.target.value);
-  };
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if (groupCode.length >= 6) {
-      navigate(`/groupCode-validator/${groupCode}`);
-    }
+    navigate(`/groupCode-validator/${groupCode}`);
   };
 
   return (
@@ -33,9 +32,9 @@ const EnterGroupCodePage = () => {
             type='text'
             placeholder='groupCode'
             value={groupCode}
-            onChange={handleInputChange}
+            onChange={(e) => setGroupCode(e.target.value)}
           />
-          {groupCode.length >= 6 && (
+          {groupCode.length >= 1 && (
             <div className={style.buttonContainer}>
               <button type='submit' className={style.button}>
                 join

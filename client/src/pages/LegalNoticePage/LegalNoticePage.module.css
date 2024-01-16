@@ -8,20 +8,4 @@
 
 .note {
   font-style: italic;
-  font-size: 1.6rem;
-  margin-top: 0rem;
-}
-
-h1 {
-  font-size: 2rem;
-}
-.header {
-  font-size: 1.6rem;
-  padding-top: 1rem;
-}
-
-p,
-address {
-  font-size: 1.6rem;
-  margin-top: 0rem;
 }

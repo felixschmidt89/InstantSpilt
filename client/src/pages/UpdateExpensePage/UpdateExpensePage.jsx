@@ -2,11 +2,9 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-// Constants and Utils
-import emojiConstants from "../../constants/emojiConstants";
-
 //  Hooks
 import useExpenseUpdate from "../../hooks/useExpenseUpdate";
+import useDetermineUpdateTransactionPageOpeningSource from "../../hooks/useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -15,18 +13,15 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import UpdateExpense from "../../components/features/Expenses/UpdateExpense/UpdateExpense";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
-// Hooks
-import useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory from "../../hooks/useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory";
-
 // Styles
 import styles from "./UpdateExpensePage.module.css";
 
 function UpdateExpensePage() {
   const { groupCode, expenseId } = useParams();
 
-  // Use custom hook to specify previous page to render appropriate InAppNavigation
+  // Use custom hook to identify user's previous route to render appropriate InAppNavigation
   const { isChecked, openedViaGroupHistory, openedViaUserTransactionsHistory } =
-    useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory();
+    useDetermineUpdateTransactionPageOpeningSource();
 
   // Use custom hook to manage expense update logic
   const { isLoading, expenseInfo, groupMembers } = useExpenseUpdate(expenseId);
@@ -46,9 +41,6 @@ function UpdateExpensePage() {
       ) : (
         <>
           <div className={styles.container}>
-            <h1 className={styles.header}>
-              Update expense {emojiConstants.expense}
-            </h1>
             <UpdateExpense
               groupCode={groupCode}
               groupMembers={groupMembers}

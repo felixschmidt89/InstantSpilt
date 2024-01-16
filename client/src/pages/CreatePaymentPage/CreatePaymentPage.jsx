@@ -1,6 +1,5 @@
 // React and Third-Party Libraries
 import React from "react";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 // Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
@@ -20,7 +19,6 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 import styles from "./CreatePaymentPage.module.css";
 
 const CreatePaymentPage = () => {
-  // Define states for paymentAmount, userName, paymentRecipient, and error message
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
 
@@ -28,8 +26,7 @@ const CreatePaymentPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - add payment' />
       <PiratePx COUNT_IDENTIFIER={"create-payment"} />
-      <InAppNavigationBar back={true} backRoute='/instant-split' />
-
+      <InAppNavigationBar back={true} />
       <h2 className={styles.header}>Add payment {emojiConstants.payment}</h2>
       {!isFetched ? (
         <Spinner />

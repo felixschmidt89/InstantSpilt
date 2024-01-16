@@ -35,7 +35,6 @@ function useValidateGroupExistence(groupCode, validationType = "continuous") {
             : `${apiUrl}/groups/${groupCode}/continuous-validate-existence`;
 
         const response = await axios.get(endpoint);
-        console.log(response);
 
         if (response.data.exists === true) {
           setGroupExists(true);
@@ -52,7 +51,7 @@ function useValidateGroupExistence(groupCode, validationType = "continuous") {
           error.response &&
           error.response.status === StatusCodes.TOO_MANY_REQUESTS
         ) {
-          setError("Too many requests. Please try again later.");
+          setError("Too many validation requests. Please try again later.");
           devLog("Too many validation requests from this IP address.", error);
         } else {
           devLog("Error validating group code:", error);

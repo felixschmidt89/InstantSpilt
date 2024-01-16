@@ -1,0 +1,11 @@
+.paragraph {
+  margin-top: 1rem;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.noWrap {
+  white-space: nowrap;
+}

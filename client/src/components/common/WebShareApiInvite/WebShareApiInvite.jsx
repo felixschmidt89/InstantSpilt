@@ -9,6 +9,7 @@ import { devLog } from "../../../utils/errorUtils";
 // Styles
 import styles from "./WebShareApiInvite.module.css";
 
+// BASE URL
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 /**

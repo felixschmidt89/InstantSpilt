@@ -1,7 +1,12 @@
+// React and Third-Party Libraries
 import React from "react";
 import { Link } from "react-router-dom";
+
+// Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
+
+// Styles
 import styles from "./PageNotFoundPage.module.css";
 
 function PageNotFoundPage() {

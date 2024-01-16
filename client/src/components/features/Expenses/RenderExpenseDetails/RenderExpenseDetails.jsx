@@ -27,7 +27,7 @@ const RenderExpenseDetails = ({ expenseInfo }) => {
       <p>
         <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidBy}></Emoji>{" "}
         {/* Link to the user page of the expense payer */}
-        <Link to={`/user-page/${expenseInfo.expensePayer._id}`}>
+        <Link to={`/user-details/${expenseInfo.expensePayer._id}`}>
           {expenseInfo.expensePayer.userName}
         </Link>
       </p>

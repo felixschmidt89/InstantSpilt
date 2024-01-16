@@ -1,38 +1,52 @@
+// React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import emojiConstants from "../../constants/emojiConstants";
+import { useParams, useNavigate } from "react-router-dom";
+
+// Constants and Utils
 import {
   setGroupCodeToCurrentlyActive,
+  setRouteInLocalStorage,
   storeGroupCodeInLocalStorage,
 } from "../../utils/localStorageUtils";
+import { genericErrorMessage } from "../../constants/errorConstants";
+
+// Hooks
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
+
+// Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import styles from "./ValidateProvidedGroupCodePage.module.css";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import ErrorDisplay from "../../components/common/ErrorDisplay/ErrorDisplay";
 
+// Styles
+import styles from "./ValidateProvidedGroupCodePage.module.css";
+
+/**
+ * Validates the provided group code and navigates the user accordingly.
+ *
+ * @component
+ * @returns {JSX.Element} - Rendered component.
+ */
 const ValidateProvideGroupCodePage = () => {
+  const navigate = useNavigate();
   const { groupCode } = useParams();
-  console.log(groupCode);
   const [error, setError] = useState(null);
-  // Destructure groupExists and status code from groupCode validity check
   const { groupExists, error: validationError } = useValidateGroupExistence(
     groupCode,
     "limited"
   );
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (groupExists === true) {
       storeGroupCodeInLocalStorage(groupCode);
       setGroupCodeToCurrentlyActive(groupCode);
+      setRouteInLocalStorage(window.location.pathname, "previousRoute");
       navigate("/onboarding-tutorial/");
-    } else if (groupExists === false) {
-      setError(
-        "Oops, there's no group associated with the provided GroupCode."
-      );
-    } else {
+    } else if (validationError) {
       setError(validationError);
+    } else {
+      setError(genericErrorMessage);
     }
   }, [groupExists, groupCode, navigate, validationError]);
 
@@ -40,30 +54,17 @@ const ValidateProvideGroupCodePage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - validate groupCode' />
       <PiratePx COUNT_IDENTIFIER={"groupCode-validator"} />
-
-      <InAppNavigationBar back={true} backRoute={"/enter-groupcode"} />
+      <InAppNavigationBar
+        back={true}
+        backRoute={"/enter-groupcode"}
+        home={true}
+        homeRoute={"/homepage"}
+      />
       <div className={styles.container}>
-        <h1>GroupCode Validation</h1>
-        {groupExists === false && !error && (
-          <div>
-            <p className={styles.errorMessage}>
-              {emojiConstants.error} Oops, there&rsquo;s no group associated
-              with the provided <strong>GroupCode</strong>.
-            </p>
-            <Link to='/homepage'>Go to main</Link>
-          </div>
-        )}
-        {error && (
-          <div>
-            <div className={styles.errorMessage}>
-              {emojiConstants.error} {error}
-            </div>
-            <Link to='/homepage'>Go to main</Link>
-          </div>
-        )}
+        <h1>GroupCode validation</h1>
+        {error && <ErrorDisplay error={error} remWidth={25} />}
       </div>
     </main>
   );
 };
-
 export default ValidateProvideGroupCodePage;

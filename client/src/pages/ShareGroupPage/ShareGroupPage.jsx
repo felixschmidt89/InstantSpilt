@@ -1,51 +1,50 @@
+// React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
-import styles from "./ShareGroupPage.module.css";
-import CopyToClipBoard from "../../components/common/CopyToClipboard/CopyToClipboard";
-import WebShareApiInvite from "../../components/common/WebShareApiInvite/WebShareApiInvite";
+
+// Constants and Utils
+import { isWebShareAPISupported } from "../../utils/deviceUtils";
+
+// Component
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import ShareGroupIncludingWebShare from "../../components/features/ShareGroup/ShareGroupIncludingWebShare/ShareGroupIncludingWebShare";
+import ShareGroup from "../../components/features/ShareGroup/ShareGroup/ShareGroup";
 
+// Styles
+import styles from "./ShareGroupPage.module.css";
+
+// BASE URL
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 const ShareGroupPage = () => {
-  // Check if Web Share API is supported on client's device
-  const isWebShareAPISupported = navigator.share !== undefined;
-
   const { groupName, groupCode } = useParams();
 
-  // Force passing URL-encoded groupNames
+  const supportsWebShareAPI = isWebShareAPISupported();
+
+  // Force URL-encoded groupNames
   const urlEncodedGroupName = encodeURIComponent(groupName);
+
   const infoToCopy = `${baseUrl}/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
 
   return (
     <main>
       <HelmetMetaTagsNetlify
-        title={`InstantSplit - Invite & share ${groupName}`}
+        title={`InstantSplit - invite & share ${groupName}`}
       />
       <PiratePx COUNT_IDENTIFIER={"share-group"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>Invite & share</h1>
-        {isWebShareAPISupported ? (
-          <div className={styles.WebShare}>
-            <p>
-              To invite others to join <strong>{groupName}</strong> or to access
-              InstantSplit on your other devices, you can use WebShare:
-            </p>
-            <WebShareApiInvite groupCode={groupCode} groupName={groupName} />
-            <p>
-              Or, simply copy and share this link:
-              <CopyToClipBoard infoToCopy={infoToCopy} />
-            </p>
-          </div>
+        {supportsWebShareAPI ? (
+          <ShareGroupIncludingWebShare
+            groupName={groupName}
+            groupCode={groupCode}
+            infoToCopy={infoToCopy}
+          />
         ) : (
-          <p>
-            To invite others to join <strong>{groupName}</strong> or to access
-            InstantSplit on your other devices, simply copy and share this link:
-            <CopyToClipBoard infoToCopy={infoToCopy} />
-          </p>
+          <ShareGroup groupName={groupName} infoToCopy={infoToCopy} />
         )}
       </div>
     </main>

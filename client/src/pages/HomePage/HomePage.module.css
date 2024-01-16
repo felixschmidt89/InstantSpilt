@@ -1,52 +1,6 @@
 .container {
-  padding-top: 4rem;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   align-items: center;
-}
-
-.introContainer {
-  max-width: 90%;
-  margin-bottom: 2rem;
-}
-
-.terms {
-  font-style: italic;
-  width: 90%;
-  margin-top: 2rem;
-  font-size: 1.6rem;
-  margin-top: 2rem;
-}
-
-.noWrap {
-  white-space: nowrap;
-}
-
-.strong {
-  font-weight: bold;
-}
-
-.groupContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-.groupLink {
-  text-decoration: none;
-  font-size: 1.7rem;
-}
-
-.groupLink:focus,
-.groupLink:active {
-  outline: none;
-  color: var(--color-success);
-}
-
-.groupLink:hover {
-  color: var(--color-success);
-}
-
-h2 {
-  font-size: 1.6rem;
+  justify-content: space-evenly;
 }

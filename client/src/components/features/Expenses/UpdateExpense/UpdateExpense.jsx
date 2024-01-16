@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
+import emojiConstants from "../../../../constants/emojiConstants";
 
 // Components
 import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescriptionInput";
@@ -70,11 +71,9 @@ const UpdateExpense = ({
     expenseDescription &&
     selectedBeneficiaries.length > 0;
 
-  // On form submission: Put expense and navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
-
     try {
       const response = await axios.put(`${apiUrl}/expenses/${expenseId}`, {
         expenseDescription,
@@ -102,36 +101,35 @@ const UpdateExpense = ({
 
   return (
     <div>
+      <h1 className={styles.header}>Update expense {emojiConstants.expense}</h1>
       <form onSubmit={handleFormSubmit}>
-        <div className={styles.container}>
-          <ExpenseDescriptionInput
-            value={expenseDescription}
-            onDescriptionChange={(value) => setExpenseDescription(value)}
-            setFormChanged={setFormChanged}
-          />
-          <ExpenseAmountInput
-            value={expenseAmount}
-            onAmountChange={(value) => setExpenseAmount(value)}
-            setFormChanged={setFormChanged}
-          />
-          <ExpensePayerSelect
-            expensePayerName={expensePayerName}
-            onPayerChange={(value) => setExpensePayerName(value)}
-            groupMembers={groupMembers}
-            setFormChanged={setFormChanged}
-          />
-          <ExpenseBeneficiariesInput
-            selectedBeneficiaries={selectedBeneficiaries}
-            groupMembers={groupMembers}
-            onSelectedBeneficiariesChange={setSelectedBeneficiaries}
-            setFormChanged={setFormChanged}
-          />
-          {isSubmitButtonVisible && (
-            <button className={styles.button} type='submit'>
-              +
-            </button>
-          )}
-        </div>
+        <ExpenseDescriptionInput
+          value={expenseDescription}
+          onDescriptionChange={(value) => setExpenseDescription(value)}
+          setFormChanged={setFormChanged}
+        />
+        <ExpenseAmountInput
+          value={expenseAmount}
+          onAmountChange={(value) => setExpenseAmount(value)}
+          setFormChanged={setFormChanged}
+        />
+        <ExpensePayerSelect
+          expensePayerName={expensePayerName}
+          onPayerChange={(value) => setExpensePayerName(value)}
+          groupMembers={groupMembers}
+          setFormChanged={setFormChanged}
+        />
+        <ExpenseBeneficiariesInput
+          selectedBeneficiaries={selectedBeneficiaries}
+          groupMembers={groupMembers}
+          onSelectedBeneficiariesChange={setSelectedBeneficiaries}
+          setFormChanged={setFormChanged}
+        />
+        {isSubmitButtonVisible && (
+          <button className={styles.button} type='submit'>
+            +
+          </button>
+        )}
       </form>
       <ErrorDisplay error={error} />
     </div>

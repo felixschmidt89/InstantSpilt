@@ -1,0 +1,12 @@
+.introContainer {
+  max-width: 90%;
+  margin-bottom: 2rem;
+}
+
+.noWrap {
+  white-space: nowrap;
+}
+
+.strong {
+  font-weight: bold;
+}

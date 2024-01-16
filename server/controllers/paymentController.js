@@ -1,9 +1,9 @@
-import { StatusCodes } from 'http-status-codes';
 import Payment from '../models/Payment.js';
 import User from '../models/User.js';
 import Expense from '../models/Expense.js';
 import { setLastActive } from '../utils/databaseUtils.js';
 import { errorLog, sendInternalError } from '../utils/errorUtils.js';
+import { StatusCodes } from 'http-status-codes';
 
 export const createPayment = async (req, res) => {
   try {

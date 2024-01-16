@@ -7,6 +7,7 @@ import emojiConstants from "../../constants/emojiConstants";
 
 //  Hooks
 import usePaymentUpdate from "../../hooks/usePaymentUpdate";
+import useDetermineUpdateTransactionPageOpeningSource from "../../hooks/useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -15,18 +16,15 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import UpdatePayment from "../../components/features/Payments/UpdatePayment/UpdatePayment";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
-// Hooks
-import useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory from "../../hooks/useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory";
-
 // Styles
 import styles from "./UpdatePaymentPage.module.css";
 
 const UpdatePaymentPage = () => {
   const { groupCode, paymentId } = useParams();
 
-  // Use custom hook to specify previous page to render appropriate InAppNavigation
+  // Use custom hook to identify user's previous route to render appropriate InAppNavigation
   const { isChecked, openedViaGroupHistory, openedViaUserTransactionsHistory } =
-    useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory();
+    useDetermineUpdateTransactionPageOpeningSource();
 
   // Use custom hook to manage payment update logic
   const { isLoading, paymentInfo, groupMembers } = usePaymentUpdate(paymentId);
@@ -45,11 +43,13 @@ const UpdatePaymentPage = () => {
       {isLoading ? (
         <Spinner />
       ) : (
-        <UpdatePayment
-          groupMembers={groupMembers}
-          groupCode={groupCode}
-          paymentDetails={paymentInfo}
-        />
+        <div className={styles.container}>
+          <UpdatePayment
+            groupMembers={groupMembers}
+            groupCode={groupCode}
+            paymentDetails={paymentInfo}
+          />
+        </div>
       )}
     </main>
   );

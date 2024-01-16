@@ -23,7 +23,7 @@ const RenderGroupExpense = ({ item, groupCode }) => {
       <div className={styles.leftColumn}>
         <div className={styles.expenseEmoji}>{emojiConstants.expense}</div>
         <div className={styles.expenseAmount}>
-          <Link to={`/expense-page/${groupCode}/${item.itemId}`}>
+          <Link to={`/expense-details/${groupCode}/${item.itemId}`}>
             {item.expenseAmount.toFixed(2)}€
           </Link>
         </div>
@@ -33,7 +33,7 @@ const RenderGroupExpense = ({ item, groupCode }) => {
         <div className={styles.borderedContent}>
           {emojiConstants.paidBy} {item.expensePayer.userName}:{" "}
           {/* Link to the detailed item page */}
-          <Link to={`/expense-page/${groupCode}/${item.itemId}`}>
+          <Link to={`/expense-details/${groupCode}/${item.itemId}`}>
             {item.expenseDescription}
           </Link>
         </div>

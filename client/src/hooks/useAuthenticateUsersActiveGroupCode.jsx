@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
 import {
+  deleteGroupDataFromLocalStorage,
   removeActiveGroupCodeFromLocalStorage,
   removeActiveGroupCodeFromStoredGroupCodes,
 } from "../utils/localStorageUtils";
@@ -12,7 +13,7 @@ import {
 import useValidateGroupExistence from "./useValidateGroupCodeExistence";
 
 /**
- * Custom hook to authenticate the active group code of a user.
+ * Custom hook to authenticate the active group code of a user. Removes invalid activeGroupCode from local storage and navigates to homepage
  *
  * @param {string} groupCode - The groupCode to be authenticated.
  */
@@ -22,15 +23,12 @@ const useAuthenticateUsersActiveGroupCode = (groupCode) => {
   if (!groupCode) {
     navigate("/homepage/");
   }
-
   // Check if groupCode is valid
   const { groupExists } = useValidateGroupExistence(groupCode, "continuous");
 
-  // If not, delete it from LocalStorage and navigate to homepage
   useEffect(() => {
     if (groupExists === false) {
-      removeActiveGroupCodeFromStoredGroupCodes(groupCode);
-      removeActiveGroupCodeFromLocalStorage();
+      deleteGroupDataFromLocalStorage(groupCode);
       navigate("/homepage/");
     }
   }, [navigate, groupCode, groupExists]);

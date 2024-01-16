@@ -1,0 +1,11 @@
+.terms {
+  font-style: italic;
+  width: 90%;
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  margin-top: 2rem;
+}
+
+.noWrap {
+  white-space: nowrap;
+}

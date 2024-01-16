@@ -27,10 +27,9 @@ const UsersWithNegativeBalance = ({ negativeBalanceUsers, groupCode }) => {
           <li key={user.id} className={styles.userListItem}>
             <div className={styles.userDetails}>
               <strong>
-                {/* Link to the user page */}
                 <Link
                   className={styles.userName}
-                  to={`/user-page/${groupCode}/${user.id}`}>
+                  to={`/user-details/${groupCode}/${user.id}`}>
                   {user.userName}
                 </Link>
               </strong>

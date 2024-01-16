@@ -8,7 +8,7 @@ import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
 // Styles
 import styles from "./GroupCodeExplanation.module.css";
 
-// API URL
+// BASE URL
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 /**

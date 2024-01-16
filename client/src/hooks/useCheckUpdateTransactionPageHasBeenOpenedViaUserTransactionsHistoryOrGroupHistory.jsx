@@ -5,48 +5,49 @@ import { useEffect, useState } from "react";
 import useGetPreviousRoutesFromLocalStorage from "./useGetPreviousRouteFromLocalStorage";
 
 /**
- * Custom hook to check if the update payment or update expense page has been opened via UserTransactionsHistory or GroupHistory to rendered the appropriate InAppNavigation
+ * Custom hook to determine if the update payment or update expense page has been opened via UserTransactionsHistory or GroupHistory,
+ * enabling the appropriate InAppNavigation rendering.
  *
  * @returns {{
  *   openedViaGroupHistory: boolean,
- *   openedViaUserTransactionsHistory: boolean
- * }} Object containing flags indicating whether the page has been opened via GroupHistory or UserTransactionsHistory.
+ *   openedViaUserTransactionsHistory: boolean,
+ *   isChecked: boolean
+ * }} Object with flags for page opening sources and a check status.
  */
-const useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory =
-  () => {
-    const [openedViaGroupHistory, setOpenedViaGroupHistory] = useState(false);
+const useDetermineUpdateTransactionPageOpeningSource = () => {
+  const [openedViaGroupHistory, setOpenedViaGroupHistory] = useState(false);
 
-    const [
-      openedViaUserTransactionsHistory,
-      setOpenedViaUserTransactionsHistory,
-    ] = useState(false);
+  const [
+    openedViaUserTransactionsHistory,
+    setOpenedViaUserTransactionsHistory,
+  ] = useState(false);
 
-    const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
-    const { previousRoute, nestedPreviousRoute, isRetrieved } =
-      useGetPreviousRoutesFromLocalStorage();
+  const { previousRoute, nestedPreviousRoute, isRetrieved } =
+    useGetPreviousRoutesFromLocalStorage();
 
-    useEffect(() => {
-      if (isRetrieved) {
-        // Check if the page has been opened via GroupHistory or PaymentPage
-        setOpenedViaGroupHistory(
-          previousRoute.includes("expense-page") ||
-            previousRoute.includes("payment-page")
-        );
+  useEffect(() => {
+    if (isRetrieved) {
+      // Check if the page has been opened via GroupHistory or PaymentPage
+      setOpenedViaGroupHistory(
+        previousRoute.includes("expense-details") ||
+          previousRoute.includes("payment-details")
+      );
 
-        // Check if the page has been opened via UserTransactionsHistory
-        setOpenedViaUserTransactionsHistory(
-          nestedPreviousRoute.includes("/user-transaction-history/")
-        );
-        setIsChecked(true);
-      }
-    }, [nestedPreviousRoute, previousRoute, isRetrieved]);
+      // Check if the page has been opened via UserTransactionsHistory
+      setOpenedViaUserTransactionsHistory(
+        nestedPreviousRoute.includes("/user-transaction-history/")
+      );
+      setIsChecked(true);
+    }
+  }, [nestedPreviousRoute, previousRoute, isRetrieved]);
 
-    return {
-      openedViaGroupHistory,
-      openedViaUserTransactionsHistory,
-      isChecked,
-    };
+  return {
+    openedViaGroupHistory,
+    openedViaUserTransactionsHistory,
+    isChecked,
   };
+};
 
-export default useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory;
+export default useDetermineUpdateTransactionPageOpeningSource;

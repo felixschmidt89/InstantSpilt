@@ -19,7 +19,7 @@ const RenderExpenseBeneficiaries = ({ expenseBeneficiaries }) => {
             {/* Display a comma and space between beneficiaries (except for the first one) */}
             {index > 0 && ", "}
             {/* Link to the user page of each beneficiary */}
-            <Link to={`/user-page/${beneficiary._id}`}>
+            <Link to={`/user-details/${beneficiary._id}`}>
               {beneficiary.userName}
             </Link>
           </li>

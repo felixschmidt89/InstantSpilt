@@ -98,11 +98,9 @@ const UpdatePayment = ({
       navigate(route);
     } catch (error) {
       if (error.response) {
-        // Handle bad requests
         if (error.response.status === 400) {
           setError(error.response.data.errors[0].message);
         } else if (error.response.status === 409) {
-          // Handle conflict
           setError(error.response.data.message);
         }
       } else {
