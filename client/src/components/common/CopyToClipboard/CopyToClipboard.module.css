@@ -1,3 +1,10 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .inputField {
   font-family: "Ubuntu", sans-serif;
   color: var(--color-dark);
@@ -8,27 +15,32 @@
   font-size: 1.6rem;
   text-align: center;
   outline: none;
-  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .inputField:focus {
+  outline: none;
   border-color: var(--color-signal);
-  box-shadow: 0 0 0.5rem var(--color-signal);
-}
-.button {
-  background-color: var(--color-signal);
-  color: var(--color-main);
-  border: none;
-  width: 10rem;
-  padding: 0.4rem;
-  font-size: 1.6rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
-  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
 }
 
-.button:hover {
+.button {
+  border: none;
+  width: fit-content;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
+  color: var(--color-main);
+}
+
+.notCopied {
+  background-color: var(--color-signal);
+}
+.isCopied {
+  background-color: var(--color-success);
+}
+
+.notCopied:hover {
   background-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
 }

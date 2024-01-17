@@ -1,7 +1,14 @@
 // React and Third-Party Libraries
 import React, { useState, useRef } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCopy } from "@fortawesome/free-solid-svg-icons";
+import { LuCopy } from "react-icons/lu";
+import { LuCopyCheck } from "react-icons/lu";
+
+// Constants and Utils
+import { devLog } from "../../../utils/errorUtils";
+
+// Components
+import ReactIconNavigate from "../InAppNavigation/ReactIconNavigate/ReactIconNavigate";
+import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
 // Styles
 import styles from "./CopyToClipboard.module.css";
@@ -9,24 +16,29 @@ import styles from "./CopyToClipboard.module.css";
 /**
  * Component for rendering information and easily copying it to the clipboard, providing an instruction to copy and copy feedback to the user
  * @param {string} props.infoToCopy - The text to be copied to the clipboard.
- * @param {string} [props.inputFieldWidth="fit-content"] - The width of the input field.
+ * @param {string} [props.inputFieldWidth] - The width of the input field. Defaults to 'fit-content'
  */
 const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
   const [isCopied, setIsCopied] = useState(false);
+  const [error, setError] = useState(false);
   const inputRef = useRef(null);
 
-  const handleCopyClick = () => {
-    // select input field
-    inputRef.current.select();
-    // execute copy command
-    document.execCommand("copy");
-    // deselect the text
-    inputRef.current.blur();
-    setIsCopied(true);
+  const handleCopyClick = async () => {
+    try {
+      // Copy text to clipboard
+      await navigator.clipboard.writeText(inputRef.current.value);
+      setIsCopied(true);
+      // Clear the text selection
+      window.getSelection().removeAllRanges();
+    } catch (error) {
+      devLog("Error copying to clipboard:", error);
+      setError("Error copying content, please copy manually.");
+      setIsCopied(false);
+    }
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <input
         className={styles.inputField}
         type='text'
@@ -35,15 +47,24 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
         style={{ width: inputFieldWidth }}
         ref={inputRef}
       />
-      <br />
       <button
-        className={styles.button}
+        className={`${styles.button} ${
+          isCopied ? styles.isCopied : styles.notCopied
+        }`}
         onClick={handleCopyClick}
-        disabled={isCopied} // Disable the button if 'isCopied' is true
-      >
-        <FontAwesomeIcon icon={faCopy} style={{ marginRight: "0.5rem" }} />
-        {isCopied ? "Copied!" : "Copy"}
+        disabled={isCopied}>
+        {isCopied ? (
+          <ReactIconNavigate
+            icon={LuCopyCheck}
+            iconSize='1.8'
+            translateY={0.2}
+            cursorPointer={false}
+          />
+        ) : (
+          <ReactIconNavigate icon={LuCopy} iconSize='1.8' translateY={0.2} />
+        )}
       </button>
+      <ErrorDisplay error={error} />
     </div>
   );
 };
