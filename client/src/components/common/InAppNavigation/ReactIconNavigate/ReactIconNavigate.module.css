@@ -1,5 +1,4 @@
 .customIcon {
-  cursor: pointer;
   color: var(--color-structure-elements);
 }
 
@@ -13,7 +12,6 @@
 }
 
 .tooltip {
-  font-size: 1.6rem;
   position: absolute;
   bottom: 100%;
   left: 50%;

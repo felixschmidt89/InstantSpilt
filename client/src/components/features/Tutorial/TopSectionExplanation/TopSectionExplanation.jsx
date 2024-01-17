@@ -1,13 +1,11 @@
 // React and Third-Party Libraries
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserPlus,
-  faRightFromBracket,
-} from "@fortawesome/free-solid-svg-icons";
+import { IoPersonAddOutline } from "react-icons/io5";
+import { IoEnterOutline } from "react-icons/io5";
 
 // Components
 import UserActionsBar from "../../UserActionsBar/UserActionsBar";
+import ReactIconNavigate from "../../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 
 // Styles
 import styles from "./TopSectionExplanation.module.css";
@@ -27,13 +25,27 @@ const TopSectionExplanation = () => {
       <p className={styles}>
         Contains features not directly related to settling expenses, such as
         inviting others{" "}
-        <span className={styles.icons}>
-          (<FontAwesomeIcon icon={faUserPlus} />)
+        <span className={styles.noWrap}>
+          (
+          <ReactIconNavigate
+            iconSize={"1.7"}
+            icon={IoPersonAddOutline}
+            cursorPointer={false}
+            translateY={0.3}
+          />
+          )
         </span>{" "}
         or leaving the group{" "}
-        <span className={styles.icons}>
-          (<FontAwesomeIcon icon={faRightFromBracket} />)
-        </span>
+        <span className={styles.noWrap}>
+          (
+          <ReactIconNavigate
+            iconSize={"1.8"}
+            icon={IoEnterOutline}
+            cursorPointer={false}
+            translateY={0.3}
+          />
+          )
+        </span>{" "}
         .
       </p>
     </div>

@@ -31,7 +31,8 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoPersonAddOutline}
           tooltip='Invite & share group'
           route={`/share-group/${groupName}/${groupCode}`}
-          marginTop='0.1rem'
+          iconSize={2.1}
+          translateY={0.2}
         />
       </span>
       <span className={styles.icon}>
@@ -40,7 +41,6 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoHelpCircleOutline}
           tooltip='Tutorial'
           route={`/tutorial/${groupName}/${groupCode}`}
-          marginTop='0.1rem'
         />
       </span>
       <span className={styles.icon}>
@@ -49,7 +49,6 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoEnterOutline}
           tooltip='Leave group'
           route={`/leave-group/${groupName}/${groupCode}`}
-          marginTop='0.1rem'
         />
       </span>
     </div>

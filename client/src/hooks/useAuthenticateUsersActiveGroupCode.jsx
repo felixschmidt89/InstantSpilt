@@ -3,11 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
-import {
-  deleteGroupDataFromLocalStorage,
-  removeActiveGroupCodeFromLocalStorage,
-  removeActiveGroupCodeFromStoredGroupCodes,
-} from "../utils/localStorageUtils";
+import { deleteGroupDataFromLocalStorage } from "../utils/localStorageUtils";
 
 // Hooks
 import useValidateGroupExistence from "./useValidateGroupCodeExistence";

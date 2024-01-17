@@ -48,7 +48,7 @@ const TermsAndConditionsPage = () => {
       {isRetrieved && isNotAssociatedWithAnyGroup ? (
         <InAppNavigationBar back={true} backRoute={"/homepage/"} />
       ) : (
-        <InAppNavigationBar back={true} />
+        isRetrieved && !isNewUser && <InAppNavigationBar back={true} />
       )}{" "}
       <div className={styles.container}>
         <TermsAndConditions />

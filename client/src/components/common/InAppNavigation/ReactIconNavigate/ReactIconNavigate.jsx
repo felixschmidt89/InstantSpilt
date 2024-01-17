@@ -11,27 +11,31 @@ import styles from "./ReactIconNavigate.module.css";
  * @param {Object} props - The component props.
  * @param {string} props.route - The route to navigate to.
  * @param {Function} props.onClick - The onClick function for the icon.
- * @param {number} props.fontSize - The size of the icon in rem units.
  * @param {React.Component} props.icon - The React icon component to render.
- * @param {string} props.marginTop - The margin top for the icon in rem units.
+ * @param {string} props.iconSize - The font size of the icon in rem units.
  * @param {string} props.marginRight - The margin right for the icon in rem units.
  * @param {string} props.tooltip - The tooltip text to display on hover.
- * @param {number} props.tooltipFontSize - The size of the tooltip text in rem units.
+ * @param {string} props.tooltipFontSize - The font size of the tooltip text in rem units.
  * @param {string} props.email - The email address to open in the default email client.
  * @param {string} props.url - The URL to open in a new tab.
+ * @param {boolean} props.cursorPointer - Whether the icon should have a pointer cursor. Default is true.
+ * @param {number} props.translateY - The vertical translation of the icon in rem units.
+ * @param {number} props.tooltipBottom - The distance of the tooltip from the bottom of the icon as a percentage. Default is 100.
  * @returns {React.Component} The rendered ReactIconNavigate component.
  */
 const ReactIconNavigate = ({
   route,
   onClick,
-  fontSize = "2.5rem",
   icon: IconComponent,
-  marginTop = "0.5rem",
+  iconSize = "2.5",
   marginRight = "0",
   tooltip,
-  tooltipFontSize = "1.6rem",
+  tooltipFontSize = "1.6",
   email,
   url,
+  cursorPointer = true,
+  translateY = 0,
+  tooltipBottom = 100,
 }) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const navigate = useNavigate();
@@ -56,7 +60,12 @@ const ReactIconNavigate = ({
       onMouseEnter={() => setIsTooltipVisible(true)}
       onMouseLeave={() => setIsTooltipVisible(false)}>
       {isTooltipVisible && tooltip && (
-        <div className={styles.tooltip} style={{ fontSize: tooltipFontSize }}>
+        <div
+          className={styles.tooltip}
+          style={{
+            fontSize: `${tooltipFontSize}rem`,
+            bottom: `${tooltipBottom}%`,
+          }}>
           {tooltip}
         </div>
       )}
@@ -65,9 +74,10 @@ const ReactIconNavigate = ({
         onClick={handleIconClick}
         className={styles.customIcon}
         style={{
-          fontSize: fontSize,
-          marginTop: marginTop,
-          marginRight: marginRight,
+          fontSize: `${iconSize}rem`,
+          marginRight: `${marginRight}rem`,
+          cursor: cursorPointer ? "pointer" : "default",
+          transform: `translateY(${translateY}rem)`,
         }}
       />
     </div>

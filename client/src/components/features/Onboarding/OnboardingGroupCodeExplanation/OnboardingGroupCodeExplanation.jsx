@@ -1,10 +1,10 @@
 // React and Third-Party Libraries
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { IoPersonAddOutline } from "react-icons/io5";
 
 // Components
 import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
+import ReactIconNavigate from "../../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 
 // Styles
 import styles from "./OnboardingGroupCodeExplanation.module.css";
@@ -22,16 +22,27 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
       <div className={styles.presentGroupCode}>
         <p>
           The key to settling group expenses easily while sharing minimal data
-          is the <strong>GroupCode</strong>. Here&rsquo;s yours:
+          is the <span className={styles.strong}>GroupCode</span>. Here&rsquo;s
+          yours:
         </p>
         <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"12rem"} />
       </div>
       <div className={styles.saveGroupCode}>
         <p>Be sure to write it down in a safe place.</p>
         <p>
-          Alternatively, bookmark the invitation link (
-          <FontAwesomeIcon icon={faUserPlus} />) in the top section of the main
-          application to avoid losing access to your group on this device.
+          Alternatively, bookmark the invitation link{" "}
+          <span className={styles.noWrap}>
+            (
+            <ReactIconNavigate
+              fontSize={"1.6rem"}
+              icon={IoPersonAddOutline}
+              marginTop={"0rem"}
+              cursorPointer={false}
+            />
+            )
+          </span>{" "}
+          in the top section of the main application to avoid losing access to
+          your group on this device.
         </p>
       </div>
     </div>

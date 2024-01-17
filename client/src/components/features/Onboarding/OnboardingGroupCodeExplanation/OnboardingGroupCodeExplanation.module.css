@@ -9,3 +9,11 @@
   justify-content: center;
   text-align: center;
 }
+
+.noWrap {
+  white-space: nowrap;
+}
+
+.strong {
+  font-weight: bold;
+}

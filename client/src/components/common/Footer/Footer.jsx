@@ -27,40 +27,35 @@ const Footer = () => {
         icon={IoLogoLinkedin}
         tooltip={`${currentYear} - Felix Schmidt`}
         url={"https://www.linkedin.com/in/felixschmidt89"}
-        fontSize={28}
-        marginTop={"0.3rem"}
+        iconSize={2.8}
+        tooltipBottom={95}
       />
       {/* Email*/}
       <ReactIconNavigate
         icon={MdAlternateEmail}
         tooltip={"email"}
         email={"felix.schmidt@protonmail.com"}
-        marginTop={"0.3rem"}
       />
       {/* Github repository */}
       <ReactIconNavigate
         icon={IoLogoGithub}
         tooltip={"GitHub repository"}
         url={"https://github.com/felixschmidt89/InstantSpilt"}
-        marginRight={"0.1rem"}
-        marginTop={"0.2rem"}
       />
       {/* Terms and conditions*/}
       <ReactIconNavigate
         icon={FaFileLines}
         route={"/terms-and-conditions/"}
         tooltip={"Terms and Conditions"}
-        fontSize={20}
-        marginRight={"0.2rem"}
-        marginTop={"0.4rem"}
+        iconSize={2.0}
+        translateY={0.1}
+        tooltipBottom={109}
       />
       {/* Legal notice*/}
       <ReactIconNavigate
         icon={FaScaleBalanced}
         route={"/legal-notice/"}
         tooltip={"Legal Notice"}
-        fontSize={25}
-        marginTop={"0rem"}
       />
     </footer>
   );
