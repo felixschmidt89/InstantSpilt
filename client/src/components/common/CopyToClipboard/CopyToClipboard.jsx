@@ -27,6 +27,7 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
     try {
       // Copy text to clipboard
       await navigator.clipboard.writeText(inputRef.current.value);
+      devLog("Copied to clipboard:", inputRef.current.value);
       setIsCopied(true);
       // Clear the text selection
       window.getSelection().removeAllRanges();

@@ -7,9 +7,7 @@ import styles from "./HomeIntroSection.module.css";
 /**
  * Component for rendering the introductory section on the home page.
  *
- * @component
- * @returns {JSX.Element} - The rendered HomeIntroSection component.
- */
+ * @returns {JSX.Element} React component. */
 const HomeIntroSection = () => {
   return (
     <div className={styles.introContainer}>

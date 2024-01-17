@@ -18,6 +18,7 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 
 // Styles
 import styles from "./UpdatePaymentPage.module.css";
+import Emoji from "../../components/common/Emoji/Emoji";
 
 const UpdatePaymentPage = () => {
   const { groupCode, paymentId } = useParams();
@@ -41,7 +42,8 @@ const UpdatePaymentPage = () => {
       )}
       <div className={styles.container}>
         <h2 className={styles.header}>
-          Update payment {emojiConstants.payment}
+          Update payment{" "}
+          <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
         </h2>
         {isLoading ? (
           <Spinner />

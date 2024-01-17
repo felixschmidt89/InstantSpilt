@@ -3,13 +3,11 @@ import styles from "./PaymentMakerSelect.module.css";
 
 /**
  * Component for selecting payment maker when creating or updating payments.
- * @component
  * @param {Object} props - The component props.
  * @param {string} props.paymentMakerName - The name of the selected payment maker.
  * @param {Function} props.onPaymentMakerChange - Callback function to handle changes in the selected payment maker.
  * @param {string[]} props.groupMembers - ASelect cn array of group members to populate the options.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const PaymentMakerSelect = ({
   paymentMakerName,
   onPaymentMakerChange,

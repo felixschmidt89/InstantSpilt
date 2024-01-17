@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 // Constants and Utils
 import emojiConstants from "../../../../../constants/emojiConstants";
+import Emoji from "../../../../common/Emoji/Emoji";
 
 // Styles
 import styles from "./RenderGroupExpense.module.css";
@@ -11,11 +12,9 @@ import styles from "./RenderGroupExpense.module.css";
 /**
  * Component for rendering a single group expense.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {Object} props.item - The expense item to render.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderGroupExpense = ({ item, groupCode }) => {
   return (
     <div className={styles.expenses}>
@@ -31,8 +30,8 @@ const RenderGroupExpense = ({ item, groupCode }) => {
       {/* Right column containing expense details */}
       <div className={styles.rightColumn}>
         <div className={styles.borderedContent}>
-          {emojiConstants.paidBy} {item.expensePayer.userName}:{" "}
-          {/* Link to the detailed item page */}
+          <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidBy}></Emoji>{" "}
+          {item.expensePayer.userName}: {/* Link to the detailed item page */}
           <Link to={`/expense-details/${groupCode}/${item.itemId}`}>
             {item.expenseDescription}
           </Link>

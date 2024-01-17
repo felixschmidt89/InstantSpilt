@@ -7,11 +7,9 @@ import styles from "./LegalNoticeSections.module.css";
 /**
  * Renders legal notice sections.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {Array} props.LegalNoticeSections - An array of legal notice sections.
- * @returns {JSX.Element} - The rendered LegalNoticeSections component.
- */
+ * @returns {JSX.Element} React component. */
 const LegalNoticeSections = ({ LegalNoticeSections }) => {
   return (
     <div className={styles.container}>

@@ -9,8 +9,7 @@ import styles from "./Header.module.css";
 
 /**
  * Application header component rendering a logo.
- * @returns {JSX.Element} Rendered Header component.
- */
+ * @returns {JSX.Element} React component. */
 const Header = () => {
   return (
     <header className={styles.header}>

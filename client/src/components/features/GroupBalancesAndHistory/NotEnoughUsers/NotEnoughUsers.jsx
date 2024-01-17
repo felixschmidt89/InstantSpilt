@@ -1,28 +1,29 @@
+// React and Third-Party Libraries
 import React from "react";
-import emojiConstants from "../../../../constants/emojiConstants";
-import styles from "./NotEnoughUsers.module.css";
 
+// Constants and Utils
+import emojiConstants from "../../../../constants/emojiConstants";
+
+// Components
+import Emoji from "../../../common/Emoji/Emoji";
+
+// Styles
+import styles from "./NotEnoughUsers.module.css";
 /**
  * Component for rendering a call to action to add users to a group
  *
- * @component
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const NotEnoughUsers = () => (
   <p className={styles.failMessage}>
     Add users{" "}
-    <span
-      className={styles.emojiParanthesis}
-      role='img'
-      aria-label='User Emoji'>
-      ({emojiConstants.user})
+    <span className={styles.emojiParanthesis}>
+      (<Emoji label={"user emoji"} emoji={emojiConstants.user}></Emoji>)
     </span>{" "}
     below{" "}
-    <span
-      className={styles.emojiParanthesis}
-      role='img'
-      aria-label='Point down Emoji'>
-      ({emojiConstants.pointdown})
+    <span className={styles.emojiParanthesis}>
+      ({" "}
+      <Emoji label={"pont down emoji"} emoji={emojiConstants.pointDown}></Emoji>
+      )
     </span>{" "}
     to start settling expenses.
   </p>

@@ -14,12 +14,10 @@ import styles from "./RenderSettlementPaymentSuggestions.module.css";
 /**
  * Component for rendering settlement payment suggestions.
  *
- * @component
  * @param {Object} props - The properties of the component.
  * @param {Object[]} props.negativeBalanceUsers - An array of users with negative balances.
  * @param {Object[]} props.positiveBalanceUsers - An array of users with positive balances.
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderSettlementPaymentSuggestions = ({
   positiveBalanceUsers,
   negativeBalanceUsers,
@@ -44,7 +42,7 @@ const RenderSettlementPaymentSuggestions = ({
             <div className={styles.makerAndRecipient}>
               <span aria-label={`Payment maker name`}>{settlement.from} </span>
               <Emoji
-                label={"Payment to emoji"}
+                label={"payment to other user emoji"}
                 emoji={emojiConstants.paymentsMade}></Emoji>{" "}
               <span aria-label={`Payment recipient name`}>
                 {settlement.to}{" "}

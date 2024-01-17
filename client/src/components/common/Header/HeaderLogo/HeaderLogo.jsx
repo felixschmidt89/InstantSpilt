@@ -7,8 +7,7 @@ import styles from "./HeaderLogo.module.css";
 
 /**
  * Header Logo component representing the application logo.
- * @returns {JSX.Element} Rendered Logo component.
- */
+ * @returns {JSX.Element} React component. */
 const HeaderLogo = () => {
   return (
     <Link to='/' className={styles.logoLink}>

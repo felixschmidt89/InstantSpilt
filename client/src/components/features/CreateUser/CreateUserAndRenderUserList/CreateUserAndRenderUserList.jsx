@@ -11,8 +11,7 @@ import CreateUserForm from "../CreateUserForm/CreateUserForm";
 /**
  * Component for creating a user within a group and rendering the groups user list.
  * Has nested components and uses a custom hook to get groupCode and trigger rerender logic.
- * @returns {JSX.Element} The rendered Create User component.
- */
+ * @returns {JSX.Element} React component. */
 const CreateUserAndRenderUserList = () => {
   // Custom hook to get groupCode and trigger rerender logic
   const { groupCode, rerenderTrigger, incrementRerenderTrigger } =

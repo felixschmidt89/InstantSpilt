@@ -94,7 +94,7 @@ export const setGroupCodeToCurrentlyActive = (groupCode) => {
 /**
  * Adds groupCode to array of storedGroupCode in local storage if it doesn't already exist
  *
- * @param {string} groupCode - The groupCode to add to array
+ * @param {string} groupCode - The groupCode to add to storedGroupCodes array
  * @returns {boolean} - Returns true if groupCode has been added to local storage, false in case of an error.
  */
 export const storeGroupCodeInLocalStorage = (groupCode) => {
@@ -168,7 +168,7 @@ export const deleteApplicationDataFromLocalStorage = () => {
  * - Removes activeGroupCode from the storedGroupCodes array.
  * - Deletes storedGroupCodes array if it becomes empty.
  *
- * @param {string} groupCode - The group code associated with the data to be deleted.
+ * @param {string} groupCode - The groupCode identifying the group.
  */
 export const deleteGroupDataFromLocalStorage = (groupCode) => {
   removeActiveGroupCodeFromStoredGroupCodes(groupCode);

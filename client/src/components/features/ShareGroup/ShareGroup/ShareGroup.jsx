@@ -7,12 +7,10 @@ import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
 /**
  * Renders option for sharing a group invitation.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {string} props.groupName - The name of the group.
  * @param {string} props.infoToCopy - The information to be copied.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const ShareGroup = ({ groupName, infoToCopy }) => {
   return (
     <p>

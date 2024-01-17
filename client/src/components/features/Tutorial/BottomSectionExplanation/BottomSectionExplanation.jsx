@@ -13,9 +13,7 @@ import styles from "./BottomSectionExplanation.module.css";
 
 /**
  * Component for rendering explanation of the main application's middle section (containing group actions bar).
- * @component
- * @returns {JSX.Element} - BottomSectionExplanation component
- */
+ * @returns {JSX.Element} React component. */
 const BottomSectionExplanation = () => {
   return (
     <div>

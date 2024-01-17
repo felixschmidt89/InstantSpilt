@@ -5,13 +5,11 @@ import styles from "./ExpenseAmountInput.module.css";
 /**
  * Input component for handling expense amount when creating or updating expenses.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {string} props.value - The current value of the input.
  * @param {Function} props.onAmountChange - Function to handle amount changes.
  * @param {Function} props.setFormChanged - Callback function to indicate changes in the form.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const ExpenseAmountInput = ({ value, onAmountChange, setFormChanged }) => {
   const handleExpenseAmountChange = (e) => {
     // update expense amount state and convert separator

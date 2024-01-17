@@ -7,7 +7,6 @@ import styles from "./LegalNoticeAuthor.module.css";
 /**
  * Renders legally required information about the website.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {Object} props.authorInfo - Information about the author.
  * @param {string} props.authorInfo.name - The name of the author.
@@ -15,8 +14,7 @@ import styles from "./LegalNoticeAuthor.module.css";
  * @param {string} props.authorInfo.representative - The representative of the website.
  * @param {string} props.authorInfo.phone - The phone number of the author.
  * @param {string} props.authorInfo.email - The email address of the author.
- * @returns {JSX.Element} - The rendered LegalNoticeAuthor component.
- */
+ * @returns {JSX.Element} React component. */
 const LegalNoticeAuthor = ({ authorInfo }) => {
   return (
     <div className={styles.container}>

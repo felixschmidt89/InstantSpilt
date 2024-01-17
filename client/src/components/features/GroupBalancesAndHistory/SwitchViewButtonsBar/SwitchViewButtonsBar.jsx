@@ -7,11 +7,9 @@ import styles from "./SwitchViewButtonsBar.module.css";
 /**
  * Renders buttons to switch between groupBalance and groupHistory views.
  *
- * @component
  * @param {string} view - The current view state.
  * @param {Function} handleSwitchView - Function to handle view switching.
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const SwitchViewButtonsBar = ({ view, handleSwitchView }) => {
   return (
     <div className={styles.buttonContainer}>

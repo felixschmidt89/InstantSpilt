@@ -15,7 +15,7 @@
  * @property {string} error - Emoji for representing error messages.
  * @property {string} user - Emoji for representing a user.
  * @property {string} settle - Emoji for representing expense settling.
- * @property {string} pointdown - Emoji for pointing down.
+ * @property {string} pointDown - Emoji for pointing down.
  */
 const emojiConstants = {
   expense: "🛒",
@@ -30,6 +30,6 @@ const emojiConstants = {
   error: "🚧",
   user: "👤",
   settle: "🤝",
-  pointdown: "👇",
+  pointDown: "👇",
 };
 export default emojiConstants;

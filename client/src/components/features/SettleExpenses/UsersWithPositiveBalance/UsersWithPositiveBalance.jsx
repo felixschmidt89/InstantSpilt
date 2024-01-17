@@ -8,11 +8,9 @@ import styles from "./UsersWithPositiveBalance.module.css";
 /**
  * Component for rendering users with a positive balance.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {Array} props.positiveBalanceUsers - An array of users with positive balances.
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const UsersWithPositiveBalance = ({ positiveBalanceUsers }) => {
   if (positiveBalanceUsers.length === 0) {
     return null;

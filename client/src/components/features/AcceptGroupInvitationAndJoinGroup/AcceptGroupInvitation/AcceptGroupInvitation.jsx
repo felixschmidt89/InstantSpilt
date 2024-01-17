@@ -15,12 +15,10 @@ import styles from "./AcceptGroupInvitation.module.css";
 /**
  * Component to render and accept a group invitation.
  *
- * @component
  * @param {Object} props - React props.
  * @param {string} props.groupName - The name of the group.
  * @param {string} props.groupCode - The code of the group.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const AcceptGroupInvitation = ({ groupName, groupCode }) => {
   const navigate = useNavigate();
 

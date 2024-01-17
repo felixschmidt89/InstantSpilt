@@ -8,7 +8,6 @@ import styles from "./UsersWithNegativeBalance.module.css";
 /**
  * Component for rendering users with a negative balance.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {Array} props.negativeBalanceUsers - An array of users with negative balance.
  *  @param {string} props.groupCode - The groupCode identifying the group.

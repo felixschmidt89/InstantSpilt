@@ -13,9 +13,7 @@ import styles from "./GroupActionsBar.module.css";
 /**
  * Toolbar displaying a set of navigation icons for creating expenses, payments, and users, and for settling expenses within a group.
  *
- * @component
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const GroupActionsBar = () => {
   return (
     <div

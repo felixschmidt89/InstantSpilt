@@ -26,11 +26,9 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
  * Component for displaying expenses and payments history of a group.
  *
- * @component
  * @param {Object} props - The component properties.
  * @param {string} props.groupCode - The groupCode of the group to display expenses and payments.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderGroupHistory = ({ groupCode }) => {
   const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);

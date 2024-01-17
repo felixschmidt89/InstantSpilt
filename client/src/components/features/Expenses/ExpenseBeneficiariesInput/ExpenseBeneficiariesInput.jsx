@@ -4,14 +4,12 @@ import styles from "./ExpenseBeneficiariesInput.module.css";
 /**
  * Component for selecting expense beneficiaries when creating or updating expenses.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {string[]} props.selectedBeneficiaries - The array of selected beneficiaries.
  * @param {string[]} props.groupMembers - An array of group members to populate the options.
  * @param {Function} props.onSelectedBeneficiariesChange - Callback function to handle changes in the selected beneficiaries.
  * @param {Function} props.setFormChanged - Callback function to indicate form changes.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const ExpenseBeneficiariesInput = ({
   selectedBeneficiaries,
   groupMembers,

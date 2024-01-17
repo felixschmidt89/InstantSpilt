@@ -23,12 +23,10 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
  * Parent component for creating a new expense.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {Array} props.groupMembers - An array of group members.
  * @param {string} props.groupCode - The groupCode identifying the group.
- * @returns {JSX.Element} The rendered Create Expense component.
- */
+ * @returns {JSX.Element} React component. */
 const CreateExpense = ({ groupMembers, groupCode }) => {
   const navigate = useNavigate();
 

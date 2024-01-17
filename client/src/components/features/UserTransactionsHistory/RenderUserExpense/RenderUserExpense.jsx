@@ -19,8 +19,7 @@ import styles from "./RenderUserExpense.module.css";
  * @param {Object} props.item - The expense item object.
  *  @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDelete - Callback function for deleting the expense.
- * @returns {JSX.Element} - RenderUserExpense component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderUserExpense = ({ item, groupCode, onDeleteResource }) => {
   const beneficiaryNames = item.expenseBeneficiaries
     .map((beneficiary) => beneficiary.userName)

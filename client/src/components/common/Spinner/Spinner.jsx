@@ -6,13 +6,11 @@ import styles from "./Spinner.module.css";
 /**
  * Spinner component displaying a rotating SVG spinner.
  *
- * @component
  * @param {string} [color="rgba(85, 156, 173, 0.3)"] - Color of the spinner.
  * @param {number} [size=40] - Size of the spinner in pixels.
  * @param {string} [marginTop="16px"] - Margin-top value for the spinner container in px.
  * @param {string} [height="75%"] - Height value for the spinner container in %.
- * @returns {JSX.Element} - The Spinner component.
- */
+ * @returns {JSX.Element} React component. */
 const Spinner = ({
   color = "rgba(85, 156, 173, 0.3)",
   size = 40,

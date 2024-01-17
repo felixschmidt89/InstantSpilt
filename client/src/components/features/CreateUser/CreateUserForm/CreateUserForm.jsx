@@ -18,11 +18,9 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
  * Component for creating a new user within a group.
  *
- * @component
  * @param {Object} props - The properties of the component.
  * @param {function} props.incrementRerenderTrigger - Function to trigger rerender in parent component.
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
   const inputRef = useRef(null);
 

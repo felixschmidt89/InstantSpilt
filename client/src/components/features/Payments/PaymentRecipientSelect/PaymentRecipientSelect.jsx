@@ -4,13 +4,11 @@ import styles from "./PaymentRecipientSelect.module.css";
 /**
  * Select component for selecting the payment recipient when creating or updating payments.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {string} props.paymentRecipientName - The name of the selected payment recipient.
  * @param {Function} props.onRecipientChange - Callback function to handle changes in the selected payment recipient.
  * @param {string[]} props.groupMembers - An array of group members to populate the options.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const PaymentRecipientSelect = ({
   paymentRecipientName,
   onRecipientChange,

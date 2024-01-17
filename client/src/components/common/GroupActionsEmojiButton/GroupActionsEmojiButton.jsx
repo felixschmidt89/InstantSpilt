@@ -8,14 +8,12 @@ import styles from "./GroupActionsEmojiButton.module.css";
 /**
  * Renders a button component with an emoji, tooltips, and navigates to a specified route on click.
  *
- * @component
  * @param {Object} props - The properties of the component.
  * @param {string} props.route - The route to navigate to when the button is clicked.
  * @param {string} props.emoji - The emoji to be rendered.
  * @param {string} props.tooltipText - The text of the tooltip.
  * @param {string} props.ariaLabel - The ARIA label for accessibility.
- * @returns {JSX.Element} - The rendered GroupActionsEmojiButton component.
- */
+ * @returns {JSX.Element} React component. */
 const GroupActionsEmojiButton = ({ route, emoji, tooltipText, ariaLabel }) => {
   const navigate = useNavigate();
 

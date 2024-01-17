@@ -23,11 +23,9 @@ import ErrorDisplay from "../../components/common/ErrorDisplay/ErrorDisplay";
 import styles from "./ValidateProvidedGroupCodePage.module.css";
 
 /**
- * Validates the provided group code and navigates the user accordingly.
+ * Validates the user's manually provided groupCode and navigates the user accordingly.
  *
- * @component
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const ValidateProvideGroupCodePage = () => {
   const navigate = useNavigate();
   const { groupCode } = useParams();

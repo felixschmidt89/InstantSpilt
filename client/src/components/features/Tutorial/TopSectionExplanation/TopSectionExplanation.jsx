@@ -12,9 +12,7 @@ import styles from "./TopSectionExplanation.module.css";
 
 /**
  * Component for rendering explanation of the main application's top section (containing user action bar).
- * @component
- * @returns {JSX.Element} - TopSectionExplanation component
- */
+ * @returns {JSX.Element} React component. */
 const TopSectionExplanation = () => {
   return (
     <div>

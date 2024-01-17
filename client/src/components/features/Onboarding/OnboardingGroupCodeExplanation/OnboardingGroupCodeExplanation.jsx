@@ -11,10 +11,8 @@ import styles from "./OnboardingGroupCodeExplanation.module.css";
 
 /**
  * Component for rendering groupCode explanation for group creators during onboarding.
- * @component
- * @param {string} groupCode - The GroupCode for identifying a group.
- * @returns {JSX.Element} - OnboardingGroupCodeExplanation component
- */
+ * @param {string} groupCode - The groupCode identifying the group.
+ * @returns {JSX.Element} React component. */
 const OnboardingGroupCodeExplanation = ({ groupCode }) => {
   return (
     <div className={styles.container}>
@@ -25,7 +23,7 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
           is the <span className={styles.strong}>GroupCode</span>. Here&rsquo;s
           yours:
         </p>
-        <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"12rem"} />
+        <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
       </div>
       <div className={styles.saveGroupCode}>
         <p>Be sure to write it down in a safe place.</p>

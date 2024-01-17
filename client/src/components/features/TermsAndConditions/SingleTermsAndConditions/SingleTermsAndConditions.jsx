@@ -6,10 +6,8 @@ import styles from "./SingleTermsAndConditions.module.css";
 
 /**
  * Component to display a single section of terms and conditions.
- * @component
  * @param {Array} sections - An array of objects representing sections with keys, titles, and content.
- * @returns {JSX.Element} - SingleTermsAndConditions component
- */
+ * @returns {JSX.Element} React component. */
 const SingleTermsAndConditions = ({ sections }) => {
   return (
     <div className={styles.container}>

@@ -16,12 +16,10 @@ import styles from "./UserActionsBar.module.css";
  * - View tutorial
  * - Forget group on device
  *
- * @component
  * @param {Object} props - The component props.
  * @param {string} props.groupCode - The code associated with the group.
  * @param {string} props.groupName - The name of the group.
- * @returns {JSX.Element} - The rendered UserActionsBar component.
- */
+ * @returns {JSX.Element} React component. */
 const UserActionsBar = ({ groupCode, groupName }) => {
   return (
     <div className={styles.container}>

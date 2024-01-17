@@ -14,6 +14,7 @@ import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
 import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
 import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
+import Emoji from "../../../common/Emoji/Emoji";
 
 // Styles
 import styles from "./UpdateExpense.module.css";
@@ -101,7 +102,10 @@ const UpdateExpense = ({
 
   return (
     <div>
-      <h1 className={styles.header}>Update expense {emojiConstants.expense}</h1>
+      <h1 className={styles.header}>
+        Update expense{" "}
+        <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
+      </h1>
       <form onSubmit={handleFormSubmit}>
         <ExpenseDescriptionInput
           value={expenseDescription}

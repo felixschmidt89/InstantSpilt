@@ -6,9 +6,7 @@ import styles from "./MiddleSectionExplanation.module.css";
 
 /**
  * Component for rendering explanation of the main application's middle section (containing group balances and group history).
- * @component
- * @returns {JSX.Element} - MiddleSectionExplanation component
- */
+ * @returns {JSX.Element} React component. */
 const MiddleSectionExplanation = () => {
   return (
     <div>

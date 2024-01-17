@@ -8,9 +8,7 @@ import styles from "./HomeGetStartedSection.module.css";
 /**
  * Component for rendering the get started section on the home page.
  *
- * @component
- * @returns {JSX.Element} - The rendered HomeGetStartedSection component.
- */
+ * @returns {JSX.Element} React component. */
 const HomeGetStartedSection = () => {
   return (
     <>

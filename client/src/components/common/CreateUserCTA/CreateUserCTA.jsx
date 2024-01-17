@@ -13,8 +13,7 @@ import styles from "./CreateUserCTA.module.css";
 /**
  * Component for rendering a call-to-action (CTA) to create users.
  * @param {boolean} props.isPayment - Indicates whether the CTA is related to a payment. Defaults to true.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const CreateUserCTA = ({ isPayment = true }) => {
   return (
     <div>

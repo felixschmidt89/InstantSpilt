@@ -9,14 +9,12 @@ import { setRouteInLocalStorage } from "../../../../utils/localStorageUtils";
 /**
  * Button for navigating to a specified route with optional setting of previousRoute or nestedPreviousRoute in localStorage (needed for InAppNavgationBar component)
  *
- * @component
  * @param {Object} props - The properties of the component.
  * @param {string} props.route - The route to navigate to when the button is clicked.
  * @param {string} [props.buttonText="update"] - The text content of the button.
  *  @param {boolean} props.setPreviousRoute - If true, sets the current page as previous route in localStorage.
  * @param {boolean} props.setNestedPreviousRoute - If true, sets sets the current page as nested previous route in localStorage.
- * @returns {JSX.Element} - The rendered RouteButton component.
- */
+ * @returns {JSX.Element} React component. */
 const RouteButton = ({
   route,
   buttonText,

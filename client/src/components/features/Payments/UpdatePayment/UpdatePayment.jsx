@@ -24,15 +24,13 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
  * Parent component for updating a payment.
  *
- * @component
  * @param {Object} props - The properties of the component.
  * @param {Object[]} props.groupMembers - An array of group members.
  * @param {string} props.groupCode - The grouCode identifying the group.
  * @param {Object} props.paymentDetails - The details of the payment stored in the database prior to being updated.
  * @param {string} props.itemId - The unique identifier of the payment.
  * @param {string} [props.route="/instant-split"] - The route to navigate to after updating the payment.
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const UpdatePayment = ({
   groupMembers,
   groupCode,
@@ -123,7 +121,7 @@ const UpdatePayment = ({
       />
       <span className={styles.paymentToEmoji}>
         <Emoji
-          label={"Payment to someone emoji"}
+          label={"payment to other user emoji"}
           emoji={emojiConstants.paymentsMade}></Emoji>
       </span>
       <PaymentRecipient

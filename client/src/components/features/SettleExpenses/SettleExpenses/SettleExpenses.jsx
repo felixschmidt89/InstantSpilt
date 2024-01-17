@@ -27,9 +27,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
  * Parent component to settle expenses, identifying users with unsettled user balances.
- * @component
- * @returns {JSX.Element} - SettleExpenses component
- */
+ * @returns {JSX.Element} React component. */
 const SettleExpenses = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
 

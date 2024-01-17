@@ -11,11 +11,9 @@ import styles from "./RenderUserNameAndBalance.module.css";
 /**
  * Component for rendering username and user balance
  *
- * @component
  * @param {Object[]} userDetails - The array of user details.
  *  @param {string} props.groupCode - The groupCode of the group.
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderUserNameAndBalance = ({ userDetails, groupCode }) => (
   <div className={styles.balancesContainer}>
     <ul>

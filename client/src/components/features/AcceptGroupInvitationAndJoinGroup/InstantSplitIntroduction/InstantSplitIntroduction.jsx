@@ -1,11 +1,9 @@
 /**
  * Component to introduce users to InstantSplit when they receive an invitation.
  *
- * @component
  * @param {Object} props - React props.
  * @param {Object} props.groupData - groupData
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 import React from "react";
 import styles from "./InstantSplitIntroduction.module.css";
 

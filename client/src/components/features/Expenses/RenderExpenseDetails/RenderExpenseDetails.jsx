@@ -16,8 +16,7 @@ import styles from "./RenderExpenseDetails.module.css";
  *
  * @param {Object} props - The component props.
  * @param {Object} props.expenseInfo - The details of the expense.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderExpenseDetails = ({ expenseInfo }) => {
   return (
     <div className={styles.container}>

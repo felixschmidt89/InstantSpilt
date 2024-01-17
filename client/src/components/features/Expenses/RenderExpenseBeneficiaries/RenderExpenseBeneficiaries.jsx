@@ -7,8 +7,7 @@ import styles from "./RenderExpenseBeneficiaries.module.css";
  *
  * @param {Object} props - The component props.
  * @param {Array} props.expenseBeneficiaries - The array of expense beneficiaries.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderExpenseBeneficiaries = ({ expenseBeneficiaries }) => {
   return (
     <div className={styles.container}>

@@ -19,8 +19,7 @@ import styles from "./RenderUserPayment.module.css";
  * @param {Object} props.item - The payment item object.
  * @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDelete - Callback function for deleting the payment.
- * @returns {JSX.Element} - RenderUserPayment component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderUserPayment = ({ item, groupCode, onDeleteResource }) => {
   return (
     <div className={styles.payments}>
@@ -59,7 +58,7 @@ const RenderUserPayment = ({ item, groupCode, onDeleteResource }) => {
           ariaLabel={"username of the payment maker"}
         />
         <Emoji
-          label={"payment made to emoji"}
+          label={"payment to other user emoji"}
           emoji={emojiConstants.paymentsMade}></Emoji>
         <RenderDataAttributeWithAriaLabel
           attribute={item.paymentRecipient.userName}

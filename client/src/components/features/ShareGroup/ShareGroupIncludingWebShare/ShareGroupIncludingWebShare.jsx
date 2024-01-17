@@ -11,13 +11,11 @@ import styles from "./ShareGroupIncludingWebShare.module.css";
 /**
  * Renders options for sharing group invitation - including WebShare API.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {string} props.groupName - The name of the group.
  * @param {string} props.groupCode - The code of the group.
  * @param {string} props.infoToCopy - The information to be copied.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const ShareGroupIncludingWebShare = ({ groupName, groupCode, infoToCopy }) => {
   return (
     <div className={styles.WebShare}>

@@ -8,9 +8,7 @@ import styles from "./HomeTermsAndConditionsSection.module.css";
 /**
  * Component for rendering the terms and conditions section on the home page.
  *
- * @component
- * @returns {JSX.Element} - The rendered HomeTermsAndConditionsSection component.
- */
+ * @returns {JSX.Element} React component. */
 const HomeTermsAndConditionsSection = () => {
   return (
     <p className={styles.terms}>

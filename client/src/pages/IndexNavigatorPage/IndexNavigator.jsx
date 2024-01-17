@@ -12,9 +12,7 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 /**
  * Page component for navigating users with valid activeGroupCode to main application and else to homepage to create or join a group there.
  *
- * @component
- * @returns {JSX.Element} - The rendered IndexNavigatorPage component.
- */
+ * @returns {JSX.Element} React component. */
 const IndexNavigatorPage = () => {
   const navigate = useNavigate();
   const groupCode = localStorage.getItem("activeGroupCode");

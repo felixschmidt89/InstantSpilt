@@ -19,12 +19,10 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
  * Renders a list of all user names of a group.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {number} props.rerenderTrigger - Trigger for re-rendering the component.
  * @param {string} props.groupCode - The groupCode of the group.
- * @returns {JSX.Element} The rendered component displaying user names.
- */
+ * @returns {JSX.Element} React component. */
 const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
   const [userNames, setUserNames] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

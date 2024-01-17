@@ -10,13 +10,11 @@ import styles from "./PaymentAmountInput.module.css";
 /**
  * Input component for handling payment amount when creating or updating payments.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {string} props.paymentAmount - The current payment amount.
  * @param {Function} props.onAmountChange - Callback function to handle changes in payment amount.
  * @param {Function} props.setFormChanged - Optional callback function to indicate form changes.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const PaymentAmountInput = ({
   paymentAmount,
   onAmountChange,

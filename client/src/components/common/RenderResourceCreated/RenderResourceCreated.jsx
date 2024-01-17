@@ -15,14 +15,11 @@ import styles from "./RenderResourceCreated.module.css";
  *
  * @param {Object} props - The component props.
  * @param {string} props.createdAt - The creation timestamp of the resource.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderResourceCreated = ({ createdAt }) => {
   return (
     <p className={styles.createdText}>
-      <Emoji
-        label={"Resource created emoji"}
-        emoji={emojiConstants.created}></Emoji>{" "}
+      <Emoji label={"created at emoji"} emoji={emojiConstants.created}></Emoji>{" "}
       {new Date(createdAt).toLocaleString()}
     </p>
   );

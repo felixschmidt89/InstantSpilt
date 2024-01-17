@@ -4,13 +4,11 @@ import styles from "./ExpenseDescriptionInput.module.css";
 /**
  * Input component for handling expense description when creating or updating expenses.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {string} props.value - The current value of the input.
  * @param {Function} props.onDescriptionChange - Callback function to handle changes in the input.
  * @param {Function} props.setFormChanged - Callback function to indicate changes in the form.
- * @returns {JSX.Element} - Rendered component.
- */
+ * @returns {JSX.Element} React component. */
 const ExpenseDescriptionInput = ({
   value,
   onDescriptionChange,

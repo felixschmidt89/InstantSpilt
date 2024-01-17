@@ -10,12 +10,11 @@ import styles from "./UserTransactionsHistory.module.css";
 
 /**
  * Parent component rendering user transactions history including every single expense and payment of a user.
- * @component
  * @param {Object} props - The component props.
  * @param {Array} props.userExpensesAndPayments - An array of user expenses and payments.
  * @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDeleteItem - Callback function to handle deletion of an expense or a payment.
- * @returns {JSX.Element|null} - UserTransactionsHistory component or null if no transactions.
+ * @returns {JSX.Element|null} React component or null if no transactions.
  */
 const UserTransactionsHistory = ({
   userExpensesAndPayments,

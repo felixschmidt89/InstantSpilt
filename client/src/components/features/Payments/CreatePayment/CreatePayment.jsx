@@ -24,12 +24,10 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
  * Parent component for creating a payment.
  *
- * @component
  * @param {Object} props - The properties of the component.
  * @param {Object[]} props.groupMembers - An array of the group members.
  * @param {string} props.groupCode - The groupCode identifying the group.
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const CreatePayment = ({ groupMembers, groupCode }) => {
   const navigate = useNavigate();
 
@@ -82,7 +80,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       />
       <span className={styles.paymentToEmoji}>
         <Emoji
-          label={"Payment to someone emoji"}
+          label={"payment to other user emoji"}
           emoji={emojiConstants.paymentsMade}></Emoji>{" "}
       </span>
       <PaymentRecipientSelect

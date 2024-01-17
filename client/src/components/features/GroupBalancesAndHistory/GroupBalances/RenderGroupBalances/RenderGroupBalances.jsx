@@ -22,9 +22,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
  * Displays group members' balances, handles data fetching, formatting and rendering
  *
- * @component
- * @returns {JSX.Element} - React component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderGroupBalances = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
 

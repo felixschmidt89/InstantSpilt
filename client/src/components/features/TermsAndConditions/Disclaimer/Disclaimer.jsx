@@ -6,10 +6,8 @@ import styles from "./Disclaimer.module.css";
 
 /**
  * Component for rendering a terms and conditions disclaimer.
- * @component
  * @param {string} lastUpdateDate - The last time, the Terms and Conditions have been updated
- * @returns {JSX.Element} - Disclaimer component
- */
+ * @returns {JSX.Element} React component. */
 const Disclaimer = ({ lastUpdateDate }) => {
   return (
     <div className={styles.disclaimer}>

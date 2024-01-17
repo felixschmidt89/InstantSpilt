@@ -4,21 +4,22 @@ import React from "react";
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
 
+// Components
+import Emoji from "../../../common/Emoji/Emoji";
+
 // Styles
 import styles from "./RenderPaymentDetails.module.css";
 
 /**
  * Renders payment details including payment amount, maker, and recipient.
  *
- * @component
  * @param {Object} props - The component props.
  * @param {string} props.groupCode - The groupCode associated with the group.
  * @param {Object} props.paymentInfo - Payment information.
  * @param {number} props.paymentInfo.paymentAmount - The amount of the payment.
  * @param {Object} props.paymentInfo.paymentMaker - The user who made the payment.
  * @param {Object} props.paymentInfo.paymentRecipient - The user who received the payment.
- * @returns {JSX.Element} - The rendered RenderPaymentDetails component.
- */
+ * @returns {JSX.Element} React component. */
 const RenderPaymentDetails = ({ groupCode, paymentInfo }) => {
   return (
     <div className={styles.detailsContainer}>
@@ -27,7 +28,12 @@ const RenderPaymentDetails = ({ groupCode, paymentInfo }) => {
         <span className={styles.userName}>
           {paymentInfo.paymentMaker.userName}
         </span>
-        <span className={styles.emoji}>{emojiConstants.paymentsMade}</span>
+        <span className={styles.emoji}>
+          {" "}
+          <Emoji
+            label={"payment to other user emoji"}
+            emoji={emojiConstants.paymentsMade}></Emoji>
+        </span>
         <span className={styles.userName}>
           {paymentInfo.paymentRecipient.userName}
         </span>

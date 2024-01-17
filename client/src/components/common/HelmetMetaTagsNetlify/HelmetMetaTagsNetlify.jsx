@@ -15,9 +15,7 @@ import { Helmet } from "react-helmet-async";
  * @param {string} props.image - The absolute URL for the meta tags image.
  * @param {string} props.path - Additional path segments to append to the default URL.
  * @param {string} props.author - The author of the page.
- *
- * @returns {JSX.Element} The HelmetMetaTagsNetlify component.
- */
+ * @returns {JSX.Element} React component. */
 const HelmetMetaTagsNetlify = ({ title, description, image, path, author }) => {
   // Define default values
   const defaultDescription =

@@ -16,11 +16,9 @@ import styles from "./TermsAndConditions.module.css";
 
 /**
  * Parent component to render terms and conditions
- * @component
  * @param {string} lastUpdateDate - The last time, the Terms and Conditions have been updated
  * @param {Array} sections - An array of objects representing sections with keys, titles, and content.
- * @returns {JSX.Element} - TermsAndConditions component
- */
+ * @returns {JSX.Element} React component. */
 const TermsAndConditions = () => {
   return (
     <div className={styles.container}>
