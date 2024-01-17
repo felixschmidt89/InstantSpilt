@@ -10,7 +10,7 @@ import styles from "./HeaderLogo.module.css";
  * @returns {JSX.Element} React component. */
 const HeaderLogo = () => {
   return (
-    <Link to='/' className={styles.logoLink}>
+    <Link to='/homepage' className={styles.logoLink}>
       <img src='/logo.png' alt='Logo' className={styles.logoImage} />
     </Link>
   );

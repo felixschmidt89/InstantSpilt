@@ -8,7 +8,6 @@ import {
   setRouteInLocalStorage,
   storeGroupCodeInLocalStorage,
 } from "../../utils/localStorageUtils";
-import { genericErrorMessage } from "../../constants/errorConstants";
 
 // Hooks
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
@@ -18,6 +17,7 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import ErrorDisplay from "../../components/common/ErrorDisplay/ErrorDisplay";
+import Spinner from "../../components/common/Spinner/Spinner";
 
 // Styles
 import styles from "./ValidateProvidedGroupCodePage.module.css";
@@ -40,11 +40,13 @@ const ValidateProvideGroupCodePage = () => {
       storeGroupCodeInLocalStorage(groupCode);
       setGroupCodeToCurrentlyActive(groupCode);
       setRouteInLocalStorage(window.location.pathname, "previousRoute");
-      navigate("/onboarding-tutorial/");
+      // Render feedback, programmatically navigate with a short delay
+      const timeoutId = setTimeout(() => {
+        navigate("/onboarding-tutorial/");
+      }, 4000);
+      return () => clearTimeout(timeoutId);
     } else if (validationError) {
       setError(validationError);
-    } else {
-      setError(genericErrorMessage);
     }
   }, [groupExists, groupCode, navigate, validationError]);
 
@@ -60,7 +62,15 @@ const ValidateProvideGroupCodePage = () => {
       />
       <div className={styles.container}>
         <h1>GroupCode validation</h1>
-        {error && <ErrorDisplay error={error} remWidth={25} />}
+        {groupExists && (
+          <p>
+            GroupCode found in database. <br />
+            Redirecting to the group now.
+          </p>
+        )}
+        {/*Handle validations timeout errors*/}
+        {!error && !groupExists && <Spinner />}
+        <ErrorDisplay error={error} remWidth={25} />
       </div>
     </main>
   );

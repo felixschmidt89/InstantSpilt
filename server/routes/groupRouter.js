@@ -36,8 +36,8 @@ router.get('/:groupCode/continuous-validate-existence', validateGroupExistence);
 // Check if groupCode exists in database (limited)
 router.get(
   '/:groupCode/limited-validate-existence',
-  limiter,
-  handleRateLimitExceedance,
+  // limiter,
+  // handleRateLimitExceedance,
   validateGroupExistence,
 );
 
