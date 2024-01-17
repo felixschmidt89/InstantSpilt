@@ -16,15 +16,15 @@
 /* Ensure that numbers are right aligned to be easily readable */
 .expenseAmount {
   text-align: right;
-  width: 8%; /* white space on the left */
+  width: 8rem; /* white space on the left */
 }
 
 .rightColumn {
+  width: 80%;
   display: flex;
   flex-direction: column;
   margin-left: 3rem;
   margin-right: 2rem;
-  width: 80%;
   border-top: 2px solid var(--color-signal-reduced-opacity);
 }
 

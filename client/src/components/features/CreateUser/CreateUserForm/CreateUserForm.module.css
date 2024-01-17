@@ -14,21 +14,3 @@
   border-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-signal);
 }
-
-.button {
-  background-color: var(--color-signal);
-  color: var(--color-main);
-  font-weight: bold;
-  border: none;
-  width: 3rem;
-  padding: 0.4rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  margin-left: 0.5rem;
-}
-
-.button:hover {
-  background-color: var(--color-success);
-  box-shadow: 0 0 0.5rem var(--color-success);
-}

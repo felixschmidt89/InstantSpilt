@@ -12,6 +12,7 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import CreateExpense from "../../components/features/Expenses/CreateExpense/CreateExpense";
 import CreateUserCTA from "../../components/common/CreateUserCTA/CreateUserCTA";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import Emoji from "../../components/common/Emoji/Emoji";
 
 // Styles
 import styles from "./CreateExpensePage.module.css";
@@ -26,7 +27,10 @@ const CreateExpensePage = () => {
       <PiratePx COUNT_IDENTIFIER={"create-expense"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <h1>Add expense {emojiConstants.expense}</h1>
+        <h1>
+          Add expense{" "}
+          <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
+        </h1>
         {!isFetched ? (
           <Spinner />
         ) : // Check if there are at least 2 group members

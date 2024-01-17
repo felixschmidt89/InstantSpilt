@@ -41,11 +41,11 @@
 
 @media (max-width: 500px) {
   .leftColumn {
-    margin-left: 3rem;
+    margin-left: 2rem;
   }
 
   .rightColumn {
-    margin-right: 3rem;
+    margin-right: 2rem;
   }
 
   .balancesContainer li {

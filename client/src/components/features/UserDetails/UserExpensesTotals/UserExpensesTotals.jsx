@@ -17,7 +17,10 @@ import Emoji from "../../../common/Emoji/Emoji";
 const UserExpensesTotals = ({ userData }) => {
   return (
     <div role='region' aria-label='User Expense Totals'>
-      <h3>{emojiConstants.expense} expense totals </h3>
+      <h3>
+        <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
+        expense totals{" "}
+      </h3>
       <ul>
         {/* total expenses paid amount with 2 decimal places */}
         <li>

@@ -16,8 +16,7 @@
 }
 
 :focus {
-  outline: 0.2rem solid var(--color-success);
-  padding: 0.1 rem;
+  outline: 0.1rem solid var(--color-success);
 }
 
 * {
@@ -29,10 +28,6 @@
 html {
   font-size: 62.5%;
   box-sizing: border-box;
-}
-
-a {
-  color: var(--color-signal);
 }
 
 body {
@@ -67,10 +62,15 @@ h1 {
 }
 
 h2 {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
 }
 
 h3 {
+  font-size: 1.7rem;
+}
+h4,
+h5,
+h6 {
   font-size: 1.6rem;
 }
 
@@ -79,57 +79,23 @@ li {
   font-size: 1.6rem;
 }
 
+a {
+  color: var(--color-signal);
+}
+
+a:hover {
+  color: var(--color-success);
+}
+
 ul {
   list-style: none;
 }
 
 button,
 select,
-input {
+input,
+textarea {
   font-family: "Ubuntu", sans-serif;
-}
-
-.errorMessage {
-  color: var(--color-error);
-}
-
-/* CSS for cellphones and tablets */
-@media (max-width: 768px) {
-  main {
-    width: 95vw;
-    height: 70vh;
-  }
-}
-
-/* CSS for Tablets (Between 768px and 1024px in portrait mode) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  main {
-    width: 50vw;
-    height: 75vh;
-  }
-}
-
-/* Laptops and Desktops */
-@media (min-width: 1025px) and (max-width: 1280px) {
-  main {
-    width: 30vw;
-    height: 75vh;
-  }
-}
-
-/* CSS for Large Screens (1281px and above) */
-@media (min-width: 1281px) and (max-width: 1920px) {
-  main {
-    width: 30vw;
-    height: 75vh;
-  }
-}
-
-@media (min-width: 1921px) {
-  main {
-    width: 20vw;
-    height: 65vh;
-  }
 }
 
 ::-webkit-scrollbar,
@@ -141,4 +107,127 @@ scrollbar {
 scrollbar-thumb {
   background-color: var(--color-signal-reduced-opacity);
   border-radius: 0.5rem;
+}
+
+/* Media queries for responsive design */
+/* Mobile*/
+@media only screen and (max-width: 767px) {
+  header {
+    /* fallback value for older browsers*/
+    height: 10vh;
+    height: 10svh;
+  }
+  main {
+    height: 70vh;
+    height: 80svh;
+    width: 95vw;
+  }
+  footer {
+    height: 10vh;
+    height: 10svh;
+  }
+
+  body {
+    line-height: 1.5;
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+    font-family: "Source Sans 3", sans-serif;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    font-family: "Source Sans 3", sans-serif;
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: 1.5rem;
+    font-family: "Source Sans 3", sans-serif;
+  }
+}
+
+/* Tablet*/
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  header {
+    /* fallback value for older browsers*/
+    height: 7vh;
+    height: 7svh;
+  }
+  main {
+    height: 75vh;
+    height: 85svh;
+    width: 70vw;
+  }
+  footer {
+    height: 8vh;
+    height: 8svh;
+  }
+}
+
+/* Tablet landscape mode*/
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  header {
+    /* fallback value for older browsers*/
+    height: 7vh;
+    height: 7svh;
+  }
+  main {
+    height: 75vh;
+    height: 85svh;
+    width: 60vw;
+  }
+  footer {
+    height: 8vh;
+    height: 8svh;
+  }
+}
+
+/* Laptop*/
+@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+  header {
+    height: 9vh;
+  }
+  main {
+    padding-top: 0rem;
+    height: 86vh;
+    width: 60vw;
+  }
+  footer {
+    height: 5vh;
+  }
+}
+
+/* Larger Screens */
+@media only screen and (min-width: 1441px) and (max-width: 1920px) {
+  header {
+    height: 11vh;
+  }
+  main {
+    height: 84vh;
+    width: 55rem;
+  }
+  footer {
+    height: 5vh;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  header {
+    height: 3vh;
+  }
+  main {
+    height: 70rem;
+    width: 68rem;
+  }
+  footer {
+    height: 3vh;
+  }
 }

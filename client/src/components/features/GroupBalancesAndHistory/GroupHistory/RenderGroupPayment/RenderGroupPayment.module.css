@@ -12,15 +12,14 @@
   margin-right: 2rem;
 }
 
-/* Ensure that numbers are right aligned to be easily readable */
 .paymentAmount {
-  text-align: right;
+  text-align: right; /* numbers are right aligned to be easily readable */
   width: 8rem; /* white space on the left */
 }
 
 .rightColumn {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-left: 3rem;
   margin-right: 2rem;
   width: 80%;

@@ -1,0 +1,20 @@
+.button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.add {
+  color: var(--color-signal);
+}
+
+.add:hover {
+  color: var(--color-success);
+}
+
+.button:active {
+  border: none;
+  outline: none;
+}

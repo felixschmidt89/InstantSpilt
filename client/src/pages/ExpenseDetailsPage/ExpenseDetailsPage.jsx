@@ -17,6 +17,7 @@ import RenderExpenseDetails from "../../components/features/Expenses/RenderExpen
 import RenderResourceCreated from "../../components/common/RenderResourceCreated/RenderResourceCreated";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 import InAppNavigation from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import Emoji from "../../components/common/Emoji/Emoji";
 
 // Styles
 import styles from "./ExpenseDetailsPage.module.css";
@@ -29,9 +30,13 @@ const ExpenseDetailsPage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - expense details' />
       <PiratePx COUNT_IDENTIFIER={"expense-details"} />
+      <InAppNavigation back={true} />
       <div className={styles.container}>
-        <InAppNavigation back={true} />
-        <h1>Expense {emojiConstants.expense}</h1>
+        <h1>
+          {" "}
+          <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
+          Expense details
+        </h1>
         {isFetched ? (
           <>
             <RenderExpenseDetails expenseInfo={expenseInfo} />

@@ -20,6 +20,7 @@ import RenderResourceCreated from "../../components/common/RenderResourceCreated
 
 // Styles
 import styles from "./PaymentDetailsPage.module.css";
+import Emoji from "../../components/common/Emoji/Emoji";
 
 const PaymentDetailsPage = () => {
   const { groupCode, itemId } = useParams();
@@ -32,7 +33,13 @@ const PaymentDetailsPage = () => {
       <InAppNavigationBar back={true} />
       {isFetched ? (
         <div className={styles.container}>
-          <h1>Payment {emojiConstants.payment}</h1>
+          <h1>
+            {" "}
+            <Emoji
+              label={"payment emoji"}
+              emoji={emojiConstants.payment}></Emoji>{" "}
+            Payment details
+          </h1>
           <RenderPaymentDetails
             groupCode={groupCode}
             paymentInfo={paymentInfo}

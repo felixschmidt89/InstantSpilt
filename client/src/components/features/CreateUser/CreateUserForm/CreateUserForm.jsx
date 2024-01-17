@@ -11,6 +11,7 @@ import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 // Styles
 import styles from "./CreateUserForm.module.css";
+import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -73,12 +74,14 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
           ref={inputRef}
           autoFocus
         />
-        {/* Conditionally render submit button (only when user name has at least 1 character) */}
-        {userName.length >= 1 && (
-          <button type='submit' className={styles.button}>
-            +
-          </button>
-        )}
+        <FormSubmitButton
+          fontSize={1.6}
+          add={true}
+          marginLeft='0.1'
+          transformScale={1.3}
+          translateX={0.2}
+          translateY={0.1}
+        />
       </form>
       <ErrorDisplay error={error} remWidth={20} />
     </div>

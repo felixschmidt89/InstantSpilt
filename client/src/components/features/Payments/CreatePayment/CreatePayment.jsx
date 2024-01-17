@@ -17,6 +17,7 @@ import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 // Styles
 import styles from "./CreatePayment.module.css";
+import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -39,7 +40,6 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
   const isSubmitButtonVisible =
     paymentAmount && paymentMakerName && paymentRecipientName;
 
-  // On form submission: post payment and navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -89,11 +89,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
         groupMembers={groupMembers}
       />
       <div className={styles.buttonContainer}>
-        {isSubmitButtonVisible && (
-          <button className={styles.button} type='submit'>
-            +{" "}
-          </button>
-        )}
+        {isSubmitButtonVisible && <FormSubmitButton fontSize={3} add={true} />}
       </div>
       <ErrorDisplay error={error} />
     </form>

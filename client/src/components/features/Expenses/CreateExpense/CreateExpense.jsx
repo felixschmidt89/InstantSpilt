@@ -12,10 +12,11 @@ import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBenef
 import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
 import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescriptionInput";
 import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
+import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
+import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // Styles
 import styles from "./CreateExpense.module.css";
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -94,11 +95,8 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
             groupMembers={groupMembers}
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}
           />
-          {/* Conditionally render submit button */}
           {isSubmitButtonVisible && (
-            <button className={styles.button} type='submit'>
-              +
-            </button>
+            <FormSubmitButton fontSize={3} add={true} />
           )}
         </div>
       </form>

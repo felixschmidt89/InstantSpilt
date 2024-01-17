@@ -6,7 +6,9 @@
 }
 
 .spinner {
+  display: flex;
+  justify-content: center;
   height: 75%;
-  margin: 0 auto;
-  margin-top: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
