@@ -155,7 +155,7 @@ scrollbar-thumb {
 }
 
 /* Mobile with small height, ie with keyboard shown*/
-@media (max-width: 767px) and (max-height: 400px) {
+@media (max-width: 767px) and (max-height: 500px) {
   main {
     height: 99vh;
   }

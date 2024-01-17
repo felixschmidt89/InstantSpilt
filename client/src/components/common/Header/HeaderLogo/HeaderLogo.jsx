@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 import styles from "./HeaderLogo.module.css";
 
 /**
- * Header Logo component representing the application logo.
+ * Header Logo component representing the application logo. Navigates to /instant-split route
  * @returns {JSX.Element} React component. */
 const HeaderLogo = () => {
   return (
-    <Link to='/homepage' className={styles.logoLink}>
+    <Link to='/instant-split' className={styles.logoLink}>
       <img src='/logo.png' alt='Logo' className={styles.logoImage} />
     </Link>
   );

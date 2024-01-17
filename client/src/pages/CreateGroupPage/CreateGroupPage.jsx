@@ -18,6 +18,7 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import ErrorDisplay from "../../components/common/ErrorDisplay/ErrorDisplay";
+import FormSubmitButton from "../../components/common/FormSubmitButton/FormSubmitButton";
 
 // Styles
 import styles from "./CreateGroupPage.module.css";
@@ -38,6 +39,19 @@ const CreateGroupPage = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    // Clear previous error
+    setError(null);
+
+    // Check if group name is empty
+    if (!groupName.trim()) {
+      setError("Please enter a group name.");
+      return;
+    }
+    if (groupName.length > 50) {
+      setError("Group name should not be longer than 50 characters.");
+      return;
+    }
     try {
       const response = await axios.post(`${apiUrl}/groups`, {
         groupName,
@@ -70,20 +84,17 @@ const CreateGroupPage = () => {
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
             placeholder='group name'
-            required
-            minLength={1}
-            maxLength={50}
-            pattern='.*\S+.*'
             ref={inputRef}
             autoFocus
           />
-          {groupName.length >= 1 && (
-            <div className={styles.buttonContainer}>
-              <button className={styles.button} type='submit'>
-                +
-              </button>
-            </div>
-          )}
+          <FormSubmitButton
+            fontSize={1.6}
+            add={true}
+            marginLeft='0.1'
+            transformScale={1.3}
+            translateX={0.2}
+            translateY={0.1}
+          />
         </form>
       </div>
       <ErrorDisplay error={error} />

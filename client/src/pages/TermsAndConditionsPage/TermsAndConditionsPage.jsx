@@ -26,17 +26,6 @@ const TermsAndConditionsPage = () => {
     devLog("Current user is a new user:", isNewUser);
   }
 
-  // Check if current user is a not associated with any group, ie is redirected from homepage route
-  const isNotAssociatedWithAnyGroup = previousRoute.includes(
-    "No previousRoute stored."
-  );
-  if (isRetrieved) {
-    devLog(
-      "Current user is not associated with any group:",
-      isNotAssociatedWithAnyGroup
-    );
-  }
-
   return (
     <main>
       <HelmetMetaTagsNetlify
@@ -45,11 +34,7 @@ const TermsAndConditionsPage = () => {
       />
       <PiratePx COUNT_IDENTIFIER={"terms-and-conditions"} />
       {isRetrieved && isNewUser && <InAppNavigationBar previousRoute={true} />}
-      {isRetrieved && isNotAssociatedWithAnyGroup ? (
-        <InAppNavigationBar back={true} backRoute={"/homepage/"} />
-      ) : (
-        isRetrieved && !isNewUser && <InAppNavigationBar back={true} />
-      )}{" "}
+      {isRetrieved && !isNewUser && <InAppNavigationBar back={true} />}
       <div className={styles.container}>
         <TermsAndConditions />
       </div>
