@@ -114,17 +114,17 @@ scrollbar-thumb {
 @media only screen and (max-width: 767px) {
   header {
     /* fallback value for older browsers*/
-    height: 10vh;
-    height: 10svh;
+    height: 6vh;
+    height: 6svh;
   }
   main {
-    height: 70vh;
-    height: 80svh;
+    height: 76vh;
+    height: 86svh;
     width: 95vw;
   }
   footer {
-    height: 10vh;
-    height: 10svh;
+    height: 8vh;
+    height: 8svh;
   }
 
   body {
@@ -158,12 +158,12 @@ scrollbar-thumb {
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
   header {
     /* fallback value for older browsers*/
-    height: 7vh;
-    height: 7svh;
+    height: 6vh;
+    height: 6svh;
   }
   main {
-    height: 75vh;
-    height: 85svh;
+    height: 76vh;
+    height: 86svh;
     width: 70vw;
   }
   footer {
@@ -176,8 +176,8 @@ scrollbar-thumb {
 @media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   header {
     /* fallback value for older browsers*/
-    height: 7vh;
-    height: 7svh;
+    height: 6vh;
+    height: 6svh;
   }
   main {
     height: 75vh;
@@ -193,7 +193,7 @@ scrollbar-thumb {
 /* Laptop*/
 @media only screen and (min-width: 1025px) and (max-width: 1440px) {
   header {
-    height: 9vh;
+    height: 5vh;
   }
   main {
     padding-top: 0rem;
@@ -208,26 +208,20 @@ scrollbar-thumb {
 /* Larger Screens */
 @media only screen and (min-width: 1441px) and (max-width: 1920px) {
   header {
-    height: 11vh;
+    height: 6vh;
   }
   main {
     height: 84vh;
     width: 55rem;
   }
-  footer {
-    height: 5vh;
-  }
 }
 
 @media only screen and (min-width: 1921px) {
   header {
-    height: 3vh;
+    height: 5rem;
   }
   main {
     height: 70rem;
     width: 68rem;
-  }
-  footer {
-    height: 3vh;
   }
 }

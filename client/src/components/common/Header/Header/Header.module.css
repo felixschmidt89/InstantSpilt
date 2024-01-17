@@ -2,8 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
-  height: 8vh;
   background-color: var(--color-body);
   position: fixed;
   margin-bottom: 0.5rem;

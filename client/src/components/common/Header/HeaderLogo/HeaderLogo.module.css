@@ -9,15 +9,7 @@
 }
 
 .logoImage {
+  padding-top: 2rem;
   width: 40%;
   max-width: 50rem;
-  transform: translate(0, 1vh);
-}
-
-@media only screen and (min-width: 1921px) {
-  .logoImage {
-    width: 40%;
-    max-width: 50rem;
-    transform: translate(0, 2vh);
-  }
 }
