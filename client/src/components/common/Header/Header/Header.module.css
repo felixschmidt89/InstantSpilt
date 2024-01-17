@@ -8,6 +8,13 @@
   position: static;
 }
 
+/* Hide Header on mobile when keyboard is shown */
+@media (max-width: 500px) and (max-height: 400px) {
+  .header {
+    display: none;
+  }
+}
+
 .LinkToHomepage {
   text-decoration: none;
   color: var(--color-dark);
