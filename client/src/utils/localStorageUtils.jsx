@@ -17,23 +17,24 @@ export const removeActiveGroupCodeFromLocalStorage = () => {
 };
 
 /**
- * Removes the 'activeGroupCode' from the storedGroupCodes array in local storage, deletes storedGroupCodes array if then empty.
+ * Removes the groupCode from storedGroupCodes array in local storage, deletes storedGroupCodes array if then empty.
  *
  * @param {string} groupCode - The groupCode of the to be removed group.
  * @returns {boolean} - Returns true if 'activeGroupCode' was successfully removed, false if there was an error.
  */
-export const removeActiveGroupCodeFromStoredGroupCodes = (groupCode) => {
+export const removeGroupCodeFromStoredGroupCodes = (groupCode) => {
   try {
     // Get the storedGroupCodes array from local storage
     let storedGroupCodes = JSON.parse(localStorage.getItem("storedGroupCodes"));
     // Exclude the to be removed groupCode
-    storedGroupCodes = storedGroupCodes.filter((code) => code !== groupCode);
-
+    const updatedGroupCodes = storedGroupCodes.filter(
+      (code) => code !== groupCode
+    );
     // Update the storedGroupCodes array or remove the key if it becomes empty
-    if (storedGroupCodes.length > 0) {
+    if (updatedGroupCodes.length > 0) {
       localStorage.setItem(
         "storedGroupCodes",
-        JSON.stringify(storedGroupCodes)
+        JSON.stringify(updatedGroupCodes)
       );
       devLog(
         "Previously active group code removed from storedGroupCodes array."
@@ -192,6 +193,6 @@ export const deleteApplicationDataFromLocalStorage = () => {
  * @param {string} groupCode - The groupCode identifying the group.
  */
 export const deleteGroupDataFromLocalStorage = (groupCode) => {
-  removeActiveGroupCodeFromStoredGroupCodes(groupCode);
+  removeGroupCodeFromStoredGroupCodes(groupCode);
   removeActiveGroupCodeFromLocalStorage();
 };

@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 // Components
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
-import { setRouteInLocalStorage } from "../../../../utils/localStorageUtils";
 
 // Styles
 import styles from "./ValidateGroupCode.module.css";
@@ -17,7 +16,6 @@ const ValidateGroupCode = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setRouteInLocalStorage(window.location.pathname, "previousRoute");
     navigate(`/groupCode-validator/${toBeValidatedGroupCode}`);
   };
 

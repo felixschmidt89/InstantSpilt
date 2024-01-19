@@ -31,5 +31,6 @@ const emojiConstants = {
   user: "👤",
   settle: "🤝",
   pointDown: "👇",
+  settings: "⚙️",
 };
 export default emojiConstants;

@@ -1,5 +1,9 @@
 // React and Third-Party Libraries
-import React from "react";
+import React, { useEffect } from "react";
+
+// Hooks
+import { setRouteInLocalStorage } from "../../utils/localStorageUtils";
+import useValidateAndCleanupStoredGroupCodes from "../../hooks/useValidateAndCleanUpStoredGroupCodes";
 
 // Components
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
@@ -14,6 +18,12 @@ import styles from "./ManageGroupsPage.module.css";
 
 const ManageGroupsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
+  useValidateAndCleanupStoredGroupCodes();
+
+  // Set previousRoute for nested navigation
+  useEffect(() => {
+    setRouteInLocalStorage(window.location.pathname, "previousRoute");
+  }, []);
 
   return (
     <main>
