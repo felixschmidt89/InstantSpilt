@@ -1,20 +1,3 @@
 .paymentToEmoji {
   margin-right: 0.4rem;
 }
-
-.button {
-  margin-top: 0.5rem;
-  padding: 0.2rem;
-  background-color: var(--color-signal);
-  box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
-  color: var(--color-main);
-  border: none;
-  width: 8rem;
-  font-size: 1.6rem;
-  cursor: pointer;
-  border-radius: 1rem;
-}
-.button:hover {
-  background-color: var(--color-success);
-  box-shadow: 0 0 0.5rem var(--color-success);
-}

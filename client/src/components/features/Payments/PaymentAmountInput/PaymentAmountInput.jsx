@@ -14,20 +14,30 @@ import styles from "./PaymentAmountInput.module.css";
  * @param {string} props.paymentAmount - The current payment amount.
  * @param {Function} props.onAmountChange - Callback function to handle changes in payment amount.
  * @param {Function} props.setFormChanged - Optional callback function to indicate form changes.
+ * @param {boolean} props.isUpdate - Indicates whether it's an update. If true, no autofocus on mount and little different CSS style
+
  * @returns {JSX.Element} React component. */
 const PaymentAmountInput = ({
   paymentAmount,
   onAmountChange,
   setFormChanged,
+  isUpdate = false,
 }) => {
   const inputRef = useRef(null);
 
-  // Autofocus input field on mount
+  // Autofocus input field on mount if isUpdate is false
   useEffect(() => {
-    if (inputRef.current) {
+    if (!isUpdate && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [inputRef]);
+  }, [isUpdate, inputRef]);
+
+  // If update, remove isUpdate class after click, so that input does not fall back to appearing inactive
+  const handleInputClick = () => {
+    if (isUpdate && inputRef.current) {
+      inputRef.current.classList.remove(styles.isUpdate);
+    }
+  };
 
   // set payment amount state in parent component, convert comma separator to dot prior to posting
   const handlePaymentAmountChange = (e) => {
@@ -40,9 +50,10 @@ const PaymentAmountInput = ({
   return (
     <div className={styles.container}>
       <input
-        className={styles.amount}
+        className={`${styles.amount} ${isUpdate ? styles.isUpdate : ""}`}
         type='text'
         value={paymentAmount}
+        onClick={handleInputClick}
         onChange={handlePaymentAmountChange}
         placeholder='0.00'
         inputMode='decimal'

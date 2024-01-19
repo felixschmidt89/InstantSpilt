@@ -22,7 +22,7 @@ const router = express.Router();
 // Create a new group
 router.post('/', createGroup);
 // Update group name
-router.patch('/', validateGroupCodeMiddleware, changeGroupName);
+router.patch('/:groupCode', validateGroupCodeMiddleware, changeGroupName);
 
 // List group names of locally stored groupCodes
 router.get('/StoredGroupNames', listGroupNamesByStoredGroupCodes);

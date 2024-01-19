@@ -15,6 +15,7 @@ import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
 import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 import Emoji from "../../../common/Emoji/Emoji";
+import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // Styles
 import styles from "./UpdateExpense.module.css";
@@ -111,28 +112,30 @@ const UpdateExpense = ({
           value={expenseDescription}
           onDescriptionChange={(value) => setExpenseDescription(value)}
           setFormChanged={setFormChanged}
+          isUpdate={true}
         />
         <ExpenseAmountInput
           value={expenseAmount}
           onAmountChange={(value) => setExpenseAmount(value)}
           setFormChanged={setFormChanged}
+          isUpdate={true}
         />
         <ExpensePayerSelect
           expensePayerName={expensePayerName}
           onPayerChange={(value) => setExpensePayerName(value)}
           groupMembers={groupMembers}
           setFormChanged={setFormChanged}
+          isUpdate={true}
         />
         <ExpenseBeneficiariesInput
           selectedBeneficiaries={selectedBeneficiaries}
           groupMembers={groupMembers}
           onSelectedBeneficiariesChange={setSelectedBeneficiaries}
           setFormChanged={setFormChanged}
+          isUpdate={true}
         />
         {isSubmitButtonVisible && (
-          <button className={styles.button} type='submit'>
-            +
-          </button>
+          <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
         )}
       </form>
       <ErrorDisplay error={error} />

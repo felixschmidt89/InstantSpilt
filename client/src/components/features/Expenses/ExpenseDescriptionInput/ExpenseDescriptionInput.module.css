@@ -15,3 +15,11 @@
   border-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-success);
 }
+
+.description.isUpdate {
+  color: var(--color-grey);
+}
+
+.description.isUpdate:focus {
+  color: var(--color-dark2);
+}

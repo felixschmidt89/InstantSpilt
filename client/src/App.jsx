@@ -33,6 +33,7 @@ import UserTransactionHistoryPage from "./pages/UserTransactionHistoryPage/UserT
 import AcceptGroupInvitationAndJoinPage from "./pages/AcceptGroupInvitationAndJoinPage/AcceptGroupInvitationAndJoinPage";
 import EnterGroupCodePage from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 import ManageGroupsPage from "./pages/ManageGroupsPage/ManageGroupsPage";
+import GroupSettingsPage from "./pages/GroupSettingsPage/GroupSettingsPage";
 
 // Styles
 import "./App.css";
@@ -117,6 +118,7 @@ const App = () => {
           />
           <Route path='/manage-groups' element={<ManageGroupsPage />} />
           {/* <Route path='/contact/:groupCode' element={<ContactPage />} /> */}
+          <Route path='/group-settings' element={<GroupSettingsPage />} />
           <Route
             path='/terms-and-conditions'
             element={<TermsAndConditionsPage />}

@@ -8,20 +8,29 @@ import styles from "./ExpenseDescriptionInput.module.css";
  * @param {string} props.value - The current value of the input.
  * @param {Function} props.onDescriptionChange - Callback function to handle changes in the input.
  * @param {Function} props.setFormChanged - Callback function to indicate changes in the form.
+ * @param {boolean} props.isUpdate - Indicates whether it's an update. If true, no autofocus on mount and little different CSS style
  * @returns {JSX.Element} React component. */
 const ExpenseDescriptionInput = ({
   value,
   onDescriptionChange,
   setFormChanged,
+  isUpdate = false,
 }) => {
   const inputRef = useRef(null);
 
-  // Autofocus input field on mount
+  // Autofocus input field on mount if isUpdate is false
   useEffect(() => {
-    if (inputRef.current) {
+    if (!isUpdate && inputRef.current) {
       inputRef.current.focus();
     }
-  }, [inputRef]);
+  }, [isUpdate, inputRef]);
+
+  // If update, remove isUpdate class after click, so that input does not fall back to appearing inactive
+  const handleInputClick = () => {
+    if (isUpdate && inputRef.current) {
+      inputRef.current.classList.remove(styles.isUpdate);
+    }
+  };
 
   const handleExpenseDescriptionChange = (e) => {
     onDescriptionChange(e.target.value);
@@ -33,9 +42,10 @@ const ExpenseDescriptionInput = ({
   return (
     <div className={styles.container}>
       <input
-        className={styles.description}
+        className={`${styles.description} ${isUpdate ? styles.isUpdate : ""}`}
         type='text'
         value={value}
+        onClick={handleInputClick}
         onChange={handleExpenseDescriptionChange}
         placeholder='description'
         ref={inputRef}

@@ -13,3 +13,11 @@
   border-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-success);
 }
+
+.paymentRecipient.isUpdate {
+  color: var(--color-grey);
+}
+
+.paymentRecipient.isUpdate:focus {
+  color: var(--color-dark2);
+}

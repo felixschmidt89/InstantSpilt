@@ -1,5 +1,5 @@
 // React and Third-Party Libraries
-import React from "react";
+import React, { useRef } from "react";
 
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
@@ -18,24 +18,39 @@ import styles from "./ExpensePayerSelect.module.css";
  * @param {Function} props.onPayerChange - Callback function to handle changes in the selected expense payer.
  * @param {string[]} props.groupMembers - An array of group members to populate the options.
  * @param {Function} props.setFormChanged - Callback function to indicate changes in the form.
+ *  @param {boolean} props.isUpdate - Indicates whether it's an update. If true, field appears inactive on mount
  * @returns {JSX.Element} React component. */
+
 const ExpensePayerSelect = ({
   expensePayerName,
   onPayerChange,
   groupMembers,
   setFormChanged,
+  isUpdate = false,
 }) => {
+  const selectRef = useRef(null);
+
   const handlePayerChange = (e) => {
     onPayerChange(e.target.value);
     if (setFormChanged) {
       setFormChanged(true);
     }
   };
+
+  // If update, remove isUpdate class after click, so that select does not fall back to appearing inactive
+  const handleSelectClick = () => {
+    if (isUpdate && selectRef.current) {
+      selectRef.current.classList.remove(styles.isUpdate);
+    }
+  };
+
   return (
     <select
-      className={styles.select}
+      className={`${styles.select} ${isUpdate ? styles.isUpdate : ""}`}
       value={expensePayerName}
       onChange={handlePayerChange}
+      onClick={handleSelectClick}
+      ref={selectRef}
       required>
       {/* Default option */}
       <option value='' disabled>

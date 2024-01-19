@@ -14,6 +14,7 @@ import PaymentMaker from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipient from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import Emoji from "../../../common/Emoji/Emoji";
 import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
+import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // Styles
 import styles from "./UpdatePayment.module.css";
@@ -113,11 +114,13 @@ const UpdatePayment = ({
       <PaymentAmount
         paymentAmount={paymentAmount}
         onAmountChange={setPaymentAmount}
+        isUpdate={true}
       />
       <PaymentMaker
         paymentMakerName={paymentMakerName}
         onPaymentMakerChange={setPaymentMakerName}
         groupMembers={groupMembers}
+        isUpdate={true}
       />
       <span className={styles.paymentToEmoji}>
         <Emoji
@@ -128,13 +131,13 @@ const UpdatePayment = ({
         paymentRecipientName={paymentRecipientName}
         onRecipientChange={setPaymentRecipientName}
         groupMembers={groupMembers}
+        isUpdate={true}
       />
       <div className={styles.buttonContainer}>
         {isSubmitButtonVisible && (
-          <button className={styles.button} type='submit'>
-            update
-          </button>
+          <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
         )}
+
         <ErrorDisplay error={error} />
       </div>
     </form>

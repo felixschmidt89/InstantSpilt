@@ -30,8 +30,8 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoPersonAddOutline}
           tooltip='Invite & share group'
           route={`/share-group/${groupName}/${groupCode}`}
-          iconSize={3}
-          translateY={0.1}
+          iconSize={2.8}
+          translateY={0.3}
           marginRight={0.3}
         />
       </span>

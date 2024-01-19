@@ -89,7 +89,7 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
           marginLeft='0.1'
           transformScale={1.3}
           translateX={0.2}
-          translateY={0.1}
+          translateY={0.15}
         />
       </form>
       <ErrorDisplay error={error} remWidth={20} />

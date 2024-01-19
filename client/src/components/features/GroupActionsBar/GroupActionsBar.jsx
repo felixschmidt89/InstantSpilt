@@ -51,6 +51,13 @@ const GroupActionsBar = () => {
         tooltipText='settle expenses'
         ariaLabel='settle expenses emoji'
       />
+      {/* Button for navigating to group settings */}
+      <GroupActionsEmojiButton
+        route={"group-settings"}
+        emoji={emojiConstants.settings}
+        tooltipText='group settings'
+        ariaLabel='group settings emoji'
+      />
     </div>
   );
 };

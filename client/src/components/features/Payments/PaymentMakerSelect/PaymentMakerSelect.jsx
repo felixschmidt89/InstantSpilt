@@ -1,4 +1,7 @@
-import React from "react";
+// React and Third-Party Libraries
+import React, { useRef } from "react";
+
+// Styles
 import styles from "./PaymentMakerSelect.module.css";
 
 /**
@@ -6,17 +9,30 @@ import styles from "./PaymentMakerSelect.module.css";
  * @param {Object} props - The component props.
  * @param {string} props.paymentMakerName - The name of the selected payment maker.
  * @param {Function} props.onPaymentMakerChange - Callback function to handle changes in the selected payment maker.
- * @param {string[]} props.groupMembers - ASelect cn array of group members to populate the options.
+ * @param {string[]} props.groupMembers - An array of group members to populate the options.
+ * @param {boolean} props.isUpdate - Indicates whether it's an update. If true, field appears inactive on mount
  * @returns {JSX.Element} React component. */
 const PaymentMakerSelect = ({
   paymentMakerName,
   onPaymentMakerChange,
   groupMembers,
+  isUpdate = false,
 }) => {
+  const selectRef = useRef(null);
+
+  // If update, remove isUpdate class after click, so that select does not fall back to appearing inactive
+  const handleSelectClick = () => {
+    if (isUpdate && selectRef.current) {
+      selectRef.current.classList.remove(styles.isUpdate);
+    }
+  };
+
   return (
     <select
-      className={styles.paymentMaker}
+      className={`${styles.paymentMaker} ${isUpdate ? styles.isUpdate : ""}`}
       value={paymentMakerName}
+      ref={selectRef}
+      onClick={handleSelectClick}
       onChange={(e) => onPaymentMakerChange(e.target.value)}
       required>
       {/* Do not preselect user, indicate functionality instead */}

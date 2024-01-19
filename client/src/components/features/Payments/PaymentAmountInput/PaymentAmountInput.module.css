@@ -17,3 +17,11 @@
   border-color: var(--color-signal);
   box-shadow: 0 0 0.5rem var(--color-success);
 }
+
+.amount.isUpdate {
+  color: var(--color-grey);
+}
+
+.amount.isUpdate:focus {
+  color: var(--color-dark2);
+}
