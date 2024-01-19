@@ -15,15 +15,15 @@ const MiddleSectionExplanation = () => {
         <li>
           <button className={styles.button}>Balances</button>
           <div>
-            Displays users&rsquo; current balances; click a name for more user
-            details.
+            Displays users&rsquo; current balances; click a name to view totals
+            and transaction history
           </div>
         </li>
         <li>
           <button className={styles.button}>History</button>
           <div>
-            Lists all expenses and payments; click an amount to view
-            transactional details or make changes.
+            Lists all group expenses and payments; click an amount to view
+            transactional details & make changes.
           </div>
         </li>
       </ul>

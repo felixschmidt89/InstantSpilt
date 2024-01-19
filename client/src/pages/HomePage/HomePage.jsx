@@ -7,7 +7,7 @@ import useGetActiveGroupCodeOrSetNextInactiveGroupCodeToActiveAndNavigateToMainA
 //Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import HomeIntroSection from "../../components/features/Home/HomeIntroSection/HomeIntroSection";
+import HomeIntroSection from "../../components/features/Home/InstantSplitIntroSection/InstantSplitIntroSection";
 import HomeGetStartedSection from "../../components/features/Home/HomeGetStartedSection/HomeGetStartedSection";
 import HomeTermsAndConditionsSection from "../../components/features/Home/HomeTermsAndConditionsSection/HomeTermsAndConditionsSection";
 

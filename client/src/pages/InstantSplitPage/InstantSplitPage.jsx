@@ -70,11 +70,12 @@ import styles from "./InstantSplitPage.module.css";
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
           {/* Display group name */}
-          <h1>{groupData.group.groupName}</h1>
           <UserActionsBar
             groupCode={groupCode}
             groupName={groupData.group.groupName}
           />
+          <h1>Group: {groupData.group.groupName}</h1>
+
           <SwitchViewButtonsBar
             view={view}
             handleSwitchView={handleSwitchView}

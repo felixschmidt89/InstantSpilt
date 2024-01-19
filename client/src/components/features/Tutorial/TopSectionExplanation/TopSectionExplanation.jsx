@@ -2,6 +2,7 @@
 import React from "react";
 import { IoPersonAddOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
+import { PiUserSwitchLight } from "react-icons/pi";
 
 // Components
 import UserActionsBar from "../../UserActionsBar/UserActionsBar";
@@ -22,7 +23,7 @@ const TopSectionExplanation = () => {
       </div>
       <div className={styles}>
         Contains features not directly related to settling expenses, such as
-        inviting others{" "}
+        inviting others to the group{" "}
         <span className={styles.noWrap}>
           (
           <ReactIconNavigate
@@ -33,7 +34,14 @@ const TopSectionExplanation = () => {
           />
           )
         </span>{" "}
-        or leaving the group{" "}
+        , creating & switching to other groups (
+        <ReactIconNavigate
+          iconSize={"1.8"}
+          icon={PiUserSwitchLight}
+          cursorPointer={false}
+          translateY={0.3}
+        />
+        ) or leaving the current group{" "}
         <span className={styles.noWrap}>
           (
           <ReactIconNavigate

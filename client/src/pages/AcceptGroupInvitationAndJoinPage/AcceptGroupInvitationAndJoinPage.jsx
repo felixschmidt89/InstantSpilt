@@ -11,10 +11,11 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
 import AcceptGroupInvitation from "../../components/features/AcceptGroupInvitationAndJoinGroup/AcceptGroupInvitation/AcceptGroupInvitation";
 import ShowTermsAndConditions from "../../components/features/AcceptGroupInvitationAndJoinGroup/ShowTermsAndConditions/ShowTermsAndConditions";
-import InstantSplitIntroduction from "../../components/features/AcceptGroupInvitationAndJoinGroup/InstantSplitIntroduction/InstantSplitIntroduction";
 
 // Styles
 import styles from "./AcceptGroupInvitationAndJoinPage.module.css";
+import InvitationIntro from "../../components/features/AcceptGroupInvitationAndJoinGroup/InvitationIntro/InvitationIntro";
+import InstantSplitIntroSection from "../../components/features/Home/InstantSplitIntroSection/InstantSplitIntroSection";
 
 const AcceptGroupInvitationAndJoinPage = () => {
   const { groupCode, groupName } = useParams();
@@ -32,8 +33,10 @@ const AcceptGroupInvitationAndJoinPage = () => {
       {!isFetched ? (
         <Spinner />
       ) : (
-        <div className={styles.explanationContainer}>
-          <InstantSplitIntroduction groupData={groupData} />
+        <div className={styles.container}>
+          <h1>Hi there!</h1>
+          <InvitationIntro groupData={groupData} />
+          <InstantSplitIntroSection />
           <AcceptGroupInvitation groupName={groupName} groupCode={groupCode} />
           <ShowTermsAndConditions />
         </div>

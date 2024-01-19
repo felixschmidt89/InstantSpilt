@@ -36,6 +36,19 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
   // On form submission: Provide groupCode for authentication, post unique user within group, clear form & trigger a parent component refresh
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+
+    // Clear previous error
+    setError(null);
+    // Validate group name
+    if (!userName.trim()) {
+      setError("Oops! User name can't be empty.");
+      return;
+    }
+    if (userName.length > 50) {
+      setError("Oops! User name can't exceed 50 characters.");
+      return;
+    }
+
     try {
       const response = await axios.post(`${apiUrl}/users`, {
         userName,
@@ -66,10 +79,6 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           placeholder='user name'
-          required
-          minLength={1}
-          maxLength={50}
-          pattern='.*\S+.*'
           className={styles.inputField}
           ref={inputRef}
           autoFocus

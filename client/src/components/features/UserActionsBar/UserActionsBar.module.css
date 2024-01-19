@@ -1,7 +1,8 @@
 .container {
   display: flex;
-  width: fit-content;
   margin: 0 auto;
+  margin-top: 1rem;
+  width: fit-content;
   border: 0.1rem solid var(--color-signal-reduced-opacity);
   background-color: var(--color-body);
   border-radius: 1rem;

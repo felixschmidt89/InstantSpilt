@@ -24,6 +24,7 @@ const TermsAndConditions = () => {
     <div className={styles.container}>
       <h1>Terms and Conditions</h1>
       <Disclaimer lastUpdateDate={lastUpdateDate} />
+      <h2>Terms and Conditions</h2>
       <SingleTermsAndConditions sections={sections} />
     </div>
   );

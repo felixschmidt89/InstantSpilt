@@ -30,8 +30,9 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoPersonAddOutline}
           tooltip='Invite & share group'
           route={`/share-group/${groupName}/${groupCode}`}
-          iconSize={2.6}
+          iconSize={3}
           translateY={0.1}
+          marginRight={0.3}
         />
       </span>
       <span className={styles.icon}>
@@ -40,7 +41,8 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={PiUserSwitchLight}
           tooltip='Switch group'
           route={`/manage-groups`}
-          iconSize={3}
+          iconSize={3.4}
+          marginRight={0.3}
         />
       </span>
       <span className={styles.icon}>
@@ -49,7 +51,7 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoHelpCircleOutline}
           tooltip='Tutorial'
           route={`/tutorial/${groupName}/${groupCode}`}
-          iconSize={3}
+          iconSize={3.4}
         />
       </span>
       <span className={styles.icon}>
@@ -58,7 +60,7 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoEnterOutline}
           tooltip='Leave group'
           route={`/leave-group/${groupName}/${groupCode}`}
-          iconSize={3}
+          iconSize={3.4}
         />
       </span>
     </div>

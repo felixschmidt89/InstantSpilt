@@ -10,16 +10,12 @@ import styles from "./Disclaimer.module.css";
  * @returns {JSX.Element} React component. */
 const Disclaimer = ({ lastUpdateDate }) => {
   return (
-    <div className={styles.disclaimer}>
+    <div className={styles.container}>
       <h2>Disclaimer</h2>
-      <p>
+      <p className={styles.disclaimer}>
         By using InstantSplit, you acknowledge and accept our terms and
-        conditions. <br />
-        <strong>
-          If you do not agree with these terms, please do not use the
-          application.
-        </strong>
-        <br /> These terms and conditions were last updated on{" "}
+        conditions. If you do not agree with these terms, please do not use the
+        application. These terms and conditions were last updated on{" "}
         <strong>{lastUpdateDate}</strong>.
       </p>
     </div>
