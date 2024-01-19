@@ -28,6 +28,7 @@ function CreateUsersPage() {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - add user' />
       <PiratePx COUNT_IDENTIFIER={"create-users"} />
+      {/* Navigate new users to onboarding */}
       {isNewUser ? (
         <InAppNavigationBar
           forward={true}

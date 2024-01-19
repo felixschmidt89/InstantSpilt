@@ -18,12 +18,12 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 import styles from "./TermsAndConditionsPage.module.css";
 
 const TermsAndConditionsPage = () => {
-  // Check if current user is a new user, ie is redirected from join-instantsplit-group route
+  // Check if current user is an invited user, ie is redirected from join-instantsplit-group route
   const { previousRoute, isRetrieved } = useGetPreviousRouteFromLocalStorage();
 
-  const isNewUser = previousRoute.includes("join-instantsplit-group/");
+  const isInvitedUser = previousRoute.includes("join-instantsplit-group/");
   if (isRetrieved) {
-    devLog("Current user is a new user:", isNewUser);
+    devLog("Current user is an invited user:", isInvitedUser);
   }
 
   return (
@@ -33,8 +33,11 @@ const TermsAndConditionsPage = () => {
         description={`Instant Split - Terms and Conditions. Last updated on ${lastUpdateDate}.`}
       />
       <PiratePx COUNT_IDENTIFIER={"terms-and-conditions"} />
-      {isRetrieved && isNewUser && <InAppNavigationBar previousRoute={true} />}
-      {isRetrieved && !isNewUser && <InAppNavigationBar back={true} />}
+      {/* Navigate invited users back to accept group invitation page */}
+      {isRetrieved && isInvitedUser && (
+        <InAppNavigationBar previousRoute={true} />
+      )}
+      {isRetrieved && !isInvitedUser && <InAppNavigationBar back={true} />}
       <div className={styles.container}>
         <TermsAndConditions />
       </div>

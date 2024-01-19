@@ -26,10 +26,8 @@ export const removeActiveGroupCodeFromStoredGroupCodes = (groupCode) => {
   try {
     // Get the storedGroupCodes array from local storage
     let storedGroupCodes = JSON.parse(localStorage.getItem("storedGroupCodes"));
-    console.log(storedGroupCodes);
-    // Exclude to be removed groupCode
+    // Exclude the to be removed groupCode
     storedGroupCodes = storedGroupCodes.filter((code) => code !== groupCode);
-    console.log(storedGroupCodes);
 
     // Update the storedGroupCodes array or remove the key if it becomes empty
     if (storedGroupCodes.length > 0) {
@@ -37,13 +35,13 @@ export const removeActiveGroupCodeFromStoredGroupCodes = (groupCode) => {
         "storedGroupCodes",
         JSON.stringify(storedGroupCodes)
       );
+      devLog(
+        "Previously active group code removed from storedGroupCodes array."
+      );
     } else {
       localStorage.removeItem("storedGroupCodes");
+      devLog("Removed storedGroupCodes array.");
     }
-
-    devLog(
-      "Active group code has been removed from storedGroupCodes array in local storage."
-    );
     return true;
   } catch (error) {
     devLog("Error removing groupCode from storedGroupCodes:", error);

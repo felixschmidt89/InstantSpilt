@@ -20,7 +20,7 @@ const TopSectionExplanation = () => {
       <div className={styles.noLink}>
         <UserActionsBar />
       </div>
-      <p className={styles}>
+      <div className={styles}>
         Contains features not directly related to settling expenses, such as
         inviting others{" "}
         <span className={styles.noWrap}>
@@ -45,7 +45,7 @@ const TopSectionExplanation = () => {
           )
         </span>{" "}
         .
-      </p>
+      </div>
     </div>
   );
 };

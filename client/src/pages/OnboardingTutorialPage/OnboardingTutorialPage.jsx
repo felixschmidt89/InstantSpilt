@@ -23,20 +23,23 @@ import styles from "./OnboardingTutorialPage.module.css";
  *
  */
 function OnboardingTutorialPage() {
-  // Check if current user is a group creator, ie is redirected from onboarding-groupcode-explanation route
+  // Check if current user is a new user and a group creator, ie is redirected from onboarding-groupcode-explanation route
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
 
-  const isGroupCreator = previousRoute.includes(
+  const isNewUserGroupCreator = previousRoute.includes(
     "/onboarding-groupcode-explanation"
   );
   if (isRetrieved) {
-    devLog("Current user is group creator:", isGroupCreator);
+    devLog(
+      "Current user is a new user and a group creator:",
+      isNewUserGroupCreator
+    );
   }
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - onboarding tutorial' />
       <PiratePx COUNT_IDENTIFIER={"onboarding-tutorial"} />
-      {isRetrieved && isGroupCreator ? ( // Allow back navigation for group creators
+      {isRetrieved && isNewUserGroupCreator ? ( // Allow back navigation for new user group creators
         <InAppNavigationBar
           back={true}
           backRoute='/onboarding-groupcode-explanation'
@@ -44,7 +47,7 @@ function OnboardingTutorialPage() {
           forwardRoute='/instant-split'
         />
       ) : (
-        // Disallow back navigation for users being invited to the group
+        // Disallow back navigation for invited users
         <InAppNavigationBar forward={true} />
       )}
 

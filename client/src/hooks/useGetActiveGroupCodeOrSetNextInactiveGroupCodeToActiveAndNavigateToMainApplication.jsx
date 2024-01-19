@@ -19,7 +19,7 @@ const useGetActiveGroupCodeOrSetNextInactiveGroupCodeToActiveAndNavigateToMainAp
     const navigate = useNavigate();
 
     useEffect(() => {
-      const getActiveGroupCodeOrSetNextToActive = () => {
+      const getActiveGroupCodeOrSetNextGroupCodeToActive = () => {
         const groupCode =
           localStorage.getItem("activeGroupCode") ||
           (() => {
@@ -30,12 +30,12 @@ const useGetActiveGroupCodeOrSetNextInactiveGroupCodeToActiveAndNavigateToMainAp
         return groupCode;
       };
 
-      const groupCode = getActiveGroupCodeOrSetNextToActive();
-
-      if (groupCode) {
-        navigate("/instant-split");
+      const groupCode = getActiveGroupCodeOrSetNextGroupCodeToActive();
+      // Exit early if no activeGroupCode
+      if (groupCode === null) {
+        return;
       }
+      navigate("/instant-split");
     }, [navigate]);
   };
-
 export default useGetActiveGroupCodeOrSetNextInactiveGroupCodeToActiveAndNavigateToMainApplication;

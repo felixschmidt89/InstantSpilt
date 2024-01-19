@@ -1,7 +1,12 @@
 // React and Third-Party Libraries
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import useLocalStorage from "react-use-localstorage";
+import { useNavigate } from "react-router-dom";
 
+// Constants and Utils
+import { deleteGroupDataFromLocalStorage } from "../../utils/localStorageUtils";
+
+// Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useDeletePreviousRouteFromLocalStorage from "../../hooks/useDeletePreviousRouteFromLocalStorage";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
@@ -18,14 +23,6 @@ import RenderGroupBalances from "../../components/features/GroupBalancesAndHisto
 
 // Styles
 import styles from "./InstantSplitPage.module.css";
-import {
-  deleteGroupDataFromLocalStorage,
-  getFirstGroupCodeInStoredGroupCodesArray,
-  removeActiveGroupCodeFromLocalStorage,
-  removeActiveGroupCodeFromStoredGroupCodes,
-  setGroupCodeToCurrentlyActive,
-} from "../../utils/localStorageUtils";
-import { useNavigate } from "react-router-dom";
 
 /**
  * Main application
@@ -56,11 +53,11 @@ import { useNavigate } from "react-router-dom";
   useDeletePreviousRouteFromLocalStorage();
   useDeletePreviousRouteFromLocalStorage("nestedPreviousRoute");
 
-  const { groupData, isFetched } = useFetchGroupData(groupCode);
-
   const handleSwitchView = () => {
     setView(view === "view1" ? "view2" : "view1");
   };
+
+  const { groupData, isFetched } = useFetchGroupData(groupCode);
 
   return (
     <main>
@@ -68,7 +65,7 @@ import { useNavigate } from "react-router-dom";
         <span className={styles.spinner}>
           <Spinner />
         </span>
-      ) : isFetched && groupExists ? (
+      ) : isValidated && groupExists ? (
         <>
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />

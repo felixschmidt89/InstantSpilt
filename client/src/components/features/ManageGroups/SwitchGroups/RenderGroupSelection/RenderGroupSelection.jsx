@@ -43,7 +43,7 @@ const RenderGroupSelection = ({ groupCode, groupNamesAndGroupCodes }) => {
           value={selectedGroupCode}
           onChange={handleSelectChange}>
           <option value='' disabled>
-            Choose a group
+            Choose group
           </option>
           {groupNamesAndGroupCodes.map((group) => (
             <option key={group.groupCode} value={group.groupCode}>

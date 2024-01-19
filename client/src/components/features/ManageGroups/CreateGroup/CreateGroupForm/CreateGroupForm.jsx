@@ -13,11 +13,11 @@ import {
 } from "../../../../../utils/localStorageUtils";
 
 // Components
+import FormSubmitButton from "../../../../common/FormSubmitButton/FormSubmitButton";
+import ErrorDisplay from "../../../../common/ErrorDisplay/ErrorDisplay";
 
 // Styles
 import styles from "./CreateGroupForm.module.css";
-import FormSubmitButton from "../../../../common/FormSubmitButton/FormSubmitButton";
-import ErrorDisplay from "../../../../common/ErrorDisplay/ErrorDisplay";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;

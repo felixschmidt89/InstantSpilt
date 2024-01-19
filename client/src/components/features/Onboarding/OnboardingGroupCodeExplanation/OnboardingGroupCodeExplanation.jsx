@@ -27,7 +27,7 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
       </div>
       <div className={styles.saveGroupCode}>
         <p>Be sure to write it down in a safe place.</p>
-        <p>
+        <div>
           Alternatively, bookmark the invitation link{" "}
           <span className={styles.noWrap}>
             (
@@ -41,7 +41,7 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
           </span>{" "}
           in the top section of the main application to avoid losing access to
           your group on this device.
-        </p>
+        </div>
       </div>
     </div>
   );
