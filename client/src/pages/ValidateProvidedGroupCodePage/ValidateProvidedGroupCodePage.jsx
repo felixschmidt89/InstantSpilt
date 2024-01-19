@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 // Constants and Utils
 import {
@@ -21,6 +22,7 @@ import Spinner from "../../components/common/Spinner/Spinner";
 
 // Styles
 import styles from "./ValidateProvidedGroupCodePage.module.css";
+import ReactIconNavigate from "../../components/common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 
 /**
  * Validates the user's manually provided groupCode and navigates the user accordingly.
@@ -56,17 +58,22 @@ const ValidateProvideGroupCodePage = () => {
       <PiratePx COUNT_IDENTIFIER={"groupCode-validator"} />
       <InAppNavigationBar
         back={true}
-        backRoute={"/enter-groupcode"}
+        backRoute={"/onboarding-enter-groupcode"}
         home={true}
-        homeRoute={"/homepage"}
+        homeRoute={"/"}
       />
       <div className={styles.container}>
         <h1>GroupCode validation</h1>
         {groupExists && (
-          <p>
-            GroupCode found in database. <br />
-            Redirecting to the group now.
-          </p>
+          <div className={styles.groupExists}>
+            <ReactIconNavigate
+              icon={IoMdCheckmarkCircleOutline}
+              cursorPointer={false}
+              iconSize={2}
+              translateY={0.5}
+            />
+            <p>Valid GroupCode, redirecting to the group now.</p>
+          </div>
         )}
         {/*Handle validations timeout errors*/}
         {!error && !groupExists && <Spinner />}

@@ -19,7 +19,7 @@ const OnboardingGroupCodeExplanationPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - groupCode explanation' />
-      <PiratePx COUNT_IDENTIFIER={"groupcode-explanation"} />
+      <PiratePx COUNT_IDENTIFIER={"onboarding-groupcode-explanation"} />
       <InAppNavigationBar forward={true} forwardRoute='/onboarding-tutorial' />
       <div className={styles.container}>
         <OnboardingGroupCodeExplanation groupCode={groupCode} />

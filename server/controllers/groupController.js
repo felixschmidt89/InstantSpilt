@@ -73,11 +73,14 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
     const { storedGroupCodes } = req.query;
     const groupCodesArray = storedGroupCodes.split(',');
     const groups = await Group.find({ groupCode: { $in: groupCodesArray } });
-    const groupNames = groups.map((group) => group.groupName);
+    const groupNamesAndGroupCodes = groups.map((group) => ({
+      groupName: group.groupName,
+      groupCode: group.groupCode,
+    }));
     res.status(StatusCodes.OK).json({
       status: 'success',
-      results: groupNames.length,
-      groupNames,
+      results: groupNamesAndGroupCodes.length,
+      groupNamesAndGroupCodes,
       message: 'Group names retrieved successfully',
     });
   } catch (error) {
@@ -128,6 +131,13 @@ export const getGroupInfo = async (req, res) => {
     // Set the lastActive property of the group to now
     setLastActive(groupCode);
     const group = await Group.findOne({ groupCode });
+
+    if (!group) {
+      return res.status(StatusCodes.NO_CONTENT).json({
+        status: 'success',
+        message: 'No group found',
+      });
+    }
 
     res.status(StatusCodes.OK).json({
       status: 'success',

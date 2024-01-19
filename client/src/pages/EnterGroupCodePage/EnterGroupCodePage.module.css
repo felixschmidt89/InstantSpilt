@@ -9,36 +9,11 @@
   font-family: "Ubuntu", sans-serif;
   width: 10rem;
   padding: 0.2rem;
-  border: 0.2rem solid var(--color-grey);
-  border-radius: 0.5rem;
   font-size: 1.6rem;
   text-align: center;
-  outline: none;
 }
 
 .inputField:focus {
   border-color: var(--color-signal);
-  box-shadow: 0 0 0.5rem var(--color-success);
-}
-
-.buttonContainer {
-  padding-top: 0.8rem;
-}
-
-.button {
-  background-color: var(--color-signal);
-  color: var(--color-main);
-  font-weight: bold;
-  border: none;
-  width: 4rem;
-  padding: 0.4rem;
-  font-size: 1.6rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  margin-left: 0.5rem;
-}
-
-.button:hover {
-  background-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
 }

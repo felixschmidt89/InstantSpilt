@@ -14,10 +14,10 @@ const HomeGetStartedSection = () => {
     <>
       <div className={styles.groupContainer}>
         <h2>Get started</h2>
-        <Link to='/create-group' className={styles.groupLink}>
+        <Link to='/onboarding-create-group' className={styles.groupLink}>
           <strong>Create a new group</strong>
         </Link>
-        <Link to='/enter-groupcode' className={styles.groupLink}>
+        <Link to='/onboarding-enter-groupcode' className={styles.groupLink}>
           <strong>Join an existing group</strong>
         </Link>
       </div>

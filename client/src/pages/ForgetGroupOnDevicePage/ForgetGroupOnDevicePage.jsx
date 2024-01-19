@@ -6,6 +6,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   deleteApplicationDataFromLocalStorage,
   deleteGroupDataFromLocalStorage,
+  getFirstGroupCodeInStoredGroupCodesArray,
+  setGroupCodeToCurrentlyActive,
 } from "../../utils/localStorageUtils";
 
 //Components
@@ -24,7 +26,9 @@ const ForgetGroupOnDevicePage = () => {
   const handleConfirmation = () => {
     deleteApplicationDataFromLocalStorage();
     deleteGroupDataFromLocalStorage(groupCode);
-    navigate("/homepage");
+    const newGroupCode = getFirstGroupCodeInStoredGroupCodesArray();
+    setGroupCodeToCurrentlyActive(newGroupCode);
+    navigate("/instant-split");
   };
 
   return (

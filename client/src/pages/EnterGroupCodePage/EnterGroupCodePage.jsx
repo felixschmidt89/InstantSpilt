@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import FormSubmitButton from "../../components/common/FormSubmitButton/FormSubmitButton";
 
 // Styles
 import style from "./EnterGroupCodePage.module.css";
@@ -22,7 +23,7 @@ const EnterGroupCodePage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - enter groupCode' />
-      <PiratePx COUNT_IDENTIFIER={"enter-groupcode"} />
+      <PiratePx COUNT_IDENTIFIER={"onboarding-enter-groupcode"} />
       <InAppNavigationBar back={true} backRoute='/homepage' />
       <div className={style.container}>
         <h1>Enter groupCode</h1>
@@ -34,13 +35,14 @@ const EnterGroupCodePage = () => {
             value={groupCode}
             onChange={(e) => setGroupCode(e.target.value)}
           />
-          {groupCode.length >= 1 && (
-            <div className={style.buttonContainer}>
-              <button type='submit' className={style.button}>
-                join
-              </button>
-            </div>
-          )}
+          <FormSubmitButton
+            fontSize={1.6}
+            submit={true}
+            marginLeft='0.1'
+            transformScale={1.3}
+            translateX={0.3}
+            translateY={0.1}
+          />
         </form>
       </div>
     </main>

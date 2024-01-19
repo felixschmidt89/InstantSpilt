@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { StatusCodes } from "http-status-codes";
 
 // Constants and Utils
 import { devLog } from "../utils/errorUtils";
@@ -29,6 +30,13 @@ const useFetchGroupData = (groupCode) => {
       try {
         const response = await axios.get(`${apiUrl}/groups/${groupCode}`);
         const fetchedGroupData = response.data;
+
+        if (response.status === StatusCodes.NO_CONTENT) {
+          devLog("No group found for groupCode:", groupCode);
+          setIsFetched(true);
+          return;
+        }
+
         devLog("GroupData fetched:", response);
         setGroupData(fetchedGroupData);
         setIsFetched(true);

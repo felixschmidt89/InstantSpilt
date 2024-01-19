@@ -17,7 +17,6 @@ import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
 import ExpenseDetailsPage from "./pages/ExpenseDetailsPage/ExpenseDetailsPage";
 import PaymentDetailsPage from "./pages/PaymentDetailsPage/PaymentDetailsPage";
 import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
-import IndexNavigatorPage from "./pages/IndexNavigatorPage/IndexNavigator";
 import OnboardingTutorialPage from "./pages/OnboardingTutorialPage/OnboardingTutorialPage";
 import OnboardingGroupCodeExplanationPage from "./pages/OnboardingGroupCodeExplanationPage/OnboardingGroupCodeExplanationPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
@@ -33,6 +32,7 @@ import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndCondi
 import UserTransactionHistoryPage from "./pages/UserTransactionHistoryPage/UserTransactionHistoryPage";
 import AcceptGroupInvitationAndJoinPage from "./pages/AcceptGroupInvitationAndJoinPage/AcceptGroupInvitationAndJoinPage";
 import EnterGroupCodePage from "./pages/EnterGroupCodePage/EnterGroupCodePage";
+import ManageGroupsPage from "./pages/ManageGroupsPage/ManageGroupsPage";
 
 // Styles
 import "./App.css";
@@ -44,15 +44,20 @@ const App = () => {
       <HelmetProvider>
         <Header />
         <Routes>
-          <Route index element={<IndexNavigatorPage />} />
-          <Route path='/homepage' element={<HomePage />} />
+          <Route index element={<HomePage />} />
           <Route path='/legal-notice' element={<LegalNoticePage />} />
           <Route
             path='/onboarding-groupcode-explanation'
             element={<OnboardingGroupCodeExplanationPage />}
           />
-          <Route path='/create-group' element={<CreateGroupPage />} />
-          <Route path='/enter-groupcode' element={<EnterGroupCodePage />} />
+          <Route
+            path='/onboarding-create-group'
+            element={<CreateGroupPage />}
+          />
+          <Route
+            path='/onboarding-enter-groupcode'
+            element={<EnterGroupCodePage />}
+          />
           <Route
             path='/groupCode-validator/:groupCode'
             element={<ValidateProvidedGroupCodePage />}
@@ -110,6 +115,7 @@ const App = () => {
             path='/share-group/:groupName/:groupCode'
             element={<ShareGroupPage />}
           />
+          <Route path='/manage-groups' element={<ManageGroupsPage />} />
           {/* <Route path='/contact/:groupCode' element={<ContactPage />} /> */}
           <Route
             path='/terms-and-conditions'

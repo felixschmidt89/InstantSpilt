@@ -1,11 +1,10 @@
 // React and Third-Party Libraries
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useLocalStorage from "react-use-localstorage";
 
-// Hooks
-import useAuthenticateUsersActiveGroupCode from "../../hooks/useAuthenticateUsersActiveGroupCode";
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useDeletePreviousRouteFromLocalStorage from "../../hooks/useDeletePreviousRouteFromLocalStorage";
+import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -19,22 +18,45 @@ import RenderGroupBalances from "../../components/features/GroupBalancesAndHisto
 
 // Styles
 import styles from "./InstantSplitPage.module.css";
+import {
+  deleteGroupDataFromLocalStorage,
+  getFirstGroupCodeInStoredGroupCodesArray,
+  removeActiveGroupCodeFromLocalStorage,
+  removeActiveGroupCodeFromStoredGroupCodes,
+  setGroupCodeToCurrentlyActive,
+} from "../../utils/localStorageUtils";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Main application
  * Renders group information, user actions, group actions and allows switching between group history and balances views.
 
- */
-const InstantSplitPage = () => {
+ */ const InstantSplitPage = () => {
+  const navigate = useNavigate();
   const groupCode = localStorage.getItem("activeGroupCode");
-  const { groupData, isFetched } = useFetchGroupData(groupCode);
+
+  // Validate active groupCode
+  const { isValidated, groupExists } = useValidateGroupExistence(
+    groupCode,
+    "continuous"
+  );
+
+  // Handle invalid active groupCode
+  useEffect(() => {
+    if (isValidated && !groupExists) {
+      deleteGroupDataFromLocalStorage(groupCode);
+      navigate("/");
+    }
+  }, [navigate, groupCode, isValidated, groupExists]);
+
   // Retrieve the 'view' value from localStorage or set the default value
   const [view, setView] = useLocalStorage("viewState", "view2");
-  // Clear nested routes  localStorage
+
+  // Clear nested routes localStorage
   useDeletePreviousRouteFromLocalStorage();
   useDeletePreviousRouteFromLocalStorage("nestedPreviousRoute");
 
-  useAuthenticateUsersActiveGroupCode(groupCode);
+  const { groupData, isFetched } = useFetchGroupData(groupCode);
 
   const handleSwitchView = () => {
     setView(view === "view1" ? "view2" : "view1");
@@ -46,7 +68,7 @@ const InstantSplitPage = () => {
         <span className={styles.spinner}>
           <Spinner />
         </span>
-      ) : (
+      ) : isFetched && groupExists ? (
         <>
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
@@ -67,8 +89,9 @@ const InstantSplitPage = () => {
           )}
           <GroupActionsBar />
         </>
-      )}
+      ) : null}
     </main>
   );
 };
+
 export default InstantSplitPage;

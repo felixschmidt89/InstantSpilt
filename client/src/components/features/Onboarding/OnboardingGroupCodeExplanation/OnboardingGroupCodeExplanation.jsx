@@ -32,10 +32,10 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
           <span className={styles.noWrap}>
             (
             <ReactIconNavigate
-              fontSize={"1.6rem"}
+              iconSize={"1.7"}
               icon={IoPersonAddOutline}
-              marginTop={"0rem"}
               cursorPointer={false}
+              translateY={0.3}
             />
             )
           </span>{" "}

@@ -98,6 +98,13 @@ textarea {
   font-family: "Ubuntu", sans-serif;
 }
 
+input {
+  border: 0.2rem solid var(--color-grey);
+  border-radius: 0.5rem;
+  text-align: center;
+  outline: none;
+}
+
 ::-webkit-scrollbar,
 scrollbar {
   width: 0.6rem;

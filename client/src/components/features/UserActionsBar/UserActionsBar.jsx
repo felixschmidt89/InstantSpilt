@@ -3,6 +3,7 @@ import React from "react";
 import { IoPersonAddOutline } from "react-icons/io5";
 import { IoHelpCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
+import { PiUserSwitchLight } from "react-icons/pi";
 
 // Components
 import ReactIconNavigate from "../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
@@ -29,8 +30,17 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoPersonAddOutline}
           tooltip='Invite & share group'
           route={`/share-group/${groupName}/${groupCode}`}
-          iconSize={2.1}
-          translateY={0.2}
+          iconSize={2.6}
+          translateY={0.1}
+        />
+      </span>
+      <span className={styles.icon}>
+        {/* Icon navigating to switch group page */}
+        <ReactIconNavigate
+          icon={PiUserSwitchLight}
+          tooltip='Switch group'
+          route={`/manage-groups`}
+          iconSize={3}
         />
       </span>
       <span className={styles.icon}>
@@ -39,6 +49,7 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoHelpCircleOutline}
           tooltip='Tutorial'
           route={`/tutorial/${groupName}/${groupCode}`}
+          iconSize={3}
         />
       </span>
       <span className={styles.icon}>
@@ -47,6 +58,7 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoEnterOutline}
           tooltip='Leave group'
           route={`/leave-group/${groupName}/${groupCode}`}
+          iconSize={3}
         />
       </span>
     </div>

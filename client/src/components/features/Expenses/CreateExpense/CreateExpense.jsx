@@ -96,7 +96,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}
           />
           {isSubmitButtonVisible && (
-            <FormSubmitButton fontSize={3} add={true} />
+            <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
           )}
         </div>
       </form>

@@ -17,36 +17,30 @@ export const removeActiveGroupCodeFromLocalStorage = () => {
 };
 
 /**
- * Removes the 'activeGroupCode' from the storedGroupCodes array from local storage (and the whole array if it is empty then)
+ * Removes the 'activeGroupCode' from the storedGroupCodes array in local storage, deletes storedGroupCodes array if then empty.
  *
+ * @param {string} groupCode - The groupCode of the to be removed group.
  * @returns {boolean} - Returns true if 'activeGroupCode' was successfully removed, false if there was an error.
  */
-
 export const removeActiveGroupCodeFromStoredGroupCodes = (groupCode) => {
   try {
     // Get the storedGroupCodes array from local storage
-    const storedGroupCodes = JSON.parse(
-      localStorage.getItem("storedGroupCodes")
-    );
+    let storedGroupCodes = JSON.parse(localStorage.getItem("storedGroupCodes"));
+    console.log(storedGroupCodes);
+    // Exclude to be removed groupCode
+    storedGroupCodes = storedGroupCodes.filter((code) => code !== groupCode);
+    console.log(storedGroupCodes);
 
-    // Find the index of the activeGroupCode in the array
-    const index = storedGroupCodes.findIndex((code) => code === groupCode);
-
-    if (index !== -1) {
-      // Remove the activeGroupCode from the array
-      storedGroupCodes.splice(index, 1);
-
-      if (storedGroupCodes.length === 0) {
-        // If the array is empty, delete the property from local storage
-        localStorage.removeItem("storedGroupCodes");
-      } else {
-        // Update the storedGroupCodes in local storage
-        localStorage.setItem(
-          "storedGroupCodes",
-          JSON.stringify(storedGroupCodes)
-        );
-      }
+    // Update the storedGroupCodes array or remove the key if it becomes empty
+    if (storedGroupCodes.length > 0) {
+      localStorage.setItem(
+        "storedGroupCodes",
+        JSON.stringify(storedGroupCodes)
+      );
+    } else {
+      localStorage.removeItem("storedGroupCodes");
     }
+
     devLog(
       "Active group code has been removed from storedGroupCodes array in local storage."
     );
@@ -54,6 +48,31 @@ export const removeActiveGroupCodeFromStoredGroupCodes = (groupCode) => {
   } catch (error) {
     devLog("Error removing groupCode from storedGroupCodes:", error);
     return false;
+  }
+};
+
+/**
+ * Retrieves the first groupCode from the 'storedGroupCodes' array in local storage.
+ *
+ * @returns {string|null} - Returns the first groupCode if available, or null if the array is empty or not present.
+ */
+export const getFirstGroupCodeInStoredGroupCodesArray = () => {
+  try {
+    // Get the storedGroupCodes array from local storage
+    const storedGroupCodes = JSON.parse(
+      localStorage.getItem("storedGroupCodes")
+    );
+
+    // Return the first groupCode if the array is not empty
+    return storedGroupCodes && storedGroupCodes.length > 0
+      ? storedGroupCodes[0]
+      : null;
+  } catch (error) {
+    devLog(
+      "Error retrieving the first groupCode from the storedGroupCodes array:",
+      error
+    );
+    return null;
   }
 };
 
@@ -77,13 +96,17 @@ export const removeViewStateFromLocalStorage = () => {
 /**
  * Sets groupCode as currently active in local storage.
  *
- * @param {string} groupCode - The groupCode to set active
- * @returns {boolean} - Returns true if groupCode has been set active, false in case of an error.
+ * @param {string|null} groupCode - The groupCode to set active. If null, clears the active groupCode.
+ * @returns {boolean|null} - Returns true if groupCode has been set active, false in case of an error, and null if groupCode is null.
  */
 export const setGroupCodeToCurrentlyActive = (groupCode) => {
   try {
-    localStorage.setItem("activeGroupCode", groupCode);
-    devLog("GroupCode set to active:", groupCode);
+    if (groupCode === null) {
+      localStorage.removeItem("activeGroupCode");
+    } else {
+      localStorage.setItem("activeGroupCode", groupCode);
+      devLog("GroupCode set to active:", groupCode);
+    }
     return true;
   } catch (error) {
     devLog("Error setting groupCode to active", error);

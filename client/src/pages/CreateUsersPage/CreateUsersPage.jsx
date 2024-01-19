@@ -20,7 +20,7 @@ function CreateUsersPage() {
   // Check if current user is a new user, ie is redirected from create-group route
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
 
-  const isNewUser = previousRoute.includes("/create-group");
+  const isNewUser = previousRoute.includes("/onboarding-create-group");
   if (isRetrieved) {
     devLog("Current user is a new user:", isNewUser);
   }

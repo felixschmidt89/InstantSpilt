@@ -88,9 +88,11 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
         onRecipientChange={setPaymentRecipientName}
         groupMembers={groupMembers}
       />
-      <div className={styles.buttonContainer}>
-        {isSubmitButtonVisible && <FormSubmitButton fontSize={3} add={true} />}
-      </div>
+      {isSubmitButtonVisible && (
+        <div>
+          <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
+        </div>
+      )}
       <ErrorDisplay error={error} />
     </form>
   );
