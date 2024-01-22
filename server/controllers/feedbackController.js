@@ -1,4 +1,3 @@
-// 1. React and Third-Party Libraries
 import { StatusCodes } from 'http-status-codes';
 import nodemailer from 'nodemailer';
 

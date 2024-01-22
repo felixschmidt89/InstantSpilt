@@ -1,4 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
+import nodemailer from 'nodemailer';
 import { customAlphabet } from 'nanoid';
 import Group from '../models/Group.js';
 import Expense from '../models/Expense.js';
@@ -6,6 +7,10 @@ import Payment from '../models/Payment.js';
 import { setLastActive } from '../utils/databaseUtils.js';
 import { devLog, errorLog, sendInternalError } from '../utils/errorUtils.js';
 import { generateUniqueGroupCode } from '../utils/groupCodeUtils.js';
+
+// Get email credentials from environment variables
+const emailUser = process.env.EMAIL_USER;
+const emailPass = process.env.EMAIL_PASS;
 
 /**
  * Creates a new group with a globally unique group ID
@@ -19,8 +24,45 @@ export const createGroup = async (req, res) => {
   try {
     const { groupName } = req.body;
     const groupCode = await generateUniqueGroupCode();
-
     const group = await Group.create({ groupName, groupCode });
+
+    // Send email notification in production
+    if (process.env.NODE_ENV === 'production') {
+      // Create a transporter using email service's SMTP settings
+      const transporter = nodemailer.createTransport({
+        host: 'smtp.strato.de',
+        port: 465,
+        secure: true,
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
+        },
+      });
+
+      // Define the email notification copy
+      const mailOptions = {
+        from: 'admin@instantsplit.de',
+        to: 'felix.schmidt@directbox.com',
+        subject: 'New InstantSplit goup has been created',
+        text: `
+      GroupName: "${groupName}"
+      Groupcode: "${groupCode}"
+      `,
+      };
+
+      // Log error, else send
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          errorLog(
+            error,
+            'Error sending group creation email:',
+            'Failed to send group creation email. Please try again later.',
+          );
+        } else {
+          console.log('Email sent:', info.response);
+        }
+      });
+    }
 
     // Set the lastActive property of the group to now
     setLastActive(groupCode);

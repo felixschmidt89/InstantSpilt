@@ -80,6 +80,12 @@ const Contact = () => {
       setError("Oops! Message can't exceed 1000 characters.");
       return;
     }
+
+    // Validate file size
+    if (file && file.size > 5242880) {
+      setError("Oops! File size exceeds the allowed limit of 5MB.");
+      return;
+    }
     try {
       // Create contactData object & add groupCode for referencing
       const contactData = {
