@@ -25,21 +25,25 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
  * Component for rendering a form to create a new group, validating group name and rendering group name validation errors.
  *
+ *  @param {boolean} isOnboarding - Indicates whether a new InstantSplit user is creating the group
  * @returns {JSX.Element} React component. */
-const CreateGroupForm = () => {
+const CreateGroupForm = ({ isOnboarding }) => {
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const [groupName, setGroupName] = useState("");
   const [error, setError] = useState(null);
 
-  // Autofocus input field on mount
+  devLog("Is inApp creation", isOnboarding);
+
+  // Autofocus input field on mount if isOnboarding is true
   useEffect(() => {
-    inputRef.current.focus();
-  }, []);
+    if (isOnboarding) {
+      inputRef.current.focus();
+    }
+  }, [isOnboarding]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
     // Clear previous error
     setError(null);
     // Validate group name
@@ -77,7 +81,6 @@ const CreateGroupForm = () => {
         onChange={(e) => setGroupName(e.target.value)}
         placeholder='group name'
         ref={inputRef}
-        autoFocus
       />
       <FormSubmitButton
         fontSize={1.6}

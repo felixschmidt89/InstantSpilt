@@ -8,6 +8,12 @@
   cursor: pointer;
   border-radius: 0.4rem;
   box-shadow: 0 0 0.5rem var(--color-signal);
+  width: 12.25rem;
+}
+
+.buttonContainer {
+  width: 26rem;
+  margin: 0 auto;
 }
 
 .button:hover {

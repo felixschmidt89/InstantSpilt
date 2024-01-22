@@ -4,6 +4,7 @@ import { IoPersonAddOutline } from "react-icons/io5";
 import { IoHelpCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
+import { BiMessageError } from "react-icons/bi";
 
 // Components
 import ReactIconNavigate from "../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
@@ -30,7 +31,7 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoPersonAddOutline}
           tooltip='Invite & share group'
           route={`/share-group/${groupName}/${groupCode}`}
-          iconSize={2.8}
+          iconSize={3.5}
           translateY={0.3}
           marginRight={0.3}
         />
@@ -41,7 +42,7 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={PiUserSwitchLight}
           tooltip='Switch group'
           route={`/manage-groups`}
-          iconSize={3.4}
+          iconSize={4.2}
           marginRight={0.3}
         />
       </span>
@@ -51,18 +52,31 @@ const UserActionsBar = ({ groupCode, groupName }) => {
           icon={IoHelpCircleOutline}
           tooltip='Tutorial'
           route={`/tutorial/${groupName}/${groupCode}`}
-          iconSize={3.4}
+          marginRight={0.3}
+          iconSize={4.2}
         />
       </span>
+      <span className={styles.icon}>
+        {/* Icon navigating to contact developer page */}
+        <ReactIconNavigate
+          icon={BiMessageError}
+          tooltip='Contact'
+          route={`/contact/${groupCode}`}
+          iconSize={3.9}
+          translateY={0.2}
+        />
+      </span>
+
       <span className={styles.icon}>
         {/* Icon navigating to leave group page */}
         <ReactIconNavigate
           icon={IoEnterOutline}
           tooltip='Leave group'
           route={`/leave-group/${groupName}/${groupCode}`}
-          iconSize={3.4}
+          iconSize={4}
         />
       </span>
+      <span className={styles.icon}></span>
     </div>
   );
 };

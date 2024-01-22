@@ -1,3 +1,7 @@
+.container {
+  height: 3rem;
+}
+
 .groupSelection {
   width: 20rem;
   padding: 0.2rem;

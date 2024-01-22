@@ -34,7 +34,7 @@ const ManageGroupsPage = () => {
         <h1>Manage groups</h1>
         <SwitchGroups groupCode={groupCode} />
         <h2>Create group</h2>
-        <CreateGroupForm />
+        <CreateGroupForm isInAppCreation={false} />
         <h2>Enter groupCode</h2>
         <p>
           If you&lsquo;ve been given a groupCode, enter it here to join that
