@@ -1,6 +1,5 @@
 import express from 'express';
 import multer from 'multer';
-import cloudinary from '../config/cloudinaryConfig.js';
 import { StatusCodes } from 'http-status-codes';
 import { uploadImage } from '../controllers/fileController.js';
 
@@ -35,7 +34,7 @@ const upload = multer({
   },
 });
 
-// Handle file uploads using Multer and Cloudinary
+// Handle file uploads using Multer and cloudinary
 router.post('/', upload.single('file'), uploadImage);
 
 export default router;

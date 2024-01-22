@@ -2,7 +2,6 @@
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  width: 100%;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   margin: 0 auto;
   overflow-y: auto;

@@ -28,7 +28,7 @@ import styles from "./ValidateProvidedGroupCodePage.module.css";
 /**
  * Validates the user's manually provided groupCode and navigates the user accordingly.
  *
- * @returns {JSX.Element} React component. */
+ * @returgroupExistsns {JSX.Element} React component. */
 const ValidateProvideGroupCodePage = () => {
   const navigate = useNavigate();
   const { groupCode } = useParams();

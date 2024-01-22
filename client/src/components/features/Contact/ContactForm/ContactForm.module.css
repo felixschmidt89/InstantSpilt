@@ -1,0 +1,49 @@
+.formContainer {
+  margin-bottom: 1rem;
+}
+
+.inputField,
+.select {
+  color: var(--color-dark);
+  font-family: "Ubuntu", sans-serif;
+  width: 20rem;
+  padding: 0.2rem;
+  border: 0.2rem solid var(--color-grey);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  text-align: center;
+  outline: none;
+  margin-right: 0.4rem;
+}
+
+.fileInputField {
+  background-color: var(--color-main);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  width: 25rem;
+  text-align: center;
+  outline: auto;
+  outline-color: var(--color-grey);
+  margin-bottom: 0.5rem;
+}
+
+.select {
+  background-color: var(--color-main);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  width: 20rem;
+  text-align: center;
+  outline: auto;
+  outline-color: var(--color-grey);
+}
+
+.fileInputField:focus,
+.select:focus,
+.inputField:focus {
+  border-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+.textArea {
+  width: 25rem;
+}
