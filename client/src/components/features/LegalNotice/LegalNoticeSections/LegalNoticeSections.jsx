@@ -14,10 +14,10 @@ const LegalNoticeSections = ({ LegalNoticeSections }) => {
   return (
     <div className={styles.container}>
       {LegalNoticeSections.map((section) => (
-        <section key={section.key}>
-          <h2 className={styles.header}>{section.title}</h2>
-          {section.content}
-        </section>
+        <div key={section.key}>
+          <h2 className={styles.title}>{section.title}</h2>
+          <div className={styles.text}>{section.content}</div>
+        </div>
       ))}
     </div>
   );

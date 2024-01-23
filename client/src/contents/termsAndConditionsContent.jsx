@@ -1,4 +1,4 @@
-export const lastUpdateDate = "17/10/2023";
+export const lastUpdateDate = "23/01/2024";
 
 export const sections = [
   {
@@ -9,15 +9,15 @@ export const sections = [
   },
   {
     key: "section2",
-    title: "Changes and Updates",
+    title: "GroupCode Access",
     content:
-      "We reserve the right to make changes, updates, or modifications to the InstantSplit application at any time. This includes, but is not limited to, features, functionality, and the terms and conditions themselves. It is your responsibility to review these terms periodically for any updates.",
+      "The core of the application is a unique groupCode per group. This groupCode serves as the key to access a group, eliminating the need for user registrations. All users who have access to a groupCode have the same user rights, essentially group admin rights, within a group.",
   },
   {
     key: "section3",
-    title: "No Cookies, No Tracking",
+    title: "Data Purge",
     content:
-      "We are committed to being as user-friendly and data sensitive as possible. We do not use cookies or tracking mechanisms on our website or application to ensure your privacy all times.",
+      "As a data-sensitive application, we have implemented a data purge policy. If a group remains inactive for a period of 6 months, all its usage data will be permanently purged. This policy is designed to respect your privacy and ensure that only relevant and active data is retained within the application.",
   },
   {
     key: "section4",
@@ -27,39 +27,45 @@ export const sections = [
   },
   {
     key: "section5",
+    title: "No Cookies, No Tracking",
+    content:
+      "We are committed to being as user-friendly and data sensitive as possible. We do not use cookies or tracking mechanisms on our website or application to ensure your privacy all times.",
+  },
+  {
+    key: "section6",
     title: "Local Storage",
     content:
       "InstantSplit utilizes local storage within your browser to provide a convenient user experience. This local storage primarily houses your associated groupCode(s), ensuring seamless functionality without the need for personal identification or registration. In addition, user settings may be stored in local storage to enhance your interaction with the application. When you depart from a group within the application, any related data in local storage will be removed. You also have the option to manually delete this data in your browser's settings, although this action will result in losing access to the group.",
   },
   {
-    key: "section6",
-    title: "GroupCode Accessibility",
+    key: "section7",
+    title: "Changes and Updates",
     content:
-      "Please note that there is no way to restore a groupCode. If you and all other group members lose it, the group will no longer be accessible. We can not provide support in such situations as we - by design - can not identify our users. This means that your data is ultimately in your hands, and if you happen to lose access to it, it's irrecoverable and will be purged (see Data Purge).",
+      "We reserve the right to make changes, updates, or modifications to the InstantSplit application at any time. This includes, but is not limited to, features, functionality, and the terms and conditions themselves. It is your responsibility to review these terms periodically for any updates.",
   },
   {
-    key: "section7",
+    key: "section8",
     title: "Sharing GroupCodes",
     content:
       "Be advised to share the groupCode cautiously because anyone with the groupCode can gain full access to your group.",
   },
   {
     key: "section9",
+    title: "GroupCode Accessibility",
+    content:
+      "Please note that there is no way to restore a groupCode. If you and all other group members lose it, the group will no longer be accessible. We can not provide support in such situations as we - by design - can not identify our users. This means that your data is ultimately in your hands, and if you happen to lose access to it, it's irrecoverable and will be purged (see Data Purge).",
+  },
+  {
+    key: "section10",
     title: "Indemnification",
     content:
       "You agree to indemnify and hold harmless the developers and contributors of InstantSplit from any claims, losses, or liabilities arising from your use of the application.",
   },
   {
-    key: "section10",
+    key: "section11",
     title: "Termination",
     content:
       "We reserve the right to terminate access to the InstantSplit application at our discretion and without notice.",
-  },
-  {
-    key: "section11",
-    title: "Data Purge",
-    content:
-      "As a data-sensitive application, we have implemented a data purge policy. If a group remains inactive for a period of 6 months, all its usage data will be permanently purged. This policy is designed to respect your privacy and ensure that only relevant and active data is retained within the application.",
   },
   {
     key: "section12",
