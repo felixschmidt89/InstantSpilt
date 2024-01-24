@@ -5,6 +5,7 @@ const groupSchema = new Schema(
     groupCode: {
       type: String,
       required: [true, 'Missing groupCode'],
+      index: true,
     },
     groupName: {
       type: String,
@@ -12,6 +13,10 @@ const groupSchema = new Schema(
       required: [true, 'Missing group name.'],
       minlength: [1, 'The group name must be at least 1 characters long.'],
       maxlength: [50, 'The group name cannot exceed 50 characters.'],
+      index: true,
+    },
+    initialGroupName: {
+      type: String,
     },
     lastActive: {
       type: Date,
@@ -28,6 +33,18 @@ groupSchema.methods.setLastActive = async function () {
     await this.save();
   } catch (error) {
     console.error('Error setting lastActive:', error);
+    throw error;
+  }
+};
+
+groupSchema.methods.setInitialGroupName = async function () {
+  try {
+    console.log('Setting initialGroupName for group:', this.groupName);
+    this.initialGroupName = this.groupName;
+    await this.save();
+    console.log('InitialGroupName set successfully.');
+  } catch (error) {
+    console.error('Error setting initialGroupName:', error);
     throw error;
   }
 };

@@ -6,7 +6,7 @@ import axios from 'axios';
  * This script is used to seed a group with test data. It requires creating a new group in the FE and then copying its related groupCode and replacing the groupCode variable prior to running the script.
  */
 
-const groupCode = 'IHEF3HVX';
+const groupCode = '7DCAG3YZ';
 
 const users = [
   { userName: 'Emma', groupCode },

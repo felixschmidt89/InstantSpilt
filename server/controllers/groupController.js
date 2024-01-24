@@ -24,7 +24,11 @@ export const createGroup = async (req, res) => {
   try {
     const { groupName } = req.body;
     const groupCode = await generateUniqueGroupCode();
-    const group = await Group.create({ groupName, groupCode });
+    const group = await Group.create({
+      groupName,
+      groupCode,
+      initialGroupName: groupName, // Set initialGroupName during creation
+    });
 
     // Send email notification in production
     if (process.env.NODE_ENV === 'production') {
@@ -85,16 +89,24 @@ export const createGroup = async (req, res) => {
 export const changeGroupName = async (req, res) => {
   try {
     const { groupCode, groupName } = req.body;
-    const group = await Group.findOneAndUpdate({ groupCode });
 
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
-
-    const updatedGroup = await Group.findByIdAndUpdate(
-      group._id,
-      { $set: { groupName } },
-      { new: true, runValidators: true },
+    const updateResult = await Group.updateOne(
+      { groupCode },
+      { $set: { lastActive: new Date(), groupName } },
     );
+
+    // Check if the update was successful
+    if (updateResult.nModified === 0) {
+      // Handle case where the group with the given groupCode is not found
+      return res.status(StatusCodes.NOT_FOUND).json({
+        status: 'error',
+        message: 'Group not found with the provided groupCode',
+      });
+    }
+
+    // Fetch the updated group to return in the response
+    const updatedGroup = await Group.findOne({ groupCode });
+
     res.status(StatusCodes.OK).json({
       status: 'success',
       updatedGroup,
