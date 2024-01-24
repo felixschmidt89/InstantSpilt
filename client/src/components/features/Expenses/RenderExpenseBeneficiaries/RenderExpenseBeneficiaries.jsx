@@ -15,9 +15,7 @@ const RenderExpenseBeneficiaries = ({ expenseBeneficiaries }) => {
       <div className={styles.beneficiariesList}>
         {expenseBeneficiaries.map((beneficiary, index) => (
           <span key={beneficiary._id} className={styles.beneficiary}>
-            {beneficiary.userName}
-            {/*Render comma after name, except for last one*/}
-            {index < expenseBeneficiaries.length - 1 && ", "}
+            <span className={styles.noWrap}>{beneficiary.userName}</span>
           </span>
         ))}
       </div>

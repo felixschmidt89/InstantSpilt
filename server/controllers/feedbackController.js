@@ -49,7 +49,7 @@ export const createFeedback = async (req, res) => {
     const mailOptions = {
       from: 'admin@instantsplit.de',
       to: 'felix.schmidt@directbox.com',
-      subject: 'New InstantSplit feedback created',
+      subject: 'New feedback created',
       text: `A new feedback has been created by ${name}.
       
       Type: "${messageType}"

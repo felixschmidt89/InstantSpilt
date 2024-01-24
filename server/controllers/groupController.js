@@ -43,7 +43,7 @@ export const createGroup = async (req, res) => {
       const mailOptions = {
         from: 'admin@instantsplit.de',
         to: 'felix.schmidt@directbox.com',
-        subject: 'New InstantSplit goup has been created',
+        subject: 'New group has been created',
         text: `
       GroupName: "${groupName}"
       Groupcode: "${groupCode}"

@@ -6,7 +6,7 @@ import axios from 'axios';
  * This script is used to seed a group with test data. It requires creating a new group in the FE and then copying its related groupCode and replacing the groupCode variable prior to running the script.
  */
 
-const groupCode = '7XONVRUP';
+const groupCode = 'IHEF3HVX';
 
 const users = [
   { userName: 'Emma', groupCode },
@@ -31,11 +31,16 @@ async function createUser(user) {
     );
   } catch (error) {
     console.error(`Error creating user ${user.userName}:`, error.response.data);
+    throw error; // Propagate the error to stop the process if a user creation fails
   }
 }
 
-// Loop through the array of users and create them one by one
-users.forEach(createUser);
+// Function to create users sequentially
+async function createUsersSequentially() {
+  for (const user of users) {
+    await createUser(user);
+  }
+}
 
 const expenses = [
   { expenseDescription: 'Flight tickets from US to Rome', expenseAmount: 3000 },
@@ -77,34 +82,47 @@ const expenses = [
   { expenseDescription: 'Train tickets', expenseAmount: 300 },
 ];
 
-expenses.forEach((expense) => {
-  // Add random expense payer
-  const randomUserIndex = Math.floor(Math.random() * users.length);
-  expense.expensePayerName = users[randomUserIndex].userName;
+// Function to create expenses after all users have been created
+async function createExpenses() {
+  // Loop through the array of expenses and create them one by one
+  for (const expense of expenses) {
+    // Add random expense payer
+    const randomUserIndex = Math.floor(Math.random() * users.length);
+    expense.expensePayerName = users[randomUserIndex].userName;
 
-  // Set expenseBeneficiariesNames to an array of userNames
-  expense.expenseBeneficiariesNames = users.map((user) => user.userName);
-});
-async function createExpense(expense) {
-  try {
-    const response = await axios.post(
-      'https://instant-split.onrender.com/api/v1/expenses',
-      {
-        ...expense,
-        groupCode,
-      },
-    );
-    console.log(
-      `Expense for user ${expense.expensePayerName} created successfully. Response:`,
-      response.data,
-    );
-  } catch (error) {
-    console.error(
-      `Error creating expense for user ${expense.expensePayerName}:`,
-      error.response.data,
-    );
+    // Set expenseBeneficiariesNames to an array of userNames
+    expense.expenseBeneficiariesNames = users.map((user) => user.userName);
+
+    try {
+      const response = await axios.post(
+        'https://instant-split.onrender.com/api/v1/expenses',
+        {
+          ...expense,
+          groupCode,
+        },
+      );
+      console.log(
+        `Expense for user ${expense.expensePayerName} created successfully. Response:`,
+        response.data,
+      );
+    } catch (error) {
+      console.error(
+        `Error creating expense for user ${expense.expensePayerName}:`,
+        error.response.data,
+      );
+    }
   }
 }
 
-// Loop through the array of expenses and create them one by one
-expenses.forEach(createExpense);
+// Run the script
+createUsersSequentially()
+  .then(() => {
+    console.log('All users created successfully. Starting expense creation.');
+    return createExpenses();
+  })
+  .then(() => {
+    console.log('All expenses created successfully.');
+  })
+  .catch((error) => {
+    console.error('Script failed:', error);
+  });
