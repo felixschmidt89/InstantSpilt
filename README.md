@@ -2,13 +2,14 @@
 
 A user centered MERN application designed for settling group expenses with a focus on functionality and data privacy, eliminating the need for personalized user registration and app installation. Allows gaining and sharing access to a group via a simple link and managing an unlimited number of such groups. Prioritizes privacy by not identifying or logging individual users and sessions and by purging all data of a group after 180 days of group inactivity.
 
-<div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+<div align="center" style="display: flex; flex-wrap: wrap; justify-content: center;">
   <img src="./client/public/app-onboarding1.png" alt="App screenshot1" width="200px">
   <img src="./client/public/app-onboarding2.png" alt="App screenshot2" width="200px">
+</div>
+<div align="center" style="display: flex; flex-wrap: wrap; justify-content: center;">
   <img src="./client/public/app-image.png" alt="App screenshot3" width="200px">
-  <img src="./client/public/app-image2.png" alt="App screenshot4" width="200px">
+    <img src="./client/public/app-image2.png" alt="App screenshot4" width="200px">
   <img src="./client/public/app-image3.png" alt="App screenshot5" width="200px">
-
 </div>
 
 ## About
@@ -31,7 +32,7 @@ A user centered MERN application designed for settling group expenses with a foc
 ## Access the application or try the demo.
 
 - Access the [application](https://www.instantsplit.de/): Create your own group, start adding users, expenses and settle payments.
-- Alternatively, [join](<https://instantsplit.de/join-instantsplit-group/Italy%20Trip%20(Public%20GitHub%20Group)/7XONVRUP>) the demo group with test data for a better immediate understanding of the application's main functionalities. Feel free to explore and add or amend test data.
+- Alternatively, [join](https://instantsplit.de/join-instantsplit-group/Italy%20Trip%20GitHub%20Demo/UO99CWXD) the demo group with test data for a better immediate understanding of the application's main functionalities. Feel free to explore and add or amend test data.
 
 ## Acknowledgements
 
