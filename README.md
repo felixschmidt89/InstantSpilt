@@ -44,7 +44,7 @@ A user centered MERN application designed for settling group expenses with a foc
 
   - I started out with a "You can always refactor later" attitude, focusing on releasing a functional MVP ASAP.
   - Initially, I put more effort into setting up a modular project structure that aligns with industry conventions and best practices compared to my previous projects. While coding the app, I quickly realized its immense benefits, allowing me to add functionalities, especially on the client side, much easier and quicker.
-  - Building a Full Stack app from scratch for the very first time also provided me with highly valuable insights into the fundamental mechanics of web applications.
+  - Building a Full Stack app from scratch for the very first time also provided me with highly valuable insights into the fundamental mechanics of web applications which also gave me the confidence of being able to code and deploy a proper application.
   - Most importantly, after having learned JavaScript as well as Frontend and Backend fundamentals, I was uncertain about my initial career path. While coding this app, I quickly recognized the beauty of React and the benefit of immediate visual results and decided to focus on Frontend as my initial career path.
 
 - **Phase 2 (Refactor client)**:
