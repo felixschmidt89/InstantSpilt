@@ -33,7 +33,7 @@ const CreateGroupForm = ({ isOnboarding }) => {
   const [groupName, setGroupName] = useState("");
   const [error, setError] = useState(null);
 
-  devLog("Is inApp creation", isOnboarding);
+  devLog("Onboarding group creation", isOnboarding);
 
   // Autofocus input field on mount if isOnboarding is true
   useEffect(() => {
