@@ -46,10 +46,7 @@ import styles from "./InstantSplitPage.module.css";
     }
   }, [navigate, groupCode, isValidated, groupExists]);
 
-  // Fetch group data
   const { groupData, isFetched } = useFetchGroupData(groupCode);
-  const initialGroupName = groupData?.group?.initialGroupName || "";
-  const groupName = groupData?.group?.groupName || "";
 
   // Retrieve the 'view' value from localStorage or set the default value
   const [view, setView] = useLocalStorage("viewState", "view2");
@@ -62,31 +59,35 @@ import styles from "./InstantSplitPage.module.css";
     setView(view === "view1" ? "view2" : "view1");
   };
 
+  console.log(groupData);
+
   return (
     <main>
       {!isFetched ? (
         <span className={styles.spinner}>
           <Spinner />
         </span>
-      ) : isValidated && groupExists ? (
+      ) : groupData.group ? (
         <>
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
           {/* Display group name */}
           <UserActionsBar
             groupCode={groupCode}
-            initialGroupName={initialGroupName}
+            initialGroupName={groupData.group.initialGroupName}
           />
-          <h1>Group: {groupName}</h1>
-
+          <h1>Group: {groupData.group.groupName}</h1>
           <SwitchViewButtonsBar
             view={view}
             handleSwitchView={handleSwitchView}
           />
           {view === "view1" ? (
-            <RenderGroupHistory groupCode={groupCode} />
+            <RenderGroupHistory
+              groupCode={groupCode}
+              groupCurrency={groupData.group.currency}
+            />
           ) : (
-            <RenderGroupBalances />
+            <RenderGroupBalances groupCurrency={groupData.group.currency} />
           )}
           <GroupActionsBar />
         </>

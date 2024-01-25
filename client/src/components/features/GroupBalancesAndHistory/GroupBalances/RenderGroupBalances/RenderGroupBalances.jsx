@@ -23,7 +23,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * Displays group members' balances, handles data fetching, formatting and rendering
  *
  * @returns {JSX.Element} React component. */
-const RenderGroupBalances = () => {
+const RenderGroupBalances = ({ groupCurrency }) => {
   const groupCode = localStorage.getItem("activeGroupCode");
 
   const [userDetails, setUserDetails] = useState([]);
@@ -77,6 +77,7 @@ const RenderGroupBalances = () => {
         <RenderUserNameAndBalance
           userDetails={userDetails}
           groupCode={groupCode}
+          groupCurrency={groupCurrency}
         />
       ) : (
         <NotEnoughUsers />

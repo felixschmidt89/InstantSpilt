@@ -28,8 +28,9 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  *
  * @param {Object} props - The component properties.
  * @param {string} props.groupCode - The groupCode of the group to display expenses and payments.
+ *  @param {string} props.groupCurrency - The currency of the group.
  * @returns {JSX.Element} React component. */
-const RenderGroupHistory = ({ groupCode }) => {
+const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
   const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -92,9 +93,17 @@ const RenderGroupHistory = ({ groupCode }) => {
             {groupExpensesAndPayments.map((item) => (
               <li key={item._id}>
                 {item.expenseDescription ? (
-                  <RenderGroupExpense item={item} groupCode={groupCode} />
+                  <RenderGroupExpense
+                    item={item}
+                    groupCode={groupCode}
+                    groupCurrency={groupCurrency}
+                  />
                 ) : (
-                  <RenderGroupPayment item={item} groupCode={groupCode} />
+                  <RenderGroupPayment
+                    item={item}
+                    groupCode={groupCode}
+                    groupCurrency={groupCurrency}
+                  />
                 )}
               </li>
             ))}

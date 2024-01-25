@@ -4,9 +4,9 @@ import { customAlphabet } from 'nanoid';
 import Group from '../models/Group.js';
 import Expense from '../models/Expense.js';
 import Payment from '../models/Payment.js';
-import { setLastActive } from '../utils/databaseUtils.js';
 import { devLog, errorLog, sendInternalError } from '../utils/errorUtils.js';
 import { generateUniqueGroupCode } from '../utils/groupCodeUtils.js';
+import { setGroupLastActivePropertyToNow } from '../utils/databaseUtils.js';
 
 // Get email credentials from environment variables
 const emailUser = process.env.EMAIL_USER;
@@ -68,8 +68,7 @@ export const createGroup = async (req, res) => {
       });
     }
 
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     res.status(StatusCodes.CREATED).json({
       status: 'success',
@@ -147,11 +146,40 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
   }
 };
 
+export const getGroupCurrency = async (req, res) => {
+  try {
+    const { groupCode } = req.params;
+
+    const group = await Group.findOne({ groupCode });
+
+    if (!group) {
+      return res.status(StatusCodes.NO_CONTENT).json({
+        status: 'success',
+        message: 'No group found',
+      });
+    }
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      currency: group.currency,
+      message: 'Group currency retrieved successfully',
+    });
+  } catch (error) {
+    errorLog(
+      error,
+      'Error fetching group currency:',
+      'Failed to fetch group information. Please try again later.',
+    );
+    sendInternalError(res);
+  } finally {
+    setGroupLastActivePropertyToNow(groupCode);
+  }
+};
+
 export const listExpensesAndPaymentsByGroup = async (req, res) => {
   try {
     const { groupCode } = req.params;
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
     const [expenses, payments] = await Promise.all([
       Expense.find({ groupCode }).populate('expensePayer', 'userName'),
       Payment.find({ groupCode })
@@ -182,8 +210,8 @@ export const getGroupInfo = async (req, res) => {
   try {
     const { groupCode } = req.params;
 
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
+
     const group = await Group.findOne({ groupCode });
 
     if (!group) {

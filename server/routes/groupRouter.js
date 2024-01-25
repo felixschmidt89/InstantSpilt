@@ -8,6 +8,7 @@ import {
   listExpensesAndPaymentsByGroup,
   getGroupInfo,
   validateGroupExistence,
+  getGroupCurrency,
 } from '../controllers/groupController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 import {
@@ -21,7 +22,7 @@ const router = express.Router();
 
 // Create a new group
 router.post('/', createGroup);
-// Update group name
+// Change group name
 router.patch('/:groupCode', validateGroupCodeMiddleware, changeGroupName);
 
 // List group names of locally stored groupCodes
@@ -29,6 +30,9 @@ router.get('/StoredGroupNames', listGroupNamesByStoredGroupCodes);
 
 // Get group info by groupCode
 router.get('/:groupCode', getGroupInfo);
+
+// Get group currency by groupCode
+router.get('/currency/:groupCode', getGroupCurrency);
 
 // Check if groupCode exists in database
 router.get('/:groupCode/continuous-validate-existence', validateGroupExistence);

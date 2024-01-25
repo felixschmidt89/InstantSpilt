@@ -5,7 +5,7 @@ import Expense from '../models/Expense.js';
 import User from '../models/User.js';
 
 import { devLog, errorLog, sendInternalError } from '../utils/errorUtils.js';
-import { setLastActive } from '../utils/databaseUtils.js';
+import { setGroupLastActivePropertyToNow } from '../utils/databaseUtils.js';
 
 /** Creates a new expense
  *  Updates totalExpenseAmountPaid by expense payer and totalExpenseBenefittedAmount from by expense beneficiaries
@@ -56,8 +56,7 @@ export const createExpense = async (req, res) => {
       }),
     );
 
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     return res.status(StatusCodes.CREATED).json({
       status: 'success',
@@ -131,8 +130,7 @@ export const updateExpense = async (req, res) => {
       { new: true },
     );
 
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     // Update total expenses paid and total expenses benefitted for all users of the group
     await Promise.all(
@@ -196,10 +194,9 @@ export const getExpenseInfo = async (req, res) => {
       .populate('expensePayer', 'userName')
       .populate('expenseBeneficiaries', 'userName');
 
-    // Set the lastActive property of the group to now
     const groupCode = expense.groupCode;
     devLog('Expense groupCode', groupCode);
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
@@ -226,8 +223,7 @@ export const deleteExpense = async (req, res) => {
 
     const { expensePayer, expenseBeneficiaries, groupCode } = expenseToDelete;
 
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     // Delete the expense using the retrieved _id
     await Expense.deleteOne({ _id: expenseToDelete._id });
@@ -260,8 +256,7 @@ export const listAllExpensesByGroupCode = async (req, res) => {
   try {
     const { groupCode } = req.params;
 
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     const expenses = await Expense.find({ groupCode });
     res.status(StatusCodes.OK).json({

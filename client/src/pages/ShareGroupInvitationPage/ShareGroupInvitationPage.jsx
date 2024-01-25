@@ -51,7 +51,7 @@ const ShareGroupInvitationPage = () => {
               groupName={groupName}
               groupCode={groupCode}
               infoToCopy={infoToCopy}
-              initialGroupName={initialGroupName}
+              initialGroupName={urlEncodedGroupName}
             />
           ) : (
             <ShareGroupInvitation

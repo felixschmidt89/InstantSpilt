@@ -179,17 +179,16 @@ export const getUserNameByUserIdHelper = async (userId) => {
  * @returns {Promise<void>} - A promise that resolves when the update is complete.
  * Logs errors for internal debugging purposes and transforms them for production logging with a custom prefix and user-friendly message.
  */
-export const setLastActive = async (groupCode) => {
+export const setGroupLastActivePropertyToNow = async (groupCode) => {
   try {
-    // Validate that groupCode is a valid string
     validateString(groupCode, 'groupCode');
 
     // Find the group in the database by groupCode
     const group = await Group.findOne({ groupCode });
+
     // If the group is found, update its lastActive property
     if (group) {
       await group.setLastActive();
-      // Log success in development environment
       devLog(
         `Successfully updated lastActive for group with groupCode "${groupCode}"`,
       );

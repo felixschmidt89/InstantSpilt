@@ -20,6 +20,7 @@
 .rightColumn {
   display: flex;
   flex-direction: row;
+  gap: 0.3rem;
   margin-left: 3rem;
   margin-right: 2rem;
   width: 80%;

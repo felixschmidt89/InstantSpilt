@@ -14,8 +14,10 @@ import styles from "./RenderGroupPayment.module.css";
  *
  * @param {Object} props - The component properties.
  * @param {Object} props.item - The payment item to be rendered.
+ *  @param {string} props.groupCode - The groupCode of the group.
+ *  @param {string} props.groupCurrency - The currency of the group.
  * @returns {JSX.Element} React component. */
-const RenderGroupPayment = ({ item, groupCode }) => {
+const RenderGroupPayment = ({ item, groupCode, groupCurrency }) => {
   return (
     <div className={styles.payments}>
       {/* Left column with payment emoji and amount */}
@@ -26,7 +28,8 @@ const RenderGroupPayment = ({ item, groupCode }) => {
         <div className={styles.paymentAmount}>
           {/* Link to the item page with item details */}
           <Link to={`/payment-details/${groupCode}/${item.itemId}`}>
-            {item.paymentAmount.toFixed(2)}€
+            {item.paymentAmount.toFixed(2)}
+            {groupCurrency}
           </Link>
         </div>
       </div>

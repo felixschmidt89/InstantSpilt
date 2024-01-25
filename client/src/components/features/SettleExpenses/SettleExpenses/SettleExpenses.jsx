@@ -11,6 +11,9 @@ import {
   groupUsersPerPositiveOrNegativeUserBalance,
 } from "../../../../utils/settlementUtils";
 
+// Hooks
+import useFetchGroupCurrency from "../../../../hooks/useFetchGroupCurrency";
+
 // Components
 import UsersWithPositiveBalance from "../UsersWithPositiveBalance/UsersWithPositiveBalance";
 import UsersWithNegativeBalance from "../UsersWithNegativeBalance/UsersWithNegativeBalance";
@@ -30,10 +33,11 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @returns {JSX.Element} React component. */
 const SettleExpenses = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
-
   const [unsettledUsers, setUnsettledUsers] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { groupCurrency, isFetched: groupCurrencyIsFetched } =
+    useFetchGroupCurrency(groupCode);
 
   useEffect(() => {
     const fetchAndIdentifyUnsettledUsers = async () => {
@@ -81,17 +85,20 @@ const SettleExpenses = () => {
       ) : (
         <div>
           {/* Check if there are users with unsettled balances */}
-          {unsettledUsers.length !== 0 ? (
+          {unsettledUsers.length !== 0 && groupCurrencyIsFetched ? (
             <div className={styles.container}>
               <UsersWithNegativeBalance
                 negativeBalanceUsers={negativeBalanceUsers}
+                groupCurrency={groupCurrency}
               />
               <UsersWithPositiveBalance
                 positiveBalanceUsers={positiveBalanceUsers}
+                groupCurrency={groupCurrency}
               />
               <RenderSettlementPaymentSuggestions
                 positiveBalanceUsers={positiveBalanceUsers}
                 negativeBalanceUsers={negativeBalanceUsers}
+                groupCurrency={groupCurrency}
               />
             </div>
           ) : (

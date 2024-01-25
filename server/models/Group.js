@@ -27,7 +27,7 @@ const groupSchema = new Schema(
   { timestamps: true },
 );
 
-// Define a method to update the lastActive property (needed for data purge)
+// Method to update the lastActive property (needed for data purge)
 groupSchema.methods.setLastActive = async function () {
   try {
     this.lastActive = new Date();

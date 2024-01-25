@@ -1,9 +1,9 @@
 import Payment from '../models/Payment.js';
 import User from '../models/User.js';
 import Expense from '../models/Expense.js';
-import { setLastActive } from '../utils/databaseUtils.js';
 import { errorLog, sendInternalError } from '../utils/errorUtils.js';
 import { StatusCodes } from 'http-status-codes';
+import { setGroupLastActivePropertyToNow } from '../utils/databaseUtils.js';
 
 export const createPayment = async (req, res) => {
   try {
@@ -11,7 +11,7 @@ export const createPayment = async (req, res) => {
       req.body;
 
     // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     const paymentMaker = await User.findOne({
       userName: { $eq: paymentMakerName },
@@ -86,8 +86,7 @@ export const updatePayment = async (req, res) => {
       paymentRecipientName,
     } = req.body;
 
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     const storedPaymentMaker = await User.findOne({
       userName: { $eq: storedPaymentMakerName },
@@ -177,7 +176,7 @@ export const getPaymentInfo = async (req, res) => {
 
     // Set the lastActive property of the group to now
     const groupCode = payment.groupCode;
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     res.status(StatusCodes.OK).json({
       status: 'success',
@@ -204,7 +203,7 @@ export const deletePayment = async (req, res) => {
 
     // Set the lastActive property of the group to now
     const groupCode = paymentToDelete.groupCode;
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     const { paymentRecipient, paymentMaker } = paymentToDelete;
 

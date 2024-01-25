@@ -13,8 +13,13 @@ import styles from "./RenderUserNameAndBalance.module.css";
  *
  * @param {Object[]} userDetails - The array of user details.
  *  @param {string} props.groupCode - The groupCode of the group.
+ *  @param {string} props.groupCurrency - The currency of the group.
  * @returns {JSX.Element} React component. */
-const RenderUserNameAndBalance = ({ userDetails, groupCode }) => (
+const RenderUserNameAndBalance = ({
+  userDetails,
+  groupCode,
+  groupCurrency,
+}) => (
   <div className={styles.balancesContainer}>
     <ul>
       {userDetails.map((user) => (
@@ -39,8 +44,8 @@ const RenderUserNameAndBalance = ({ userDetails, groupCode }) => (
                 {/* Fix remaining rounding issue in certain settings, e.g., 100€/3 will result in 33.33, 33.33, 33.4 */}
                 {user.userBalance === BALANCE_THRESHOLD ||
                 user.userBalance === -BALANCE_THRESHOLD
-                  ? "0.00€"
-                  : user.userBalance.toFixed(2) + "€"}
+                  ? `0.00${groupCurrency}`
+                  : user.userBalance.toFixed(2) + `${groupCurrency}`}
               </div>
             </div>
           </div>

@@ -1,3 +1,7 @@
+.container {
+  margin-top: 1rem;
+}
+
 .negativeBalance {
   color: var(--color-error);
 }
@@ -10,11 +14,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.userName {
-  text-decoration: none;
-  font-weight: 400;
 }
 
 .userName:hover {

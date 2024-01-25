@@ -7,6 +7,7 @@ import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
 
 // Hooks
 import useFetchUserData from "../../hooks/useFetchUserInfo";
+import useFetchGroupCurrency from "../../hooks/useFetchGroupCurrency";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -23,7 +24,9 @@ import styles from "./UserDetailsPage.module.css";
 
 const UserDetailsPage = () => {
   const { groupCode, userId } = useParams();
-  const { userData, isFetched } = useFetchUserData(userId);
+  const { userData, isFetched: userDataIsFetched } = useFetchUserData(userId);
+  const { groupCurrency, isFetched: currencyInfoIsFetched } =
+    useFetchGroupCurrency(groupCode);
 
   // Set userBalance to 0 if it's less than or equal to BALANCE_THRESHOLD so balance is considered settled
   if (userData && Math.abs(userData.userBalance) <= BALANCE_THRESHOLD) {
@@ -40,17 +43,24 @@ const UserDetailsPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - user details' />
       <PiratePx COUNT_IDENTIFIER={"user-details"} />
       <InAppNavigationBar back={true} />
-      {isFetched ? (
+      {userDataIsFetched && currencyInfoIsFetched ? (
         <div className={styles.container}>
           <h1>{userData.userName}</h1>
           <h2>
             balance:{" "}
             <span className={balanceClass}>
-              {userData.userBalance.toFixed(2)}€
+              {userData.userBalance.toFixed(2)}
+              {groupCurrency}
             </span>
           </h2>
-          <UserExpenseTotals userData={userData} />
-          <UserPaymentTotals userData={userData} />
+          <UserExpenseTotals
+            userData={userData}
+            groupCurrency={groupCurrency}
+          />
+          <UserPaymentTotals
+            userData={userData}
+            groupCurrency={groupCurrency}
+          />
           <h3>transaction history</h3>
           <RouteButton
             route={`user-transaction-history/${groupCode}/${userId}`}

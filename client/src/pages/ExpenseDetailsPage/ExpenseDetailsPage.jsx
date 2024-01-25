@@ -6,6 +6,7 @@ import emojiConstants from "../../constants/emojiConstants";
 
 // Hooks
 import useFetchExpenseInfo from "../../hooks/useFetchExpenseInfo";
+import useFetchGroupCurrency from "../../hooks/useFetchGroupCurrency";
 
 //Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -24,7 +25,10 @@ import styles from "./ExpenseDetailsPage.module.css";
 
 const ExpenseDetailsPage = () => {
   const { groupCode, itemId } = useParams();
-  const { expenseInfo, isFetched } = useFetchExpenseInfo(itemId);
+  const { expenseInfo, isFetched: expenseInfoIsFetched } =
+    useFetchExpenseInfo(itemId);
+  const { groupCurrency, isFetched: currencyInfoIsFetched } =
+    useFetchGroupCurrency(groupCode);
 
   return (
     <main>
@@ -37,9 +41,12 @@ const ExpenseDetailsPage = () => {
           <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
           Expense details
         </h1>
-        {isFetched ? (
+        {expenseInfoIsFetched && currencyInfoIsFetched ? (
           <>
-            <RenderExpenseDetails expenseInfo={expenseInfo} />
+            <RenderExpenseDetails
+              expenseInfo={expenseInfo}
+              groupCurrency={groupCurrency}
+            />
             <RenderExpenseBeneficiaries
               expenseBeneficiaries={expenseInfo.expenseBeneficiaries}
             />

@@ -3,8 +3,6 @@ import nodemailer from 'nodemailer';
 
 import Feedback from '../models/Feedback.js';
 
-import { setLastActive } from '../utils/databaseUtils.js';
-
 import { errorLog, sendInternalError } from '../utils/errorUtils.js';
 
 // Get email credentials from environment variables
@@ -20,8 +18,7 @@ export const createFeedback = async (req, res) => {
   try {
     const { name, email, messageType, feedback, groupCode, fileId } = req.body;
 
-    // Set the lastActive property of the group to now
-    setLastActive(groupCode);
+    setGroupLastActivePropertyToNow(groupCode);
 
     const newFeedback = new Feedback({
       name,

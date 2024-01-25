@@ -5,7 +5,13 @@
 }
 
 .container {
-  height: 80%;
-  overflow-y: auto;
+  width: 100%;
+  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   overflow-x: hidden;
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 0 1rem;
+  }
 }

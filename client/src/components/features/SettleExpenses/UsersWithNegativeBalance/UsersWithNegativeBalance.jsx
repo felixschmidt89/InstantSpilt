@@ -1,6 +1,5 @@
 // React and Third-Party Libraries
 import React from "react";
-import { Link } from "react-router-dom";
 
 // Styles
 import styles from "./UsersWithNegativeBalance.module.css";
@@ -10,31 +9,26 @@ import styles from "./UsersWithNegativeBalance.module.css";
  *
  * @param {Object} props - The component props.
  * @param {Array} props.negativeBalanceUsers - An array of users with negative balance.
- *  @param {string} props.groupCode - The groupCode identifying the group.
+ * @param {string} props.groupCurrency - The currency of the group.
  * @returns {JSX.Element} - React component.
  */
-const UsersWithNegativeBalance = ({ negativeBalanceUsers, groupCode }) => {
+const UsersWithNegativeBalance = ({ negativeBalanceUsers, groupCurrency }) => {
   if (negativeBalanceUsers.length === 0) {
     return null;
   }
 
   return (
-    <div>
-      <h2>Needs to pay back:</h2>
+    <div className={styles.container}>
+      <h2>needs to pay back</h2>
       <ul>
         {negativeBalanceUsers.map((user) => (
           <li key={user.id} className={styles.userListItem}>
             <div className={styles.userDetails}>
-              <strong>
-                <Link
-                  className={styles.userName}
-                  to={`/user-details/${groupCode}/${user.id}`}>
-                  {user.userName}
-                </Link>
-              </strong>
+              <span className={styles.userName}>{user.userName}</span>
               <div
                 className={`${styles.userBalance} ${styles.negativeBalance}`}>
-                {Math.abs(user.userBalance).toFixed(2)}€
+                {Math.abs(user.userBalance).toFixed(2)}
+                {groupCurrency}
               </div>
             </div>
           </li>
