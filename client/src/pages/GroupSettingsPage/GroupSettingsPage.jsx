@@ -41,7 +41,7 @@ const GroupSettingsPage = () => {
             <ChangeGroupCurrency
               groupCode={groupCode}
               groupCurrency={groupData.group.currency}
-            />{" "}
+            />
           </>
         ) : (
           <Spinner />

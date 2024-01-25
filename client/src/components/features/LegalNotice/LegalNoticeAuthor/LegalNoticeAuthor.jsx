@@ -28,12 +28,12 @@ const LegalNoticeAuthor = ({ authorInfo }) => {
 
       <section>
         <h3>Vertreten durch</h3>
-        <p>{authorInfo.representative}</p>
+        <p className={styles.text}>{authorInfo.representative}</p>
       </section>
 
       <section>
         <h3>Kontakt</h3>
-        <p>
+        <p className={styles.text}>
           Telefon: {authorInfo.phone} <br />
           E-Mail: <a href={`mailto:${authorInfo.email}`}>{authorInfo.email}</a>
         </p>

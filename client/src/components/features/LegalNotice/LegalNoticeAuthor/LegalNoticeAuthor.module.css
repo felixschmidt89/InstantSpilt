@@ -1,0 +1,12 @@
+.container {
+  margin-top: 1rem;
+}
+
+.container h2,
+.container h3 {
+  font-size: 1.5rem;
+}
+.container p,
+.container address {
+  font-size: 1.4rem;
+}
