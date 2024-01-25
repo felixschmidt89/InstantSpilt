@@ -9,6 +9,7 @@ import {
   getGroupInfo,
   validateGroupExistence,
   getGroupCurrency,
+  changeGroupCurrency,
 } from '../controllers/groupController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 import {
@@ -33,6 +34,9 @@ router.get('/:groupCode', getGroupInfo);
 
 // Get group currency by groupCode
 router.get('/currency/:groupCode', getGroupCurrency);
+
+// Change group currency by groupCode
+router.patch('/currency/:groupCode', changeGroupCurrency);
 
 // Check if groupCode exists in database
 router.get('/:groupCode/continuous-validate-existence', validateGroupExistence);

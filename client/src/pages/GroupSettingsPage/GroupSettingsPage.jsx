@@ -1,18 +1,23 @@
 // React and Third-Party Libraries
 import React from "react";
 
+// Constants and Utils
+import emojiConstants from "../../constants/emojiConstants";
+
+// Hooks
+import useFetchGroupData from "../../hooks/useFetchGroupData";
+
 //Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
+import ChangeGroupName from "../../components/features/GroupSettings/ChangeGroupName/ChangeGroupName";
+import Emoji from "../../components/common/Emoji/Emoji";
+import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import Spinner from "../../components/common/Spinner/Spinner";
+import ChangeGroupCurrency from "../../components/features/GroupSettings/ChangeGroupCurrency/ChangeGroupCurrency";
 
 // Styles
 import styles from "./GroupSettingsPage.module.css";
-import ChangeGroupName from "../../components/features/GroupSettings/ChangeGroupName/ChangeGroupName";
-import Emoji from "../../components/common/Emoji/Emoji";
-import emojiConstants from "../../constants/emojiConstants";
-import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
-import useFetchGroupData from "../../hooks/useFetchGroupData";
-import Spinner from "../../components/common/Spinner/Spinner";
 
 const GroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -28,10 +33,16 @@ const GroupSettingsPage = () => {
           <Emoji label='settings emoji' emoji={emojiConstants.settings} />
         </h1>
         {isFetched && groupData ? (
-          <ChangeGroupName
-            groupCode={groupCode}
-            groupName={groupData.group.groupName}
-          />
+          <>
+            <ChangeGroupName
+              groupCode={groupCode}
+              groupName={groupData.group.groupName}
+            />
+            <ChangeGroupCurrency
+              groupCode={groupCode}
+              groupCurrency={groupData.group.currency}
+            />{" "}
+          </>
         ) : (
           <Spinner />
         )}

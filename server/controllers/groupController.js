@@ -176,6 +176,39 @@ export const getGroupCurrency = async (req, res) => {
   }
 };
 
+export const changeGroupCurrency = async (req, res) => {
+  try {
+    const { groupCode, currency } = req.body;
+
+    const updatedGroup = await Group.findOneAndUpdate(
+      { groupCode },
+      { $set: { lastActive: new Date(), currency } },
+      { new: true }, // return the modified document
+    );
+
+    // Check if the group with the given groupCode is not found
+    if (!updatedGroup) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        status: 'error',
+        message: 'Group not found with the provided groupCode',
+      });
+    }
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      updatedGroup: { currency: updatedGroup.currency },
+      message: 'Group currency changed successfully',
+    });
+  } catch (error) {
+    errorLog(
+      error,
+      'Error changing group currency:',
+      'Failed to change group currency. Please try again later.',
+    );
+    sendInternalError(res);
+  }
+};
+
 export const listExpensesAndPaymentsByGroup = async (req, res) => {
   try {
     const { groupCode } = req.params;
