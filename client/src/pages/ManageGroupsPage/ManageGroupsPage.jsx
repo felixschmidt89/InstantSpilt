@@ -31,15 +31,11 @@ const ManageGroupsPage = () => {
       <PiratePx COUNT_IDENTIFIER={"manage-groups"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <h1>Manage groups</h1>
+        <h1>manage groups</h1>
         <SwitchGroups groupCode={groupCode} />
-        <h2>Create group</h2>
+        <h2>create group</h2>
         <CreateGroupForm isInAppCreation={false} />
-        <h2>Enter groupCode</h2>
-        <p>
-          If you&lsquo;ve been given a groupCode, enter it here to join that
-          group:
-        </p>
+        <h2>enter groupCode</h2>
         <ValidateGroupCode />
       </div>
     </main>

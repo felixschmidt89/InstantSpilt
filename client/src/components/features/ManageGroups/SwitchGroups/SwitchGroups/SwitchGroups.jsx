@@ -21,7 +21,7 @@ const SwitchGroups = ({ groupCode }) => {
 
   return (
     <div className={styles.container}>
-      <h2>Switch group</h2>
+      <h2>switch group</h2>
       {!isFetched ? (
         <Spinner />
       ) : (

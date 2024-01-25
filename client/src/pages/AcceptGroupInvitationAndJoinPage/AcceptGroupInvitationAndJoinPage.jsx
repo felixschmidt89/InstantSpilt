@@ -31,17 +31,22 @@ const AcceptGroupInvitationAndJoinPage = () => {
       <PiratePx
         COUNT_IDENTIFIER={"accept-invitation-and-join-instantsplit-group"}
       />
-      {!isFetched ? (
-        <Spinner />
-      ) : (
-        <div className={styles.container}>
-          <h1>Hi there!</h1>
-          <InvitationIntro groupData={groupData} />
-          <InstantSplitIntroSection />
-          <AcceptGroupInvitation groupName={groupName} groupCode={groupCode} />
-          <ShowTermsAndConditions />
-        </div>
-      )}
+      <div className={styles.container}>
+        {!isFetched ? (
+          <Spinner />
+        ) : (
+          <>
+            <h1>Hi there!</h1>
+            <InvitationIntro groupData={groupData} />
+            <InstantSplitIntroSection />
+            <AcceptGroupInvitation
+              groupName={groupName}
+              groupCode={groupCode}
+            />
+            <ShowTermsAndConditions />
+          </>
+        )}
+      </div>
     </main>
   );
 };

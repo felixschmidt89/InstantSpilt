@@ -72,8 +72,8 @@ const RenderGroupBalances = ({ groupCurrency }) => {
     </div>
   ) : (
     <div className={styles.balancesContainer}>
-      {/* Check if there are at least 2 users */}
-      {userDetails.length > 1 ? (
+      {/* Check if there is at least 1 user */}
+      {userDetails.length > 0 ? (
         <RenderUserNameAndBalance
           userDetails={userDetails}
           groupCode={groupCode}

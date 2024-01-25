@@ -44,7 +44,6 @@ if (NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-console.log(API_BASEURL);
 // ROUTES
 app.use(`${API_BASEURL}/groups`, groupRouter);
 app.use(`${API_BASEURL}/users`, userRouter);

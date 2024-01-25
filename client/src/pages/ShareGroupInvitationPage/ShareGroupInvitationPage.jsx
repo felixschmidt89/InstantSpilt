@@ -14,6 +14,7 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import ShareGroupInvitationIncludingWebShare from "../../components/features/ShareGroupInvitation/ShareGroupInvitationIncludingWebShare/ShareGroupInvitationIncludingWebShare";
 import ShareGroupInvitation from "../../components/features/ShareGroupInvitation/ShareGroupInvitation/ShareGroupInvitation";
+import Spinner from "../../components/common/Spinner/Spinner";
 
 // Styles
 import styles from "./ShareGroupInvitationPage.module.css";
@@ -26,8 +27,13 @@ const ShareGroupInvitationPage = () => {
   const { groupData, isFetched } = useFetchGroupData(groupCode);
   const supportsWebShareAPI = isWebShareAPISupported();
 
+  // Making sure that page is not rendered prior to successful data fetching while also not breaking the design
   if (!isFetched) {
-    return null;
+    return (
+      <main>
+        <Spinner />
+      </main>
+    );
   }
 
   const initialGroupName = groupData.group.initialGroupName;
