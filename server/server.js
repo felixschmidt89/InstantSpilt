@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import app from './app.js';
-
 // Deconstruct environment variables
 
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME, PORT, NODE_ENV } = process.env;
@@ -12,8 +11,6 @@ const db = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}`;
 const mongooseOptions = {
   useNewUrlParser: true, // Use the new URL parser
   useUnifiedTopology: true, // Use the new server discovery and monitoring engine
-  socketTimeoutMS: 30000, // Adjust as needed
-  connectTimeoutMS: 30000, // Adjust as needed
 };
 
 // Connect to MongoDB using Mongoose

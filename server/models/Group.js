@@ -18,6 +18,7 @@ const groupSchema = new Schema(
     initialGroupName: {
       type: String,
     },
+    currency: { type: String, default: '€' },
     lastActive: {
       type: Date,
       default: Date.now,
@@ -33,18 +34,6 @@ groupSchema.methods.setLastActive = async function () {
     await this.save();
   } catch (error) {
     console.error('Error setting lastActive:', error);
-    throw error;
-  }
-};
-
-groupSchema.methods.setInitialGroupName = async function () {
-  try {
-    console.log('Setting initialGroupName for group:', this.groupName);
-    this.initialGroupName = this.groupName;
-    await this.save();
-    console.log('InitialGroupName set successfully.');
-  } catch (error) {
-    console.error('Error setting initialGroupName:', error);
     throw error;
   }
 };

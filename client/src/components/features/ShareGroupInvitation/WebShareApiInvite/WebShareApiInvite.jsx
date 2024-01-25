@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
 
 // Constants and Utils
-import { devLog } from "../../../utils/errorUtils";
+import { devLog } from "../../../../utils/errorUtils";
 
 // Styles
 import styles from "./WebShareApiInvite.module.css";
@@ -17,11 +17,12 @@ const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
  *
  * @param {string} groupCode - The groupCode identifying the group.
  * @param {string} groupName - The name of the group.
+ * @param {string} initialGroupName - The group name set during group creation.
  * @returns {JSX.Element} React component. */
-const WebShareApiInvite = ({ groupCode, groupName }) => {
+const WebShareApiInvite = ({ groupCode, groupName, initialGroupName }) => {
   const title = "InstantSplit invitation to settle group expenses";
   const text = `Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`;
-  const url = `${baseUrl}/join-instantsplit-group/${groupName}/${groupCode}`;
+  const url = `${baseUrl}/join-instantsplit-group/${initialGroupName}/${groupCode}`;
 
   const handleShareClick = async () => {
     try {
