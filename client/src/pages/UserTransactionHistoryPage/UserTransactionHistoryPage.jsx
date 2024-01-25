@@ -7,6 +7,9 @@ import axios from "axios";
 import { devLog } from "../../utils/errorUtils";
 import { genericErrorMessage } from "../../constants/errorConstants";
 
+// Hooks
+import useFetchGroupCurrency from "../../hooks/useFetchGroupCurrency";
+
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
@@ -27,6 +30,8 @@ const UserTransactionHistoryPage = () => {
   const [userExpensesAndPayments, setUserExpensesAndPayments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { groupCurrency, isFetched: currencyInfoIsFetched } =
+    useFetchGroupCurrency(groupCode);
 
   /**
    * Updates userExpensesAndPayments state to trigger a page rerender after the deletion of a resource.
@@ -81,6 +86,7 @@ const UserTransactionHistoryPage = () => {
               onDeleteResource={
                 updateUserExpensesAndPaymentsAfterResourceDeletion
               }
+              groupCurrency={groupCurrency}
             />
           ) : (
             <NoUserTransactions />

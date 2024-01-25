@@ -14,12 +14,14 @@ import styles from "./UserTransactionsHistory.module.css";
  * @param {Array} props.userExpensesAndPayments - An array of user expenses and payments.
  * @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDeleteItem - Callback function to handle deletion of an expense or a payment.
+ * @param {string} props.groupCurrency - The currency of the group.
  * @returns {JSX.Element|null} React component or null if no transactions.
  */
 const UserTransactionsHistory = ({
   userExpensesAndPayments,
   groupCode,
   onDeleteResource,
+  groupCurrency,
 }) => {
   if (userExpensesAndPayments.length === 0) {
     return null;
@@ -35,12 +37,14 @@ const UserTransactionsHistory = ({
                 item={item}
                 groupCode={groupCode}
                 onDeleteResource={onDeleteResource}
+                groupCurrency={groupCurrency}
               />
             ) : (
               <RenderUserPayment
                 item={item}
                 groupCode={groupCode}
                 onDeleteResource={onDeleteResource}
+                groupCurrency={groupCurrency}
               />
             )}
           </li>

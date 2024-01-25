@@ -20,7 +20,12 @@ import styles from "./RenderUserExpense.module.css";
  *  @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDelete - Callback function for deleting the expense.
  * @returns {JSX.Element} React component. */
-const RenderUserExpense = ({ item, groupCode, onDeleteResource }) => {
+const RenderUserExpense = ({
+  item,
+  groupCode,
+  onDeleteResource,
+  groupCurrency,
+}) => {
   const beneficiaryNames = item.expenseBeneficiaries
     .map((beneficiary) => beneficiary.userName)
     .join(", ");
@@ -38,7 +43,7 @@ const RenderUserExpense = ({ item, groupCode, onDeleteResource }) => {
               attribute={item.expenseAmount.toFixed(2)}
               ariaLabel={"expense amount"}
             />
-            <span>€</span>
+            <span>{groupCurrency}</span>
           </div>
           <LinkToPage
             to={`/update-expense/${groupCode}/${item._id}`}

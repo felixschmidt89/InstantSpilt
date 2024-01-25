@@ -20,7 +20,12 @@ import styles from "./RenderUserPayment.module.css";
  * @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDelete - Callback function for deleting the payment.
  * @returns {JSX.Element} React component. */
-const RenderUserPayment = ({ item, groupCode, onDeleteResource }) => {
+const RenderUserPayment = ({
+  item,
+  groupCode,
+  onDeleteResource,
+  groupCurrency,
+}) => {
   return (
     <div className={styles.payments}>
       {/* Left Column */}
@@ -34,7 +39,7 @@ const RenderUserPayment = ({ item, groupCode, onDeleteResource }) => {
               attribute={item.paymentAmount.toFixed(2)}
               ariaLabel={"payment amount"}
             />
-            <span>€</span>
+            <span>{groupCurrency}</span>
           </div>
           <LinkToPage
             to={`/update-payment/${groupCode}/${item._id}`}
