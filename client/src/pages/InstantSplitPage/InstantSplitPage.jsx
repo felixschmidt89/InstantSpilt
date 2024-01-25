@@ -46,6 +46,11 @@ import styles from "./InstantSplitPage.module.css";
     }
   }, [navigate, groupCode, isValidated, groupExists]);
 
+  // Fetch group data
+  const { groupData, isFetched } = useFetchGroupData(groupCode);
+  const initialGroupName = groupData?.group?.initialGroupName || "";
+  const groupName = groupData?.group?.groupName || "";
+
   // Retrieve the 'view' value from localStorage or set the default value
   const [view, setView] = useLocalStorage("viewState", "view2");
 
@@ -56,8 +61,6 @@ import styles from "./InstantSplitPage.module.css";
   const handleSwitchView = () => {
     setView(view === "view1" ? "view2" : "view1");
   };
-
-  const { groupData, isFetched } = useFetchGroupData(groupCode);
 
   return (
     <main>
@@ -72,9 +75,9 @@ import styles from "./InstantSplitPage.module.css";
           {/* Display group name */}
           <UserActionsBar
             groupCode={groupCode}
-            groupName={groupData.group.groupName}
+            initialGroupName={initialGroupName}
           />
-          <h1>Group: {groupData.group.groupName}</h1>
+          <h1>Group: {groupName}</h1>
 
           <SwitchViewButtonsBar
             view={view}

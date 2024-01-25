@@ -20,7 +20,6 @@ import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
 import OnboardingTutorialPage from "./pages/OnboardingTutorialPage/OnboardingTutorialPage";
 import OnboardingGroupCodeExplanationPage from "./pages/OnboardingGroupCodeExplanationPage/OnboardingGroupCodeExplanationPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
-import ShareGroupPage from "./pages/ShareGroupPage/ShareGroupPage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
 import SettleGroupExpensesPage from "./pages/SettleGroupExpensesPage/SettleGroupExpensesPage";
@@ -35,6 +34,7 @@ import EnterGroupCodePage from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 import ManageGroupsPage from "./pages/ManageGroupsPage/ManageGroupsPage";
 import GroupSettingsPage from "./pages/GroupSettingsPage/GroupSettingsPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
+import ShareGroupInvitationPage from "./pages/ShareGroupInvitationPage/ShareGroupInvitationPage";
 
 // Styles
 import "./App.css";
@@ -64,7 +64,7 @@ const App = () => {
             element={<ValidateProvidedGroupCodePage />}
           />
           <Route
-            path='/join-instantsplit-group/:groupName/:groupCode'
+            path='/join-instantsplit-group/:initialGroupName/:groupCode'
             element={<AcceptGroupInvitationAndJoinPage />}
           />
           <Route
@@ -72,7 +72,7 @@ const App = () => {
             element={<OnboardingTutorialPage />}
           />
           <Route
-            path='/tutorial/:groupName/:groupCode'
+            path='/tutorial/:initialGroupName/:groupCode'
             element={<TutorialPage />}
           />
 
@@ -109,12 +109,12 @@ const App = () => {
             element={<ExpenseDetailsPage />}
           />
           <Route
-            path='/leave-group/:groupName/:groupCode'
+            path='/leave-group/:initialGroupName/:groupCode'
             element={<ForgetGroupOnDevicePage />}
           />
           <Route
-            path='/share-group/:groupName/:groupCode'
-            element={<ShareGroupPage />}
+            path='/share-group/:initialGroupName/:groupCode'
+            element={<ShareGroupInvitationPage />}
           />
           <Route path='/manage-groups' element={<ManageGroupsPage />} />
           <Route path='/contact/:groupCode' element={<ContactPage />} />

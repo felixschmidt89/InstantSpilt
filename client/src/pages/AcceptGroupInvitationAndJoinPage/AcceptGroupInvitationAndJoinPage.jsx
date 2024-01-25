@@ -9,25 +9,25 @@ import useFetchGroupData from "../../hooks/useFetchGroupData";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
-import AcceptGroupInvitation from "../../components/features/AcceptGroupInvitationAndJoinGroup/AcceptGroupInvitation/AcceptGroupInvitation";
 import ShowTermsAndConditions from "../../components/features/AcceptGroupInvitationAndJoinGroup/ShowTermsAndConditions/ShowTermsAndConditions";
 import InvitationIntro from "../../components/features/AcceptGroupInvitationAndJoinGroup/InvitationIntro/InvitationIntro";
 import InstantSplitIntroSection from "../../components/features/Home/InstantSplitIntroSection/InstantSplitIntroSection";
+import AcceptGroupInvitation from "../../components/features/AcceptGroupInvitationAndJoinGroup/AcceptGroupInvitation/AcceptGroupInvitation";
 
 // Styles
 import styles from "./AcceptGroupInvitationAndJoinPage.module.css";
 
 const AcceptGroupInvitationAndJoinPage = () => {
   const { groupCode } = useParams();
-
   const { groupData, isFetched } = useFetchGroupData(groupCode);
+  const groupName = groupData?.group?.groupName || "";
 
   return (
     <main>
-      {/* <HelmetMetaTagsNetlify
+      <HelmetMetaTagsNetlify
         title={`Invitation to join ${groupName}`}
         description={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
-      /> */}
+      />
       <PiratePx
         COUNT_IDENTIFIER={"accept-invitation-and-join-instantsplit-group"}
       />
@@ -38,7 +38,7 @@ const AcceptGroupInvitationAndJoinPage = () => {
           <h1>Hi there!</h1>
           <InvitationIntro groupData={groupData} />
           <InstantSplitIntroSection />
-          {/* <AcceptGroupInvitation groupName={groupName} groupCode={groupCode} /> */}
+          <AcceptGroupInvitation groupName={groupName} groupCode={groupCode} />
           <ShowTermsAndConditions />
         </div>
       )}

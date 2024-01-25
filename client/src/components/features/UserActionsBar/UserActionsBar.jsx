@@ -20,9 +20,9 @@ import styles from "./UserActionsBar.module.css";
  *
  * @param {Object} props - The component props.
  * @param {string} props.groupCode - The code associated with the group.
- * @param {string} props.groupName - The name of the group.
+ * @param {string} props.initialGroupName - The group name set during group creation.
  * @returns {JSX.Element} React component. */
-const UserActionsBar = ({ groupCode, groupName }) => {
+const UserActionsBar = ({ groupCode, initialGroupName }) => {
   return (
     <div className={styles.container}>
       <span className={styles.icon}>
@@ -30,7 +30,7 @@ const UserActionsBar = ({ groupCode, groupName }) => {
         <ReactIconNavigate
           icon={IoPersonAddOutline}
           tooltip='Invite & share group'
-          route={`/share-group/${groupName}/${groupCode}`}
+          route={`/share-group/${initialGroupName}/${groupCode}`}
           iconSize={3.5}
           translateY={0.3}
           marginRight={0.3}
@@ -51,7 +51,7 @@ const UserActionsBar = ({ groupCode, groupName }) => {
         <ReactIconNavigate
           icon={IoHelpCircleOutline}
           tooltip='Tutorial'
-          route={`/tutorial/${groupName}/${groupCode}`}
+          route={`/tutorial/${initialGroupName}/${groupCode}`}
           marginRight={0.3}
           iconSize={4.2}
         />
@@ -72,7 +72,7 @@ const UserActionsBar = ({ groupCode, groupName }) => {
         <ReactIconNavigate
           icon={IoEnterOutline}
           tooltip='Leave group'
-          route={`/leave-group/${groupName}/${groupCode}`}
+          route={`/leave-group/${initialGroupName}/${groupCode}`}
           iconSize={4}
         />
       </span>

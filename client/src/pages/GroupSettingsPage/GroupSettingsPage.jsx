@@ -17,9 +17,6 @@ import Spinner from "../../components/common/Spinner/Spinner";
 const GroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupData, isFetched } = useFetchGroupData(groupCode);
-
-  console.log("groupdata:", groupData);
-
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - group settings' />

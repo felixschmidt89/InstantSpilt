@@ -6,7 +6,7 @@ import CopyToClipBoard from "../../../common/CopyToClipboard/CopyToClipboard";
 import WebShareApiInvite from "../../../common/WebShareApiInvite/WebShareApiInvite";
 
 // Styles
-import styles from "./ShareGroupIncludingWebShare.module.css";
+import styles from "./ShareGroupInvitationIncludingWebShare.module.css";
 
 /**
  * Renders options for sharing group invitation - including WebShare API.
@@ -16,7 +16,11 @@ import styles from "./ShareGroupIncludingWebShare.module.css";
  * @param {string} props.groupCode - The code of the group.
  * @param {string} props.infoToCopy - The information to be copied.
  * @returns {JSX.Element} React component. */
-const ShareGroupIncludingWebShare = ({ groupName, groupCode, infoToCopy }) => {
+const ShareGroupInvitationIncludingWebShare = ({
+  groupName,
+  groupCode,
+  infoToCopy,
+}) => {
   return (
     <div className={styles.WebShare}>
       <p>
@@ -32,4 +36,4 @@ const ShareGroupIncludingWebShare = ({ groupName, groupCode, infoToCopy }) => {
   );
 };
 
-export default ShareGroupIncludingWebShare;
+export default ShareGroupInvitationIncludingWebShare;
