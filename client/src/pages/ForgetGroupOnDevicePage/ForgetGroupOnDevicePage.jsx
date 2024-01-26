@@ -1,5 +1,5 @@
 // React and Third-Party Libraries
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 // Constants and Utils
@@ -18,17 +18,27 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 
 // Styles
 import styles from "./ForgetGroupOnDevicePage.module.css";
+import ConfirmationModal from "../../components/common/ConfirmationModal/ConfirmationModal";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
   const navigate = useNavigate();
+  const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
 
-  const handleConfirmation = () => {
+  const handleDelete = () => {
     deleteApplicationDataFromLocalStorage();
     deleteGroupDataFromLocalStorage(groupCode);
     const newGroupCode = getFirstGroupCodeInStoredGroupCodesArray();
     setGroupCodeToCurrentlyActive(newGroupCode);
     navigate("/instant-split");
+  };
+
+  const handleShowConfirmation = () => {
+    setIsConfirmationVisible(true);
+  };
+
+  const handleHideConfirmation = () => {
+    setIsConfirmationVisible(false);
   };
 
   return (
@@ -52,9 +62,17 @@ const ForgetGroupOnDevicePage = () => {
           </div>
         </div>
         <div className={styles.buttonContainer}>
-          <button className={styles.button} onClick={handleConfirmation}>
+          <button className={styles.button} onClick={handleShowConfirmation}>
             Confirm
           </button>
+          {isConfirmationVisible && (
+            <ConfirmationModal
+              message={`Are you sure you want to forget the group on this device?`}
+              onConfirm={handleDelete}
+              onCancel={handleHideConfirmation}
+              isVisible={isConfirmationVisible}
+            />
+          )}
         </div>
       </div>
     </main>

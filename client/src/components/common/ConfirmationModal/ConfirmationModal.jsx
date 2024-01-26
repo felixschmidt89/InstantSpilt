@@ -29,10 +29,20 @@ const ConfirmationModal = ({
   isVisible,
   error,
 }) => {
+  // Prevent modal from being closed when clicking the modal
+  const handleModalClick = (e) => {
+    e.stopPropagation();
+  };
+
+  // Close modal when clicking outside of the modal
+  const handleOutsideClick = () => {
+    onCancel();
+  };
+
   return (
     isVisible && (
-      <div className={styles.modal}>
-        <div className={styles.modalContent}>
+      <div className={styles.modal} onClick={handleOutsideClick}>
+        <div className={styles.modalContent} onClick={handleModalClick}>
           <p>{message}</p>
           {error ? (
             <>
