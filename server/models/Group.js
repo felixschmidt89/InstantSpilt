@@ -5,7 +5,7 @@ const groupSchema = new Schema(
     groupCode: {
       type: String,
       required: [true, 'Missing groupCode'],
-      index: true,
+      index: true, // Index for quick lookups
     },
     groupName: {
       type: String,
@@ -13,8 +13,9 @@ const groupSchema = new Schema(
       required: [true, 'Missing group name.'],
       minlength: [1, 'The group name must be at least 1 characters long.'],
       maxlength: [50, 'The group name cannot exceed 50 characters.'],
-      index: true,
+      index: true, // Index for quick lookups
     },
+    // groupName set during registration, used for client routing
     initialGroupName: {
       type: String,
     },
@@ -22,6 +23,11 @@ const groupSchema = new Schema(
     lastActive: {
       type: Date,
       default: Date.now,
+    },
+    // indicates whether group inactivity data purge is activated for the group.
+    inactiveDataPurge: {
+      type: Boolean,
+      default: true,
     },
   },
   { timestamps: true },

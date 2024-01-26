@@ -23,6 +23,7 @@ const router = express.Router();
 
 // Create a new group
 router.post('/', createGroup);
+
 // Change group name
 router.patch('/:groupCode', validateGroupCodeMiddleware, changeGroupName);
 

@@ -1,4 +1,7 @@
-export const lastUpdateDate = "23/01/2024";
+// Constants and Utils
+import { INACTIVE_DAYS } from "../constants/dataConstants";
+
+export const lastUpdateDate = "26/01/2024";
 
 export const sections = [
   {
@@ -16,8 +19,7 @@ export const sections = [
   {
     key: "section3",
     title: "Data Purge",
-    content:
-      "As a data-sensitive application, we have implemented a data purge policy. If a group remains inactive for a period of 6 months, all its usage data will be permanently purged. This policy is designed to respect your privacy and ensure that only relevant and active data is retained within the application.",
+    content: `As a data-sensitive application, we have implemented a data purge policy. If a group remains inactive, i.e., no group information is rendered, added, or changed, for a period of ${INACTIVE_DAYS} days, all its usage data will be permanently purged. This policy is designed to respect your privacy and ensure that only relevant and active data is retained within the application. If you wish to keep the group and its data, you can opt out from that mechanism within the application's settings`,
   },
   {
     key: "section4",

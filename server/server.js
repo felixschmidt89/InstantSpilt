@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 import app from './app.js';
 import cron from 'node-cron';
 import purgeInactiveGroups from './scripts/dataPurge/purgeInactiveGroups.js';
-// Deconstruct environment variables
 
+// Deconstruct environment variables
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME, PORT, NODE_ENV } = process.env;
 
 // Construct Mongoose database

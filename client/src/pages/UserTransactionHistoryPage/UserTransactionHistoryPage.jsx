@@ -73,7 +73,7 @@ const UserTransactionHistoryPage = () => {
       <PiratePx COUNT_IDENTIFIER={"user-transaction-history"} />
       <InAppNavigationBar previousRoute={true} home={true} />
       <h1>Transaction history</h1>
-      {isLoading ? (
+      {isLoading && currencyInfoIsFetched ? (
         <div className={styles.spinner}>
           <Spinner />
         </div>

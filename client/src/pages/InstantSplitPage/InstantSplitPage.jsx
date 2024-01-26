@@ -32,6 +32,13 @@ import styles from "./InstantSplitPage.module.css";
   const navigate = useNavigate();
   const groupCode = localStorage.getItem("activeGroupCode");
 
+  // Handle no active groupCode
+  useEffect(() => {
+    if (!groupCode) {
+      navigate("/");
+    }
+  }, [groupCode, navigate]);
+
   // Validate active groupCode
   const { isValidated, groupExists } = useValidateGroupExistence(
     groupCode,
@@ -59,8 +66,6 @@ import styles from "./InstantSplitPage.module.css";
     setView(view === "view1" ? "view2" : "view1");
   };
 
-  console.log(groupData);
-
   return (
     <main>
       {!isFetched ? (
@@ -71,12 +76,13 @@ import styles from "./InstantSplitPage.module.css";
         <>
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
-          {/* Display group name */}
           <UserActionsBar
             groupCode={groupCode}
             initialGroupName={groupData.group.initialGroupName}
           />
-          <h1>Group: {groupData.group.groupName}</h1>
+          {/* Display group name */}
+
+          <h1>{groupData.group.groupName}</h1>
           <SwitchViewButtonsBar
             view={view}
             handleSwitchView={handleSwitchView}

@@ -1,11 +1,12 @@
-.introContainer {
-  margin: 1rem 0rem;
-}
-
 .noWrap {
   white-space: nowrap;
 }
 
 .strong {
   font-weight: bold;
+}
+
+.dataText,
+.introText {
+  margin-top: 1rem;
 }

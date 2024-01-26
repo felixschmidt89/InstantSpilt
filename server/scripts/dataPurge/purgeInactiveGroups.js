@@ -1,16 +1,17 @@
+import { INACTIVE_DAYS } from '../../constants/dataConstants.js';
 import Expense from '../../models/Expense.js';
 import Group from '../../models/Group.js';
 import Payment from '../../models/Payment.js';
 import User from '../../models/User.js';
 
 const purgeInactiveGroups = async () => {
-  // Set cutoffDate to 180 days
+  // Set cutoffDate
   const cutoffDate = new Date();
-  cutoffDate.setDate(cutoffDate.getDate() - 180);
+  cutoffDate.setDate(cutoffDate.getDate() - INACTIVE_DAYS);
 
   try {
     console.log('Find groups to purge');
-    // Find groups with lastActive more than 180 days ago
+    // Find groups with lastActive more than cutoffDate
     const groupsToPurge = await Group.find({ lastActive: { $lt: cutoffDate } });
 
     let purgedCount = 0;
