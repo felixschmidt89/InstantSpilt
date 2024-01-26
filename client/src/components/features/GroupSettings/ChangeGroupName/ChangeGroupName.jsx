@@ -54,7 +54,7 @@ const ChangeGroupName = ({ groupCode, groupName }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.header}>Change group name</h2>
+      <h2 className={styles.header}>name</h2>
       <form onSubmit={handleFormSubmit}>
         <input
           className={`${styles.inputField} ${styles.idleOnMount}`}

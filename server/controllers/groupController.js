@@ -121,6 +121,47 @@ export const changeGroupName = async (req, res) => {
   }
 };
 
+export const changeGroupDataPurgeSetting = async (req, res) => {
+  try {
+    const { groupCode, inactiveDataPurge } = req.body;
+    console.log('Request Body:', req.body);
+    console.log('Updating group with groupCode:', groupCode);
+
+    // Update the document and return the modified document
+    const updatedGroup = await Group.findOneAndUpdate(
+      { groupCode },
+      {
+        $set: {
+          lastActive: new Date(),
+          inactiveDataPurge,
+        },
+      },
+      { new: true }, // Return the modified document
+    );
+
+    // Check if the document with the given groupCode exists
+    if (!updatedGroup) {
+      return res.status(StatusCodes.NOT_FOUND).json({
+        status: 'error',
+        message: 'Group not found with the provided groupCode',
+      });
+    }
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      updatedGroup,
+      message: 'Group inactive data purge setting updated successfully',
+    });
+  } catch (error) {
+    errorLog(
+      error,
+      'Error updating inactive data purge setting:',
+      'Failed to update inactive data purge setting. Please try again later.',
+    );
+    sendInternalError(res);
+  }
+};
+
 export const listGroupNamesByStoredGroupCodes = async (req, res) => {
   try {
     const { storedGroupCodes } = req.query;

@@ -10,6 +10,7 @@ import {
   validateGroupExistence,
   getGroupCurrency,
   changeGroupCurrency,
+  changeGroupDataPurgeSetting,
 } from '../controllers/groupController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 import {
@@ -39,14 +40,17 @@ router.get('/currency/:groupCode', getGroupCurrency);
 // Change group currency by groupCode
 router.patch('/currency/:groupCode', changeGroupCurrency);
 
+// Change group inactiveDataPurge setting by groupCode
+router.patch('/inactiveDataPurge/:groupCode', changeGroupDataPurgeSetting);
+
 // Check if groupCode exists in database
 router.get('/:groupCode/continuous-validate-existence', validateGroupExistence);
 
 // Check if groupCode exists in database (limited)
 router.get(
   '/:groupCode/limited-validate-existence',
-  // limiter,
-  // handleRateLimitExceedance,
+  limiter,
+  handleRateLimitExceedance,
   validateGroupExistence,
 );
 

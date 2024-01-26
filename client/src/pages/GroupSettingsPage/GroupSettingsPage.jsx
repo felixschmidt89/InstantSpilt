@@ -18,6 +18,7 @@ import ChangeGroupCurrency from "../../components/features/GroupSettings/ChangeG
 
 // Styles
 import styles from "./GroupSettingsPage.module.css";
+import ChangeDataPurgeSetting from "../../components/features/GroupSettings/ChangeDataPurgeSetting/ChangeDataPurgeSetting";
 
 const GroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -41,6 +42,10 @@ const GroupSettingsPage = () => {
             <ChangeGroupCurrency
               groupCode={groupCode}
               groupCurrency={groupData.group.currency}
+            />
+            <ChangeDataPurgeSetting
+              groupCode={groupCode}
+              inactiveDataPurge={groupData.group.inactiveDataPurge}
             />
           </>
         ) : (
