@@ -75,13 +75,14 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
         <p className={styles.explanation}>
           InstantSplit permanently deletes inactive groups and their data
           (users, expenses & payments) after {INACTIVE_DAYS} days of group
-          inactivity. If you wish to keep your group and data, please opt out :
+          inactivity. If you wish to keep your group and data, please opt out:
         </p>
       ) : (
         <p className={styles.explanation}>
           Automatic data purge after {INACTIVE_DAYS} days of group inactivity is
-          currently deactivated. If you wish to reactivate data purging for your
-          group and its associated data, please opt back in:
+          currently deactivated. <br />
+          If you wish to reactivate data purging for your group and its
+          associated data, please opt back in:
         </p>
       )}
       <form onSubmit={handleFormSubmit}>

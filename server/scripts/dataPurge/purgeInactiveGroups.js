@@ -9,10 +9,15 @@ const purgeInactiveGroups = async () => {
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - INACTIVE_DAYS);
 
+  const excludedGroupCodes = ['UO99CWXD', '7DCAG3YZ'];
+
   try {
     console.log('Find groups to purge');
-    // Find groups with lastActive more than cutoffDate
-    const groupsToPurge = await Group.find({ lastActive: { $lt: cutoffDate } });
+    const groupsToPurge = await Group.find({
+      groupCode: { $nin: excludedGroupCodes }, // exclude specified groups
+      lastActive: { $lt: cutoffDate },
+      inactiveDataPurge: true, // exclude groups with deactivated auto purge
+    });
 
     let purgedCount = 0;
 

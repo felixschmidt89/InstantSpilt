@@ -2,12 +2,13 @@
   margin-top: 1rem;
   border: 0.2rem solid var(--color-grey);
   border-radius: 1rem;
-  padding: 1rem 0rem;
+  padding: 1rem 1rem;
+  width: 90%;
+  max-width: 40rem;
 }
 
 .explanation {
   font-size: 1.4rem;
-  width: 40rem;
 }
 
 input[type="checkbox"] {
