@@ -1,25 +1,28 @@
 // React and Third-Party Libraries
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // Hooks
 import useDeleteResource from "../../../hooks/useDeleteResource";
 
 // Components
-import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 
 // Styles
 import styles from "./DeleteResource.module.css";
 
 /**
- * Component for rendering a button or span to delete a resource and navigate to a route upon deletion.
+ * DeleteResource component for handling resource deletion with a confirmation modal.
  *
- * @param {string} props.resourceId - The unique identifier of the resource.
- * @param {string} props.resourceType - The plural form of the resource type (e.g., "expenses", "payments").
- * @param {string} props.route - The route to navigate to after successful deletion (default: "/instant-split").
- * @param {boolean} props.isButton - If true, render a button; if false, render a span (default: true).
- * @param {boolean} props.navigateOnDelete - If true, navigate to the specified route on deletion; if false, no navigation (default: true).
- * @param {boolean} props.showResourceType - If true, display the resourceType in the button/span; if false, hide it (default: true).
- * @param {function} props.onDeleteResource - Optional callback function to trigger rerender in parent component.
+ * @component
+ * @param {Object} props - The component props.
+ * @param {string} props.resourceId - The ID of the resource to delete.
+ * @param {string} props.resourceType - The type of the resource to delete.
+ * @param {string} [props.route="/instant-split"] - The route to navigate to after deletion.
+ * @param {boolean} [props.isButton=true] - Determines if the deletion trigger is a button or a link.
+ * @param {boolean} [props.navigateOnDelete=true] - Flag to navigate after successful deletion.
+ * @param {boolean} [props.showResourceType=true] - Flag to display the resource type in the confirmation message.
+ * @param {Function} props.onDeleteResource - Callback function to execute after deletion.
+ * @returns {JSX.Element} React component.
  */
 const DeleteResource = ({
   resourceId,
@@ -30,31 +33,62 @@ const DeleteResource = ({
   showResourceType = true,
   onDeleteResource,
 }) => {
-  const { deleteResource, resourceTypeSingular, error } = useDeleteResource(
+  const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
+  const {
+    deleteResource,
+    resourceTypeSingular,
+    error: hookError,
+  } = useDeleteResource(
     resourceType,
     resourceId,
     navigateOnDelete ? route : null
   );
 
+  const [localError, setLocalError] = useState(null);
+
+  useEffect(() => {
+    // Set localError whenever hookError changes
+    setLocalError(hookError);
+  }, [hookError]);
+
   const handleDelete = () => {
     deleteResource();
-    // Execute additional onDeleteResource logic if provided
     onDeleteResource && onDeleteResource(resourceId);
   };
 
+  const handleShowConfirmation = () => {
+    setIsConfirmationVisible(true);
+    setLocalError(null);
+  };
+
+  const handleHideConfirmation = () => {
+    setIsConfirmationVisible(false);
+  };
+
   return (
-    <div>
+    <div className={styles.container}>
       {isButton ? (
-        <button className={styles.button} onClick={handleDelete}>
+        <button className={styles.button} onClick={handleShowConfirmation}>
           delete {showResourceType && resourceTypeSingular}
         </button>
       ) : (
-        <span className={styles.link} onClick={handleDelete} role='button'>
+        <span
+          className={styles.link}
+          onClick={handleShowConfirmation}
+          role='button'>
           delete {showResourceType && resourceTypeSingular}
         </span>
       )}
 
-      <ErrorDisplay error={error} />
+      {isConfirmationVisible && (
+        <ConfirmationModal
+          message={`Are you sure you want to delete this ${resourceTypeSingular}?`}
+          onConfirm={handleDelete}
+          onCancel={handleHideConfirmation}
+          isVisible={isConfirmationVisible}
+          error={localError}
+        />
+      )}
     </div>
   );
 };

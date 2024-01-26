@@ -45,12 +45,21 @@ const ReactIconNavigate = ({
   };
 
   const handleIconClick = () => {
+    console.log("handleIconClick called");
     if (email) {
       window.location.href = `mailto:${email}`;
     } else if (url) {
       window.open(url, "_blank");
     } else {
-      onClick || navigateToRoute();
+      console.log("Navigating or triggering onClick");
+
+      // Check if onClick is a function before invoking it
+      if (typeof onClick === "function") {
+        onClick();
+      } else {
+        // If onClick is not a function, navigate to the route
+        navigate(route);
+      }
     }
   };
 
