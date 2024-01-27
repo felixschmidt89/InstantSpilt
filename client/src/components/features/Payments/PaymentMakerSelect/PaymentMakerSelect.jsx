@@ -33,8 +33,7 @@ const PaymentMakerSelect = ({
       value={paymentMakerName}
       ref={selectRef}
       onClick={handleSelectClick}
-      onChange={(e) => onPaymentMakerChange(e.target.value)}
-      required>
+      onChange={(e) => onPaymentMakerChange(e.target.value)}>
       {/* Do not preselect user, indicate functionality instead */}
       <option value='' disabled>
         by

@@ -42,6 +42,8 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    setError(null);
+
     try {
       const response = await axios.post(`${apiUrl}/payments`, {
         paymentMakerName,

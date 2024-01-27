@@ -1,11 +1,15 @@
+import React from "react";
+
 /**
- * Emoji component for rendering emojis with ARIA attributes.
+ * Component for rendering emojis with ARIA attributes.
  *
- * @param {string} label - ARIA label for the emoji.
- * @param {string} emoji - The emoji to be displayed.
+ * @param {Object} props - The component props.
+ * @param {string} props.label - ARIA label for the emoji.
+ * @param {string} props.emoji - The emoji to be displayed.
+ * @param {string} [props.className] - Additional class name for styling.
  * @returns {JSX.Element} React component. */
-const Emoji = ({ label, emoji }) => (
-  <span role='img' aria-label={label}>
+const Emoji = ({ label, emoji, className }) => (
+  <span role='img' aria-label={label} className={className}>
     {emoji}
   </span>
 );

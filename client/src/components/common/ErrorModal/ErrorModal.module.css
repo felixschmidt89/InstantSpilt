@@ -1,0 +1,41 @@
+/* Ensure the modal is styled independently */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background: var(--color-body);
+  padding-bottom: 0rem;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 0.1rem solid var(--color-grey);
+  max-width: 80%;
+}
+
+.modalContent button {
+  padding: 0.2rem;
+  font-family: "Ubuntu", sans-serif;
+  border: 0.2rem solid var(--color-grey);
+  border-radius: 0.5rem;
+  text-align: center;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+.modalContent button:hover {
+  box-shadow: 0 0 0.5rem var(--color-success);
+}

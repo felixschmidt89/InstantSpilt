@@ -42,8 +42,7 @@ const PaymentRecipientSelect = ({
       value={paymentRecipientName}
       ref={selectRef}
       onClick={handleSelectClick}
-      onChange={(e) => onRecipientChange(e.target.value)}
-      required>
+      onChange={(e) => onRecipientChange(e.target.value)}>
       {/* Do not preselect user, indicate functionality instead */}
       <option value='' disabled>
         to

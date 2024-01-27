@@ -4,12 +4,7 @@
 
 .leftColumn {
   display: flex;
-  align-items: center;
   border-top: 2px solid var(--color-signal-reduced-opacity);
-}
-
-.paymentEmoji {
-  margin-right: 2rem;
 }
 
 .paymentAmount {

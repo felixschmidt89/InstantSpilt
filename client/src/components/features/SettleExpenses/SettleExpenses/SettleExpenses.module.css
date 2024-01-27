@@ -1,5 +1,5 @@
 .container {
-  width: 60%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -11,7 +11,7 @@
 
 @media (max-width: 500px) {
   .container {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
   }
 }

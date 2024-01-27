@@ -4,12 +4,11 @@
 
 .leftColumn {
   display: flex;
-  align-items: center;
   border-top: 2px solid var(--color-signal-reduced-opacity);
 }
 
 .paymentEmoji {
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .paymentAmount {
@@ -20,13 +19,13 @@
 .rightColumn {
   display: flex;
   flex-direction: row;
+  align-items: center;
   gap: 0.3rem;
   margin-left: 3rem;
-  margin-right: 2rem;
+  margin-right: 1rem;
   width: 80%;
   border-top: 2px solid var(--color-signal-reduced-opacity);
 }
-
 @media (max-width: 500px) {
   .rightColumn {
     margin-left: 1rem;

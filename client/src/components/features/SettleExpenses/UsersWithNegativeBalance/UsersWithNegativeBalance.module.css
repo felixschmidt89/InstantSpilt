@@ -14,6 +14,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .userName:hover {

@@ -11,7 +11,7 @@ import {
 } from "../../utils/localStorageUtils";
 
 // Hooks
-import useModalConfirmationLogicAndActions from "../../hooks/useModalConfirmationLogicAndActions";
+import useConfirmationModalLogicAndActions from "../../hooks/useConfirmationModalLogicAndActions";
 
 //Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -33,7 +33,7 @@ const ForgetGroupOnDevicePage = () => {
     handleConfirmation,
     handleShowConfirmation,
     handleHideConfirmation,
-  } = useModalConfirmationLogicAndActions([
+  } = useConfirmationModalLogicAndActions([
     () => deleteApplicationDataFromLocalStorage(),
     () => deleteGroupDataFromLocalStorage(groupCode),
     () => {

@@ -18,7 +18,7 @@ import { useState } from "react";
  *   handleHideConfirmation: () => void - Function to hide the confirmation dialog.
  * }}
  */
-const useModalConfirmationLogicAndActions = (
+const useConfirmationModalLogicAndActions = (
   onConfirmationCallbacks,
   onShowCallbacks,
   onHideCallbacks
@@ -72,4 +72,4 @@ const useModalConfirmationLogicAndActions = (
   };
 };
 
-export default useModalConfirmationLogicAndActions;
+export default useConfirmationModalLogicAndActions;

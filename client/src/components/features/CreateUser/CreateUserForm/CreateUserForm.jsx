@@ -6,8 +6,11 @@ import axios from "axios";
 import { devLog } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+
 // Components
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./CreateUserForm.module.css";
@@ -24,9 +27,12 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @returns {JSX.Element} React component. */
 const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
   const inputRef = useRef(null);
-
   const [userName, setUserName] = useState("");
   const [error, setError] = useState("");
+
+  // Get error modal visibility logic
+  const { isErrorModalVisible, handleOnError, handleCloseErrorModal } =
+    useErrorModalVisibility();
 
   // Autofocus input field on mount
   useEffect(() => {
@@ -42,10 +48,14 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
     // Validate group name
     if (!userName.trim()) {
       setError("Oops! User name can't be empty.");
+      handleOnError();
+
       return;
     }
     if (userName.length > 50) {
       setError("Oops! User name can't exceed 50 characters.");
+      handleOnError();
+
       return;
     }
 
@@ -63,9 +73,11 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
       // Render conflict status message if there is already a group member with same name
       if (error.response && error.response.status === 409) {
         setError(error.response.data.message);
+        handleOnError();
       } else {
         devLog("Error creating user.", error);
         setError(genericErrorMessage);
+        handleOnError();
       }
     }
   };
@@ -92,7 +104,11 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
           translateY={0.15}
         />
       </form>
-      <ErrorDisplay error={error} remWidth={20} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };

@@ -10,7 +10,7 @@
 }
 
 .expenseEmoji {
-  margin-right: 1.7rem;
+  margin-right: 0.7rem;
 }
 
 /* Ensure that numbers are right aligned to be easily readable */
@@ -31,7 +31,7 @@
 /* Adjust the height of elements within rightColumn */
 .rightColumn .expenseEmoji,
 .rightColumn strong {
-  margin-bottom: 0.5rem; /* Increase the margin to create more space */
+  margin-bottom: 0.5rem;
 }
 
 @media (max-width: 500px) {

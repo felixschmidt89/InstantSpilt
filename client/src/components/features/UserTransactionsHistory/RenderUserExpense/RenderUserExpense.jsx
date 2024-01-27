@@ -17,7 +17,7 @@ import styles from "./RenderUserExpense.module.css";
  * Component for rendering details of a user's single expense.
  * @param {Object} props - The component props.
  * @param {Object} props.item - The expense item object.
- *  @param {string} props.groupCode - The associated groupCode.
+ * @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDelete - Callback function for deleting the expense.
  * @returns {JSX.Element} React component. */
 const RenderUserExpense = ({
@@ -91,7 +91,7 @@ const RenderUserExpense = ({
                 attribute={item.expenseAmountPerBeneficiary.toFixed(2)}
                 ariaLabel={"amount each beneficiary has benefitted"}
               />
-              <span>€</span>
+              <span>{groupCurrency}</span>
             </li>
           </ul>
         </div>

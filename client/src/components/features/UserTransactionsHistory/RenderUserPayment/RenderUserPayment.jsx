@@ -64,7 +64,9 @@ const RenderUserPayment = ({
         />
         <Emoji
           label={"payment to other user emoji"}
-          emoji={emojiConstants.paymentsMade}></Emoji>
+          emoji={emojiConstants.paymentsMade}
+          className={styles.paymentEmoji}></Emoji>
+
         <RenderDataAttributeWithAriaLabel
           attribute={item.paymentRecipient.userName}
           ariaLabel={"username of the payment recipient"}

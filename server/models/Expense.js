@@ -22,7 +22,7 @@ const expenseSchema = new Schema(
         message: 'Expense amount must be a valid number.',
       },
       required: [true, 'Missing expense amount'],
-      max: [9999.99, 'The expense amount may not exceed 9999.99.'],
+      max: [99999.99, 'The expense amount may not exceed 99999.99.'],
     },
     expenseAmountPerBeneficiary: {
       type: Number,

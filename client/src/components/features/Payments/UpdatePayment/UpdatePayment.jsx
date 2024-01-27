@@ -83,6 +83,7 @@ const UpdatePayment = ({
 
   // On form submission: post payment and navigate to instant-split page
   const handleFormSubmit = async (e) => {
+    setError(null);
     e.preventDefault();
     try {
       const response = await axios.put(`${apiUrl}/payments/${paymentId}`, {

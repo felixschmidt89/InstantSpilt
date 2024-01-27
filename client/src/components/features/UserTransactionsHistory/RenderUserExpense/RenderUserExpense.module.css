@@ -1,16 +1,10 @@
 .expenses {
   display: flex;
-  transform: translateX(0.3rem);
 }
 
 .leftColumn {
   display: flex;
-  align-items: center;
   border-top: 2px solid var(--color-signal-reduced-opacity);
-}
-
-.expenseEmoji {
-  margin-right: 1.7rem;
 }
 
 .expenseAmount {
