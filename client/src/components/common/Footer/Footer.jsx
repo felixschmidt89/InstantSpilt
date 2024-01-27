@@ -29,18 +29,21 @@ const Footer = () => {
         url={"https://www.linkedin.com/in/felixschmidt89"}
         iconSize={2.8}
         tooltipBottom={95}
+        marginRight={0.5}
       />
       {/* Email*/}
       <ReactIconNavigate
         icon={MdAlternateEmail}
         tooltip={"email"}
         email={"felix.schmidt@protonmail.com"}
+        marginRight={0.5}
       />
       {/* Github repository */}
       <ReactIconNavigate
         icon={IoLogoGithub}
         tooltip={"GitHub repository"}
         url={"https://github.com/felixschmidt89/InstantSpilt"}
+        marginRight={0.5}
       />
       {/* Terms and conditions*/}
       <ReactIconNavigate
@@ -50,6 +53,7 @@ const Footer = () => {
         iconSize={2.0}
         translateY={0.1}
         tooltipBottom={109}
+        marginRight={0.5}
       />
       {/* Legal notice*/}
       <ReactIconNavigate

@@ -212,8 +212,6 @@ export const getGroupCurrency = async (req, res) => {
       'Failed to fetch group information. Please try again later.',
     );
     sendInternalError(res);
-  } finally {
-    setGroupLastActivePropertyToNow(groupCode);
   }
 };
 

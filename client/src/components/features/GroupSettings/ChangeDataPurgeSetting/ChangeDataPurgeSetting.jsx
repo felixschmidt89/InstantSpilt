@@ -98,7 +98,7 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
           submit={true}
           marginLeft='0.1'
           transformScale={1.2}
-          translateX={0.1}
+          translateX={0.75}
           translateY={0.2}
         />
       </form>

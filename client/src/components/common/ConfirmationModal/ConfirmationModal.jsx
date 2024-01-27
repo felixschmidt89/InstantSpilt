@@ -54,11 +54,13 @@ const ConfirmationModal = ({
               <ReactIconNavigate
                 icon={IoCheckmarkCircleOutline}
                 onClick={onConfirm}
-                marginRight={"0.5"}
+                marginRight={"1"}
+                iconSize='3'
               />
               <ReactIconNavigate
                 icon={IoCloseCircleOutline}
                 onClick={onCancel}
+                iconSize='3'
               />
             </>
           )}

@@ -33,6 +33,7 @@ const DeleteResource = ({
   showResourceType = true,
   onDeleteResource,
 }) => {
+  // Use hook to
   const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
   const {
     deleteResource,
@@ -44,10 +45,9 @@ const DeleteResource = ({
     navigateOnDelete ? route : null
   );
 
+  // State for hook error
   const [localError, setLocalError] = useState(null);
-
   useEffect(() => {
-    // Set localError whenever hookError changes
     setLocalError(hookError);
   }, [hookError]);
 

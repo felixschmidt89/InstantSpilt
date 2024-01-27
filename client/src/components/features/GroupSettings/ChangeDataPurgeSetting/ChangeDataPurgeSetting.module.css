@@ -8,13 +8,13 @@
 }
 
 .explanation {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 input[type="checkbox"] {
   appearance: none;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 2.5rem;
+  height: 2.5rem;
   background-color: var(--color-main);
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.4rem;
@@ -28,10 +28,10 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background-color: var(--color-signal);
+  width: 2.5rem;
+  height: 2.5rem;
   border-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
-  height: 1.6rem;
-  width: 1.6rem;
   /* checkmark form */
   clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }

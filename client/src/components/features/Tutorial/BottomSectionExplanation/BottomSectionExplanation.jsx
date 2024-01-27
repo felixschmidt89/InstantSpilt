@@ -22,7 +22,6 @@ const BottomSectionExplanation = () => {
         <GroupActionsBar />
       </div>
       <div className={styles.noLink}>
-        Perform split actions:
         <ul>
           <li>
             Add expenses{" "}
@@ -54,6 +53,16 @@ const BottomSectionExplanation = () => {
               <Emoji
                 label={"settle expense emoji"}
                 emoji={emojiConstants.settle}></Emoji>
+              )
+            </span>
+          </li>
+          <li>
+            Change group settings{" "}
+            <span className={styles.emojiParenthesis}>
+              (
+              <Emoji
+                label={"group settings emoji"}
+                emoji={emojiConstants.settings}></Emoji>
               )
             </span>
           </li>

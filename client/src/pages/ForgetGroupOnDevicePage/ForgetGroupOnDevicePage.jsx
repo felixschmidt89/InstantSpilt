@@ -1,5 +1,5 @@
 // React and Third-Party Libraries
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 // Constants and Utils
@@ -10,36 +10,40 @@ import {
   setGroupCodeToCurrentlyActive,
 } from "../../utils/localStorageUtils";
 
+// Hooks
+import useModalConfirmationLogicAndActions from "../../hooks/useModalConfirmationLogicAndActions";
+
 //Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import CopyToClipboard from "../../components/common/CopyToClipboard/CopyToClipboard";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import ConfirmationModal from "../../components/common/ConfirmationModal/ConfirmationModal";
 
 // Styles
 import styles from "./ForgetGroupOnDevicePage.module.css";
-import ConfirmationModal from "../../components/common/ConfirmationModal/ConfirmationModal";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
   const navigate = useNavigate();
-  const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
 
-  const handleDelete = () => {
-    deleteApplicationDataFromLocalStorage();
-    deleteGroupDataFromLocalStorage(groupCode);
-    const newGroupCode = getFirstGroupCodeInStoredGroupCodesArray();
-    setGroupCodeToCurrentlyActive(newGroupCode);
-    navigate("/instant-split");
-  };
-
-  const handleShowConfirmation = () => {
-    setIsConfirmationVisible(true);
-  };
-
-  const handleHideConfirmation = () => {
-    setIsConfirmationVisible(false);
-  };
+  // Get confirmation modal logic from hook, pass callbacks to be executed on confirmation
+  const {
+    isConfirmationVisible,
+    handleConfirmation,
+    handleShowConfirmation,
+    handleHideConfirmation,
+  } = useModalConfirmationLogicAndActions([
+    () => deleteApplicationDataFromLocalStorage(),
+    () => deleteGroupDataFromLocalStorage(groupCode),
+    () => {
+      const newGroupCode = getFirstGroupCodeInStoredGroupCodesArray();
+      setGroupCodeToCurrentlyActive(newGroupCode);
+    },
+    () => {
+      navigate("/instant-split");
+    },
+  ]);
 
   return (
     <main>
@@ -68,7 +72,7 @@ const ForgetGroupOnDevicePage = () => {
           {isConfirmationVisible && (
             <ConfirmationModal
               message={`Are you sure you want to forget the group on this device?`}
-              onConfirm={handleDelete}
+              onConfirm={handleConfirmation}
               onCancel={handleHideConfirmation}
               isVisible={isConfirmationVisible}
             />
