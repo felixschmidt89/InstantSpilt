@@ -1,0 +1,19 @@
+.inputField {
+  color: var(--color-grey);
+  font-family: "Ubuntu", sans-serif;
+  padding: 0.3rem;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: var(--color-grey);
+}
+
+.inputField:focus {
+  color: var(--color-dark2);
+  border-color: var(--color-signal);
+  box-shadow: 0 0 0.5rem var(--color-signal);
+}
+
+.active {
+  color: var(--color-dark2);
+}

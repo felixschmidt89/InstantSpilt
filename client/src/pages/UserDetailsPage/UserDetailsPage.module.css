@@ -10,6 +10,6 @@
   color: var(--color-error);
 }
 
-.deleteButton {
-  padding-top: 6rem;
+.userSettings {
+  margin-top: 3rem;
 }

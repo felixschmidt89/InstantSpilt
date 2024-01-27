@@ -23,12 +23,7 @@ router.post('/', validateUserNamePropertyPresenceMiddleware, createUser);
 router.get('/:userId', getUserInfo);
 
 // Change user name
-router.patch(
-  '/',
-  validateGroupCodeMiddleware,
-  checkUserNameMatchMiddleware,
-  changeUserName,
-);
+router.patch('/:userId', validateGroupCodeMiddleware, changeUserName);
 
 // Delete user
 router.delete('/:userId', deleteUser);

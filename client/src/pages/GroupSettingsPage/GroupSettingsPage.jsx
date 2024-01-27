@@ -39,6 +39,7 @@ const GroupSettingsPage = () => {
               groupCode={groupCode}
               groupName={groupData.group.groupName}
             />
+            <h2 className={styles.header}>name</h2>
             <ChangeGroupCurrency
               groupCode={groupCode}
               groupCurrency={groupData.group.currency}

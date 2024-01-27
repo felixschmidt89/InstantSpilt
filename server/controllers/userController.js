@@ -2,7 +2,7 @@ import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
 import Expense from '../models/Expense.js';
 import Payment from '../models/Payment.js';
-import { errorLog, sendInternalError } from '../utils/errorUtils.js';
+import { devLog, errorLog, sendInternalError } from '../utils/errorUtils.js';
 import { setGroupLastActivePropertyToNow } from '../utils/databaseUtils.js';
 
 export const createUser = async (req, res) => {
@@ -62,13 +62,20 @@ export const getUserInfo = async (req, res) => {
 
 export const changeUserName = async (req, res) => {
   try {
-    const { groupCode, userName, newUserName } = req.body;
+    const { userId } = req.params;
+    const { userName, groupCode } = req.body;
+
+    devLog('Updating username. Received data:', {
+      userId,
+      userName,
+      groupCode,
+    });
 
     setGroupLastActivePropertyToNow(groupCode);
 
-    const updatedUser = await User.findOneAndUpdate(
-      { userName, groupCode },
-      { $set: { userName: newUserName } },
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { $set: { userName: userName } },
       { new: true, runValidators: true },
     );
 

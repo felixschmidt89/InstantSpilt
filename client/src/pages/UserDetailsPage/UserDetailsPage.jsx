@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 // Constants and Utils
 import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
+import emojiConstants from "../../constants/emojiConstants";
 
 // Hooks
 import useFetchUserData from "../../hooks/useFetchUserInfo";
@@ -18,6 +19,8 @@ import UserExpenseTotals from "../../components/features/UserDetails/UserExpense
 import UserPaymentTotals from "../../components/features/UserDetails/UserPaymentsTotals/UserPaymentsTotals";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import ChangeResourceName from "../../components/common/ChangeResourceName/ChangeResourceName";
+import Emoji from "../../components/common/Emoji/Emoji";
 
 // Styles
 import styles from "./UserDetailsPage.module.css";
@@ -53,22 +56,34 @@ const UserDetailsPage = () => {
               {groupCurrency}
             </span>
           </h2>
-          <UserExpenseTotals
-            userData={userData}
-            groupCurrency={groupCurrency}
-          />
-          <UserPaymentTotals
-            userData={userData}
-            groupCurrency={groupCurrency}
-          />
-          <h3>transaction history</h3>
-          <RouteButton
-            route={`user-transaction-history/${groupCode}/${userId}`}
-            buttonText='view history'
-            setPreviousRoute={true}
-            margin='0px'
-          />
-          <div className={styles.deleteButton}>
+          <div className={styles.userBalances}>
+            <UserExpenseTotals
+              userData={userData}
+              groupCurrency={groupCurrency}
+            />
+            <UserPaymentTotals
+              userData={userData}
+              groupCurrency={groupCurrency}
+            />
+            <RouteButton
+              route={`user-transaction-history/${groupCode}/${userId}`}
+              buttonText='view transaction history'
+              setPreviousRoute={true}
+              margin='0px'
+            />
+          </div>
+          <div className={styles.userSettings}>
+            <h3>
+              user settings{" "}
+              <Emoji label='settings emoji' emoji={emojiConstants.settings} />
+            </h3>{" "}
+            <ChangeResourceName
+              resourceId={userId}
+              resourceType='user'
+              resourceName={userData.userName}
+              groupCode={groupCode}
+              inputWidth={10}
+            />
             <DeleteResource resourceId={userId} resourceType='users' />
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import { devLog } from '../utils/errorUtils.js';
 
 const groupSchema = new Schema(
   {
@@ -38,8 +39,9 @@ groupSchema.methods.setLastActive = async function () {
   try {
     this.lastActive = new Date();
     await this.save();
+    devLog('lastActive set to now');
   } catch (error) {
-    console.error('Error setting lastActive:', error);
+    console.error('Error setting lastActive to now:', error);
     throw error;
   }
 };
