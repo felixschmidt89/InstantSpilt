@@ -87,29 +87,24 @@ export const createGroup = async (req, res) => {
 
 export const changeGroupName = async (req, res) => {
   try {
-    const { groupCode, groupName } = req.body;
+    const { groupId } = req.params;
+    const { groupName } = req.body;
 
-    const updateResult = await Group.updateOne(
-      { groupCode },
+    devLog('Updating group name. Received data:', {
+      groupId,
+      groupName,
+    });
+
+    const updatedGroup = await Group.findByIdAndUpdate(
+      groupId,
       { $set: { lastActive: new Date(), groupName } },
+      { new: true, runValidators: true },
     );
-
-    // Check if the update was successful
-    if (updateResult.nModified === 0) {
-      // Handle case where the group with the given groupCode is not found
-      return res.status(StatusCodes.NOT_FOUND).json({
-        status: 'error',
-        message: 'Group not found with the provided groupCode',
-      });
-    }
-
-    // Fetch the updated group to return in the response
-    const updatedGroup = await Group.findOne({ groupCode });
 
     res.status(StatusCodes.OK).json({
       status: 'success',
       updatedGroup,
-      message: 'Group name updated successfully',
+      message: 'Group name updated successfully.',
     });
   } catch (error) {
     errorLog(

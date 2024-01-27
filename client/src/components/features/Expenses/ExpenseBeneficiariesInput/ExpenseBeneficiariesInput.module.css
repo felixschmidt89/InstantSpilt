@@ -51,8 +51,7 @@
 .toggleButton.isUpdate:focus {
   color: var(--color-dark2);
 }
-
-input[type="checkbox"] {
+.beneficiaries input[type="checkbox"] {
   appearance: none;
   width: 1.6rem;
   height: 1.6rem;
@@ -67,7 +66,7 @@ input[type="checkbox"] {
   margin: 0.2rem;
 }
 
-input[type="checkbox"]:checked {
+.beneficiaries input[type="checkbox"]:checked {
   background-color: var(--color-signal);
   border-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
