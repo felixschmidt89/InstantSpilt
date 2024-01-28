@@ -10,6 +10,7 @@ import Emoji from "../../../common/Emoji/Emoji";
 
 // Styles
 import styles from "./RenderSettlementPaymentSuggestions.module.css";
+import ConfirmSettlementPayment from "../ConfirmSettlementPayment/ConfirmSettlementPayment";
 
 /**
  * Component for rendering settlement payment suggestions.
@@ -23,6 +24,7 @@ const RenderSettlementPaymentSuggestions = ({
   positiveBalanceUsers,
   negativeBalanceUsers,
   groupCurrency,
+  groupCode,
 }) => {
   const [settlementPaymentSuggestions, setSettlementPaymentSuggestions] =
     useState([]);
@@ -49,15 +51,22 @@ const RenderSettlementPaymentSuggestions = ({
                 label={"payment to other user emoji"}
                 emoji={emojiConstants.paymentsMade}></Emoji>{" "}
               <span aria-label={`Payment recipient name`}>
-                {settlement.to}{" "}
+                {settlement.to}
+                {": "}
+              </span>
+              <span
+                className={styles.settlementAmount}
+                aria-label={`Settlement payment amount`}>
+                {settlement.amount}
+                {groupCurrency}
               </span>
             </div>
-            <span
-              className={styles.settlementAmount}
-              aria-label={`Settlement payment amount`}>
-              {settlement.amount}
-              {groupCurrency}
-            </span>
+            <ConfirmSettlementPayment
+              paymentAmount={settlement.amount}
+              paymentMakerName={settlement.from}
+              paymentRecipientName={settlement.to}
+              groupCode={groupCode}
+            />
           </li>
         ))}
       </ul>

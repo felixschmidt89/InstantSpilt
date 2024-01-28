@@ -10,12 +10,14 @@
 }
 .paymentSuggestions {
   margin-top: 0.8rem;
+  width: fit-content;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  margin: 0 auto;
 }
 
 .settlementAmount {
   text-decoration: underline;
   font-weight: 900;
+  color: var(--color-signal);
 }

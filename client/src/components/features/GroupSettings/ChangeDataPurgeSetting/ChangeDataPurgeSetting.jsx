@@ -1,20 +1,25 @@
 // React and Third-Party Libraries
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import { StatusCodes } from "http-status-codes";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
+import {
+  devLog,
+  handleApiErrorsAndTriggerErrorModal,
+} from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { INACTIVE_DAYS } from "../../../../constants/dataConstants";
 
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+
 // Components
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // Styles
 import styles from "./ChangeDataPurgeSetting.module.css";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -36,9 +41,14 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
 
   devLog("inactiveDataPurge is activated:", inactiveDataPurge);
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+
     try {
       const response = await axios.patch(
         `${apiUrl}/groups/inactiveDataPurge/${groupCode}`,
@@ -51,12 +61,11 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
       navigate("/instant-split");
     } catch (error) {
       if (error.response) {
-        if (error.response.status === StatusCodes.BAD_REQUEST) {
-          setError(error.response.data.errors[0].message);
-        } else {
-          setError(genericErrorMessage);
-          devLog("Error updating inactive group data purge setting:", error);
-        }
+        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+      } else {
+        setError(genericErrorMessage);
+        devLog("Error updating inactive group data purge setting:", error);
+        displayErrorModal();
       }
     }
   };
@@ -102,7 +111,11 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
           translateY={0.2}
         />
       </form>
-      <ErrorDisplay error={error} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 // React and Third-Party Libraries
 import React, { useRef, useState } from "react";
 import axios from "axios";
-import { StatusCodes } from "http-status-codes";
 import { useNavigate } from "react-router-dom";
 
 // Contents
@@ -11,9 +10,12 @@ import { currenciesContent } from "../../../../contents/currenciesContent";
 import { devLog } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+
 // Components
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./ChangeGroupCurrency.module.css";
@@ -36,6 +38,10 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency }) => {
   const [newGroupCurrency, setNewGroupCurrency] = useState("");
   const [error, setError] = useState(null);
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -50,14 +56,9 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency }) => {
       devLog("Group currency updated:", response);
       navigate("/instant-split");
     } catch (error) {
-      if (error.response) {
-        if (error.response.status === StatusCodes.BAD_REQUEST) {
-          setError(error.response.data.errors[0].message);
-        } else {
-          setError(genericErrorMessage);
-          devLog("Error updating group currency:", error);
-        }
-      }
+      setError(genericErrorMessage);
+      displayErrorModal();
+      devLog("Error updating group currency:", error);
     }
   };
 
@@ -110,7 +111,11 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency }) => {
           translateY={0.1}
         />
       </form>
-      <ErrorDisplay error={error} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };

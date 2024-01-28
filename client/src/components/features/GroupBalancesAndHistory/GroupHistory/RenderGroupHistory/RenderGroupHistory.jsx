@@ -8,14 +8,15 @@ import { genericErrorMessage } from "../../../../../constants/errorConstants";
 
 // Hooks
 import useFetchGroupMembers from "../../../../../hooks/useFetchGroupMembers";
+import useErrorModalVisibility from "../../../../../hooks/useErrorModalVisibility";
 
 // Components
 import Spinner from "../../../../common/Spinner/Spinner";
-import ErrorDisplay from "../../../../common/ErrorDisplay/ErrorDisplay";
 import RenderGroupExpense from "../RenderGroupExpense/RenderGroupExpense";
 import RenderGroupPayment from "../RenderGroupPayment/RenderGroupPayment";
 import NotEnoughUsers from "../../NotEnoughUsers/NotEnoughUsers";
 import NoGroupTransactions from "../NoGroupTransactions/NoGroupTransactions";
+import ErrorModal from "../../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./RenderGroupHistory.module.css";
@@ -35,6 +36,10 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
 
   useEffect(() => {
     const fetchGroupExpensesAndPayments = async () => {
@@ -73,6 +78,7 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
       } catch (error) {
         devLog("Error fetching group expenses and payments:", error);
         setError(genericErrorMessage);
+        displayErrorModal();
         setIsLoading(false);
       }
     };
@@ -108,7 +114,11 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
               </li>
             ))}
           </ul>
-          <ErrorDisplay error={error} remWidth={20} />
+          <ErrorModal
+            error={error}
+            onClose={handleCloseErrorModal}
+            isVisible={isErrorModalVisible}
+          />{" "}
         </div>
       ) : (
         <div className={styles.issue}>
@@ -117,7 +127,11 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
           ) : (
             <NotEnoughUsers />
           )}
-          <ErrorDisplay error={error} remWidth={20} />
+          <ErrorModal
+            error={error}
+            onClose={handleCloseErrorModal}
+            isVisible={isErrorModalVisible}
+          />
         </div>
       )}
     </>

@@ -18,6 +18,3 @@
   margin: 0 auto;
 }
 
-.userName:hover {
-  color: var(--color-success);
-}

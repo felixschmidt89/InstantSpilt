@@ -6,15 +6,18 @@ import { devLog } from "../../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../../constants/errorConstants";
 import { BALANCE_THRESHOLD } from "../../../../../constants/dataConstants";
 
+// Hooks
+import useErrorModalVisibility from "../../../../../hooks/useErrorModalVisibility";
+
 // Components
 import Spinner from "../../../../common/Spinner/Spinner";
 import PiratePx from "../../../../common/PiratePx/PiratePx";
 import NotEnoughUsers from "../../NotEnoughUsers/NotEnoughUsers";
-import ErrorDisplay from "../../../../common/ErrorDisplay/ErrorDisplay";
+import RenderUserNameAndBalance from "../RenderUserNameAndBalance/RenderUserNameAndBalance";
+import ErrorModal from "../../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./RenderGroupBalances.module.css";
-import RenderUserNameAndBalance from "../RenderUserNameAndBalance/RenderUserNameAndBalance";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -29,6 +32,10 @@ const RenderGroupBalances = ({ groupCurrency }) => {
   const [userDetails, setUserDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
 
   // Define fetch user details function, extract & format relevant data, then set the user details
   useEffect(() => {
@@ -59,6 +66,7 @@ const RenderGroupBalances = ({ groupCurrency }) => {
       } catch (error) {
         devLog("Error fetching user details:", error);
         setError(genericErrorMessage);
+        displayErrorModal();
         setIsLoading(false);
       }
     };
@@ -83,7 +91,11 @@ const RenderGroupBalances = ({ groupCurrency }) => {
         <NotEnoughUsers />
       )}
       <PiratePx COUNT_IDENTIFIER={"group-balances"} />
-      <ErrorDisplay error={error} remWidth={20} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };

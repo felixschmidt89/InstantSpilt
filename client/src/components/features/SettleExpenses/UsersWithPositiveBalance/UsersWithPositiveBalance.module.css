@@ -9,7 +9,3 @@
   width: 70%;
   margin: 0 auto;
 }
-
-.userName:hover {
-  color: var(--color-success);
-}

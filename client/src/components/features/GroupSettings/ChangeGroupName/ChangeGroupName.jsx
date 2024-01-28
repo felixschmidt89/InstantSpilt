@@ -1,16 +1,21 @@
 // React and Third-Party Libraries
 import React, { useRef, useState } from "react";
 import axios from "axios";
-import { StatusCodes } from "http-status-codes";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
+import {
+  devLog,
+  handleApiErrorsAndTriggerErrorModal,
+} from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+
 // Components
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./ChangeGroupName.module.css";
@@ -25,6 +30,10 @@ const ChangeGroupName = ({ groupCode, groupName }) => {
   const [newGroupName, setNewGroupName] = useState(storedGroupName);
   const [error, setError] = useState(null);
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -37,12 +46,11 @@ const ChangeGroupName = ({ groupCode, groupName }) => {
       navigate("/instant-split");
     } catch (error) {
       if (error.response) {
-        if (error.response.status === StatusCodes.BAD_REQUEST) {
-          setError(error.response.data.errors[0].message);
-        } else {
-          setError(genericErrorMessage);
-          devLog("Error updating group name:", error);
-        }
+        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+      } else {
+        setError(genericErrorMessage);
+        devLog("Error updating group name:", error);
+        displayErrorModal();
       }
     }
   };
@@ -74,9 +82,12 @@ const ChangeGroupName = ({ groupCode, groupName }) => {
           translateY={0.1}
         />
       </form>
-      <ErrorDisplay error={error} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };
-
 export default ChangeGroupName;

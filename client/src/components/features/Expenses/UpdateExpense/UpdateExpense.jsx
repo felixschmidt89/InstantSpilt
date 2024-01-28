@@ -76,12 +76,12 @@ const UpdateExpense = ({
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
 
-  const isSubmitButtonVisible = true;
-  // formChanged &&
-  // expenseAmount &&
-  // expensePayerName &&
-  // expenseDescription &&
-  // selectedBeneficiaries.length > 0;
+  const isSubmitButtonVisible =
+    formChanged &&
+    expenseAmount &&
+    expensePayerName &&
+    expenseDescription &&
+    selectedBeneficiaries.length > 0;
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -107,8 +107,6 @@ const UpdateExpense = ({
         displayErrorModal();
       }
     }
-
-    console.log("test");
   };
 
   return (

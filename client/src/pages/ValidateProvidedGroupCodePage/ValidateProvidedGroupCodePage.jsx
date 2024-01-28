@@ -101,7 +101,7 @@ const ValidateProvideGroupCodePage = () => {
         )}
         {/*Handle validations timeout errors*/}
         {!error && !groupExists && <Spinner />}
-        <ErrorDisplay error={error} remWidth={25} />
+        <ErrorDisplay error={error} remWidth={25} errorFontColor={true} />
       </div>
     </main>
   );

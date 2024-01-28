@@ -6,9 +6,12 @@ import { LuCopyCheck } from "react-icons/lu";
 // Constants and Utils
 import { devLog } from "../../../utils/errorUtils";
 
+// Hooks
+import useErrorModalVisibility from "../../../hooks/useErrorModalVisibility";
+
 // Components
 import ReactIconNavigate from "../InAppNavigation/ReactIconNavigate/ReactIconNavigate";
-import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
+import ErrorModal from "../ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./CopyToClipboard.module.css";
@@ -23,6 +26,10 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
   const [error, setError] = useState(false);
   const inputRef = useRef(null);
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   const handleCopyClick = async () => {
     try {
       // Copy text to clipboard
@@ -34,6 +41,7 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
     } catch (error) {
       devLog("Error copying to clipboard:", error);
       setError("Error copying content, please copy manually.");
+      displayErrorModal();
       setIsCopied(false);
     }
   };
@@ -65,7 +73,11 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
           <ReactIconNavigate icon={LuCopy} iconSize='1.8' translateY={0.2} />
         )}
       </button>
-      <ErrorDisplay error={error} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };
