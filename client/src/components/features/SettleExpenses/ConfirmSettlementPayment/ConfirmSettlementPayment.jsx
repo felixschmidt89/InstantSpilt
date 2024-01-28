@@ -12,11 +12,11 @@ import {
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
-import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+import useConfirmationModalLogicAndActions from "../../../../hooks/useConfirmationModalLogicAndActions";
 
 // Components
-import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 import ReactIconNavigate from "../../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
+import ConfirmationModal from "../../../common/ConfirmationModal/ConfirmationModal";
 
 // Styles
 
@@ -32,9 +32,13 @@ const ConfirmSettlementPayment = ({
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
-  // Get error modal visibility logic
-  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
-    useErrorModalVisibility();
+  // Get confirmation modal logic from hook, pass callbacks to be executed on confirmation
+  const {
+    isConfirmationVisible,
+    handleConfirmation,
+    handleShowConfirmation,
+    handleHideConfirmation,
+  } = useConfirmationModalLogicAndActions(() => confirmSettlementPayment());
 
   const confirmSettlementPayment = async (e) => {
     setError(null);
@@ -49,11 +53,10 @@ const ConfirmSettlementPayment = ({
       navigate("/instant-split");
     } catch (error) {
       if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+        handleApiErrorsAndTriggerErrorModal(error, setError);
       } else {
         setError(genericErrorMessage);
         devLog("Error creating settlement payment:", error);
-        displayErrorModal();
       }
     }
   };
@@ -63,14 +66,19 @@ const ConfirmSettlementPayment = ({
       <ReactIconNavigate
         icon={GiTakeMyMoney}
         tooltip='Confirm'
-        onClick={confirmSettlementPayment}
-        iconSize={3}
+        onClick={handleShowConfirmation}
+        iconSize={2.5}
       />
-      <ErrorModal
-        error={error}
-        onClose={handleCloseErrorModal}
-        isVisible={isErrorModalVisible}
-      />
+
+      {isConfirmationVisible && (
+        <ConfirmationModal
+          message={`Confirm settlement payment by ${paymentMakerName} to ${paymentRecipientName}?`}
+          onConfirm={handleConfirmation}
+          onCancel={handleHideConfirmation}
+          isVisible={isConfirmationVisible}
+          error={error}
+        />
+      )}
     </>
   );
 };
