@@ -4,7 +4,12 @@ import { validationResult } from 'express-validator';
 import Expense from '../models/Expense.js';
 import User from '../models/User.js';
 
-import { devLog, errorLog, sendInternalError } from '../utils/errorUtils.js';
+import {
+  devLog,
+  errorLog,
+  sendInternalError,
+  sendValidationError,
+} from '../utils/errorUtils.js';
 import { setGroupLastActivePropertyToNow } from '../utils/databaseUtils.js';
 
 /** Creates a new expense
@@ -19,6 +24,22 @@ export const createExpense = async (req, res) => {
       expenseAmount,
       expenseBeneficiariesNames,
     } = req.body;
+
+    // Validate if expensePayerName is provided
+    if (!expensePayerName) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'Expense payer name is required.',
+      });
+    }
+
+    // Validate if expenseBeneficiariesNames is provided and has at least one item
+    if (!expenseBeneficiariesNames || !expenseBeneficiariesNames.length) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'At least 1 expense beneficiary is required.',
+      });
+    }
 
     const expensePayer = await User.findOne({
       userName: { $in: expensePayerName },
@@ -64,23 +85,16 @@ export const createExpense = async (req, res) => {
       message: 'Expense created successfully',
     });
   } catch (error) {
+    devLog('error:', error);
     if (error.name === 'ValidationError') {
-      // Handle validation errors
-      return res.status(StatusCodes.BAD_REQUEST).json({
-        status: 'fail',
-        message: 'Validation failed',
-        errors: Object.keys(error.errors).map((field) => ({
-          field,
-          message: error.errors[field].message,
-        })),
-      });
+      sendValidationError(res, error);
     } else {
       errorLog(
         error,
         'Error creating expense:',
-        'Failed to create the expense. Please try again later.',
+        'Failed to create expense. Please try again later.',
       );
-      sendInternalError(res);
+      sendInternalError();
     }
   }
 };
@@ -96,6 +110,22 @@ export const updateExpense = async (req, res) => {
       expenseAmount,
       expenseBeneficiariesNames,
     } = req.body;
+
+    // Validate if expensePayerName is provided
+    if (!expensePayerName) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'Expense payer name is required.',
+      });
+    }
+
+    // Validate if expenseBeneficiariesNames is provided and has at least one item
+    if (!expenseBeneficiariesNames || !expenseBeneficiariesNames.length) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'At least 1 expense beneficiary is required.',
+      });
+    }
 
     const expensePayer = await User.findOne({
       userName: { $in: expensePayerName },
@@ -127,7 +157,7 @@ export const updateExpense = async (req, res) => {
     const updatedExpense = await Expense.findByIdAndUpdate(
       expenseId,
       updatedExpenseData,
-      { new: true },
+      { new: true, runValidators: true },
     );
 
     setGroupLastActivePropertyToNow(groupCode);
@@ -148,7 +178,7 @@ export const updateExpense = async (req, res) => {
             "Error updating group users' total expenses paid and benefitted",
             'Failed to update expense. Please try again later.',
           );
-          sendInternalError(res);
+          sendInternalError();
         }
       }),
     );
@@ -166,23 +196,16 @@ export const updateExpense = async (req, res) => {
       message: 'Expense updated successfully.',
     });
   } catch (error) {
+    devLog('error:', error);
     if (error.name === 'ValidationError') {
-      // Handle validation errors
-      return res.status(StatusCodes.BAD_REQUEST).json({
-        status: 'fail',
-        message: 'Validation failed',
-        errors: Object.keys(error.errors).map((field) => ({
-          field,
-          message: error.errors[field].message,
-        })),
-      });
+      sendValidationError(res, error);
     } else {
       errorLog(
         error,
-        'Error updating expense:',
+        'Error creating expense:',
         'Failed to update the expense. Please try again later.',
       );
-      sendInternalError(res);
+      sendInternalError();
     }
   }
 };
@@ -209,7 +232,7 @@ export const getExpenseInfo = async (req, res) => {
       'Error retrieving expense info:',
       'Failed to retrieve the expense info. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -248,7 +271,7 @@ export const deleteExpense = async (req, res) => {
       'Error deleting expense:',
       'Failed to delete the expense. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -271,7 +294,7 @@ export const listAllExpensesByGroupCode = async (req, res) => {
       'Error listing expenses:',
       'Failed to list group expenses. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -292,7 +315,7 @@ export const listAllExpenses = async (req, res) => {
       'Error listing all expenses:',
       'Failed to list all expenses. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -315,6 +338,6 @@ export const deleteAllExpenses = async (req, res) => {
       'Error deleting all expenses:',
       'Failed to delete all expenses. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };

@@ -41,6 +41,6 @@ export const uploadImage = async (req, res) => {
       'Error uploading image:',
       'Failed to upload image. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };

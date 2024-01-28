@@ -4,7 +4,6 @@ import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
 import multer from 'multer';
-import winstonErrorHandler from './middleware/winstonErrorHandler.js';
 import rateLimit from 'express-rate-limit';
 import groupRouter from './routes/groupRouter.js';
 import userRouter from './routes/userRouter.js';
@@ -52,8 +51,5 @@ app.use(`${API_BASEURL}/payments`, paymentRouter);
 app.use(`${API_BASEURL}/feedbacks`, feedbackRouter);
 app.use(`${API_BASEURL}/health`, healthRouter);
 app.use(`${API_BASEURL}/files`, fileRouter);
-
-// LOGG ERRORS
-app.use(winstonErrorHandler);
 
 export default app;

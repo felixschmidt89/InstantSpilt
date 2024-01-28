@@ -46,7 +46,7 @@ const ConfirmationModal = ({
           <p>{message}</p>
           {error ? (
             <>
-              <ErrorDisplay error={error} remWidth={30} />
+              <ErrorDisplay error={error} remWidth={30} errorFontColor={true} />
               <button onClick={onCancel}>OK</button>
             </>
           ) : (

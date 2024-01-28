@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
+import {
+  devLog,
+  handleApiErrorsAndTriggerErrorModal,
+} from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
@@ -13,8 +16,10 @@ import PaymentAmount from "../PaymentAmountInput/PaymentAmountInput";
 import PaymentMaker from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipient from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import Emoji from "../../../common/Emoji/Emoji";
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
+
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./UpdatePayment.module.css";
@@ -48,7 +53,6 @@ const UpdatePayment = ({
   const storedPaymentRecipientName = paymentDetails.paymentRecipient.userName;
 
   // States to manage to be updated properties
-
   const [paymentAmount, setPaymentAmount] = useState(storedPaymentAmount);
   const [paymentMakerName, setPaymentMakerName] = useState(
     storedPaymentMakerName
@@ -59,6 +63,10 @@ const UpdatePayment = ({
 
   const [formChanged, setFormChanged] = useState(false);
   const [error, setError] = useState("");
+
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
 
   const isSubmitButtonVisible =
     formChanged && paymentAmount && paymentMakerName && paymentRecipientName;
@@ -98,14 +106,11 @@ const UpdatePayment = ({
       navigate(route);
     } catch (error) {
       if (error.response) {
-        if (error.response.status === 400) {
-          setError(error.response.data.errors[0].message);
-        } else if (error.response.status === 409) {
-          setError(error.response.data.message);
-        }
+        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
       } else {
         setError(genericErrorMessage);
         devLog("Error updating payment:", error);
+        displayErrorModal();
       }
     }
   };
@@ -138,8 +143,11 @@ const UpdatePayment = ({
         {isSubmitButtonVisible && (
           <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
         )}
-
-        <ErrorDisplay error={error} />
+        <ErrorModal
+          error={error}
+          onClose={handleCloseErrorModal}
+          isVisible={isErrorModalVisible}
+        />{" "}
       </div>
     </form>
   );

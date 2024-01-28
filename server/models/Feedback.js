@@ -22,7 +22,7 @@ const feedbackSchema = new Schema(
       required: [true, 'Message is required.'],
       trim: true,
       minlength: [1, 'Message must be at least 1 character long.'],
-      maxlength: [1000, 'Feedback cannot exceed 1000 characters.'],
+      maxlength: [2500, 'Feedback cannot exceed 1000 characters.'],
     },
     groupCode: {
       type: String,

@@ -4,7 +4,12 @@ import { customAlphabet } from 'nanoid';
 import Group from '../models/Group.js';
 import Expense from '../models/Expense.js';
 import Payment from '../models/Payment.js';
-import { devLog, errorLog, sendInternalError } from '../utils/errorUtils.js';
+import {
+  devLog,
+  errorLog,
+  sendInternalError,
+  sendValidationError,
+} from '../utils/errorUtils.js';
 import { generateUniqueGroupCode } from '../utils/groupCodeUtils.js';
 import { setGroupLastActivePropertyToNow } from '../utils/databaseUtils.js';
 
@@ -81,7 +86,7 @@ export const createGroup = async (req, res) => {
       'Error creating group:',
       'Failed to create the group. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -107,12 +112,16 @@ export const changeGroupName = async (req, res) => {
       message: 'Group name updated successfully.',
     });
   } catch (error) {
-    errorLog(
-      error,
-      'Error updating group name:',
-      'Failed to update group name. Please try again later.',
-    );
-    sendInternalError(res);
+    if (error.name === 'ValidationError') {
+      sendValidationError(res, error);
+    } else {
+      errorLog(
+        error,
+        'Error updating group name:',
+        'Failed to update group name. Please try again later.',
+      );
+      sendInternalError();
+    }
   }
 };
 
@@ -153,7 +162,7 @@ export const changeGroupDataPurgeSetting = async (req, res) => {
       'Error updating inactive data purge setting:',
       'Failed to update inactive data purge setting. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -178,7 +187,7 @@ export const listGroupNamesByStoredGroupCodes = async (req, res) => {
       'Error listing group names:',
       'Failed to list group names. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -206,7 +215,7 @@ export const getGroupCurrency = async (req, res) => {
       'Error fetching group currency:',
       'Failed to fetch group information. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -239,7 +248,7 @@ export const changeGroupCurrency = async (req, res) => {
       'Error changing group currency:',
       'Failed to change group currency. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -269,7 +278,7 @@ export const listExpensesAndPaymentsByGroup = async (req, res) => {
       'Error listing expenses and payments:',
       'Failed to list expenses and payments. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError(rs);
   }
 };
 
@@ -299,7 +308,7 @@ export const getGroupInfo = async (req, res) => {
       'Error fetching group info:',
       'Failed to fetch group information. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -334,7 +343,7 @@ export const validateGroupExistence = async (req, res) => {
       'Error fetching group info:',
       'Failed to fetch group information. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -355,7 +364,7 @@ export const listAllGroups = async (req, res) => {
       'Error listing all groups:',
       'Failed to list all groups. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -373,6 +382,6 @@ export const deleteAllGroups = async (req, res) => {
       'Error deleting all groups:',
       'Failed to delete all groups. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };

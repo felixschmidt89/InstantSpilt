@@ -8,10 +8,13 @@ import axios from "axios";
 import { devLog } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+
 // Components
 import SuccessFeedback from "../SuccessFeedback/SuccessFeedback";
 import ContactForm from "../ContactForm/ContactForm";
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./Contact.module.css";
@@ -39,6 +42,10 @@ const Contact = () => {
   const [showForm, setShowForm] = useState(true);
   const [error, setError] = useState("");
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -60,30 +67,34 @@ const Contact = () => {
 
     // Clear previous error
     setError("");
-
     // Validate name
     if (!formData.name.trim()) {
-      setError("Oops! Name can't be empty.");
+      setError("Name can't be empty.");
+      displayErrorModal();
       return;
     }
     if (formData.name.length > 50) {
-      setError("Oops! Name can't exceed 50 characters.");
+      setError("Name can't exceed 50 characters.");
+      displayErrorModal();
       return;
     }
 
     // Validate message
     if (!formData.feedback.trim()) {
-      setError("Oops! Message can't be empty.");
+      setError("Message can't be empty.");
+      displayErrorModal();
       return;
     }
-    if (formData.feedback.length > 1000) {
-      setError("Oops! Message can't exceed 1000 characters.");
+    if (formData.feedback.length > 2500) {
+      setError("Message can't exceed 2500 characters.");
+      displayErrorModal();
       return;
     }
 
     // Validate file size
     if (file && file.size > 5242880) {
-      setError("Oops! File size exceeds the allowed limit of 5MB.");
+      setError("File size exceeds the allowed limit of 5MB.");
+      displayErrorModal();
       return;
     }
     try {
@@ -106,6 +117,7 @@ const Contact = () => {
         } catch (error) {
           devLog("Error uploading file:", error);
           setError("Error uploading file. Please try again.");
+          displayErrorModal();
           return; // Exit early if file upload fails
         }
       }
@@ -133,7 +145,11 @@ const Contact = () => {
             handleInputChange={handleInputChange}
             handleFormSubmission={handleFormSubmission}
           />
-          <ErrorDisplay error={error} />
+          <ErrorModal
+            error={error}
+            onClose={handleCloseErrorModal}
+            isVisible={isErrorModalVisible}
+          />{" "}
         </div>
       ) : (
         <SuccessFeedback />

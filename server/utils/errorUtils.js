@@ -47,9 +47,8 @@ export const errorLog = (
 /**
  * Sends an internal server error response with a default message in JSON format.
  *
- * @param {object} res - The response object.
  */
-export const sendInternalError = (res) => {
+export const sendInternalError = () => {
   res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     status: 'fail',
     message: 'Internal server error. Please try again later.',
@@ -57,17 +56,22 @@ export const sendInternalError = (res) => {
 };
 
 /**
- * Sends an validation error response with a default message in JSON format.
+ * Handles validation errors and sends an appropriate response to the client.
  *
- * @param {object} res - The response object.
+ * @param {Object} res - Express response object.
+ * @param {Error} error - The validation error object.
+ * @returns {Object} JSON response with validation error details.
  */
 export const sendValidationError = (res, error) => {
-  res.status(StatusCodes.BAD_REQUEST).json({
-    status: 'fail',
-    message: 'Validation failed',
-    errors: Object.keys(error.errors).map((field) => ({
-      field,
-      message: error.errors[field].message,
-    })),
-  });
+  if (error.name === 'ValidationError') {
+    // Handle all validation errors using Object.values
+    const validationErrors = Object.values(error.errors).map(
+      (error) => error.message,
+    );
+    return res.status(StatusCodes.UNPROCESSABLE_ENTITY).json({
+      status: 'error',
+      message: 'Validation error',
+      errors: validationErrors,
+    });
+  }
 };

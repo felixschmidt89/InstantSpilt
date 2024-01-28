@@ -1,9 +1,13 @@
 // React and Third-Party Libraries
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { StatusCodes } from "http-status-codes";
 
 // Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
+import {
+  devLog,
+  handleApiErrorsAndTriggerErrorModal,
+} from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
@@ -11,10 +15,10 @@ import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // Styles
 import styles from "./CreateUserForm.module.css";
-import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -31,7 +35,7 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
   const [error, setError] = useState("");
 
   // Get error modal visibility logic
-  const { isErrorModalVisible, handleOnError, handleCloseErrorModal } =
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
 
   // Autofocus input field on mount
@@ -39,25 +43,9 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
     inputRef.current.focus();
   }, []);
 
-  // On form submission: Provide groupCode for authentication, post unique user within group, clear form & trigger a parent component refresh
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
-    // Clear previous error
     setError(null);
-    // Validate group name
-    if (!userName.trim()) {
-      setError("Oops! User name can't be empty.");
-      handleOnError();
-
-      return;
-    }
-    if (userName.length > 50) {
-      setError("Oops! User name can't exceed 50 characters.");
-      handleOnError();
-
-      return;
-    }
 
     try {
       const response = await axios.post(`${apiUrl}/users`, {
@@ -70,14 +58,12 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
       incrementRerenderTrigger();
       setError("");
     } catch (error) {
-      // Render conflict status message if there is already a group member with same name
-      if (error.response && error.response.status === 409) {
-        setError(error.response.data.message);
-        handleOnError();
+      if (error.response) {
+        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
       } else {
-        devLog("Error creating user.", error);
         setError(genericErrorMessage);
-        handleOnError();
+        devLog("Error creating user.", error);
+        displayErrorModal();
       }
     }
   };

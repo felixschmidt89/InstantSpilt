@@ -4,18 +4,24 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
+import {
+  devLog,
+  handleApiErrorsAndTriggerErrorModal,
+} from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 import emojiConstants from "../../../../constants/emojiConstants";
+
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
 import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescriptionInput";
 import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
 import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 import Emoji from "../../../common/Emoji/Emoji";
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./UpdateExpense.module.css";
@@ -66,12 +72,16 @@ const UpdateExpense = ({
   const [formChanged, setFormChanged] = useState(false);
   const [error, setError] = useState(null);
 
-  const isSubmitButtonVisible =
-    formChanged &&
-    expenseAmount &&
-    expensePayerName &&
-    expenseDescription &&
-    selectedBeneficiaries.length > 0;
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
+  const isSubmitButtonVisible = true;
+  // formChanged &&
+  // expenseAmount &&
+  // expensePayerName &&
+  // expenseDescription &&
+  // selectedBeneficiaries.length > 0;
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -90,15 +100,15 @@ const UpdateExpense = ({
       navigate(route);
     } catch (error) {
       if (error.response) {
-        // Handle bad requests
-        if (error.response.status === 400) {
-          setError(error.response.data.errors[0].message);
-        } else {
-          setError(genericErrorMessage);
-          devLog("Error creating expense:", error);
-        }
+        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+      } else {
+        setError(genericErrorMessage);
+        devLog("Error updating expense:", error);
+        displayErrorModal();
       }
     }
+
+    console.log("test");
   };
 
   return (
@@ -138,7 +148,11 @@ const UpdateExpense = ({
           <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
         )}
       </form>
-      <ErrorDisplay error={error} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };

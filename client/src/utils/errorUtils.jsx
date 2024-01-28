@@ -1,3 +1,6 @@
+import { StatusCodes } from "http-status-codes";
+import { genericErrorMessage } from "../constants/errorConstants";
+
 /**
  * Utility function to log messages and/or errors in the development environment only.
  *
@@ -20,23 +23,44 @@ export const devLog = (message = "devLog", data) => {
 };
 
 /**
- * Utility function to handle server errors and set the first error message only.
- * @param {Object} error - The error object.
- * @param {function} setError - The function to set the error state.
+ * Handles API errors and triggers the display of the error modal.
+ *
+ * @param {Error} error - The error object.
+ * @param {Function} setError - State setter function for updating error state.
+ * @param {Function} displayErrorModal - Function to display the error modal.
+ *
+ * @throws {Error} Throws an error if the provided error object is falsy.
+ *
+ * @statusCodes Handled HTTP status codes:
+ * - UNPROCESSABLE_ENTITY (422): Sets error message based on the first validation error.
+ * - CONFLICT (409): Sets error message based on the conflict message.
+ * - BAD_REQUEST (400): Sets error message based on the first error's message in case of bad request.
  */
-export const handleServerErrors = (error, setError) => {
-  // Handle errors from the server
-  if (error.response && error.response.data) {
-    // Check if there are multiple errors
-    if (error.response.data.errors) {
-      const serverErrors = error.response.data.errors;
-      // Set the first error message only
-      setError(serverErrors.length > 0 ? serverErrors[0].msg : null);
+export const handleApiErrorsAndTriggerErrorModal = (
+  error,
+  setError,
+  displayErrorModal
+) => {
+  if (!error) {
+    throw new Error("Invalid error object provided.");
+  }
+
+  if (error.response) {
+    devLog("error.response:", error.response);
+
+    let errorMessage = genericErrorMessage;
+
+    if (error.response.status === StatusCodes.UNPROCESSABLE_ENTITY) {
+      errorMessage = error.response.data.errors[0] || genericErrorMessage;
+    } else if (
+      error.response.status === StatusCodes.CONFLICT ||
+      error.response.status === StatusCodes.BAD_REQUEST ||
+      error.response.status === StatusCodes.NOT_FOUND
+    ) {
+      errorMessage = error.response.data.message || genericErrorMessage;
     }
-    // Check if there is a single error only
-    else if (error.response.data.error) {
-      setError(error.response.data.error);
-    }
+    setError(errorMessage);
+    displayErrorModal();
   }
 };
 

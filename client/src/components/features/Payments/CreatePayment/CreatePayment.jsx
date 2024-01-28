@@ -4,20 +4,26 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
+import {
+  devLog,
+  handleApiErrorsAndTriggerErrorModal,
+} from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
+
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
 import PaymentAmountInput from "../PaymentAmountInput/PaymentAmountInput";
 import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import Emoji from "../../../common/Emoji/Emoji";
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
+import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./CreatePayment.module.css";
-import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -37,6 +43,10 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
   const [paymentRecipientName, setPaymentRecipientName] = useState("");
   const [error, setError] = useState("");
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   const isSubmitButtonVisible =
     paymentAmount && paymentMakerName && paymentRecipientName;
 
@@ -55,15 +65,11 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       navigate("/instant-split");
     } catch (error) {
       if (error.response) {
-        // Handle bad requests
-        if (error.response.status === 400) {
-          setError(error.response.data.errors[0].message);
-        } else if (error.response.status === 409) {
-          setError(error.response.data.message);
-        }
+        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
       } else {
         setError(genericErrorMessage);
         devLog("Error creating payment:", error);
+        displayErrorModal();
       }
     }
   };
@@ -74,17 +80,15 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
         paymentAmount={paymentAmount}
         onAmountChange={setPaymentAmount}
       />
-
       <PaymentMakerSelect
         paymentMakerName={paymentMakerName}
         onPaymentMakerChange={setPaymentMakerName}
         groupMembers={groupMembers}
       />
-      <span className={styles.paymentToEmoji}>
-        <Emoji
-          label={"payment to other user emoji"}
-          emoji={emojiConstants.paymentsMade}></Emoji>{" "}
-      </span>
+      <Emoji
+        label={"payment to other user emoji"}
+        emoji={emojiConstants.paymentsMade}
+        className={styles.paymentToEmoji}></Emoji>
       <PaymentRecipientSelect
         paymentRecipientName={paymentRecipientName}
         onRecipientChange={setPaymentRecipientName}
@@ -95,7 +99,11 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
           <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
         </div>
       )}
-      <ErrorDisplay error={error} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </form>
   );
 };

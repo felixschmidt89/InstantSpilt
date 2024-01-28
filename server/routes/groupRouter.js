@@ -17,8 +17,6 @@ import {
   limiter,
   handleRateLimitExceedance,
 } from '../middleware/handleRateLimitExceedanceMiddleware.js';
-import validateGroupCodeMiddleware from '../middleware/validateGroupCodeMiddleware.js';
-import { validateGroupNamePropertyPresenceMiddleware } from '../middleware/validateRequestBodyMiddleware.js';
 
 const router = express.Router();
 
@@ -26,7 +24,7 @@ const router = express.Router();
 router.post('/', createGroup);
 
 // Change group name
-router.patch('/:groupId', validateGroupCodeMiddleware, changeGroupName);
+router.patch('/:groupId', changeGroupName);
 
 // List group names of locally stored groupCodes
 router.get('/StoredGroupNames', listGroupNamesByStoredGroupCodes);

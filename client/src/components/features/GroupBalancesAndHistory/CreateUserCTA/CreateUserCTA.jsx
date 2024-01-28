@@ -2,10 +2,10 @@
 import React from "react";
 
 // Constants and Utils
-import emojiConstants from "../../../constants/emojiConstants";
+import emojiConstants from "../../../../constants/emojiConstants";
 
 // Components
-import GroupActionsEmojiButton from "../GroupActionsEmojiButton/GroupActionsEmojiButton";
+import GroupActionsEmojiButton from "../../../common/GroupActionsEmojiButton/GroupActionsEmojiButton";
 
 // Styles
 import styles from "./CreateUserCTA.module.css";

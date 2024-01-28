@@ -49,8 +49,6 @@ const ExpenseAmountInput = ({
         ref={inputRef}
         placeholder='0.00'
         inputMode='decimal'
-        pattern='[0-9]+([,.][0-9]{1,2})?'
-        title='Only digits, ".", and "," are allowed. Maximum value is 9999.99.'
       />
     </div>
   );

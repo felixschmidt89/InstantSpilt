@@ -34,7 +34,11 @@ const ErrorModal = ({ error, onClose, isVisible }) => {
         <div className={styles.modalContent} onClick={handleModalClick}>
           {isVisible && (
             <>
-              <ErrorDisplay error={error} remWidth={30} />
+              <ErrorDisplay
+                error={error}
+                remWidth={30}
+                errorFontColor={false}
+              />
               <button onClick={onClose}>OK</button>
             </>
           )}

@@ -10,20 +10,16 @@ import {
   listExpensesAndPaymentsByUser,
 } from '../controllers/userController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
-import { validateUserNamePropertyPresenceMiddleware } from '../middleware/validateRequestBodyMiddleware.js';
-import { checkUserNameMatchMiddleware } from '../middleware/validatePropertyMatchMiddleware.js';
-import validateGroupCodeMiddleware from '../middleware/validateGroupCodeMiddleware.js';
 
 const router = express.Router();
 
 // Create new user
-router.post('/', validateUserNamePropertyPresenceMiddleware, createUser);
-
+router.post('/', createUser);
 // Get user info by id
 router.get('/:userId', getUserInfo);
 
 // Change user name
-router.patch('/:userId', validateGroupCodeMiddleware, changeUserName);
+router.patch('/:userId', changeUserName);
 
 // Delete user
 router.delete('/:userId', deleteUser);
@@ -32,11 +28,7 @@ router.delete('/:userId', deleteUser);
 router.get('/:userId/expenses-and-payments', listExpensesAndPaymentsByUser);
 
 // List group members by groupCode
-router.get(
-  '/byGroupCode/:groupCode',
-  validateGroupCodeMiddleware,
-  listAllUsersByGroupCode,
-);
+router.get('/byGroupCode/:groupCode', listAllUsersByGroupCode);
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 // List all users

@@ -4,16 +4,22 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
+import {
+  devLog,
+  handleApiErrorsAndTriggerErrorModal,
+} from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
+
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
 import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
 import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
 import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescriptionInput";
 import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
-import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./CreateExpense.module.css";
@@ -40,13 +46,16 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
   ]);
   const [error, setError] = useState(null);
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   const isSubmitButtonVisible =
     expenseAmount &&
     expensePayerName &&
     expenseDescription &&
     selectedBeneficiaries.length > 0;
 
-  // On form submission: Post expense and navigate to instant-split page
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -62,13 +71,11 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
       navigate("/instant-split");
     } catch (error) {
       if (error.response) {
-        if (error.response.status === 400) {
-          devLog("Error creating expense:", error.response);
-          setError(error.response.data.errors[0].message);
-        } else {
-          setError(genericErrorMessage);
-          devLog("Error creating expense:", error);
-        }
+        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+      } else {
+        setError(genericErrorMessage);
+        devLog("Error creating expense:", error);
+        displayErrorModal();
       }
     }
   };
@@ -100,7 +107,11 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
           )}
         </div>
       </form>
-      <ErrorDisplay error={error} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };

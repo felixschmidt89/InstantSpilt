@@ -48,11 +48,11 @@ const CreateGroupForm = ({ isOnboarding }) => {
     setError(null);
     // Validate group name
     if (!groupName.trim()) {
-      setError("Oops! Group name can't be empty.");
+      setError("Group name can't be empty.");
       return;
     }
     if (groupName.length > 50) {
-      setError("Oops! Group name can't exceed 50 characters.");
+      setError("Group name can't exceed 50 characters.");
       return;
     }
     try {

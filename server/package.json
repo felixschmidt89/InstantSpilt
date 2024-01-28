@@ -37,8 +37,7 @@
     "node-cron": "^3.0.3",
     "nodemailer": "^6.9.6",
     "react-snap": "^1.23.0",
-    "validator": "^13.11.0",
-    "winston": "^3.11.0"
+    "validator": "^13.11.0"
   },
   "devDependencies": {
     "eslint": "^8.49.0",

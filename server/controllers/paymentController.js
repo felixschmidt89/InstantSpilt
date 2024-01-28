@@ -1,7 +1,11 @@
 import Payment from '../models/Payment.js';
 import User from '../models/User.js';
 import Expense from '../models/Expense.js';
-import { errorLog, sendInternalError } from '../utils/errorUtils.js';
+import {
+  errorLog,
+  sendInternalError,
+  sendValidationError,
+} from '../utils/errorUtils.js';
 import { StatusCodes } from 'http-status-codes';
 import { setGroupLastActivePropertyToNow } from '../utils/databaseUtils.js';
 
@@ -12,6 +16,22 @@ export const createPayment = async (req, res) => {
 
     // Set the lastActive property of the group to now
     setGroupLastActivePropertyToNow(groupCode);
+
+    // Validate if paymentMakerName is provided
+    if (!paymentMakerName) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'Payment maker name is required.',
+      });
+    }
+
+    // Validate if paymentRecipientName is provided
+    if (!paymentRecipientName) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        status: 'fail',
+        message: 'Payment recipient name is required.',
+      });
+    }
 
     const paymentMaker = await User.findOne({
       userName: { $eq: paymentMakerName },
@@ -30,7 +50,7 @@ export const createPayment = async (req, res) => {
     ) {
       return res.status(StatusCodes.CONFLICT).json({
         status: 'fail',
-        message: 'Oops! Payer and recipient can not be the same person.',
+        message: 'Payer and recipient can not be the same person.',
       });
     }
 
@@ -53,22 +73,14 @@ export const createPayment = async (req, res) => {
     });
   } catch (error) {
     if (error.name === 'ValidationError') {
-      // Handle validation errors (client errors)
-      return res.status(StatusCodes.BAD_REQUEST).json({
-        status: 'fail',
-        message: 'Validation failed',
-        errors: Object.keys(error.errors).map((field) => ({
-          field,
-          message: error.errors[field].message,
-        })),
-      });
+      sendValidationError(res, error);
     } else {
       errorLog(
         error,
         'Error creating expense:',
         'Failed to create expense. Please try again later.',
       );
-      sendInternalError(res);
+      sendInternalError();
     }
   }
 };
@@ -115,7 +127,7 @@ export const updatePayment = async (req, res) => {
     ) {
       return res.status(StatusCodes.CONFLICT).json({
         status: 'fail',
-        message: 'Oops! Payer and recipient can not be the same person.',
+        message: 'Payer and recipient can not be the same person.',
       });
     }
 
@@ -129,7 +141,7 @@ export const updatePayment = async (req, res) => {
     const updatedPayment = await Payment.findByIdAndUpdate(
       paymentId,
       updatedPaymentData,
-      { new: true },
+      { new: true, runValidators: true },
     );
 
     // Update payments totals
@@ -147,22 +159,14 @@ export const updatePayment = async (req, res) => {
     });
   } catch (error) {
     if (error.name === 'ValidationError') {
-      // Handle validation errors (client errors)
-      return res.status(StatusCodes.BAD_REQUEST).json({
-        status: 'fail',
-        message: 'Validation failed',
-        errors: Object.keys(error.errors).map((field) => ({
-          field,
-          message: error.errors[field].message,
-        })),
-      });
+      sendValidationError(res, error);
     } else {
       errorLog(
         error,
         'Error updating payment:',
         'Failed to update payment. Please try again later.',
       );
-      sendInternalError(res);
+      sendInternalError();
     }
   }
 };
@@ -189,7 +193,7 @@ export const getPaymentInfo = async (req, res) => {
       'Error retrieving payment info',
       'Failed to retrieve payment information. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -221,7 +225,7 @@ export const deletePayment = async (req, res) => {
       'Error deleting payment:',
       'Failed to delete payment. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -242,7 +246,7 @@ export const listAllPayments = async (req, res) => {
       'Error listing all payments',
       'Failed to list payments. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -265,6 +269,6 @@ export const deleteAllPayments = async (req, res) => {
       'Error deleting all payments:',
       'Failed to delete all payments. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };

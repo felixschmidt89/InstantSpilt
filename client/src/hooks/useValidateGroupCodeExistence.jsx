@@ -43,7 +43,7 @@ function useValidateGroupExistence(groupCode, validationType = "continuous") {
         } else {
           setGroupExists(false);
           setError(
-            "Oops. There's no group associated with the provided groupCode."
+            "There's no group associated with the provided groupCode."
           );
           setIsValidated(true);
           devLog(`Groupcode ${groupCode} does not exist.`);

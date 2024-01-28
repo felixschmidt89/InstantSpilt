@@ -5,13 +5,13 @@ import { useState } from "react";
  *
  * @returns {Object} Object containing state and functions for error modal.
  * @property {boolean} isErrorModalVisible - Flag indicating whether the error modal is visible.
- * @property {Function} handleOnError - Function to trigger displaying the error modal.
+ * @property {Function} displayErrorModal - Function to trigger displaying the error modal.
  * @property {Function} handleCloseErrorModal - Function to close the error modal.
  */
 const useErrorModalVisibility = () => {
   const [isErrorModalVisible, setIsErrorModalVisible] = useState(false);
 
-  const handleOnError = () => {
+  const displayErrorModal = () => {
     setIsErrorModalVisible(true);
   };
 
@@ -21,7 +21,7 @@ const useErrorModalVisibility = () => {
 
   return {
     isErrorModalVisible,
-    handleOnError,
+    displayErrorModal,
     handleCloseErrorModal,
   };
 };

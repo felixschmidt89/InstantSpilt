@@ -8,6 +8,8 @@ const userSchema = new Schema(
       type: String,
       trim: true,
       required: [true, 'Missing user name'],
+      minlength: [1, 'Username must be at least 1 character long.'],
+      maxlength: [25, 'Username cannot exceed 25 characters.'],
     },
     groupCode: {
       type: String,

@@ -50,8 +50,7 @@ const ExpensePayerSelect = ({
       value={expensePayerName}
       onChange={handlePayerChange}
       onClick={handleSelectClick}
-      ref={selectRef}
-      required>
+      ref={selectRef}>
       {/* Default option */}
       <option value='' disabled>
         <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidBy}></Emoji>{" "}

@@ -5,6 +5,7 @@ const paymentSchema = new Schema(
     paymentAmount: {
       type: Number,
       required: [true, 'Missing payment amount'],
+      min: [0.01, 'The payment amount must be at least 0.01.'],
       max: [99999.99, 'The payment amount may not exceed 99999.99.'],
     },
     paymentMaker: {
@@ -22,7 +23,9 @@ const paymentSchema = new Schema(
       required: [true, 'Missing groupCode'],
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  },
 );
 
 const Payment = model('Payment', paymentSchema);

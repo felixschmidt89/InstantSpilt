@@ -5,12 +5,18 @@ import { StatusCodes } from "http-status-codes";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
-import { devLog } from "../../../utils/errorUtils";
+import {
+  devLog,
+  handleApiErrorsAndTriggerErrorModal,
+} from "../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../constants/errorConstants";
 
+// Hooks
+import useErrorModalVisibility from "../../../hooks/useErrorModalVisibility";
+
 // Components
-import ErrorDisplay from "../../common/ErrorDisplay/ErrorDisplay";
 import FormSubmitButton from "../../common/FormSubmitButton/FormSubmitButton";
+import ErrorModal from "../ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./ChangeResourceName.module.css";
@@ -42,6 +48,10 @@ const ChangeResourceName = ({
   const [newResourceName, setNewResourceName] = useState(storedResourceName);
   const [error, setError] = useState(null);
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -62,12 +72,11 @@ const ChangeResourceName = ({
       navigate("/instant-split");
     } catch (error) {
       if (error.response) {
-        if (error.response.status === StatusCodes.BAD_REQUEST) {
-          setError(error.response.data.errors[0].message);
-        } else {
-          setError(genericErrorMessage);
-          devLog(`Error updating ${resourceType} name:`, error);
-        }
+        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+      } else {
+        setError(genericErrorMessage);
+        devLog(`Error updating ${resourceType} name:`, error);
+        displayErrorModal();
       }
     }
   };
@@ -99,7 +108,11 @@ const ChangeResourceName = ({
           translateY={0.1}
         />
       </form>
-      <ErrorDisplay error={error} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };

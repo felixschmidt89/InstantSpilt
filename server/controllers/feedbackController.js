@@ -1,5 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 import nodemailer from 'nodemailer';
+import { setGroupLastActivePropertyToNow } from '../utils/databaseUtils.js';
 
 import Feedback from '../models/Feedback.js';
 
@@ -83,6 +84,6 @@ export const createFeedback = async (req, res) => {
       'Error creating feedback:',
       'Failed to create feedback. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };

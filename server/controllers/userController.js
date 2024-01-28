@@ -2,7 +2,12 @@ import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
 import Expense from '../models/Expense.js';
 import Payment from '../models/Payment.js';
-import { devLog, errorLog, sendInternalError } from '../utils/errorUtils.js';
+import {
+  devLog,
+  errorLog,
+  sendInternalError,
+  sendValidationError,
+} from '../utils/errorUtils.js';
 import { setGroupLastActivePropertyToNow } from '../utils/databaseUtils.js';
 
 export const createUser = async (req, res) => {
@@ -17,10 +22,9 @@ export const createUser = async (req, res) => {
       return res.status(StatusCodes.CONFLICT).json({
         status: 'error',
         message:
-          'Oops! This name is already taken in this group. Please pick another one.',
+          'This name is already taken in this group. Please pick another one.',
       });
     }
-
     const user = await User.create({ userName, groupCode });
     res.status(StatusCodes.CREATED).json({
       status: 'success',
@@ -28,12 +32,17 @@ export const createUser = async (req, res) => {
       message: 'User created successfully',
     });
   } catch (error) {
-    errorLog(
-      error,
-      'Error creating user:',
-      'Failed to create user. Please try again later.',
-    );
-    sendInternalError(res);
+    devLog('error:', error);
+    if (error.name === 'ValidationError') {
+      sendValidationError(res, error);
+    } else {
+      errorLog(
+        error,
+        'Error creating user:',
+        'Failed to create user. Please try again later.',
+      );
+      sendInternalError();
+    }
   }
 };
 
@@ -56,7 +65,7 @@ export const getUserInfo = async (req, res) => {
       'Error retrieving user info:',
       'Failed to retrieve user information. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -73,6 +82,17 @@ export const changeUserName = async (req, res) => {
 
     setGroupLastActivePropertyToNow(groupCode);
 
+    // Check if a user with the same name and group code already exists
+    const existingUser = await User.findOne({ userName, groupCode });
+
+    if (existingUser) {
+      return res.status(StatusCodes.CONFLICT).json({
+        status: 'error',
+        message:
+          'This name is already taken in this group. Please pick another one.',
+      });
+    }
+
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       { $set: { userName: userName } },
@@ -85,12 +105,18 @@ export const changeUserName = async (req, res) => {
       message: 'User name updated successfully.',
     });
   } catch (error) {
-    errorLog(
-      error,
-      'Error updating user name:',
-      'Failed to update user name. Please try again later.',
-    );
-    sendInternalError(res);
+    devLog('error:', error);
+    // Handle validation errors separately
+    if (error.name === 'ValidationError') {
+      sendValidationError(res, error);
+    } else {
+      errorLog(
+        error,
+        'Error updating user name:',
+        'Failed to update user name. Please try again later.',
+      );
+      sendInternalError();
+    }
   }
 };
 
@@ -142,7 +168,7 @@ export const listExpensesAndPaymentsByUser = async (req, res) => {
       'Error listing user expenses and payments:',
       'Failed to list user expenses and payments. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -165,7 +191,7 @@ export const deleteUser = async (req, res) => {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
         message:
-          "Can't delete the user because of associated transactions. Please open transactions history and remove the user from all of them first.",
+          "Can't delete the user due to associated transactions. Open the transactions history and remove the user from all first.",
       });
     }
 
@@ -189,7 +215,7 @@ export const deleteUser = async (req, res) => {
       'Error deleting user:',
       'Failed to delete user. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -213,7 +239,7 @@ export const listAllUsersByGroupCode = async (req, res) => {
       'Error listing group members by groupCode:',
       'Failed to list group members. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -234,7 +260,7 @@ export const listAllUsers = async (req, res) => {
       'Error listing all users:',
       'Failed to list all users. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
 
@@ -252,6 +278,6 @@ export const deleteAllUsers = async (req, res) => {
       'Error deleting all users:',
       'Failed to delete all users. Please try again later.',
     );
-    sendInternalError(res);
+    sendInternalError();
   }
 };
