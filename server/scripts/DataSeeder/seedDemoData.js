@@ -1,26 +1,29 @@
 import axios from 'axios';
 import Group from '../../models/Group.js';
 
+const API_FULL_URL = process.env.API_FULL_URL;
+
 /**
  * Data Seeder Script
  * -------------------
- * This script is used to seed a group with proper test data. It requires creating a new group in the FE and then passing its related groupCode.
+ * This script is used to seed a group with proper user & expenses test data. It requires creating a new group in the FE and then passing its related groupCode.
+ * Script uses application endpoints rather than manipulating the database directly.
  *
  * @param {string} groupCode - The groupCode of the group to seed.
  * @returns {Promise<void>} A promise that resolves when the seeding process is complete.
  */
 
-async function seedTestData(groupCode) {
+async function seedDemoData(groupCode) {
   // Exit early if no groupCode is provided
   if (!groupCode) {
-    console.error('No groupCode provided. Exiting script.');
+    console.error('No groupCode provided. Exiting seedDemoData script.');
     return;
   }
 
   // Check if the groupCode exists in the database, exit early if not.
   const group = await Group.findOne({ groupCode });
   if (!group) {
-    console.error('Group not found in database. Exiting script.');
+    console.error('Group not found in database. Exiting seedDemoData script.');
     return;
   }
 
@@ -38,10 +41,7 @@ async function seedTestData(groupCode) {
 
   async function createUser(user) {
     try {
-      const response = await axios.post(
-        'https://instant-split.onrender.com/api/v1/users',
-        user,
-      );
+      const response = await axios.post(`${API_FULL_URL}/users`, user);
       console.log(
         `User ${user.userName} created successfully. Response:`,
         response.data,
@@ -118,13 +118,10 @@ async function seedTestData(groupCode) {
       expense.expenseBeneficiariesNames = users.map((user) => user.userName);
 
       try {
-        const response = await axios.post(
-          'https://instant-split.onrender.com/api/v1/expenses',
-          {
-            ...expense,
-            groupCode,
-          },
-        );
+        const response = await axios.post(`${API_FULL_URL}/expenses`, {
+          ...expense,
+          groupCode,
+        });
         console.log(
           `Expense for user ${expense.expensePayerName} created successfully. Response:`,
           response.data,
@@ -152,4 +149,4 @@ async function seedTestData(groupCode) {
     });
 }
 
-export default seedTestData;
+export default seedDemoData;

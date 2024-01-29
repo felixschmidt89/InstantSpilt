@@ -2,6 +2,9 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
+// Constants and Utils
+import { INACTIVE_DAYS } from "../../../constants/dataConstants";
+
 /**
  * HelmetMetaTagsNetlify component for Single Page Application hosted on Netlify.
  *
@@ -18,8 +21,7 @@ import { Helmet } from "react-helmet-async";
  * @returns {JSX.Element} React component. */
 const HelmetMetaTagsNetlify = ({ title, description, image, path, author }) => {
   // Define default values
-  const defaultDescription =
-    "Effortlessly settle group expenses with InstantSplit, a hassle-free solution that requires no registration or app downloads. Share minimal data and split bills with ease.";
+  const defaultDescription = `Effortlessly settle group expenses with InstantSplit, a hassle-free solution that requires no registration or app downloads and purges related data after ${INACTIVE_DAYS} of group inactivity.`;
   const defaultTitle =
     "InstantSplit - simplified group expense sharing and settlement";
   const defaultImage = "https://instantsplit.de/metaTagDefaultImg.png";
