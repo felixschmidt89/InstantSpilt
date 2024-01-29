@@ -79,7 +79,7 @@ const RenderGroupBalances = ({ groupCurrency }) => {
       <Spinner />
     </div>
   ) : (
-    <div className={styles.balancesContainer}>
+    <div className={styles.container}>
       {/* Check if there is at least 1 user */}
       {userDetails.length > 0 ? (
         <RenderUserNameAndBalance

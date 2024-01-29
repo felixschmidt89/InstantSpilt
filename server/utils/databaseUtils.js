@@ -197,7 +197,7 @@ export const setGroupLastActivePropertyToNow = async (groupCode) => {
     } else {
       // If the group is not found, log and transform the error
       errorLog(
-        new Error('Group not found.'),
+        new Error(`Group with ${groupCode} not found.'`),
         'Error setting lastActive:',
         'Failed to update lastActive. Group not found.',
       );

@@ -61,12 +61,14 @@ const RenderSettlementPaymentSuggestions = ({
                 {groupCurrency}
               </span>
             </div>
-            <ConfirmSettlementPayment
-              paymentAmount={settlement.amount}
-              paymentMakerName={settlement.from}
-              paymentRecipientName={settlement.to}
-              groupCode={groupCode}
-            />
+            <div className={styles.confirm}>
+              <ConfirmSettlementPayment
+                paymentAmount={settlement.amount}
+                paymentMakerName={settlement.from}
+                paymentRecipientName={settlement.to}
+                groupCode={groupCode}
+              />
+            </div>
           </li>
         ))}
       </ul>

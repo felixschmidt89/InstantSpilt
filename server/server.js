@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import app from './app.js';
 import cron from 'node-cron';
 import purgeInactiveGroups from './scripts/dataPurge/purgeInactiveGroups.js';
+import seedTestData from './scripts/TestData/dataSeeder.js';
 
 // Deconstruct environment variables
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME, PORT, NODE_ENV } = process.env;
@@ -26,7 +27,8 @@ mongoose
     console.log('🤨');
   });
 
-// Schedule the purgeInactiveGroups script to run at 3 am CET daily
+// Scripts
+// Schedule the inactive group data purge to run at 3 am CET daily
 cron.schedule(
   '0 3 * * *',
   () => {
@@ -34,9 +36,12 @@ cron.schedule(
     purgeInactiveGroups();
   },
   {
-    timezone: 'Europe/Paris', // Set timezone to CET
+    timezone: 'Europe/Paris',
   },
 );
+
+// Seed production group with proper test data
+// seedTestData('43GKFH7U');
 
 // Define the port
 const port = PORT || 3000;

@@ -1,7 +1,9 @@
 .container {
-  margin-top: 1rem;
   background-color: var(--color-main);
   color: var(--color-dark);
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 1rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
   border-radius: 0.3rem;
@@ -10,7 +12,6 @@
 }
 .paymentSuggestions {
   margin-top: 0.8rem;
-  width: fit-content;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
@@ -21,4 +22,8 @@
   font-weight: 900;
   color: var(--color-signal);
   margin-right: 1rem;
+}
+
+.confirm {
+  margin-left: auto; /* push to the right */
 }

@@ -1,8 +1,6 @@
 .balancesContainer {
-  height: 75%;
+  height: 100%;
   overflow-y: auto;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 .userDetails {
