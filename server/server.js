@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import app from './app.js';
 import cron from 'node-cron';
 import purgeInactiveGroups from './scripts/dataPurge/purgeInactiveGroups.js';
-import seedTestData from './scripts/TestData/dataSeeder.js';
+// import seedTestData from './scripts/TestData/dataSeeder.js';
 
 // Deconstruct environment variables
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME, PORT, NODE_ENV } = process.env;
