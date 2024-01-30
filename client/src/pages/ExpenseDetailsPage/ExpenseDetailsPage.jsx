@@ -37,9 +37,8 @@ const ExpenseDetailsPage = () => {
       <InAppNavigation back={true} />
       <div className={styles.container}>
         <h1>
-          {" "}
+          expense details{" "}
           <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
-          Expense details
         </h1>
         {expenseInfoIsFetched && currencyInfoIsFetched ? (
           <>

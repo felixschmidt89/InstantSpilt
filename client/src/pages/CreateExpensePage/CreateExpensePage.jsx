@@ -28,7 +28,7 @@ const CreateExpensePage = () => {
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>
-          Add expense{" "}
+          add expense{" "}
           <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
         </h1>
         {!isFetched ? (

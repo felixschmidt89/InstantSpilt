@@ -26,9 +26,11 @@ const RenderExpenseDetails = ({ expenseInfo, groupCurrency }) => {
         {expenseInfo.expenseAmount.toFixed(2)}
         {groupCurrency}
       </h2>
-      <p>Description: {expenseInfo.expenseDescription}</p>
       <p>
-        <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidBy}></Emoji>{" "}
+        <strong>description</strong>: {expenseInfo.expenseDescription}
+      </p>
+      <p>
+        <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidBy}></Emoji>:{" "}
         {expenseInfo.expensePayer.userName}
       </p>
     </div>

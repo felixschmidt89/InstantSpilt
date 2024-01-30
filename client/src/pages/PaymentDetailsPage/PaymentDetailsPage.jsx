@@ -38,10 +38,10 @@ const PaymentDetailsPage = () => {
       {paymentInfoIsFetched && currencyInfoIsFetched ? (
         <div className={styles.container}>
           <h1>
+            payment details{" "}
             <Emoji
               label={"payment emoji"}
-              emoji={emojiConstants.payment}></Emoji>{" "}
-            Payment details
+              emoji={emojiConstants.payment}></Emoji>
           </h1>
           <RenderPaymentDetails
             groupCode={groupCode}

@@ -17,7 +17,7 @@ import styles from "./TopSectionExplanation.module.css";
 const TopSectionExplanation = () => {
   return (
     <div>
-      <h2>Top section</h2>
+      <h2>top section</h2>
       <div className={styles.noLink}>
         <UserActionsBar />
       </div>

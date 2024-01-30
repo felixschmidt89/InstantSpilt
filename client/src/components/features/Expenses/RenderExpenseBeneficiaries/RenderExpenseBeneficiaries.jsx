@@ -13,11 +13,15 @@ import styles from "./RenderExpenseBeneficiaries.module.css";
 const RenderExpenseBeneficiaries = ({ expenseBeneficiaries }) => {
   return (
     <div className={styles.container}>
-      <h2>Beneficiaries:</h2>
+      <h3>beneficiaries:</h3>
       <div className={styles.beneficiariesList}>
         {expenseBeneficiaries.map((beneficiary, index) => (
           <span key={beneficiary._id} className={styles.beneficiary}>
-            <span className={styles.noWrap}>{beneficiary.userName}</span>
+            <span className={styles.noWrap}>
+              {beneficiary.userName}
+              {/* Add a non-breaking space after the comma for all items except for the last one */}
+              {index === expenseBeneficiaries.length - 1 ? "" : ",\u00A0"}
+            </span>
           </span>
         ))}
       </div>

@@ -29,7 +29,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
         {/* Icon navigating to share group page */}
         <ReactIconNavigate
           icon={IoPersonAddOutline}
-          tooltip='Invite & share group'
+          tooltip='invite & share group'
           route={`/share-group/${initialGroupName}/${groupCode}`}
           iconSize={3.5}
           translateY={0.3}
@@ -40,7 +40,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
         {/* Icon navigating to switch group page */}
         <ReactIconNavigate
           icon={PiUserSwitchLight}
-          tooltip='Switch group'
+          tooltip='switch group'
           route={`/manage-groups`}
           iconSize={4.2}
           marginRight={0.3}
@@ -50,7 +50,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
         {/* Icon navigating to tutorial page */}
         <ReactIconNavigate
           icon={IoHelpCircleOutline}
-          tooltip='Tutorial'
+          tooltip='tutorial'
           route={`/tutorial/${initialGroupName}/${groupCode}`}
           marginRight={0.3}
           iconSize={4.2}
@@ -60,7 +60,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
         {/* Icon navigating to contact developer page */}
         <ReactIconNavigate
           icon={BiMessageError}
-          tooltip='Contact'
+          tooltip='contact'
           route={`/contact/${groupCode}`}
           iconSize={3.9}
           translateY={0.2}
@@ -71,7 +71,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
         {/* Icon navigating to leave group page */}
         <ReactIconNavigate
           icon={IoEnterOutline}
-          tooltip='Leave group'
+          tooltip='leave group'
           route={`/leave-group/${initialGroupName}/${groupCode}`}
           iconSize={4}
         />

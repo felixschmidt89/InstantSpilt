@@ -25,6 +25,10 @@
   color: var(--color-dark2);
 }
 
+.label {
+  white-space: nowrap;
+}
+
 .toggleButton {
   color: var(--color-dark);
   background-color: var(--color-main);

@@ -52,7 +52,7 @@ const ForgetGroupOnDevicePage = () => {
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <div className={styles.contentContainer}>
-          <h1>Forget group on this device</h1>
+          <h1>forget group on this device</h1>
           <p>
             Are you sure you want to leave <strong>{groupName}</strong> on this
             device?

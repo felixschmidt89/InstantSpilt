@@ -58,7 +58,7 @@ const ExpenseBeneficiariesInput = ({
 
   return (
     <>
-      <h3>Beneficiaries: </h3>
+      <h3>beneficiaries: </h3>
       <button
         className={`${styles.toggleButton} ${isUpdate ? styles.isUpdate : ""}`}
         type='button'

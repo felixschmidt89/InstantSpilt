@@ -41,7 +41,7 @@ const LegalNoticePage = () => {
       )}
       {isRetrieved && !isInvitedUser && <InAppNavigationBar back={true} />}
       <div className={styles.container}>
-        <h1>Legal notice (Impressum)</h1>
+        <h1>Legal Notice (Impressum)</h1>
         <p className={styles.note}>
           As required by the Telemediengesetz for German websites.
         </p>

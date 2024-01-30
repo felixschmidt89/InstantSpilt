@@ -26,13 +26,13 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
   return (
     <>
       <div className={styles.container}>
-        <h2>GroupCode</h2>
+        <h2>groupCode</h2>
         <p>
-          All you need to access this group is your <strong>Groupcode</strong>.
+          All you need to access this group is your <strong>groupcode</strong>.
           So be sure to write it down in a safe place.
         </p>
         <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
-        <p>
+        <p className={styles.invitationLink}>
           Alternatively, bookmark the{" "}
           {/* Link to the invitation URL opening new tab */}
           <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>

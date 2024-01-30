@@ -10,7 +10,7 @@ import styles from "./MiddleSectionExplanation.module.css";
 const MiddleSectionExplanation = () => {
   return (
     <div>
-      <h2>Middle section:</h2>
+      <h2>middle section:</h2>
       <ul className={styles.noLink}>
         <li>
           <button className={styles.button}>Balances</button>

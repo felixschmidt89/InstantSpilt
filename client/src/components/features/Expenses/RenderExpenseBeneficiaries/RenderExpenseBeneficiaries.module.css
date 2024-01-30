@@ -14,8 +14,3 @@
 .beneficiary {
   white-space: nowrap;
 }
-
-/* Render comma after names except for last one */
-.beneficiary:not(:last-child)::after {
-  content: ",";
-}

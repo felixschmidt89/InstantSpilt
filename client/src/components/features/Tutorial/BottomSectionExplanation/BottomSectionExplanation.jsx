@@ -17,14 +17,14 @@ import styles from "./BottomSectionExplanation.module.css";
 const BottomSectionExplanation = () => {
   return (
     <div>
-      <h2>Bottom section</h2>
+      <h2>bottom section</h2>
       <div className={styles.noLink}>
         <GroupActionsBar />
       </div>
       <div className={styles.noLink}>
         <ul>
           <li>
-            Add expenses{" "}
+            add expenses{" "}
             <span className={styles.emojiParenthesis}>
               (
               <Emoji

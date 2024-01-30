@@ -39,7 +39,7 @@ function TutorialPage() {
       <PiratePx COUNT_IDENTIFIER={"tutorial"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <h1>Tutorial</h1>
+        <h1>tutorial</h1>
         <TopSectionExplanation />
         <MiddleSectionExplanation />
         <BottomSectionExplanation />
