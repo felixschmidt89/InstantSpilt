@@ -3,7 +3,7 @@
 }
 
 .customIcon:hover {
-  color: var(--color-hover);
+  color: var(--color-success);
 }
 
 .iconContainer {
@@ -22,8 +22,4 @@
   border-radius: 0.4rem;
   white-space: nowrap;
   z-index: 1;
-}
-.iconContainer:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
 }

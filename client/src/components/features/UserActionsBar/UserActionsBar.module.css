@@ -15,7 +15,3 @@
 .container:hover {
   box-shadow: 0 0 0.5rem var(--color-signal);
 }
-
-.icon:hover {
-  color: var(--color-success);
-}

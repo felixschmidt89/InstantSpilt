@@ -13,8 +13,8 @@
 
 input[type="checkbox"] {
   appearance: none;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
   background-color: var(--color-main);
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.4rem;
@@ -28,8 +28,8 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   background-color: var(--color-signal);
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.2rem;
+  height: 2.2rem;
   border-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);
   /* checkmark form */

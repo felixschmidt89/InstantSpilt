@@ -55,7 +55,7 @@ export const sections = [
     key: "section9",
     title: "GroupCode Accessibility",
     content:
-      "Please note that there is no way to restore a groupCode. If you and all other group members lose it, the group will no longer be accessible. We can not provide support in such situations as we - by design - can not identify our users. This means that your data is ultimately in your hands, and if you happen to lose access to it, it's irrecoverable and will be purged (see Data Purge).",
+      "Please note that there is no way to restore a groupCode. If you and all other group members lose it, the group will no longer be accessible. We cannot provide support in such situations as we, by design, cannot identify our users. This means that your data is ultimately in your hands, and if you happen to lose access to it, it's irrecoverable and will be purged (see Data Purge).",
   },
   {
     key: "section10",

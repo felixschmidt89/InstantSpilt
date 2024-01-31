@@ -58,7 +58,6 @@ const DeleteResource = ({
 
   const handleShowConfirmation = () => {
     setIsConfirmationVisible(true);
-    setLocalError(null);
   };
 
   const handleHideConfirmation = () => {

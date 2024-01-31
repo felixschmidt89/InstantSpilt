@@ -10,18 +10,18 @@ import styles from "./ReactIconNavigate.module.css";
  *
  * @param {Object} props - The component props.
  * @param {string} props.route - The route to navigate to.
- * @param {Function} props.onClick - The onClick function for the icon.
+ * @param {Function} props.onClick - The callback function for the icon.
  * @param {React.Component} props.icon - The React icon component to render.
- * @param {string} props.iconSize - The font size of the icon in rem units.
- * @param {string} props.marginRight - The margin right for the icon in rem units.
+ * @param {string} props.iconSize - The font size of the icon in rem unit.
+ * @param {string} props.marginRight - The margin right for the icon in rem unit.
  * @param {string} props.tooltip - The tooltip text to display on hover.
  * @param {string} props.tooltipFontSize - The font size of the tooltip text in rem units.
  * @param {string} props.email - The email address to open in the default email client.
  * @param {string} props.url - The URL to open in a new tab.
- * @param {boolean} props.cursorPointer - Whether the icon should have a pointer cursor. Default is true.
- * @param {number} props.translateY - The vertical translation of the icon in rem units.
- * @param {number} props.tooltipBottom - The distance of the tooltip from the bottom of the icon as a percentage. Default is 100.
- * @returns {React.Component} The rendered ReactIconNavigate component.
+ * @param {boolean} props.cursorPointer - Whether the icon should have a pointer cursor. Defaults to true.
+ * @param {number} props.translateY - The vertical translation of the icon in rem unit.
+ * @param {number} props.tooltipBottom - The distance of the tooltip from the bottom of the icon as percentage. Default is 100.
+ * @returns {React.Component} React component.
  */
 const ReactIconNavigate = ({
   route,
@@ -41,6 +41,11 @@ const ReactIconNavigate = ({
   const navigate = useNavigate();
 
   const handleIconClick = () => {
+    // Hide tooltip after 1 second if still visible (e.g. when clicking on the icon on mobile)
+    setTimeout(() => {
+      setIsTooltipVisible(false);
+    }, 1000);
+
     if (email) {
       window.location.href = `mailto:${email}`;
     } else if (url) {
@@ -59,7 +64,8 @@ const ReactIconNavigate = ({
     <div
       className={styles.iconContainer}
       onMouseEnter={() => setIsTooltipVisible(true)}
-      onMouseLeave={() => setIsTooltipVisible(false)}>
+      onMouseLeave={() => setIsTooltipVisible(false)}
+      onClick={handleIconClick}>
       {isTooltipVisible && tooltip && (
         <div
           className={styles.tooltip}
@@ -70,9 +76,8 @@ const ReactIconNavigate = ({
           {tooltip}
         </div>
       )}
-      {/* Render React icon  */}
+      {/* Render React icon */}
       <IconComponent
-        onClick={handleIconClick}
         className={styles.customIcon}
         style={{
           fontSize: `${iconSize}rem`,
