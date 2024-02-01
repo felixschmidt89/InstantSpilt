@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from "react";
 
 // Constants and Utils
-import { commaToDotDecimalSeparator } from "../../../../utils/formatUtils";
+import { validateAndProcessAmountInput } from "../../../../utils/formatUtils";
 
 // Styles
 import styles from "./PaymentAmountInput.module.css";
@@ -41,7 +41,7 @@ const PaymentAmountInput = ({
 
   // set payment amount state in parent component, convert comma separator to dot prior to posting
   const handlePaymentAmountChange = (e) => {
-    onAmountChange(commaToDotDecimalSeparator(e.target.value));
+    onAmountChange(validateAndProcessAmountInput(e.target.value));
     if (setFormChanged) {
       setFormChanged(true);
     }

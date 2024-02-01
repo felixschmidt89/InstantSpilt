@@ -10,6 +10,7 @@ import {
 } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
+import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
 
 // Components
 import PaymentAmount from "../PaymentAmountInput/PaymentAmountInput";
@@ -69,7 +70,10 @@ const UpdatePayment = ({
     useErrorModalVisibility();
 
   const isSubmitButtonVisible =
-    formChanged && paymentAmount && paymentMakerName && paymentRecipientName;
+    formChanged &&
+    paymentAmount >= MINIMUM_VALID_AMOUNT &&
+    paymentMakerName &&
+    paymentRecipientName;
 
   // useEffect to handle form changes
   useEffect(() => {

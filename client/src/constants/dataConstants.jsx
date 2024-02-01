@@ -14,3 +14,11 @@ export const BALANCE_THRESHOLD = 0.01;
  * @type {number}
  */
 export const INACTIVE_DAYS = 90;
+
+/**
+ * The minimum valid amount for amount inputs.
+ *
+ * @constant
+ * @type {number}
+ */
+export const MINIMUM_VALID_AMOUNT = 0.01;

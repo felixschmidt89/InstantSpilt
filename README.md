@@ -16,7 +16,7 @@ A user centered MERN Full Stack application designed for settling group expenses
 
 - **Project idea**: Frustrated with the need for each of my friends to download an app to settle our shared trip expenses, I decided to build InstantSplit to fill in the gap.
 - **Project purpose**: In September 2023, when I was still a Web Development student, I took on this project to continue learning and showcase my coding skills while creating a practical tool for others.
-- **Project status**: The application has been fully functional since the release of the MVP on 03/10/2023 and will continue to receive occasional improvements.
+- **Project status**: The application has been fully functional since the release of the MVP on 03/10/2023 and will continue to receive occasional improvements. All essential user features have been added in phase 2, further development will focus on adding unit tests, data encryption and server side refactoring.
 
 ## Technologies
 
@@ -56,7 +56,7 @@ A user centered MERN Full Stack application designed for settling group expenses
   - Building a Full Stack app from scratch for the very first time also provided me with highly valuable insights into the fundamental mechanics of web applications which also gave me the confidence of being able to code and deploy a proper application.
   - Most importantly, after having learned JavaScript as well as Frontend and Backend fundamentals, I was uncertain about my initial career path. While coding this app, I quickly recognized the beauty of React and the benefit of immediate visual results and decided to focus on Frontend as my initial career path.
 
-- **Phase 2 (Refactor client)**:
+- **Phase 2 (Refactor client and add essential functionality)**:
   - After having worked on a group project as a React developer, I returned to InstantSplit in January 2024 thinking I'd only apply some new learnings from that project but ended up refactoring the entire client codebase. This involved making it more modular, standardizing my code, establishing my own coding style, and also writing cleaner code in general.
   - In Phase 1, I had coded with the application user in mind. In Phase 2, I had potential colleagues in mind and aimed at setting up a project structure and writing code in a way that requires a minimum amount of explanatory comments.
   - I ended up significantly shortening the codebase while creating a more robust, easier-to-maintain and amend codebase with fewer unwanted side effects. Simultaneously, it should now be much easier to comprehend by others.

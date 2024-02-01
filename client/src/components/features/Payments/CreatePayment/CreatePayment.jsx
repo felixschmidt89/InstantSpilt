@@ -10,6 +10,7 @@ import {
 } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
+import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -48,7 +49,9 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
     useErrorModalVisibility();
 
   const isSubmitButtonVisible =
-    paymentAmount && paymentMakerName && paymentRecipientName;
+    paymentAmount >= MINIMUM_VALID_AMOUNT &&
+    paymentMakerName &&
+    paymentRecipientName;
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();

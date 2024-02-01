@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 
 // Constants and Utils
-import { commaToDotDecimalSeparator } from "../../../../utils/formatUtils";
+import { validateAndProcessAmountInput } from "../../../../utils/formatUtils";
 
 // Styles
 import styles from "./ExpenseAmountInput.module.css";
@@ -32,8 +32,7 @@ const ExpenseAmountInput = ({
   };
 
   const handleExpenseAmountChange = (e) => {
-    // update expense amount state and convert separator
-    onAmountChange(commaToDotDecimalSeparator(e.target.value));
+    onAmountChange(validateAndProcessAmountInput(e.target.value));
     if (setFormChanged) {
       setFormChanged(true);
     }
