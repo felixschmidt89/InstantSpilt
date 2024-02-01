@@ -28,6 +28,15 @@ A user centered MERN Full Stack application designed for settling group expenses
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+
+## Libraries
+
+![Axios](https://img.shields.io/badge/Axios-61DAFB?style=for-the-badge&logo=axios&logoColor=white)
+![http-status-codes](https://img.shields.io/badge/http--status--codes-4285F4?style=for-the-badge)
+![React Helmet Async](https://img.shields.io/badge/React%20Helmet%20Async-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![React Icons](https://img.shields.io/badge/React%20Icons-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![React Router DOM](https://img.shields.io/badge/React%20Router%20DOM-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
 ## Access the application or try the demo.
 

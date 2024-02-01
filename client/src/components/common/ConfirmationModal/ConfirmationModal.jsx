@@ -43,7 +43,6 @@ const ConfirmationModal = ({
     isVisible && (
       <div className={styles.modal} onClick={handleOutsideClick}>
         <div className={styles.modalContent} onClick={handleModalClick}>
-          <p>{message}</p>
           {error ? (
             <>
               <ErrorDisplay error={error} remWidth={30} errorFontColor={true} />
@@ -51,6 +50,7 @@ const ConfirmationModal = ({
             </>
           ) : (
             <>
+              <p>{message}</p>
               <ReactIconNavigate
                 icon={IoCheckmarkCircleOutline}
                 onClick={onConfirm}

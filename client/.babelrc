@@ -1,0 +1,5 @@
+// Babel preset-env is used to transpile modern JavaScript syntax to an older version,
+// necessary for compatibility with ES6 modules in JEST tests.
+{
+  "presets": ["@babel/preset-env"]
+}
