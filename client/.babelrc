@@ -1,5 +1,14 @@
-// Babel preset-env is used to transpile modern JavaScript syntax to an older version,
-// necessary for compatibility with ES6 modules in JEST tests.
+// Needed for Jest.
 {
-  "presets": ["@babel/preset-env"]
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ],
+    "@babel/preset-react"
+  ]
 }
