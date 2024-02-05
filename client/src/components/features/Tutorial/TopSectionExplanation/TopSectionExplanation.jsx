@@ -3,6 +3,7 @@ import React from "react";
 import { IoPersonAddOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
+import { IoHelpCircleOutline } from "react-icons/io5";
 
 // Components
 import UserActionsBar from "../../UserActionsBar/UserActionsBar";
@@ -17,13 +18,23 @@ import styles from "./TopSectionExplanation.module.css";
 const TopSectionExplanation = () => {
   return (
     <div>
-      <h2>top section</h2>
+      <h2>user bar</h2>
       <div className={styles.noLink}>
         <UserActionsBar />
       </div>
       <div className={styles}>
-        Contains features not directly related to settling expenses, such as
-        inviting others to the group{" "}
+        show tutorial
+        <span className={styles.noWrap}>
+          (
+          <ReactIconNavigate
+            iconSize={"1.9"}
+            icon={IoHelpCircleOutline}
+            cursorPointer={false}
+            translateY={0.5}
+          />
+          ),
+        </span>{" "}
+        invite others to group{" "}
         <span className={styles.noWrap}>
           (
           <ReactIconNavigate
@@ -32,16 +43,16 @@ const TopSectionExplanation = () => {
             cursorPointer={false}
             translateY={0.3}
           />
-          )
-        </span>{" "}
-        , creating & switching to other groups (
+          ),
+        </span>
+        {""} create or switch to other group (
         <ReactIconNavigate
           iconSize={"1.8"}
           icon={PiUserSwitchLight}
           cursorPointer={false}
           translateY={0.3}
         />
-        ) or leaving the current group{" "}
+        ) & leave group{" "}
         <span className={styles.noWrap}>
           (
           <ReactIconNavigate

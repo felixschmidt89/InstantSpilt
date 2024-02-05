@@ -52,7 +52,7 @@ function OnboardingTutorialPage() {
       )}
 
       <div className={styles.container}>
-        <h1>Brief explanation</h1>
+        <h1>Onboarding</h1>
         <TopSectionExplanation />
         <MiddleSectionExplanation />
         <BottomSectionExplanation />

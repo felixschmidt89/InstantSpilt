@@ -38,11 +38,11 @@ const AcceptGroupInvitationAndJoinPage = () => {
           <>
             <h1>Hi there!</h1>
             <InvitationIntro groupData={groupData} />
-            <InstantSplitIntroSection isInvitation={true} />
             <AcceptGroupInvitation
-              groupName={groupName}
               groupCode={groupCode}
+              groupName={groupName}
             />
+            <InstantSplitIntroSection isInvitation={true} />
             <ShowTermsAndConditions />
           </>
         )}

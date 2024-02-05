@@ -1,5 +1,7 @@
 .container {
   margin-top: 1rem;
+  padding: 0 1rem; /* Limiting width while keeping scrollbar on the border */
+  margin-bottom: 2rem;
 }
 
 .button {

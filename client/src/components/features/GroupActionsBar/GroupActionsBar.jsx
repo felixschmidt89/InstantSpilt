@@ -20,22 +20,6 @@ const GroupActionsBar = () => {
       className={styles.groupActionsBar}
       role='toolbar'
       aria-label='Group Actions'>
-      {/* Button for navigating to adding expenses */}
-      <GroupActionsEmojiButton
-        route={"create-expense"}
-        emoji={emojiConstants.expense}
-        tooltipText='add expense'
-        ariaLabel='add expense emoji'
-      />
-
-      {/* Button for navigating to adding payments */}
-      <GroupActionsEmojiButton
-        route={"create-payment"}
-        emoji={emojiConstants.payment}
-        tooltipText='add payment'
-        ariaLabel='add payment emoji'
-      />
-
       {/* Button for navigating to adding users */}
       <GroupActionsEmojiButton
         route={"create-users"}
@@ -43,7 +27,13 @@ const GroupActionsBar = () => {
         tooltipText='add user'
         ariaLabel='add user emoji'
       />
-
+      {/* Button for navigating to group settings */}
+      <GroupActionsEmojiButton
+        route={"group-settings"}
+        emoji={emojiConstants.settings}
+        tooltipText='group settings'
+        ariaLabel='group settings emoji'
+      />
       {/* Button for navigating to settling expenses */}
       <GroupActionsEmojiButton
         route={"settle-expenses"}
@@ -51,12 +41,20 @@ const GroupActionsBar = () => {
         tooltipText='settle expenses'
         ariaLabel='settle expenses emoji'
       />
-      {/* Button for navigating to group settings */}
+      {/* Button for navigating to adding payments */}
       <GroupActionsEmojiButton
-        route={"group-settings"}
-        emoji={emojiConstants.settings}
-        tooltipText='group settings'
-        ariaLabel='group settings emoji'
+        route={"create-payment"}
+        emoji={emojiConstants.payment}
+        tooltipText='add payment'
+        ariaLabel='add payment emoji'
+      />
+      {/* Button for navigating to adding expenses */}
+
+      <GroupActionsEmojiButton
+        route={"create-expense"}
+        emoji={emojiConstants.expense}
+        tooltipText='add expense'
+        ariaLabel='add expense emoji'
       />
     </div>
   );

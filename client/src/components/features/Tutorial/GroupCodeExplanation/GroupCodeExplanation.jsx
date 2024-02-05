@@ -26,7 +26,7 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
   return (
     <>
       <div className={styles.container}>
-        <h2>groupCode</h2>
+        <h2>retain access to group</h2>
         <p>
           All you need to access this group is your <strong>groupcode</strong>.
           So be sure to write it down in a safe place.

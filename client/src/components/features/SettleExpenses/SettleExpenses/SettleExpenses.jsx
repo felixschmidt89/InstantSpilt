@@ -87,6 +87,12 @@ const SettleExpenses = () => {
           {/* Check if there are users with unsettled balances */}
           {unsettledUsers.length !== 0 && groupCurrencyIsFetched ? (
             <div className={styles.container}>
+              <RenderSettlementPaymentSuggestions
+                positiveBalanceUsers={positiveBalanceUsers}
+                negativeBalanceUsers={negativeBalanceUsers}
+                groupCurrency={groupCurrency}
+                groupCode={groupCode}
+              />
               <UsersWithNegativeBalance
                 negativeBalanceUsers={negativeBalanceUsers}
                 groupCurrency={groupCurrency}
@@ -94,12 +100,6 @@ const SettleExpenses = () => {
               <UsersWithPositiveBalance
                 positiveBalanceUsers={positiveBalanceUsers}
                 groupCurrency={groupCurrency}
-              />
-              <RenderSettlementPaymentSuggestions
-                positiveBalanceUsers={positiveBalanceUsers}
-                negativeBalanceUsers={negativeBalanceUsers}
-                groupCurrency={groupCurrency}
-                groupCode={groupCode}
               />
             </div>
           ) : (

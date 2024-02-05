@@ -20,6 +20,7 @@ const ExpenseBeneficiariesInput = ({
 }) => {
   const divRef = useRef(null);
   const buttonRef = useRef(null);
+  const inputRef = useRef(null);
 
   // If update, remove isUpdate class after click on either toggle button or beneficiares div, so that input does not fall back to appearing inactive
   const handleDivOrButtonClick = () => {
@@ -73,16 +74,20 @@ const ExpenseBeneficiariesInput = ({
         ref={divRef}>
         <div>
           {groupMembers.map((member) => (
-            <label className={styles.label} key={member}>
-              <input
-                type='checkbox'
-                value={member}
-                // Set the 'checked' attribute of the checkbox based on whether the current 'member' is included in the 'selectedBeneficiaries' array.
-                checked={selectedBeneficiaries.includes(member)}
-                onChange={handleCheckboxChange}
-              />
-              {member}
-            </label>
+            <span className={styles.label} key={member}>
+              <label>
+                <input
+                  className={`${styles.input} ${
+                    isUpdate ? styles.isUpdate : ""
+                  }`}
+                  type='checkbox'
+                  value={member}
+                  checked={selectedBeneficiaries.includes(member)}
+                  onChange={handleCheckboxChange}
+                />
+                {member}
+              </label>
+            </span>
           ))}
         </div>
       </div>

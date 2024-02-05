@@ -25,9 +25,9 @@
   color: var(--color-dark2);
 }
 
-/* .label {
-  white-space: nowrap;
-} */
+.label {
+  display: inline-block;
+}
 
 .toggleButton {
   color: var(--color-dark);
@@ -55,7 +55,7 @@
 .toggleButton.isUpdate:focus {
   color: var(--color-dark2);
 }
-.beneficiaries input[type="checkbox"] {
+.beneficiaries .input {
   appearance: none;
   width: 1.6rem;
   height: 1.6rem;
@@ -70,7 +70,7 @@
   margin: 0.2rem;
 }
 
-.beneficiaries input[type="checkbox"]:checked {
+.beneficiaries .input:checked {
   background-color: var(--color-signal);
   border-color: var(--color-success);
   box-shadow: 0 0 0.5rem var(--color-success);

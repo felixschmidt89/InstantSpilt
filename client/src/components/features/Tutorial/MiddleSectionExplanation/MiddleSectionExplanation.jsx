@@ -10,20 +10,20 @@ import styles from "./MiddleSectionExplanation.module.css";
 const MiddleSectionExplanation = () => {
   return (
     <div>
-      <h2>middle section:</h2>
+      <h2>user balances and group history</h2>
       <ul className={styles.noLink}>
         <li>
           <button className={styles.button}>Balances</button>
           <div>
-            Displays users&rsquo; current balances; click a name to view totals
-            and transaction history
+            users&rsquo; balances; click name to view user's totals and
+            transaction history and make changes.
           </div>
         </li>
         <li>
           <button className={styles.button}>History</button>
           <div>
-            Lists all group expenses and payments; click an amount to view
-            transactional details & make changes.
+            all group expenses and payments; click to view transactional details
+            and update or delete.
           </div>
         </li>
       </ul>

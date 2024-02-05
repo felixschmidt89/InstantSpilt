@@ -31,10 +31,6 @@ const AcceptGroupInvitation = ({ groupName, groupCode }) => {
 
   return (
     <div className={styles.container}>
-      <p>
-        To join <strong>{groupName}</strong>, and settle expenses immediately,
-        simply accept this invitation.
-      </p>
       <h2>Are you in?</h2>
       <button className={styles.button} onClick={handleAcceptInvitation}>
         Sure!

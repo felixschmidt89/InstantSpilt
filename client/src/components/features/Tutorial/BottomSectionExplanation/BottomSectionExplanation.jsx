@@ -17,7 +17,7 @@ import styles from "./BottomSectionExplanation.module.css";
 const BottomSectionExplanation = () => {
   return (
     <div>
-      <h2>bottom section</h2>
+      <h2>group bar</h2>
       <div className={styles.noLink}>
         <GroupActionsBar />
       </div>
@@ -44,10 +44,9 @@ const BottomSectionExplanation = () => {
             <span className={styles.emojiParenthesis}>
               (<Emoji label={"user emoji"} emoji={emojiConstants.user}></Emoji>)
             </span>
-            .
           </li>
           <li>
-            Show unsettled balances and payment suggestions{" "}
+            show settlement payment suggestions{" "}
             <span className={styles.emojiParenthesis}>
               (
               <Emoji
@@ -57,7 +56,7 @@ const BottomSectionExplanation = () => {
             </span>
           </li>
           <li>
-            Change group settings{" "}
+            change group settings{" "}
             <span className={styles.emojiParenthesis}>
               (
               <Emoji

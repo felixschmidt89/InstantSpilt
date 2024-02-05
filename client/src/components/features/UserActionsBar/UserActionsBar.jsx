@@ -26,14 +26,23 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
   return (
     <div className={styles.container}>
       <span className={styles.icon}>
-        {/* Icon navigating to share group page */}
+        {/* Icon navigating to contact developer page */}
         <ReactIconNavigate
-          icon={IoPersonAddOutline}
-          tooltip='invite & share group'
-          route={`/share-group/${initialGroupName}/${groupCode}`}
-          iconSize={3.5}
-          translateY={0.3}
-          marginRight={0.3}
+          icon={BiMessageError}
+          tooltip='contact'
+          route={`/contact/${groupCode}`}
+          iconSize={3.7}
+          translateY={0.2}
+        />
+      </span>
+      <span className={styles.icon}>
+        {/* Icon navigating to leave group page */}
+        <ReactIconNavigate
+          icon={IoEnterOutline}
+          tooltip='leave group'
+          route={`/leave-group/${initialGroupName}/${groupCode}`}
+          iconSize={4}
+          marginRight={0.4}
         />
       </span>
       <span className={styles.icon}>
@@ -43,7 +52,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
           tooltip='switch group'
           route={`/manage-groups`}
           iconSize={4.2}
-          marginRight={0.3}
+          marginRight={0.1}
         />
       </span>
       <span className={styles.icon}>
@@ -52,31 +61,19 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
           icon={IoHelpCircleOutline}
           tooltip='tutorial'
           route={`/tutorial/${initialGroupName}/${groupCode}`}
-          marginRight={0.3}
           iconSize={4.2}
         />
       </span>
       <span className={styles.icon}>
-        {/* Icon navigating to contact developer page */}
+        {/* Icon navigating to share group page */}
         <ReactIconNavigate
-          icon={BiMessageError}
-          tooltip='contact'
-          route={`/contact/${groupCode}`}
-          iconSize={3.9}
-          translateY={0.2}
+          icon={IoPersonAddOutline}
+          tooltip='invite & share group'
+          route={`/share-group/${initialGroupName}/${groupCode}`}
+          iconSize={3.5}
+          translateY={0.3}
         />
       </span>
-
-      <span className={styles.icon}>
-        {/* Icon navigating to leave group page */}
-        <ReactIconNavigate
-          icon={IoEnterOutline}
-          tooltip='leave group'
-          route={`/leave-group/${initialGroupName}/${groupCode}`}
-          iconSize={4}
-        />
-      </span>
-      <span className={styles.icon}></span>
     </div>
   );
 };
