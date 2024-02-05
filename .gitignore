@@ -9,14 +9,6 @@ node_modules/
 build/
 dist/
 
-# Dev tools
-.eslintrc.json
-.prettierrc
-vite.config.js
-.vscode/
 
-# Local Netlify folder
-.netlify
 
-# Error logs
-error.log
+

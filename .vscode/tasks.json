@@ -1,0 +1,25 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build-and-publish",
+      "path": "client",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "npm: build-and-publish - client",
+      "detail": "npm run build && netlify deploy --prod"
+    },
+    {
+      "type": "npm",
+      "script": "start production server",
+      "path": "server",
+      "problemMatcher": [],
+      "label": "npm: start prod - server",
+      "detail": "cross-env NODE_ENV=production nodemon server.js"
+    }
+  ]
+}
