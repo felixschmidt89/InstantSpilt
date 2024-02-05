@@ -22,6 +22,7 @@ import Emoji from "../../components/common/Emoji/Emoji";
 
 // Styles
 import styles from "./ExpenseDetailsPage.module.css";
+import RenderExpenseAmountPerBeneficiary from "../../components/features/Expenses/RenderExpenseAmountPerBeneficiary/RenderExpenseAmountPerBeneficiary";
 
 const ExpenseDetailsPage = () => {
   const { groupCode, itemId } = useParams();
@@ -48,6 +49,12 @@ const ExpenseDetailsPage = () => {
             />
             <RenderExpenseBeneficiaries
               expenseBeneficiaries={expenseInfo.expenseBeneficiaries}
+            />
+            <RenderExpenseAmountPerBeneficiary
+              expenseAmountPerBeneficiary={
+                expenseInfo.expenseAmountPerBeneficiary
+              }
+              groupCurrency={groupCurrency}
             />
             <RenderResourceCreated createdAt={expenseInfo.createdAt} />
             <RouteButton
