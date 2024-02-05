@@ -27,10 +27,15 @@ const UserTransactionsHistory = ({
     return null;
   }
 
+  // Sort expenses and payments by date in descending order
+  const sortedExpensesAndPayments = userExpensesAndPayments.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  );
+
   return (
     <div className={styles.container}>
       <ul>
-        {userExpensesAndPayments.map((item) => (
+        {sortedExpensesAndPayments.map((item) => (
           <li className={styles.item} key={item._id}>
             {item.itemType === "expense" ? (
               <RenderUserExpense

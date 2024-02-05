@@ -17,7 +17,7 @@ function SettleGroupExpensesPage() {
       <PiratePx COUNT_IDENTIFIER={"settle-expenses"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <h1>settle expenses</h1>
+        <h1>settlement suggestions</h1>
         <SettleExpenses />
       </div>
     </main>

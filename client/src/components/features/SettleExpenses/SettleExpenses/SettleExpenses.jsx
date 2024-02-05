@@ -93,14 +93,6 @@ const SettleExpenses = () => {
                 groupCurrency={groupCurrency}
                 groupCode={groupCode}
               />
-              <UsersWithNegativeBalance
-                negativeBalanceUsers={negativeBalanceUsers}
-                groupCurrency={groupCurrency}
-              />
-              <UsersWithPositiveBalance
-                positiveBalanceUsers={positiveBalanceUsers}
-                groupCurrency={groupCurrency}
-              />
             </div>
           ) : (
             <ExpensesSettled />

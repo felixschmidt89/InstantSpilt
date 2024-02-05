@@ -40,8 +40,6 @@ const RenderSettlementPaymentSuggestions = ({
 
   return (
     <div className={styles.container}>
-      <h2>settlement suggestions</h2>
-
       <ul>
         {settlementPaymentSuggestions.map((settlement, index) => (
           <li key={index} className={styles.paymentSuggestions}>

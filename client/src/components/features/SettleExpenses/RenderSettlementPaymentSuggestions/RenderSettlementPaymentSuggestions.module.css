@@ -1,11 +1,13 @@
 .container {
   background-color: var(--color-main);
   color: var(--color-dark);
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
   margin-top: 1rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   border-radius: 0.3rem;
   box-shadow: 0 0 0 0.2rem var(--color-signal),
     0.8rem 0.8rem 0 0 var(--color-signal-reduced-opacity);
@@ -28,4 +30,10 @@
 
 .confirm {
   margin-left: auto; /* push to the right */
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    width: 90%;
+  }
 }
