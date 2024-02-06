@@ -16,11 +16,6 @@
   margin: 0 auto;
 }
 
-.button:hover {
-  background-color: var(--color-success);
-  box-shadow: 0 0 0.5rem var(--color-success);
-}
-
 .inactiveButton {
   opacity: 0.6;
   filter: grayscale(15%);

@@ -51,12 +51,6 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
 
-  const isSubmitButtonVisible =
-    expenseAmount >= MINIMUM_VALID_AMOUNT &&
-    expensePayerName &&
-    expenseDescription &&
-    selectedBeneficiaries.length > 0;
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -103,9 +97,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
             groupMembers={groupMembers}
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}
           />
-          {isSubmitButtonVisible && (
-            <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
-          )}
+          <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
         </div>
       </form>
       <ErrorModal

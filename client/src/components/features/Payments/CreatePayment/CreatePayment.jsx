@@ -48,11 +48,6 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
 
-  const isSubmitButtonVisible =
-    paymentAmount >= MINIMUM_VALID_AMOUNT &&
-    paymentMakerName &&
-    paymentRecipientName;
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -97,11 +92,10 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
         onRecipientChange={setPaymentRecipientName}
         groupMembers={groupMembers}
       />
-      {isSubmitButtonVisible && (
-        <div>
-          <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
-        </div>
-      )}
+      <div>
+        <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
+      </div>
+
       <ErrorModal
         error={error}
         onClose={handleCloseErrorModal}

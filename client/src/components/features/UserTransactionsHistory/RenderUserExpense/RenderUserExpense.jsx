@@ -65,28 +65,28 @@ const RenderUserExpense = ({
         <div className={styles.borderedContent}>
           <ul>
             <li>
-              <span className={styles.key}>Paid by: </span>
+              <span className={styles.key}>paid by: </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expensePayer.userName}
                 ariaLabel={"username of the expense payer"}
               />
             </li>
             <li>
-              <span className={styles.key}>Description: </span>
+              <span className={styles.key}>description: </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expenseDescription}
                 ariaLabel={"expense description"}
               />
             </li>
             <li>
-              <span className={styles.key}>Beneficiaries: </span>
+              <span className={styles.key}>beneficiaries: </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={beneficiaryNames}
                 ariaLabel={"beneficiary usernames"}
               />
             </li>
             <li>
-              <span className={styles.key}>Amount benefitted: </span>
+              <span className={styles.key}>amount benefitted: </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expenseAmountPerBeneficiary.toFixed(2)}
                 ariaLabel={"amount each beneficiary has benefitted"}

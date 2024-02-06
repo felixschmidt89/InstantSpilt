@@ -1,15 +1,12 @@
 .container {
   display: flex;
-  margin: 0 auto;
+  justify-content: space-evenly;
   border: 0.1rem solid var(--color-signal-reduced-opacity);
   background-color: var(--color-body);
   border-radius: 1rem;
-  padding-left: 0.4rem;
-  gap: 0.8rem;
   font-size: 0rem;
-  width: 25rem;
-  margin-bottom: 1.5rem;
-  margin-top: 1rem;
+  width: 95%;
+  margin: 1rem auto;
 }
 
 .container:hover {
