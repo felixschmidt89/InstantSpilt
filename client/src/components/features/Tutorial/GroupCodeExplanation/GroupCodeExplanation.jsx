@@ -26,9 +26,9 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
   return (
     <div className={styles.container}>
       <h2>retain access to group</h2>
-      <p>
-        All you need to access this group is your <strong>groupcode</strong>. So
-        be sure to write it down in a safe place.
+      <p className={styles.explanation}>
+        All you need to access this group is its <strong>groupcode</strong>. So
+        be sure to store it in a safe place:
       </p>
       <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
       <p className={`${styles.invitationLink} ${styles.explanation}`}>
@@ -37,13 +37,14 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
         <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
           invitation link
         </Link>{" "}
-        to avoid losing access to this group on this device. Also, be careful
-        with the groupCode and the invitation link: Anyone with access to them
-        can fully access your group.
+        to avoid losing access to this group. Also, be careful with the
+        groupCode and the invitation link: Anyone with access to them can fully
+        access the related group.
       </p>
       <h2>sync access across devices</h2>
       <p className={styles.explanation}>
-        If you've accessed a group on your phone, you won't automatically have
+        InstantSplit utilizes a device-based access system. This means that if
+        you've accessed a group on your phone, you won't automatically have
         access on your computer. To gain access to the same group on another
         device, you'll need to use the groupCode or invitation link specifically
         on that device. The same principle applies if you're using multiple

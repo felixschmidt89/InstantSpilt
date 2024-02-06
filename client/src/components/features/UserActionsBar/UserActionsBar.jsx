@@ -68,10 +68,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
             iconSize={4}
           />
         </span>
-        <span className={styles.iconExplanation}>
-          leave <br />
-          group
-        </span>
+        <span className={styles.iconExplanationLeaveGroup}>leave group</span>
       </div>
     </div>
   );

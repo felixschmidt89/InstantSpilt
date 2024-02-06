@@ -1,7 +1,7 @@
 .button {
   background-color: var(--color-main);
   color: var(--color-main);
-  border: 0.3rem solid var(--color-signal-reduced-opacity);
+  border: none;
   padding: 0.1rem;
   font-size: 2.7rem;
   cursor: pointer;
@@ -10,8 +10,7 @@
 }
 
 .button:hover {
-  background-color: var(--color-signal-reduced-opacity);
-  box-shadow: 0 0 0.5rem var(--color-signal);
+  box-shadow: 0 0 0.2rem var(--color-signal);
 }
 
 .tooltip {

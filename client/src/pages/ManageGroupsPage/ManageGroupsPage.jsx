@@ -31,12 +31,13 @@ const ManageGroupsPage = () => {
       <PiratePx COUNT_IDENTIFIER={"manage-groups"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <h1>manage groups</h1>
+        <h1>group management</h1>
+        <h2>change group</h2>
         <SwitchGroups groupCode={groupCode} />
-        <h2>create group</h2>
-        <CreateGroupForm isInAppCreation={false} />
-        <h2>enter groupCode</h2>
+        <h2>join a different existing group</h2>
         <ValidateGroupCode />
+        <h2>create a new group</h2>
+        <CreateGroupForm isInAppCreation={false} />
       </div>
     </main>
   );

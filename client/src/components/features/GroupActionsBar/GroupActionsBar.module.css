@@ -4,16 +4,9 @@
   position: relative;
   margin: 0 auto;
   margin-bottom: 0.5rem;
-  border: 1px solid var(--color-signal-reduced-opacity);
   padding: 0rem 0rem;
-  background-color: var(--color-body);
-  border-radius: 1rem;
   width: 98%;
   margin: 0rem auto;
-}
-
-.groupActionsBar:hover {
-  box-shadow: 0 0 0.5rem var(--color-signal);
 }
 
 .iconExplanation {

@@ -31,7 +31,7 @@ const AcceptGroupInvitation = ({ groupName, groupCode }) => {
 
   return (
     <div className={styles.container}>
-      <h2>join {groupName}?</h2>
+      <h2>Join {groupName}?</h2>
       <button className={styles.button} onClick={handleAcceptInvitation}>
         sure!
       </button>

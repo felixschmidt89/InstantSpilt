@@ -5,10 +5,7 @@
   position: relative;
   margin: 0 auto;
   margin-bottom: 0.5rem;
-  border: 1px solid var(--color-signal-reduced-opacity);
   padding: 0rem 0rem;
-  background-color: var(--color-body);
-  border-radius: 1rem;
   width: 98%;
   margin: 0rem auto;
 }
@@ -19,7 +16,10 @@
 
 .iconExplanation {
   display: flex;
+  margin-top: 0.3rem;
   font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
 }
 
 .iconContainer {
@@ -39,4 +39,13 @@
 
 .moveRight {
   padding-left: 0.5rem;
+}
+
+.iconExplanationLeaveGroup {
+  display: flex;
+  padding-left: 0.3rem;
+  margin-top: 0.3rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
 }

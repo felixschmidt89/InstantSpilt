@@ -21,13 +21,12 @@ const SwitchGroups = ({ groupCode }) => {
 
   return (
     <div className={styles.container}>
-      <h2>switch group</h2>
       {!isFetched ? (
         <Spinner />
       ) : (
         <div>
           {inactiveGroupNamesAndGroupCodes.length === 0 ? (
-            <p>No other groups found on this device.</p>
+            <p>No additional groups found on this device.</p>
           ) : (
             <RenderGroupSelection
               groupCode={groupCode}

@@ -76,7 +76,7 @@ import styles from "./InstantSplitPage.module.css";
         <>
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
-          <div className={styles.bars}>
+          <div className={styles.userActionsBar}>
             <UserActionsBar
               groupCode={groupCode}
               initialGroupName={groupData.group.initialGroupName}
@@ -97,7 +97,7 @@ import styles from "./InstantSplitPage.module.css";
           ) : (
             <RenderGroupBalances groupCurrency={groupData.group.currency} />
           )}
-          <div className={styles.bars}>
+          <div className={styles.groupActionsBar}>
             <GroupActionsBar />
           </div>
         </>

@@ -3,6 +3,16 @@
   margin-top: 5rem;
 }
 
-.bars {
-  margin: 0.5rem;
+.groupActionsBar {
+  padding: 0.2rem;
+  border-top: 0.2rem solid var(--color-signal-reduced-opacity);
+  width: 99%;
+  margin: 0 auto;
+}
+
+.userActionsBar {
+  padding: 0.2rem;
+  border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
+  width: 99%;
+  margin: 0 auto;
 }

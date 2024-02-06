@@ -1,6 +1,6 @@
 .container {
   /* ensures that rendering loading spinner does not move components below */
-  height: 6rem;
+  height: 3rem;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
