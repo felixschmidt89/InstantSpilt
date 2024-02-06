@@ -19,8 +19,8 @@ import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBenef
 import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
 import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescriptionInput";
 import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
-import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import SubmitButton from "../../../common/SubmitButton/SubmitButton";
 
 // Styles
 import styles from "./CreateExpense.module.css";
@@ -97,7 +97,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
             groupMembers={groupMembers}
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}
           />
-          <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
+          <SubmitButton buttonText='add expense' />
         </div>
       </form>
       <ErrorModal

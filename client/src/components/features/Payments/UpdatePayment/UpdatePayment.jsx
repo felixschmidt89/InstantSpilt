@@ -12,14 +12,15 @@ import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
 
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+
 // Components
 import PaymentAmount from "../PaymentAmountInput/PaymentAmountInput";
 import PaymentMaker from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipient from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import Emoji from "../../../common/Emoji/Emoji";
-
-import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
-import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+import SubmitButton from "../../../common/SubmitButton/SubmitButton";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
@@ -144,9 +145,7 @@ const UpdatePayment = ({
         isUpdate={true}
       />
       <div className={styles.buttonContainer}>
-        {isSubmitButtonVisible && (
-          <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
-        )}
+        {isSubmitButtonVisible && <SubmitButton buttonText='update payment' />}
         <ErrorModal
           error={error}
           onClose={handleCloseErrorModal}

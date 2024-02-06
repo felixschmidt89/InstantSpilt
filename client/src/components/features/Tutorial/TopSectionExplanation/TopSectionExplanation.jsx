@@ -4,7 +4,6 @@ import { IoPersonAddOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
 import { IoHelpCircleOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
 
 // Components
 import UserActionsBar from "../../UserActionsBar/UserActionsBar";
@@ -30,11 +29,6 @@ const TopSectionExplanation = () => {
         Additionally, access the tutorial or provide feedback to the
         InstantSplit team. We are always eager to improve!
       </p>
-      <div>
-        <Link to='/instant-split' className={styles.mainAppLink}>
-          Proceed to main app
-        </Link>
-      </div>
     </div>
   );
 };

@@ -21,8 +21,8 @@ import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
 import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
 import Emoji from "../../../common/Emoji/Emoji";
-import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import SubmitButton from "../../../common/SubmitButton/SubmitButton";
 
 // Styles
 import styles from "./UpdateExpense.module.css";
@@ -143,9 +143,7 @@ const UpdateExpense = ({
           setFormChanged={setFormChanged}
           isUpdate={true}
         />
-        {isSubmitButtonVisible && (
-          <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
-        )}
+        {isSubmitButtonVisible && <SubmitButton buttonText='update expense' />}
       </form>
       <ErrorModal
         error={error}

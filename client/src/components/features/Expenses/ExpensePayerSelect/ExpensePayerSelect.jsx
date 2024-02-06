@@ -4,9 +4,6 @@ import React, { useRef } from "react";
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
 
-// Components
-import Emoji from "../../../common/Emoji/Emoji";
-
 // Styles
 import styles from "./ExpensePayerSelect.module.css";
 
@@ -53,8 +50,7 @@ const ExpensePayerSelect = ({
       ref={selectRef}>
       {/* Default option */}
       <option value='' disabled>
-        <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidBy}></Emoji>{" "}
-        by
+        paid by
       </option>
       {/* Map group members to select beneficiaries */}
       {groupMembers.map((member) => (

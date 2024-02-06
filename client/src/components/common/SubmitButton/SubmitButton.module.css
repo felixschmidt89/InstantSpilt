@@ -1,0 +1,16 @@
+.button {
+  background-color: var(--color-signal);
+  color: var(--color-main);
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  width: fit-content;
+  margin-top: 1rem;
+}
+
+.button:hover {
+  background-color: var(--color-success);
+  box-shadow: 0 0 0.5rem var(--color-success);
+}

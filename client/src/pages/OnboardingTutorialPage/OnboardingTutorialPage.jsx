@@ -65,6 +65,11 @@ function OnboardingTutorialPage() {
         <BottomSectionExplanation />
         <MiddleSectionExplanation />
         <TopSectionExplanation />
+        <div>
+          <Link to='/instant-split' className={styles.mainAppLink}>
+            Proceed to main app
+          </Link>
+        </div>
       </div>
     </main>
   );

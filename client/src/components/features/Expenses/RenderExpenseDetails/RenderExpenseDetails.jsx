@@ -30,8 +30,7 @@ const RenderExpenseDetails = ({ expenseInfo, groupCurrency }) => {
         <strong>description</strong>: {expenseInfo.expenseDescription}
       </p>
       <p>
-        <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidBy}></Emoji>:{" "}
-        {expenseInfo.expensePayer.userName}
+        <strong>paid by</strong>: {expenseInfo.expensePayer.userName}
       </p>
     </div>
   );

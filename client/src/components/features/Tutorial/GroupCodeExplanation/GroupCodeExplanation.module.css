@@ -5,3 +5,9 @@
 .invitationLink {
   margin-top: 0.5rem;
 }
+
+.explanation {
+  padding: 0.5rem 1rem;
+  line-height: 1.3;
+  text-align: justify;
+}

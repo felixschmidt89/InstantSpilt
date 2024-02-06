@@ -1,9 +1,9 @@
 import React from "react";
 import { IoPersonAddOutline } from "react-icons/io5";
-import { IoHelpCircleOutline } from "react-icons/io5";
+import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
-import { BiMessageError } from "react-icons/bi";
+import { IoChatboxOutline } from "react-icons/io5";
 
 import ReactIconNavigate from "../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 import styles from "./UserActionsBar.module.css";
@@ -11,23 +11,10 @@ import styles from "./UserActionsBar.module.css";
 const UserActionsBar = ({ groupCode, initialGroupName }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.iconContainer}>
+      <div className={`${styles.iconContainer} ${styles.moveLeft}`}>
         <span className={styles.icon}>
           <ReactIconNavigate
-            icon={BiMessageError}
-            tooltip='contact InstantSplit team'
-            route={`/contact/${groupCode}`}
-            iconSize={3.7}
-            translateY={0.1}
-          />
-        </span>
-        <span className={styles.iconExplanation}>feedback</span>
-      </div>
-
-      <div className={styles.iconContainer}>
-        <span className={styles.icon}>
-          <ReactIconNavigate
-            icon={IoHelpCircleOutline}
+            icon={IoInformationCircleOutline}
             tooltip='show explanation of main functions'
             route={`/tutorial/${initialGroupName}/${groupCode}`}
             iconSize={4.2}
@@ -35,8 +22,19 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
         </span>
         <span className={styles.iconExplanation}>tutorial</span>
       </div>
-
-      <div className={styles.iconContainer}>
+      <div className={`${styles.iconContainer} ${styles.moveLeft}`}>
+        <span className={styles.icon}>
+          <ReactIconNavigate
+            icon={IoChatboxOutline}
+            tooltip='contact InstantSplit team'
+            route={`/contact/${groupCode}`}
+            iconSize={3.7}
+            translateY={0.3}
+          />
+        </span>
+        <span className={styles.iconExplanation}>feedback</span>
+      </div>
+      <div className={`${styles.iconContainer} ${styles.moveLeft}`}>
         <span className={styles.icon}>
           <ReactIconNavigate
             icon={IoPersonAddOutline}
@@ -49,7 +47,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
         <span className={styles.iconExplanation}>share group access</span>
       </div>
 
-      <div className={styles.iconContainer}>
+      <div className={`${styles.iconContainer} ${styles.moveRight}`}>
         <span className={styles.icon}>
           <ReactIconNavigate
             icon={PiUserSwitchLight}
@@ -61,7 +59,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
         </span>
         <span className={styles.iconExplanation}>switch/create group</span>
       </div>
-      <div className={styles.iconContainer}>
+      <div className={`${styles.iconContainer} ${styles.moveRight}`}>
         <span className={styles.icon}>
           <ReactIconNavigate
             icon={IoEnterOutline}

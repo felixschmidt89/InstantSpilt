@@ -1,9 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
 
-// Components
-import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
-
 // Styles
 import styles from "./ContactForm.module.css";
 
@@ -113,14 +110,7 @@ const ContactForm = ({
             </div>
           </div>
         )}
-        <FormSubmitButton
-          fontSize={1.6}
-          add={true}
-          marginLeft='0.1'
-          transformScale={1.3}
-          translateX={0.2}
-          translateY={0.15}
-        />
+        <button type='submit'>send message</button>
       </form>
     </div>
   );

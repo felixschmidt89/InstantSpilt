@@ -33,7 +33,6 @@ const RenderGroupExpense = ({ item, groupCode, groupCurrency }) => {
       {/* Right column containing expense details */}
       <div className={styles.rightColumn}>
         <div className={styles.borderedContent}>
-          <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidBy}></Emoji>{" "}
           {item.expensePayer.userName}: {/* Link to the detailed item page */}
           <Link to={`/expense-details/${groupCode}/${item.itemId}`}>
             {item.expenseDescription}

@@ -40,13 +40,13 @@ function TutorialPage() {
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>tutorial</h1>
-        <TopSectionExplanation />
-        <MiddleSectionExplanation />
-        <BottomSectionExplanation />
         <GroupCodeExplanation
           initialGroupName={initialGroupName}
           groupCode={groupCode}
         />
+        <TopSectionExplanation />
+        <MiddleSectionExplanation />
+        <BottomSectionExplanation />
       </div>
     </main>
   );

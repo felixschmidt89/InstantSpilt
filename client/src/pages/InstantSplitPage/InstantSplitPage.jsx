@@ -76,10 +76,12 @@ import styles from "./InstantSplitPage.module.css";
         <>
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
-          <UserActionsBar
-            groupCode={groupCode}
-            initialGroupName={groupData.group.initialGroupName}
-          />
+          <div className={styles.bars}>
+            <UserActionsBar
+              groupCode={groupCode}
+              initialGroupName={groupData.group.initialGroupName}
+            />
+          </div>
           {/* Display group name */}
 
           <h1>{groupData.group.groupName}</h1>
@@ -95,7 +97,9 @@ import styles from "./InstantSplitPage.module.css";
           ) : (
             <RenderGroupBalances groupCurrency={groupData.group.currency} />
           )}
-          <GroupActionsBar />
+          <div className={styles.bars}>
+            <GroupActionsBar />
+          </div>
         </>
       ) : null}
     </main>

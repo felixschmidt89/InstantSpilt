@@ -20,8 +20,8 @@ import PaymentAmountInput from "../PaymentAmountInput/PaymentAmountInput";
 import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import Emoji from "../../../common/Emoji/Emoji";
-import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import SubmitButton from "../../../common/SubmitButton/SubmitButton";
 
 // Styles
 import styles from "./CreatePayment.module.css";
@@ -93,7 +93,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
         groupMembers={groupMembers}
       />
       <div>
-        <FormSubmitButton fontSize={3.2} add={true} translateY='0.2' />
+        <SubmitButton buttonText='add expense' />
       </div>
 
       <ErrorModal
