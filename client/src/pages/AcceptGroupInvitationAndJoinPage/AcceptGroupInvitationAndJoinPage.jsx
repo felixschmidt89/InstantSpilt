@@ -28,9 +28,7 @@ const AcceptGroupInvitationAndJoinPage = () => {
         title={`Invitation to join ${groupName}`}
         description={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
       />
-      <PiratePx
-        COUNT_IDENTIFIER={"accept-invitation-and-join-instantsplit-group"}
-      />
+      <PiratePx COUNT_IDENTIFIER={"accept-invitation-landing-page"} />
       <div className={styles.container}>
         {!isFetched ? (
           <Spinner />
@@ -38,11 +36,11 @@ const AcceptGroupInvitationAndJoinPage = () => {
           <>
             <h1>Hi there!</h1>
             <InvitationIntro groupData={groupData} />
+            <InstantSplitIntroSection isInvitation={true} />
             <AcceptGroupInvitation
               groupCode={groupCode}
               groupName={groupName}
             />
-            <InstantSplitIntroSection isInvitation={true} />
             <ShowTermsAndConditions />
           </>
         )}

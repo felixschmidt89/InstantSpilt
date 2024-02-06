@@ -16,57 +16,16 @@ import styles from "./BottomSectionExplanation.module.css";
  * @returns {JSX.Element} React component. */
 const BottomSectionExplanation = () => {
   return (
-    <div>
-      <h2>group bar</h2>
+    <div className={styles.bottomSectionExplanation}>
+      <h2>active group bar</h2>
       <div className={styles.noLink}>
         <GroupActionsBar />
       </div>
-      <div className={styles.noLink}>
-        <ul>
-          <li>
-            add expenses{" "}
-            <span className={styles.emojiParenthesis}>
-              (
-              <Emoji
-                label={"expense emoji"}
-                emoji={emojiConstants.expense}></Emoji>
-              )
-            </span>
-            , payments{" "}
-            <span className={styles.emojiParenthesis}>
-              (
-              <Emoji
-                label={"payment emoji"}
-                emoji={emojiConstants.payment}></Emoji>
-              )
-            </span>{" "}
-            and users{" "}
-            <span className={styles.emojiParenthesis}>
-              (<Emoji label={"user emoji"} emoji={emojiConstants.user}></Emoji>)
-            </span>
-          </li>
-          <li>
-            show settlement payment suggestions{" "}
-            <span className={styles.emojiParenthesis}>
-              (
-              <Emoji
-                label={"settle expense emoji"}
-                emoji={emojiConstants.settle}></Emoji>
-              )
-            </span>
-          </li>
-          <li>
-            change group settings{" "}
-            <span className={styles.emojiParenthesis}>
-              (
-              <Emoji
-                label={"group settings emoji"}
-                emoji={emojiConstants.settings}></Emoji>
-              )
-            </span>
-          </li>
-        </ul>
-      </div>
+      <p className={styles.explanation}>
+        Positioned at the bottom of the main app, this bar provides access to
+        all capture and settle expenses related actions of your currently active
+        group.
+      </p>
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { IoPersonAddOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
 import { IoHelpCircleOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 // Components
 import UserActionsBar from "../../UserActionsBar/UserActionsBar";
@@ -22,48 +23,17 @@ const TopSectionExplanation = () => {
       <div className={styles.noLink}>
         <UserActionsBar />
       </div>
-      <div className={styles}>
-        show tutorial
-        <span className={styles.noWrap}>
-          (
-          <ReactIconNavigate
-            iconSize={"1.9"}
-            icon={IoHelpCircleOutline}
-            cursorPointer={false}
-            translateY={0.5}
-          />
-          ),
-        </span>{" "}
-        invite others to group{" "}
-        <span className={styles.noWrap}>
-          (
-          <ReactIconNavigate
-            iconSize={"1.7"}
-            icon={IoPersonAddOutline}
-            cursorPointer={false}
-            translateY={0.3}
-          />
-          ),
-        </span>
-        {""} create or switch to other group (
-        <ReactIconNavigate
-          iconSize={"1.8"}
-          icon={PiUserSwitchLight}
-          cursorPointer={false}
-          translateY={0.3}
-        />
-        ) & leave group{" "}
-        <span className={styles.noWrap}>
-          (
-          <ReactIconNavigate
-            iconSize={"1.8"}
-            icon={IoEnterOutline}
-            cursorPointer={false}
-            translateY={0.3}
-          />
-          )
-        </span>{" "}
-        .
+      <p className={styles.explanation}>
+        At the top of the main application, the user bar provides access to
+        general group management settings: Share group access with your peers or
+        your other devices, switch between groups, or create new ones.
+        Additionally, access the tutorial or provide feedback to the
+        InstantSplit team. We are always eager to improve!
+      </p>
+      <div>
+        <Link to='/instant-split' className={styles.mainAppLink}>
+          Proceed to main app
+        </Link>
       </div>
     </div>
   );

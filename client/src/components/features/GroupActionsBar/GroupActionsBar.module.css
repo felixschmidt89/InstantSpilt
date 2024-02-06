@@ -9,7 +9,7 @@
   background-color: var(--color-body);
   border-radius: 1rem;
   width: 95%;
-  margin: 1rem auto;
+  margin: 0rem auto;
 }
 
 .groupActionsBar:hover {
@@ -28,4 +28,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.intro {
+  padding: 0 2rem;
 }

@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Constants and Utils
 import { devLog } from "../../utils/errorUtils";
@@ -52,10 +53,18 @@ function OnboardingTutorialPage() {
       )}
 
       <div className={styles.container}>
-        <h1>Onboarding</h1>
-        <TopSectionExplanation />
-        <MiddleSectionExplanation />
+        <h1>onboarding</h1>
+        <p className={styles.intro}>
+          Directly{" "}
+          <Link to='/instant-split' className={styles.mainAppLink}>
+            access the main app
+          </Link>{" "}
+          or discover key features below. You can revisit the complete tutorial
+          anytime within the app.
+        </p>
         <BottomSectionExplanation />
+        <MiddleSectionExplanation />
+        <TopSectionExplanation />
       </div>
     </main>
   );

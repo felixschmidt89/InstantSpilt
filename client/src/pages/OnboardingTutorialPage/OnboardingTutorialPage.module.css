@@ -1,6 +1,11 @@
 .container {
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   margin: 0 auto;
   overflow-y: auto;
   padding-bottom: 1rem;
+}
+
+.intro {
+  border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
+  width: 95%;
+  margin: 0 auto;
 }
