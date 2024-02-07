@@ -19,6 +19,7 @@ import ReactIconNavigate from "../../../common/InAppNavigation/ReactIconNavigate
 import ConfirmationModal from "../../../common/ConfirmationModal/ConfirmationModal";
 
 // Styles
+import styles from "./ConfirmSettlementPayment.module.css";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -63,13 +64,20 @@ const ConfirmSettlementPayment = ({
 
   return (
     <>
-      <ReactIconNavigate
-        icon={GiTakeMyMoney}
-        tooltip='Confirm'
-        onClick={handleShowConfirmation}
-        iconSize={2.5}
-      />
-
+      <div className={styles.iconContainer}>
+        {" "}
+        <ReactIconNavigate
+          icon={GiTakeMyMoney}
+          onClick={handleShowConfirmation}
+          iconSize={2.5}
+          translateY={0.4}
+        />
+        <span
+          className={styles.iconExplanation}
+          onClick={handleShowConfirmation}>
+          confirm
+        </span>
+      </div>
       {isConfirmationVisible && (
         <ConfirmationModal
           message={`Confirm settlement payment by ${paymentMakerName} to ${paymentRecipientName}?`}

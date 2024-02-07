@@ -1,10 +1,16 @@
 {
+  // Extend from Airbnb, Prettier, and Node.js recommended configurations
   "extends": ["airbnb", "prettier", "plugin:node/recommended"],
 
+  // Define plugins used
   "plugins": ["prettier"],
 
+  // Set specific rules for linting
   "rules": {
+    // Enforce Prettier formatting
     "prettier/prettier": "error",
+
+    // Enforce file extensions for imports
     "import/extensions": [
       2,
       "always",
@@ -12,28 +18,41 @@
         "js": "always"
       }
     ],
+
+    // Disable rule that enforces space comments
     "spaced-comment": "off",
 
+    // Disable rule that disallows the use of console
     "no-console": "off",
 
+    // Disable rule that enforces a consistent return statement
     "consistent-return": "off",
 
+    // Disable rule that requires function names
     "func-names": "off",
 
+    // Disable rule that enforces object shorthand notation
     "object-shorthand": "off",
 
+    // Disable rule that disallows the use of process.exit()
     "no-process-exit": "off",
 
+    // Disable rule that disallows reassigning function parameters
     "no-param-reassign": "off",
 
+    // Disable rule that disallows using async functions with a return statement
     "no-return-await": "off",
 
+    // Disable rule that disallows dangling underscores in identifiers
     "no-underscore-dangle": "off",
 
+    // Disable rule that requires class methods to use 'this'
     "class-methods-use-this": "off",
 
+    // Enforce destructuring assignment for arrays and objects
     "prefer-destructuring": ["error", { "object": true, "array": false }],
 
+    // Enforce unused variables to be handled correctly, ignoring specific patterns
     "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
   }
 }
