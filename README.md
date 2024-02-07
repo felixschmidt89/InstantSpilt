@@ -49,14 +49,15 @@ A user centered MERN Full Stack application designed for settling group expenses
 
 ## Learnings
 
-- **Phase 1 (Delivering the MVP):**
+- **Phase 1 (Delivering the MVP (09/2023 - 10/2023)):**
 
   - I started out with a "You can always refactor later" attitude, focusing on releasing a functional MVP ASAP.
   - Initially, I put more effort into setting up a modular project structure that aligns with industry conventions and best practices compared to my previous projects. While coding the app, I quickly realized its immense benefits, allowing me to add functionalities, especially on the client side, much easier and quicker.
   - Building a Full Stack app from scratch for the very first time also provided me with highly valuable insights into the fundamental mechanics of web applications which also gave me the confidence of being able to code and deploy a proper application.
   - Most importantly, after having learned JavaScript as well as Frontend and Backend fundamentals, I was uncertain about my initial career path. While coding this app, I quickly recognized the beauty of React and the benefit of immediate visual results and decided to focus on Frontend as my initial career path.
 
-- **Phase 2 (Refactor client and add essential functionality)**:
+- **Phase 2 (Refactor client and add essential functionality (01/2024))**:
   - After having worked on a group project as a React developer, I returned to InstantSplit in January 2024 thinking I'd only apply some new learnings from that project but ended up refactoring the entire client codebase. This involved making it more modular, standardizing my code, establishing my own coding style, and also writing cleaner code in general.
   - In Phase 1, I had coded with the application user in mind. In Phase 2, I had potential colleagues in mind and aimed at setting up a project structure and writing code in a way that requires a minimum amount of explanatory comments.
   - I ended up significantly shortening the codebase while creating a more robust, easier-to-maintain and amend codebase with fewer unwanted side effects. Simultaneously, it should now be much easier to comprehend by others.
+  - Eventually, a group of friends conducted the first real-life test and provided valuable feedback, which helped me improve the UX.
