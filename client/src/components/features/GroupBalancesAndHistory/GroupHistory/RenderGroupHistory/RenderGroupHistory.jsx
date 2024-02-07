@@ -64,8 +64,8 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
               itemType: item.expenseDescription
                 ? "expense"
                 : item.paymentAmount
-                ? "payment"
-                : "unknown",
+                  ? "payment"
+                  : "unknown",
               // Convert createdAt to date object and sort by in descending order
               createdAt: new Date(item.createdAt),
             }))
@@ -90,7 +90,7 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
       <Spinner />
     </div>
   ) : (
-    // Render container with group expenses and payments or display  messages if there are either no such transactions or not at least 2 users in the group
+    // Render container with group expenses and payments or display  messages if there are either no such transactions or not at least 2 members in the group
     <>
       {groupExpensesAndPayments.length > 0 ? (
         <div className={styles.container}>

@@ -12,7 +12,10 @@ import styles from "./ReactIconNavigate.module.css";
  * @param {string} props.route - The route to navigate to.
  * @param {Function} props.onClick - The callback function for the icon.
  * @param {React.Component} props.icon - The React icon component to render.
- * @param {string} props.iconSize - The font size of the icon in rem unit.
+ * @param {string} props.iconSize - The font size of the icon in rem unit. Defaults to 2.5.
+ *  @param {string} props.containerHeight - The height of the container in rem unit. Defaults to 5.
+
+ * s@param {string} props.explanationText - The icon description text rendered below the component. Only rendered if given.
  * @param {string} props.marginRight - The margin right for the icon in rem unit.
  * @param {string} props.tooltip - The tooltip text to display on hover.
  * @param {string} props.tooltipFontSize - The font size of the tooltip text in rem units.
@@ -21,13 +24,19 @@ import styles from "./ReactIconNavigate.module.css";
  * @param {boolean} props.cursorPointer - Whether the icon should have a pointer cursor. Defaults to true.
  * @param {number} props.translateY - The vertical translation of the icon in rem unit.
  * @param {number} props.tooltipBottom - The distance of the tooltip from the bottom of the icon as percentage. Default is 100.
+ *  @param {number} props.hoverEnabled - Whether icon and text should hover. Defaults to true.
+
  * @returns {React.Component} React component.
  */
 const ReactIconNavigate = ({
   route,
   onClick,
   icon: IconComponent,
+  explanationText,
   iconSize = "2.5",
+  iconScale = 1,
+  containerHeight = "5",
+  containerWidth = "5",
   marginRight = "0",
   tooltip,
   tooltipFontSize = "1.6",
@@ -36,6 +45,7 @@ const ReactIconNavigate = ({
   cursorPointer = true,
   translateY = 0,
   tooltipBottom = 100,
+  hoverEnabled = true,
 }) => {
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const navigate = useNavigate();
@@ -62,7 +72,11 @@ const ReactIconNavigate = ({
 
   return (
     <div
-      className={styles.iconContainer}
+      className={`${styles.iconContainer} ${hoverEnabled ? styles.hover : ""}`}
+      style={{
+        height: `${containerHeight}rem`,
+        width: `${containerWidth}rem`,
+      }}
       onMouseEnter={() => setIsTooltipVisible(true)}
       onMouseLeave={() => setIsTooltipVisible(false)}
       onClick={handleIconClick}>
@@ -83,9 +97,10 @@ const ReactIconNavigate = ({
           fontSize: `${iconSize}rem`,
           marginRight: `${marginRight}rem`,
           cursor: cursorPointer ? "pointer" : "default",
-          transform: `translateY(${translateY}rem)`,
+          transform: `translateY(${translateY}rem) scale(${iconScale})`,
         }}
       />
+      <span className={styles.iconExplanation}>{explanationText}</span>
     </div>
   );
 };

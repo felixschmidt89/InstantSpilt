@@ -25,10 +25,10 @@ const Footer = () => {
       {/* LinkedIn profile */}
       <ReactIconNavigate
         icon={IoLogoLinkedin}
+        iconScale={1.2}
+        containerHeight='4'
         tooltip={`${currentYear} - Felix Schmidt`}
         url={"https://www.linkedin.com/in/felixschmidt89"}
-        iconSize={2.8}
-        tooltipBottom={95}
         marginRight={0.5}
       />
       {/* Email*/}
@@ -36,12 +36,15 @@ const Footer = () => {
         icon={MdAlternateEmail}
         tooltip={"email"}
         email={"felix.schmidt@protonmail.com"}
+        iconScale={1.1}
+        containerHeight='4'
         marginRight={0.5}
       />
       {/* Github repository */}
       <ReactIconNavigate
         icon={IoLogoGithub}
         tooltip={"GitHub repository"}
+        containerHeight='4'
         url={"https://github.com/felixschmidt89/InstantSpilt"}
         marginRight={0.5}
       />
@@ -50,9 +53,9 @@ const Footer = () => {
         icon={FaFileLines}
         route={"/terms-and-conditions/"}
         tooltip={"Terms and Conditions"}
-        iconSize={2.0}
+        iconScale={0.9}
         translateY={0.1}
-        tooltipBottom={109}
+        containerHeight='4'
         marginRight={0.5}
       />
       {/* Legal notice*/}
@@ -60,6 +63,7 @@ const Footer = () => {
         icon={FaScaleBalanced}
         route={"/legal-notice/"}
         tooltip={"Legal Notice"}
+        containerHeight='4'
       />
     </footer>
   );

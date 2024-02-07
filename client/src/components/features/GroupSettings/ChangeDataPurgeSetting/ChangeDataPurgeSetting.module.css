@@ -10,6 +10,8 @@
 
 .explanation {
   font-size: 1.6rem;
+  text-align: justify;
+  line-height: 1.2;
 }
 
 input[type="checkbox"] {

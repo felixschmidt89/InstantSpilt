@@ -1,23 +1,28 @@
-.button {
-  background-color: var(--color-main);
-  color: var(--color-main);
-  border: none;
-  padding: 0.1rem;
-  font-size: 2.7rem;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  position: relative;
+.iconExplanation {
+  display: flex;
+  width: max-content;
+  font-size: 1.3rem;
 }
 
-.button:hover {
-  box-shadow: 0 0 0.2rem var(--color-signal);
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 6.5rem;
+  cursor: pointer;
+  line-height: 1.2;
+}
+
+.icon {
+  font-size: 3rem;
 }
 
 .tooltip {
   font-family: "Ubuntu", sans-serif;
   font-size: 1.6rem;
   position: absolute;
-  bottom: 120%;
+  top: -80%;
   left: 50%;
   transform: translateX(-50%);
   background: var(--color-dark);

@@ -66,11 +66,21 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
           <ReactIconNavigate
             icon={LuCopyCheck}
             iconSize='1.8'
+            containerHeight='2'
+            containerWidth='2'
             translateY={0.2}
             cursorPointer={false}
+            hoverEnabled={false}
           />
         ) : (
-          <ReactIconNavigate icon={LuCopy} iconSize='1.8' translateY={0.2} />
+          <ReactIconNavigate
+            icon={LuCopy}
+            iconSize='1.8'
+            containerHeight='2'
+            containerWidth='2'
+            translateY={0.2}
+            hoverEnabled={false}
+          />
         )}
       </button>
       <ErrorModal
