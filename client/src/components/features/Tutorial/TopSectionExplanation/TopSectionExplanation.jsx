@@ -1,13 +1,8 @@
 // React and Third-Party Libraries
 import React from "react";
-import { IoPersonAddOutline } from "react-icons/io5";
-import { IoEnterOutline } from "react-icons/io5";
-import { PiUserSwitchLight } from "react-icons/pi";
-import { IoHelpCircleOutline } from "react-icons/io5";
 
 // Components
 import UserActionsBar from "../../UserActionsBar/UserActionsBar";
-import ReactIconNavigate from "../../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 
 // Styles
 import styles from "./TopSectionExplanation.module.css";
@@ -23,11 +18,9 @@ const TopSectionExplanation = () => {
         <UserActionsBar />
       </div>
       <p className={styles.explanation}>
-        At the top of the main application, the user bar provides access to
-        general group management settings: Share group access with your peers or
-        your other devices, switch between groups, or create new ones.
-        Additionally, access the tutorial or provide feedback to the
-        InstantSplit team. We are always eager to improve!
+        At the top of the main app, the user bar offers access to your group
+        management settings, the app tutorial, and a feedback option. We value
+        your input and are constantly seeking ways to improve!
       </p>
     </div>
   );

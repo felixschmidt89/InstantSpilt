@@ -60,7 +60,7 @@ const ForgetGroupOnDevicePage = () => {
           <div>
             <p>
               If you ever wish to rejoin later, remember your{" "}
-              <strong>GroupCode:</strong>
+              <strong>groupCode:</strong>
             </p>
             <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
           </div>

@@ -32,7 +32,7 @@ const ManageGroupsPage = () => {
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>group management</h1>
-        <h2>change group</h2>
+        <h2>switch group</h2>
         <SwitchGroups groupCode={groupCode} />
         <h2>join a different existing group</h2>
         <ValidateGroupCode />

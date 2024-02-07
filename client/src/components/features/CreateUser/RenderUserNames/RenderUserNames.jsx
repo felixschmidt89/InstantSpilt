@@ -20,7 +20,7 @@ import styles from "./RenderUserNames.module.css";
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
- * Renders a list of all user names of a group.
+ * Renders a list of all member names of a group.
  *
  * @param {Object} props - The component props.
  * @param {number} props.rerenderTrigger - Trigger for re-rendering the component.
@@ -73,7 +73,7 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
           <Spinner />
         </div>
       ) : (
-        // Display the list of user names when data is loaded
+        // Display the list of member names when data is loaded
         <ul className={styles.userList}>
           {userNames.map((userName) => (
             <li key={userName}>

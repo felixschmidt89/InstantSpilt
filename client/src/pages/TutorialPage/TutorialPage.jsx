@@ -14,6 +14,7 @@ import MiddleSectionExplanation from "../../components/features/Tutorial/MiddleS
 import BottomSectionExplanation from "../../components/features/Tutorial/BottomSectionExplanation/BottomSectionExplanation";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import Spinner from "../../components/common/Spinner/Spinner";
+import SyncGroupCodeExplanation from "../../components/features/Tutorial/SyncGroupCodeExplanation/SyncGroupCodeExplanation";
 
 // Styles
 import styles from "./TutorialPage.module.css";
@@ -47,6 +48,7 @@ function TutorialPage() {
         <TopSectionExplanation />
         <MiddleSectionExplanation />
         <BottomSectionExplanation />
+        <SyncGroupCodeExplanation />
       </div>
     </main>
   );

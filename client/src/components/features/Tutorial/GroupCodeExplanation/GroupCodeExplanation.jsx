@@ -25,33 +25,20 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
 
   return (
     <div className={styles.container}>
-      <h2>retain access to group</h2>
+      <h2>groupCode</h2>
       <p className={styles.explanation}>
-        All you need to access this group is its <strong>groupcode</strong>. So
-        be sure to store it in a safe place:
+        InstantSplit is centered around the <strong>groupcode</strong>. You can
+        access a group by entering the code manually or automatically using the
+        invitation link. Be sure to store this group's code somewhere save:
       </p>
       <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
       <p className={`${styles.invitationLink} ${styles.explanation}`}>
-        Alternatively, bookmark the{" "}
+        Alternatively, bookmark this group's{" "}
         {/* Link to the invitation URL opening new tab */}
         <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
           invitation link
         </Link>{" "}
-        to avoid losing access to this group. Also, be careful with the
-        groupCode and the invitation link: Anyone with access to them can fully
-        access the related group.
-      </p>
-      <h2>sync access across devices</h2>
-      <p className={styles.explanation}>
-        InstantSplit utilizes a device-based access system. This means that if
-        you've accessed a group on your phone, you won't automatically have
-        access on your computer. To gain access to the same group on another
-        device, you'll need to use the groupCode or invitation link specifically
-        on that device. The same principle applies if you're using multiple
-        browsers on the same device. For example, if you primarily use Chrome
-        (as recommended by InstantSplit) but occasionally use Firefox, you'll
-        need to use the groupCode or invitation link once to gain access to the
-        group on Firefox.
+        to avoid losing access.
       </p>
     </div>
   );

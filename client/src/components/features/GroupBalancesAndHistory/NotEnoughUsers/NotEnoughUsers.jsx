@@ -10,12 +10,12 @@ import Emoji from "../../../common/Emoji/Emoji";
 // Styles
 import styles from "./NotEnoughUsers.module.css";
 /**
- * Component for rendering a call to action to add users to a group
+ * Component for rendering a call to action to add members to a group
  *
  * @returns {JSX.Element} React component. */
 const NotEnoughUsers = () => (
   <p className={styles.failMessage}>
-    Add users{" "}
+    Add group members{" "}
     <span className={styles.emojiParanthesis}>
       (<Emoji label={"user emoji"} emoji={emojiConstants.user}></Emoji>)
     </span>{" "}

@@ -1,6 +1,9 @@
 // React and Third-Party Libraries
 import React from "react";
 
+// Components
+import SubmitButton from "../../../common/SubmitButton/SubmitButton";
+
 // Styles
 import styles from "./ContactForm.module.css";
 
@@ -110,7 +113,7 @@ const ContactForm = ({
             </div>
           </div>
         )}
-        <button type='submit'>send message</button>
+        <SubmitButton buttonText='send message' />
       </form>
     </div>
   );

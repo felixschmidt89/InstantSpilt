@@ -23,8 +23,12 @@ const BottomSectionExplanation = () => {
       </div>
       <p className={styles.explanation}>
         Positioned at the bottom of the main app, this bar provides access to
-        all capture and settle expenses related actions of your currently active
-        group.
+        all capture and settle expenses related actions. Once all expenses and
+        payments have been entered, click{" "}
+        <Emoji
+          label={"Expenses settled emoji"}
+          emoji={emojiConstants.settle}></Emoji>
+        to view & confirm ideal settlement payments.
       </p>
     </div>
   );

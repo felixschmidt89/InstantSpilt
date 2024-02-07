@@ -69,13 +69,13 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
 
   return (
     <div className={styles.container}>
-      <h1>add user</h1>
+      <h1>add group member</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           type='text'
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
-          placeholder='user name'
+          placeholder='member name'
           className={styles.inputField}
           ref={inputRef}
           autoFocus

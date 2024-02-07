@@ -1,4 +1,4 @@
-// Needed for Jest.
+// Needed for Jest tests.
 {
   "presets": [
     [

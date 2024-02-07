@@ -11,24 +11,21 @@ import SwitchViewButtonsBar from "../../GroupBalancesAndHistory/SwitchViewButton
 const MiddleSectionExplanation = () => {
   return (
     <div className={styles.noLink}>
-      <h2>switch between group views</h2>
+      <h2>group views</h2>
       <SwitchViewButtonsBar view={"view2"} />
       <p className={styles.explanation}>
-        <div>
-          Positioned in the center and taking up most of the display, this
-          section hosts:
-        </div>
+        The heart of the app, taking up most of the screen and divided into two
+        parts:
         <div>
           <ul className={styles.list}>
             <li>
               Balances: All group members along with their current balances.
-              Click on a name to view or edit the member's details or entire
-              transaction history.
+              Click a name to view, update or delete the member and any
+              associated transaction.
             </li>
             <li>
-              History: All transactions of a group. Click on a payment or an
-              expense to view details and make changes, such as updates or
-              deletions.
+              History: All transactions of a group. Click a transaction to view
+              details and make changes, such as updating or deleting.
             </li>
           </ul>
         </div>

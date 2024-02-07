@@ -109,7 +109,7 @@ const App = () => {
             element={<ExpenseDetailsPage />}
           />
           <Route
-            path='/leave-group/:initialGroupName/:groupCode'
+            path='/leave-group/:groupName/:groupCode'
             element={<ForgetGroupOnDevicePage />}
           />
           <Route

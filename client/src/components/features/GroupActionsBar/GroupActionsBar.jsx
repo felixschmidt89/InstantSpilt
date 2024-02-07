@@ -47,10 +47,10 @@ const GroupActionsBar = () => {
         <GroupActionsEmojiButton
           route={"create-users"}
           emoji={emojiConstants.user}
-          tooltipText='add user'
-          ariaLabel='add user emoji'
+          tooltipText='add group member'
+          ariaLabel='add group member emoji'
         />
-        <span className={styles.iconExplanation}>+user</span>
+        <span className={styles.iconExplanation}>+member</span>
       </div>
 
       <div className={styles.iconContainer}>

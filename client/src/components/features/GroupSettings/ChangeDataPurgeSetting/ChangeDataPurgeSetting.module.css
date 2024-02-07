@@ -1,4 +1,5 @@
 .container {
+  margin: 0 auto;
   margin-top: 1rem;
   border: 0.2rem solid var(--color-grey);
   border-radius: 1rem;

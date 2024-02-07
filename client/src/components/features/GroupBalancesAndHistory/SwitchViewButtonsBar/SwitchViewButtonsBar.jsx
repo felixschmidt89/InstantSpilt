@@ -20,7 +20,7 @@ const SwitchViewButtonsBar = ({ view, handleSwitchView }) => {
         } ${view === "view2" ? "" : styles.inactiveButton}`} //
         onClick={handleSwitchView}
         disabled={view === "view2"}>
-        Balances
+        balances
       </button>
       {/* Button to render group History view */}
       <button
@@ -29,7 +29,7 @@ const SwitchViewButtonsBar = ({ view, handleSwitchView }) => {
         } ${view === "view1" ? "" : styles.inactiveButton}`}
         onClick={handleSwitchView}
         disabled={view === "view1"}>
-        History
+        history
       </button>
     </div>
   );

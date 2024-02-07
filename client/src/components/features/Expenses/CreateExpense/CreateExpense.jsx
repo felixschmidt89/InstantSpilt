@@ -9,7 +9,6 @@ import {
   handleApiErrorsAndTriggerErrorModal,
 } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
-import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
