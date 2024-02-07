@@ -15,11 +15,10 @@
 }
 
 .modalContent {
+  display: flex;
+  flex-direction: column;
   background: var(--color-body);
-  padding-bottom: 0rem;
-  padding-top: 0.5rem;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
+  padding: 0.5rem;
   border-radius: 1rem;
   text-align: center;
   border: 0.1rem solid var(--color-grey);
@@ -34,8 +33,18 @@
   text-align: center;
   outline: none;
   margin-bottom: 0.5rem;
+  width: fit-content;
 }
 
 .modalContent button:hover {
   box-shadow: 0 0 0.5rem var(--color-success);
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.errorButton {
+  margin: 0 auto;
 }

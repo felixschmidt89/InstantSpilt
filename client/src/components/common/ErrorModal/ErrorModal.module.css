@@ -26,7 +26,7 @@
   max-width: 80%;
 }
 
-.modalContent button {
+.modalContent .button {
   padding: 0.2rem;
   font-family: "Ubuntu", sans-serif;
   border: 0.2rem solid var(--color-grey);
@@ -34,6 +34,7 @@
   text-align: center;
   outline: none;
   margin-bottom: 0.5rem;
+  width: fit-content;
 }
 
 .modalContent button:hover {

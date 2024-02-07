@@ -39,7 +39,9 @@ const ErrorModal = ({ error, onClose, isVisible }) => {
                 remWidth={30}
                 errorFontColor={false}
               />
-              <button onClick={onClose}>OK</button>
+              <button className={styles.button} onClick={onClose}>
+                OK
+              </button>
             </>
           )}
         </div>

@@ -17,10 +17,11 @@ import styles from "./UserActionsBar.module.css";
  *
  * @param {Object} props - The component props.
  * @param {string} props.groupCode - The group code.
+ *  @param {string} props.groupName - The initial group name.
  * @param {string} props.initialGroupName - The initial group name.
  * @returns {JSX.Element} UserActionsBar component.
  */
-const UserActionsBar = ({ groupCode, initialGroupName }) => {
+const UserActionsBar = ({ groupCode, initialGroupName, groupName }) => {
   return (
     <div className={styles.container}>
       <ReactIconNavigate
@@ -67,7 +68,7 @@ const UserActionsBar = ({ groupCode, initialGroupName }) => {
         containerWidth='5'
         explanationText='leave group'
         tooltip='leave this group'
-        route={`/leave-group/${initialGroupName}/${groupCode}`}
+        route={`/leave-group/${groupName}/${groupCode}`}
         iconSize={3.5}
       />
     </div>

@@ -80,6 +80,7 @@ import styles from "./InstantSplitPage.module.css";
             <UserActionsBar
               groupCode={groupCode}
               initialGroupName={groupData.group.initialGroupName}
+              groupName={groupData.group.groupName}
             />
           </div>
           {/* Display group name */}

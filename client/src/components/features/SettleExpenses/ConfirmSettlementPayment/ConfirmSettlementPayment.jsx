@@ -1,6 +1,5 @@
 // React and Third-Party Libraries
 import React, { useState } from "react";
-import { GiTakeMyMoney } from "react-icons/gi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -15,15 +14,26 @@ import { genericErrorMessage } from "../../../../constants/errorConstants";
 import useConfirmationModalLogicAndActions from "../../../../hooks/useConfirmationModalLogicAndActions";
 
 // Components
-import ReactIconNavigate from "../../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 import ConfirmationModal from "../../../common/ConfirmationModal/ConfirmationModal";
 
 // Styles
 import styles from "./ConfirmSettlementPayment.module.css";
+import emojiConstants from "../../../../constants/emojiConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
+/**
+ * Component for rendering an icon to confirm a settlement payment on click.
+ *
+ * @component
+ * @param {Object} props - The component props.
+ * @param {number} props.paymentAmount - The amount of the payment.
+ * @param {string} props.paymentMakerName - The name of the payment maker.
+ * @param {string} props.paymentRecipientName - The name of the payment recipient.
+ * @param {string} props.groupCode - The group code.
+ * @returns {JSX.Element} React component.
+ */
 const ConfirmSettlementPayment = ({
   paymentAmount,
   paymentMakerName,
@@ -64,19 +74,9 @@ const ConfirmSettlementPayment = ({
 
   return (
     <>
-      <div className={styles.iconContainer}>
-        {" "}
-        <ReactIconNavigate
-          icon={GiTakeMyMoney}
-          onClick={handleShowConfirmation}
-          iconSize={2.5}
-          translateY={0.4}
-        />
-        <span
-          className={styles.iconExplanation}
-          onClick={handleShowConfirmation}>
-          confirm
-        </span>
+      <div className={styles.container} onClick={handleShowConfirmation}>
+        <span className={styles.icon}>{emojiConstants.settle}</span>
+        <span className={styles.iconExplanation}>confirm</span>
       </div>
       {isConfirmationVisible && (
         <ConfirmationModal
@@ -90,5 +90,4 @@ const ConfirmSettlementPayment = ({
     </>
   );
 };
-
 export default ConfirmSettlementPayment;

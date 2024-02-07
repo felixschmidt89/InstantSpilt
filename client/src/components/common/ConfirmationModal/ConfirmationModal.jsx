@@ -46,22 +46,30 @@ const ConfirmationModal = ({
           {error ? (
             <>
               <ErrorDisplay error={error} remWidth={30} errorFontColor={true} />
-              <button onClick={onCancel}>OK</button>
+              <button className={styles.errorButton} onClick={onCancel}>
+                OK
+              </button>
             </>
           ) : (
             <>
               <p>{message}</p>
-              <ReactIconNavigate
-                icon={IoCheckmarkCircleOutline}
-                onClick={onConfirm}
-                marginRight={"1"}
-                iconSize='3'
-              />
-              <ReactIconNavigate
-                icon={IoCloseCircleOutline}
-                onClick={onCancel}
-                iconSize='3'
-              />
+              <div className={styles.button}>
+                <ReactIconNavigate
+                  icon={IoCheckmarkCircleOutline}
+                  onClick={onConfirm}
+                  marginRight={"1"}
+                  iconSize='3'
+                  containerHeight='3'
+                  containerWidth='3'
+                />
+                <ReactIconNavigate
+                  icon={IoCloseCircleOutline}
+                  onClick={onCancel}
+                  iconSize='3'
+                  containerHeight='3'
+                  containerWidth='3'
+                />
+              </div>
             </>
           )}
         </div>

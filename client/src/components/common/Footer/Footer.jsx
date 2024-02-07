@@ -25,45 +25,56 @@ const Footer = () => {
       {/* LinkedIn profile */}
       <ReactIconNavigate
         icon={IoLogoLinkedin}
-        iconScale={1.2}
-        containerHeight='4'
+        iconScale={1.3}
+        containerHeight='2'
+        containerWidth='3'
+        marginRight='0.5'
         tooltip={`${currentYear} - Felix Schmidt`}
+        tooltipBottom={120}
         url={"https://www.linkedin.com/in/felixschmidt89"}
-        marginRight={0.5}
       />
       {/* Email*/}
       <ReactIconNavigate
         icon={MdAlternateEmail}
         tooltip={"email"}
         email={"felix.schmidt@protonmail.com"}
-        iconScale={1.1}
-        containerHeight='4'
-        marginRight={0.5}
+        iconScale={1.2}
+        containerHeight='2'
+        containerWidth='3'
+        marginRight='0.5'
+        tooltipBottom={120}
       />
       {/* Github repository */}
       <ReactIconNavigate
         icon={IoLogoGithub}
         tooltip={"GitHub repository"}
-        containerHeight='4'
+        iconScale={1.2}
+        containerHeight='2'
+        containerWidth='3'
+        marginRight='0.5'
         url={"https://github.com/felixschmidt89/InstantSpilt"}
-        marginRight={0.5}
+        tooltipBottom={120}
       />
       {/* Terms and conditions*/}
       <ReactIconNavigate
         icon={FaFileLines}
         route={"/terms-and-conditions/"}
         tooltip={"Terms and Conditions"}
-        iconScale={0.9}
+        iconScale={1}
         translateY={0.1}
-        containerHeight='4'
-        marginRight={0.5}
+        containerHeight='2'
+        containerWidth='3'
+        marginRight='0.5'
+        tooltipBottom={120}
       />
       {/* Legal notice*/}
       <ReactIconNavigate
         icon={FaScaleBalanced}
         route={"/legal-notice/"}
         tooltip={"Legal Notice"}
-        containerHeight='4'
+        containerHeight='2'
+        containerWidth='2'
+        tooltipBottom={120}
       />
     </footer>
   );

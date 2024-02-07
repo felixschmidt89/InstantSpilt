@@ -15,8 +15,6 @@ import {
 import useFetchGroupCurrency from "../../../../hooks/useFetchGroupCurrency";
 
 // Components
-import UsersWithPositiveBalance from "../UsersWithPositiveBalance/UsersWithPositiveBalance";
-import UsersWithNegativeBalance from "../UsersWithNegativeBalance/UsersWithNegativeBalance";
 import Spinner from "../../../common/Spinner/Spinner";
 import ExpensesSettled from "../ExpensesSettled/ExpensesSettled";
 import ErrorDisplay from "../../../common/ErrorDisplay/ErrorDisplay";
