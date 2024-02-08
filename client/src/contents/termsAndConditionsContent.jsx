@@ -19,7 +19,7 @@ export const sections = [
   {
     key: "section3",
     title: "Data Purge",
-    content: `As a data-sensitive application, we have implemented a data purge policy. If a group remains inactive, i.e., no group information is rendered, added, or changed, for a period of ${INACTIVE_DAYS} days, all its usage data will be permanently purged. This policy is designed to respect your privacy and ensure that only relevant and active data is retained within the application. If you wish to keep the group and its data, you can opt out from that mechanism within the application's settings`,
+    content: `As a data-sensitive application, we have implemented a data purge policy. If a group remains inactive, i.e., no group information is rendered, added, or changed, for a period of ${INACTIVE_DAYS} days, all its usage data will be permanently purged. This policy is designed to respect your privacy and ensure that only relevant and active data is retained within the application. If you wish to keep the group and its data, you can opt out from that mechanism within the application's settings.`,
   },
   {
     key: "section4",
@@ -31,13 +31,13 @@ export const sections = [
     key: "section5",
     title: "No Cookies, No Tracking",
     content:
-      "We are committed to being as user-friendly and data sensitive as possible. We do not use cookies or tracking mechanisms on our website or application to ensure your privacy all times.",
+      "We are committed to prioritizing user-friendliness and data sensitivity. Our website and the InstantSplit application do not use cookies or tracking mechanisms to ensure your privacy at all times.",
   },
   {
     key: "section6",
     title: "Local Storage",
     content:
-      "InstantSplit utilizes local storage within your browser to provide a convenient user experience. This local storage primarily houses your associated groupCode(s), ensuring seamless functionality without the need for personal identification or registration. In addition, user settings may be stored in local storage to enhance your interaction with the application. When you depart from a group within the application, any related data in local storage will be removed. You also have the option to manually delete this data in your browser's settings, although this action will result in losing access to the group.",
+      "InstantSplit utilizes local storage within your browser to provide a convenient user experience. This local storage primarily houses your associated groupCode(s), ensuring seamless functionality without the need for personal identification or registration. In addition, user settings may be stored in local storage to enhance your interaction with the application. When you depart from a group within the application, any related data in local storage will be removed. You can manually delete this data in your browser's settings, but this will result in losing access to one and possibly all groups depending on your action.",
   },
   {
     key: "section7",

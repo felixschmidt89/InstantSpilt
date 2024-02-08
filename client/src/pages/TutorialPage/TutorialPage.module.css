@@ -1,6 +1,8 @@
 .container {
-  margin: 0 auto;
+  padding: 0 0.5rem; /* Limiting width while keeping scrollbar on the border */
   overflow-y: auto;
+  height: 90%;
+  overflow-x: hidden;
 }
 
 .icons {

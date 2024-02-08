@@ -57,7 +57,6 @@ const ConfirmationModal = ({
                 <ReactIconNavigate
                   icon={IoCheckmarkCircleOutline}
                   onClick={onConfirm}
-                  marginRight={"1"}
                   iconSize='3'
                   containerHeight='3'
                   containerWidth='3'

@@ -93,7 +93,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
         groupMembers={groupMembers}
       />
       <div>
-        <SubmitButton buttonText='add expense' />
+        <SubmitButton buttonText='add payment' />
       </div>
 
       <ErrorModal

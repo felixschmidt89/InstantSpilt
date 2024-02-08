@@ -21,7 +21,7 @@ const NotEnoughUsers = () => (
     </span>{" "}
     below{" "}
     <span className={styles.emojiParanthesis}>
-      ({" "}
+      (
       <Emoji label={"pont down emoji"} emoji={emojiConstants.pointDown}></Emoji>
       )
     </span>{" "}
