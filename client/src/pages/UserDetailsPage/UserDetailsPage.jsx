@@ -83,6 +83,7 @@ const UserDetailsPage = () => {
               resourceName={userData.userName}
               groupCode={groupCode}
               inputWidth={10}
+              navigateToMain={false}
             />
             <DeleteResource resourceId={userId} resourceType='users' />
           </div>

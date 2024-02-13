@@ -16,11 +16,15 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
   return (
     <div className={styles.container}>
       <h2>security</h2>
-      <p className={styles.explanation}>
-        Be sure to store the groupCode somewhere save to avoid losing access to
-        this group (you can view it at any time within the application).
-        <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
-      </p>
+      <ul className={styles.explanation}>
+        <li>
+          Be sure to store your <strong>groupCode</strong> somewhere save to
+          avoid losing access:
+        </li>
+        <li>
+          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
+        </li>
+      </ul>
     </div>
   );
 };

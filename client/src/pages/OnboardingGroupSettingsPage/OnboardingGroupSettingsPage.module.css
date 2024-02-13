@@ -4,3 +4,13 @@
   padding-bottom: 1rem;
   overflow-y: auto;
 }
+
+.rightAligned {
+  width: 7rem;
+  margin-left: auto;
+}
+
+.rightAligned:hover {
+  color: var(--color-success);
+  cursor: pointer;
+}

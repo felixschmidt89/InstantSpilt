@@ -1,7 +1,6 @@
 // React and Third-Party Libraries
 import React, { useRef, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 // Contents
 import { currenciesContent } from "../../../../contents/currenciesContent";
@@ -29,11 +28,11 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {Object} props - Component props.
  * @param {string} props.groupCode - the groupCode identifying the group.
  * @param {string} props.groupCurrency - The current currency of the group.
+ * @param {boolean} props.isOnboarding - Flag indicating whether the component is used in the onboarding process.
  * @returns {JSX.Element} React component.
  */
-const ChangeGroupCurrency = ({ groupCode, groupCurrency }) => {
+const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
   const selectRef = useRef(null);
-  const navigate = useNavigate();
   const storedGroupCurrency = groupCurrency;
   const [newGroupCurrency, setNewGroupCurrency] = useState("");
   const [error, setError] = useState(null);
@@ -54,7 +53,7 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency }) => {
         }
       );
       devLog("Group currency updated:", response);
-      navigate("/instant-split");
+      handleUpdateFeedback();
     } catch (error) {
       setError(genericErrorMessage);
       displayErrorModal();
@@ -66,9 +65,15 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency }) => {
     setNewGroupCurrency(e.target.value);
   };
 
-  // Remove class after click, so that select does not fall back to appearing inactive
+  // Remove idle class after click, so that select does not fall back to appearing inactive
   const handleSelectFocus = () => {
     selectRef.current.classList.remove(styles.idleOnMount);
+  };
+
+  // Add idle class upon update, so that select goes back to appearing inactive with updated value
+  const handleUpdateFeedback = () => {
+    selectRef.current.classList.add(styles.idleOnMount);
+    console.log("test");
   };
 
   // Find the label for storedGroupCurrency
@@ -87,7 +92,7 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency }) => {
           onFocus={handleSelectFocus}
           onChange={handleSelectChange}>
           {/* Default option */}
-          <option className={styles.storedCurrency} value='' disabled>
+          <option className={styles.storedCurrency}>
             {storedCurrencyLabel}
           </option>
           {/* Render options from currenciesContent excluding storedGroupCurrency */}

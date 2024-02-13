@@ -1,5 +1,4 @@
-.idleOnMount,
-.storedCurrency {
+.idleOnMount {
   color: var(--color-grey);
 }
 

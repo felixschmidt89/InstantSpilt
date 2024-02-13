@@ -1,6 +1,9 @@
 // React and Third-Party Libraries
 import React from "react";
 
+// Constants and Utils
+import { devLog } from "../../utils/errorUtils";
+
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 
@@ -14,20 +17,47 @@ import ChangeDataPurgeSetting from "../../components/features/GroupSettings/Chan
 import Spinner from "../../components/common/Spinner/Spinner";
 
 // Styles
-import styles from "./OnboardingGroupCodeExplanationPage.module.css";
+import styles from "./OnboardingGroupSettingsPage.module.css";
+import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
 
 /**
  * Page component for rendering group currency & data purge settings as well as groupCode information for new users group creators (ie group not created within the main application)
  */
-const OnboardingGroupCodeExplanationPage = () => {
+const OnboardingGroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupData, isFetched } = useFetchGroupData(groupCode);
+  const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
+
+  // Check if current user has created group from within the application, started from manage-groups route
+  const isInAppGroupCreator = previousRoute.includes("/manage-groups");
+  if (isRetrieved) {
+    devLog("Current user is InstantSplit user:", isInAppGroupCreator);
+  }
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - groupCode explanation' />
-      <PiratePx COUNT_IDENTIFIER={"onboarding-groupcode-explanation"} />
-      <InAppNavigationBar forward={true} forwardRoute='/onboarding-tutorial' />
+      <HelmetMetaTagsNetlify title='InstantSplit - group settings' />
+      <PiratePx COUNT_IDENTIFIER={"onboarding-group-settings"} />
+      <div className={styles.rightAligned}>
+        {
+          // Case 1: Redirect recurring InstantSplit users directly to main application
+          isInAppGroupCreator ? (
+            <div className={styles.rightAligned}>
+              <InAppNavigationBar
+                forward={true}
+                forwardRoute='/instant-split'
+              />
+            </div>
+          ) : (
+            // Case 2: Redirect new InstantSplit users to onboarding page
+            <InAppNavigationBar
+              forward={true}
+              forwardRoute='/onboarding-tutorial'
+            />
+          )
+        }
+      </div>
+
       <div className={styles.container}>
         <h1>group settings</h1>
         {isFetched && groupData ? (
@@ -35,10 +65,12 @@ const OnboardingGroupCodeExplanationPage = () => {
             <ChangeGroupCurrency
               groupCode={groupCode}
               groupCurrency={groupData.group.currency}
+              isOnboarding={true}
             />
             <ChangeDataPurgeSetting
               groupCode={groupCode}
               inactiveDataPurge={groupData.group.inactiveDataPurge}
+              isOnboarding={true}
             />
           </>
         ) : (
@@ -50,4 +82,4 @@ const OnboardingGroupCodeExplanationPage = () => {
   );
 };
 
-export default OnboardingGroupCodeExplanationPage;
+export default OnboardingGroupSettingsPage;

@@ -61,34 +61,49 @@ const InAppNavigationBar = ({
   return (
     <div className={styles.navContainer}>
       {back && (
-        <IoArrowBackCircleOutline
-          className={`${styles.leftAlignedIcon} ${styles.icon}`}
-          onClick={() => handleRegularNavigation(backRoute)}
-        />
+        <div className={styles.iconContainer}>
+          <IoArrowBackCircleOutline
+            className={`${styles.leftAlignedIcon} ${styles.icon}`}
+            onClick={() => handleRegularNavigation(backRoute)}
+          />
+          <div className={styles.text}>back</div>
+        </div>
       )}
       {previousRoute && (
-        <IoArrowBackCircleOutline
-          className={`${styles.leftAlignedIcon} ${styles.icon}`}
-          onClick={() => handleNestedNavigation(previousRoute)}
-        />
+        <div className={styles.iconContainer}>
+          <IoArrowBackCircleOutline
+            className={`${styles.leftAlignedIcon} ${styles.icon}`}
+            onClick={() => handleNestedNavigation(previousRoute)}
+          />
+          <div className={styles.text}>back</div>
+        </div>
       )}
       {nestedPreviousRoute && (
-        <IoArrowBackCircleOutline
-          className={`${styles.leftAlignedIcon} ${styles.icon}`}
-          onClick={() => handleNestedNavigation(nestedPreviousRoute)}
-        />
+        <div className={styles.iconContainer}>
+          <IoArrowBackCircleOutline
+            className={`${styles.leftAlignedIcon} ${styles.icon}`}
+            onClick={() => handleNestedNavigation(nestedPreviousRoute)}
+          />
+          <div className={styles.text}>back</div>
+        </div>
       )}
       {home && (
-        <GoHome
-          className={`${styles.rightAlignedIcon} ${styles.icon}`}
-          onClick={() => handleRegularNavigation(homeRoute)}
-        />
+        <div className={styles.iconContainer}>
+          <GoHome
+            className={`${styles.rightAlignedIcon} ${styles.icon}`}
+            onClick={() => handleRegularNavigation(homeRoute)}
+          />
+          <div className={styles.text}>main</div>
+        </div>
       )}
       {forward && (
-        <IoArrowForwardCircleOutline
-          className={`${styles.rightAlignedIcon} ${styles.icon}`}
-          onClick={() => handleRegularNavigation(forwardRoute)}
-        />
+        <div className={styles.forwardContainer}>
+          <IoArrowForwardCircleOutline
+            className={`${styles.rightAlignedIcon} ${styles.icon}`}
+            onClick={() => handleRegularNavigation(forwardRoute)}
+          />
+          <div className={styles.text}>next</div>
+        </div>
       )}
     </div>
   );

@@ -1,21 +1,16 @@
 .navContainer {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 0.5rem;
+  line-height: 1;
 }
 
 .icon {
   font-family: "Ubuntu", sans-serif;
-  color: var(--color-signal);
   font-size: 4rem;
-  cursor: pointer;
-}
-
-.icon:hover {
-  color: var(--color-success);
 }
 
 .leftAlignedIcon {
@@ -24,4 +19,15 @@
 
 .rightAlignedIcon {
   margin-left: auto;
+}
+
+.text {
+  line-height: 0.8;
+  font-size: 1.3rem;
+}
+
+.iconContainer:hover,
+icon:hover {
+  color: var(--color-success);
+  cursor: pointer;
 }

@@ -9,8 +9,7 @@
 }
 
 .logoImage {
-  display: none;
   padding-top: 2rem;
   width: 40%;
-  max-width: 50rem;
+  max-width: 35rem;
 }

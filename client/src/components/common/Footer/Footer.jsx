@@ -1,13 +1,13 @@
 // React and Third-Party Libraries
 import React from "react";
 import { IoLogoGithub } from "react-icons/io";
-import { MdAlternateEmail } from "react-icons/md";
-import { IoLogoLinkedin } from "react-icons/io";
+// import { MdAlternateEmail } from "react-icons/md";
+// import { IoLogoLinkedin } from "react-icons/io";
 import { FaScaleBalanced } from "react-icons/fa6";
 import { FaFileLines } from "react-icons/fa6";
 
 // Constants and Utils
-import { currentYear } from "../../../constants/dateConstants";
+// import { currentYear } from "../../../constants/dateConstants";
 import ReactIconNavigate from "../InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 
 // Components
@@ -15,7 +15,7 @@ import ReactIconNavigate from "../InAppNavigation/ReactIconNavigate/ReactIconNav
 // Styles
 import styles from "./Footer.module.css";
 
-/**
+/**TODO: Decide whether to keep LinkedIn and Email
  * footer component that displays and links essential information at the bottom of the page:
  * LinkedIn, email, GitHub repository, terms and conditions and legal notice.
  */

@@ -16,3 +16,13 @@
   width: 99%;
   margin: 0 auto;
 }
+
+.rightAligned {
+  width: 7rem;
+  margin-left: auto;
+}
+
+.rightAligned:hover {
+  color: var(--color-success);
+  cursor: pointer;
+}

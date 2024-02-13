@@ -18,7 +18,7 @@ import ExpenseDetailsPage from "./pages/ExpenseDetailsPage/ExpenseDetailsPage";
 import PaymentDetailsPage from "./pages/PaymentDetailsPage/PaymentDetailsPage";
 import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
 import OnboardingTutorialPage from "./pages/OnboardingTutorialPage/OnboardingTutorialPage";
-import OnboardingGroupCodeExplanationPage from "./pages/OnboardingGroupCodeExplanationPage/OnboardingGroupCodeExplanationPage";
+import OnboardingGroupSettingsPage from "./pages/OnboardingGroupSettingsPage/OnboardingGroupSettingsPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
@@ -48,8 +48,8 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route path='/legal-notice' element={<LegalNoticePage />} />
           <Route
-            path='/onboarding-groupcode-explanation'
-            element={<OnboardingGroupCodeExplanationPage />}
+            path='/onboarding-group-settings'
+            element={<OnboardingGroupSettingsPage />}
           />
           <Route
             path='/onboarding-create-group'

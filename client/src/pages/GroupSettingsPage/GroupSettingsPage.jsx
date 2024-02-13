@@ -41,6 +41,7 @@ const GroupSettingsPage = () => {
               groupCode={groupCode}
               resourceType={"group"}
               resourceName={groupData.group.groupName}
+              navigateToMain={false}
             />
             <ChangeGroupCurrency
               groupCode={groupCode}

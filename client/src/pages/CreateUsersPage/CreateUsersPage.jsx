@@ -36,17 +36,16 @@ function CreateUsersPage() {
       <HelmetMetaTagsNetlify title='InstantSplit - add user' />
       <PiratePx COUNT_IDENTIFIER={"create-users"} />
       {
-        // Case 1: Navigate new users to onboarding
-        isNewUser ? (
-          <InAppNavigationBar
-            forward={true}
-            forwardRoute='/onboarding-groupcode-explanation'
-          />
-        ) : isInAppGroupCreator ? (
-          // Case 2: Render forward button for group creation UI consistency
-          <InAppNavigationBar forward={true} />
+        // Case 1: Navigate group creators users to onboarding group settings
+        isNewUser || isInAppGroupCreator ? (
+          <div className={styles.rightAligned}>
+            <InAppNavigationBar
+              forward={true}
+              forwardRoute='/onboarding-group-settings'
+            />
+          </div>
         ) : (
-          // Case 3: Render back button for default case (adding users to a group from within main application)
+          // Case 2: Render back button for default case (adding users to a group from within main application)
           <InAppNavigationBar back={true} />
         )
       }
@@ -56,5 +55,4 @@ function CreateUsersPage() {
     </main>
   );
 }
-
 export default CreateUsersPage;

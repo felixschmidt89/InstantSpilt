@@ -1,7 +1,6 @@
 // React and Third-Party Libraries
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
 import {
@@ -31,10 +30,14 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {Object} props - Component props
  * @param {string} props.groupCode - The group code.
  * @param {boolean} props.inactiveDataPurge - Flag indicating whether data purge is currently active.
+ * @param {boolean} props.isOnboarding - Flag indicating whether the component is used in the onboarding process.
  * @returns {JSX.Element} React component.
  */
-const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
-  const navigate = useNavigate();
+const ChangeDataPurgeSetting = ({
+  groupCode,
+  inactiveDataPurge,
+  isOnboarding,
+}) => {
   const [error, setError] = useState(null);
   const [isChecked, setIsChecked] = useState(inactiveDataPurge);
   const checkboxRef = useRef(null);
@@ -58,7 +61,8 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
         }
       );
       devLog("inactiveDataPurge setting updated:", response);
-      navigate("/instant-split");
+      // Add class after click, so checkbox does appears inactive with updated value
+      checkboxRef.current.classList.add(styles.idleOnMount);
     } catch (error) {
       if (error.response) {
         handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
@@ -88,8 +92,9 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
         </p>
       ) : (
         <p className={styles.explanation}>
-          Automatic data purge after {INACTIVE_DAYS} days of group inactivity is
-          currently deactivated. <br />
+          Automatic data purge after {INACTIVE_DAYS} days of group inactivity is{" "}
+          <strong>currently deactivated.</strong>
+          <br />
           If you wish to reactivate data purging for your group and its
           associated data, please opt back in:
         </p>

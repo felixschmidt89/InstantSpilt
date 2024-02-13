@@ -28,7 +28,7 @@ function OnboardingTutorialPage() {
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
 
   const isNewUserGroupCreator = previousRoute.includes(
-    "/onboarding-groupcode-explanation"
+    "/onboarding-group-settings"
   );
   if (isRetrieved) {
     devLog(
@@ -43,13 +43,15 @@ function OnboardingTutorialPage() {
       {isRetrieved && isNewUserGroupCreator ? ( // Allow back navigation for new user group creators
         <InAppNavigationBar
           back={true}
-          backRoute='/onboarding-groupcode-explanation'
+          backRoute='/onboarding-group-settings'
           forward={true}
           forwardRoute='/instant-split'
         />
       ) : (
         // Disallow back navigation for invited users
-        <InAppNavigationBar forward={true} />
+        <div className={styles.rightAligned}>
+          <InAppNavigationBar forward={true} />
+        </div>
       )}
 
       <div className={styles.container}>

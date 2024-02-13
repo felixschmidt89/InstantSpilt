@@ -32,6 +32,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} props.resourceName - The current name of the resource.
  * @param {string} props.groupCode - The groupCode of the associated group.
  * @param {number} [props.inputWidth=20] - The width of the input field in rem units. Defaults to 20.
+ * @param {boolean} [props.navigateToMain=true] - Flag indicating whether to navigate to the main page after updating the resource name. Defaults to true.
  * @returns {JSX.Element} React component.
  */
 const ChangeResourceName = ({
@@ -40,6 +41,7 @@ const ChangeResourceName = ({
   resourceName,
   groupCode,
   inputWidth = 20,
+  navigateToMain = true,
 }) => {
   const inputRef = useRef(null);
   const navigate = useNavigate();
@@ -68,7 +70,10 @@ const ChangeResourceName = ({
         payload
       );
       devLog(`${resourceType} name updated:`, response);
-      navigate("/instant-split");
+      if (navigateToMain) {
+        navigate("/instant-split");
+      }
+      inputRef.current.classList.remove(styles.active);
     } catch (error) {
       if (error.response) {
         handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);

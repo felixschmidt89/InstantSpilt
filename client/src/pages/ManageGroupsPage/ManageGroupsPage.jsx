@@ -37,7 +37,7 @@ const ManageGroupsPage = () => {
         <h2>join a different existing group</h2>
         <ValidateGroupCode />
         <h2>create a new group</h2>
-        <CreateGroupForm isInAppCreation={false} />
+        <CreateGroupForm isInAppCreation={true} />
       </div>
     </main>
   );
