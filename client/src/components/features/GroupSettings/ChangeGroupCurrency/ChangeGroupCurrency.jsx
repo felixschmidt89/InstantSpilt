@@ -33,7 +33,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  */
 const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
   const selectRef = useRef(null);
-  const storedGroupCurrency = groupCurrency;
+  const [labelCurrency, setLabelCurrency] = useState(groupCurrency);
   const [newGroupCurrency, setNewGroupCurrency] = useState("");
   const [error, setError] = useState(null);
 
@@ -53,10 +53,12 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
         }
       );
       devLog("Group currency updated:", response);
+      setLabelCurrency(newGroupCurrency);
       handleUpdateFeedback();
     } catch (error) {
       setError(genericErrorMessage);
       displayErrorModal();
+
       devLog("Error updating group currency:", error);
     }
   };
@@ -73,12 +75,11 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
   // Add idle class upon update, so that select goes back to appearing inactive with updated value
   const handleUpdateFeedback = () => {
     selectRef.current.classList.add(styles.idleOnMount);
-    console.log("test");
   };
 
-  // Find the label for storedGroupCurrency
+  // Find the label for labelCurrency
   const storedCurrencyLabel = currenciesContent.find(
-    (currency) => currency.value === storedGroupCurrency
+    (currency) => currency.value === labelCurrency
   )?.label;
 
   return (
@@ -95,9 +96,9 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
           <option className={styles.storedCurrency}>
             {storedCurrencyLabel}
           </option>
-          {/* Render options from currenciesContent excluding storedGroupCurrency */}
+          {/* Render options from currenciesContent excluding labelCurrency */}
           {currenciesContent
-            .filter((currency) => currency.value !== storedGroupCurrency)
+            .filter((currency) => currency.value !== labelCurrency)
             .map((currency) => (
               <option
                 key={currency.value}

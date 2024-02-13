@@ -4,7 +4,7 @@
 
 .leftColumn {
   display: flex;
-  border-top: 2px solid var(--color-signal-reduced-opacity);
+  border-top: 0.2rem solid var(--color-signal-reduced-opacity);
 }
 
 .paymentEmoji {
@@ -13,7 +13,7 @@
 
 .paymentAmount {
   text-align: right; /* numbers are right aligned to be easily readable */
-  width: 8rem; /* white space on the left */
+  width: 9rem; /* white space on the left */
 }
 
 .rightColumn {
@@ -22,9 +22,8 @@
   align-items: center;
   gap: 0.3rem;
   margin-left: 3rem;
-  margin-right: 1rem;
   width: 80%;
-  border-top: 2px solid var(--color-signal-reduced-opacity);
+  border-top: 0.2rem solid var(--color-signal-reduced-opacity);
 }
 @media (max-width: 500px) {
   .rightColumn {

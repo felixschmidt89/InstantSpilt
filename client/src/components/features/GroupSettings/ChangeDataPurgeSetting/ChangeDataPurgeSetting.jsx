@@ -30,13 +30,12 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {Object} props - Component props
  * @param {string} props.groupCode - The group code.
  * @param {boolean} props.inactiveDataPurge - Flag indicating whether data purge is currently active.
- * @param {boolean} props.isOnboarding - Flag indicating whether the component is used in the onboarding process.
  * @returns {JSX.Element} React component.
  */
 const ChangeDataPurgeSetting = ({
   groupCode,
   inactiveDataPurge,
-  isOnboarding,
+  onToggleInactiveDataPurge,
 }) => {
   const [error, setError] = useState(null);
   const [isChecked, setIsChecked] = useState(inactiveDataPurge);
@@ -63,6 +62,7 @@ const ChangeDataPurgeSetting = ({
       devLog("inactiveDataPurge setting updated:", response);
       // Add class after click, so checkbox does appears inactive with updated value
       checkboxRef.current.classList.add(styles.idleOnMount);
+      onToggleInactiveDataPurge();
     } catch (error) {
       if (error.response) {
         handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
@@ -84,21 +84,14 @@ const ChangeDataPurgeSetting = ({
   return (
     <div className={styles.container}>
       <h2 className={styles.header}>data purge</h2>
-      {inactiveDataPurge ? (
-        <p className={styles.explanation}>
-          InstantSplit permanently deletes inactive groups and their data
-          (users, expenses & payments) after {INACTIVE_DAYS} days of group
-          inactivity. If you wish to keep your group and data, please opt out:
-        </p>
-      ) : (
-        <p className={styles.explanation}>
-          Automatic data purge after {INACTIVE_DAYS} days of group inactivity is{" "}
-          <strong>currently deactivated.</strong>
-          <br />
-          If you wish to reactivate data purging for your group and its
-          associated data, please opt back in:
-        </p>
-      )}
+      <p
+        className={`${styles.status} ${inactiveDataPurge ? styles.disabled : styles.enabled}`}>
+        <>{inactiveDataPurge ? "disabled" : "enabled"}</>
+      </p>
+      <p className={styles.explanation}>
+        Deletes group and its associated data (including group members users,
+        expenses & payments) after {INACTIVE_DAYS} days of group inactivity.
+      </p>
       <form onSubmit={handleFormSubmit}>
         <input
           className={`${styles.select} ${styles.idleOnMount}`}
@@ -116,6 +109,7 @@ const ChangeDataPurgeSetting = ({
           translateY={0.2}
         />
       </form>
+
       <ErrorModal
         error={error}
         onClose={handleCloseErrorModal}

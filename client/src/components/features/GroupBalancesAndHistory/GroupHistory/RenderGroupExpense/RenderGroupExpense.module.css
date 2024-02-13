@@ -1,22 +1,20 @@
 .expenses {
   display: flex;
-  transform: translateX(0.3rem);
 }
 
 .leftColumn {
   display: flex;
-  align-items: center;
   border-top: 0.2rem solid var(--color-signal-reduced-opacity);
 }
 
 .expenseEmoji {
-  margin-right: 0.7rem;
+  margin-right: 1rem;
 }
 
 /* Ensure that numbers are right aligned to be easily readable */
 .expenseAmount {
   text-align: right;
-  width: 8rem; /* white space on the left */
+  width: 9rem; /* white space on the left */
 }
 
 .rightColumn {
@@ -24,13 +22,11 @@
   display: flex;
   flex-direction: column;
   margin-left: 3rem;
-  margin-right: 2rem;
-  border-top: 2px solid var(--color-signal-reduced-opacity);
+  border-top: 0.2rem solid var(--color-signal-reduced-opacity);
 }
 
 /* Adjust the height of elements within rightColumn */
-.rightColumn .expenseEmoji,
-.rightColumn strong {
+.rightColumn .expenseEmoji {
   margin-bottom: 0.5rem;
 }
 

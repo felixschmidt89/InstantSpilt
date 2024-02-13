@@ -1,11 +1,13 @@
 // React and Third-Party Libraries
-import React from "react";
+import React, { useEffect } from "react";
 
 // Constants and Utils
 import { devLog } from "../../utils/errorUtils";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
+import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
+import useInactiveDataPurgeToggleLogic from "../../hooks/useInactiveDataPurgeToggleLogic";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -18,15 +20,21 @@ import Spinner from "../../components/common/Spinner/Spinner";
 
 // Styles
 import styles from "./OnboardingGroupSettingsPage.module.css";
-import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
 
 /**
- * Page component for rendering group currency & data purge settings as well as groupCode information for new users group creators (ie group not created within the main application)
+ * Page component for rendering group currency & data purge settings during group creation process
  */
 const OnboardingGroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupData, isFetched } = useFetchGroupData(groupCode);
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
+
+  const { inactiveDataPurge, handleToggleInactiveDataPurge } =
+    useInactiveDataPurgeToggleLogic(isFetched, groupData);
+
+  useEffect(() => {
+    devLog("Inactive Data Purge:", inactiveDataPurge);
+  }, [inactiveDataPurge]);
 
   // Check if current user has created group from within the application, started from manage-groups route
   const isInAppGroupCreator = previousRoute.includes("/manage-groups");
@@ -69,8 +77,8 @@ const OnboardingGroupSettingsPage = () => {
             />
             <ChangeDataPurgeSetting
               groupCode={groupCode}
-              inactiveDataPurge={groupData.group.inactiveDataPurge}
-              isOnboarding={true}
+              inactiveDataPurge={inactiveDataPurge}
+              onToggleInactiveDataPurge={handleToggleInactiveDataPurge}
             />
           </>
         ) : (
