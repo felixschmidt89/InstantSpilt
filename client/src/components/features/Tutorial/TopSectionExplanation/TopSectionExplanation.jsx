@@ -12,16 +12,16 @@ import styles from "./TopSectionExplanation.module.css";
  * @returns {JSX.Element} React component. */
 const TopSectionExplanation = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <h2>user bar</h2>
-      <div className={styles.noLink}>
-        <UserActionsBar />
-      </div>
-      <p className={styles.explanation}>
-        At the top of the main app, the user bar offers access to your group
-        management settings, the app tutorial, and a feedback option. We value
-        your input and are constantly seeking ways to improve!
-      </p>
+      <ul className={styles.explanation}>
+        <li>
+          Above main application screen, houses user management functions:
+        </li>
+        <li className={styles.noLink}>
+          <UserActionsBar />
+        </li>
+      </ul>
     </div>
   );
 };

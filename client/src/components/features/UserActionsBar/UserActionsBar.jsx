@@ -47,7 +47,7 @@ const UserActionsBar = ({ groupCode, initialGroupName, groupName }) => {
         icon={IoPersonAddOutline}
         containerHeight='7'
         containerWidth='9'
-        explanationText='share group access'
+        explanationText='invite to group'
         tooltip='share access to this group'
         route={`/share-group/${initialGroupName}/${groupCode}`}
         iconSize={3.5}

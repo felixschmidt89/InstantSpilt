@@ -1,5 +1,13 @@
-.bottomSectionExplanation {
-  margin-top: 1rem;
+.container {
+  padding: 0.5rem 1rem;
+  line-height: 1.5;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.container h2 {
+  line-height: 1;
 }
 
 .emojiParenthesis {
@@ -10,8 +18,9 @@
   pointer-events: none;
 }
 
-.explanation {
-  padding: 0.5rem 1rem;
-  line-height: 1.3;
-  text-align: justify;
+/* Mobile*/
+@media only screen and (max-width: 767px) {
+  .container {
+    width: 100%;
+  }
 }

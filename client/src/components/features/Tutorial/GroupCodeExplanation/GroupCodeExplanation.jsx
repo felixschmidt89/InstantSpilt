@@ -25,21 +25,25 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
 
   return (
     <div className={styles.container}>
-      <h2>groupCode</h2>
-      <p className={styles.explanation}>
-        InstantSplit is centered around the <strong>groupcode</strong>. You can
-        access a group by entering the code manually or automatically using the
-        invitation link. Be sure to store this group's code somewhere save:
-      </p>
-      <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
-      <p className={`${styles.invitationLink} ${styles.explanation}`}>
-        Alternatively, bookmark this group's{" "}
-        {/* Link to the invitation URL opening new tab */}
-        <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
-          invitation link
-        </Link>{" "}
-        to avoid losing access.
-      </p>
+      <h2>retain access to group</h2>
+      <ul className={styles.explanation}>
+        {" "}
+        <li>
+          Key to this group is its unique <strong>groupcode</strong>, store it
+          somewhere save:
+        </li>
+        <li className={styles.groupCode}>
+          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
+        </li>
+        <li>
+          Alternatively, bookmark its{" "}
+          <strong>
+            <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
+              invitation link.
+            </Link>
+          </strong>
+        </li>
+      </ul>
     </div>
   );
 };

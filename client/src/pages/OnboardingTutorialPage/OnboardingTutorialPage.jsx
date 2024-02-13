@@ -55,9 +55,8 @@ function OnboardingTutorialPage() {
       <div className={styles.container}>
         <h1>onboarding</h1>
         <p className={styles.intro}>
-          Directly{" "}
           <Link to='/instant-split' className={styles.mainAppLink}>
-            access the main app
+            Skip to main app
           </Link>{" "}
           or discover key features below. You can revisit the complete tutorial
           anytime within the app.
@@ -67,7 +66,7 @@ function OnboardingTutorialPage() {
         <TopSectionExplanation />
         <div>
           <Link to='/instant-split' className={styles.mainAppLink}>
-            Proceed to main app
+            Go to main app
           </Link>
         </div>
       </div>
