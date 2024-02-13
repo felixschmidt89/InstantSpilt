@@ -1,5 +1,4 @@
 .container {
-  padding: 0 1rem; /* Limiting width while keeping scrollbar on the border */
   overflow-y: auto;
   height: 90%;
   overflow-x: hidden;
@@ -7,10 +6,13 @@
 
 .intro {
   border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
-  width: 98%;
+  width: 99%;
+
   margin: 0 auto;
 }
 
-mainAppLink {
-  font-weight: bold;
+.section {
+  border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
+  width: 99%;
+  margin: 0 auto;
 }

@@ -55,19 +55,29 @@ function OnboardingTutorialPage() {
       <div className={styles.container}>
         <h1>onboarding</h1>
         <p className={styles.intro}>
-          <Link to='/instant-split' className={styles.mainAppLink}>
-            Skip to main app
-          </Link>{" "}
+          <strong>
+            <Link to='/instant-split' className={styles.mainAppLink}>
+              Skip to main app
+            </Link>
+          </strong>{" "}
           or discover key features below. You can revisit the complete tutorial
           anytime within the app.
         </p>
-        <BottomSectionExplanation />
-        <MiddleSectionExplanation />
-        <TopSectionExplanation />
+        <div className={styles.section}>
+          <BottomSectionExplanation />
+        </div>
+        <div className={styles.section}>
+          <MiddleSectionExplanation />
+        </div>
+        <div className={styles.section}>
+          <TopSectionExplanation />
+        </div>
         <div>
-          <Link to='/instant-split' className={styles.mainAppLink}>
-            Go to main app
-          </Link>
+          <strong>
+            <Link to='/instant-split' className={styles.mainAppLink}>
+              Go to main app
+            </Link>
+          </strong>
         </div>
       </div>
     </main>

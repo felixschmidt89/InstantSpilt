@@ -28,8 +28,9 @@
 .modalContent button {
   padding: 0.2rem;
   font-family: "Ubuntu", sans-serif;
-  border: 0.2rem solid var(--color-grey);
+  border: 0.15rem solid var(--color-grey);
   border-radius: 0.5rem;
+  background-color: var(--color-body);
   text-align: center;
   outline: none;
   margin-bottom: 0.5rem;
@@ -37,7 +38,7 @@
 }
 
 .modalContent button:hover {
-  box-shadow: 0 0 0.5rem var(--color-success);
+  box-shadow: 0 0 0.2rem var(--color-success);
 }
 
 .button {
