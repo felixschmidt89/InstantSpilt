@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       {/* LinkedIn profile */}
-      <ReactIconNavigate
+      {/* <ReactIconNavigate
         icon={IoLogoLinkedin}
         iconScale={1.3}
         containerHeight='2'
@@ -32,9 +32,9 @@ const Footer = () => {
         tooltip={`${currentYear} - Felix Schmidt`}
         tooltipBottom={120}
         url={"https://www.linkedin.com/in/felixschmidt89"}
-      />
+      /> */}
       {/* Email*/}
-      <ReactIconNavigate
+      {/* <ReactIconNavigate
         icon={MdAlternateEmail}
         tooltip={"email"}
         email={"felix.schmidt@protonmail.com"}
@@ -43,7 +43,7 @@ const Footer = () => {
         containerWidth='3'
         marginRight='0.5'
         tooltipBottom={120}
-      />
+      /> */}
       {/* Github repository */}
       <ReactIconNavigate
         icon={IoLogoGithub}
