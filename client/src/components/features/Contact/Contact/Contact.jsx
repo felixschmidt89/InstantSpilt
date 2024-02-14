@@ -69,31 +69,31 @@ const Contact = () => {
     setError("");
     // Validate name
     if (!formData.name.trim()) {
-      setError("Name can't be empty.");
+      setError("missing name");
       displayErrorModal();
       return;
     }
     if (formData.name.length > 50) {
-      setError("Name can't exceed 50 characters.");
+      setError("name must not exceed 50 characters");
       displayErrorModal();
       return;
     }
 
     // Validate message
     if (!formData.feedback.trim()) {
-      setError("Message can't be empty.");
+      setError("missing message");
       displayErrorModal();
       return;
     }
     if (formData.feedback.length > 2500) {
-      setError("Message can't exceed 2500 characters.");
+      setError("message must not exceed 2500 characters.");
       displayErrorModal();
       return;
     }
 
     // Validate file size
     if (file && file.size > 5242880) {
-      setError("File size exceeds the allowed limit of 5MB.");
+      setError("file exceeds allowed size limit of 5MB.");
       displayErrorModal();
       return;
     }

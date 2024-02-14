@@ -1,7 +1,10 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import {
+  IoMdCheckmarkCircleOutline,
+  IoMdCloseCircleOutline,
+} from "react-icons/io";
 
 // Constants and Utils
 import {
@@ -20,7 +23,6 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import ErrorDisplay from "../../components/common/ErrorDisplay/ErrorDisplay";
 import Spinner from "../../components/common/Spinner/Spinner";
-import ReactIconNavigate from "../../components/common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 
 // Styles
 import styles from "./ValidateProvidedGroupCodePage.module.css";
@@ -90,18 +92,22 @@ const ValidateProvideGroupCodePage = () => {
         <h1>GroupCode validation</h1>
         {groupExists && (
           <div className={styles.groupExists}>
-            <ReactIconNavigate
-              icon={IoMdCheckmarkCircleOutline}
-              cursorPointer={false}
-              iconSize={2}
-              translateY={0.5}
-            />
             <p>Valid GroupCode, redirecting to the group now.</p>
+            <div className={styles.icon}>
+              <IoMdCheckmarkCircleOutline />
+            </div>
           </div>
         )}
         {/*Handle validations timeout errors*/}
         {!error && !groupExists && <Spinner />}
-        <ErrorDisplay error={error} remWidth={25} errorFontColor={true} />
+        {error && (
+          <div className={styles.errorContainer}>
+            <div className={styles.icon}>
+              <IoMdCloseCircleOutline />
+            </div>
+            <ErrorDisplay error={error} remWidth={30} errorFontColor={true} />
+          </div>
+        )}
       </div>
     </main>
   );

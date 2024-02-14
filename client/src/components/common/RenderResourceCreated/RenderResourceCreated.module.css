@@ -2,20 +2,13 @@
   margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  width: 26rem;
-  margin: 0 auto;
-  margin-bottom: 2rem;
+  align-items: center;
 }
 .item {
   display: flex;
-  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .key {
-  text-align: left;
   font-weight: bold;
-}
-.value {
-  text-align: right;
-  margin-right: 2rem;
 }

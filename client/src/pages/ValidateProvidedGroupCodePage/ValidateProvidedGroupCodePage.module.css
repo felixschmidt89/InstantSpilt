@@ -9,4 +9,14 @@
 
 .groupExists {
   color: var(--color-success);
+  margin: 0 auto;
+}
+
+.errorContainer {
+  color: var(--color-error);
+}
+
+.icon {
+  font-size: 2.5rem;
+  line-height: 1;
 }
