@@ -1,5 +1,7 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { Button } from "@mui/material";
 
 // Hooks
 import useDeleteResource from "../../../hooks/useDeleteResource";
@@ -67,9 +69,20 @@ const DeleteResource = ({
   return (
     <div className={styles.container}>
       {isButton ? (
-        <button className={styles.button} onClick={handleShowConfirmation}>
+        <Button
+          onClick={handleShowConfirmation}
+          style={{
+            padding: "0.2rem 0.5rem",
+            fontSize: "1.6rem",
+            marginTop: "1rem",
+            fontFamily: "inherit",
+          }}
+          color='error'
+          variant='contained'
+          type='submit'
+          endIcon={<DeleteIcon />}>
           delete {showResourceType && resourceTypeSingular}
-        </button>
+        </Button>
       ) : (
         <span
           className={styles.link}

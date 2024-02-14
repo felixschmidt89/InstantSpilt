@@ -1,10 +1,13 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+
+// Constants and Utils
+import { setRouteInLocalStorage } from "../../../../utils/localStorageUtils";
 
 // Styles
 import styles from "./RouteButton.module.css";
-import { setRouteInLocalStorage } from "../../../../utils/localStorageUtils";
 
 /**
  * Button for navigating to a specified route with optional setting of previousRoute or nestedPreviousRoute in localStorage (needed for InAppNavgationBar component)
@@ -34,9 +37,19 @@ const RouteButton = ({
 
   return (
     <div className={styles.container}>
-      <button className={styles.button} onClick={handleClick}>
+      <Button
+        onClick={handleClick}
+        style={{
+          padding: "0.2rem 0.5rem",
+          fontSize: "1.6rem",
+          marginTop: "0.5rem",
+          fontFamily: "inherit",
+        }}
+        color='primary'
+        variant='outlined'
+        type='submit'>
         {buttonText}
-      </button>
+      </Button>
     </div>
   );
 };

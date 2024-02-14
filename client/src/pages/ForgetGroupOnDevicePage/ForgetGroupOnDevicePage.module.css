@@ -7,24 +7,6 @@
   padding-bottom: 1rem;
 }
 
-.button {
-  background-color: var(--color-error);
-  color: var(--color-main);
-  border: none;
-  padding: 0.5rem;
-  font-size: 1.6rem;
-  cursor: pointer;
-  border-radius: 1rem;
-  width: fit-content;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: bold;
-}
-
-.button:hover {
-  background-color: var(--color-error);
-  box-shadow: 0 0 0.5rem var(--color-error);
-}
-
 .buttonContainer {
-  margin-top: 5rem;
+  margin-top: 0.5rem;
 }

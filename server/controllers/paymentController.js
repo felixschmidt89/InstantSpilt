@@ -21,7 +21,7 @@ export const createPayment = async (req, res) => {
     if (!paymentMakerName) {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
-        message: 'Payment maker name is required.',
+        message: 'missing payment maker',
       });
     }
 
@@ -29,7 +29,7 @@ export const createPayment = async (req, res) => {
     if (!paymentRecipientName) {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
-        message: 'Payment recipient name is required.',
+        message: 'missing payment recipient',
       });
     }
 
@@ -50,7 +50,7 @@ export const createPayment = async (req, res) => {
     ) {
       return res.status(StatusCodes.CONFLICT).json({
         status: 'fail',
-        message: `Payment maker and recipient can't be the same person.`,
+        message: `payment maker and recipient can't be the same`,
       });
     }
 
@@ -127,7 +127,7 @@ export const updatePayment = async (req, res) => {
     ) {
       return res.status(StatusCodes.CONFLICT).json({
         status: 'fail',
-        message: `Payment maker and recipient can't be the same person.`,
+        message: ` and recipient can't be the same person.`,
       });
     }
 

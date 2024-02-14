@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { Button } from "@mui/material";
 
 // Components
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
@@ -39,9 +40,19 @@ const ErrorModal = ({ error, onClose, isVisible }) => {
                 remWidth={30}
                 errorFontColor={false}
               />
-              <button className={styles.button} onClick={onClose}>
-                OK
-              </button>
+              <Button
+                style={{
+                  padding: "0.1rem 0.1rem",
+                  fontSize: "1.6rem",
+                  margin: "0 auto",
+                  marginTop: "0.5rem",
+                  fontFamily: "inherit",
+                  width: "fit-content",
+                }}
+                variant='outlined'
+                onClick={onClose}>
+                ok
+              </Button>
             </>
           )}
         </div>

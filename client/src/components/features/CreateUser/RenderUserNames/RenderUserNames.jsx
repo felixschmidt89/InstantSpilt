@@ -77,9 +77,7 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
         <ul className={styles.userList}>
           {userNames.map((userName) => (
             <li key={userName}>
-              <div>
-                <strong>{userName}</strong>
-              </div>
+              <div>{userName}</div>
             </li>
           ))}
         </ul>

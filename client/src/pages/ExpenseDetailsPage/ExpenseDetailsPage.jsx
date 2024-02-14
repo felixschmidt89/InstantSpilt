@@ -59,7 +59,7 @@ const ExpenseDetailsPage = () => {
             <RenderResourceCreated createdAt={expenseInfo.createdAt} />
             <RouteButton
               route={`update-expense/${groupCode}/${itemId}`}
-              buttonText={"update"}
+              buttonText={"edit expense"}
               setPreviousRoute={true}
             />
             <DeleteResource resourceId={itemId} resourceType='expenses' />
