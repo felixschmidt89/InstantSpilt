@@ -56,7 +56,10 @@ const ExpenseDetailsPage = () => {
               }
               groupCurrency={groupCurrency}
             />
-            <RenderResourceCreated createdAt={expenseInfo.createdAt} />
+            <RenderResourceCreated
+              createdAt={expenseInfo.createdAt}
+              updatedAt={expenseInfo.updatedAt}
+            />
             <RouteButton
               route={`update-expense/${groupCode}/${itemId}`}
               buttonText={"edit expense"}

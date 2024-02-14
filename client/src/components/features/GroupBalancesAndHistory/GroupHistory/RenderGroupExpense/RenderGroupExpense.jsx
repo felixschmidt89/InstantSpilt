@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 // Constants and Utils
 import emojiConstants from "../../../../../constants/emojiConstants";
-import Emoji from "../../../../common/Emoji/Emoji";
 
 // Styles
 import styles from "./RenderGroupExpense.module.css";

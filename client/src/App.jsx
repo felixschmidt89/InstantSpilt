@@ -5,7 +5,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "@mui/material/styles";
 
 // Themes
-import muiTheme from "./theme/muiTheme";
+import muiTheme from "./themes/muiTheme";
 
 // Components
 import Footer from "./components/common/Footer/Footer";

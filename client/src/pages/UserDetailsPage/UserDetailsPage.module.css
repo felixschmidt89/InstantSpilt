@@ -5,11 +5,24 @@
   overflow-y: auto;
 }
 
+.container h2 {
+  margin-bottom: 0rem;
+}
+
 .negativeBalance {
   padding-left: 0.4rem;
   color: var(--color-error);
 }
 
 .userSettings {
-  margin-top: 3rem;
+  margin-top: 1rem;
+}
+
+.userSettings h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.userBalances {
+  margin-top: 2rem;
 }

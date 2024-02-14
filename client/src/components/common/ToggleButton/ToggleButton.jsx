@@ -5,7 +5,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import { ThemeProvider } from "@mui/material/styles";
 
 // Theme
-import theme from "../../../theme/muiTheme";
+import theme from "../../../themes/muiTheme";
 
 /**
  * Toggle button component using Material-UI Switch with custom colors.

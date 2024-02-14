@@ -1,3 +1,13 @@
+.detailsContainer {
+  width: 100%;
+  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
+  margin: 0 auto;
+  overflow-y: auto;
+}
+.detailsContainer h2 {
+  margin-bottom: 1.5rem;
+}
+
 .paymentDetails {
   display: flex;
   flex-direction: row;

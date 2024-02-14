@@ -1,5 +1,6 @@
 .payments {
   display: flex;
+  line-height: 1.25;
 }
 
 .leftColumn {

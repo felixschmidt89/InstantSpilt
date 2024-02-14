@@ -1,12 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
 
-// Constants and Utils
-import emojiConstants from "../../../constants/emojiConstants";
-
-// Components
-import Emoji from "../Emoji/Emoji";
-
 // Styles
 import styles from "./RenderResourceCreated.module.css";
 
@@ -15,13 +9,26 @@ import styles from "./RenderResourceCreated.module.css";
  *
  * @param {Object} props - The component props.
  * @param {string} props.createdAt - The creation timestamp of the resource.
+ * @param {string} [props.updatedAt] - The optional update timestamp of the resource.
  * @returns {JSX.Element} React component. */
-const RenderResourceCreated = ({ createdAt }) => {
+const RenderResourceCreated = ({ createdAt, updatedAt }) => {
   return (
-    <p className={styles.createdText}>
-      <Emoji label={"created at emoji"} emoji={emojiConstants.created}></Emoji>{" "}
-      {new Date(createdAt).toLocaleString()}
-    </p>
+    <ul className={styles.container}>
+      <li className={styles.item}>
+        <span className={styles.key}>created: </span>
+        <span className={styles.value}>
+          {new Date(createdAt).toLocaleString()}
+        </span>
+      </li>
+      {createdAt !== updatedAt && (
+        <li className={styles.item}>
+          <span className={styles.key}>updated:</span>
+          <span className={styles.value}>
+            {new Date(updatedAt).toLocaleString()}
+          </span>
+        </li>
+      )}
+    </ul>
   );
 };
 

@@ -13,7 +13,7 @@ import styles from "./RenderExpenseBeneficiaries.module.css";
 const RenderExpenseBeneficiaries = ({ expenseBeneficiaries }) => {
   return (
     <div className={styles.container}>
-      <h3>beneficiaries:</h3>
+      <h3>beneficiaries</h3>
       <div className={styles.beneficiariesList}>
         {expenseBeneficiaries.map((beneficiary, index) => (
           <span key={beneficiary._id} className={styles.beneficiary}>

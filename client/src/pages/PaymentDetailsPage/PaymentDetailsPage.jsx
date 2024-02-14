@@ -48,7 +48,10 @@ const PaymentDetailsPage = () => {
             paymentInfo={paymentInfo}
             groupCurrency={groupCurrency}
           />
-          <RenderResourceCreated createdAt={paymentInfo.createdAt} />
+          <RenderResourceCreated
+            createdAt={paymentInfo.createdAt}
+            updatedAt={paymentInfo.updatedAt}
+          />
           <RouteButton
             route={`update-payment/${groupCode}/${itemId}`}
             buttonText={"edit payment"}

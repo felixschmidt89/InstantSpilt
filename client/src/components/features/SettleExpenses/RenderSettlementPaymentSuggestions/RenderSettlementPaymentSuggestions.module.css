@@ -20,8 +20,7 @@
 }
 
 .settlementAmount {
-  font-weight: 900;
-  color: var(--color-signal);
+  color: var(--color-error);
   margin-right: 1rem;
 }
 

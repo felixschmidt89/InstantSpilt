@@ -18,8 +18,8 @@
   --color-signal-dark: #416469;
   --color-signal-light: #67cae3;
   --color-success: #749c75;
-  --color-success-dark: ##607860;
-  --color-success-light: ##8eb791;
+  --color-success-dark: #607860;
+  --color-success-light: #8eb791;
 }
 
 ::selection {

@@ -20,29 +20,32 @@ import styles from "./UserExpensesTotals.module.css";
  * @returns {JSX.Element} React component. */
 const UserExpensesTotals = ({ userData, groupCurrency }) => {
   return (
-    <div role='region' aria-label='User Expense Totals'>
+    <div
+      role='region'
+      aria-label='User Expense Totals'
+      className={styles.container}>
       <h3>
-        <span className={styles.expenseText}>expense totals</span>
+        expense totals{" "}
         <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
       </h3>
-      <ul>
+      <ul className={styles.list}>
         {/* total expenses paid amount with 2 decimal places */}
-        <li>
-          <span className={styles.expenseText}>
-            paid for: {userData.totalExpensesPaidAmount.toFixed(2)}
+        <li className={styles.item}>
+          <span className={styles.key}>paid for:</span>
+          <span className={styles.value}>
+            {userData.totalExpensesPaidAmount.toFixed(2)}
             {groupCurrency}
           </span>
-          <Emoji label={"Paid for emoji"} emoji={emojiConstants.paidBy}></Emoji>
         </li>
-        <li>
-          <span className={styles.expenseText}>
+        <li className={styles.item}>
+          <span className={styles.key}>
             {/* total expenses benefitted from amount with 2 decimal places */}
-            benefitted from: {userData.totalExpenseBenefittedAmount.toFixed(2)}
+            benefitted from:
+          </span>
+          <span className={styles.value}>
+            {userData.totalExpenseBenefittedAmount.toFixed(2)}
             {groupCurrency}
           </span>
-          <Emoji
-            label={"benefitted from expense emoji"}
-            emoji={emojiConstants.benefittedFrom}></Emoji>
         </li>
       </ul>
     </div>

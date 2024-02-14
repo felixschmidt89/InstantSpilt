@@ -19,31 +19,32 @@ import styles from "./UserPaymentsTotals.module.css";
  * @returns {JSX.Element} React component. */
 const UserPaymentsTotals = ({ userData, groupCurrency }) => {
   return (
-    <div role='region' aria-label='User Payments Totals'>
+    <div
+      role='region'
+      aria-label='User Payments Totals'
+      className={styles.container}>
       <h3>
-        <span className={styles.paymentText}>payment totals</span>
+        payment totals{" "}
         <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
       </h3>
-      <ul>
+      <ul className={styles.list}>
         {/* total payments made amount with 2 decimal places */}
-        <li>
-          <span className={styles.paymentText}>
-            payments made: {userData.totalPaymentsMadeAmount.toFixed(2)}
+        <li className={styles.item}>
+          <span className={styles.key}>payments made:</span>{" "}
+          <span className={styles.value}>
+            {userData.totalPaymentsMadeAmount.toFixed(2)}
             {groupCurrency}
           </span>
-          <Emoji
-            label={"payment to other user emoji"}
-            emoji={emojiConstants.paymentsMade}></Emoji>
         </li>
-        <li>
-          <span className={styles.paymentText}>
+        <li className={styles.item}>
+          <span className={styles.key}>
             {/* total payments received amount with 2 decimal places */}
-            payments received: {userData.totalPaymentsReceivedAmount.toFixed(2)}
+            payments received:
+          </span>
+          <span className={styles.value}>
+            {userData.totalPaymentsReceivedAmount.toFixed(2)}
             {groupCurrency}
           </span>
-          <Emoji
-            label={"payment from other user emoji"}
-            emoji={emojiConstants.paymentsReceived}></Emoji>
         </li>
       </ul>
     </div>

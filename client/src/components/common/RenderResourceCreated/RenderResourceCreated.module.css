@@ -1,5 +1,21 @@
-@media only screen and (max-width: 767px) {
-  .createdText {
-    font-size: 1.6rem;
-  }
+.container {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 26rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.key {
+  text-align: left;
+  font-weight: bold;
+}
+.value {
+  text-align: right;
+  margin-right: 2rem;
 }

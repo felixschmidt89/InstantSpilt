@@ -2,10 +2,8 @@
 import React from "react";
 
 // Constants and Utils
-import emojiConstants from "../../../../constants/emojiConstants";
 
 // Components
-import Emoji from "../../../common/Emoji/Emoji";
 
 // Styles
 import styles from "./RenderExpenseDetails.module.css";
@@ -26,9 +24,8 @@ const RenderExpenseDetails = ({ expenseInfo, groupCurrency }) => {
         {expenseInfo.expenseAmount.toFixed(2)}
         {groupCurrency}
       </h2>
-      <p>
-        <strong>description</strong>: {expenseInfo.expenseDescription}
-      </p>
+      <h3>description</h3>
+      <span>{expenseInfo.expenseDescription}</span>
       <p>
         <strong>paid by</strong>: {expenseInfo.expensePayer.userName}
       </p>

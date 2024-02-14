@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 // Constants and Utils
 import {
@@ -32,9 +33,17 @@ const AcceptGroupInvitation = ({ groupName, groupCode }) => {
   return (
     <div className={styles.container}>
       <h2>Join {groupName}?</h2>
-      <button className={styles.button} onClick={handleAcceptInvitation}>
+      <Button
+        style={{
+          padding: "0.2rem 0.5rem",
+          fontSize: "1.6rem",
+          marginTop: "1rem",
+          fontFamily: "inherit",
+        }}
+        onClick={handleAcceptInvitation}
+        variant='contained'>
         sure!
-      </button>
+      </Button>
     </div>
   );
 };
