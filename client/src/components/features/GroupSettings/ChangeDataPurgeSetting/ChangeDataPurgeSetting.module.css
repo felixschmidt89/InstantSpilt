@@ -14,54 +14,6 @@
   line-height: 1.2;
 }
 
-.purgeToggle {
-  text-align: center;
-  width: 30 rem;
-  margin: 0 auto;
-}
-
-.status {
-  text-decoration: italic;
-}
-
-.disabled {
-  color: var(--color-error);
-}
-
-.enabled {
-  color: var(--color-signal);
-}
-
-input[type="checkbox"] {
-  appearance: none;
-  width: 2.2rem;
-  height: 2.2rem;
-  background-color: var(--color-main);
-  border: 0.2rem solid var(--color-grey);
-  border-radius: 0.4rem;
-  cursor: pointer;
-  outline: none;
-  font-size: 1.6rem;
-  outline: none;
-  vertical-align: middle;
-  margin: 0.2rem;
-}
-
-input[type="checkbox"]:checked {
-  background-color: var(--color-signal);
-  width: 2.2rem;
-  height: 2.2rem;
-  border-color: var(--color-success);
-  box-shadow: 0 0 0.5rem var(--color-success);
-  /* checkmark form */
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-}
-
-input[type="checkbox"].idleOnMount:checked {
-  background-color: var(--color-grey);
-}
-
-input[type="checkbox"].idleOnMount {
-  background-color: var(--color-grey);
-  opacity: 0.5;
+.toggle {
+  padding-left: 3rem;
 }

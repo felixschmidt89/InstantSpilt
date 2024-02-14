@@ -1,13 +1,11 @@
 // React and Third-Party Libraries
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 
 // Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
-import { devLog } from "../../utils/errorUtils";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
-import useInactiveDataPurgeToggleLogic from "../../hooks/useInactiveDataPurgeToggleLogic";
 
 //Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -24,12 +22,6 @@ import styles from "./GroupSettingsPage.module.css";
 const GroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupData, isFetched } = useFetchGroupData(groupCode);
-  const { inactiveDataPurge, handleToggleInactiveDataPurge } =
-    useInactiveDataPurgeToggleLogic(isFetched, groupData);
-
-  useEffect(() => {
-    devLog("Inactive Data Purge:", inactiveDataPurge);
-  }, [inactiveDataPurge]);
 
   return (
     <main>
@@ -58,8 +50,7 @@ const GroupSettingsPage = () => {
             />
             <ChangeDataPurgeSetting
               groupCode={groupCode}
-              inactiveDataPurge={inactiveDataPurge}
-              onToggleInactiveDataPurge={handleToggleInactiveDataPurge}
+              inactiveDataPurge={groupData.group.inactiveDataPurge}
             />
           </>
         ) : (

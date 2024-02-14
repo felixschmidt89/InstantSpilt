@@ -1,8 +1,9 @@
 // React and Third-Party Libraries
 import React from "react";
+import { Button } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 // Components
-import SubmitButton from "../../../common/SubmitButton/SubmitButton";
 
 // Styles
 import styles from "./ContactForm.module.css";
@@ -73,9 +74,6 @@ const ContactForm = ({
               <option value='' disabled>
                 Select message type
               </option>
-              <option value='Just wanted to say hi'>
-                Just wanted to say hi
-              </option>
               <option value='issue/bug'>issue / bug</option>
               <option value='feedback'>feedback</option>
               <option value='feature request'>feature request</option>
@@ -113,7 +111,18 @@ const ContactForm = ({
             </div>
           </div>
         )}
-        <SubmitButton buttonText='send message' />
+        <Button
+          style={{
+            padding: "0.2rem 0.5rem",
+            fontSize: "1.6rem",
+            marginTop: "0.5rem",
+            fontFamily: "inherit",
+          }}
+          variant='contained'
+          type='submit'
+          endIcon={<SendIcon />}>
+          Send
+        </Button>
       </form>
     </div>
   );

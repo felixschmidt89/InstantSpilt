@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 // Constants and Utils
 import {
@@ -22,7 +23,6 @@ import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
 import Emoji from "../../../common/Emoji/Emoji";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
-import SubmitButton from "../../../common/SubmitButton/SubmitButton";
 
 // Styles
 import styles from "./UpdateExpense.module.css";
@@ -113,7 +113,7 @@ const UpdateExpense = ({
   return (
     <div>
       <h1 className={styles.header}>
-        Update expense{" "}
+        edit expense{" "}
         <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
       </h1>
       <form onSubmit={handleFormSubmit}>
@@ -143,7 +143,19 @@ const UpdateExpense = ({
           setFormChanged={setFormChanged}
           isUpdate={true}
         />
-        {isSubmitButtonVisible && <SubmitButton buttonText='update expense' />}
+        {isSubmitButtonVisible && (
+          <Button
+            style={{
+              padding: "0.2rem 0.5rem",
+              fontSize: "1.6rem",
+              marginTop: "1rem",
+              fontFamily: "inherit",
+            }}
+            variant='contained'
+            type='submit'>
+            update expense
+          </Button>
+        )}
       </form>
       <ErrorModal
         error={error}

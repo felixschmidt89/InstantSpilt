@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 import axios from "axios";
 
 // Constants and Utils
@@ -20,7 +21,6 @@ import PaymentAmount from "../PaymentAmountInput/PaymentAmountInput";
 import PaymentMaker from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipient from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import Emoji from "../../../common/Emoji/Emoji";
-import SubmitButton from "../../../common/SubmitButton/SubmitButton";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
@@ -145,7 +145,19 @@ const UpdatePayment = ({
         isUpdate={true}
       />
       <div className={styles.buttonContainer}>
-        {isSubmitButtonVisible && <SubmitButton buttonText='update payment' />}
+        {isSubmitButtonVisible && (
+          <Button
+            style={{
+              padding: "0.2rem 0.5rem",
+              fontSize: "1.6rem",
+              marginTop: "1rem",
+              fontFamily: "inherit",
+            }}
+            variant='contained'
+            type='submit'>
+            update payment
+          </Button>
+        )}
         <ErrorModal
           error={error}
           onClose={handleCloseErrorModal}

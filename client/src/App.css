@@ -1,13 +1,25 @@
 :root {
   --color-body: #f8f7ff;
+  --color-body-light: ##fcf7ff;
   --color-main: #ffffff;
   --color-dark: #454372;
+  --color-dark-dark: #302a4d;
+  --color-dark-light: ##6b6d96;
   --color-dark2: #00100b;
+  --color-dark2-light: #26302c;
   --color-grey: #999bad;
+  --color-grey-dark: ##5c5e6f;
+  --color-grey-light: ####b8bacd;
   --color-error: #ef946c;
+  --color-error-dark: #d55c22;
+  --color-error-light: #f7cfbf;
   --color-signal: #559cad;
   --color-signal-reduced-opacity: rgba(85, 156, 173, 0.3);
+  --color-signal-dark: #416469;
+  --color-signal-light: #67cae3;
   --color-success: #749c75;
+  --color-success-dark: ##607860;
+  --color-success-light: ##8eb791;
 }
 
 ::selection {
@@ -16,7 +28,7 @@
 }
 
 :focus {
-  outline: 0.1rem solid var(--color-success);
+  outline: 0.1rem solid var(--color-dark-dark);
 }
 
 * {

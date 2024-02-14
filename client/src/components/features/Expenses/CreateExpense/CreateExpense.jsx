@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 // Constants and Utils
 import {
@@ -19,7 +20,6 @@ import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
 import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescriptionInput";
 import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
-import SubmitButton from "../../../common/SubmitButton/SubmitButton";
 
 // Styles
 import styles from "./CreateExpense.module.css";
@@ -96,7 +96,17 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
             groupMembers={groupMembers}
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}
           />
-          <SubmitButton buttonText='add expense' />
+          <Button
+            style={{
+              padding: "0.2rem 0.5rem",
+              fontSize: "1.6rem",
+              marginTop: "1rem",
+              fontFamily: "inherit",
+            }}
+            variant='contained'
+            type='submit'>
+            add expense
+          </Button>
         </div>
       </form>
       <ErrorModal

@@ -46,7 +46,7 @@ const UpdatePaymentPage = () => {
       ) : (
         <div className={styles.container}>
           <h2 className={styles.header}>
-            Update payment{" "}
+            edit payment{" "}
             <Emoji
               label={"payment emoji"}
               emoji={emojiConstants.payment}></Emoji>

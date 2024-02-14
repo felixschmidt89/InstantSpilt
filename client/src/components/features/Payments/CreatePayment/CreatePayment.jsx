@@ -10,7 +10,6 @@ import {
 } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
-import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -21,10 +20,10 @@ import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import Emoji from "../../../common/Emoji/Emoji";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
-import SubmitButton from "../../../common/SubmitButton/SubmitButton";
 
 // Styles
 import styles from "./CreatePayment.module.css";
+import { Button } from "@mui/material";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -93,9 +92,18 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
         groupMembers={groupMembers}
       />
       <div>
-        <SubmitButton buttonText='add payment' />
+        <Button
+          style={{
+            padding: "0.2rem 0.5rem",
+            fontSize: "1.6rem",
+            marginTop: "1rem",
+            fontFamily: "inherit",
+          }}
+          variant='contained'
+          type='submit'>
+          add payment
+        </Button>
       </div>
-
       <ErrorModal
         error={error}
         onClose={handleCloseErrorModal}

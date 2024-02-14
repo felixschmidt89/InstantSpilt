@@ -30,7 +30,7 @@ const CreatePaymentPage = () => {
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>
-          add payment{" "}
+          new payment{" "}
           <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
         </h1>
         {!isFetched ? (

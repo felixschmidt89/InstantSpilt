@@ -1,5 +1,5 @@
 // React and Third-Party Libraries
-import React, { useEffect } from "react";
+import React from "react";
 
 // Constants and Utils
 import { devLog } from "../../utils/errorUtils";
@@ -7,7 +7,6 @@ import { devLog } from "../../utils/errorUtils";
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
-import useInactiveDataPurgeToggleLogic from "../../hooks/useInactiveDataPurgeToggleLogic";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -28,13 +27,6 @@ const OnboardingGroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupData, isFetched } = useFetchGroupData(groupCode);
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
-
-  const { inactiveDataPurge, handleToggleInactiveDataPurge } =
-    useInactiveDataPurgeToggleLogic(isFetched, groupData);
-
-  useEffect(() => {
-    devLog("Inactive Data Purge:", inactiveDataPurge);
-  }, [inactiveDataPurge]);
 
   // Check if current user has created group from within the application, started from manage-groups route
   const isInAppGroupCreator = previousRoute.includes("/manage-groups");
@@ -77,8 +69,7 @@ const OnboardingGroupSettingsPage = () => {
             />
             <ChangeDataPurgeSetting
               groupCode={groupCode}
-              inactiveDataPurge={inactiveDataPurge}
-              onToggleInactiveDataPurge={handleToggleInactiveDataPurge}
+              inactiveDataPurge={groupData.group.inactiveDataPurge}
             />
           </>
         ) : (
