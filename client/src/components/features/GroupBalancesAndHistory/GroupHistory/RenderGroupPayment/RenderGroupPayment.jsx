@@ -39,7 +39,7 @@ const RenderGroupPayment = ({ item, groupCode, groupCurrency }) => {
         <Emoji
           label={"payment to other user emoji"}
           emoji={emojiConstants.paymentsMade}
-          className={"emoji"}></Emoji>
+          className={"styles.paymentToEmoji"}></Emoji>
         <span>{item.paymentRecipient.userName}</span>
       </div>
     </div>

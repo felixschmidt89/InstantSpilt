@@ -6,11 +6,12 @@
   margin-right: 2rem;
   margin-top: 0.5rem;
   line-height: 1;
+  color: var(--color-grey);
 }
 
 .icon {
   font-family: "Ubuntu", sans-serif;
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 
 .leftAlignedIcon {
@@ -28,6 +29,6 @@
 
 .iconContainer:hover,
 icon:hover {
-  color: var(--color-success);
+  color: var(--color-grey-dark);
   cursor: pointer;
 }

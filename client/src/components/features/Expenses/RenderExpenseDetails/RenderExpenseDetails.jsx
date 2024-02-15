@@ -25,7 +25,9 @@ const RenderExpenseDetails = ({ expenseInfo, groupCurrency }) => {
         {groupCurrency}
       </h2>
       <h3>description</h3>
-      <span>{expenseInfo.expenseDescription}</span>
+      <span className={styles.description}>
+        {expenseInfo.expenseDescription}
+      </span>
       <p>
         <strong>paid by</strong>: {expenseInfo.expensePayer.userName}
       </p>

@@ -1,6 +1,6 @@
 .payments {
   display: flex;
-  line-height: 1.25;
+  line-height: 1.45;
 }
 
 .leftColumn {
@@ -25,14 +25,22 @@
   margin-left: 3rem;
   width: 80%;
   border-top: 0.2rem solid var(--color-signal-reduced-opacity);
+  overflow-x: hidden;
 }
 @media (max-width: 500px) {
   .rightColumn {
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
     margin-left: 1rem;
     border-top: none;
   }
   .leftColumn {
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
     margin-right: 0.5rem;
     border-top: none;
+  }
+  .payments {
+    line-height: 1;
   }
 }

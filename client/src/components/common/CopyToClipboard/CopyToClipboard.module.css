@@ -29,18 +29,18 @@
   width: fit-content;
   padding: 0.2rem 0.5rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0 0.5rem var(--color-signal-reduced-opacity);
   color: var(--color-main);
 }
 
 .notCopied {
-  background-color: var(--color-signal);
+  background-color: var(--color-main);
+  color: var(--color-dark);
 }
 .isCopied {
-  background-color: var(--color-success);
+  background-color: var(--color-main);
+  color: var(--color-dark);
 }
 
 .notCopied:hover {
-  background-color: var(--color-success);
-  box-shadow: 0 0 0.5rem var(--color-success);
+  box-shadow: 0 0 0.5rem var(--color-success-light);
 }

@@ -24,8 +24,7 @@ const GroupActionsBar = () => {
       <GroupActionsEmojiButton
         route={"group-settings"}
         emoji={emojiConstants.settings}
-        explanationText={"settings"}
-        tooltipText='group settings'
+        explanationText={"group settings"}
         ariaLabel='group settings emoji'
       />
       {/* Button for navigating to settling expenses */}
@@ -33,7 +32,6 @@ const GroupActionsBar = () => {
         route={"settle-expenses"}
         emoji={emojiConstants.settle}
         explanationText={"settle"}
-        tooltipText='settle expenses'
         ariaLabel='settle expenses emoji'
       />
       {/* Button for navigating to adding users */}
@@ -41,7 +39,6 @@ const GroupActionsBar = () => {
         route={"create-users"}
         emoji={emojiConstants.user}
         explanationText={"+member"}
-        tooltipText='add group member'
         ariaLabel='add group member emoji'
       />
 
@@ -50,7 +47,6 @@ const GroupActionsBar = () => {
         route={"create-payment"}
         emoji={emojiConstants.payment}
         explanationText={"+payment"}
-        tooltipText='add payment'
         ariaLabel='add payment emoji'
       />
 
@@ -59,7 +55,6 @@ const GroupActionsBar = () => {
         route={"create-expense"}
         emoji={emojiConstants.expense}
         explanationText={"+expense"}
-        tooltipText='add expense'
         ariaLabel='add expense emoji'
       />
     </div>

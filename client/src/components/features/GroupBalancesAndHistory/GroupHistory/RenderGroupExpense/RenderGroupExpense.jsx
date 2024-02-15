@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 // Constants and Utils
 import emojiConstants from "../../../../../constants/emojiConstants";
 
+// Components
+import Emoji from "../../../../common/Emoji/Emoji";
+
 // Styles
 import styles from "./RenderGroupExpense.module.css";
 
@@ -21,7 +24,10 @@ const RenderGroupExpense = ({ item, groupCode, groupCurrency }) => {
     <div className={styles.expenses}>
       {/* Left column containing expense emoji and amount */}
       <div className={styles.leftColumn}>
-        <div className={styles.expenseEmoji}>{emojiConstants.expense}</div>
+        <Emoji
+          label={"expense emoji"}
+          emoji={emojiConstants.expense}
+          className={styles.expenseEmoji}></Emoji>
         <div className={styles.expenseAmount}>
           <Link to={`/expense-details/${groupCode}/${item.itemId}`}>
             {item.expenseAmount.toFixed(2)}

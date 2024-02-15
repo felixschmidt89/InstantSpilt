@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 1rem;
+  width: 90%; /* Prevent design from breaking in case very long one word expense description is entered */
+  margin: 0 auto;
 }

@@ -3,7 +3,12 @@
   padding-bottom: 1rem;
   margin: 0 auto;
   height: 90%;
+  width: 80%;
   overflow-y: auto;
+}
+
+.container h1 {
+  margin-bottom: 1.5rem;
 }
 
 .icons {

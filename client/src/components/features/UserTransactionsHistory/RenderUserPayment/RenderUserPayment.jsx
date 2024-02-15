@@ -30,9 +30,7 @@ const RenderUserPayment = ({
     <div className={styles.payments}>
       {/* Left Column */}
       <div className={styles.leftColumn}>
-        <div className={styles.paymentEmoji}>
-          <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
-        </div>
+        <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
         <div className={styles.paymentAmount}>
           <div>
             <RenderDataAttributeWithAriaLabel
@@ -65,7 +63,8 @@ const RenderUserPayment = ({
         <Emoji
           label={"payment to other user emoji"}
           emoji={emojiConstants.paymentsMade}
-          className={styles.paymentEmoji}></Emoji>
+          shrink={"test"}
+        />
 
         <RenderDataAttributeWithAriaLabel
           attribute={item.paymentRecipient.userName}

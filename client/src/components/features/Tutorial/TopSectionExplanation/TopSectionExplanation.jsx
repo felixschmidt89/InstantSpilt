@@ -13,11 +13,8 @@ import styles from "./TopSectionExplanation.module.css";
 const TopSectionExplanation = () => {
   return (
     <div className={styles.container}>
-      <h2>user bar</h2>
+      <h2>user settings</h2>
       <ul className={styles.explanation}>
-        <li>
-          Above main application screen, houses user management functions:
-        </li>
         <li className={styles.noLink}>
           <UserActionsBar />
         </li>

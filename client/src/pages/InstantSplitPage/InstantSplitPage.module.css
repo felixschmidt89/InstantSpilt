@@ -10,9 +10,10 @@
   margin: 0 auto;
 }
 
-.userActionsBar {
+.topBar {
   padding: 0.2rem;
   border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
   width: 99%;
   margin: 0 auto;
+  margin-bottom: 0.5rem;
 }

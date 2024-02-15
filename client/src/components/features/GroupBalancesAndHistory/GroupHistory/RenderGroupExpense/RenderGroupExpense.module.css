@@ -1,14 +1,18 @@
 .expenses {
   display: flex;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
 .leftColumn {
   display: flex;
   border-top: 0.2rem solid var(--color-signal-reduced-opacity);
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 
 .expenseEmoji {
+  transform: translateX(0.5rem);
+  transform: translateY(0.2rem);
   margin-right: 1rem;
 }
 
@@ -19,14 +23,16 @@
 }
 
 .rightColumn {
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
   width: 80%;
   display: flex;
   flex-direction: column;
   margin-left: 3rem;
   border-top: 0.2rem solid var(--color-signal-reduced-opacity);
+  overflow-x: hidden;
 }
 
-/* Adjust the height of elements within rightColumn */
 .rightColumn .expenseEmoji {
   margin-bottom: 0.5rem;
 }
@@ -35,9 +41,16 @@
   .rightColumn {
     margin-left: 1rem;
     border-top: none;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
   }
   .leftColumn {
     margin-right: 0.5rem;
     border-top: none;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+  }
+  .expenses {
+    line-height: 1;
   }
 }

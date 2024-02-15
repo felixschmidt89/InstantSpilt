@@ -21,55 +21,59 @@ import styles from "./UserActionsBar.module.css";
  * @param {string} props.initialGroupName - The initial group name.
  * @returns {JSX.Element} UserActionsBar component.
  */
-const UserActionsBar = ({ groupCode, initialGroupName, groupName }) => {
+const UserActionsBar = ({
+  groupCode,
+  initialGroupName,
+  groupName,
+  switchToTopBar,
+}) => {
   return (
     <div className={styles.container}>
       <ReactIconNavigate
         icon={IoInformationCircleOutline}
-        containerHeight='7'
-        containerWidth='6'
+        containerHeight='5.8'
+        containerWidth='9'
         explanationText='tutorial'
-        tooltip='show explanation of main functions'
         route={`/tutorial/${initialGroupName}/${groupCode}`}
-        iconSize={3.5}
-        iconScale={1.1}
+        iconSize={3}
+        iconScale={1.05}
       />
       <ReactIconNavigate
         icon={IoChatboxOutline}
-        containerHeight='7'
-        containerWidth='7'
-        explanationText='feedback'
-        tooltip='contact InstantSplit team'
-        route={`/contact/${groupCode}`}
-        iconSize={3.5}
-      />
-      <ReactIconNavigate
-        icon={IoPersonAddOutline}
-        containerHeight='7'
+        containerHeight='5.8'
         containerWidth='9'
-        explanationText='invite to group'
-        tooltip='share access to this group'
-        route={`/share-group/${initialGroupName}/${groupCode}`}
-        iconSize={3.5}
-        iconScale={0.9}
+        explanationText='feedback'
+        route={`/contact/${groupCode}`}
+        iconSize={3}
+        iconScale={0.95}
       />
       <ReactIconNavigate
         icon={PiUserSwitchLight}
-        containerHeight='7'
+        containerHeight='5.8'
         containerWidth='9'
         explanationText='switch/create group'
-        tooltip='switch, create or join other groups'
         route={`/manage-groups`}
-        iconSize={3.5}
+        iconSize={3}
+        iconScale={1.05}
+      />
+      <ReactIconNavigate
+        icon={IoPersonAddOutline}
+        containerHeight='5.8'
+        containerWidth='9'
+        explanationText='invite to group'
+        route={`/share-group/${initialGroupName}/${groupCode}`}
+        iconSize={3}
+        iconScale={0.9}
       />
       <ReactIconNavigate
         icon={IoEnterOutline}
-        containerHeight='7'
-        containerWidth='5'
+        containerHeight='5.8'
+        containerWidth='9'
         explanationText='leave group'
-        tooltip='leave this group'
         route={`/leave-group/${groupName}/${groupCode}`}
-        iconSize={3.5}
+        iconSize={3}
+        iconScale={0.95}
+        translateX={-0.3}
       />
     </div>
   );

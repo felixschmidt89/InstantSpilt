@@ -1,6 +1,5 @@
 // React and Third-Party Libraries
-import React, { useEffect } from "react";
-import useLocalStorage from "react-use-localstorage";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
@@ -20,6 +19,7 @@ import GroupActionsBar from "../../components/features/GroupActionsBar/GroupActi
 import SwitchViewButtonsBar from "../../components/features/GroupBalancesAndHistory/SwitchViewButtonsBar/SwitchViewButtonsBar";
 import RenderGroupHistory from "../../components/features/GroupBalancesAndHistory/GroupHistory/RenderGroupHistory/RenderGroupHistory";
 import RenderGroupBalances from "../../components/features/GroupBalancesAndHistory/GroupBalances/RenderGroupBalances/RenderGroupBalances";
+import TopBar from "../../components/features/TopBar/TopBar";
 
 // Styles
 import styles from "./InstantSplitPage.module.css";
@@ -31,6 +31,7 @@ import styles from "./InstantSplitPage.module.css";
  */ const InstantSplitPage = () => {
   const navigate = useNavigate();
   const groupCode = localStorage.getItem("activeGroupCode");
+  const userActionsBarRef = useRef(null);
 
   // Handle no active groupCode
   useEffect(() => {
@@ -55,9 +56,22 @@ import styles from "./InstantSplitPage.module.css";
 
   const { groupData, isFetched } = useFetchGroupData(groupCode);
 
-  // Retrieve the 'view' value from localStorage or set the default value
-  const [view, setView] = useLocalStorage("viewState", "view2");
+  // State to keep track of which component to render (UserActionsBar or TopBar)
+  const [activeComponent, setActiveComponent] = useState("TopBar");
 
+  // Callback function to switch to TopBar
+  const switchToTopBar = () => {
+    setActiveComponent("TopBar");
+  };
+
+  const handleIconClick = () => {
+    setActiveComponent("UserActionsBar");
+  };
+
+  // State to keep track of the view
+  const [view, setView] = useState(
+    () => localStorage.getItem("viewState") || "view2"
+  );
   // Clear nested routes localStorage
   useDeletePreviousRouteFromLocalStorage();
   useDeletePreviousRouteFromLocalStorage("nestedPreviousRoute");
@@ -76,16 +90,21 @@ import styles from "./InstantSplitPage.module.css";
         <>
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
-          <div className={styles.userActionsBar}>
-            <UserActionsBar
-              groupCode={groupCode}
-              initialGroupName={groupData.group.initialGroupName}
-              groupName={groupData.group.groupName}
-            />
+          <div className={styles.topBar}>
+            {activeComponent === "UserActionsBar" ? (
+              <UserActionsBar
+                groupCode={groupCode}
+                initialGroupName={groupData.group.initialGroupName}
+                groupName={groupData.group.groupName}
+                switchToTopBar={switchToTopBar}
+              />
+            ) : (
+              <TopBar
+                groupName={groupData.group.groupName}
+                handleIconClick={handleIconClick}
+              />
+            )}
           </div>
-          {/* Display group name */}
-
-          <h1>{groupData.group.groupName}</h1>
           <SwitchViewButtonsBar
             view={view}
             handleSwitchView={handleSwitchView}
