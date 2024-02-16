@@ -19,12 +19,25 @@ import styles from "./UserSettingsBar.module.css";
  * @param {string} props.groupName - The initial group name.
  * @param {string} props.initialGroupName - The initial group name.
  * @param {function} props.switchToTopBar - Callback function to switch to TopBar.
+ * @param {boolean} [props.animation=false] - Whether to apply mount animation to the component. Defaults to false.
  * @returns {JSX.Element} React component.
  */
 const UserSettingsBar = forwardRef(
-  ({ groupCode, initialGroupName, groupName, switchToTopBar }, ref) => {
+  (
+    {
+      groupCode,
+      initialGroupName,
+      groupName,
+      switchToTopBar,
+      animation = false,
+    },
+    ref
+  ) => {
+    const containerClassName = `${styles.container} ${
+      animation ? styles.slideInRight : ""
+    }`;
     return (
-      <div className={styles.container} ref={ref}>
+      <div className={containerClassName} ref={ref}>
         <ReactIconNavigate
           icon={IoInformationCircleOutline}
           containerHeight='5.8'

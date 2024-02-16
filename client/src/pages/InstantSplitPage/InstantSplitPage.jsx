@@ -58,6 +58,7 @@ const InstantSplitPage = () => {
 
   // State and callbacks to manage active top component
   const [activeComponent, setActiveComponent] = useState("TopBar");
+  const [wasUserSettingsBar, setWasUserSettingsBar] = useState(false);
 
   const switchToTopBar = useCallback(() => {
     setActiveComponent("TopBar");
@@ -65,6 +66,7 @@ const InstantSplitPage = () => {
 
   const switchToUserSettingsBar = () => {
     setActiveComponent("UserSettingsBar");
+    setWasUserSettingsBar(true);
   };
 
   const switchToTopBarWhenClickingOutsideUserSettingsBar = useCallback(
@@ -91,6 +93,10 @@ const InstantSplitPage = () => {
       );
     };
   }, [switchToTopBarWhenClickingOutsideUserSettingsBar]);
+
+  // Determine whether to apply animation based on the previous state
+  const shouldAnimate =
+    wasUserSettingsBar === true && activeComponent === "TopBar";
 
   // State to keep track of the balance and history views
   const [view, setView] = useState(
@@ -122,6 +128,7 @@ const InstantSplitPage = () => {
                 groupName={groupData.group.groupName}
                 switchToTopBar={switchToTopBar}
                 ref={userSettingsBarRef}
+                animation={true}
               />
             ) : (
               <TopBar
@@ -129,6 +136,7 @@ const InstantSplitPage = () => {
                 initialGroupName={groupData.group.initialGroupName}
                 groupName={groupData.group.groupName}
                 handleIconClick={switchToUserSettingsBar}
+                animation={shouldAnimate}
               />
             )}
           </div>

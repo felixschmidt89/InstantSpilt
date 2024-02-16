@@ -10,11 +10,14 @@ import ReactIconNavigate from "../../common/InAppNavigation/ReactIconNavigate/Re
 import styles from "./TopBar.module.css";
 
 /**
- * TopBar component rendering tutorial, feedback and group management function icons.
+ * TopBar component redendering add users to group, group name and UserSettingsBar switch.
  *
  * @param {Object} props - The component props.
- * @param {string} props.groupCode - The group code.
- * @param {string} props.initialGroupName - The initial group name.
+ * @param {string} props.groupName - The name of the group.
+ * @param {string} props.initialGroupName - The initial name of the group.
+ * @param {string} props.groupCode - The code of the group.
+ * @param {function} props.handleIconClick - Callback function for icon click.
+ * @param {boolean} [props.animation=false] - Whether to apply mount animation to the component. Defaults to false.
  * @returns {JSX.Element} React component.
  */
 const TopBar = ({
@@ -22,9 +25,14 @@ const TopBar = ({
   initialGroupName,
   groupCode,
   handleIconClick,
+  animation = false,
 }) => {
+  const containerClassName = `${styles.container} ${
+    animation ? styles.slideInLeft : ""
+  }`;
+
   return (
-    <div className={styles.container}>
+    <div className={containerClassName}>
       <ReactIconNavigate
         icon={IoPersonAddOutline}
         containerHeight='5.8'
