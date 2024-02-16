@@ -1,12 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
 
-// Constants and Utils
-import emojiConstants from "../../../../constants/emojiConstants";
-
-// Components
-import Emoji from "../../../common/Emoji/Emoji";
-
 // Styles
 import styles from "./RenderPaymentDetails.module.css";
 
@@ -24,24 +18,20 @@ import styles from "./RenderPaymentDetails.module.css";
 const RenderPaymentDetails = ({ paymentInfo, groupCurrency }) => {
   return (
     <div className={styles.detailsContainer}>
-      <h2>
-        {paymentInfo.paymentAmount.toFixed(2)}
-        {groupCurrency}
-      </h2>
-      <p className={styles.paymentDetails}>
-        <span className={styles.userName}>
-          {paymentInfo.paymentMaker.userName}
-        </span>
-        <span className={styles.emoji}>
-          {" "}
-          <Emoji
-            label={"payment to other user emoji"}
-            emoji={emojiConstants.paymentsMade}></Emoji>
-        </span>
-        <span className={styles.userName}>
-          {paymentInfo.paymentRecipient.userName}
-        </span>
-      </p>
+      <ul className={styles.paymentDetails}>
+        <li className={styles.listItem}>
+          <span className={styles.key}>paid by:</span>
+          <span className={styles.userName}>
+            {paymentInfo.paymentMaker.userName}
+          </span>
+        </li>
+        <li className={styles.listItem}>
+          <span className={styles.key}>paid to:</span>
+          <span className={styles.userName}>
+            {paymentInfo.paymentRecipient.userName}
+          </span>
+        </li>
+      </ul>
     </div>
   );
 };

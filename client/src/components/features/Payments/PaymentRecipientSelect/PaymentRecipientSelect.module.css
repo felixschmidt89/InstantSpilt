@@ -1,8 +1,8 @@
 .paymentRecipient {
-  width: 12rem;
-  padding: 0.2rem;
+  width: 15rem;
   font-size: 1.6rem;
-  text-align: center;
+  padding: 0.2rem 0.5rem;
+  text-align: left;
   outline: none;
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.5rem;

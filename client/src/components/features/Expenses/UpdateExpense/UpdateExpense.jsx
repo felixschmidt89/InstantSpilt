@@ -77,13 +77,6 @@ const UpdateExpense = ({
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
 
-  const isSubmitButtonVisible =
-    formChanged &&
-    expenseAmount >= MINIMUM_VALID_AMOUNT &&
-    expensePayerName &&
-    expenseDescription &&
-    selectedBeneficiaries.length > 0;
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -143,7 +136,7 @@ const UpdateExpense = ({
           setFormChanged={setFormChanged}
           isUpdate={true}
         />
-        {isSubmitButtonVisible && (
+        {formChanged && (
           <Button
             style={{
               padding: "0.2rem 0.5rem",

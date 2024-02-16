@@ -1,25 +1,11 @@
-// React and Third-Party Libraries
 import React from "react";
-
-// Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
-
-// Components
 import DeleteResource from "../../../common/DeleteResource/DeleteResource";
 import Emoji from "../../../common/Emoji/Emoji";
 import RenderDataAttributeWithAriaLabel from "../../../common/RenderDataAttributeWithAriaLabel/RenderDataAttributeWithAriaLabel";
 import LinkToPage from "../../../common/InAppNavigation/LinkToPage/LinkToPage";
-
-// Styles
 import styles from "./RenderUserExpense.module.css";
 
-/**
- * Component for rendering details of a user's single expense.
- * @param {Object} props - The component props.
- * @param {Object} props.item - The expense item object.
- * @param {string} props.groupCode - The associated groupCode.
- * @param {Function} props.onDelete - Callback function for deleting the expense.
- * @returns {JSX.Element} React component. */
 const RenderUserExpense = ({
   item,
   groupCode,
@@ -65,19 +51,20 @@ const RenderUserExpense = ({
         <div className={styles.borderedContent}>
           <ul>
             <li>
-              <span className={styles.key}>paid by: </span>
-              <RenderDataAttributeWithAriaLabel
-                attribute={item.expensePayer.userName}
-                ariaLabel={"username of the expense payer"}
-              />
-            </li>
-            <li>
               <span className={styles.key}>description: </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expenseDescription}
                 ariaLabel={"expense description"}
               />
             </li>
+            <li>
+              <span className={styles.key}>paid by: </span>
+              <RenderDataAttributeWithAriaLabel
+                attribute={item.expensePayer.userName}
+                ariaLabel={"username of the expense payer"}
+              />
+            </li>
+
             <li>
               <span className={styles.key}>beneficiaries: </span>
               <RenderDataAttributeWithAriaLabel
@@ -93,6 +80,24 @@ const RenderUserExpense = ({
               />
               <span>{groupCurrency}</span>
             </li>
+
+            <li>
+              <span className={styles.key}>created: </span>
+              <RenderDataAttributeWithAriaLabel
+                attribute={new Date(item.createdAt).toLocaleString()}
+                ariaLabel={"expense creation date"}
+              />
+            </li>
+
+            {item.createdAt !== item.updatedAt && (
+              <li>
+                <span className={styles.key}>changed: </span>
+                <RenderDataAttributeWithAriaLabel
+                  attribute={new Date(item.updatedAt).toLocaleString()}
+                  ariaLabel={"expense last update date"}
+                />
+              </li>
+            )}
           </ul>
         </div>
       </div>

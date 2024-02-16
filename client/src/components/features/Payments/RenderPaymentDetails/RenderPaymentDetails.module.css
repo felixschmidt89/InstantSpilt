@@ -1,16 +1,15 @@
 .detailsContainer {
   width: 100%;
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  margin: 0 auto;
   overflow-y: auto;
-}
-.detailsContainer h2 {
-  margin-bottom: 1.5rem;
+  margin-top: 1rem;
 }
 
-.paymentDetails {
+.key {
+  font-weight: bold;
+}
+
+.listItem {
+  gap: 0.4rem;
   display: flex;
   flex-direction: row;
-  gap: 0.4rem;
-  justify-content: center;
 }

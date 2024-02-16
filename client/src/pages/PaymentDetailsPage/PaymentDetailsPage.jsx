@@ -18,7 +18,6 @@ import DeleteResource from "../../components/common/DeleteResource/DeleteResourc
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import RenderPaymentDetails from "../../components/features/Payments/RenderPaymentDetails/RenderPaymentDetails";
 import RenderResourceCreated from "../../components/common/RenderResourceCreated/RenderResourceCreated";
-import Emoji from "../../components/common/Emoji/Emoji";
 
 // Styles
 import styles from "./PaymentDetailsPage.module.css";
@@ -38,20 +37,20 @@ const PaymentDetailsPage = () => {
       {paymentInfoIsFetched && currencyInfoIsFetched ? (
         <div className={styles.container}>
           <h1>
-            payment details{" "}
-            <Emoji
-              label={"payment emoji"}
-              emoji={emojiConstants.payment}></Emoji>
+            {emojiConstants.payment} {paymentInfo.paymentAmount}
+            {groupCurrency}
           </h1>
-          <RenderPaymentDetails
-            groupCode={groupCode}
-            paymentInfo={paymentInfo}
-            groupCurrency={groupCurrency}
-          />
-          <RenderResourceCreated
-            createdAt={paymentInfo.createdAt}
-            updatedAt={paymentInfo.updatedAt}
-          />
+          <div className={styles.detailsBox}>
+            <RenderPaymentDetails
+              groupCode={groupCode}
+              paymentInfo={paymentInfo}
+              groupCurrency={groupCurrency}
+            />
+            <RenderResourceCreated
+              createdAt={paymentInfo.createdAt}
+              updatedAt={paymentInfo.updatedAt}
+            />
+          </div>
           <RouteButton
             route={`update-payment/${groupCode}/${itemId}`}
             buttonText={"edit payment"}

@@ -22,7 +22,7 @@ const RenderResourceCreated = ({ createdAt, updatedAt }) => {
       </li>
       {createdAt !== updatedAt && (
         <li className={styles.item}>
-          <span className={styles.key}>updated:</span>
+          <span className={styles.key}>changed:</span>
           <span className={styles.value}>
             {new Date(updatedAt).toLocaleString()}
           </span>

@@ -1,13 +1,18 @@
 .container {
+  width: 100%;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  overflow-x: hidden;
 }
 
-.container h2 {
-  margin-bottom: 1.5rem;
+.key {
+  font-weight: bold;
 }
 
-.container h3 {
-  line-height: 1.2;
+.listItem {
+  gap: 0.4rem;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
 }

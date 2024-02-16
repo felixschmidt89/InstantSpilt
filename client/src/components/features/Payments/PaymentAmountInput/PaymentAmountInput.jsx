@@ -55,7 +55,7 @@ const PaymentAmountInput = ({
         value={paymentAmount}
         onClick={handleInputClick}
         onChange={handlePaymentAmountChange}
-        placeholder='0.00'
+        placeholder='amount'
         inputMode='decimal'
         ref={inputRef}
       />

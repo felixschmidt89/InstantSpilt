@@ -18,11 +18,9 @@ import RenderExpenseDetails from "../../components/features/Expenses/RenderExpen
 import RenderResourceCreated from "../../components/common/RenderResourceCreated/RenderResourceCreated";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 import InAppNavigation from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
-import Emoji from "../../components/common/Emoji/Emoji";
 
 // Styles
 import styles from "./ExpenseDetailsPage.module.css";
-import RenderExpenseAmountPerBeneficiary from "../../components/features/Expenses/RenderExpenseAmountPerBeneficiary/RenderExpenseAmountPerBeneficiary";
 
 const ExpenseDetailsPage = () => {
   const { groupCode, itemId } = useParams();
@@ -36,41 +34,38 @@ const ExpenseDetailsPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - expense details' />
       <PiratePx COUNT_IDENTIFIER={"expense-details"} />
       <InAppNavigation back={true} />
-      <div className={styles.container}>
-        <h1>
-          expense details{" "}
-          <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
-        </h1>
-        {expenseInfoIsFetched && currencyInfoIsFetched ? (
-          <>
+      {expenseInfoIsFetched && currencyInfoIsFetched ? (
+        <div className={styles.container}>
+          <h1>
+            {emojiConstants.expense} {expenseInfo.expenseDescription}
+          </h1>
+          <div className={styles.detailsBox}>
             <RenderExpenseDetails
               expenseInfo={expenseInfo}
               groupCurrency={groupCurrency}
-            />
-            <RenderExpenseBeneficiaries
-              expenseBeneficiaries={expenseInfo.expenseBeneficiaries}
-            />
-            <RenderExpenseAmountPerBeneficiary
               expenseAmountPerBeneficiary={
                 expenseInfo.expenseAmountPerBeneficiary
               }
-              groupCurrency={groupCurrency}
+              expenseBeneficiaries={expenseInfo.expenseBeneficiaries}
+            />
+            <RenderExpenseBeneficiaries
+              expenseBeneficiaries={expenseInfo.expenseBeneficiaries}
             />
             <RenderResourceCreated
               createdAt={expenseInfo.createdAt}
               updatedAt={expenseInfo.updatedAt}
             />
-            <RouteButton
-              route={`update-expense/${groupCode}/${itemId}`}
-              buttonText={"edit expense"}
-              setPreviousRoute={true}
-            />
-            <DeleteResource resourceId={itemId} resourceType='expenses' />
-          </>
-        ) : (
-          <Spinner />
-        )}
-      </div>
+          </div>
+          <RouteButton
+            route={`update-expense/${groupCode}/${itemId}`}
+            buttonText={"edit expense"}
+            setPreviousRoute={true}
+          />
+          <DeleteResource resourceId={itemId} resourceType='expenses' />
+        </div>
+      ) : (
+        <Spinner />
+      )}
     </main>
   );
 };
