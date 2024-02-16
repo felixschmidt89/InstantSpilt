@@ -45,7 +45,7 @@ const PaymentRecipientSelect = ({
       onChange={(e) => onRecipientChange(e.target.value)}>
       {/* Do not preselect user, indicate functionality instead */}
       <option value='' disabled>
-        to
+        paid to
       </option>
       {options}
     </select>

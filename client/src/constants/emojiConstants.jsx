@@ -23,6 +23,7 @@ const emojiConstants = {
   paidBy: "💳",
   benefittedFrom: "😄",
   paymentsMade: "➡️",
+  paymentsMadePointDown: "⬇️",
   paymentsReceived: "⬅️",
   created: "🕑",
   updated: "📝",

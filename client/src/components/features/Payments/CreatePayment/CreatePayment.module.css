@@ -1,4 +1,11 @@
-.paymentToEmoji {
-  margin-left: 0.1rem;
-  margin-right: 0.4rem;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emojis {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
 }

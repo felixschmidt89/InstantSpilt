@@ -36,7 +36,7 @@ const PaymentMakerSelect = ({
       onChange={(e) => onPaymentMakerChange(e.target.value)}>
       {/* Do not preselect user, indicate functionality instead */}
       <option value='' disabled>
-        by
+        paid by
       </option>
       {groupMembers.map((member) => (
         <option key={member} value={member}>

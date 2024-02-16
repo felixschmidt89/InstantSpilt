@@ -10,7 +10,13 @@
   overflow-x: hidden;
 }
 
+.emoji {
+  font-size: 1.8rem;
+  transform: translateX(0.5rem);
+}
+
 .detailsBox {
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

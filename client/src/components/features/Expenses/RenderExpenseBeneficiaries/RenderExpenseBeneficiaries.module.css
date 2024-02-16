@@ -1,12 +1,12 @@
 .container {
   display: flex;
-  flex-direction: row;
-  gap: 0.4rem;
+  flex-direction: column;
 }
 
 .beneficiariesList {
   display: flex;
   flex-wrap: wrap;
+  line-height: 1.3;
 }
 
 .beneficiary {
@@ -15,5 +15,10 @@
 
 .key {
   font-weight: bold;
-  white-space: nowrap;
+  text-align: left;
+}
+
+.emoji {
+  font-size: 1.8rem;
+  transform: translateX(0.5rem);
 }

@@ -1,15 +1,14 @@
 .paymentMaker {
-  width: 15rem;
-  padding: 0.2rem 0.5rem;
+  width: 20rem;
+  padding: 0.2rem 0.1rem;
   text-align: left;
-  margin-right: 0.4rem;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   outline: none;
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.5rem;
   color: var(--color-dark);
   background-color: var(--color-main);
-  padding: 0.2rem 0.5rem;
+  margin-bottom: 0.5rem;
 }
 .paymentMaker:focus {
   border-color: var(--color-signal);

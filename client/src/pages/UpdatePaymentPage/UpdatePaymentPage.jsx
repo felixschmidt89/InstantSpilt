@@ -2,9 +2,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-// Constants and Utils
-import emojiConstants from "../../constants/emojiConstants";
-
 //  Hooks
 import usePaymentUpdate from "../../hooks/usePaymentUpdate";
 import useDetermineUpdateTransactionPageOpeningSource from "../../hooks/useCheckUpdateTransactionPageHasBeenOpenedViaUserTransactionsHistoryOrGroupHistory";
@@ -45,12 +42,7 @@ const UpdatePaymentPage = () => {
         <Spinner />
       ) : (
         <div className={styles.container}>
-          <h2 className={styles.header}>
-            edit payment{" "}
-            <Emoji
-              label={"payment emoji"}
-              emoji={emojiConstants.payment}></Emoji>
-          </h2>
+          <h2 className={styles.header}>edit payment</h2>
           <div className={styles.innerContainer}>
             <UpdatePayment
               groupMembers={groupMembers}

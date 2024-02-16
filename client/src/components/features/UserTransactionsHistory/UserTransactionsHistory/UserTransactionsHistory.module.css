@@ -15,7 +15,7 @@
 @media (max-width: 500px) {
   .container {
     padding: 0 0.5rem; /* Limiting width while keeping scrollbar on the border */
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
   .item {
     border-top: 0.15rem solid var(--color-signal-reduced-opacity);

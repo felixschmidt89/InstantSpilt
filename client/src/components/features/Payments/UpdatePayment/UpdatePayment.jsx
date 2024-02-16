@@ -17,10 +17,9 @@ import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
-import PaymentAmount from "../PaymentAmountInput/PaymentAmountInput";
-import PaymentMaker from "../PaymentMakerSelect/PaymentMakerSelect";
-import PaymentRecipient from "../PaymentRecipientSelect/PaymentRecipientSelect";
-import Emoji from "../../../common/Emoji/Emoji";
+import PaymentAmountInput from "../PaymentAmountInput/PaymentAmountInput";
+import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
+import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
@@ -122,23 +121,22 @@ const UpdatePayment = ({
 
   return (
     <form onSubmit={handleFormSubmit}>
-      <PaymentAmount
+      <PaymentAmountInput
         paymentAmount={paymentAmount}
         onAmountChange={setPaymentAmount}
         isUpdate={true}
       />
-      <PaymentMaker
+      <PaymentMakerSelect
         paymentMakerName={paymentMakerName}
         onPaymentMakerChange={setPaymentMakerName}
         groupMembers={groupMembers}
         isUpdate={true}
       />
-      <span className={styles.paymentToEmoji}>
-        <Emoji
-          label={"payment to other user emoji"}
-          emoji={emojiConstants.paymentsMade}></Emoji>
-      </span>
-      <PaymentRecipient
+      <div className={styles.emojis}>
+        <span>{emojiConstants.paymentsMadePointDown}</span>
+        <span>{emojiConstants.payment}</span>
+      </div>
+      <PaymentRecipientSelect
         paymentRecipientName={paymentRecipientName}
         onRecipientChange={setPaymentRecipientName}
         groupMembers={groupMembers}

@@ -4,6 +4,14 @@ import React from "react";
 // Styles
 import styles from "./RenderExpenseDetails.module.css";
 
+/**
+ * Component for rendering expense details.
+ * @param {Object} props - The component props.
+ * @param {Object} props.expenseInfo - expense information.
+ * @param {number} props.expenseAmountPerBeneficiary - the amount per expense beneficiary.
+ * @param {string} props.groupCurrency - currency set in group settings.
+ * @returns {JSX.Element} React component.
+ */
 const RenderExpenseDetails = ({
   expenseInfo,
   expenseAmountPerBeneficiary,
@@ -13,7 +21,10 @@ const RenderExpenseDetails = ({
     <ul className={styles.container}>
       <li className={styles.listItem}>
         <span className={styles.key}>total amount:</span>
-        <span className={styles.value}>{expenseInfo.expenseAmount}</span>
+        <span className={styles.value}>
+          {expenseInfo.expenseAmount}
+          {groupCurrency}
+        </span>
       </li>
       <li className={styles.listItem}>
         <span className={styles.key}>paid by:</span>

@@ -36,8 +36,9 @@ const PaymentDetailsPage = () => {
       <InAppNavigationBar back={true} />
       {paymentInfoIsFetched && currencyInfoIsFetched ? (
         <div className={styles.container}>
+          <span className={styles.emoji}> {emojiConstants.payment}</span>
           <h1>
-            {emojiConstants.payment} {paymentInfo.paymentAmount}
+            {paymentInfo.paymentAmount}
             {groupCurrency}
           </h1>
           <div className={styles.detailsBox}>

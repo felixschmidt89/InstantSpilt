@@ -18,7 +18,6 @@ import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 import PaymentAmountInput from "../PaymentAmountInput/PaymentAmountInput";
 import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
-import Emoji from "../../../common/Emoji/Emoji";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
@@ -72,7 +71,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} className={styles.container}>
       <PaymentAmountInput
         paymentAmount={paymentAmount}
         onAmountChange={setPaymentAmount}
@@ -82,10 +81,11 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
         onPaymentMakerChange={setPaymentMakerName}
         groupMembers={groupMembers}
       />
-      <Emoji
-        label={"payment to other user emoji"}
-        emoji={emojiConstants.paymentsMade}
-        className={styles.paymentToEmoji}></Emoji>
+
+      <div className={styles.emojis}>
+        <span>{emojiConstants.paymentsMadePointDown}</span>
+        <span>{emojiConstants.payment}</span>
+      </div>
       <PaymentRecipientSelect
         paymentRecipientName={paymentRecipientName}
         onRecipientChange={setPaymentRecipientName}
