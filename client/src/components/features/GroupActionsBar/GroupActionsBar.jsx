@@ -24,7 +24,8 @@ const GroupActionsBar = () => {
       <GroupActionsEmojiButton
         route={"group-settings"}
         emoji={emojiConstants.settings}
-        explanationText={"group settings"}
+        translateX={-0.2}
+        explanationText={"settings"}
         ariaLabel='group settings emoji'
       />
       {/* Button for navigating to settling expenses */}
@@ -54,6 +55,7 @@ const GroupActionsBar = () => {
       <GroupActionsEmojiButton
         route={"create-expense"}
         emoji={emojiConstants.expense}
+        translateX={0.2}
         explanationText={"+expense"}
         ariaLabel='add expense emoji'
       />

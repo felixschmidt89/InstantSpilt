@@ -12,6 +12,8 @@ import styles from "./GroupActionsEmojiButton.module.css";
  * @param {string} props.route - The route to navigate to when the button is clicked.
  * @param {string} props.emoji - The emoji to be rendered.
  * @param {string} props.explanationText - The icon description text rendered below the component. Only rendered if given.
+ * @param {number} [props.translateX] - The horizontal translation of the emoji in rem unit. Defaults to 0.
+ * @param {number} [props.translateY] - The vertical translation of the emoji in rem unit. Defaults to 0.
  * @param {string} props.ariaLabel - The ARIA label for accessibility.
  * @returns {JSX.Element} React component. */
 const GroupActionsEmojiButton = ({
@@ -20,6 +22,8 @@ const GroupActionsEmojiButton = ({
   explanationText,
   tooltipText,
   ariaLabel,
+  translateX = 0,
+  translateY = 0,
 }) => {
   const navigate = useNavigate();
 
@@ -32,7 +36,11 @@ const GroupActionsEmojiButton = ({
       className={styles.container}
       onClick={handleClick}
       aria-label={ariaLabel}>
-      <span className={styles.icon}>{emoji}</span>
+      <span
+        className={styles.icon}
+        style={{ transform: `translate(${translateX}rem, ${translateY}rem)` }}>
+        {emoji}
+      </span>
       {explanationText && (
         <span className={styles.iconExplanation}>{explanationText}</span>
       )}

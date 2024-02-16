@@ -20,8 +20,8 @@ const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
  * @param {string} initialGroupName - The group name set during group creation.
  * @returns {JSX.Element} React component. */
 const WebShareApiInvite = ({ groupCode, groupName, initialGroupName }) => {
-  const title = "InstantSplit invitation to settle group expenses";
-  const text = `Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`;
+  const title = "InstantSplit invitation";
+  const text = `Join ${groupName} to manage and settle expenses.`;
   const url = `${baseUrl}/join-instantsplit-group/${initialGroupName}/${groupCode}`;
 
   const handleShareClick = async () => {

@@ -4,14 +4,14 @@
   justify-content: space-between;
   margin-left: 2rem;
   margin-right: 2rem;
-  margin-top: 0.5rem;
+  margin-top: 0.8rem;
   line-height: 1;
-  color: var(--color-grey);
+  color: var(--color-dark);
 }
 
 .icon {
   font-family: "Ubuntu", sans-serif;
-  font-size: 3rem;
+  font-size: 3.5rem;
 }
 
 .leftAlignedIcon {
@@ -29,6 +29,6 @@
 
 .iconContainer:hover,
 icon:hover {
-  color: var(--color-grey-dark);
+  color: var(--color-dark-dark);
   cursor: pointer;
 }

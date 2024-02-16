@@ -1,14 +1,9 @@
 .groupActionsBar {
   display: flex;
-  justify-content: space-evenly;
-  position: relative;
-  margin: 0 auto;
-  margin-bottom: 0.5rem;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 0rem 0rem;
-  width: 98%;
-  margin: 0rem auto;
-}
-
-.intro {
-  padding: 0 2rem;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 0.6rem;
 }

@@ -1,20 +1,12 @@
 .container {
-  margin-top: 0.2rem;
+  margin-top: 0.8rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .container h1 {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0;
-  line-height: 1.1;
-}
-
-.icon {
-  margin-left: auto;
-  margin-right: 1rem;
+  align-self: flex-end;
 }

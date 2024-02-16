@@ -2,7 +2,7 @@
 import React from "react";
 
 // Components
-import UserActionsBar from "../../UserActionsBar/UserActionsBar";
+import UserSettingsBar from "../../UserSettingsBar/UserSettingsBar";
 
 // Styles
 import styles from "./TopSectionExplanation.module.css";
@@ -16,7 +16,7 @@ const TopSectionExplanation = () => {
       <h2>user settings</h2>
       <ul className={styles.explanation}>
         <li className={styles.noLink}>
-          <UserActionsBar />
+          <UserSettingsBar />
         </li>
       </ul>
     </div>

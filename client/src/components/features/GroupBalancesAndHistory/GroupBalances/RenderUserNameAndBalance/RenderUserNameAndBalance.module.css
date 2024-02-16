@@ -7,9 +7,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 65%;
-  max-width: 30rem;
-  min-width: 12rem;
+  width: 80%;
+  max-width: 50rem;
+  min-width: 16rem;
   margin: 0 auto;
 }
 .userListItem {
