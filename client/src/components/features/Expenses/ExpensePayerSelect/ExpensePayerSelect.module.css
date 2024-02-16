@@ -2,14 +2,14 @@
   color: var(--color-dark);
   background-color: var(--color-main);
   font-family: "Ubuntu", sans-serif;
-  padding: 0.2rem;
+  padding: 0.2rem 0.1rem;
+  text-align: left;
+  width: 20rem;
   border: 0.2rem solid var(--color-grey);
   border-radius: 0.5rem;
   font-size: 1.6rem;
-  text-align: center;
   outline: none;
   margin-bottom: 0.5rem;
-  width: 12rem;
   outline-color: var(--color-grey);
 }
 

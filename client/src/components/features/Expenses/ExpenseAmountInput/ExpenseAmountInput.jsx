@@ -46,7 +46,7 @@ const ExpenseAmountInput = ({
         onClick={handleInputClick}
         onChange={handleExpenseAmountChange}
         ref={inputRef}
-        placeholder='0.00'
+        placeholder='amount'
         inputMode='decimal'
       />
     </div>

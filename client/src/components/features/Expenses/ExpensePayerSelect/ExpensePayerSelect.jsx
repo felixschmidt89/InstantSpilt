@@ -1,9 +1,6 @@
 // React and Third-Party Libraries
 import React, { useRef } from "react";
 
-// Constants and Utils
-import emojiConstants from "../../../../constants/emojiConstants";
-
 // Styles
 import styles from "./ExpensePayerSelect.module.css";
 

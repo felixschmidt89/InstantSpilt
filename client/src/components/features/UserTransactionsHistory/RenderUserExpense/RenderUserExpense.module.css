@@ -1,5 +1,6 @@
 .expenses {
   display: flex;
+  line-height: 1.2;
 }
 
 .leftColumn {
@@ -21,8 +22,7 @@
   border-top: 2px solid var(--color-signal-reduced-opacity);
 }
 
-.rightColumn .expenseEmoji,
-.rightColumn {
+.rightColumn .expenseEmoji {
   margin-bottom: 0.5rem;
 }
 
@@ -30,10 +30,14 @@
   .rightColumn {
     margin-left: 1rem;
     border-top: none;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
   }
   .leftColumn {
     margin-right: 0.5rem;
     border-top: none;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
   }
 }
 

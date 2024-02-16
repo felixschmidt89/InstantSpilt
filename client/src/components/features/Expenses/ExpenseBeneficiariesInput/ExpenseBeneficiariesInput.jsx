@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import styles from "./ExpenseBeneficiariesInput.module.css";
+import { Button } from "@mui/material";
 
 /**
  * Component for selecting expense beneficiaries when creating or updating expenses.
@@ -20,7 +21,6 @@ const ExpenseBeneficiariesInput = ({
 }) => {
   const divRef = useRef(null);
   const buttonRef = useRef(null);
-  const inputRef = useRef(null);
 
   // If update, remove isUpdate class after click on either toggle button or beneficiares div, so that input does not fall back to appearing inactive
   const handleDivOrButtonClick = () => {
@@ -59,15 +59,7 @@ const ExpenseBeneficiariesInput = ({
 
   return (
     <>
-      <h3>beneficiaries: </h3>
-      <button
-        className={`${styles.toggleButton} ${isUpdate ? styles.isUpdate : ""}`}
-        type='button'
-        onClick={toggleBeneficiaries}
-        ref={buttonRef}>
-        {/* Display "none" if all beneficiaries are currently selected, otherwise display "all" */}
-        {selectedBeneficiaries.length === groupMembers.length ? "none" : "all"}
-      </button>
+      <h3>for</h3>
       <div
         className={`${styles.beneficiaries} ${isUpdate ? styles.isUpdate : ""}`}
         onClick={handleDivOrButtonClick}
@@ -90,6 +82,22 @@ const ExpenseBeneficiariesInput = ({
             </span>
           ))}
         </div>
+        <Button
+          onClick={toggleBeneficiaries}
+          style={{
+            padding: "0rem",
+            fontSize: "1.4rem",
+            marginTop: "0.3rem",
+            marginBottom: "0.3rem",
+            fontFamily: "inherit",
+          }}
+          color='primary'
+          variant='outlined'
+          ref={buttonRef}>
+          {selectedBeneficiaries.length === groupMembers.length
+            ? "none"
+            : "all"}
+        </Button>
       </div>
     </>
   );

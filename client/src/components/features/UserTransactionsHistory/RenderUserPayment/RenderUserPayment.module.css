@@ -1,5 +1,6 @@
 .payments {
   display: flex;
+  line-height: 1.2;
 }
 
 .leftColumn {
@@ -27,9 +28,13 @@
   .rightColumn {
     margin-left: 1rem;
     border-top: none;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
   }
   .leftColumn {
     margin-right: 0.5rem;
     border-top: none;
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
   }
 }
