@@ -35,7 +35,7 @@ const GroupSettingsPage = () => {
         </h1>
         {isFetched && groupData ? (
           <>
-            <h2 className={styles.header}>name</h2>
+            <h2 className={styles.header}>change name</h2>
             {/*Change group name */}
             <ChangeResourceName
               resourceId={groupData.group._id}

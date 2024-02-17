@@ -1,6 +1,12 @@
+// React and Third-Party Libraries
 import React, { useRef } from "react";
-import styles from "./ExpenseBeneficiariesInput.module.css";
 import { Button } from "@mui/material";
+
+// Constants and Utils
+import emojiConstants from "../../../../constants/emojiConstants";
+
+// Styles
+import styles from "./ExpenseBeneficiariesInput.module.css";
 
 /**
  * Component for selecting expense beneficiaries when creating or updating expenses.
@@ -59,7 +65,7 @@ const ExpenseBeneficiariesInput = ({
 
   return (
     <>
-      <h3>for</h3>
+      <h3>{emojiConstants.expense} for</h3>
       <div
         className={`${styles.beneficiaries} ${isUpdate ? styles.isUpdate : ""}`}
         onClick={handleDivOrButtonClick}

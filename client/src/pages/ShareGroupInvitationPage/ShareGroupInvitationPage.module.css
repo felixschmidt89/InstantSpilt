@@ -3,14 +3,23 @@
   padding-bottom: 1rem;
   margin: 0 auto;
   height: 90%;
-  width: 80%;
+  width: 75%;
   overflow-y: auto;
+  overflow-x: hidden;
+  text-align: left;
 }
 
 .container h1 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .icons {
   white-space: nowrap;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 90%;
+    padding: 0 1rem;
+  }
 }

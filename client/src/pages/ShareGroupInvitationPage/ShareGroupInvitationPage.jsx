@@ -51,7 +51,7 @@ const ShareGroupInvitationPage = () => {
       <InAppNavigationBar back={true} />
       {isFetched && (
         <div className={styles.container}>
-          <h1>invite & share</h1>
+          <h1>share access to group</h1>
           {supportsWebShareAPI ? (
             <ShareGroupInvitationIncludingWebShare
               groupName={groupName}

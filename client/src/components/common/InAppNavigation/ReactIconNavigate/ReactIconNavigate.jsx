@@ -16,10 +16,8 @@ import styles from "./ReactIconNavigate.module.css";
  * @param {string} props.marginRight - The margin right for the icon in rem unit. Defaults to "0".
  * @param {string} props.email - The email address to open in the default email client.
  * @param {string} props.url - The URL to open in a new tab.
- * @param {boolean} props.cursorPointer - Whether the icon should have a pointer cursor. Defaults to true.
  * @param {number} props.translateY - The vertical translation of the icon in rem unit. Defaults to 0.
  * @param {number} props.translateX - The horizontal translation of the icon in rem unit. Defaults to 0.
- * @param {boolean} props.hoverEnabled - Whether icon and text should hover. Defaults to true.
  * @param {string} props.explanationText - The icon description text rendered below the component.
  *
  * @returns {React.Component} React component.
@@ -37,10 +35,8 @@ const ReactIconNavigate = ({
   marginRight = "0",
   email,
   url,
-  cursorPointer = true,
   translateY = 0,
   translateX = 0,
-  hoverEnabled = true,
   fontWeight = 400,
 }) => {
   const navigate = useNavigate();
@@ -62,7 +58,7 @@ const ReactIconNavigate = ({
 
   return (
     <div
-      className={`${styles.iconContainer} ${hoverEnabled ? styles.hover : ""}`}
+      className={styles.iconContainer}
       style={{
         height: `${containerHeight}rem`,
         width: `${containerWidth}rem`,
@@ -73,7 +69,6 @@ const ReactIconNavigate = ({
         style={{
           fontSize: `${iconSize}rem`,
           marginRight: `${marginRight}rem`,
-          cursor: cursorPointer ? "pointer" : "default",
           transform: `translate(${translateX}rem, ${translateY}rem) scale(${iconScale})`,
         }}
       />

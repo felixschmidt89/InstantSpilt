@@ -82,7 +82,7 @@ const UserDetailsPage = () => {
               resourceType='user'
               resourceName={userData.userName}
               groupCode={groupCode}
-              inputWidth={10}
+              inputWidth={20}
               navigateToMain={false}
             />
             <DeleteResource resourceId={userId} resourceType='users' />

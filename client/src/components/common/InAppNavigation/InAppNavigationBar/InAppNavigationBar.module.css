@@ -25,6 +25,7 @@
 .text {
   line-height: 0.8;
   font-size: 1.3rem;
+  text-align: center;
 }
 
 .iconContainer:hover,

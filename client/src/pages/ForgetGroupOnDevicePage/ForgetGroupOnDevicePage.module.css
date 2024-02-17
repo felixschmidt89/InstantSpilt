@@ -2,15 +2,25 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
   overflow-y: auto;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 1rem;
+  width: 80%;
 }
 
 .container h1 {
   margin-bottom: 2rem;
 }
 
-.buttonContainer {
-  margin-top: 1.5rem;
+.copyGroupCodeButton {
+  margin: 0 auto;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.groupCode {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }

@@ -9,22 +9,10 @@
   color: var(--color-dark);
 }
 
-.tooltip {
-  position: absolute;
-  bottom: 104%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--color-dark);
-  color: var(--color-main);
-  padding: 0.4rem 0.8rem;
-  border-radius: 0.4rem;
-  white-space: nowrap;
-  z-index: 100;
-}
-
 .iconExplanation {
   font-size: 1.3rem;
   line-height: 1;
+  text-align: center;
 }
 
 .hover:hover {

@@ -40,9 +40,9 @@ const WebShareApiInvite = ({ groupCode, groupName, initialGroupName }) => {
   };
 
   return (
-    <div className={styles.icon} onClick={handleShareClick}>
+    <span className={styles.icon} onClick={handleShareClick}>
       <FontAwesomeIcon icon={faShareNodes} />
-    </div>
+    </span>
   );
 };
 

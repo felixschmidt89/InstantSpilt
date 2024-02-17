@@ -2,6 +2,7 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import { Button } from "@mui/material";
 
 // Constants and Utils
 import {
@@ -23,7 +24,6 @@ import ConfirmationModal from "../../components/common/ConfirmationModal/Confirm
 
 // Styles
 import styles from "./ForgetGroupOnDevicePage.module.css";
-import { Button } from "@mui/material";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
@@ -53,16 +53,16 @@ const ForgetGroupOnDevicePage = () => {
       <PiratePx COUNT_IDENTIFIER={"forget-group"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <div className={styles.contentContainer}>
-          <h1>delete group from device</h1>
-          <div>
-            <p>
-              If you ever wish to rejoin <strong>{groupName}</strong> later,
-              remember its <strong>groupCode:</strong>
-            </p>
+        <h1>delete group from device</h1>
+        <p className={styles.groupCode}>
+          <span>
+            If you ever wish to rejoin {groupName} later, remember its{" "}
+            <strong>groupCode:</strong>
+          </span>
+          <div className={styles.copyGroupCodeButton}>
             <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
           </div>
-        </div>
+        </p>
         <div className={styles.buttonContainer}>
           <Button
             style={{

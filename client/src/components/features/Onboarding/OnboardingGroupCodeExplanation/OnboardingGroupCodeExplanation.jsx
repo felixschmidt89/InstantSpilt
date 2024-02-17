@@ -21,7 +21,7 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
           Be sure to store your <strong>groupCode</strong> somewhere save to
           avoid losing access:
         </li>
-        <li>
+        <li className={styles.groupCode}>
           <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
         </li>
       </ul>

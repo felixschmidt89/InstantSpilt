@@ -10,6 +10,12 @@
   line-height: 1.1;
 }
 
+.explanation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .groupCode {
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;

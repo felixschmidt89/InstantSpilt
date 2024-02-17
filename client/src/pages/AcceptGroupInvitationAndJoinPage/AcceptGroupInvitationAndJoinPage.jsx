@@ -26,7 +26,7 @@ const AcceptGroupInvitationAndJoinPage = () => {
     <main>
       <HelmetMetaTagsNetlify
         title={`Invitation to join ${groupName}`}
-        description={`Hi! You're invited to join our InstantSplit group ${groupName} to manage and settle expenses.`}
+        description={`Join our group ${groupName} to manage and settle expenses.`}
       />
       <PiratePx COUNT_IDENTIFIER={"accept-invitation-landing-page"} />
       <div className={styles.container}>

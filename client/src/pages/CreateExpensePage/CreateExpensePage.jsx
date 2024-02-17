@@ -27,10 +27,7 @@ const CreateExpensePage = () => {
       <PiratePx COUNT_IDENTIFIER={"create-expense"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <h1>
-          new expense{" "}
-          <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
-        </h1>
+        <h1>new expense </h1>
         {!isFetched ? (
           <Spinner />
         ) : // Check if there are at least 2 group members

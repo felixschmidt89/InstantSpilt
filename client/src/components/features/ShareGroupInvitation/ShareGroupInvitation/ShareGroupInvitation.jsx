@@ -1,9 +1,11 @@
 // React and Third-Party Libraries
 import React from "react";
-import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
 
 // Components
+import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
 
+// Styles
+import styles from "./ShareGroupInvitation.module.css";
 /**
  * Renders option for sharing a group invitation.
  *
@@ -13,11 +15,13 @@ import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
  * @returns {JSX.Element} React component. */
 const ShareGroupInvitation = ({ groupName, infoToCopy }) => {
   return (
-    <p>
-      To invite others to join <strong>{groupName}</strong> or to access
-      InstantSplit on your other devices, simply copy and share this link:
-      <CopyToClipboard infoToCopy={infoToCopy} />
-    </p>
+    <div className={styles.container}>
+      <p>
+        Invite others to join or access {groupName} on your other devices via
+        the invitation link:
+      </p>
+      <CopyToClipboard inputFieldWidth={200} infoToCopy={infoToCopy} />
+    </div>
   );
 };
 

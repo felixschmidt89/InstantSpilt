@@ -127,7 +127,7 @@ export const updatePayment = async (req, res) => {
     ) {
       return res.status(StatusCodes.CONFLICT).json({
         status: 'fail',
-        message: ` and recipient can't be the same person.`,
+        message: ` payment maker and recipient can't be the same person.`,
       });
     }
 

@@ -10,14 +10,13 @@ import { devLog } from "../../../utils/errorUtils";
 import useErrorModalVisibility from "../../../hooks/useErrorModalVisibility";
 
 // Components
-import ReactIconNavigate from "../InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 import ErrorModal from "../ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./CopyToClipboard.module.css";
 
 /**
- * Component for rendering information and easily copying it to the clipboard, providing an instruction to copy and copy feedback to the user
+ * Component for rendering information and easily copying it to the clipboard, providing a icon to copy and successful copy feedback to the user
  * @param {string} props.infoToCopy - The text to be copied to the clipboard.
  * @param {string} [props.inputFieldWidth] - The width of the input field. Defaults to 'fit-content'
  */
@@ -62,26 +61,7 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
         }`}
         onClick={handleCopyClick}
         disabled={isCopied}>
-        {isCopied ? (
-          <ReactIconNavigate
-            icon={LuCopyCheck}
-            iconSize='1.8'
-            containerHeight='2'
-            containerWidth='2'
-            translateY={0.2}
-            cursorPointer={false}
-            hoverEnabled={false}
-          />
-        ) : (
-          <ReactIconNavigate
-            icon={LuCopy}
-            iconSize='1.8'
-            containerHeight='2'
-            containerWidth='2'
-            translateY={0.2}
-            hoverEnabled={false}
-          />
-        )}
+        {isCopied ? <LuCopyCheck /> : <LuCopy />}
       </button>
       <ErrorModal
         error={error}
