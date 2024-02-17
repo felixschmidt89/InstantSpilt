@@ -3,7 +3,8 @@ import React from "react";
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 
-// Components
+// Constants and Utils
+import { buttonStyles } from "../../../../constants/stylesConstants";
 
 // Styles
 import styles from "./ContactForm.module.css";
@@ -112,12 +113,7 @@ const ContactForm = ({
           </div>
         )}
         <Button
-          style={{
-            padding: "0.2rem 0.5rem",
-            fontSize: "1.6rem",
-            marginTop: "0.5rem",
-            fontFamily: "inherit",
-          }}
+          style={buttonStyles}
           variant='contained'
           type='submit'
           endIcon={<SendIcon />}>

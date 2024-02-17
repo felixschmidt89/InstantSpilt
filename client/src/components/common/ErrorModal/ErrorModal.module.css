@@ -20,6 +20,6 @@
   padding: 0.5rem;
   border-radius: 1rem;
   text-align: center;
-  border: 0.25rem solid var(--color-grey-dark);
+  border: 0.25rem solid var(--color-grey);
   max-width: 80%;
 }

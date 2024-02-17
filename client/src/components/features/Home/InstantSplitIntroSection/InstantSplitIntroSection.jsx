@@ -1,9 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
 
-// Constants and Utils
-import { INACTIVE_DAYS } from "../../../../constants/dataConstants";
-
 // Styles
 import styles from "./InstantSplitIntroSection.module.css";
 
@@ -24,15 +21,14 @@ const InstantSplitIntroSection = ({ isInvitation = false }) => {
           accessibility & users first:
         </p>
       )}
-      <div className={styles.strong}>
-        <span className={styles.noWrap}>
+      <ul className={styles.list}>
+        <li className={styles.listItem}>
           No user registration or app installation.
-        </span>{" "}
-        <span className={styles.noWrap}>No cookies.</span>{" "}
-        <span className={styles.noWrap}>No visitor tracking.</span>{" "}
-        <span className={styles.noWrap}>No monetization.</span>{" "}
-        <span className={styles.noWrap}>Complete inactivity data purge.</span>{" "}
-      </div>
+        </li>{" "}
+        <li className={styles.listItem}>No cookies.</li>{" "}
+        <li className={styles.listItem}>No visitor tracking.</li>{" "}
+        <li className={styles.listItem}>Complete inactivity data purge.</li>{" "}
+      </ul>
     </div>
   );
 };

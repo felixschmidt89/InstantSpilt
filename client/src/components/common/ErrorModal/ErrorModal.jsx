@@ -2,6 +2,9 @@
 import React from "react";
 import { Button } from "@mui/material";
 
+// Constants and Utils
+import { smallButtonStyles } from "../../../constants/stylesConstants";
+
 // Components
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 
@@ -41,16 +44,10 @@ const ErrorModal = ({ error, onClose, isVisible }) => {
                 errorFontColor={false}
               />
               <Button
-                style={{
-                  padding: "0.1rem 0.1rem",
-                  fontSize: "1.6rem",
-                  margin: "0 auto",
-                  marginTop: "0.5rem",
-                  fontFamily: "inherit",
-                  width: "fit-content",
-                }}
+                style={smallButtonStyles}
                 variant='outlined'
-                onClick={onClose}>
+                onClick={onClose}
+                color='grey'>
                 ok
               </Button>
             </>

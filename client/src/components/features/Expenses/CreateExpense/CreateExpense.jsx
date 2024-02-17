@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@mui/material";
+import { buttonStyles } from "../../../../constants/stylesConstants";
 
 // Constants and Utils
 import {
@@ -31,7 +32,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * Parent component for creating a new expense.
  *
  * @param {Object} props - The component props.
- * @param {Array} props.groupMembers - An array of group members.
+ * @param {Array} props.groupMembers - array of group members.
  * @param {string} props.groupCode - The groupCode identifying the group.
  * @returns {JSX.Element} React component. */
 const CreateExpense = ({ groupMembers, groupCode }) => {
@@ -96,15 +97,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
             groupMembers={groupMembers}
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}
           />
-          <Button
-            style={{
-              padding: "0.2rem 0.5rem",
-              fontSize: "1.6rem",
-              marginTop: "1rem",
-              fontFamily: "inherit",
-            }}
-            variant='contained'
-            type='submit'>
+          <Button style={buttonStyles} variant='contained' type='submit'>
             add expense
           </Button>
         </div>

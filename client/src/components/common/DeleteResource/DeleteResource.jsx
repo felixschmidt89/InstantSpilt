@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@mui/material";
 
+// Constants and Utils
+import { buttonStyles } from "../../../constants/stylesConstants";
+
 // Hooks
 import useDeleteResource from "../../../hooks/useDeleteResource";
 
@@ -71,12 +74,7 @@ const DeleteResource = ({
       {isButton ? (
         <Button
           onClick={handleShowConfirmation}
-          style={{
-            padding: "0.2rem 0.5rem",
-            fontSize: "1.6rem",
-            marginTop: "1rem",
-            fontFamily: "inherit",
-          }}
+          style={buttonStyles}
           color='error'
           variant='contained'
           type='submit'

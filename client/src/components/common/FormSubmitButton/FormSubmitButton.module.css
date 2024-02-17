@@ -15,5 +15,5 @@
 }
 
 .button:hover {
-  color: var(--color-success);
+  color: var(--color-dark);
 }

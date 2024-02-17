@@ -4,6 +4,9 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { Button } from "@mui/material";
 
+// Constants and Utils
+import { buttonStyles } from "../../../constants/stylesConstants";
+
 // Components
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 import ReactIconNavigate from "../InAppNavigation/ReactIconNavigate/ReactIconNavigate";
@@ -48,14 +51,7 @@ const ConfirmationModal = ({
             <>
               <ErrorDisplay error={error} remWidth={30} />
               <Button
-                style={{
-                  padding: "0.1rem 0.1rem",
-                  fontSize: "1.6rem",
-                  margin: "0 auto",
-                  marginTop: "0.5rem",
-                  fontFamily: "inherit",
-                  width: "fit-content",
-                }}
+                style={buttonStyles}
                 variant='outlined'
                 onClick={onCancel}>
                 ok

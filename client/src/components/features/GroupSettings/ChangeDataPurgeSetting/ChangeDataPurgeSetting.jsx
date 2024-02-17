@@ -64,22 +64,25 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
     useErrorModalVisibility();
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.header}>data purge</h2>
-      <p className={styles.explanation}>
-        Delete group and its associated data (including group members, expenses
-        & payments) after {INACTIVE_DAYS} days of group inactivity.
-      </p>
-      <form onSubmit={handleToggleClick} className={styles.toggle}>
-        <ToggleButton isActive={isActive} onChange={handleToggleClick} />
-      </form>
+    <>
+      {" "}
+      <div className={styles.container}>
+        <h2 className={styles.header}>data purge</h2>
+        <p className={styles.explanation}>
+          Delete group and its associated data (including group members,
+          expenses & payments) after {INACTIVE_DAYS} days of group inactivity.
+        </p>
+        <form onSubmit={handleToggleClick} className={styles.toggle}>
+          <ToggleButton isActive={isActive} onChange={handleToggleClick} />
+        </form>
 
-      <ErrorModal
-        error={error}
-        onClose={handleCloseErrorModal}
-        isVisible={isErrorModalVisible}
-      />
-    </div>
+        <ErrorModal
+          error={error}
+          onClose={handleCloseErrorModal}
+          isVisible={isErrorModalVisible}
+        />
+      </div>
+    </>
   );
 };
 

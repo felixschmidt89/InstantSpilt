@@ -2,9 +2,15 @@
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 1rem;
   overflow-y: auto;
-  margin: 0 auto;
 }
 
+.settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ensure that in app navigation next button is rendered on the right */
 .rightAligned {
   width: 7rem;
   margin-left: auto;

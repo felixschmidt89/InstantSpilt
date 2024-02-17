@@ -24,6 +24,7 @@ import ConfirmationModal from "../../components/common/ConfirmationModal/Confirm
 
 // Styles
 import styles from "./ForgetGroupOnDevicePage.module.css";
+import { buttonStyles } from "../../constants/stylesConstants";
 
 const ForgetGroupOnDevicePage = () => {
   const { groupName, groupCode } = useParams();
@@ -54,23 +55,17 @@ const ForgetGroupOnDevicePage = () => {
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>delete group from device</h1>
-        <p className={styles.groupCode}>
-          <span>
+        <div className={styles.groupCode}>
+          <span className={styles.explainGroupCode}>
             If you ever wish to rejoin {groupName} later, remember its{" "}
-            <strong>groupCode:</strong>
+            <strong>groupCode:</strong>{" "}
           </span>
-          <div className={styles.copyGroupCodeButton}>
-            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
-          </div>
-        </p>
+        </div>
+        <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"8.5rem"} />
+
         <div className={styles.buttonContainer}>
           <Button
-            style={{
-              padding: "0.2rem 0.5rem",
-              fontSize: "1.6rem",
-              marginTop: "0.5rem",
-              fontFamily: "inherit",
-            }}
+            style={buttonStyles}
             variant='contained'
             color='error'
             onClick={handleShowConfirmation}

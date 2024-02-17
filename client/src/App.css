@@ -69,17 +69,12 @@ main {
   box-shadow: 0 0 0.4rem var(--color-signal-reduced-opacity);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1 {
   text-align: center;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.9rem;
 }
 
 h2 {
@@ -101,10 +96,11 @@ p {
 
 a {
   color: var(--color-signal);
+  outline: none;
 }
 
 a:hover {
-  color: var(--color-success);
+  color: var(--color-dark);
 }
 
 a:focus {
@@ -130,7 +126,6 @@ input {
   color: var(--color-dark);
   background-color: var(--color-main);
   font-family: "Ubuntu", sans-serif;
-  text-align: left;
   width: 20rem;
   border: 0.15rem solid var(--color-grey);
   border-radius: 0.5rem;
@@ -150,8 +145,11 @@ select {
 }
 
 select:focus,
-input:focus {
+select:hover,
+input:focus,
+input:hover {
   border-color: var(--color-signal);
+  background-color: var(--color-body);
 }
 
 ::-webkit-scrollbar,

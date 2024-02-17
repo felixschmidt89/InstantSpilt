@@ -33,7 +33,7 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
           somewhere save:
         </li>
         <li className={styles.groupCode}>
-          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
+          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"8.5rem"} />
         </li>
         <li>
           Alternatively, bookmark its{" "}

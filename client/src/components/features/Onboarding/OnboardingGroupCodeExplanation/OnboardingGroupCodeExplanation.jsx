@@ -22,7 +22,7 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
           avoid losing access:
         </li>
         <li className={styles.groupCode}>
-          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
+          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"8.5rem"} />
         </li>
       </ul>
     </div>

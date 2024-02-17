@@ -8,6 +8,7 @@ import { setRouteInLocalStorage } from "../../../../utils/localStorageUtils";
 
 // Styles
 import styles from "./RouteButton.module.css";
+import { buttonStyles } from "../../../../constants/stylesConstants";
 
 /**
  * Button for navigating to a specified route with optional setting of previousRoute or nestedPreviousRoute in localStorage (needed for InAppNavgationBar component)
@@ -39,12 +40,7 @@ const RouteButton = ({
     <div className={styles.container}>
       <Button
         onClick={handleClick}
-        style={{
-          padding: "0.2rem 0.5rem",
-          fontSize: "1.6rem",
-          marginTop: "0.5rem",
-          fontFamily: "inherit",
-        }}
+        style={buttonStyles}
         color='primary'
         variant='outlined'
         type='submit'>

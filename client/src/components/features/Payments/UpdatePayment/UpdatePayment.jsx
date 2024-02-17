@@ -12,6 +12,7 @@ import {
 import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
+import { buttonStyles } from "../../../../constants/stylesConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -144,15 +145,7 @@ const UpdatePayment = ({
       />
       <div className={styles.buttonContainer}>
         {isSubmitButtonVisible && (
-          <Button
-            style={{
-              padding: "0.2rem 0.5rem",
-              fontSize: "1.6rem",
-              marginTop: "1rem",
-              fontFamily: "inherit",
-            }}
-            variant='contained'
-            type='submit'>
+          <Button style={buttonStyles} variant='contained' type='submit'>
             update payment
           </Button>
         )}

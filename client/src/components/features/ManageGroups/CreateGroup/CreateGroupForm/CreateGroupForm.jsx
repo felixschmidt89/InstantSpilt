@@ -12,9 +12,12 @@ import {
   storeGroupCodeInLocalStorage,
 } from "../../../../../utils/localStorageUtils";
 
+// Hooks
+import useErrorModalVisibility from "../../../../../hooks/useErrorModalVisibility";
+
 // Components
 import FormSubmitButton from "../../../../common/FormSubmitButton/FormSubmitButton";
-import ErrorDisplay from "../../../../common/ErrorDisplay/ErrorDisplay";
+import ErrorModal from "../../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./CreateGroupForm.module.css";
@@ -35,6 +38,10 @@ const CreateGroupForm = ({ isOnboarding }) => {
 
   devLog("Onboarding group creation", isOnboarding);
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   // Autofocus input field on mount if isOnboarding is true
   useEffect(() => {
     if (isOnboarding) {
@@ -49,10 +56,14 @@ const CreateGroupForm = ({ isOnboarding }) => {
     // Validate group name
     if (!groupName.trim()) {
       setError("Group name can't be empty.");
+      displayErrorModal();
+
       return;
     }
     if (groupName.length > 50) {
       setError("Group name can't exceed 50 characters.");
+      displayErrorModal();
+
       return;
     }
     try {
@@ -67,13 +78,14 @@ const CreateGroupForm = ({ isOnboarding }) => {
       setRouteInLocalStorage(window.location.pathname, "previousRoute");
       navigate("/create-users");
     } catch (error) {
+      displayErrorModal();
       devLog("Error creating group:", error);
       setError(genericErrorMessage);
     }
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} className={styles.container}>
       <input
         className={styles.inputField}
         type='text'
@@ -90,7 +102,11 @@ const CreateGroupForm = ({ isOnboarding }) => {
         translateX={0.2}
         translateY={0.15}
       />
-      <ErrorDisplay error={error} remWidth={30} />
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </form>
   );
 };

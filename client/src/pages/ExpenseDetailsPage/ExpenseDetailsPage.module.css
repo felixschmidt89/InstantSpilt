@@ -1,18 +1,19 @@
 .container {
   width: 90%; /* Prevent design from breaking in case very long one word expense description is entered */
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 1rem;
-  margin: 0 auto;
-  align-content: center;
 }
 
 .emoji {
   font-size: 1.8rem;
-  transform: translateX(0.5rem);
+  transform: translateX(0.3rem);
+  margin: 0 auto;
 }
 
 .detailsBox {

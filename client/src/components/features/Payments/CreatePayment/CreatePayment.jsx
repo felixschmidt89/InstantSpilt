@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mui/material";
 
 // Constants and Utils
 import {
@@ -10,6 +11,7 @@ import {
 } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
+import { buttonStyles } from "../../../../constants/stylesConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -22,7 +24,6 @@ import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./CreatePayment.module.css";
-import { Button } from "@mui/material";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -92,15 +93,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
         groupMembers={groupMembers}
       />
       <div>
-        <Button
-          style={{
-            padding: "0.2rem 0.5rem",
-            fontSize: "1.6rem",
-            marginTop: "1rem",
-            fontFamily: "inherit",
-          }}
-          variant='contained'
-          type='submit'>
+        <Button style={buttonStyles} variant='contained' type='submit'>
           add payment
         </Button>
       </div>

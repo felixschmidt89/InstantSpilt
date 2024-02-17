@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
+import { smallButtonStyles } from "../../../../constants/stylesConstants";
 
 // Styles
 import styles from "./ExpenseBeneficiariesInput.module.css";
@@ -65,12 +66,12 @@ const ExpenseBeneficiariesInput = ({
 
   return (
     <>
-      <h3>{emojiConstants.expense} for</h3>
+      <p className={styles.emoji}>{emojiConstants.expense} for</p>
       <div
         className={`${styles.beneficiaries} ${isUpdate ? styles.isUpdate : ""}`}
         onClick={handleDivOrButtonClick}
         ref={divRef}>
-        <div>
+        <div className={styles.groupMemberNames}>
           {groupMembers.map((member) => (
             <span className={styles.label} key={member}>
               <label>
@@ -91,11 +92,13 @@ const ExpenseBeneficiariesInput = ({
         <Button
           onClick={toggleBeneficiaries}
           style={{
-            padding: "0rem",
-            fontSize: "1.4rem",
-            marginTop: "0.3rem",
-            marginBottom: "0.3rem",
+            padding: "0rem 0rem",
+            fontSize: "1.2rem",
+            margin: "0 auto",
+            marginTop: "0rem",
+            marginBottom: "0.4rem",
             fontFamily: "inherit",
+            width: "fit-content",
           }}
           color='primary'
           variant='outlined'

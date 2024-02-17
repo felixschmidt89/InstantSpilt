@@ -46,7 +46,7 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <span className={styles.container}>
       <input
         className={styles.inputField}
         type='text'
@@ -68,7 +68,7 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
         onClose={handleCloseErrorModal}
         isVisible={isErrorModalVisible}
       />
-    </div>
+    </span>
   );
 };
 

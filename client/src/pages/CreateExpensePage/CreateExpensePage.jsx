@@ -5,13 +5,11 @@ import React from "react";
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 
 // Components
-import emojiConstants from "../../constants/emojiConstants";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
 import CreateExpense from "../../components/features/Expenses/CreateExpense/CreateExpense";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
-import Emoji from "../../components/common/Emoji/Emoji";
 import CreateUserCTA from "../../components/features/GroupBalancesAndHistory/CreateUserCTA/CreateUserCTA";
 
 // Styles

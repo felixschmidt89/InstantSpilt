@@ -10,8 +10,7 @@ import {
   handleApiErrorsAndTriggerErrorModal,
 } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
-import emojiConstants from "../../../../constants/emojiConstants";
-import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
+import { buttonStyles } from "../../../../constants/stylesConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -21,7 +20,6 @@ import ExpenseDescriptionInput from "../ExpenseDescriptionInput/ExpenseDescripti
 import ExpenseAmountInput from "../ExpenseAmountInput/ExpenseAmountInput";
 import ExpensePayerSelect from "../ExpensePayerSelect/ExpensePayerSelect";
 import ExpenseBeneficiariesInput from "../ExpenseBeneficiariesInput/ExpenseBeneficiariesInput";
-import Emoji from "../../../common/Emoji/Emoji";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
@@ -104,11 +102,8 @@ const UpdateExpense = ({
   };
 
   return (
-    <div>
-      <h1 className={styles.header}>
-        edit expense{" "}
-        <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
-      </h1>
+    <div className={styles.container}>
+      <h1 className={styles.header}>edit expense </h1>
       <form onSubmit={handleFormSubmit}>
         <ExpenseDescriptionInput
           value={expenseDescription}
@@ -137,15 +132,7 @@ const UpdateExpense = ({
           isUpdate={true}
         />
         {formChanged && (
-          <Button
-            style={{
-              padding: "0.2rem 0.5rem",
-              fontSize: "1.6rem",
-              marginTop: "1rem",
-              fontFamily: "inherit",
-            }}
-            variant='contained'
-            type='submit'>
+          <Button style={buttonStyles} variant='contained' type='submit'>
             update expense
           </Button>
         )}

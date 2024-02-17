@@ -61,7 +61,7 @@ const OnboardingGroupSettingsPage = () => {
       <div className={styles.container}>
         <h1>group settings</h1>
         {isFetched && groupData ? (
-          <>
+          <div className={styles.settings}>
             <ChangeGroupCurrency
               groupCode={groupCode}
               groupCurrency={groupData.group.currency}
@@ -71,11 +71,11 @@ const OnboardingGroupSettingsPage = () => {
               groupCode={groupCode}
               inactiveDataPurge={groupData.group.inactiveDataPurge}
             />
-          </>
+            {/* <OnboardingGroupCodeExplanation groupCode={groupCode} /> */}
+          </div>
         ) : (
           <Spinner />
         )}
-        {/* <OnboardingGroupCodeExplanation groupCode={groupCode} /> */}
       </div>
     </main>
   );

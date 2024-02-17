@@ -1,3 +1,12 @@
+.emoji {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
 .beneficiaries {
   display: flex;
   justify-content: center;
@@ -5,16 +14,20 @@
   padding: 0.2rem 0.5rem;
   width: 20rem;
   margin: 0 auto;
-  border: 0.1rem solid var(--color-grey);
+  border: 0.15rem solid var(--color-grey);
   border-radius: 0.6rem;
+  font-size: 1.5rem;
   overflow-y: auto;
   height: fit-content;
+  outline: none;
+  margin-bottom: 0.5rem;
+  outline-color: var(--color-grey);
 }
 
 .beneficiaries:hover,
 .beneficiaries:focus {
   border-color: var(--color-signal);
-  box-shadow: 0 0 0.2rem var(--color-success);
+  background-color: var(--color-body);
 }
 
 .beneficiaries.isUpdate {
@@ -41,12 +54,12 @@
   margin-left: 0.2rem;
 }
 
+/* checkmarks*/
 .beneficiaries .input:checked {
   background-color: var(--color-signal);
   border-color: var(--color-success);
   height: 1.6rem;
   width: 1.6rem;
-  /* checkmark form */
   clip-path: polygon(
     20% 52%,
     35% 54%,
