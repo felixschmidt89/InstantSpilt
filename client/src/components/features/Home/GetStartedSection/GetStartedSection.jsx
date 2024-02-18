@@ -3,13 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Styles
-import styles from "./HomeGetStartedSection.module.css";
+import styles from "./GetStartedSection.module.css";
 
 /**
  * Component for rendering the get started section on the home page.
  *
  * @returns {JSX.Element} React component. */
-const HomeGetStartedSection = () => {
+const GetStartedSection = () => {
   return (
     <>
       <div className={styles.groupContainer}>
@@ -25,4 +25,4 @@ const HomeGetStartedSection = () => {
   );
 };
 
-export default HomeGetStartedSection;
+export default GetStartedSection;

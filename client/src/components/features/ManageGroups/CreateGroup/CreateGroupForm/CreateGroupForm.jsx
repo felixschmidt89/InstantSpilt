@@ -5,7 +5,10 @@ import axios from "axios";
 
 // Constants and Utils
 import { genericErrorMessage } from "../../../../../constants/errorConstants";
-import { devLog } from "../../../../../utils/errorUtils";
+import {
+  devLog,
+  handleApiErrorsAndTriggerErrorModal,
+} from "../../../../../utils/errorUtils";
 import {
   setGroupCodeToCurrentlyActive,
   setRouteInLocalStorage,
@@ -51,21 +54,7 @@ const CreateGroupForm = ({ isOnboarding }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Clear previous error
     setError(null);
-    // Validate group name
-    if (!groupName.trim()) {
-      setError("Group name can't be empty.");
-      displayErrorModal();
-
-      return;
-    }
-    if (groupName.length > 50) {
-      setError("Group name can't exceed 50 characters.");
-      displayErrorModal();
-
-      return;
-    }
     try {
       const response = await axios.post(`${apiUrl}/groups`, {
         groupName,
@@ -78,9 +67,11 @@ const CreateGroupForm = ({ isOnboarding }) => {
       setRouteInLocalStorage(window.location.pathname, "previousRoute");
       navigate("/create-users");
     } catch (error) {
-      displayErrorModal();
+      if (error.response) {
+        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+      }
       devLog("Error creating group:", error);
-      setError(genericErrorMessage);
+      displayErrorModal();
     }
   };
 

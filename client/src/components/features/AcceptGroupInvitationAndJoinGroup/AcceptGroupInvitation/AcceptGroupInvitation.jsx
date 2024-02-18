@@ -9,6 +9,10 @@ import {
   setRouteInLocalStorage,
   storeGroupCodeInLocalStorage,
 } from "../../../../utils/localStorageUtils";
+import { buttonStyles } from "../../../../constants/stylesConstants";
+
+// Components
+import TermsAndConditionsSection from "../../Home/TermsAndConditionsSection/TermsAndConditionsSection";
 
 // Styles
 import styles from "./AcceptGroupInvitation.module.css";
@@ -32,18 +36,17 @@ const AcceptGroupInvitation = ({ groupName, groupCode }) => {
 
   return (
     <div className={styles.container}>
-      <h2>Join {groupName}?</h2>
-      <Button
-        style={{
-          padding: "0.2rem 0.5rem",
-          fontSize: "1.6rem",
-          marginTop: "1rem",
-          fontFamily: "inherit",
-        }}
-        onClick={handleAcceptInvitation}
-        variant='contained'>
-        sure!
-      </Button>
+      <div className={styles.button}>
+        <Button
+          style={buttonStyles}
+          onClick={handleAcceptInvitation}
+          variant='contained'>
+          join {groupName}
+        </Button>
+      </div>
+      <div className={styles.termsAndConditions}>
+        <TermsAndConditionsSection />
+      </div>
     </div>
   );
 };

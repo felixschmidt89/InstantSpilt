@@ -19,7 +19,7 @@ const SyncGroupCodeExplanation = () => {
           have access on your computer.
         </li>
         <li>
-          To access the same group on another device, you'll need to: enter the
+          To access the same group on another device, you'll need to enter the
           groupCode manually or accept a group invitation specifically on that
           device.
         </li>

@@ -8,8 +8,6 @@ import useFetchGroupData from "../../hooks/useFetchGroupData";
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import Spinner from "../../components/common/Spinner/Spinner";
-import ShowTermsAndConditions from "../../components/features/AcceptGroupInvitationAndJoinGroup/ShowTermsAndConditions/ShowTermsAndConditions";
 import InvitationIntro from "../../components/features/AcceptGroupInvitationAndJoinGroup/InvitationIntro/InvitationIntro";
 import InstantSplitIntroSection from "../../components/features/Home/InstantSplitIntroSection/InstantSplitIntroSection";
 import AcceptGroupInvitation from "../../components/features/AcceptGroupInvitationAndJoinGroup/AcceptGroupInvitation/AcceptGroupInvitation";
@@ -29,24 +27,15 @@ const AcceptGroupInvitationAndJoinPage = () => {
         description={`Join our group ${groupName} to manage and settle expenses.`}
       />
       <PiratePx COUNT_IDENTIFIER={"accept-invitation-landing-page"} />
-      <div className={styles.container}>
-        {!isFetched ? (
-          <Spinner />
-        ) : (
-          <>
-            <h1>Hi there!</h1>
-            <InvitationIntro groupData={groupData} />
-            <InstantSplitIntroSection isInvitation={true} />
-            <AcceptGroupInvitation
-              groupCode={groupCode}
-              groupName={groupName}
-            />
-            <ShowTermsAndConditions />
-          </>
-        )}
-      </div>
+      {isFetched && (
+        <div className={styles.container}>
+          <h1>Hi there!</h1>
+          <InvitationIntro groupData={groupData} />
+          <InstantSplitIntroSection isInvitation={true} />
+          <AcceptGroupInvitation groupCode={groupCode} groupName={groupName} />
+        </div>
+      )}
     </main>
   );
 };
-
 export default AcceptGroupInvitationAndJoinPage;

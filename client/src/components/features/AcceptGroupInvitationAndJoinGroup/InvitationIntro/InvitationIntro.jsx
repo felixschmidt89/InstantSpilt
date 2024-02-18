@@ -14,7 +14,9 @@ const InvitationIntro = ({ groupData }) => {
         Someone invited you to join the InstantSplit{" "}
         <span className={styles.noWrap}>
           group{" "}
-          <span className={styles.strong}>{groupData.group.groupName}</span>
+          <span>
+            <strong>{groupData.group.groupName}</strong>
+          </span>
         </span>{" "}
         to manage and settle your shared expenses.
       </p>

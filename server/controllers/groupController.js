@@ -28,6 +28,7 @@ const emailPass = process.env.EMAIL_PASS;
 export const createGroup = async (req, res) => {
   try {
     const { groupName } = req.body;
+
     const groupCode = await generateUniqueGroupCode();
     const group = await Group.create({
       groupName,
@@ -81,12 +82,18 @@ export const createGroup = async (req, res) => {
       message: 'Group created',
     });
   } catch (error) {
-    errorLog(
-      error,
-      'Error creating group:',
-      'Failed to create the group. Please try again later.',
-    );
-    sendInternalError();
+    devLog('error:', error);
+    devLog('error.name:', error.name);
+    if (error.name === 'ValidationError') {
+      return sendValidationError(res, error);
+    } else {
+      errorLog(
+        error,
+        'Error creating group:',
+        'Failed to create the group. Please try again later.',
+      );
+      sendInternalError();
+    }
   }
 };
 

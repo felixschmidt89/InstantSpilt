@@ -11,3 +11,9 @@
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
+
+@media screen and (max-width: 500px) {
+  .container {
+    width: 85%;
+  }
+}

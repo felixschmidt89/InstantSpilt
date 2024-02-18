@@ -5,6 +5,7 @@
 .failMessage {
   overflow-y: auto;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 @media (max-width: 500px) {

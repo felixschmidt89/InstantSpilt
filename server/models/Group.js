@@ -13,7 +13,7 @@ const groupSchema = new Schema(
       trim: true,
       required: [true, 'Missing group name.'],
       minlength: [1, 'The group name must be at least 1 characters long.'],
-      maxlength: [50, 'The group name cannot exceed 50 characters.'],
+      maxlength: [25, 'The group name cannot exceed 25 characters.'],
       index: true, // Index for quick lookups
     },
     // groupName set during registration, used for client routing
@@ -34,8 +34,13 @@ const groupSchema = new Schema(
   { timestamps: true },
 );
 
-// Method to update the lastActive property (needed for data purge)
-groupSchema.methods.setLastActive = async function () {
+/**
+ * Sets the lastActive property to the current date and time, which is used for group inactivity data purge.
+ * @memberof Group
+ * @method setLastActive
+ * @returns {Promise<void>} A Promise that resolves after the lastActive property is updated and saved.
+ * @throws {Error} If there's an error setting the lastActive property.
+ */ groupSchema.methods.setLastActive = async function () {
   try {
     this.lastActive = new Date();
     await this.save();

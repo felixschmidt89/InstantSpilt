@@ -4,17 +4,10 @@
   overflow-x: hidden;
 }
 
-.section {
-  border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
-  width: 99%;
-  margin: 0 auto;
-}
-
 .introText {
-  width: 80%;
+  width: 78%;
   margin: 0 auto;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Ensure that in app navigation next button is rendered on the right */
@@ -29,5 +22,14 @@
 }
 
 .skipToApp {
+  margin-top: 2rem;
   text-align: center;
+}
+
+/* Mobile*/
+@media only screen and (max-width: 500px) {
+  .introText {
+    width: 90%;
+    margin-left: 1.5rem;
+  }
 }

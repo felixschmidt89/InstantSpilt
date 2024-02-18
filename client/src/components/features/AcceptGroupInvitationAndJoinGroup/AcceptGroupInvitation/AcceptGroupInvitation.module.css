@@ -1,5 +1,11 @@
 .container {
-  margin-top: 2.5rem;
-  padding: 0 1rem; /* Limiting width while keeping scrollbar on the border */
-  margin-bottom: 2rem;
+  padding-top: 5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.termsAndConditions {
+  width: 60%;
 }
