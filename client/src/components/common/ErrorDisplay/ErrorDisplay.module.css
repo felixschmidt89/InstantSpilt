@@ -1,7 +1,5 @@
 .errorMessage {
   color: var(--color-error);
   margin: 0 auto;
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  text-align: center;
   line-height: 1.4;
 }

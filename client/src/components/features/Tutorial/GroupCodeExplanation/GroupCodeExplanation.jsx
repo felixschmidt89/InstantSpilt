@@ -31,7 +31,7 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
           Key to this group is its unique groupcode, store it somewhere save:
         </div>
         <div className={styles.groupCode}>
-          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"8.5rem"} />
+          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"9.5rem"} />
         </div>
         <div className={styles.invitationLink}>
           Alternatively, bookmark its{" "}

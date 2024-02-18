@@ -13,7 +13,7 @@ const SingleTermsAndConditions = ({ sections }) => {
     <div className={styles.container}>
       {sections.map((section) => (
         <div key={section.key}>
-          <h2 className={styles.header}>{section.title}</h2>
+          <h3 className={styles.header}>{section.title}</h3>
           <p className={styles.content}>{section.content}</p>
         </div>
       ))}

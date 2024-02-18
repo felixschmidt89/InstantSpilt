@@ -3,9 +3,8 @@
   gap: 0.4rem;
   font-weight: bold;
   font-size: 1.6rem;
-  width: 5rem;
   margin: 0 auto;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .beneficiaries {
@@ -18,8 +17,9 @@
   border: 0.15rem solid var(--color-grey);
   border-radius: 0.6rem;
   font-size: 1.5rem;
-  overflow-y: auto;
+  overflow-y: scroll;
   height: fit-content;
+  max-height: 45vh;
   outline: none;
   margin-bottom: 0.5rem;
   outline-color: var(--color-grey);

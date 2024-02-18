@@ -1,0 +1,14 @@
+.form {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.emojis {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+  margin-top: 0.1rem;
+}

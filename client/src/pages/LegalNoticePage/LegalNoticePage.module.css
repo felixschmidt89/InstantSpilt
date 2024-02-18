@@ -5,6 +5,13 @@
   padding-bottom: 2rem;
 }
 
+.container h1 {
+  padding-top: 0.5rem;
+  text-align: left;
+  font-size: 1.6rem;
+}
+
 .note {
   font-style: italic;
+  font-size: 1.4rem;
 }

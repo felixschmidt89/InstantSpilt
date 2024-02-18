@@ -42,7 +42,7 @@ const UpdatePaymentPage = () => {
         <Spinner />
       ) : (
         <div className={styles.container}>
-          <h2 className={styles.header}>edit payment</h2>
+          <h1 className={styles.header}>edit payment</h1>
           <div className={styles.innerContainer}>
             <UpdatePayment
               groupMembers={groupMembers}

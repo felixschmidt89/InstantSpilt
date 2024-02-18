@@ -3,20 +3,21 @@
   display: flex;
   flex-direction: column;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  margin: 0 auto;
   overflow-y: auto;
+}
+
+.feedbackIcon {
+  padding-top: 1rem;
+  font-size: 2.5rem;
+  line-height: 1;
+  margin: 0 auto;
+  width: 2rem;
 }
 
 .groupExists {
   color: var(--color-success);
-  margin: 0 auto;
 }
 
-.errorContainer {
+.groupDoesNotExist {
   color: var(--color-error);
-}
-
-.icon {
-  font-size: 2.5rem;
-  line-height: 1;
 }

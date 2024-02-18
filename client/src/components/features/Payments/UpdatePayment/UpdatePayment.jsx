@@ -121,7 +121,7 @@ const UpdatePayment = ({
   };
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} className={styles.form}>
       <PaymentAmountInput
         paymentAmount={paymentAmount}
         onAmountChange={setPaymentAmount}

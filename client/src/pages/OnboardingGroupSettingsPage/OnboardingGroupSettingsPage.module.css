@@ -5,11 +5,11 @@
 }
 
 .settings {
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 /* Ensure that in app navigation next button is rendered on the right */
 .rightAligned {
   width: 7rem;

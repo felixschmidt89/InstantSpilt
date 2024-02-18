@@ -24,20 +24,23 @@ const ShareGroupInvitationIncludingWebShare = ({
   initialGroupName,
 }) => {
   return (
-    <ul className={styles.container}>
-      <li className={styles.webshare}>
-        Invite others to join or access {groupName} on your other devices:{" "}
+    <div className={styles.container}>
+      <div className={styles.webshare}>
+        {" "}
         <WebShareApiInvite
           groupCode={groupCode}
           groupName={groupName}
           initialGroupName={initialGroupName}
         />
-      </li>
-      <li>
-        Or copy and share this invitation link:
+      </div>
+
+      <div className={styles.invitationLink}>
+        Alternatively, copy and share the invitation link below to either invite
+        peers to join <strong>{groupName}</strong> or to gain access on your
+        other devices:
         <CopyToClipBoard infoToCopy={infoToCopy} />
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 };
 

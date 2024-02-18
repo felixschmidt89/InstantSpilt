@@ -92,17 +92,17 @@ const ValidateProvideGroupCodePage = () => {
         <h1>GroupCode validation</h1>
         {groupExists && (
           <div className={styles.groupExists}>
-            <p>Valid GroupCode, redirecting to the group now.</p>
-            <div className={styles.icon}>
+            <div className={styles.feedbackIcon}>
               <IoMdCheckmarkCircleOutline />
             </div>
+            <p>Valid GroupCode, redirecting to the group now.</p>
           </div>
         )}
         {/*Handle validations timeout errors*/}
         {!error && !groupExists && <Spinner />}
         {error && (
-          <div className={styles.errorContainer}>
-            <div className={styles.icon}>
+          <div className={styles.groupDoesNotExist}>
+            <div className={styles.feedbackIcon}>
               <IoMdCloseCircleOutline />
             </div>
             <ErrorDisplay error={error} remWidth={30} errorFontColor={true} />

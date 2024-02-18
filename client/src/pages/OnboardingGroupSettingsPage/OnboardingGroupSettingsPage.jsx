@@ -74,7 +74,9 @@ const OnboardingGroupSettingsPage = () => {
             {/* <OnboardingGroupCodeExplanation groupCode={groupCode} /> */}
           </div>
         ) : (
-          <Spinner />
+          <div className={styles.spinner}>
+            <Spinner />
+          </div>
         )}
       </div>
     </main>

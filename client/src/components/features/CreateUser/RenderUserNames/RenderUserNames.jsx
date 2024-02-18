@@ -73,14 +73,14 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
           <Spinner />
         </div>
       ) : (
-        // Display the list of member names when data is loaded
-        <ul className={styles.userList}>
-          {userNames.map((userName) => (
-            <li key={userName}>
-              <div>{userName}</div>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.membersContainer}>
+          <h2>group members</h2>
+          <div className={styles.members}>
+            {userNames.length > 0
+              ? userNames.join(", ")
+              : "No members added yet"}
+          </div>
+        </div>
       )}
       <ErrorModal
         error={error}

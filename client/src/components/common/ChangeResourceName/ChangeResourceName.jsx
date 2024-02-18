@@ -31,6 +31,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} props.resourceType - The type of the resource in singular (e.g., "user", "group").
  * @param {string} props.resourceName - The current name of the resource.
  * @param {string} props.groupCode - The groupCode of the associated group.
+ * @param {string} props.headerText - The name of the resource tpye being changed displayed in the header. Prefixed by "change ".
  * @param {number} [props.inputWidth=20] - The width of the input field in rem units. Defaults to 20.
  * @param {boolean} [props.navigateToMain=true] - Flag indicating whether to navigate to the main page after updating the resource name. Defaults to true.
  * @returns {JSX.Element} React component.
@@ -40,6 +41,7 @@ const ChangeResourceName = ({
   resourceType,
   resourceName,
   groupCode,
+  headerText,
   inputWidth = 20,
   navigateToMain = true,
 }) => {
@@ -64,7 +66,6 @@ const ChangeResourceName = ({
         [`${resourceType}Name`]: newResourceName,
         groupCode: groupCode,
       };
-      console.log(pluralResourceType);
       const response = await axios.patch(
         `${apiUrl}/${pluralResourceType}/${resourceId}`,
         payload
@@ -92,6 +93,7 @@ const ChangeResourceName = ({
 
   return (
     <div className={styles.container}>
+      {headerText && <h2 className={styles.header}>change {headerText}</h2>}
       <form onSubmit={handleFormSubmit}>
         <input
           className={`${styles.inputField} ${styles.idleOnMount}`}

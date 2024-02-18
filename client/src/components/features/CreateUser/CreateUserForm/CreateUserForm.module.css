@@ -1,0 +1,12 @@
+.container {
+  overflow-y: auto;
+  margin: 0 auto;
+  width: 50%;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    margin-left: 7rem;
+    width: 70%;
+  }
+}

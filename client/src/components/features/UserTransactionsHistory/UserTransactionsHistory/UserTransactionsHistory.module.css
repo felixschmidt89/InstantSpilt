@@ -13,7 +13,7 @@
 
 @media (max-width: 500px) {
   .container {
-    padding: 0 0.5rem; /* Limiting width while keeping scrollbar on the border */
+    padding: 0 0rem; /* Limiting width while keeping scrollbar on the border */
     font-size: 1.5rem;
   }
   .item {

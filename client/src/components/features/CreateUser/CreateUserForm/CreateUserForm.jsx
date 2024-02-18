@@ -68,33 +68,35 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <>
       <h1>add group member</h1>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          type='text'
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-          placeholder='member name'
-          className={styles.inputField}
-          ref={inputRef}
-          autoFocus
+      <div className={styles.container}>
+        <form onSubmit={handleFormSubmit}>
+          <input
+            type='text'
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            placeholder='member name'
+            className={styles.inputField}
+            ref={inputRef}
+            autoFocus
+          />
+          <FormSubmitButton
+            fontSize={1.6}
+            add={true}
+            marginLeft='0.1'
+            transformScale={1.3}
+            translateX={0.2}
+            translateY={0.15}
+          />
+        </form>
+        <ErrorModal
+          error={error}
+          onClose={handleCloseErrorModal}
+          isVisible={isErrorModalVisible}
         />
-        <FormSubmitButton
-          fontSize={1.6}
-          add={true}
-          marginLeft='0.1'
-          transformScale={1.3}
-          translateX={0.2}
-          translateY={0.15}
-        />
-      </form>
-      <ErrorModal
-        error={error}
-        onClose={handleCloseErrorModal}
-        isVisible={isErrorModalVisible}
-      />
-    </div>
+      </div>
+    </>
   );
 };
 

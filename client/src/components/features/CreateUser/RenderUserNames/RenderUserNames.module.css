@@ -1,7 +1,7 @@
 .container {
   overflow-y: auto;
   margin: 0 auto;
-  margin-left: 6rem;
+  width: 50%;
 }
 
 .spinner {
@@ -10,6 +10,13 @@
   margin-top: 1rem;
 }
 
-.userList {
-  font-weight: bold;
+.members {
+  text-wrap: wrap;
+}
+
+@media screen and (max-width: 500px) {
+  .container {
+    margin-left: 7rem;
+    width: 70%;
+  }
 }

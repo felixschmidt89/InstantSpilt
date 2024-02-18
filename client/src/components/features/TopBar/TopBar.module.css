@@ -9,6 +9,7 @@
 
 .container h1 {
   align-self: flex-end;
+  width: 20rem;
 }
 
 .slideInLeft {

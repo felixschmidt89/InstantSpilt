@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
+  width: 50%;
   max-width: 50rem;
   min-width: 16rem;
   margin: 0 auto;
@@ -44,5 +44,8 @@
 @media (max-width: 500px) {
   .balancesContainer li {
     border-bottom: none;
+  }
+  .userDetails {
+    width: 65%;
   }
 }

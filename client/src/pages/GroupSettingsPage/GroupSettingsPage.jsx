@@ -1,5 +1,5 @@
 // React and Third-Party Libraries
-import React, { useState } from "react";
+import React from "react";
 
 // Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
@@ -35,12 +35,12 @@ const GroupSettingsPage = () => {
         </h1>
         {isFetched && groupData ? (
           <>
-            <h2 className={styles.header}>change name</h2>
             {/*Change group name */}
             <ChangeResourceName
               resourceId={groupData.group._id}
               groupCode={groupCode}
               resourceType={"group"}
+              headerText={"name"}
               resourceName={groupData.group.groupName}
               navigateToMain={false}
             />
@@ -54,7 +54,9 @@ const GroupSettingsPage = () => {
             />
           </>
         ) : (
-          <Spinner />
+          <div className={styles.spinner}>
+            <Spinner />
+          </div>
         )}
       </div>
     </main>

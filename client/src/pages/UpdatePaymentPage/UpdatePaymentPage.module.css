@@ -4,6 +4,9 @@
   align-items: center;
   width: 100%;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  padding-bottom: 1rem;
   overflow-y: auto;
+}
+
+.container h1 {
+  margin-bottom: 0.5rem;
 }
