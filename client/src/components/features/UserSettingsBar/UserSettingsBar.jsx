@@ -20,6 +20,7 @@ import styles from "./UserSettingsBar.module.css";
  * @param {string} props.initialGroupName - The initial group name.
  * @param {function} props.switchToTopBar - Callback function to switch to TopBar.
  * @param {boolean} [props.animation=false] - Whether to apply mount animation to the component. Defaults to false.
+ * @param {boolean} [props.applyMargin=true] - Whether to apply margin for the element. Defaults to true.
  * @returns {JSX.Element} React component.
  */
 const UserSettingsBar = forwardRef(
@@ -29,15 +30,20 @@ const UserSettingsBar = forwardRef(
       initialGroupName,
       groupName,
       switchToTopBar,
+      applyMargin = true,
       animation = false,
     },
     ref
   ) => {
     const containerClassName = `${styles.container} ${
       animation ? styles.slideInRight : ""
-    }`;
+    } ${applyMargin ? styles.withMargin : ""}`;
     return (
-      <div className={containerClassName} ref={ref}>
+      <div
+        className={containerClassName}
+        role='toolbar'
+        aria-label='user settings'
+        ref={ref}>
         <ReactIconNavigate
           icon={IoInformationCircleOutline}
           containerHeight='5.8'

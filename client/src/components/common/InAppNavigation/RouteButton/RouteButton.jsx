@@ -8,7 +8,6 @@ import { setRouteInLocalStorage } from "../../../../utils/localStorageUtils";
 
 // Styles
 import styles from "./RouteButton.module.css";
-import { buttonStyles } from "../../../../constants/stylesConstants";
 
 /**
  * Button for navigating to a specified route with optional setting of previousRoute or nestedPreviousRoute in localStorage (needed for InAppNavgationBar component)
@@ -27,6 +26,20 @@ const RouteButton = ({
 }) => {
   const navigate = useNavigate();
 
+  /**
+   * styles for Material-UI button.
+   */
+  const routeButtonStyles = {
+    padding: "0.1rem 0.5rem",
+    fontSize: "1.5rem",
+    margin: "0 auto",
+    marginTop: "0.5rem",
+    marginBottom: "0.5rem",
+    fontFamily: "inherit",
+    minWidth: "20rem",
+    width: "fit-content",
+  };
+
   const handleClick = () => {
     if (setPreviousRoute) {
       setRouteInLocalStorage(window.location.pathname, "previousRoute");
@@ -40,7 +53,7 @@ const RouteButton = ({
     <div className={styles.container}>
       <Button
         onClick={handleClick}
-        style={buttonStyles}
+        style={routeButtonStyles}
         color='primary'
         variant='outlined'
         type='submit'>

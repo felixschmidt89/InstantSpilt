@@ -9,20 +9,6 @@
   white-space: nowrap;
 }
 
-.instantSplit {
-  pointer-events: none;
-}
-
-.instantSplit p {
-  margin-top: 0rem;
-  margin-bottom: 0.5rem;
-}
-
-.icons,
-.emojiParenthesis {
-  white-space: nowrap;
-}
-
 .section {
   border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
   width: 99%;

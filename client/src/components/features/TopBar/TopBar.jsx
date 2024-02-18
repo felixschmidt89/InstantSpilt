@@ -32,7 +32,7 @@ const TopBar = ({
   }`;
 
   return (
-    <div className={containerClassName}>
+    <div className={containerClassName} role='toolbar' aria-label='top bar'>
       <ReactIconNavigate
         icon={IoPersonAddOutline}
         containerHeight='5.8'

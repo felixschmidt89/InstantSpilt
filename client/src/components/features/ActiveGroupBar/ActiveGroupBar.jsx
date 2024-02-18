@@ -8,18 +8,21 @@ import emojiConstants from "../../../constants/emojiConstants";
 import GroupActionsEmojiButton from "../../common/GroupActionsEmojiButton/GroupActionsEmojiButton";
 
 // Styles
-import styles from "./GroupActionsBar.module.css";
+import styles from "./ActiveGroupBar.module.css";
 
 /**
  * Toolbar displaying a set of navigation icons for creating expenses, payments, and users, and for settling expenses within a group.
+ * @param {boolean} [props.applyMargin=true] - Whether to apply margin for the element. Defaults to true.
+
  *
  * @returns {JSX.Element} React component. */
-const GroupActionsBar = () => {
+const ActiveGroupBar = ({ applyMargin = true }) => {
+  const containerClassName = `${styles.groupActionsBar} ${applyMargin ? styles.withMargin : ""}`;
   return (
     <div
-      className={styles.groupActionsBar}
+      className={containerClassName}
       role='toolbar'
-      aria-label='Group Actions'>
+      aria-label='active group bar'>
       {/* Button for navigating to group settings */}
       <GroupActionsEmojiButton
         route={"group-settings"}
@@ -63,4 +66,4 @@ const GroupActionsBar = () => {
   );
 };
 
-export default GroupActionsBar;
+export default ActiveGroupBar;

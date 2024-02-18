@@ -1,9 +1,8 @@
 .container {
   padding: 0.5rem 1rem;
   line-height: 1.5;
-  text-align: center;
-  width: 90%;
-  margin: 0 auto;
+  width: 80%;
+  margin-left: 5rem;
 }
 
 .container h2 {
@@ -18,9 +17,20 @@
   white-space: nowrap;
 }
 
+.container h2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  transform: translateY(0.1rem) scale(1.5);
+  margin-right: 0.6rem;
+}
+
 /* Mobile*/
 @media only screen and (max-width: 767px) {
   .container {
     width: 100%;
+    margin-left: 0.5rem;
   }
 }

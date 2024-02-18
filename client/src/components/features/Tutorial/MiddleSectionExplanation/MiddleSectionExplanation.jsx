@@ -12,10 +12,6 @@ import SwitchViewButtonsBar from "../../GroupBalancesAndHistory/SwitchViewButton
 const MiddleSectionExplanation = () => {
   return (
     <div className={styles.container}>
-      <h2>group views</h2>
-      <p className={styles.explanation}>
-        Main application screen, divided into two parts:
-      </p>
       <div className={styles.noLink}>
         <SwitchViewButtonsBar view={"view2"} />
       </div>

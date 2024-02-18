@@ -27,7 +27,7 @@ const ContactForm = ({
 }) => {
   return (
     <div className={styles.container}>
-      <h1>drop the team a line</h1>
+      <h1>contact</h1>
       <form
         className={styles.formContainer}
         onSubmit={handleFormSubmission}
@@ -88,7 +88,6 @@ const ContactForm = ({
           </label>
           <div>
             <textarea
-              className={`${styles.inputField} ${styles.textArea}`}
               id='feedback'
               name='feedback'
               value={formData.feedback}

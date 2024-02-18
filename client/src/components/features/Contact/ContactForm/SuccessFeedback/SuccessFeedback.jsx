@@ -11,7 +11,7 @@ const SuccessFeedback = () => {
       <div className={styles.icon}>
         <IoMdCheckmarkCircleOutline />
       </div>
-      <p>
+      <p className={styles.text}>
         Feedback received successfully - thanks! <br />
         Redirecting back to the main application now.
       </p>

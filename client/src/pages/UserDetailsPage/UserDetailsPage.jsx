@@ -15,12 +15,11 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
 import RouteButton from "../../components/common/InAppNavigation/RouteButton/RouteButton";
-import UserExpenseTotals from "../../components/features/UserDetails/UserExpensesTotals/UserExpensesTotals";
-import UserPaymentTotals from "../../components/features/UserDetails/UserPaymentsTotals/UserPaymentsTotals";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import ChangeResourceName from "../../components/common/ChangeResourceName/ChangeResourceName";
 import Emoji from "../../components/common/Emoji/Emoji";
+import UserTotals from "../../components/features/UserDetails/UserTotals/UserTotals";
 
 // Styles
 import styles from "./UserDetailsPage.module.css";
@@ -57,26 +56,22 @@ const UserDetailsPage = () => {
             </span>
           </h2>
           <div className={styles.userBalances}>
-            <UserExpenseTotals
-              userData={userData}
-              groupCurrency={groupCurrency}
-            />
-            <UserPaymentTotals
-              userData={userData}
-              groupCurrency={groupCurrency}
-            />
-            <RouteButton
-              route={`user-transaction-history/${groupCode}/${userId}`}
-              buttonText='view transaction history'
-              setPreviousRoute={true}
-              margin='0px'
-            />
+            <UserTotals userData={userData} groupCurrency={groupCurrency} />
+            <div className={styles.button}>
+              <RouteButton
+                route={`user-transaction-history/${groupCode}/${userId}`}
+                buttonText='transaction history'
+                setPreviousRoute={true}
+                margin='0px'
+              />
+            </div>
           </div>
           <div className={styles.userSettings}>
             <h3>
               user settings{" "}
               <Emoji label='settings emoji' emoji={emojiConstants.settings} />
             </h3>{" "}
+            <h3>change name</h3>
             <ChangeResourceName
               resourceId={userId}
               resourceType='user'
@@ -85,6 +80,8 @@ const UserDetailsPage = () => {
               inputWidth={20}
               navigateToMain={false}
             />
+          </div>
+          <div className={styles.button}>
             <DeleteResource resourceId={userId} resourceType='users' />
           </div>
         </div>

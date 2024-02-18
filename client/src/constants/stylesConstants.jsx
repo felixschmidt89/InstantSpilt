@@ -17,10 +17,10 @@ export const buttonStyles = {
  */
 export const smallButtonStyles = {
   padding: "0rem 0rem",
-  fontSize: "1.2rem",
+  fontSize: "1.4rem",
   margin: "0 auto",
-  marginTop: "0.2rem",
+  marginTop: "0.4rem",
   marginBottom: "0.4rem",
   fontFamily: "inherit",
-  width: "fit-content",
+  width: "2rem",
 };

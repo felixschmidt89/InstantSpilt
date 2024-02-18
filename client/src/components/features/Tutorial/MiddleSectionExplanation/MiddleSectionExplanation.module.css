@@ -1,13 +1,8 @@
-.container h2 {
-  line-height: 1;
-}
-
 .container {
   padding: 0.5rem 1rem;
   line-height: 1.5;
-  text-align: center;
-  width: 90%;
-  margin: 0 auto;
+  width: 80%;
+  margin-left: 5rem;
 }
 
 .noLink {
@@ -15,13 +10,19 @@
 }
 
 .elaboration h3 {
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   line-height: 1;
+}
+
+.list li {
+  list-style-type: disc;
+  margin-left: 2rem;
 }
 
 /* Mobile*/
 @media only screen and (max-width: 767px) {
   .container {
     width: 100%;
+    margin-left: 0.5rem;
   }
 }

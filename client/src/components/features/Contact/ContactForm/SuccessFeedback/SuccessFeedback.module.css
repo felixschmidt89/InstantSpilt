@@ -3,6 +3,13 @@
 }
 
 .icon {
+  margin-top: 1rem;
   font-size: 2.5rem;
   line-height: 1;
+  text-align: center;
+}
+
+.text {
+  width: 60%;
+  margin: 0 auto;
 }

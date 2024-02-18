@@ -54,8 +54,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  font-size: 1.6rem;
-  line-height: 1.5;
+  font-size: 1.5rem;
+  line-height: 1.4;
 }
 
 main {
@@ -113,6 +113,11 @@ ul {
   list-style: none;
 }
 
+li {
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
 button,
 select,
 input,
@@ -122,7 +127,8 @@ textarea {
 
 textarea,
 select,
-input {
+input,
+textarea {
   color: var(--color-dark);
   background-color: var(--color-main);
   font-family: "Ubuntu", sans-serif;

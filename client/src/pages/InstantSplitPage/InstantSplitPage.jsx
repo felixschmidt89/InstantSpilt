@@ -15,7 +15,7 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
 import UserSettingsBar from "../../components/features/UserSettingsBar/UserSettingsBar";
-import GroupActionsBar from "../../components/features/GroupActionsBar/GroupActionsBar";
+import GroupActionsBar from "../../components/features/ActiveGroupBar/ActiveGroupBar";
 import SwitchViewButtonsBar from "../../components/features/GroupBalancesAndHistory/SwitchViewButtonsBar/SwitchViewButtonsBar";
 import RenderGroupHistory from "../../components/features/GroupBalancesAndHistory/GroupHistory/RenderGroupHistory/RenderGroupHistory";
 import RenderGroupBalances from "../../components/features/GroupBalancesAndHistory/GroupBalances/RenderGroupBalances/RenderGroupBalances";

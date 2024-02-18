@@ -17,8 +17,8 @@ const ShareGroupInvitation = ({ groupName, infoToCopy }) => {
   return (
     <div className={styles.container}>
       <p>
-        Invite others to join or access {groupName} on your other devices via
-        the invitation link:
+        Invite peers to join or access {groupName} on your other devices via the
+        invitation link:
       </p>
       <CopyToClipboard inputFieldWidth={200} infoToCopy={infoToCopy} />
     </div>

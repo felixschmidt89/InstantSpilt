@@ -7,6 +7,7 @@
 
 .container h2 {
   margin-bottom: 0rem;
+  text-align: center;
 }
 
 .negativeBalance {
@@ -15,14 +16,26 @@
 }
 
 .userSettings {
-  margin-top: 1rem;
-}
-
-.userSettings h3 {
-  margin-top: 2rem;
-  margin-bottom: 0.4rem;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+  padding-left: 4.5rem;
 }
 
 .userBalances {
   margin-top: 2rem;
+}
+
+.button {
+  width: fit-content;
+  min-width: 20rem;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 500px) {
+  .userSettings {
+    width: 100%;
+  }
 }

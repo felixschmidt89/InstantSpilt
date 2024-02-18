@@ -1,14 +1,17 @@
 .container {
   margin: 0 auto;
-  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 0.8rem;
 }
 
 .slideInRight {
   animation: slideInRight 0.3s forwards;
+}
+
+.withMargin {
+  margin-bottom: 0.8rem;
+  margin-top: 1rem;
 }
 
 @keyframes slideInRight {

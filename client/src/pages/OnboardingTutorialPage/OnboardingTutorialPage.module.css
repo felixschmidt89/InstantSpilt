@@ -4,17 +4,17 @@
   overflow-x: hidden;
 }
 
-.intro {
-  border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
-  width: 99%;
-
-  margin: 0 auto;
-}
-
 .section {
   border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
   width: 99%;
   margin: 0 auto;
+}
+
+.introText {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* Ensure that in app navigation next button is rendered on the right */
@@ -26,4 +26,8 @@
 .rightAligned:hover {
   color: var(--color-success);
   cursor: pointer;
+}
+
+.skipToApp {
+  text-align: center;
 }

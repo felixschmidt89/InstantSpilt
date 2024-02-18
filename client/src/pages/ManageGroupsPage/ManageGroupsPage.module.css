@@ -1,3 +1,14 @@
 .container h2 {
   margin-top: 1rem;
 }
+
+.container {
+  width: 41%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 60%;
+  }
+}

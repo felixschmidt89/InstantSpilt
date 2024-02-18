@@ -58,7 +58,7 @@ const ForgetGroupOnDevicePage = () => {
         <div className={styles.groupCode}>
           <span className={styles.explainGroupCode}>
             If you ever wish to rejoin {groupName} later, remember its{" "}
-            <strong>groupCode:</strong>{" "}
+            groupCode:
           </span>
         </div>
         <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"8.5rem"} />

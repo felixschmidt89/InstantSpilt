@@ -1,0 +1,27 @@
+.totalsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+  padding-left: 4.5rem;
+}
+
+.list {
+  width: 85%;
+  max-width: 33rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.value {
+  text-align: right;
+}
+
+@media screen and (max-width: 500px) {
+  .totalsContainer {
+    width: 100%;
+  }
+}

@@ -5,7 +5,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { Button } from "@mui/material";
 
 // Constants and Utils
-import { buttonStyles } from "../../../constants/stylesConstants";
+import { smallButtonStyles } from "../../../constants/stylesConstants";
 
 // Components
 import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
@@ -51,9 +51,10 @@ const ConfirmationModal = ({
             <>
               <ErrorDisplay error={error} remWidth={30} />
               <Button
-                style={buttonStyles}
+                style={smallButtonStyles}
                 variant='outlined'
-                onClick={onCancel}>
+                onClick={onCancel}
+                color='grey'>
                 ok
               </Button>
             </>

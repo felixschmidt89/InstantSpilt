@@ -12,9 +12,9 @@ import { genericErrorMessage } from "../../../../constants/errorConstants";
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
-import SuccessFeedback from "../SuccessFeedback/SuccessFeedback";
 import ContactForm from "../ContactForm/ContactForm";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import SuccessFeedback from "../ContactForm/SuccessFeedback/SuccessFeedback";
 
 // Styles
 import styles from "./Contact.module.css";
@@ -112,13 +112,13 @@ const Contact = () => {
           const responseFile = await axios.post(`${apiUrl}/files`, fileData);
           devLog("File sent:", responseFile);
 
-          // Add file's ObjectId to the requestData for referencing
+          // Add file's ObjectId to requestData for referencing
           contactData.fileId = responseFile.data.savedFile._id;
         } catch (error) {
           devLog("Error uploading file:", error);
           setError("Error uploading file. Please try again.");
           displayErrorModal();
-          return; // Exit early if file upload fails
+          return;
         }
       }
 
