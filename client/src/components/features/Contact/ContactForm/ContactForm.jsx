@@ -1,7 +1,8 @@
 // React and Third-Party Libraries
-import React from "react";
+import React, { useRef } from "react";
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 // Constants and Utils
 import { buttonStyles } from "../../../../constants/stylesConstants";
@@ -25,6 +26,21 @@ const ContactForm = ({
   handleInputChange,
   handleFormSubmission,
 }) => {
+  const fileInputRef = useRef(null);
+
+  const handleFileUploadClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const attachScreenshotButtonStyles = {
+    padding: "0.2rem 0.5rem",
+    marginTop: "0rem",
+    marginBottom: "0.5rem",
+    fontFamily: "inherit",
+    minWidth: "20rem",
+    width: "fit-content",
+  };
+
   return (
     <div className={styles.container}>
       <h1>contact</h1>
@@ -99,15 +115,23 @@ const ContactForm = ({
         </div>
         {formData.messageType === "issue/bug" && (
           <div>
-            <label htmlFor='file'>add a screenshot</label>
             <div>
               <input
                 className={styles.fileInputField}
+                ref={fileInputRef}
                 type='file'
                 name='file'
+                style={{ display: "none" }}
                 accept='image/*' // Accepts all image types
                 onChange={handleFileChange}
               />
+              <Button
+                variant='outlined'
+                style={attachScreenshotButtonStyles}
+                startIcon={<CloudUploadIcon />}
+                onClick={handleFileUploadClick}>
+                add screenshot
+              </Button>
             </div>
           </div>
         )}

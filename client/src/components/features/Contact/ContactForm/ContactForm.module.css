@@ -12,3 +12,9 @@
 .formContainer {
   margin-bottom: 1rem;
 }
+
+.fileUpload {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
