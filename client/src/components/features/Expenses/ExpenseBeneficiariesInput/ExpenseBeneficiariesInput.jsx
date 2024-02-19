@@ -89,24 +89,26 @@ const ExpenseBeneficiariesInput = ({
             </span>
           ))}
         </div>
-        <Button
-          onClick={toggleBeneficiaries}
-          style={{
-            padding: "0rem 0rem",
-            fontSize: "1.2rem",
-            margin: "0 auto",
-            marginTop: "0rem",
-            marginBottom: "0.4rem",
-            fontFamily: "inherit",
-            width: "fit-content",
-          }}
-          color='primary'
-          variant='outlined'
-          ref={buttonRef}>
-          {selectedBeneficiaries.length === groupMembers.length
-            ? "none"
-            : "all"}
-        </Button>
+        <div className={styles.button}>
+          <Button
+            onClick={toggleBeneficiaries}
+            style={{
+              padding: "0rem 0rem",
+              fontSize: "1.2rem",
+              margin: "0 auto",
+              marginTop: "0rem",
+              marginBottom: "0.4rem",
+              fontFamily: "inherit",
+              width: "fit-content",
+            }}
+            color='primary'
+            variant='outlined'
+            ref={buttonRef}>
+            {selectedBeneficiaries.length === groupMembers.length
+              ? "none"
+              : "all"}
+          </Button>
+        </div>
       </div>
     </>
   );

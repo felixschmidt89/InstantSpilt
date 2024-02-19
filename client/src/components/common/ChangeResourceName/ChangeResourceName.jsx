@@ -9,6 +9,7 @@ import {
   handleApiErrorsAndTriggerErrorModal,
 } from "../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../constants/errorConstants";
+import { submitOnEnterClick } from "../../../utils/formUtils";
 
 // Hooks
 import useErrorModalVisibility from "../../../hooks/useErrorModalVisibility";
@@ -74,7 +75,9 @@ const ChangeResourceName = ({
       if (navigateToMain) {
         navigate("/instant-split");
       }
+      // Remove active class and blur input after successful update
       inputRef.current.classList.remove(styles.active);
+      inputRef.current.blur();
     } catch (error) {
       if (error.response) {
         handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
@@ -86,9 +89,14 @@ const ChangeResourceName = ({
     }
   };
 
-  // Add active class on click, so that input does not fall back to appearing inactive
+  // Add active class on any click, so that input does not fall back to appearing inactive
   const handleInputClick = () => {
     inputRef.current.classList.add(styles.active);
+  };
+
+  // Submit on enter button click
+  const handleKeyDown = (e) => {
+    submitOnEnterClick(e, handleFormSubmit);
   };
 
   return (
@@ -104,6 +112,7 @@ const ChangeResourceName = ({
           placeholder={storedResourceName}
           style={{ width: `${inputWidth}rem` }}
           ref={inputRef}
+          onKeyDown={handleKeyDown}
         />
         <FormSubmitButton
           fontSize={1.6}

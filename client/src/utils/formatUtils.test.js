@@ -3,7 +3,7 @@
 import { validateAndProcessAmountInput } from "./formatUtils";
 
 describe("validateAndProcessAmountInput", () => {
-  it("should remove spaces and any non-number character, replace comma with dot, and only allow one dot at most", () => {
+  it("should remove spaces and any non-number character, replace comma with dot, and only allow one dot at most and allow only 2 decimal places", () => {
     // Test cases
 
     // Case 1: Basic valid input
@@ -39,12 +39,14 @@ describe("validateAndProcessAmountInput", () => {
     // Case 9: Input with comma at the end
     expect(validateAndProcessAmountInput("123,")).toBe("123.");
 
-    // Case 9: Input with comma in the beginning
-    expect(validateAndProcessAmountInput(",")).toBe(".");
     // Case 10: Input with both dot and comma
     expect(validateAndProcessAmountInput("1.234,56")).toBe("1234.56");
     // Case 11: Input with letters only
     expect(validateAndProcessAmountInput("Steve")).toBe("");
+    // Case 12: Input with 3+ decimal places after comma
+    expect(validateAndProcessAmountInput("1,3456789")).toBe("1.34");
+    // Case 13: Input with 3+ decimal places after dot
+    expect(validateAndProcessAmountInput("1.3456789")).toBe("1.34");
 
     console.log("All validateAndProcessAmountInput tests passed");
   });

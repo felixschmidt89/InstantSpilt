@@ -20,14 +20,15 @@ const CreateUserCTA = ({ isPayment = true }) => {
       <p className={styles.callToAction}>
         To add {isPayment ? "a payment" : "an expense"}, ensure you have at
         least 2 group members:
-        <br />
-        <GroupActionsEmojiButton
-          route={"create-users"}
-          emoji={emojiConstants.user}
-          explanationText={"+member"}
-          tooltipText='add group member'
-          ariaLabel='add group member emoji'
-        />
+        <div className={styles.icon}>
+          <GroupActionsEmojiButton
+            route={"create-users"}
+            emoji={emojiConstants.user}
+            explanationText={"+member"}
+            tooltipText='add group member'
+            ariaLabel='add group member emoji'
+          />
+        </div>
       </p>
     </div>
   );

@@ -18,6 +18,7 @@ import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./ChangeGroupCurrency.module.css";
+import { submitOnEnterClick } from "../../../../utils/formUtils";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -77,6 +78,11 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
     selectRef.current.classList.add(styles.idleOnMount);
   };
 
+  // Submit on enter button click
+  const handleKeyDown = (e) => {
+    submitOnEnterClick(e, handleFormSubmit);
+  };
+
   // Find the label for labelCurrency
   const storedCurrencyLabel = currenciesContent.find(
     (currency) => currency.value === labelCurrency
@@ -91,7 +97,8 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
           value={newGroupCurrency}
           ref={selectRef}
           onFocus={handleSelectFocus}
-          onChange={handleSelectChange}>
+          onChange={handleSelectChange}
+          onKeyDown={handleKeyDown}>
           {/* Default option */}
           <option className={styles.storedCurrency}>
             {storedCurrencyLabel}

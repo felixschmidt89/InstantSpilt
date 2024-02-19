@@ -3,20 +3,40 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
+import { submitOnEnterClick } from "../../../../utils/formUtils";
+
+// Hooks
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // Styles
 import styles from "./ValidateGroupCode.module.css";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 const ValidateGroupCode = () => {
   const [toBeValidatedGroupCode, setToBeValidatedGroupCode] = useState("");
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
+
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    navigate(`/groupCode-validator/${toBeValidatedGroupCode}`);
+    if (!toBeValidatedGroupCode.trim()) {
+      setError("missing groupcode");
+      displayErrorModal();
+    } else {
+      navigate(`/groupCode-validator/${toBeValidatedGroupCode}`);
+    }
+  };
+
+  // Submit on enter button click
+  const handleKeyDown = (e) => {
+    submitOnEnterClick(e, handleFormSubmit);
   };
 
   return (
@@ -25,9 +45,10 @@ const ValidateGroupCode = () => {
         <input
           className={styles.inputField}
           type='text'
-          placeholder='groupCode'
+          placeholder='enter groupCode'
           value={toBeValidatedGroupCode}
           onChange={(e) => setToBeValidatedGroupCode(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <FormSubmitButton
           fontSize={1.6}
@@ -38,6 +59,11 @@ const ValidateGroupCode = () => {
           translateY={0.1}
         />
       </form>
+      <ErrorModal
+        error={error}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };

@@ -10,8 +10,9 @@
 export const validateAndProcessAmountInput = (inputValue) => {
   const trimmedAndValidatedInput = inputValue
     .trim()
-    .replace(/,/g, ".") // Replace commas with dots
-    .replace(/[^0-9.]|[.](?=.*[.])|[,](?=$)|[,](?=.*[,])/g, ""); // Ensure at most one dot
+    .replace(/,/g, ".") // Replace comma separator with dot
+    .replace(/[^0-9.]|[.](?=.*[.])|[,](?=$)|[,](?=.*[,])/g, "") // Ensure at most one dot
+    .replace(/^(\d+(?:\.\d{0,2})?)?.*/g, "$1"); // Ensure not more than 2 decimal places after dot
 
   return trimmedAndValidatedInput;
 };

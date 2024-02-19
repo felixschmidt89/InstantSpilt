@@ -28,11 +28,16 @@ mongoose
   });
 
 // Active scripts
-// Schedule the inactive group data purge to run at 3 am CET daily
+// Schedule the inactive group data purge based on the environment
+const cronSchedule = NODE_ENV === 'development' ? '0 10 * * *' : '0 3 * * *';
 cron.schedule(
-  '0 3 * * *',
+  cronSchedule,
   () => {
-    console.log('Running purgeInactiveGroups at 3 am CET...');
+    console.log(
+      `Running purgeInactiveGroups at ${
+        NODE_ENV === 'development' ? '10 am' : '3 am'
+      }...`,
+    );
     purgeInactiveGroups();
   },
   {

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
 import { setGroupCodeToCurrentlyActive } from "../../../../../utils/localStorageUtils";
+import { submitOnEnterClick } from "../../../../../utils/formUtils";
 
 // Components
 import FormSubmitButton from "../../../../common/FormSubmitButton/FormSubmitButton";
@@ -35,13 +36,19 @@ const RenderGroupSelection = ({ groupCode, groupNamesAndGroupCodes }) => {
     }
   };
 
+  // Submit on enter button click
+  const handleKeyDown = (e) => {
+    submitOnEnterClick(e, handleFormSubmit);
+  };
+
   return (
     <div className={styles.container}>
       <form onSubmit={handleFormSubmit}>
         <select
           className={styles.groupSelection}
           value={selectedGroupCode}
-          onChange={handleSelectChange}>
+          onChange={handleSelectChange}
+          onKeyDown={handleKeyDown}>
           <option value='' disabled>
             choose group
           </option>

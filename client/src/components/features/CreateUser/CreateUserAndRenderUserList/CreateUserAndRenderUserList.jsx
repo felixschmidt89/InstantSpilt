@@ -8,6 +8,9 @@ import useTriggerRerender from "../../../../hooks/useTriggerRerender";
 import RenderUserNames from "../RenderUserNames/RenderUserNames";
 import CreateUserForm from "../CreateUserForm/CreateUserForm";
 
+// Styles
+import style from "./CreateUserAndRenderUserList.module.css";
+
 /**
  * Component for creating a user within a group and rendering the groups user list.
  * Has nested components and uses a custom hook to get groupCode and trigger rerender logic.
@@ -18,7 +21,7 @@ const CreateUserAndRenderUserList = () => {
     useTriggerRerender();
 
   return (
-    <div>
+    <div className={style.container}>
       <CreateUserForm
         incrementRerenderTrigger={incrementRerenderTrigger}
         groupCode={groupCode}

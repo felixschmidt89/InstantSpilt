@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React, { useState } from "react";
 import axios from "axios";
+import { FormControlLabel, Switch } from "@mui/material";
 
 // Constants and Utils
 import {
@@ -15,7 +16,6 @@ import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
-import ToggleButton from "../../../common/ToggleButton/ToggleButton";
 
 // Styles
 import styles from "./ChangeDataPurgeSetting.module.css";
@@ -68,13 +68,24 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
       {" "}
       <div className={styles.container}>
         <h2 className={styles.header}>data purge</h2>
-        <p className={styles.explanation}>
-          Delete group and its associated data (including group members,
-          expenses & payments) after {INACTIVE_DAYS} days of group inactivity.
-        </p>
-        <form onSubmit={handleToggleClick} className={styles.toggle}>
-          <ToggleButton isActive={isActive} onChange={handleToggleClick} />
-        </form>
+        <div className={styles.box}>
+          <p className={styles.explanation}>
+            Delete group and its associated data (including group members,
+            expenses & payments) after {INACTIVE_DAYS} days of group inactivity.
+          </p>
+          <form onSubmit={handleToggleClick} className={styles.toggle}>
+            <FormControlLabel
+              value='bottom'
+              control={
+                <Switch
+                  checked={isActive}
+                  onChange={handleToggleClick}
+                  size='small'
+                />
+              }
+            />{" "}
+          </form>
+        </div>
 
         <ErrorModal
           error={error}

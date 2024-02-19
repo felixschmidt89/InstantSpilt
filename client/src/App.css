@@ -35,6 +35,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -103,12 +104,6 @@ a:hover {
   color: var(--color-dark);
 }
 
-a:focus {
-  outline: 0.2rem solid var(--color-signal);
-  outline-offset: 0.2rem;
-  border-radius: 0.5rem;
-}
-
 ul {
   list-style: none;
 }
@@ -123,6 +118,25 @@ select,
 input,
 textarea {
   font-family: "Ubuntu", sans-serif;
+}
+
+/* Remove default a, input, textarea and select outline style*/
+a:active,
+a:focus,
+a:hover,
+textarea:active,
+textarea:focus,
+textarea:hover,
+select:active,
+select:focus,
+select:hover,
+input:active,
+input:focus,
+input:hover,
+button:hover,
+button:active,
+button:focus {
+  outline: none;
 }
 
 textarea,

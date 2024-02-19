@@ -55,14 +55,14 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
         style={{ width: inputFieldWidth }}
         ref={inputRef}
       />
-      <button
+      <span
         className={`${styles.button} ${
           isCopied ? styles.isCopied : styles.notCopied
         }`}
         onClick={handleCopyClick}
         disabled={isCopied}>
         {isCopied ? <LuCopyCheck /> : <LuCopy />}
-      </button>
+      </span>
       <ErrorModal
         error={error}
         onClose={handleCloseErrorModal}
