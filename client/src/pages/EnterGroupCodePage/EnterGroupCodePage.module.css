@@ -7,12 +7,6 @@
 }
 
 .container {
-  width: 40%;
+  width: fit-content;
   margin: 0 auto;
-}
-
-@media only screen and (max-width: 768px) {
-  .container {
-    width: 60%;
-  }
 }

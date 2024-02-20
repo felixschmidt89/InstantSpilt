@@ -19,6 +19,7 @@
   font-size: 1.4rem;
   text-decoration: none;
   cursor: pointer;
+
   color: var(--color-grey);
 }
 
@@ -27,8 +28,17 @@
   color: var(--color-grey-dark);
 }
 
+@media (max-height: 768px) {
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0rem;
+  }
+}
+
 /* Hide footer on mobile when keyboard is shown */
-@media (max-width: 500px) and (max-height: 400px) {
+@media (max-width: 500px) and (max-height: 500px) {
   .footer {
     display: none;
   }

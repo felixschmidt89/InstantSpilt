@@ -2,4 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 0.2rem 0.5rem;
+  width: 30rem;
+  border: 0.15rem solid var(--color-grey);
+  border-radius: 0.6rem;
+  overflow-y: auto;
+  height: fit-content;
+  outline: none;
+  outline-color: var(--color-grey);
+  margin: 0 auto;
+}
+
+.container:hover,
+.container:focus {
+  border-color: var(--color-signal);
+  background-color: var(--color-body);
 }

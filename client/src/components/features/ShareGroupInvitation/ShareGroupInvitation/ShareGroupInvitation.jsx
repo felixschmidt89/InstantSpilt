@@ -20,7 +20,7 @@ const ShareGroupInvitation = ({ groupName, infoToCopy }) => {
         Copy and share the invitation link below to either invite peers to join{" "}
         <strong>{groupName}</strong> or to gain access on your other devices:
       </p>
-      <CopyToClipboard inputFieldWidth={200} infoToCopy={infoToCopy} />
+      <CopyToClipboard inputFieldWidth={"25rem"} infoToCopy={infoToCopy} />
     </div>
   );
 };

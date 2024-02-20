@@ -18,6 +18,7 @@ import DeleteResource from "../../components/common/DeleteResource/DeleteResourc
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import RenderPaymentDetails from "../../components/features/Payments/RenderPaymentDetails/RenderPaymentDetails";
 import RenderResourceCreated from "../../components/common/RenderResourceCreated/RenderResourceCreated";
+import Emoji from "../../components/common/Emoji/Emoji";
 
 // Styles
 import styles from "./PaymentDetailsPage.module.css";
@@ -36,7 +37,11 @@ const PaymentDetailsPage = () => {
       <InAppNavigationBar back={true} />
       {paymentInfoIsFetched && currencyInfoIsFetched ? (
         <div className={styles.container}>
-          <span className={styles.emoji}> {emojiConstants.payment}</span>
+          <span className={styles.emoji}>
+            <Emoji
+              label={"payment to other user emoji"}
+              emoji={emojiConstants.payment}></Emoji>{" "}
+          </span>
           <h1>
             {paymentInfo.paymentAmount}
             {groupCurrency}

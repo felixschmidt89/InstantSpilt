@@ -2,22 +2,26 @@
   background-color: var(--color-signal);
   color: var(--color-main);
   border: none;
-  padding: 0.2rem;
-  margin: 0.2rem;
   font-size: 2rem;
   cursor: pointer;
-  border-radius: 0.4rem;
-  box-shadow: 0 0 0.5rem var(--color-signal);
-  width: 12.25rem;
+  border-radius: 2rem;
+  width: 10rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  font-weight: 500;
 }
 
 .buttonContainer {
-  width: 26rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: fit-content;
   margin: 0 auto;
+  margin-bottom: 0.5rem;
 }
 
 .inactiveButton {
-  opacity: 0.6;
+  opacity: 0.45;
   filter: grayscale(15%);
 }
 

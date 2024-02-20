@@ -3,14 +3,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
   overflow-y: auto;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   width: 70%;
+  margin: 0 auto;
 }
 
-.container h1 {
-  margin-bottom: 2rem;
+h1 {
+  margin-bottom: 1rem;
 }
 
 .buttonContainer {
@@ -20,5 +20,6 @@
 @media (max-width: 500px) {
   .groupCode {
     margin-bottom: 0.3rem;
+    margin: 0 auto;
   }
 }

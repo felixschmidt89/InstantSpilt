@@ -69,7 +69,6 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
 
   return (
     <>
-      <h1>add group member</h1>
       <div className={styles.container}>
         <form onSubmit={handleFormSubmit}>
           <input

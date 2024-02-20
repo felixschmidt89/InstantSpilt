@@ -22,6 +22,7 @@ import PaymentAmountInput from "../PaymentAmountInput/PaymentAmountInput";
 import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import Emoji from "../../../common/Emoji/Emoji";
 
 // Styles
 import styles from "./UpdatePayment.module.css";
@@ -134,8 +135,10 @@ const UpdatePayment = ({
         isUpdate={true}
       />
       <div className={styles.emojis}>
-        <span>{emojiConstants.paymentsMadePointDown}</span>
-        <span>{emojiConstants.payment}</span>
+        <Emoji
+          label={"payment to other user emoji"}
+          emoji={emojiConstants.paymentsMadePointDown}></Emoji>
+        <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
       </div>
       <PaymentRecipientSelect
         paymentRecipientName={paymentRecipientName}

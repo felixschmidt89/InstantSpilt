@@ -19,6 +19,7 @@ import ConfirmationModal from "../../../common/ConfirmationModal/ConfirmationMod
 // Styles
 import styles from "./ConfirmSettlementPayment.module.css";
 import emojiConstants from "../../../../constants/emojiConstants";
+import Emoji from "../../../common/Emoji/Emoji";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -75,7 +76,12 @@ const ConfirmSettlementPayment = ({
   return (
     <>
       <div className={styles.container} onClick={handleShowConfirmation}>
-        <span className={styles.icon}>{emojiConstants.settle}</span>
+        <span className={styles.icon}>
+          {" "}
+          <Emoji
+            label={"settle payment emoji"}
+            emoji={emojiConstants.settle}></Emoji>{" "}
+        </span>
         <span className={styles.iconExplanation}>confirm</span>
       </div>
       {isConfirmationVisible && (

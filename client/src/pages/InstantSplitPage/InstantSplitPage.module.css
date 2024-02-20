@@ -10,3 +10,8 @@
 main {
   overflow-x: hidden;
 }
+
+.topBar {
+  height: 10vh;
+  min-height: 80px;
+}

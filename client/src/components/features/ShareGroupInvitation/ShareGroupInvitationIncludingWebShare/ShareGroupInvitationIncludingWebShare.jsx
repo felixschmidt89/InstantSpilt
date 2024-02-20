@@ -36,9 +36,9 @@ const ShareGroupInvitationIncludingWebShare = ({
 
       <div className={styles.invitationLink}>
         Alternatively, copy and share the invitation link below to either invite
-        peers to join <strong>{groupName}</strong> or to gain access on your
-        other devices:
-        <CopyToClipBoard infoToCopy={infoToCopy} />
+        peers to join <span className={styles.strong}>{groupName}</span> or to
+        gain access on your other devices:
+        <CopyToClipBoard infoToCopy={infoToCopy} inputFieldWidth={"25rem"} />
       </div>
     </div>
   );

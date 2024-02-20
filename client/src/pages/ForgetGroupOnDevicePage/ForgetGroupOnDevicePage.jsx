@@ -53,8 +53,8 @@ const ForgetGroupOnDevicePage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - forget group on this device' />
       <PiratePx COUNT_IDENTIFIER={"forget-group"} />
       <InAppNavigationBar back={true} />
+      <h1>delete group from device</h1>
       <div className={styles.container}>
-        <h1>delete group from device</h1>
         <div className={styles.groupCode}>
           <span className={styles.explainGroupCode}>
             If you ever wish to rejoin {groupName} later, remember its{" "}

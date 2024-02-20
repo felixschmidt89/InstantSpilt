@@ -18,6 +18,7 @@ import RenderExpenseDetails from "../../components/features/Expenses/RenderExpen
 import RenderResourceCreated from "../../components/common/RenderResourceCreated/RenderResourceCreated";
 import DeleteResource from "../../components/common/DeleteResource/DeleteResource";
 import InAppNavigation from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import Emoji from "../../components/common/Emoji/Emoji";
 
 // Styles
 import styles from "./ExpenseDetailsPage.module.css";
@@ -36,7 +37,12 @@ const ExpenseDetailsPage = () => {
       <InAppNavigation back={true} />
       {expenseInfoIsFetched && currencyInfoIsFetched ? (
         <div className={styles.container}>
-          <div className={styles.emoji}>{emojiConstants.expense}</div>
+          <div className={styles.emoji}>
+            {" "}
+            <Emoji
+              label={"expense emoji"}
+              emoji={emojiConstants.expense}></Emoji>{" "}
+          </div>
           <h1>{expenseInfo.expenseDescription}</h1>
           <div className={styles.detailsBox}>
             <RenderExpenseDetails

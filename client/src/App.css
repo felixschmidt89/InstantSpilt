@@ -67,7 +67,6 @@ main {
   background-color: var(--color-main);
   border-radius: 1rem;
   border: 0.1rem solid var(--color-signal-reduced-opacity);
-  box-shadow: 0 0 0.4rem var(--color-signal-reduced-opacity);
 }
 
 h1 {
@@ -192,15 +191,15 @@ scrollbar-thumb {
     height: 6svh;
   }
   main {
-    height: 76vh;
-    height: 86svh;
-    width: 95vw;
+    height: 79vh;
+    height: 89svh;
+    width: 98vw;
     font-size: 1.5rem;
     line-height: 1.4;
   }
   footer {
-    height: 8vh;
-    height: 8svh;
+    height: 6vh;
+    height: 6svh;
   }
 }
 

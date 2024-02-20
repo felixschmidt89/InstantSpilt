@@ -34,7 +34,7 @@ const GroupSettingsPage = () => {
           <Emoji label='settings emoji' emoji={emojiConstants.settings} />
         </h1>
         {isFetched && groupData ? (
-          <>
+          <div className={styles.settingsContainer}>
             {/*Change group name */}
             <ChangeResourceName
               resourceId={groupData.group._id}
@@ -52,7 +52,7 @@ const GroupSettingsPage = () => {
               groupCode={groupCode}
               inactiveDataPurge={groupData.group.inactiveDataPurge}
             />
-          </>
+          </div>
         ) : (
           <div className={styles.spinner}>
             <Spinner />
