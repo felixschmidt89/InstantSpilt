@@ -27,7 +27,7 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
       <GroupActionsEmojiButton
         route={"group-settings"}
         emoji={emojiConstants.settings}
-        translateX={-0.2}
+        translateX={0}
         explanationText={"settings"}
         ariaLabel='group settings emoji'
       />
@@ -37,6 +37,8 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
         emoji={emojiConstants.settle}
         explanationText={"settle"}
         ariaLabel='settle expenses emoji'
+        translateY={-0.1}
+        scale={1.1}
       />
       {/* Button for navigating to adding users */}
       <GroupActionsEmojiButton
@@ -44,6 +46,8 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
         emoji={emojiConstants.user}
         explanationText={"+member"}
         ariaLabel='add group member emoji'
+        scale={0.97}
+        translateY={-0.05}
       />
 
       {/* Button for navigating to adding payments */}
@@ -58,7 +62,7 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
       <GroupActionsEmojiButton
         route={"create-expense"}
         emoji={emojiConstants.expense}
-        translateX={0.2}
+        translateX={0.8}
         explanationText={"+expense"}
         ariaLabel='add expense emoji'
       />

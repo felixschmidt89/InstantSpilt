@@ -19,6 +19,10 @@ import styles from "./ReactIconNavigate.module.css";
  * @param {number} props.translateY - The vertical translation of the icon in rem unit. Defaults to 0.
  * @param {number} props.translateX - The horizontal translation of the icon in rem unit. Defaults to 0.
  * @param {string} props.explanationText - The icon description text rendered below the component.
+ * @param {string} props.iconExplanationWidth - The width of the icon explanation in rem unit. Defaults to 7.
+ * @param {boolean} props.iconExplanationIsIdle - Whether the icon explanation is in idle state. Defaults to false.
+
+
  *
  * @returns {React.Component} React component.
  */
@@ -28,16 +32,18 @@ const ReactIconNavigate = ({
   onClick,
   icon: IconComponent,
   explanationText,
-  iconSize = "2.5",
+  iconSize = 2.5,
   iconScale = 1,
-  containerHeight = "5",
-  containerWidth = "5",
-  marginRight = "0",
+  containerHeight = 5,
+  containerWidth = 5,
+  marginRight = 0,
   email,
   url,
   translateY = 0,
   translateX = 0,
   fontWeight = 400,
+  iconExplanationWidth = 7,
+  iconExplanationIsIdle = false,
 }) => {
   const navigate = useNavigate();
 
@@ -72,7 +78,13 @@ const ReactIconNavigate = ({
           transform: `translate(${translateX}rem, ${translateY}rem) scale(${iconScale})`,
         }}
       />
-      <span className={styles.iconExplanation}>{explanationText}</span>
+      <span
+        className={`${styles.iconExplanation} ${
+          iconExplanationIsIdle ? styles.iconExplanationIsIdle : ""
+        }`}
+        style={{ width: `${iconExplanationWidth}rem` }}>
+        {explanationText}
+      </span>
     </div>
   );
 };

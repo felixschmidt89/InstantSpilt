@@ -18,3 +18,7 @@
 .hover:hover {
   color: var(--color-dark-dark);
 }
+
+.iconExplanationIsIdle {
+  color: var(--color-grey);
+}

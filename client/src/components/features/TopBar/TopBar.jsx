@@ -33,17 +33,19 @@ const TopBar = ({
 
   return (
     <div className={containerClassName} role='toolbar' aria-label='top bar'>
-      <ReactIconNavigate
-        icon={IoPersonAddOutline}
-        containerHeight='5.8'
-        containerWidth='7.2'
-        explanationText='invite to group'
-        route={`/share-group/${initialGroupName}/${groupCode}`}
-        iconSize={3.5}
-        translateY={0.1}
-        translateX={-0.2}
-        iconScale={0.8}
-      />
+      <span className={styles.inviteToGroupIcon}>
+        <ReactIconNavigate
+          icon={IoPersonAddOutline}
+          containerHeight='5.8'
+          containerWidth='7.2'
+          iconExplanationIsIdle={true}
+          route={`/share-group/${initialGroupName}/${groupCode}`}
+          iconSize={3.5}
+          translateY={0.1}
+          translateX={-0.2}
+          iconScale={0.8}
+        />
+      </span>
       <h1>{groupName}</h1>
       <span className={styles.icon}>
         {" "}
@@ -52,8 +54,9 @@ const TopBar = ({
           containerHeight='5.8'
           containerWidth='7.2'
           iconSize={3.5}
-          iconScale={1.2}
-          translateY={1}
+          iconScale={1.3}
+          translateY={0.05}
+          translateX={-0.1}
           onClick={handleIconClick}
         />
       </span>

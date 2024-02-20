@@ -4,6 +4,7 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
 import { IoChatboxOutline } from "react-icons/io5";
+import { IoPersonAddOutline } from "react-icons/io5";
 
 // Components
 import ReactIconNavigate from "../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
@@ -47,7 +48,7 @@ const UserSettingsBar = forwardRef(
         <ReactIconNavigate
           icon={IoInformationCircleOutline}
           containerHeight='5.8'
-          containerWidth='14'
+          containerWidth='8'
           explanationText='tutorial'
           route={`/tutorial/${initialGroupName}/${groupCode}`}
           iconSize={3.5}
@@ -56,30 +57,46 @@ const UserSettingsBar = forwardRef(
         <ReactIconNavigate
           icon={IoChatboxOutline}
           containerHeight='5.8'
-          containerWidth='14'
+          containerWidth='8'
           explanationText='feedback'
           route={`/contact/${groupCode}`}
           iconSize={3.5}
           iconScale={0.95}
         />
+        <span className={styles.inviteToGroupIcon}>
+          <ReactIconNavigate
+            icon={IoPersonAddOutline}
+            containerHeight='5.8'
+            containerWidth='7.2'
+            explanationText='invite to group'
+            route={`/share-group/${initialGroupName}/${groupCode}`}
+            iconSize={3.5}
+            translateY={0}
+            translateX={-0.2}
+            iconScale={0.9}
+          />
+        </span>
         <ReactIconNavigate
           icon={PiUserSwitchLight}
           containerHeight='5.8'
-          containerWidth='14'
+          containerWidth='8'
           explanationText='switch/create group'
+          iconExplanationWidth='9'
           route={`/manage-groups`}
           iconSize={3.5}
-          iconScale={1.05}
+          iconScale={0.95}
         />
         <ReactIconNavigate
           icon={IoEnterOutline}
           containerHeight='5.8'
-          containerWidth='14'
+          containerWidth='8'
+          iconExplanationWidth='6'
           explanationText='leave group'
           route={`/leave-group/${groupName}/${groupCode}`}
           iconSize={3.5}
-          iconScale={0.95}
+          iconScale={1}
           translateX={-0.3}
+          translateY={-0.1}
         />
       </div>
     );
