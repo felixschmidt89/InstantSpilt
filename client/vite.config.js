@@ -1,5 +1,3 @@
-// vite.config.js
-
 import react from "@vitejs/plugin-react";
 
 export default {
@@ -7,5 +5,9 @@ export default {
   build: {
     outDir: "dist",
     minify: "esbuild",
+  },
+  optimizeDeps: {
+    // Disabled for now as otherwise emoji-mart is not working
+    enabled: false,
   },
 };

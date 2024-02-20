@@ -21,6 +21,7 @@ import PaymentAmountInput from "../PaymentAmountInput/PaymentAmountInput";
 import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import Emoji from "../../../common/Emoji/Emoji";
 
 // Styles
 import styles from "./CreatePayment.module.css";
@@ -84,8 +85,11 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       />
 
       <div className={styles.emojis}>
-        <span>{emojiConstants.paymentsMadePointDown}</span>
-        <span>{emojiConstants.payment}</span>
+        <Emoji
+          label='point down emoji'
+          emoji={emojiConstants.paymentsMadePointDown}
+        />
+        <Emoji label='payment emoji' emoji={emojiConstants.payment} />
       </div>
       <PaymentRecipientSelect
         paymentRecipientName={paymentRecipientName}

@@ -3,6 +3,7 @@ import React from "react";
 
 // Constants and Utils
 import { devLog } from "../../utils/errorUtils";
+import emojiConstants from "../../constants/emojiConstants";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
@@ -16,6 +17,7 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 import ChangeGroupCurrency from "../../components/features/GroupSettings/ChangeGroupCurrency/ChangeGroupCurrency";
 import ChangeDataPurgeSetting from "../../components/features/GroupSettings/ChangeDataPurgeSetting/ChangeDataPurgeSetting";
 import Spinner from "../../components/common/Spinner/Spinner";
+import Emoji from "../../components/common/Emoji/Emoji";
 
 // Styles
 import styles from "./OnboardingGroupSettingsPage.module.css";
@@ -44,7 +46,10 @@ const OnboardingGroupSettingsPage = () => {
         </div>
       </div>
       <div className={styles.container}>
-        <h1>group settings</h1>
+        <h1>
+          group settings{" "}
+          <Emoji label='settings emoji' emoji={emojiConstants.settings} />
+        </h1>{" "}
         {isFetched && groupData ? (
           <div className={styles.settings}>
             <ChangeGroupCurrency

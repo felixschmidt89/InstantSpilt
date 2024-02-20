@@ -4,10 +4,10 @@ import { Button } from "@mui/material";
 
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
-import { smallButtonStyles } from "../../../../constants/stylesConstants";
 
 // Styles
 import styles from "./ExpenseBeneficiariesInput.module.css";
+import Emoji from "../../../common/Emoji/Emoji";
 
 /**
  * Component for selecting expense beneficiaries when creating or updating expenses.
@@ -66,7 +66,10 @@ const ExpenseBeneficiariesInput = ({
 
   return (
     <>
-      <p className={styles.emoji}>{emojiConstants.expense} for</p>
+      <p className={styles.emoji}>
+        <Emoji label='expense emoji' emoji={emojiConstants.expense} />
+        for
+      </p>
       <div
         className={`${styles.beneficiaries} ${isUpdate ? styles.isUpdate : ""}`}
         onClick={handleDivOrButtonClick}

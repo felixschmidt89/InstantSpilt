@@ -1,5 +1,6 @@
 .emoji {
   font-size: 1.5rem;
+  font-family: "Noto Color Emoji";
 }
 
 @media screen and (max-width: 500px) {
