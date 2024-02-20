@@ -25,3 +25,4 @@ const OnboardingCreateGroupPage = () => {
 };
 
 export default OnboardingCreateGroupPage;
+``;

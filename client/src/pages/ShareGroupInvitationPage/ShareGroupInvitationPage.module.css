@@ -1,24 +1,18 @@
-.container {
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  padding-bottom: 1rem;
-  margin: 0 auto;
-  height: 90%;
-  width: 75%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
 .container h1 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.icons {
-  white-space: nowrap;
+.container h2 {
+  margin-top: 0rem;
 }
 
-@media screen and (max-width: 500px) {
+.container {
+  width: 50%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
   .container {
-    width: 80%;
-    padding: 0 1rem;
+    width: 90%;
   }
 }

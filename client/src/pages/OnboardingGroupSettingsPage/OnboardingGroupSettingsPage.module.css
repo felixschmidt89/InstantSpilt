@@ -1,15 +1,22 @@
-.container {
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  padding-bottom: 1rem;
-  overflow-y: auto;
+.container h1 {
+  margin-bottom: 0.5rem;
 }
 
-.settings {
-  margin-top: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container h2 {
+  margin-top: 0rem;
 }
+
+.container {
+  width: 40%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 60%;
+  }
+}
+
 /* Ensure that in app navigation next button is rendered on the right */
 .rightAligned {
   width: 7rem;

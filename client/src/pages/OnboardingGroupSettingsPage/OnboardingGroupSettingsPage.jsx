@@ -39,25 +39,10 @@ const OnboardingGroupSettingsPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - group settings' />
       <PiratePx COUNT_IDENTIFIER={"onboarding-group-settings"} />
       <div className={styles.rightAligned}>
-        {
-          // Case 1: Redirect recurring InstantSplit users directly to main application
-          isInAppGroupCreator ? (
-            <div className={styles.rightAligned}>
-              <InAppNavigationBar
-                forward={true}
-                forwardRoute='/instant-split'
-              />
-            </div>
-          ) : (
-            // Case 2: Redirect new InstantSplit users to onboarding page
-            <InAppNavigationBar
-              forward={true}
-              forwardRoute='/onboarding-tutorial'
-            />
-          )
-        }
+        <div className={styles.rightAligned}>
+          <InAppNavigationBar forward={true} forwardRoute='/instant-split' />
+        </div>
       </div>
-
       <div className={styles.container}>
         <h1>group settings</h1>
         {isFetched && groupData ? (
@@ -71,7 +56,7 @@ const OnboardingGroupSettingsPage = () => {
               groupCode={groupCode}
               inactiveDataPurge={groupData.group.inactiveDataPurge}
             />
-            {/* <OnboardingGroupCodeExplanation groupCode={groupCode} /> */}
+            <OnboardingGroupCodeExplanation groupCode={groupCode} />
           </div>
         ) : (
           <div className={styles.spinner}>

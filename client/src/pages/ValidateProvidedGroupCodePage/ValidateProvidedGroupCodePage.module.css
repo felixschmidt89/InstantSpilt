@@ -16,8 +16,10 @@
 
 .groupExists {
   color: var(--color-success);
+  margin: 0 auto;
 }
 
 .groupDoesNotExist {
   color: var(--color-error);
+  margin: 0 auto;
 }

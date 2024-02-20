@@ -54,14 +54,9 @@ const ValidateProvideGroupCodePage = () => {
       setGroupCodeToCurrentlyActive(groupCode);
 
       // Render feedback and programmatically navigate with a delay
-      const timeoutId = setTimeout(
-        () => {
-          navigate(
-            isInstantSplitUser ? "/instant-split" : "/onboarding-tutorial/"
-          );
-        },
-        isInstantSplitUser ? 2500 : 4000
-      );
+      const timeoutId = setTimeout(() => {
+        navigate("/instant-split");
+      }, 2500);
 
       return () => clearTimeout(timeoutId);
     } else if (validationError) {

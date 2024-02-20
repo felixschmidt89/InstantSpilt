@@ -31,7 +31,7 @@ const AcceptGroupInvitation = ({ groupName, groupCode }) => {
     storeGroupCodeInLocalStorage(groupCode);
     setGroupCodeToCurrentlyActive(groupCode);
     setRouteInLocalStorage(window.location.pathname, "previousRoute");
-    navigate("/onboarding-tutorial");
+    navigate("/instant-split");
   };
 
   return (

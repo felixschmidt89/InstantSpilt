@@ -21,7 +21,6 @@ import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
 import ExpenseDetailsPage from "./pages/ExpenseDetailsPage/ExpenseDetailsPage";
 import PaymentDetailsPage from "./pages/PaymentDetailsPage/PaymentDetailsPage";
 import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
-import OnboardingTutorialPage from "./pages/OnboardingTutorialPage/OnboardingTutorialPage";
 import OnboardingGroupSettingsPage from "./pages/OnboardingGroupSettingsPage/OnboardingGroupSettingsPage";
 import ForgetGroupOnDevicePage from "./pages/ForgetGroupOnDevicePage/ForgetGroupOnDevicePage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
@@ -71,10 +70,6 @@ const App = () => {
             <Route
               path='/join-instantsplit-group/:initialGroupName/:groupCode'
               element={<AcceptGroupInvitationAndJoinPage />}
-            />
-            <Route
-              path='/onboarding-tutorial'
-              element={<OnboardingTutorialPage />}
             />
             <Route
               path='/tutorial/:initialGroupName/:groupCode'
