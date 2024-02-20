@@ -11,6 +11,9 @@
 
 .noLink {
   pointer-events: none;
+  margin-left: 8%;
+  width: 90%;
+  margin-bottom: 0.5rem;
 }
 
 /* Mobile*/
@@ -18,5 +21,10 @@
   .container {
     width: 100%;
     margin-left: 0.5rem;
+  }
+  .noLink {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 0.5rem;
   }
 }

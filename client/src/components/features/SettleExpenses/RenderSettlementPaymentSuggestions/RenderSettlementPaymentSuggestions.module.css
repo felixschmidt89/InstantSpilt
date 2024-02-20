@@ -1,7 +1,7 @@
 .container {
   background-color: var(--color-main);
   color: var(--color-dark);
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
   margin-top: 1rem;
   padding-left: 0.8rem;
@@ -16,7 +16,7 @@
   flex-direction: row;
   align-items: center;
   margin: 0 auto;
-  line-height: 1.2;
+  line-height: 1;
 }
 
 .settlementAmount {
@@ -26,10 +26,4 @@
 
 .confirm {
   margin-left: auto;
-}
-
-@media only screen and (max-width: 767px) {
-  .container {
-    width: 90%;
-  }
 }

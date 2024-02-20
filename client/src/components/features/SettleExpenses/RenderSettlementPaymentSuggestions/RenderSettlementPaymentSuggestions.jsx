@@ -65,6 +65,7 @@ const RenderSettlementPaymentSuggestions = ({
                 paymentMakerName={settlement.from}
                 paymentRecipientName={settlement.to}
                 groupCode={groupCode}
+                groupCurrency={groupCurrency}
               />
             </div>
           </li>

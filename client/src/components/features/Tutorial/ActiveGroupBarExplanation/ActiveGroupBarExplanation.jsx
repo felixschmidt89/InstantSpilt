@@ -12,15 +12,17 @@ import styles from "./ActiveGroupBarExplanation.module.css";
  * @returns {JSX.Element} React component. */
 const ActiveGroupBarExplanation = () => {
   return (
-    <div className={styles.container}>
-      <h2>active group bar</h2>
-      <p className={styles.explanation}>
-        houses all functions related to capturing & settling expenses:
-      </p>
+    <>
+      <div className={styles.container}>
+        <h2>active group bar</h2>
+        <p className={styles.explanation}>
+          houses all functions related to capturing & settling expenses:
+        </p>
+      </div>{" "}
       <div className={styles.noLink}>
         <ActiveGroupBar applyMargin={false} />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -13,19 +13,21 @@ import styles from "./UserSettingsExplanation.module.css";
  * @returns {JSX.Element} React component. */
 const UserSettingsExplanation = () => {
   return (
-    <div className={styles.container}>
-      <h2>
-        <div className={styles.icon}>
-          <IoReorderThree />
-        </div>{" "}
-        user settings
-      </h2>
+    <>
+      <div className={styles.container}>
+        <h2>
+          <div className={styles.icon}>
+            <IoReorderThree />
+          </div>{" "}
+          user settings
+        </h2>
+      </div>
       <ul className={styles.explanation}>
         <li className={styles.noLink}>
           <UserSettingsBar applyMargin={false} />
         </li>
       </ul>
-    </div>
+    </>
   );
 };
 

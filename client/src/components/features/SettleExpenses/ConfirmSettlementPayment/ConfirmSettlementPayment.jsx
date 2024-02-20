@@ -40,6 +40,7 @@ const ConfirmSettlementPayment = ({
   paymentMakerName,
   paymentRecipientName,
   groupCode,
+  groupCurrency,
 }) => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
@@ -74,26 +75,18 @@ const ConfirmSettlementPayment = ({
   };
 
   return (
-    <>
-      <div className={styles.container} onClick={handleShowConfirmation}>
-        <span className={styles.icon}>
-          {" "}
-          <Emoji
-            label={"settle payment emoji"}
-            emoji={emojiConstants.settle}></Emoji>{" "}
-        </span>
-        <span className={styles.iconExplanation}>confirm</span>
-      </div>
+    <div className={styles.container} onClick={handleShowConfirmation}>
+      <div className={styles.confirm}>confirm</div>
       {isConfirmationVisible && (
         <ConfirmationModal
-          message={`Confirm settlement payment by ${paymentMakerName} to ${paymentRecipientName}?`}
+          message={`Confirm ${paymentMakerName} has paid ${paymentAmount}${groupCurrency} to ${paymentRecipientName}?`}
           onConfirm={handleConfirmation}
           onCancel={handleHideConfirmation}
           isVisible={isConfirmationVisible}
           error={error}
         />
       )}
-    </>
+    </div>
   );
 };
 export default ConfirmSettlementPayment;

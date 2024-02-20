@@ -2,18 +2,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  line-height: 1.2;
   cursor: pointer;
+  font-weight: 1.5rem;
+  line-height: 1.5;
 }
 
-.icon {
-  font-size: 2rem;
+.confirm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: var(--color-signal);
 }
 
-.iconExplanation {
-  font-size: 1.2rem;
-}
-
-.container:hover {
-  color: var(--color-success);
+.confirm:hover {
+  color: var(--color-dark-dark);
 }
