@@ -9,8 +9,7 @@
   line-height: 1;
 }
 
-.noLink {
-  pointer-events: none;
+.bar {
   margin-left: 8%;
   width: 90%;
   margin-bottom: 0.5rem;
@@ -36,7 +35,7 @@
     width: 100%;
     margin-left: 0.5rem;
   }
-  .noLink {
+  .bar {
     width: 100%;
     margin-left: 0;
     margin-bottom: 0.5rem;

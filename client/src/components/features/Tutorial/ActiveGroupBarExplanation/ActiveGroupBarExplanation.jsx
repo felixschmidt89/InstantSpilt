@@ -19,7 +19,7 @@ const ActiveGroupBarExplanation = () => {
           houses all functions related to capturing & settling expenses:
         </p>
       </div>{" "}
-      <div className={styles.noLink}>
+      <div className={styles.bar}>
         <ActiveGroupBar applyMargin={false} />
       </div>
     </>

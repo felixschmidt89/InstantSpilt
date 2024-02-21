@@ -10,8 +10,17 @@ import styles from "./UserSettingsExplanation.module.css";
 
 /**
  * Component for rendering explanation of the UserSettingsBar.
- * @returns {JSX.Element} React component. */
-const UserSettingsExplanation = () => {
+ *
+ * @param {string} props.groupCode - The groupCode identifying the group.
+ * @param {string} props.initialGroupName - The initial group name.
+ * @param {string} props.groupName - The current group name.
+ * @returns {JSX.Element} React component.
+ */
+const UserSettingsExplanation = ({
+  groupCode,
+  initialGroupName,
+  groupName,
+}) => {
   return (
     <>
       <div className={styles.container}>
@@ -22,11 +31,14 @@ const UserSettingsExplanation = () => {
           user settings
         </h2>
       </div>
-      <ul className={styles.explanation}>
-        <li className={styles.noLink}>
-          <UserSettingsBar applyMargin={false} />
-        </li>
-      </ul>
+      <div className={styles.bar}>
+        <UserSettingsBar
+          applyMargin={false}
+          groupCode={groupCode}
+          initialGroupName={initialGroupName}
+          groupName={groupName}
+        />
+      </div>
     </>
   );
 };

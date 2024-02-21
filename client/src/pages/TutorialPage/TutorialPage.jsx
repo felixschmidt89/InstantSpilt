@@ -9,12 +9,12 @@ import useFetchGroupData from "../../hooks/useFetchGroupData";
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import GroupCodeExplanation from "../../components/features/Tutorial/GroupCodeExplanation/GroupCodeExplanation";
-import TopSectionExplanation from "../../components/features/Tutorial/UserSettingsExplanation/UserSettingsExplanation";
-import MiddleSectionExplanation from "../../components/features/Tutorial/MiddleSectionExplanation/MiddleSectionExplanation";
-import BottomSectionExplanation from "../../components/features/Tutorial/ActiveGroupBarExplanation/ActiveGroupBarExplanation";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import Spinner from "../../components/common/Spinner/Spinner";
 import SyncGroupCodeExplanation from "../../components/features/Tutorial/SyncGroupCodeExplanation/SyncGroupCodeExplanation";
+import GroupBalanceAndHistoryExplanation from "../../components/features/Tutorial/GroupBalanceAndHistoryExplanation/GroupBalanceAndHistoryExplanation";
+import UserSettingsExplanation from "../../components/features/Tutorial/UserSettingsExplanation/UserSettingsExplanation";
+import ActiveGroupBarExplanation from "../../components/features/Tutorial/ActiveGroupBarExplanation/ActiveGroupBarExplanation";
 
 // Styles
 import styles from "./TutorialPage.module.css";
@@ -48,13 +48,17 @@ function TutorialPage() {
           />
         </div>
         <div className={styles.section}>
-          <TopSectionExplanation />
+          <UserSettingsExplanation
+            groupCode={groupCode}
+            initialGroupName={groupData.group.initialGroupName}
+            groupName={groupData.group.groupName}
+          />
         </div>
         <div className={styles.section}>
-          <MiddleSectionExplanation />
+          <GroupBalanceAndHistoryExplanation />
         </div>
         <div className={styles.section}>
-          <BottomSectionExplanation />
+          <ActiveGroupBarExplanation />
         </div>
         <SyncGroupCodeExplanation />
       </div>

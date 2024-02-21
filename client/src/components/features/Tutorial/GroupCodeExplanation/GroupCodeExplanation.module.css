@@ -1,20 +1,11 @@
 .container {
   padding: 0.5rem 1rem;
   line-height: 1.5;
-  width: 80%;
+  width: 90%;
   margin-left: 5rem;
 }
 
 .container h2 {
-  line-height: 1;
-}
-
-.explanation {
-  display: flex;
-  flex-direction: column;
-}
-
-.invitationLink {
   line-height: 1;
 }
 
@@ -24,4 +15,9 @@
     width: 100%;
     margin-left: 0.5rem;
   }
+}
+
+.groupCodeExplanation {
+  display: flex;
+  flex-direction: column;
 }

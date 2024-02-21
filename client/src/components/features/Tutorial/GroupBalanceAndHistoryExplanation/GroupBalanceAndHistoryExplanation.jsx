@@ -2,21 +2,19 @@
 import React from "react";
 
 // Styles
-import styles from "./MiddleSectionExplanation.module.css";
-import SwitchViewButtonsBar from "../../GroupBalancesAndHistory/SwitchViewButtonsBar/SwitchViewButtonsBar";
+import styles from "./GroupBalanceAndHistoryExplanation.module.css";
+import SwitchViewButton from "../../GroupBalancesAndHistory/SwitchViewButton/SwitchViewButton";
 
 /**
- * Component for rendering explanation of the main application's middle section (containing group balances and group history).
+ * Component for rendering an explanation of group balances and group history views.
  * @returns {JSX.Element} React component.
  */
-const MiddleSectionExplanation = () => {
+const GroupBalanceAndHistoryExplanation = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.noLink}>
-        <SwitchViewButtonsBar view={"view2"} />
-      </div>
       <div className={styles.elaboration}>
-        <h3>balances</h3>
+        {/* Render unclickable balance button*/}
+        <SwitchViewButton text='balances' isActive={"view2"} />{" "}
         <ul className={styles.list}>
           <li>All group members along with their current balances</li>
           <li>
@@ -24,7 +22,8 @@ const MiddleSectionExplanation = () => {
             transaction
           </li>
         </ul>
-        <h3>history</h3>
+        {/* Render unclickable history button*/}
+        <SwitchViewButton text='history' isActive={"view1"} />{" "}
         <ul className={styles.list}>
           <li>All expenses and payments of all group members</li>
           <li>
@@ -37,4 +36,4 @@ const MiddleSectionExplanation = () => {
   );
 };
 
-export default MiddleSectionExplanation;
+export default GroupBalanceAndHistoryExplanation;

@@ -27,20 +27,23 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
     <div className={styles.container}>
       <h2>retain access to group</h2>
       <div className={styles.explanation}>
-        <div>
+        <div className={styles.groupCodeExplanation}>
           Key to this group is its unique groupcode, store it somewhere save:
+          <span className={styles.copyButton}>
+            <CopyToClipboard
+              infoToCopy={groupCode}
+              inputFieldWidth={"9.5rem"}
+            />
+          </span>
         </div>
-        <div className={styles.groupCode}>
-          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"9.5rem"} />
-        </div>
-        <div className={styles.invitationLink}>
-          Alternatively, bookmark its{" "}
-          <strong>
-            <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
-              invitation link.
-            </Link>
-          </strong>
-        </div>
+      </div>
+      <div className={styles.invitationLink}>
+        Alternatively, bookmark its{" "}
+        <strong>
+          <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
+            invitation link.
+          </Link>
+        </strong>
       </div>
     </div>
   );

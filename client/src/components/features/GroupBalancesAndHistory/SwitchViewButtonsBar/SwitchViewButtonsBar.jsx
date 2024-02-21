@@ -1,36 +1,33 @@
 // React and Third-Party Libraries
 import React from "react";
 
+// Component
+import SwitchViewButton from "../SwitchViewButton/SwitchViewButton";
+
 // Styles
 import styles from "./SwitchViewButtonsBar.module.css";
 
 /**
  * Renders buttons to switch between groupBalance and groupHistory views.
  *
- * @param {string} view - The current view state.
+ * @param {string} view - The current view state. Default is view2 (balances).
  * @param {Function} handleSwitchView - Function to handle view switching.
  * @returns {JSX.Element} React component. */
 const SwitchViewButtonsBar = ({ view, handleSwitchView }) => {
   return (
     <div className={styles.buttonContainer}>
-      {/* Button to render group Balances view (default) */}
-      <button
-        className={`${styles.button} ${
-          view === "view2" ? styles.expensesButton : styles.balancesButton
-        } ${view === "view2" ? "" : styles.inactiveButton}`} //
+      {/* Button to render balances view (default) */}
+      <SwitchViewButton
+        text='balances'
+        isActive={view === "view2"}
         onClick={handleSwitchView}
-        disabled={view === "view2"}>
-        balances
-      </button>
-      {/* Button to render group History view */}
-      <button
-        className={`${styles.button} ${
-          view === "view1" ? styles.expensesButton : styles.balancesButton
-        } ${view === "view1" ? "" : styles.inactiveButton}`}
+      />
+      {/* Button to render group view */}
+      <SwitchViewButton
+        text='history'
+        isActive={view === "view1"}
         onClick={handleSwitchView}
-        disabled={view === "view1"}>
-        history
-      </button>
+      />
     </div>
   );
 };
