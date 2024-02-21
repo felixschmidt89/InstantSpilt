@@ -6,3 +6,10 @@
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 1rem;
 }
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}

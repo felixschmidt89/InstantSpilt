@@ -38,7 +38,7 @@
 }
 
 /* Hide footer on mobile when keyboard is shown */
-@media (max-width: 500px) and (max-height: 500px) {
+@media screen and (max-height: 500px) {
   .footer {
     display: none;
   }

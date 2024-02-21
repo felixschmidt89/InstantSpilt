@@ -16,7 +16,7 @@ import styles from "./NoGroupTransactions.module.css";
  * @returns {JSX.Element} React component. */
 const NoGroupTransactions = () => (
   <p className={styles.noTransactions}>
-    Begin adding expenses{" "}
+    Start adding expenses{" "}
     <span className={styles.emojiParenthesis}>
       (<Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>)
     </span>{" "}

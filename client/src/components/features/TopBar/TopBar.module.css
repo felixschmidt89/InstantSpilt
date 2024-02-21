@@ -7,9 +7,10 @@
   margin-bottom: 1rem;
 }
 
-.container h1 {
+.groupNameHeader {
   align-self: flex-end;
   width: 20rem;
+  font-size: 2.2rem;
 }
 
 .slideInLeft {

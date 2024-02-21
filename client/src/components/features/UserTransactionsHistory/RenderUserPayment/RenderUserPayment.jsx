@@ -63,7 +63,7 @@ const RenderUserPayment = ({
         <Emoji
           label={"payment to other user emoji"}
           emoji={emojiConstants.paymentsMade}
-          shrink={"test"}
+          shrinkOnSmallDevices={true}
         />
 
         <RenderDataAttributeWithAriaLabel

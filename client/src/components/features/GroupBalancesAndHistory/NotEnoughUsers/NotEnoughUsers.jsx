@@ -15,7 +15,7 @@ import styles from "./NotEnoughUsers.module.css";
  * @returns {JSX.Element} React component. */
 const NotEnoughUsers = () => (
   <p className={styles.failMessage}>
-    Add group members{" "}
+    To start settling expenses add group members{" "}
     <span className={styles.emojiParanthesis}>
       (<Emoji label={"user emoji"} emoji={emojiConstants.user}></Emoji>)
     </span>{" "}
@@ -24,8 +24,8 @@ const NotEnoughUsers = () => (
       (
       <Emoji label={"pont down emoji"} emoji={emojiConstants.pointDown}></Emoji>
       )
-    </span>{" "}
-    to start settling expenses.
+    </span>
+    .
   </p>
 );
 

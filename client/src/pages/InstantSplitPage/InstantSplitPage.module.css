@@ -13,5 +13,6 @@ main {
 
 .topBar {
   height: 10vh;
-  min-height: 80px;
+  min-height: 8rem;
+  max-height: 9rem;
 }

@@ -67,6 +67,8 @@ main {
   background-color: var(--color-main);
   border-radius: 1rem;
   border: 0.1rem solid var(--color-signal-reduced-opacity);
+  width: 60vw;
+  height: 80vh;
 }
 
 h1 {
@@ -203,60 +205,74 @@ scrollbar-thumb {
   }
 }
 
-/* Mobile with small height, ie with keyboard shown*/
-@media (max-width: 767px) and (max-height: 500px) {
-  main {
-    height: 99vh;
-    font-size: 1.5rem;
-    line-height: 1.4;
-  }
-}
-
-/* Tablet*/
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+/* smartphone landscape mode*/
+@media only screen and (max-width: 768px) and (orientation: landscape) {
   header {
     /* fallback value for older browsers*/
-    height: 6vh;
-    height: 6svh;
+    height: 10vh;
+    height: 10svh;
   }
   main {
-    height: 76vh;
-    height: 86svh;
-    width: 70vw;
-  }
-  footer {
-    height: 8vh;
-    height: 8svh;
-  }
-}
-
-/* Tablet landscape mode*/
-@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  header {
-    /* fallback value for older browsers*/
-    height: 6vh;
-    height: 6svh;
-  }
-  main {
-    height: 75vh;
-    height: 85svh;
+    height: 71vh;
+    height: 81svh;
     width: 60vw;
   }
   footer {
-    height: 8vh;
-    height: 8svh;
+    height: 6vh;
+    height: 6svh;
+  }
+}
+
+/* Tablet and portrait mode */
+@media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: portrait) {
+  header {
+    /* fallback value for older browsers*/
+    height: 6vh;
+    height: 6svh;
+  }
+  main {
+    height: 79vh;
+    height: 89svh;
+    width: 70vw;
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+  footer {
+    height: 6vh;
+    height: 6svh;
+  }
+}
+
+/* Tablet landscape mode */
+@media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: landscape) {
+  header {
+    /* fallback value for older browsers*/
+    height: 6vh;
+    height: 6svh;
+  }
+  main {
+    height: 71vh;
+    height: 81svh;
+    width: 55vw;
+    max-width: 55rem;
+  }
+  footer {
+    height: 6vh;
+    height: 6svh;
   }
 }
 
 /* Laptop*/
-@media only screen and (min-width: 1025px) and (max-width: 1440px) {
+@media only screen and (min-width: 769px) and (max-width: 1440px) {
   header {
     height: 5vh;
   }
   main {
     padding-top: 0rem;
     height: 86vh;
+    height: 86svh;
     width: 60vw;
+    max-width: 55rem;
   }
   footer {
     height: 5vh;
@@ -270,6 +286,7 @@ scrollbar-thumb {
   }
   main {
     height: 84vh;
+    height: 84svh;
     width: 55rem;
   }
 }
@@ -281,5 +298,20 @@ scrollbar-thumb {
   main {
     height: 70rem;
     width: 68rem;
+  }
+}
+
+main {
+  max-height: 750px;
+}
+
+/* use full display for rendering main when display height is small, e.g. smartphone landscape mode*/
+@media screen and (max-height: 500px) {
+  main {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+    height: 98vh;
+    height: 98svh;
+    width: 99vw;
   }
 }

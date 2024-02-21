@@ -46,7 +46,7 @@ const TopBar = ({
           iconScale={0.8}
         />
       </span>
-      <h1>{groupName}</h1>
+      <h1 className={styles.groupNameHeader}>{groupName}</h1>
       <span className={styles.icon}>
         {" "}
         <ReactIconNavigate
