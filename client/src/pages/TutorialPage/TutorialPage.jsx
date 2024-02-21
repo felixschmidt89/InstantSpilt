@@ -15,6 +15,7 @@ import SyncGroupCodeExplanation from "../../components/features/Tutorial/SyncGro
 import GroupBalanceAndHistoryExplanation from "../../components/features/Tutorial/GroupBalanceAndHistoryExplanation/GroupBalanceAndHistoryExplanation";
 import UserSettingsExplanation from "../../components/features/Tutorial/UserSettingsExplanation/UserSettingsExplanation";
 import ActiveGroupBarExplanation from "../../components/features/Tutorial/ActiveGroupBarExplanation/ActiveGroupBarExplanation";
+import RecommendedBrowsersExplanation from "../../components/features/Tutorial/RecommendedBrowsersExplanation/RecommendedBrowsersExplanation";
 
 // Styles
 import styles from "./TutorialPage.module.css";
@@ -41,6 +42,9 @@ function TutorialPage() {
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>tutorial</h1>
+        <div className={styles.section}>
+          <RecommendedBrowsersExplanation />
+        </div>
         <div className={styles.section}>
           <GroupCodeExplanation
             initialGroupName={initialGroupName}

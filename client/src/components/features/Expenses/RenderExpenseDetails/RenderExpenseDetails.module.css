@@ -1,5 +1,6 @@
 .container {
-  width: 100%;
+  /*prevent design from breaking in case of huge amounts */
+  width: 110%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

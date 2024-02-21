@@ -14,7 +14,9 @@ const GroupBalanceAndHistoryExplanation = () => {
     <div className={styles.container}>
       <div className={styles.elaboration}>
         {/* Render unclickable balance button*/}
-        <SwitchViewButton text='balances' isActive={"view2"} />{" "}
+        <div className={styles.button}>
+          <SwitchViewButton text='balances' isActive={"view2"} />{" "}
+        </div>
         <ul className={styles.list}>
           <li>All group members along with their current balances</li>
           <li>
@@ -23,7 +25,9 @@ const GroupBalanceAndHistoryExplanation = () => {
           </li>
         </ul>
         {/* Render unclickable history button*/}
-        <SwitchViewButton text='history' isActive={"view1"} />{" "}
+        <div className={styles.button}>
+          <SwitchViewButton text='history' isActive={"view1"} />{" "}
+        </div>
         <ul className={styles.list}>
           <li>All expenses and payments of all group members</li>
           <li>

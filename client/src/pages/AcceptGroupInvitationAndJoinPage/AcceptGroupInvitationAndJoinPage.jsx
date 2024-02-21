@@ -28,12 +28,19 @@ const AcceptGroupInvitationAndJoinPage = () => {
       />
       <PiratePx COUNT_IDENTIFIER={"accept-invitation-landing-page"} />
       {isFetched && (
-        <div className={styles.container}>
-          <h1>Hi there!</h1>
-          <InvitationIntro groupData={groupData} />
-          <InstantSplitIntroSection isInvitation={true} />
-          <AcceptGroupInvitation groupCode={groupCode} groupName={groupName} />
-        </div>
+        <>
+          <h1 className={styles.homepageHeader}>Hi there!</h1>
+          <div className={styles.container}>
+            <InvitationIntro groupData={groupData} />
+            <InstantSplitIntroSection isInvitation={true} />
+          </div>
+          <div className={styles.acceptInvitationSection}>
+            <AcceptGroupInvitation
+              groupCode={groupCode}
+              groupName={groupName}
+            />
+          </div>
+        </>
       )}
     </main>
   );

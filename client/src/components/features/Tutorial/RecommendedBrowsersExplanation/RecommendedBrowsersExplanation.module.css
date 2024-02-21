@@ -5,15 +5,9 @@
   margin-left: 5rem;
 }
 
-/* Mobile*/
 @media only screen and (max-width: 767px) {
   .container {
     width: 100%;
     margin-left: 0.5rem;
   }
-}
-
-.groupCodeExplanation {
-  display: flex;
-  flex-direction: column;
 }

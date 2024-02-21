@@ -24,8 +24,8 @@ const SyncGroupCodeExplanation = () => {
           device.
         </li>
         <li>
-          The same principle applies if you're using multiple browsers (e.g.
-          Chrome, Safari, Firefox) on the same device.
+          The same principle applies if you're using multiple web browsers on
+          the same device.
         </li>
       </ul>
     </div>

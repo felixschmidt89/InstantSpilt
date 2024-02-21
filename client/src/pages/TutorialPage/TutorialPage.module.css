@@ -5,6 +5,10 @@
   overflow-x: hidden;
 }
 
+.container h1 {
+  margin-bottom: 0.5rem;
+}
+
 .icons {
   white-space: nowrap;
 }

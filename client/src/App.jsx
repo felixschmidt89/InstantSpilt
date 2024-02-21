@@ -46,8 +46,6 @@ import ShareGroupInvitationPage from "./pages/ShareGroupInvitationPage/ShareGrou
 import "./App.css";
 
 const App = () => {
-  useAppRefreshOnBrowserResize();
-
   return (
     <ThemeProvider theme={muiTheme}>
       <BrowserRouter>

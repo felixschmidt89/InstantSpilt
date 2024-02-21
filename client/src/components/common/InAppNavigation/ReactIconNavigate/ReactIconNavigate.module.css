@@ -9,16 +9,20 @@
   color: var(--color-dark);
 }
 
+.iconExplanationIsIdle {
+  color: var(--color-grey);
+}
+
 .iconExplanation {
   font-size: 1.3rem;
   line-height: 1;
   text-align: center;
 }
 
-.hover:hover {
-  color: var(--color-dark-dark);
+.iconContainer:hover .customIcon {
+  color: var(--color-dark);
 }
 
-.iconExplanationIsIdle {
-  color: var(--color-grey);
+.iconContainer:hover .iconExplanation {
+  color: var(--color-dark);
 }

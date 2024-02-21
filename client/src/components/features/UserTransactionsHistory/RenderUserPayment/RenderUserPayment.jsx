@@ -29,21 +29,27 @@ const RenderUserPayment = ({
   return (
     <div className={styles.payments}>
       {/* Left Column */}
-      <div className={styles.leftColumn}>
-        <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
-        <div className={styles.paymentAmount}>
-          <div>
-            <RenderDataAttributeWithAriaLabel
-              attribute={item.paymentAmount.toFixed(2)}
-              ariaLabel={"payment amount"}
-            />
-            <span>{groupCurrency}</span>
+      <ul className={styles.leftColumn}>
+        <li className={styles.amountLine}>
+          <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
+          <div className={styles.paymentAmount}>
+            <div>
+              <RenderDataAttributeWithAriaLabel
+                attribute={item.paymentAmount.toFixed(2)}
+                ariaLabel={"payment amount"}
+              />
+              <span>{groupCurrency}</span>
+            </div>
           </div>
+        </li>
+        <li className={styles.actionLine}>
           <LinkToPage
             to={`/update-payment/${groupCode}/${item._id}`}
             setNestedPreviousRoute={true}>
             edit
           </LinkToPage>
+        </li>
+        <li className={styles.actionLine}>
           <DeleteResource
             resourceId={item._id}
             resourceType={"payments"}
@@ -52,24 +58,45 @@ const RenderUserPayment = ({
             navigateOnDelete={false}
             showResourceType={false}
           />
-        </div>
-      </div>
+        </li>
+      </ul>
       {/* Right Column */}
       <div className={styles.rightColumn}>
-        <RenderDataAttributeWithAriaLabel
-          attribute={item.paymentMaker.userName}
-          ariaLabel={"username of the payment maker"}
-        />
-        <Emoji
-          label={"payment to other user emoji"}
-          emoji={emojiConstants.paymentsMade}
-          shrinkOnSmallDevices={true}
-        />
-
-        <RenderDataAttributeWithAriaLabel
-          attribute={item.paymentRecipient.userName}
-          ariaLabel={"username of the payment recipient"}
-        />
+        <ul>
+          <li>
+            <RenderDataAttributeWithAriaLabel
+              attribute={item.paymentMaker.userName}
+              ariaLabel={"username of the payment maker"}
+            />
+            <span className={styles.paymentToEmoji}>
+              <Emoji
+                label={"payment to other user emoji"}
+                emoji={emojiConstants.paymentsMade}
+                shrinkOnSmallDevices={true}
+              />
+            </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={item.paymentRecipient.userName}
+              ariaLabel={"username of the payment recipient"}
+            />
+          </li>
+          <li>
+            <span className={styles.key}>created: </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={new Date(item.createdAt).toLocaleString()}
+              ariaLabel={"expense creation date"}
+            />
+          </li>
+          {item.createdAt !== item.updatedAt && (
+            <li>
+              <span className={styles.key}>changed: </span>
+              <RenderDataAttributeWithAriaLabel
+                attribute={new Date(item.updatedAt).toLocaleString()}
+                ariaLabel={"expense last update date"}
+              />
+            </li>
+          )}
+        </ul>
       </div>
     </div>
   );

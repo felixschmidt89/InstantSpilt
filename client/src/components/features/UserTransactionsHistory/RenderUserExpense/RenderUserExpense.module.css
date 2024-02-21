@@ -1,16 +1,33 @@
 .expenses {
   display: flex;
-  line-height: 1.2;
+}
+
+.expenses li {
+  line-height: 1.25;
 }
 
 .leftColumn {
   display: flex;
+  flex-direction: column;
   border-top: 2px solid var(--color-signal-reduced-opacity);
+}
+
+.amountLine {
+  display: flex;
+  flex-direction: row;
+}
+
+.actionLine {
+  text-align: right;
 }
 
 .expenseAmount {
   text-align: right;
   width: 8rem;
+}
+
+.expenseEmoji {
+  transform: translateX(0.1rem);
 }
 
 .rightColumn {
@@ -20,6 +37,10 @@
   margin-right: 0rem;
   width: 80%;
   border-top: 2px solid var(--color-signal-reduced-opacity);
+}
+
+.key {
+  color: var(--color-grey);
 }
 
 .rightColumn .expenseEmoji {
@@ -39,8 +60,4 @@
     padding-top: 0.15rem;
     padding-bottom: 0.15rem;
   }
-}
-
-.key {
-  color: var(--color-grey);
 }

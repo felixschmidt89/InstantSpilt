@@ -1,16 +1,34 @@
 .payments {
   display: flex;
-  line-height: 1.2;
+}
+
+.payments li {
+  line-height: 1.25;
 }
 
 .leftColumn {
   display: flex;
+  flex-direction: column;
   border-top: 2px solid var(--color-signal-reduced-opacity);
+}
+
+.amountLine {
+  display: flex;
+  flex-direction: row;
+}
+
+.actionLine {
+  text-align: right;
 }
 
 .paymentAmount {
   text-align: right;
   width: 8rem;
+}
+
+.paymentToEmoji {
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
 }
 
 .rightColumn {
@@ -21,6 +39,10 @@
   margin-left: 3rem;
   width: 80%;
   border-top: 2px solid var(--color-signal-reduced-opacity);
+}
+
+.key {
+  color: var(--color-grey);
 }
 
 @media (max-width: 500px) {

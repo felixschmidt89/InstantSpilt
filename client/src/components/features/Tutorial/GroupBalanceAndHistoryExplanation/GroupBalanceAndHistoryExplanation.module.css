@@ -10,6 +10,11 @@
   margin-left: 2rem;
 }
 
+.button {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 /* Mobile*/
 @media only screen and (max-width: 767px) {
   .container {

@@ -19,10 +19,10 @@ const HomePage = () => {
 
   return (
     <main>
+      <HelmetMetaTagsNetlify title='InstantSplit - homepage' />
+      <h1 className={styles.homepageHeader}>Welcome to InstantSplit</h1>
       <div className={styles.container}>
-        <HelmetMetaTagsNetlify title='InstantSplit - homepage' />
         <PiratePx COUNT_IDENTIFIER='homepage' />
-        <h1>Welcome to InstantSplit</h1>
         <InstantSplitIntroSection />
         <GetStartedSection />
         <TermsAndConditionsSection />

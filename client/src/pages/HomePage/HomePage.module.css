@@ -5,9 +5,10 @@
   padding-bottom: 1rem;
   width: 80%;
   margin: 0 auto;
+  padding-left: 4rem;
 }
 
-.container h1 {
+.homepageHeader {
   margin-top: 1rem;
   margin-bottom: 2rem;
 }
@@ -15,5 +16,6 @@
 @media screen and (max-width: 500px) {
   .container {
     width: 85%;
+    padding-left: 1rem;
   }
 }

@@ -19,23 +19,32 @@ const RenderUserExpense = ({
   return (
     <div className={styles.expenses}>
       {/* Left Column */}
-      <div className={styles.leftColumn}>
-        <div className={styles.expenseEmoji}>
-          <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
-        </div>
-        <div className={styles.expenseAmount}>
-          <div>
-            <RenderDataAttributeWithAriaLabel
-              attribute={item.expenseAmount.toFixed(2)}
-              ariaLabel={"expense amount"}
-            />
-            <span>{groupCurrency}</span>
+      <ul className={styles.leftColumn}>
+        <li className={styles.amountLine}>
+          <div className={styles.expenseEmoji}>
+            <Emoji
+              label={"expense emoji"}
+              emoji={emojiConstants.expense}></Emoji>
           </div>
+          <div className={styles.expenseAmount}>
+            <div>
+              <RenderDataAttributeWithAriaLabel
+                attribute={item.expenseAmount.toFixed(2)}
+                ariaLabel={"expense amount"}
+              />
+              <span>{groupCurrency}</span>
+            </div>
+          </div>
+        </li>
+
+        <li className={styles.actionLine}>
           <LinkToPage
             to={`/update-expense/${groupCode}/${item._id}`}
             setNestedPreviousRoute={true}>
             edit
           </LinkToPage>
+        </li>
+        <li className={styles.actionLine}>
           <DeleteResource
             resourceId={item._id}
             resourceType={"expenses"}
@@ -44,8 +53,8 @@ const RenderUserExpense = ({
             navigateOnDelete={false}
             showResourceType={false}
           />
-        </div>
-      </div>
+        </li>
+      </ul>
       {/* Right Column */}
       <div className={styles.rightColumn}>
         <div className={styles.borderedContent}>

@@ -28,7 +28,7 @@ const TopBar = ({
   animation = false,
 }) => {
   const containerClassName = `${styles.container} ${
-    animation ? styles.slideInLeft : ""
+    animation ? styles.slideInFromLeft : ""
   }`;
 
   return (
@@ -38,6 +38,8 @@ const TopBar = ({
           icon={IoPersonAddOutline}
           containerHeight='5.8'
           containerWidth='7.2'
+          iconExplanationWidth='5'
+          explanationText='invite to group'
           iconExplanationIsIdle={true}
           route={`/share-group/${initialGroupName}/${groupCode}`}
           iconSize={3.5}
