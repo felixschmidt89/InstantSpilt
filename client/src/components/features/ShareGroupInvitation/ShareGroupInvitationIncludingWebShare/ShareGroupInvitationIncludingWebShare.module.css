@@ -7,10 +7,10 @@
 }
 
 .invitationLink {
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem 1rem;
   width: fit-content;
   border: 0.15rem solid var(--color-grey);
-  border-radius: 0.6rem;
+  border-radius: 1rem;
   overflow-y: auto;
   height: fit-content;
   outline: none;

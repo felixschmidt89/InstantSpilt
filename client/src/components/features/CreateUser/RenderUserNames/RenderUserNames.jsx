@@ -78,7 +78,7 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
           <div className={styles.members}>
             {userNames.length > 0
               ? userNames.join(", ")
-              : "No members added yet"}
+              : "No group members yet. Please add some."}
           </div>
         </div>
       )}

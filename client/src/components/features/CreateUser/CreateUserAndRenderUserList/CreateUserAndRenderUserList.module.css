@@ -4,12 +4,14 @@
 
 .container {
   width: fit-content;
+  max-width: 70%;
   margin: 0 auto;
+  font-size: 1.6rem;
 }
 
 @media only screen and (max-width: 768px) {
   .container {
-    width: 80%;
+    width: 90%;
     margin-left: 6rem;
   }
 }

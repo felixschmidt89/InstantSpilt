@@ -149,8 +149,8 @@ textarea {
   font-family: "Ubuntu", sans-serif;
   width: 20rem;
   border: 0.15rem solid var(--color-grey);
-  border-radius: 0.5rem;
-  font-size: 1.5rem;
+  border-radius: 1rem;
+  font-size: 1.6rem;
   outline: none;
   margin-bottom: 0.5rem;
   outline-color: var(--color-grey);
@@ -158,11 +158,11 @@ textarea {
 
 input,
 textarea {
-  padding: 0.2rem 0.5rem;
+  padding: 0.4rem 1rem;
 }
 
 select {
-  padding: 0.2rem 0.1rem;
+  padding: 0.4rem 0.5rem;
 }
 
 select:focus,
@@ -203,6 +203,13 @@ scrollbar-thumb {
     height: 6vh;
     height: 6svh;
   }
+
+  textarea,
+  select,
+  input,
+  textarea {
+    font-size: 1.5rem;
+  }
 }
 
 /* smartphone landscape mode*/
@@ -234,8 +241,6 @@ scrollbar-thumb {
     height: 79vh;
     height: 89svh;
     width: 70vw;
-    font-size: 1.5rem;
-    line-height: 1.4;
   }
   footer {
     height: 6vh;

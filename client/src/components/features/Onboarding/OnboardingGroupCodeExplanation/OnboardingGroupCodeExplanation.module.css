@@ -4,10 +4,10 @@
 .explanation {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.2rem 0.5rem;
+  padding: 0.5rem 1rem;
   width: 20rem;
   border: 0.15rem solid var(--color-grey);
-  border-radius: 0.6rem;
+  border-radius: 1rem;
   font-size: 1.5rem;
   overflow-y: auto;
   height: fit-content;

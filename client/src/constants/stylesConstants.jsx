@@ -61,7 +61,7 @@ export const toggleBeneficiariesButtonStyles = {
   padding: "0rem 0rem",
   fontSize: "1.2rem",
   margin: "0 auto",
-  marginTop: "0rem",
+  marginTop: "0.4rem",
   marginBottom: "0.4rem",
   fontFamily: "inherit",
   width: "fit-content",

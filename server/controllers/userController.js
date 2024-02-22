@@ -225,7 +225,11 @@ export const listAllUsersByGroupCode = async (req, res) => {
 
     setGroupLastActivePropertyToNow(groupCode);
 
-    const users = await User.find({ groupCode });
+    // Find users by group code
+    let users = await User.find({ groupCode });
+
+    // Sort users alphabetically by userName
+    users.sort((a, b) => a.userName.localeCompare(b.userName));
 
     res.status(StatusCodes.OK).json({
       status: 'success',

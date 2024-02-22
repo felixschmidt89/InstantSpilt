@@ -12,11 +12,14 @@
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 0.2rem 0.5rem;
-  width: 20rem;
+  padding-left: 0.5rem;
+  padding-right: 0.1rem;
+  padding-top: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  width: 27rem;
   margin: 0 auto;
   border: 0.15rem solid var(--color-grey);
-  border-radius: 0.6rem;
+  border-radius: 1rem;
   font-size: 1.5rem;
   overflow-y: scroll;
   height: fit-content;
@@ -26,8 +29,8 @@
   outline-color: var(--color-grey);
 }
 
-.beneficiaries:hover,
-.beneficiaries:focus {
+.label:hover,
+.label:focus {
   border-color: var(--color-signal);
   background-color: var(--color-body);
 }
@@ -42,6 +45,10 @@
 
 .label {
   display: inline-block;
+  border-radius: 1rem;
+  border: 0.15rem solid var(--color-grey);
+  padding-right: 0.5rem;
+  margin: 0.25rem;
 }
 
 .beneficiaries .input {
