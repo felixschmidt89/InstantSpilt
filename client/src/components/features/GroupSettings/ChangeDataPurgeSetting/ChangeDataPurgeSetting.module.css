@@ -5,12 +5,11 @@
   width: 20rem;
   border: 0.15rem solid var(--color-grey);
   border-radius: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   overflow-y: auto;
   height: fit-content;
   outline: none;
   outline-color: var(--color-grey);
-  font-size: 1.5rem;
   line-height: 1.2;
 }
 

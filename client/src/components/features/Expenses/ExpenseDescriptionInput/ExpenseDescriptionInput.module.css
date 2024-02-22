@@ -5,3 +5,7 @@
 .description.isUpdate:focus {
   color: var(--color-dark2);
 }
+
+.container {
+  margin: 0 auto;
+}

@@ -14,13 +14,19 @@
   overflow-y: scroll;
 }
 
+.userName {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
 .emoji {
-  font-size: 1.1rem;
-  padding-top: 0.3rem;
+  font-size: 1.3rem;
+  padding-top: 0.2rem;
+  margin-right: 0.4rem;
 }
 
 .button {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-left: auto;
 }
 

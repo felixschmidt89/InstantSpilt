@@ -39,8 +39,3 @@
 .negativeBalance {
   color: var(--color-error);
 }
-
-@media (max-width: 500px) {
-  .userDetails {
-  }
-}

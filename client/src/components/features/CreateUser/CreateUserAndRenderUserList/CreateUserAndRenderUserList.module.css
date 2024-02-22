@@ -7,6 +7,7 @@
   margin: 0 auto;
   font-size: 1.6rem;
   padding-left: 5rem;
+  height: 90%;
 }
 
 @media only screen and (max-width: 768px) {

@@ -38,7 +38,7 @@ const ExpenseAmountInput = ({
     }
   };
   return (
-    <div>
+    <div className={styles.container}>
       <input
         className={`${styles.amount} ${isUpdate ? styles.isUpdate : ""}`}
         type='text'

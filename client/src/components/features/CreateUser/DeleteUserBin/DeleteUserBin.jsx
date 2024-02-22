@@ -1,9 +1,12 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
-import DeleteIcon from "@mui/icons-material/Delete";
+import axios from "axios";
+import { StatusCodes } from "http-status-codes";
+import { MdDelete } from "react-icons/md";
 
-// Hooks
-import useDeleteResource from "../../../../hooks/useDeleteResource";
+// Constants and Utils
+import { devLog } from "../../../../utils/errorUtils";
+import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Components
 import ConfirmationModal from "../../../common/ConfirmationModal/ConfirmationModal";
@@ -11,8 +14,11 @@ import ConfirmationModal from "../../../common/ConfirmationModal/ConfirmationMod
 // Styles
 import styles from "./DeleteUserBin.module.css";
 
+// API URL
+const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
 /**
- * Component for rendering a delete icon and confirmation modal for deleting a user.
+ * Component for rendering a delete trash bin and related confirmation modal
  *
  * @param {Object} props - The component props.
  * @param {string} props.userId - The ID of the user to be deleted.
@@ -29,19 +35,7 @@ const DeleteUserBin = ({
 }) => {
   const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
   const [deletionSuccess, setDeletionSuccess] = useState(false);
-
-  // Get hook to delete user
-  const { deleteResource, error: hookError } = useDeleteResource(
-    "users",
-    userId,
-    null
-  );
-
-  // Local state for hook error
-  const [localError, setLocalError] = useState(null);
-  useEffect(() => {
-    setLocalError(hookError);
-  }, [hookError]);
+  const [error, setError] = useState(null);
 
   // Effect to trigger rerender when deletion is successful
   useEffect(() => {
@@ -53,10 +47,20 @@ const DeleteUserBin = ({
 
   const handleDelete = async () => {
     try {
-      await deleteResource();
-      setDeletionSuccess(true);
+      const response = await axios.delete(`${apiUrl}/users/${userId}`);
+      if (response.status === StatusCodes.NO_CONTENT) {
+        setError(null);
+        devLog(`User ${userId} has been deleted.`);
+        setDeletionSuccess(true);
+        handleHideConfirmation();
+      }
     } catch (error) {
-      setLocalError(error);
+      if (error.response && error.response.status === StatusCodes.BAD_REQUEST) {
+        setError(error.response.data.message);
+      } else {
+        devLog(`Error deleting user ${userId}:`, error);
+        setError(genericErrorMessage);
+      }
     }
   };
 
@@ -66,6 +70,7 @@ const DeleteUserBin = ({
 
   const handleHideConfirmation = () => {
     setIsConfirmationVisible(false);
+    setError(null);
   };
 
   return (
@@ -74,7 +79,7 @@ const DeleteUserBin = ({
         className={styles.link}
         onClick={handleShowConfirmation}
         role='button'>
-        <DeleteIcon />
+        <MdDelete />
       </span>
       {isConfirmationVisible && (
         <ConfirmationModal
@@ -82,7 +87,7 @@ const DeleteUserBin = ({
           onConfirm={handleDelete}
           onCancel={handleHideConfirmation}
           isVisible={isConfirmationVisible}
-          error={localError}
+          error={error}
         />
       )}
     </div>

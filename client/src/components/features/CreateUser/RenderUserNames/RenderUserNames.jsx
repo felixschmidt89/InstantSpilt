@@ -99,7 +99,7 @@ const RenderUserNames = ({
                         label='group member emoji'
                       />
                     </span>
-                    {userName}
+                    <span className={styles.userName}>{userName}</span>
                     <span className={styles.button}>
                       <DeleteUserBin
                         userId={_id}

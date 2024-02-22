@@ -55,8 +55,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  font-size: 1.5rem;
-  line-height: 1.4;
+  font-size: 1.6rem;
+  line-height: 1.5;
 }
 
 main {
@@ -110,8 +110,8 @@ ul {
 }
 
 li {
-  font-size: 1.5rem;
-  line-height: 1.4;
+  font-size: 1.6rem;
+  line-height: 1.5;
 }
 
 button,
@@ -196,8 +196,8 @@ scrollbar-thumb {
     height: 79vh;
     height: 89svh;
     width: 98vw;
-    font-size: 1.5rem;
-    line-height: 1.4;
+    font-size: 1.6rem;
+    line-height: 1.5;
   }
   footer {
     height: 6vh;
@@ -209,7 +209,7 @@ scrollbar-thumb {
   select,
   input,
   textarea {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 }
 
