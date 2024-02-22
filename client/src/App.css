@@ -65,7 +65,7 @@ main {
   overflow-x: hidden;
   margin: 0 auto;
   background-color: var(--color-main);
-  border-radius: 1rem;
+  border-radius: 2rem;
   border: 0.1rem solid var(--color-signal-reduced-opacity);
   width: 60vw;
   height: 80vh;

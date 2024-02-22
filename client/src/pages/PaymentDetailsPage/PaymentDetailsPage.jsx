@@ -43,7 +43,7 @@ const PaymentDetailsPage = () => {
               emoji={emojiConstants.payment}></Emoji>{" "}
           </span>
           <h1>
-            {paymentInfo.paymentAmount}
+            {paymentInfo.paymentAmount.toFixed(2)}
             {groupCurrency}
           </h1>
           <div className={styles.detailsBox}>

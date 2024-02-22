@@ -10,6 +10,7 @@ export const buttonStyles = {
   fontFamily: "inherit",
   minWidth: "20rem",
   width: "fit-content",
+  borderRadius: "20px",
 };
 
 /**
@@ -23,4 +24,46 @@ export const smallButtonStyles = {
   marginBottom: "0.4rem",
   fontFamily: "inherit",
   width: "2rem",
+  borderRadius: "20px",
+};
+
+/**
+ * Styles for attach file Material-UI button.
+ */
+export const attachFileButtonStyles = {
+  padding: "0.2rem 0.5rem",
+  marginTop: "0rem",
+  marginBottom: "0.5rem",
+  fontFamily: "inherit",
+  minWidth: "20rem",
+  width: "fit-content",
+  borderRadius: "20px",
+};
+
+/**
+ * Styles for Material-UI button used for routing within the application.
+ */
+export const routeButtonStyles = {
+  padding: "0.1rem 0.5rem",
+  fontSize: "1.5rem",
+  margin: "0 auto",
+  marginTop: "0.5rem",
+  marginBottom: "0.5rem",
+  fontFamily: "inherit",
+  minWidth: "20rem",
+  width: "fit-content",
+  borderRadius: "20px",
+};
+
+/**
+ * Styles for toggleBeneficiariesButton Material-UI  */
+export const toggleBeneficiariesButtonStyles = {
+  padding: "0rem 0rem",
+  fontSize: "1.2rem",
+  margin: "0 auto",
+  marginTop: "0rem",
+  marginBottom: "0.4rem",
+  fontFamily: "inherit",
+  width: "fit-content",
+  borderRadius: "20px",
 };

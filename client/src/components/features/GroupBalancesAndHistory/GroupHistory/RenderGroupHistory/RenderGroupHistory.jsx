@@ -103,6 +103,7 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
                     item={item}
                     groupCode={groupCode}
                     groupCurrency={groupCurrency}
+                    groupMembers={groupMembers}
                   />
                 ) : (
                   <RenderGroupPayment

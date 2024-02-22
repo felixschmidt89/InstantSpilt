@@ -33,6 +33,10 @@
   overflow-x: hidden;
 }
 
+.forAll {
+  color: var(--color-success);
+}
+
 .rightColumn .expenseEmoji {
   margin-bottom: 0.5rem;
 }

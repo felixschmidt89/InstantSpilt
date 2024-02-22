@@ -9,6 +9,7 @@ import { genericErrorMessage } from "../../constants/errorConstants";
 
 // Hooks
 import useFetchGroupCurrency from "../../hooks/useFetchGroupCurrency";
+import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -28,6 +29,8 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const UserTransactionHistoryPage = () => {
   const { groupCode, userId } = useParams();
   const [userExpensesAndPayments, setUserExpensesAndPayments] = useState([]);
+  const { groupMembers, isFetched: groupMembersIsFetched } =
+    useFetchGroupMembers(groupCode);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { groupCurrency, isFetched: currencyInfoIsFetched } =
@@ -73,7 +76,7 @@ const UserTransactionHistoryPage = () => {
       <PiratePx COUNT_IDENTIFIER={"user-transaction-history"} />
       <InAppNavigationBar previousRoute={true} home={true} />
       <h1>transaction history</h1>
-      {isLoading && currencyInfoIsFetched ? (
+      {isLoading && currencyInfoIsFetched && groupMembersIsFetched ? (
         <div className={styles.spinner}>
           <Spinner />
         </div>
@@ -87,6 +90,7 @@ const UserTransactionHistoryPage = () => {
                 updateUserExpensesAndPaymentsAfterResourceDeletion
               }
               groupCurrency={groupCurrency}
+              groupMembers={groupMembers}
             />
           ) : (
             <NoUserTransactions />

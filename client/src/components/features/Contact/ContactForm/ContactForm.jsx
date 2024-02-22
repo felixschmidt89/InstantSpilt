@@ -5,7 +5,10 @@ import SendIcon from "@mui/icons-material/Send";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 // Constants and Utils
-import { buttonStyles } from "../../../../constants/stylesConstants";
+import {
+  attachFileButtonStyles,
+  buttonStyles,
+} from "../../../../constants/stylesConstants";
 
 // Styles
 import styles from "./ContactForm.module.css";
@@ -30,15 +33,6 @@ const ContactForm = ({
 
   const handleFileUploadClick = () => {
     fileInputRef.current.click();
-  };
-
-  const attachScreenshotButtonStyles = {
-    padding: "0.2rem 0.5rem",
-    marginTop: "0rem",
-    marginBottom: "0.5rem",
-    fontFamily: "inherit",
-    minWidth: "20rem",
-    width: "fit-content",
   };
 
   return (
@@ -127,7 +121,7 @@ const ContactForm = ({
               />
               <Button
                 variant='outlined'
-                style={attachScreenshotButtonStyles}
+                style={attachFileButtonStyles}
                 startIcon={<CloudUploadIcon />}
                 onClick={handleFileUploadClick}>
                 add screenshot

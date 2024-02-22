@@ -22,7 +22,7 @@ const RenderExpenseDetails = ({
       <li className={styles.listItem}>
         <span className={styles.key}>total amount:</span>
         <span className={styles.value}>
-          {expenseInfo.expenseAmount}
+          {expenseInfo.expenseAmount.toFixed(2)}
           {groupCurrency}
         </span>
       </li>

@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 
 // Constants and Utils
 import { setRouteInLocalStorage } from "../../../../utils/localStorageUtils";
+import { routeButtonStyles } from "../../../../constants/stylesConstants";
 
 // Styles
 import styles from "./RouteButton.module.css";
@@ -25,20 +26,6 @@ const RouteButton = ({
   setNestedPreviousRoute,
 }) => {
   const navigate = useNavigate();
-
-  /**
-   * styles for Material-UI button.
-   */
-  const routeButtonStyles = {
-    padding: "0.1rem 0.5rem",
-    fontSize: "1.5rem",
-    margin: "0 auto",
-    marginTop: "0.5rem",
-    marginBottom: "0.5rem",
-    fontFamily: "inherit",
-    minWidth: "20rem",
-    width: "fit-content",
-  };
 
   const handleClick = () => {
     if (setPreviousRoute) {

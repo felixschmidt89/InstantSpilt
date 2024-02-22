@@ -7,9 +7,6 @@ import { ThemeProvider } from "@mui/material/styles";
 // Themes
 import muiTheme from "./themes/muiTheme";
 
-// Hooks
-import useAppRefreshOnBrowserResize from "./hooks/useWindowResize";
-
 // Components
 import Footer from "./components/common/Footer/Footer";
 import Header from "./components/common/Header/Header/Header";

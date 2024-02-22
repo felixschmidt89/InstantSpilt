@@ -2,10 +2,13 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
+// Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
+import { devLog } from "../../utils/errorUtils";
 
 // Hooks
 import useFetchExpenseInfo from "../../hooks/useFetchExpenseInfo";
+import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
 import useFetchGroupCurrency from "../../hooks/useFetchGroupCurrency";
 
 //Components
@@ -25,17 +28,25 @@ import styles from "./ExpenseDetailsPage.module.css";
 
 const ExpenseDetailsPage = () => {
   const { groupCode, itemId } = useParams();
-  const { expenseInfo, isFetched: expenseInfoIsFetched } =
-    useFetchExpenseInfo(itemId);
   const { groupCurrency, isFetched: currencyInfoIsFetched } =
     useFetchGroupCurrency(groupCode);
+  const { expenseInfo, isFetched: expenseInfoIsFetched } =
+    useFetchExpenseInfo(itemId);
+  const { groupMembers, isFetched: groupMembersIsFetched } =
+    useFetchGroupMembers(groupCode);
+
+  devLog("ExpenseInfo fetched", expenseInfo);
+  devLog("Group currency fetched:", currencyInfoIsFetched);
+  devLog("Group members fetched", groupMembers);
 
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - expense details' />
       <PiratePx COUNT_IDENTIFIER={"expense-details"} />
       <InAppNavigation back={true} />
-      {expenseInfoIsFetched && currencyInfoIsFetched ? (
+      {expenseInfoIsFetched &&
+      currencyInfoIsFetched &&
+      groupMembersIsFetched ? (
         <div className={styles.container}>
           <div className={styles.emoji}>
             {" "}
@@ -55,6 +66,9 @@ const ExpenseDetailsPage = () => {
             />
             <RenderExpenseBeneficiaries
               expenseBeneficiaries={expenseInfo.expenseBeneficiaries}
+              allGroupMembersBenefitFromExpense={
+                groupMembers.length === expenseInfo.expenseBeneficiaries.length
+              }
             />
             <RenderResourceCreated
               createdAt={expenseInfo.createdAt}

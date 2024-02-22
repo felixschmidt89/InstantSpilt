@@ -12,6 +12,8 @@ import styles from "./UserTransactionsHistory.module.css";
  * Parent component rendering user transactions history including every single expense and payment of a user.
  * @param {Object} props - The component props.
  * @param {Array} props.userExpensesAndPayments - An array of user expenses and payments.
+ * @param {Array} props.groupMembers - An array of the names of the group members.
+
  * @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDeleteItem - Callback function to handle deletion of an expense or a payment.
  * @param {string} props.groupCurrency - The currency of the group.
@@ -22,6 +24,7 @@ const UserTransactionsHistory = ({
   groupCode,
   onDeleteResource,
   groupCurrency,
+  groupMembers,
 }) => {
   if (userExpensesAndPayments.length === 0) {
     return null;
@@ -43,6 +46,7 @@ const UserTransactionsHistory = ({
                 groupCode={groupCode}
                 onDeleteResource={onDeleteResource}
                 groupCurrency={groupCurrency}
+                groupMembers={groupMembers}
               />
             ) : (
               <RenderUserPayment
