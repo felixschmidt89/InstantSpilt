@@ -4,6 +4,43 @@
   margin-top: 1rem;
 }
 
+.groupMemberHeader {
+  padding-left: 0.3rem;
+  margin-bottom: 0.5rem;
+}
+
 .members {
-  text-wrap: wrap;
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+.emoji {
+  font-size: 1.1rem;
+  padding-top: 0.3rem;
+}
+
+.button {
+  font-size: 1.8rem;
+  margin-left: auto;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: row;
+  width: 23rem;
+}
+
+.members li {
+  font-size: 1.6rem;
+  padding-right: 0.5rem;
+}
+
+.membersContainer {
+  width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+  .membersContainer {
+    width: 120%;
+  }
 }

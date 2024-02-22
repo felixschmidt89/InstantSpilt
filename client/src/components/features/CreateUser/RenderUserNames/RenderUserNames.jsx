@@ -2,16 +2,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+// Constants and Utils
+import { devLog } from "../../../../utils/errorUtils";
+import emojiConstants from "../../../../constants/emojiConstants";
+import { genericErrorMessage } from "../../../../constants/errorConstants";
+
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
-// Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
-
 // Components
 import Spinner from "../../../common/Spinner/Spinner";
+import DeleteUserBin from "../DeleteUserBin/DeleteUserBin";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import Emoji from "../../../common/Emoji/Emoji";
 
 // Styles
 import styles from "./RenderUserNames.module.css";
@@ -20,14 +23,20 @@ import styles from "./RenderUserNames.module.css";
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
- * Renders a list of all member names of a group.
+ * Renders a list of all member names of a group including ability to delete each user.
  *
  * @param {Object} props - The component props.
  * @param {number} props.rerenderTrigger - Trigger for re-rendering the component.
  * @param {string} props.groupCode - The groupCode of the group.
- * @returns {JSX.Element} React component. */
-const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
-  const [userNames, setUserNames] = useState([]);
+ * @param {Function} props.incrementRerenderTrigger - Function to increment the rerender trigger.
+ * @returns {JSX.Element} React component.
+ */
+const RenderUserNames = ({
+  rerenderTrigger,
+  groupCode,
+  incrementRerenderTrigger,
+}) => {
+  const [userDetails, setUserDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -46,13 +55,15 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
           `${apiUrl}/users/byGroupCode/${groupCode}`
         );
         const responseData = response.data;
-        devLog("User details fetched:", response);
-        // Check if there's at least 1 user
         if (responseData.users && responseData.users.length > 0) {
-          // Extract usernames
-          const userNames = responseData.users.map((user) => user.userName);
-          setUserNames(userNames);
+          // Render users in descending order of creation date
+          const sortedUserDetails = responseData.users.sort(
+            (userA, userB) =>
+              new Date(userB.createdAt) - new Date(userA.createdAt)
+          );
+          setUserDetails(sortedUserDetails);
         }
+        devLog(userDetails);
         setError(null);
         setIsLoading(false);
       } catch (error) {
@@ -64,6 +75,8 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
     };
 
     fetchUserDetails();
+    // ESLint rule disabled because adding displayErrorModal to dependency array causes infinite loop
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rerenderTrigger, groupCode]);
 
   return (
@@ -74,11 +87,33 @@ const RenderUserNames = ({ rerenderTrigger, groupCode }) => {
         </div>
       ) : (
         <div className={styles.membersContainer}>
-          <h2>group members</h2>
+          <h2 className={styles.groupMemberHeader}>group members</h2>
           <div className={styles.members}>
-            {userNames.length > 0
-              ? userNames.join(", ")
-              : "No group members yet. Please add some."}
+            {userDetails.length > 0 ? (
+              <ul className={styles.list}>
+                {userDetails.map(({ _id, userName }, index) => (
+                  <li key={index} className={styles.listItem}>
+                    <span className={styles.emoji}>
+                      <Emoji
+                        emoji={emojiConstants.user}
+                        label='group member emoji'
+                      />
+                    </span>
+                    {userName}
+                    <span className={styles.button}>
+                      <DeleteUserBin
+                        userId={_id}
+                        userName={userName}
+                        incrementRerenderTrigger={incrementRerenderTrigger}
+                        rerenderTrigger={rerenderTrigger}
+                      />
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              "No group members yet. Please add some."
+            )}
           </div>
         </div>
       )}

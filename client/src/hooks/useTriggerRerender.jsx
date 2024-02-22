@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { devLog } from "../utils/errorUtils";
 
 /**
  * Custom hook for triggering component rerender.
@@ -14,6 +15,7 @@ const useTriggerRerender = () => {
 
   const incrementRerenderTrigger = () => {
     setRerenderTrigger((prevValue) => prevValue + 1);
+    devLog("Rerender trigger incremented:", rerenderTrigger);
   };
 
   useEffect(() => {}, [groupCode, rerenderTrigger]);

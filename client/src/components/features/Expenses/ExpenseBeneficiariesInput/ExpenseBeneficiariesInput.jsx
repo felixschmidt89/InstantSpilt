@@ -97,7 +97,7 @@ const ExpenseBeneficiariesInput = ({
           <Button
             onClick={toggleBeneficiaries}
             style={toggleBeneficiariesButtonStyles}
-            color='primary'
+            color='grey'
             variant='outlined'
             ref={buttonRef}>
             {selectedBeneficiaries.length === groupMembers.length

@@ -9,7 +9,7 @@ import RenderUserNames from "../RenderUserNames/RenderUserNames";
 import CreateUserForm from "../CreateUserForm/CreateUserForm";
 
 // Styles
-import style from "./CreateUserAndRenderUserList.module.css";
+import styles from "./CreateUserAndRenderUserList.module.css";
 
 /**
  * Component for creating a user within a group and rendering the groups user list.
@@ -21,15 +21,18 @@ const CreateUserAndRenderUserList = ({ isNewUser, isInAppGroupCreator }) => {
     useTriggerRerender();
 
   return (
-    <div className={style.container}>
+    <div className={styles.container}>
       <CreateUserForm
         incrementRerenderTrigger={incrementRerenderTrigger}
         groupCode={groupCode}
       />
-      <RenderUserNames
-        rerenderTrigger={rerenderTrigger}
-        groupCode={groupCode}
-      />
+      <div className={styles.usernames}>
+        <RenderUserNames
+          rerenderTrigger={rerenderTrigger}
+          groupCode={groupCode}
+          incrementRerenderTrigger={incrementRerenderTrigger}
+        />
+      </div>
     </div>
   );
 };

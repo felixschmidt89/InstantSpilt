@@ -14,7 +14,6 @@ import CreateUserCTA from "../../components/features/GroupBalancesAndHistory/Cre
 
 // Styles
 import styles from "./CreateExpensePage.module.css";
-import { devLog } from "../../utils/errorUtils";
 
 const CreateExpensePage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");

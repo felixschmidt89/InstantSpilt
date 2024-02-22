@@ -59,7 +59,7 @@ export const routeButtonStyles = {
  * Styles for toggleBeneficiariesButton Material-UI  */
 export const toggleBeneficiariesButtonStyles = {
   padding: "0rem 0rem",
-  fontSize: "1.2rem",
+  fontSize: "1.4rem",
   margin: "0 auto",
   marginTop: "0.4rem",
   marginBottom: "0.4rem",
