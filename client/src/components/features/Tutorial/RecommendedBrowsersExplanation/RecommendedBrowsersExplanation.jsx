@@ -19,7 +19,7 @@ const RecommendedBrowsersExplanation = () => {
     <div className={styles.container}>
       <h2>recommended browsers</h2>
       <div className={styles.explanation}>
-        <div className={styles.groupCodeExplanation}>
+        <div className={styles.browserExplanationText}>
           While InstantSplit works on any operating system and web browser, we
           recommend{" "}
           <a

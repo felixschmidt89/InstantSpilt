@@ -30,7 +30,7 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
         <div className={styles.groupCodeExplanation}>
           Key to this group is its unique groupcode, store it somewhere save:
           <span className={styles.copyButton}>
-            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"10rem"} />
+            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"11rem"} />
           </span>
         </div>
       </div>

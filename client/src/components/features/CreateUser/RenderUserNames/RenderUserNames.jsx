@@ -80,7 +80,7 @@ const RenderUserNames = ({
   }, [rerenderTrigger, groupCode]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.spinnercontainer}>
       {isLoading ? (
         <div className={styles.spinner}>
           <Spinner />
