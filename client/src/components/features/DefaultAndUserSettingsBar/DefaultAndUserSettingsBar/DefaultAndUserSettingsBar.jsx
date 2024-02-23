@@ -8,6 +8,7 @@ import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
 import { IoChatboxOutline } from "react-icons/io5";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { FaUserPlus } from "react-icons/fa6";
 
 // Constants and Utils
 import { deleteGroupDataFromLocalStorage } from "../../../../utils/localStorageUtils";
@@ -89,7 +90,7 @@ const DefaultAndUserSettingsBar = () => {
               {/* Here's the missing opening <span> tag */}
               <span className={styles.inviteToGroupIcon}>
                 <ReactIconNavigate
-                  icon={IoPersonAddOutline}
+                  icon={FaUserPlus}
                   containerHeight='5.8'
                   containerWidth='7.2'
                   iconExplanationWidth='5'
@@ -97,12 +98,12 @@ const DefaultAndUserSettingsBar = () => {
                   route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
                   iconSize={3.5}
                   translateY={0.1}
-                  translateX={-0.2}
+                  translateX={0}
                   iconScale={0.8}
                 />
               </span>
               <span className={styles.instantSplitLogo}>
-                <InstantSplitLogo width={"100"} />{" "}
+                <InstantSplitLogo width={"24"} />{" "}
               </span>
               <span className={styles.icon}>
                 <ReactIconNavigate

@@ -91,7 +91,7 @@ const InAppNavigationBar = ({
         )}
       </div>
       <div className={styles.middleLogo}>
-        <InstantSplitLogo className={styles.instantSplitLogo} width={"60"} />
+        <InstantSplitLogo className={styles.instantSplitLogo} width={"24"} />
       </div>
       <div className={styles.rightIcon}>
         {home && (

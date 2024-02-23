@@ -14,6 +14,7 @@ import AcceptGroupInvitation from "../../components/features/AcceptGroupInvitati
 
 // Styles
 import styles from "./AcceptGroupInvitationAndJoinPage.module.css";
+import InstantSplitLogo from "../../components/common/InstantSplitLogo/InstantSplitLogo";
 
 const AcceptGroupInvitationAndJoinPage = () => {
   const { groupCode } = useParams();
@@ -29,6 +30,9 @@ const AcceptGroupInvitationAndJoinPage = () => {
       <PiratePx COUNT_IDENTIFIER={"accept-invitation-landing-page"} />
       {isFetched && (
         <>
+          <span className={styles.instantSplitLogo}>
+            <InstantSplitLogo width={"24"} linkToInstantSplitPage={false} />
+          </span>
           <h1 className={styles.homepageHeader}>Hi there!</h1>
           <div className={styles.container}>
             <InvitationIntro groupData={groupData} />

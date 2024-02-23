@@ -5,3 +5,7 @@
 .paymentMaker.isUpdate:focus {
   color: var(--color-dark2);
 }
+
+.paymentMaker {
+  margin: 0 auto;
+}

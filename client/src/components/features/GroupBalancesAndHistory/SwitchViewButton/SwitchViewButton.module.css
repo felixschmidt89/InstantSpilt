@@ -4,9 +4,9 @@
   border: none;
   font-size: 2rem;
   cursor: pointer;
-  width: 10rem;
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
+  width: 11rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-weight: 500;
   border: 0.2rem solid var(--color-dark);
   border-radius: 2rem;

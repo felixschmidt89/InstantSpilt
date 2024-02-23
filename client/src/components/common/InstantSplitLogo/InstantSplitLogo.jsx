@@ -12,11 +12,11 @@ import styles from "./InstantSplitLogo.module.css";
  * @param {boolean} [props.linkToInstantSplitPage=true] - Whether to render the link to /instant-split page. Defaults to true.
  * @returns {JSX.Element} React component.
  */
-const InstantSplitLogo = ({ width = 50, linkToInstantSplitPage = true }) => {
+const InstantSplitLogo = ({ width = 25, linkToInstantSplitPage = true }) => {
   const logoStyle = {
-    width: `${width}%`,
+    width: `${width}rem`,
     maxWidth: "30rem",
-    height: "",
+    minWidth: "20rem",
   };
 
   // Conditionally render the Link component based on linkToInstantSplitPage prop

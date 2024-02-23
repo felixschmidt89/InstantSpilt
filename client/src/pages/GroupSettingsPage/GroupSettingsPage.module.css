@@ -1,3 +1,14 @@
+.container {
+  width: 60%;
+  height: 90%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
+  padding-bottom: 2rem;
+}
+
 .container h1 {
   margin-bottom: 0.5rem;
 }
@@ -6,13 +17,19 @@
   margin-top: 0rem;
 }
 
-.container {
-  overflow-y: auto;
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  width: fit-content;
-  margin: 0 auto;
-}
-
 .settingsContainer {
   margin-left: 7%;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  .container {
+    width: 50%;
+  }
 }

@@ -22,7 +22,7 @@ const HomePage = () => {
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - homepage' />
       <span className={styles.instantSplitLogo}>
-        <InstantSplitLogo width={"100"} linkToInstantSplitPage={false} />
+        <InstantSplitLogo width={"24"} linkToInstantSplitPage={false} />
       </span>
       <div className={styles.container}>
         <PiratePx COUNT_IDENTIFIER='homepage' />

@@ -1,18 +1,15 @@
 .navContainer {
   display: flex;
+  width: 60vw;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  margin-top: 0.5rem;
-  height: 5.5rem;
-
-  margin-left: 1.7rem;
-  margin-right: 1.7rem;
-  height: rem;
+  height: 8rem;
   position: relative; /* To enable absolute centering of InstantSplitLogo */
   overflow-x: hidden;
   overflow-y: hidden;
+  padding-left: 1.9rem;
+  padding-right: 1.8rem;
 }
 
 .icon {
@@ -34,9 +31,68 @@ icon:hover {
 
 /* Center the logo within navContainer regardless if other icons are present */
 .middleLogo {
-  margin-top: 1rem;
+  padding-top: 1.2rem;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   text-align: center; /* to center Logo within InstantSplitLogo component */
+}
+
+/* Media queries for responsive design */
+/* Mobile*/
+@media only screen and (max-width: 767px) {
+  .navContainer {
+    width: 98vw;
+  }
+  .middleLogo {
+    padding-top: 1.4rem;
+  }
+}
+
+/* smartphone landscape mode*/
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+  .navContainer {
+    width: 60vw;
+  }
+}
+
+/* Tablet and portrait mode */
+@media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: portrait) {
+  .navContainer {
+    width: 70vw;
+  }
+}
+
+/* Tablet landscape mode */
+@media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: landscape) {
+  .navContainer {
+    width: 55vw;
+  }
+}
+
+/* Laptop*/
+@media only screen and (min-width: 769px) and (max-width: 1440px) {
+  .navContainer {
+    width: 60vw;
+  }
+}
+
+/* Larger Screens */
+@media only screen and (min-width: 1441px) and (max-width: 1920px) {
+  .navContainer {
+    width: 55rem;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  .navContainer {
+    width: 68rem;
+  }
+}
+
+/* use full display for rendering main when display height is small, e.g. smartphone landscape mode*/
+@media screen and (max-height: 500px) {
+  .navContainer {
+    width: 99vw;
+  }
 }

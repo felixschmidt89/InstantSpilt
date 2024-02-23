@@ -10,7 +10,7 @@
 }
 
 .members {
-  height: 60vh;
+  height: max-content;
   overflow-y: scroll;
 }
 

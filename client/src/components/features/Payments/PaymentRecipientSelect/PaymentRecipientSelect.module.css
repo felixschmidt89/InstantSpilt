@@ -5,3 +5,7 @@
 .paymentRecipient.isUpdate:focus {
   color: var(--color-dark2);
 }
+
+.paymentRecipient {
+  margin: 0 auto;
+}
