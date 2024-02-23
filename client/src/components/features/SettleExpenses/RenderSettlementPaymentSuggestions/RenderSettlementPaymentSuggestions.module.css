@@ -6,10 +6,15 @@
   margin-top: 1rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
-  border-radius: 0.3rem;
-  box-shadow:
-    0 0 0 0.2rem var(--color-signal),
-    0.8rem 0.8rem 0 0 var(--color-signal-reduced-opacity);
+  padding: 0.5rem 1rem;
+  border: 0.25rem solid var(--color-signal);
+  border-radius: 1rem;
+  font-size: 1.6rem;
+}
+
+.paymentMaker,
+.paymentRecipient {
+  width: 10rem;
 }
 .paymentSuggestions {
   display: flex;

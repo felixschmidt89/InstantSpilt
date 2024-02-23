@@ -7,13 +7,19 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import Contact from "../../components/features/Contact/Contact/Contact";
 
+// Styles
+import styles from "./ContactPage.module.css";
+
 const ContactPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - contact' />
       <PiratePx COUNT_IDENTIFIER={"contact"} />
       <InAppNavigationBar back={true} />
-      <Contact />
+      <div className={styles.container}>
+        <h1>contact</h1>
+        <Contact />
+      </div>
     </main>
   );
 };

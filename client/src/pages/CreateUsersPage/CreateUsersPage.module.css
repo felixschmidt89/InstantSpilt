@@ -5,12 +5,13 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
+  margin-top: 1rem;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 2rem;
 }
 
 .container h1 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .rightAligned:hover {

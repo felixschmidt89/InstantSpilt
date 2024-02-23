@@ -20,6 +20,10 @@ import styles from "./ReactIconNavigate.module.css";
  * @param {number} props.translateX - The horizontal translation of the icon in rem unit. Defaults to 0.
  * @param {string} props.explanationText - The icon description text rendered below the component.
  * @param {string} props.iconExplanationWidth - The width of the icon explanation in rem unit. Defaults to 7.
+ * @param {string} props.iconExplanationTextAlignment - The text alignment of the icon explanation in rem unit. Defaults to "center".
+ * @param {string} props.iconExplanationIsIdleTranslateX - The horizontal translation of the icon explanation. Defaults to 0.
+
+
  * @param {boolean} props.iconExplanationIsIdle - Whether the icon explanation is in idle state. Defaults to false.
 
 
@@ -44,6 +48,8 @@ const ReactIconNavigate = ({
   fontWeight = 400,
   iconExplanationWidth = 7,
   iconExplanationIsIdle = false,
+  iconExplanationIsIdleTranslateX = 0,
+  iconExplanationTextAlignment = "center",
 }) => {
   const navigate = useNavigate();
 
@@ -82,7 +88,11 @@ const ReactIconNavigate = ({
         className={`${styles.iconExplanation} ${
           iconExplanationIsIdle ? styles.iconExplanationIsIdle : ""
         }`}
-        style={{ width: `${iconExplanationWidth}rem` }}>
+        style={{
+          width: `${iconExplanationWidth}rem`,
+          textAlign: `${iconExplanationTextAlignment}`,
+          transform: `translate(${iconExplanationIsIdleTranslateX}rem`,
+        }}>
         {explanationText}
       </span>
     </div>

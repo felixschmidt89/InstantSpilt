@@ -88,13 +88,15 @@ const DefaultAndUserSettingsBar = () => {
               role='toolbar'
               aria-label='user settings'>
               {/* Here's the missing opening <span> tag */}
-              <span className={styles.inviteToGroupIcon}>
+              <span className={styles.icon}>
                 <ReactIconNavigate
                   icon={FaUserPlus}
                   containerHeight='5.8'
                   containerWidth='7.2'
                   iconExplanationWidth='5'
                   explanationText='invite to group'
+                  iconExplanationTextAlignment='left'
+                  iconExplanationIsIdleTranslateX='1'
                   route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
                   iconSize={3.5}
                   translateY={0.1}
@@ -111,9 +113,13 @@ const DefaultAndUserSettingsBar = () => {
                   containerHeight='5.8'
                   containerWidth='7.2'
                   iconSize={3.5}
-                  iconScale={1.3}
-                  translateY={0.05}
-                  translateX={-0.1}
+                  iconScale={1.5}
+                  translateY={0.4}
+                  translateX={-0.3}
+                  iconExplanationWidth='5'
+                  iconExplanationTextAlignment='right'
+                  iconExplanationIsIdleTranslateX='-1.1'
+                  explanationText='more options'
                   onClick={showUserSettings}
                 />
               </span>

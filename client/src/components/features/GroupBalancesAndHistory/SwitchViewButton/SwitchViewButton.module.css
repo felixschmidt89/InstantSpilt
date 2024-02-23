@@ -1,12 +1,12 @@
 .button {
-  background-color: var(--color-signal);
-  color: var(--color-main);
+  background-color: var(--color-signal-reduced-opacity);
+  color: var(--color-dark);
   border: none;
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
-  width: 11rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  width: 10rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
   font-weight: 500;
   border: 0.2rem solid var(--color-dark);
   border-radius: 2rem;
@@ -15,6 +15,7 @@
 .inactiveButton {
   opacity: 0.45;
   filter: grayscale(15%);
+  color: var(--color-dark-light);
 }
 
 .inactiveButton:hover {

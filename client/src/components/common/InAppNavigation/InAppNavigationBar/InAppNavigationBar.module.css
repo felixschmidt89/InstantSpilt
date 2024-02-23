@@ -31,7 +31,7 @@ icon:hover {
 
 /* Center the logo within navContainer regardless if other icons are present */
 .middleLogo {
-  padding-top: 1.2rem;
+  padding-top: 1.4rem;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -43,9 +43,6 @@ icon:hover {
 @media only screen and (max-width: 767px) {
   .navContainer {
     width: 98vw;
-  }
-  .middleLogo {
-    padding-top: 1.4rem;
   }
 }
 
@@ -87,6 +84,9 @@ icon:hover {
 @media only screen and (min-width: 1921px) {
   .navContainer {
     width: 68rem;
+  }
+  .middleLogo {
+    padding-top: 1.3rem;
   }
 }
 

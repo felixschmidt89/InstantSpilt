@@ -7,10 +7,10 @@ import { calculateSuggestedSettlementPayments } from "../../../../utils/settleme
 
 // Components
 import Emoji from "../../../common/Emoji/Emoji";
+import ConfirmSettlementPayment from "../ConfirmSettlementPayment/ConfirmSettlementPayment";
 
 // Styles
 import styles from "./RenderSettlementPaymentSuggestions.module.css";
-import ConfirmSettlementPayment from "../ConfirmSettlementPayment/ConfirmSettlementPayment";
 
 /**
  * Component for rendering settlement payment suggestions.
@@ -44,11 +44,17 @@ const RenderSettlementPaymentSuggestions = ({
         {settlementPaymentSuggestions.map((settlement, index) => (
           <li key={index} className={styles.paymentSuggestions}>
             <div className={styles.makerAndRecipient}>
-              <span aria-label={`Payment maker name`}>{settlement.from} </span>
+              <span
+                className={styles.paymentMaker}
+                aria-label={`Payment maker name`}>
+                {settlement.from}{" "}
+              </span>
               <Emoji
                 label={"payment to other user emoji"}
                 emoji={emojiConstants.paymentsMade}></Emoji>{" "}
-              <span aria-label={`Payment recipient name`}>
+              <span
+                aria-label={`Payment recipient name`}
+                className={styles.paymentRecipient}>
                 {settlement.to}
                 {": "}
               </span>
