@@ -2,10 +2,17 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-left: 2rem;
-  margin-right: 2rem;
-  margin-top: 0.8rem;
-  line-height: 1;
+  align-items: center;
+
+  margin-top: 0.5rem;
+  height: 5.5rem;
+
+  margin-left: 1.7rem;
+  margin-right: 1.7rem;
+  height: rem;
+  position: relative; /* To enable absolute centering of InstantSplitLogo */
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .icon {
@@ -13,16 +20,8 @@
   font-size: 3.5rem;
 }
 
-.leftAlignedIcon {
-  margin-right: auto;
-}
-
-.rightAlignedIcon {
-  margin-left: auto;
-}
-
 .text {
-  line-height: 0.8;
+  line-height: 0.4;
   font-size: 1.4rem;
   text-align: center;
 }
@@ -31,4 +30,13 @@
 icon:hover {
   color: var(--color-dark-dark);
   cursor: pointer;
+}
+
+/* Center the logo within navContainer regardless if other icons are present */
+.middleLogo {
+  margin-top: 1rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center; /* to center Logo within InstantSplitLogo component */
 }

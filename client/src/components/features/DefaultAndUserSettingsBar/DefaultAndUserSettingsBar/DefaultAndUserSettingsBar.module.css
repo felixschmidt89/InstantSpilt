@@ -1,0 +1,139 @@
+.container {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-height: 10rem;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  text-align: center;
+}
+
+.instantSplitLogo {
+  margin-top: 1rem;
+}
+
+/* Delayed rendering to hide initial transforming of DefaultBar and UserSettingsBar */
+.container {
+  opacity: 0;
+  animation: delayedRender 0.1s ease 0.2s forwards;
+}
+
+@keyframes delayedRender {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.defaultBar,
+.userSettingsBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 0.8rem;
+  position: relative;
+
+  transition: transform 0.5s ease;
+  height: 6rem;
+}
+
+.topBarWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.showDefaultBar {
+  transform: translateX(50%);
+}
+
+.hideDefaultBar {
+  transform: translateX(-100%);
+}
+.showUserSettingsBar {
+  transform: translateX(50%);
+}
+
+.hideUserSettingsBar {
+  transform: translateX(-50%);
+}
+
+/* Component width is aligned with main width in app.css */
+/* Mobile*/
+@media only screen and (max-width: 767px) {
+  .container,
+  .defaultBar,
+  .userSettingsBar {
+    width: 98vw;
+  }
+  .container {
+    margin-top: 0.2rem;
+  }
+}
+
+/* smartphone landscape mode*/
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+  .container,
+  .defaultBar,
+  .userSettingsBar {
+    width: 60vw;
+  }
+}
+
+/* Tablet and portrait mode */
+@media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: portrait) {
+  .container,
+  .defaultBar,
+  .userSettingsBar {
+    width: 70vw;
+  }
+}
+
+/* Tablet landscape mode */
+@media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: landscape) {
+  .container,
+  .defaultBar,
+  .userSettingsBar {
+    width: 55vw;
+  }
+}
+
+/* Laptop*/
+@media only screen and (min-width: 769px) and (max-width: 1440px) {
+  .container,
+  .defaultBar,
+  .userSettingsBar {
+    width: 60vw;
+    max-width: 55rem;
+  }
+}
+
+/* Larger Screens */
+@media only screen and (min-width: 1441px) and (max-width: 1920px) {
+  .container,
+  .defaultBar,
+  .userSettingsBar {
+    width: 55rem;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  .container,
+  .defaultBar,
+  .userSettingsBar {
+    width: 68rem;
+  }
+}
+
+/* use full display for rendering main when display height is small, e.g. smartphone landscape mode*/
+@media screen and (max-height: 500px) {
+  .container,
+  .defaultBar,
+  .userSettingsBar {
+    width: 99vw;
+  }
+}

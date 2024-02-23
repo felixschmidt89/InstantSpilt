@@ -69,6 +69,8 @@ main {
   border: 0.1rem solid var(--color-signal-reduced-opacity);
   width: 60vw;
   height: 80vh;
+  max-height: 750px;
+  margin-top: 1rem;
 }
 
 h1 {
@@ -187,14 +189,10 @@ scrollbar-thumb {
 /* Media queries for responsive design */
 /* Mobile*/
 @media only screen and (max-width: 767px) {
-  header {
-    /* fallback value for older browsers*/
-    height: 6vh;
-    height: 6svh;
-  }
   main {
-    height: 79vh;
-    height: 89svh;
+    margin-top: 0.5rem;
+    height: 84vh;
+    height: 94svh;
     width: 98vw;
     font-size: 1.6rem;
     line-height: 1.5;
@@ -215,14 +213,9 @@ scrollbar-thumb {
 
 /* smartphone landscape mode*/
 @media only screen and (max-width: 768px) and (orientation: landscape) {
-  header {
-    /* fallback value for older browsers*/
-    height: 10vh;
-    height: 10svh;
-  }
   main {
-    height: 71vh;
-    height: 81svh;
+    height: 81vh;
+    height: 91svh;
     width: 60vw;
   }
   footer {
@@ -233,14 +226,9 @@ scrollbar-thumb {
 
 /* Tablet and portrait mode */
 @media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: portrait) {
-  header {
-    /* fallback value for older browsers*/
-    height: 6vh;
-    height: 6svh;
-  }
   main {
-    height: 79vh;
-    height: 89svh;
+    height: 85vh;
+    height: 95svh;
     width: 70vw;
   }
   footer {
@@ -251,14 +239,9 @@ scrollbar-thumb {
 
 /* Tablet landscape mode */
 @media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: landscape) {
-  header {
-    /* fallback value for older browsers*/
-    height: 6vh;
-    height: 6svh;
-  }
   main {
-    height: 71vh;
-    height: 81svh;
+    height: 77vh;
+    height: 87svh;
     width: 55vw;
     max-width: 55rem;
   }
@@ -270,13 +253,10 @@ scrollbar-thumb {
 
 /* Laptop*/
 @media only screen and (min-width: 769px) and (max-width: 1440px) {
-  header {
-    height: 5vh;
-  }
   main {
     padding-top: 0rem;
-    height: 86vh;
-    height: 86svh;
+    height: 91vh;
+    height: 91svh;
     width: 60vw;
     max-width: 55rem;
   }
@@ -287,28 +267,18 @@ scrollbar-thumb {
 
 /* Larger Screens */
 @media only screen and (min-width: 1441px) and (max-width: 1920px) {
-  header {
-    height: 6vh;
-  }
   main {
-    height: 84vh;
-    height: 84svh;
+    height: 90vh;
+    height: 90svh;
     width: 55rem;
   }
 }
 
 @media only screen and (min-width: 1921px) {
-  header {
-    height: 5rem;
-  }
   main {
-    height: 70rem;
+    height: 75rem;
     width: 68rem;
   }
-}
-
-main {
-  max-height: 750px;
 }
 
 /* use full display for rendering main when display height is small, e.g. smartphone landscape mode*/

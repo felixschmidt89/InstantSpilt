@@ -13,6 +13,7 @@ import TermsAndConditionsSection from "../../components/features/Home/TermsAndCo
 
 // Styles
 import styles from "./HomePage.module.css";
+import InstantSplitLogo from "../../components/common/InstantSplitLogo/InstantSplitLogo";
 
 const HomePage = () => {
   useGetActiveGroupCodeOrSetNextInactiveGroupCodeToActiveAndNavigateToMainApplication();
@@ -20,9 +21,12 @@ const HomePage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - homepage' />
-      <h1 className={styles.homepageHeader}>Welcome to InstantSplit</h1>
+      <span className={styles.instantSplitLogo}>
+        <InstantSplitLogo width={"100"} linkToInstantSplitPage={false} />
+      </span>
       <div className={styles.container}>
         <PiratePx COUNT_IDENTIFIER='homepage' />
+        <h1 className={styles.homepageHeader}>Welcome to InstantSplit</h1>
         <InstantSplitIntroSection />
         <GetStartedSection />
         <TermsAndConditionsSection />

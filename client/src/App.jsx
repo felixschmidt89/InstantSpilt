@@ -9,7 +9,6 @@ import muiTheme from "./themes/muiTheme";
 
 // Components
 import Footer from "./components/common/Footer/Footer";
-import Header from "./components/common/Header/Header/Header";
 
 // Pages
 import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
@@ -47,7 +46,6 @@ const App = () => {
     <ThemeProvider theme={muiTheme}>
       <BrowserRouter>
         <HelmetProvider>
-          <Header />
           <Routes>
             <Route index element={<HomePage />} />
             <Route path='/legal-notice' element={<LegalNoticePage />} />

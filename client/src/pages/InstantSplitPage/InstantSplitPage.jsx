@@ -1,5 +1,5 @@
 // React and Third-Party Libraries
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
@@ -14,15 +14,14 @@ import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
-import UserSettingsBar from "../../components/features/UserSettingsBar/UserSettingsBar";
 import GroupActionsBar from "../../components/features/ActiveGroupBar/ActiveGroupBar";
 import SwitchViewButtonsBar from "../../components/features/GroupBalancesAndHistory/SwitchViewButtonsBar/SwitchViewButtonsBar";
 import RenderGroupHistory from "../../components/features/GroupBalancesAndHistory/GroupHistory/RenderGroupHistory/RenderGroupHistory";
 import RenderGroupBalances from "../../components/features/GroupBalancesAndHistory/GroupBalances/RenderGroupBalances/RenderGroupBalances";
-import TopBar from "../../components/features/TopBar/TopBar";
 
 // Styles
 import styles from "./InstantSplitPage.module.css";
+import DefaultAndUserSettingsBar from "../../components/features/DefaultAndUserSettingsBar/DefaultAndUserSettingsBar/DefaultAndUserSettingsBar";
 
 /**
  * Renders the main screen of the application
@@ -31,7 +30,6 @@ import styles from "./InstantSplitPage.module.css";
 const InstantSplitPage = () => {
   const navigate = useNavigate();
   const groupCode = localStorage.getItem("activeGroupCode");
-  const userSettingsBarRef = useRef(null);
 
   // Handle no active groupCode
   useEffect(() => {
@@ -56,48 +54,6 @@ const InstantSplitPage = () => {
 
   const { groupData, isFetched } = useFetchGroupData(groupCode);
 
-  // State and callbacks to manage active top component
-  const [activeComponent, setActiveComponent] = useState("TopBar");
-  const [wasUserSettingsBar, setWasUserSettingsBar] = useState(false);
-
-  const switchToTopBar = useCallback(() => {
-    setActiveComponent("TopBar");
-  }, []);
-
-  const switchToUserSettingsBar = () => {
-    setActiveComponent("UserSettingsBar");
-    setWasUserSettingsBar(true);
-  };
-
-  const switchToTopBarWhenClickingOutsideUserSettingsBar = useCallback(
-    (event) => {
-      if (
-        userSettingsBarRef.current &&
-        !userSettingsBarRef.current.contains(event.target)
-      ) {
-        switchToTopBar();
-      }
-    },
-    [switchToTopBar]
-  );
-
-  useEffect(() => {
-    document.addEventListener(
-      "mousedown",
-      switchToTopBarWhenClickingOutsideUserSettingsBar
-    );
-    return () => {
-      document.removeEventListener(
-        "mousedown",
-        switchToTopBarWhenClickingOutsideUserSettingsBar
-      );
-    };
-  }, [switchToTopBarWhenClickingOutsideUserSettingsBar]);
-
-  // Determine whether to apply animation based on the previous state
-  const shouldAnimate =
-    wasUserSettingsBar === true && activeComponent === "TopBar";
-
   // State to keep track of the balance and history views
   const [view, setView] = useState(
     () => localStorage.getItem("viewState") || "view2"
@@ -120,25 +76,9 @@ const InstantSplitPage = () => {
         <>
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
+          <DefaultAndUserSettingsBar />
           <div className={styles.topBar}>
-            {activeComponent === "UserSettingsBar" ? (
-              <UserSettingsBar
-                groupCode={groupCode}
-                initialGroupName={groupData.group.initialGroupName}
-                groupName={groupData.group.groupName}
-                switchToTopBar={switchToTopBar}
-                ref={userSettingsBarRef}
-                animation={true}
-              />
-            ) : (
-              <TopBar
-                groupCode={groupCode}
-                initialGroupName={groupData.group.initialGroupName}
-                groupName={groupData.group.groupName}
-                handleIconClick={switchToUserSettingsBar}
-                animation={shouldAnimate}
-              />
-            )}
+            <h1>{groupData.group.groupName}</h1>
           </div>
           <SwitchViewButtonsBar
             view={view}

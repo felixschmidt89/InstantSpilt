@@ -16,15 +16,15 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
   return (
     <div className={styles.container}>
       <h2>security</h2>
-      <ul className={styles.explanation}>
-        <li>
+      <div className={styles.explanation}>
+        <div>
           Be sure to store your <strong>groupCode</strong> somewhere save to
           avoid losing access:
-        </li>
-        <li className={styles.groupCode}>
-          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"11rem"} />
-        </li>
-      </ul>
+        </div>
+        <div className={styles.groupCode}>
+          <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"12rem"} />
+        </div>
+      </div>
     </div>
   );
 };

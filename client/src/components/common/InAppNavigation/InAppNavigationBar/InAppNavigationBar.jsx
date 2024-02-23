@@ -10,6 +10,7 @@ import { getRouteFromLocalStorage } from "../../../../utils/localStorageUtils";
 
 // Styles
 import styles from "./InAppNavigationBar.module.css";
+import InstantSplitLogo from "../../InstantSplitLogo/InstantSplitLogo";
 
 /**
  * InAppNavigationBar component for rendering navigation links within the application. Utilizes previousRoute key from local storage for nested navigation and nestedPreviousRoute for further nested navigation
@@ -60,51 +61,58 @@ const InAppNavigationBar = ({
 
   return (
     <div className={styles.navContainer}>
-      {back && (
-        <div className={styles.iconContainer}>
-          <IoArrowBackCircleOutline
-            className={`${styles.leftAlignedIcon} ${styles.icon}`}
-            onClick={() => handleRegularNavigation(backRoute)}
-          />
-          <div className={styles.text}>back</div>
-        </div>
-      )}
-      {previousRoute && (
-        <div className={styles.iconContainer}>
-          <IoArrowBackCircleOutline
-            className={`${styles.leftAlignedIcon} ${styles.icon}`}
-            onClick={() => handleNestedNavigation(previousRoute)}
-          />
-          <div className={styles.text}>back</div>
-        </div>
-      )}
-      {nestedPreviousRoute && (
-        <div className={styles.iconContainer}>
-          <IoArrowBackCircleOutline
-            className={`${styles.leftAlignedIcon} ${styles.icon}`}
-            onClick={() => handleNestedNavigation(nestedPreviousRoute)}
-          />
-          <div className={styles.text}>back</div>
-        </div>
-      )}
-      {home && (
-        <div className={styles.iconContainer}>
-          <GoHome
-            className={`${styles.rightAlignedIcon} ${styles.icon}`}
-            onClick={() => handleRegularNavigation(homeRoute)}
-          />
-          <div className={styles.text}>main</div>
-        </div>
-      )}
-      {forward && (
-        <div className={styles.forwardContainer}>
-          <IoArrowForwardCircleOutline
-            className={`${styles.rightAlignedIcon} ${styles.icon}`}
-            onClick={() => handleRegularNavigation(forwardRoute)}
-          />
-          <div className={styles.text}>next</div>
-        </div>
-      )}
+      <div className={styles.leftIcon}>
+        {back && (
+          <div className={styles.iconContainer}>
+            <IoArrowBackCircleOutline
+              className={`${styles.leftAlignedIcon} ${styles.icon}`}
+              onClick={() => handleRegularNavigation(backRoute)}
+            />
+            <div className={styles.text}>back</div>
+          </div>
+        )}
+        {previousRoute && (
+          <div className={styles.iconContainer}>
+            <IoArrowBackCircleOutline
+              className={`${styles.leftAlignedIcon} ${styles.icon}`}
+              onClick={() => handleNestedNavigation(previousRoute)}
+            />
+            <div className={styles.text}>back</div>
+          </div>
+        )}
+        {nestedPreviousRoute && (
+          <div className={styles.iconContainer}>
+            <IoArrowBackCircleOutline
+              className={`${styles.leftAlignedIcon} ${styles.icon}`}
+              onClick={() => handleNestedNavigation(nestedPreviousRoute)}
+            />
+            <div className={styles.text}>back</div>
+          </div>
+        )}
+      </div>
+      <div className={styles.middleLogo}>
+        <InstantSplitLogo className={styles.instantSplitLogo} width={"60"} />
+      </div>
+      <div className={styles.rightIcon}>
+        {home && (
+          <div className={styles.iconContainer}>
+            <GoHome
+              className={`${styles.rightAlignedIcon} ${styles.icon}`}
+              onClick={() => handleRegularNavigation(homeRoute)}
+            />
+            <div className={styles.text}>main</div>
+          </div>
+        )}
+        {forward && (
+          <div className={styles.forwardContainer}>
+            <IoArrowForwardCircleOutline
+              className={`${styles.rightAlignedIcon} ${styles.icon}`}
+              onClick={() => handleRegularNavigation(forwardRoute)}
+            />
+            <div className={styles.text}>next</div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

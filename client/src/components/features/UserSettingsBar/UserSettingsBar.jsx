@@ -12,7 +12,7 @@ import ReactIconNavigate from "../../common/InAppNavigation/ReactIconNavigate/Re
 // Styles
 import styles from "./UserSettingsBar.module.css";
 
-/**
+/** TODO: Legacy component, consider using TopBar component on TutorialPage instead.
  * UserSettingsBar component rendering tutorial, feedback and group management function icons.
  *
  * @param {Object} props - The component props.

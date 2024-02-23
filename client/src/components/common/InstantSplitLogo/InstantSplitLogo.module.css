@@ -2,15 +2,10 @@
 .logoLink {
   text-decoration: none;
   margin: 0;
-  padding-top: 0.6rem;
+  text-align: center;
 }
 
 .logoLink:focus,
 .logoLink:active {
   outline: none;
-}
-
-.logoImage {
-  width: 40%;
-  max-width: 35rem;
 }

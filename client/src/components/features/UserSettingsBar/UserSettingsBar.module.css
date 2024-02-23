@@ -5,20 +5,7 @@
   justify-content: space-between;
 }
 
-.slideInRight {
-  animation: slideInRight 0.3s forwards;
-}
-
 .withMargin {
   margin-bottom: 0.8rem;
   margin-top: 1rem;
-}
-
-@keyframes slideInRight {
-  from {
-    transform: translateX(80%);
-  }
-  to {
-    transform: translateX(0);
-  }
 }

@@ -9,12 +9,6 @@
   margin-bottom: 1rem;
 }
 
-/* Ensure that in app navigation next button is rendered on the right */
-.rightAligned {
-  width: 7rem;
-  margin-left: auto;
-}
-
 .rightAligned:hover {
   color: var(--color-success);
   cursor: pointer;

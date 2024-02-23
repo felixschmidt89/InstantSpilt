@@ -12,7 +12,16 @@ main {
 }
 
 .topBar {
-  height: 10vh;
-  min-height: 8rem;
-  max-height: 9rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.topBar h1 {
+  font-size: 2.1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
