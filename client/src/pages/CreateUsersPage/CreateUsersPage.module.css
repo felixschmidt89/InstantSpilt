@@ -7,7 +7,7 @@
   margin: 0 auto;
   margin-top: 1rem;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  padding-bottom: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 .container h1 {
@@ -22,13 +22,24 @@
 @media screen and (max-width: 767px) {
   .container {
     width: 100%;
-    margin: 0 auto;
   }
 }
 
 @media only screen and (min-width: 1921px) {
   .container {
     width: 80%;
-    height: auto;
+    height: 90%;
+  }
+}
+
+/* Delayed rendering to avoid flickering */
+.container {
+  opacity: 0;
+  animation: delayedRender 0.1s ease 0.2s forwards;
+}
+@keyframes delayedRender {
+  to {
+    opacity: 1;
+    visibility: visible;
   }
 }

@@ -75,13 +75,13 @@ const UserTransactionHistoryPage = () => {
       <HelmetMetaTagsNetlify title='InstantSplit - user history' />
       <PiratePx COUNT_IDENTIFIER={"user-transaction-history"} />
       <InAppNavigationBar previousRoute={true} home={true} />
-      <h1>transaction history</h1>
       {isLoading && currencyInfoIsFetched && groupMembersIsFetched ? (
         <div className={styles.spinner}>
           <Spinner />
         </div>
       ) : (
         <div className={styles.container}>
+          <h1>transaction history</h1>
           {userExpensesAndPayments.length > 0 ? (
             <UserTransactionsHistory
               userExpensesAndPayments={userExpensesAndPayments}

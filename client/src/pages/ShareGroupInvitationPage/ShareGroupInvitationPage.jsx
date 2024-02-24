@@ -29,11 +29,7 @@ const ShareGroupInvitationPage = () => {
 
   // Making sure that page is not rendered prior to successful data fetching while also not breaking the design
   if (!isFetched) {
-    return (
-      <main>
-        <Spinner />
-      </main>
-    );
+    return <main></main>;
   }
 
   const initialGroupName = groupData.group.initialGroupName;

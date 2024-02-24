@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -20,4 +20,16 @@
   flex-direction: column;
   align-items: flex-start;
   width: fit-content;
+}
+
+/* Delayed rendering to avoid flickering */
+.container {
+  opacity: 0;
+  animation: delayedRender 0.1s ease 0.2s forwards;
+}
+@keyframes delayedRender {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }

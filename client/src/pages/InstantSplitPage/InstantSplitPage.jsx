@@ -69,9 +69,7 @@ const InstantSplitPage = () => {
   return (
     <main>
       {!isFetched ? (
-        <span className={styles.spinner}>
-          <Spinner />
-        </span>
+        <span className={styles.spinner}></span>
       ) : groupData.group ? (
         <>
           <HelmetMetaTagsNetlify title={`InstantSplit - main`} />

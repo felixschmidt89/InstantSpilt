@@ -7,7 +7,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .emoji {
@@ -28,6 +28,17 @@
 @media screen and (max-width: 767px) {
   .detailsBox {
     max-width: 75%;
-    margin: 0 auto;
+  }
+}
+
+/* Delayed rendering to avoid flickering */
+.container {
+  opacity: 0;
+  animation: delayedRender 0.1s ease 0.2s forwards;
+}
+@keyframes delayedRender {
+  to {
+    opacity: 1;
+    visibility: visible;
   }
 }

@@ -1,8 +1,9 @@
 .container {
+  height: 90%;
   margin: 0 auto;
   overflow-y: auto;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  padding-bottom: 2rem;
+  padding-bottom: 0.5rem;
 }
 
 .container h1 {
@@ -14,4 +15,24 @@
 .note {
   font-style: italic;
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 95%;
+    padding: 0 0.5rem; /* Limiting width while keeping scrollbar on the border */
+    margin: 0 auto;
+  }
+}
+
+/* Delayed rendering to avoid flickering */
+.container {
+  opacity: 0;
+  animation: delayedRender 0.1s ease 0.2s forwards;
+}
+@keyframes delayedRender {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }

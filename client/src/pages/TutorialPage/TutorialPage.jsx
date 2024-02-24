@@ -10,12 +10,12 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import GroupCodeExplanation from "../../components/features/Tutorial/GroupCodeExplanation/GroupCodeExplanation";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
-import Spinner from "../../components/common/Spinner/Spinner";
 import SyncGroupCodeExplanation from "../../components/features/Tutorial/SyncGroupCodeExplanation/SyncGroupCodeExplanation";
 import GroupBalanceAndHistoryExplanation from "../../components/features/Tutorial/GroupBalanceAndHistoryExplanation/GroupBalanceAndHistoryExplanation";
 import UserSettingsExplanation from "../../components/features/Tutorial/UserSettingsExplanation/UserSettingsExplanation";
 import ActiveGroupBarExplanation from "../../components/features/Tutorial/ActiveGroupBarExplanation/ActiveGroupBarExplanation";
 import RecommendedBrowsersExplanation from "../../components/features/Tutorial/RecommendedBrowsersExplanation/RecommendedBrowsersExplanation";
+import Spinner from "../../components/common/Spinner/Spinner";
 
 // Styles
 import styles from "./TutorialPage.module.css";
@@ -24,17 +24,6 @@ function TutorialPage() {
   const { groupCode } = useParams();
   const { groupData, isFetched } = useFetchGroupData(groupCode);
 
-  // Making sure that page is not rendered prior to successful data fetching while also not breaking the design
-  if (!isFetched) {
-    return (
-      <main>
-        <Spinner />
-      </main>
-    );
-  }
-
-  const initialGroupName = groupData.group.initialGroupName;
-
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - tutorial' />
@@ -42,29 +31,35 @@ function TutorialPage() {
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>tutorial</h1>
-        <div className={styles.section}>
-          <RecommendedBrowsersExplanation />
-        </div>
-        <div className={styles.section}>
-          <GroupCodeExplanation
-            initialGroupName={initialGroupName}
-            groupCode={groupCode}
-          />
-        </div>
-        <div className={styles.section}>
-          <UserSettingsExplanation
-            groupCode={groupCode}
-            initialGroupName={groupData.group.initialGroupName}
-            groupName={groupData.group.groupName}
-          />
-        </div>
-        <div className={styles.section}>
-          <GroupBalanceAndHistoryExplanation />
-        </div>
-        <div className={styles.section}>
-          <ActiveGroupBarExplanation />
-        </div>
-        <SyncGroupCodeExplanation />
+        {!isFetched ? (
+          <Spinner />
+        ) : (
+          <>
+            <div className={styles.section}>
+              <RecommendedBrowsersExplanation />
+            </div>
+            <div className={styles.section}>
+              <GroupCodeExplanation
+                initialGroupName={groupData.group.initialGroupName}
+                groupCode={groupCode}
+              />
+            </div>
+            <div className={styles.section}>
+              <UserSettingsExplanation
+                groupCode={groupCode}
+                initialGroupName={groupData.group.initialGroupName}
+                groupName={groupData.group.groupName}
+              />
+            </div>
+            <div className={styles.section}>
+              <GroupBalanceAndHistoryExplanation />
+            </div>
+            <div className={styles.section}>
+              <ActiveGroupBarExplanation />
+            </div>
+            <SyncGroupCodeExplanation />
+          </>
+        )}
       </div>
     </main>
   );

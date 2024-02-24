@@ -103,7 +103,6 @@ const UpdateExpense = ({
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>edit expense </h1>
       <form className={styles.form} onSubmit={handleFormSubmit}>
         <ExpenseDescriptionInput
           value={expenseDescription}

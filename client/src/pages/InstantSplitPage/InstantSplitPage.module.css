@@ -1,16 +1,3 @@
-.spinner {
-  margin: 0 auto;
-  margin-top: 5rem;
-}
-
-.groupActionsBar {
-  margin: 0 auto;
-}
-
-main {
-  overflow-x: hidden;
-}
-
 .topBar {
   display: flex;
   flex-direction: row;
@@ -21,7 +8,26 @@ main {
 }
 
 .topBar h1 {
-  font-size: 2.1rem;
-  margin-top: 1rem;
+  font-size: 2rem;
+  margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+}
+
+.container {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Delayed rendering to avoid flickering */
+.topBar {
+  opacity: 0;
+  animation: delayedRender 0.1s ease 0.25s forwards;
+}
+@keyframes delayedRender {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }

@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   height: 8rem;
+  min-height: 80px;
   overflow-x: hidden;
   overflow-y: hidden;
   text-align: center;
@@ -17,7 +18,7 @@
 /* Delayed rendering to hide initial transforming of DefaultBar and UserSettingsBar */
 .container {
   opacity: 0;
-  animation: delayedRender 0.1s ease 0.2s forwards;
+  animation: delayedRender 0.1s ease 0.25s forwards;
 }
 
 @keyframes delayedRender {

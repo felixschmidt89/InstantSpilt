@@ -26,7 +26,9 @@ const SwitchGroups = ({ groupCode }) => {
       ) : (
         <div>
           {inactiveGroupNamesAndGroupCodes.length === 0 ? (
-            <p className={styles.noGroupsMessage}>No additional groups found on this device.</p>
+            <p className={styles.noGroupsMessage}>
+              No additional group found on this device.
+            </p>
           ) : (
             <RenderGroupSelection
               groupCode={groupCode}

@@ -4,5 +4,19 @@
   gap: 2rem;
   width: fit-content;
   margin: 0 auto;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+/* Delayed rendering to hide initial transforming of DefaultBar and UserSettingsBar */
+.buttonContainer {
+  opacity: 0;
+  animation: delayedRender 0.1s ease 0.25s forwards;
+}
+
+@keyframes delayedRender {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }

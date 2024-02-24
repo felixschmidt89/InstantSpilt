@@ -40,6 +40,7 @@ function UpdateExpensePage() {
         <Spinner />
       ) : (
         <>
+          <h1 className={styles.header}>edit expense </h1>
           <div className={styles.container}>
             <UpdateExpense
               groupCode={groupCode}
