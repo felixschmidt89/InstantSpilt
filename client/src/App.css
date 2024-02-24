@@ -214,6 +214,7 @@ scrollbar-thumb {
 /* smartphone landscape mode*/
 @media only screen and (max-width: 768px) and (orientation: landscape) {
   main {
+    margin-top: 0.5rem;
     height: 81vh;
     height: 91svh;
     width: 60vw;
@@ -227,6 +228,7 @@ scrollbar-thumb {
 /* Tablet and portrait mode */
 @media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: portrait) {
   main {
+    margin-top: 1rem;
     height: 85vh;
     height: 95svh;
     width: 70vw;
@@ -240,6 +242,7 @@ scrollbar-thumb {
 /* Tablet landscape mode */
 @media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: landscape) {
   main {
+    margin-top: 1rem;
     height: 77vh;
     height: 87svh;
     width: 55vw;
@@ -254,7 +257,7 @@ scrollbar-thumb {
 /* Laptop*/
 @media only screen and (min-width: 769px) and (max-width: 1440px) {
   main {
-    padding-top: 0rem;
+    margin-top: 1rem;
     height: 91vh;
     height: 91svh;
     width: 60vw;
@@ -268,6 +271,7 @@ scrollbar-thumb {
 /* Larger Screens */
 @media only screen and (min-width: 1441px) and (max-width: 1920px) {
   main {
+    margin-top: 1rem;
     height: 90vh;
     height: 90svh;
     width: 55rem;
@@ -276,6 +280,7 @@ scrollbar-thumb {
 
 @media only screen and (min-width: 1921px) {
   main {
+    margin-top: 1rem;
     height: 75rem;
     width: 68rem;
   }

@@ -6,7 +6,6 @@ import { Button } from "@mui/material";
 // Constants and Utils
 import {
   setGroupCodeToCurrentlyActive,
-  setRouteInLocalStorage,
   storeGroupCodeInLocalStorage,
 } from "../../../../utils/localStorageUtils";
 import { buttonStyles } from "../../../../constants/stylesConstants";
@@ -30,7 +29,6 @@ const AcceptGroupInvitation = ({ groupName, groupCode }) => {
   const handleAcceptInvitation = () => {
     storeGroupCodeInLocalStorage(groupCode);
     setGroupCodeToCurrentlyActive(groupCode);
-    setRouteInLocalStorage(window.location.pathname, "previousRoute");
     navigate("/instant-split");
   };
 

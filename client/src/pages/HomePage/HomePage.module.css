@@ -20,10 +20,6 @@
   }
 }
 
-.instantSplitLogo {
-  margin: 0 auto;
-}
-
 /* Delayed rendering to avoid flickering */
 .container {
   opacity: 0;

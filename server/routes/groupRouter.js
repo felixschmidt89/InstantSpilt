@@ -14,9 +14,13 @@ import {
 } from '../controllers/groupController.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
 import {
-  limiter,
-  handleRateLimitExceedance,
-} from '../middleware/handleRateLimitExceedanceMiddleware.js';
+  strictLimiter,
+  strictlyLimitRequestsPerIpMiddleware,
+} from '../middleware/strictlyLimitRequestsPerIpMiddleware.js';
+import {
+  laxLimitRequestsPerIpMiddleware,
+  laxLimiter,
+} from '../middleware/laxLimitRequestsPerIpMiddleware.js';
 
 const router = express.Router();
 
@@ -41,14 +45,19 @@ router.patch('/currency/:groupCode', changeGroupCurrency);
 // Change group inactiveDataPurge setting by groupCode
 router.patch('/inactiveDataPurge/:groupCode', changeGroupDataPurgeSetting);
 
-// Check if groupCode exists in database
-router.get('/:groupCode/continuous-validate-existence', validateGroupExistence);
+// Laxely limited check if groupCode exists in database (for continuous background active groupCode validation)
+router.get(
+  '/:groupCode/continuous-validate-existence',
+  laxLimiter,
+  laxLimitRequestsPerIpMiddleware,
+  validateGroupExistence,
+);
 
-// Check if groupCode exists in database (limited)
+// Strictly limited check if groupCode exists in database (for manual groupCode input validation in the frontend)
 router.get(
   '/:groupCode/limited-validate-existence',
-  limiter,
-  handleRateLimitExceedance,
+  strictLimiter,
+  strictlyLimitRequestsPerIpMiddleware,
   validateGroupExistence,
 );
 

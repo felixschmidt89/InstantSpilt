@@ -10,7 +10,7 @@ export const generateUniqueGroupCode = async () => {
 
   // Generate globally unique groupCode
   while (!isUnique) {
-    groupCode = nanoid(8);
+    groupCode = nanoid(12);
     // eslint-disable-next-line no-await-in-loop
     isUnique = await isGroupCodeUnique(groupCode);
   }

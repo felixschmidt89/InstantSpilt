@@ -7,7 +7,7 @@
   margin: 0 auto;
   margin-top: 1rem;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem; /* Varying padding-bottom needed due to settlement suggestions box border */
 }
 
 .container {

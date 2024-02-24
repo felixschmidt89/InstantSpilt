@@ -44,6 +44,9 @@ function TutorialPage() {
                 groupCode={groupCode}
               />
             </div>
+            {/* <div className={styles.section}>
+              <MakeInstantSplitAnAppExplanation />
+            </div> */}
             <div className={styles.section}>
               <UserSettingsExplanation
                 groupCode={groupCode}

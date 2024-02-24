@@ -25,6 +25,8 @@ import InstantSplitLogo from "../../InstantSplitLogo/InstantSplitLogo";
  * @param {string} props.homeRoute - The route to navigate to. Defaults to "/instant-split".
  * @param {boolean} props.forward - Indicates if it's a forward navigation. Defaults to false.
  * @param {string} props.forwardRoute - The route to navigate forward to. Defaults to "/instant-split".
+ *  @param {boolean} props.logoOnly -  renders logo only without any routing. Defaults to false.
+
  * @returns {React.Component} The rendered InAppNavigationBar component.
  */
 const InAppNavigationBar = ({
@@ -36,6 +38,7 @@ const InAppNavigationBar = ({
   homeRoute = "/instant-split",
   forward = false,
   forwardRoute = "/instant-split",
+  logoOnly = false,
 }) => {
   const navigate = useNavigate();
 
@@ -91,7 +94,11 @@ const InAppNavigationBar = ({
         )}
       </div>
       <div className={styles.middleLogo}>
-        <InstantSplitLogo className={styles.instantSplitLogo} width={"24"} />
+        <InstantSplitLogo
+          className={styles.instantSplitLogo}
+          width={"24"}
+          linkToInstantSplitPage={!logoOnly}
+        />
       </div>
       <div className={styles.rightIcon}>
         {home && (

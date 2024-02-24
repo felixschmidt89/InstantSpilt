@@ -20,7 +20,7 @@ import styles from "./CopyToClipboard.module.css";
  * @param {string} props.infoToCopy - The text to be copied to the clipboard.
  * @param {string} [props.inputFieldWidth] - The width of the input field. Defaults to 'fit-content'
  */
-const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "fit-content" }) => {
+const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "12rem" }) => {
   const [isCopied, setIsCopied] = useState(false);
   const [error, setError] = useState(false);
   const inputRef = useRef(null);

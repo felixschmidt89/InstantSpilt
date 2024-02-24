@@ -4,9 +4,6 @@ import React from "react";
 // Styles
 import styles from "./RecommendedBrowsersExplanation.module.css";
 
-// BASE URL
-const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
-
 /**
  * Component for rendering explanation of the GroupCode for accessing a group and providing related information to store it.
  *
