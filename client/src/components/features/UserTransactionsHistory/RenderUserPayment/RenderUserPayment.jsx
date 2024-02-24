@@ -64,17 +64,14 @@ const RenderUserPayment = ({
       <div className={styles.rightColumn}>
         <ul>
           <li>
+            <span className={styles.key}>paid by: </span>
             <RenderDataAttributeWithAriaLabel
               attribute={item.paymentMaker.userName}
               ariaLabel={"username of the payment maker"}
             />
-            <span className={styles.paymentToEmoji}>
-              <Emoji
-                label={"payment to other user emoji"}
-                emoji={emojiConstants.paymentsMade}
-                shrinkOnSmallDevices={true}
-              />
-            </span>
+          </li>
+          <li>
+            <span className={styles.key}>paid to: </span>
             <RenderDataAttributeWithAriaLabel
               attribute={item.paymentRecipient.userName}
               ariaLabel={"username of the payment recipient"}
@@ -84,7 +81,7 @@ const RenderUserPayment = ({
             <span className={styles.key}>created: </span>
             <RenderDataAttributeWithAriaLabel
               attribute={new Date(item.createdAt).toLocaleString()}
-              ariaLabel={"expense creation date"}
+              ariaLabel={"payment creation date"}
             />
           </li>
           {item.createdAt !== item.updatedAt && (
@@ -92,7 +89,7 @@ const RenderUserPayment = ({
               <span className={styles.key}>changed: </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={new Date(item.updatedAt).toLocaleString()}
-                ariaLabel={"expense last update date"}
+                ariaLabel={"payment last update date"}
               />
             </li>
           )}

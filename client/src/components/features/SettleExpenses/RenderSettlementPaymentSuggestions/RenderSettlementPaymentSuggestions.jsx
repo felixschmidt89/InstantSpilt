@@ -1,16 +1,16 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
+import { TiArrowRightThick } from "react-icons/ti";
 
 // Constants and Utils
-import emojiConstants from "../../../../constants/emojiConstants";
 import { calculateSuggestedSettlementPayments } from "../../../../utils/settlementUtils";
 
 // Components
-import Emoji from "../../../common/Emoji/Emoji";
 import ConfirmSettlementPayment from "../ConfirmSettlementPayment/ConfirmSettlementPayment";
 
 // Styles
 import styles from "./RenderSettlementPaymentSuggestions.module.css";
+import RenderReactIcon from "../../../common/RenderReactIcon/RenderReactIcon";
 
 /**
  * Component for rendering settlement payment suggestions.
@@ -49,14 +49,11 @@ const RenderSettlementPaymentSuggestions = ({
                 aria-label={`Payment maker name`}>
                 {settlement.from}{" "}
               </span>
-              <Emoji
-                label={"payment to other user emoji"}
-                emoji={emojiConstants.paymentsMade}></Emoji>{" "}
+              <span>owes </span>
               <span
                 aria-label={`Payment recipient name`}
                 className={styles.paymentRecipient}>
-                {settlement.to}
-                {": "}
+                {settlement.to}{" "}
               </span>
               <span
                 className={styles.settlementAmount}

@@ -38,12 +38,10 @@ function CreateUsersPage() {
       {
         // Case 1: Navigate group creators users to onboarding group settings
         isNewUser || isInAppGroupCreator ? (
-          <div className={styles.rightAligned}>
-            <InAppNavigationBar
-              forward={true}
-              forwardRoute='/onboarding-group-settings'
-            />
-          </div>
+          <InAppNavigationBar
+            forward={true}
+            forwardRoute='/onboarding-group-settings'
+          />
         ) : (
           // Case 2: Render back button for default case (adding users to a group from within main application)
           <InAppNavigationBar back={true} />

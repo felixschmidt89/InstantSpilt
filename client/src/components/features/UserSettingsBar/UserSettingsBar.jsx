@@ -63,19 +63,6 @@ const UserSettingsBar = forwardRef(
           iconSize={3.5}
           iconScale={0.95}
         />
-        <span className={styles.inviteToGroupIcon}>
-          <ReactIconNavigate
-            icon={IoPersonAddOutline}
-            containerHeight='5.8'
-            containerWidth='7.2'
-            explanationText='invite to group'
-            route={`/share-group/${initialGroupName}/${groupCode}`}
-            iconSize={3.5}
-            translateY={0}
-            translateX={-0.2}
-            iconScale={0.9}
-          />
-        </span>
         <ReactIconNavigate
           icon={PiUserSwitchLight}
           containerHeight='5.8'

@@ -10,6 +10,7 @@
 }
 
 .emoji {
+  margin-top: 1rem;
   font-size: 1.8rem;
   transform: translateX(0.5rem);
 }

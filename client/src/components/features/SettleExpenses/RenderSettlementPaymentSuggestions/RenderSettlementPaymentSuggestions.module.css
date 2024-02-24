@@ -15,6 +15,7 @@
 .paymentMaker,
 .paymentRecipient {
   width: 10rem;
+  font-weight: bold;
 }
 .paymentSuggestions {
   display: flex;

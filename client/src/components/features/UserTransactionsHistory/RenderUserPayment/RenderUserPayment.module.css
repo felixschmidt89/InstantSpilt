@@ -26,11 +26,6 @@
   width: 8rem;
 }
 
-.paymentToEmoji {
-  margin-left: 0.2rem;
-  margin-right: 0.2rem;
-}
-
 .rightColumn {
   display: flex;
   flex-direction: row;

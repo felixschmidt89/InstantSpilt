@@ -23,7 +23,7 @@ import InstantSplitLogo from "../../InstantSplitLogo/InstantSplitLogo";
  * @param {boolean} props.nestedPreviousRoute - Indicates if nestedPreviousRoute stored in localStorage should be applied. If so, back icon will be applied. Defaults to false.
  * @param {boolean} props.home - Indicates if it's a navigation to the main application. Defaults to false.
  * @param {string} props.homeRoute - The route to navigate to. Defaults to "/instant-split".
- * @param {boolean} props.forward - Indicates if it's a forward navigation. Defaults to false.
+ * @param {boolean} props.forward - Indicates if it's a forward navigation. Defaults to false. If shown, logo does not navigate to the main application.
  * @param {string} props.forwardRoute - The route to navigate forward to. Defaults to "/instant-split".
  *  @param {boolean} props.logoOnly -  renders logo only without any routing. Defaults to false.
 
@@ -97,7 +97,7 @@ const InAppNavigationBar = ({
         <InstantSplitLogo
           className={styles.instantSplitLogo}
           width={"24"}
-          linkToInstantSplitPage={!logoOnly}
+          linkToInstantSplitPage={!logoOnly && !forward}
         />
       </div>
       <div className={styles.rightIcon}>
@@ -111,7 +111,7 @@ const InAppNavigationBar = ({
           </div>
         )}
         {forward && (
-          <div className={styles.forwardContainer}>
+          <div className={styles.iconContainer}>
             <IoArrowForwardCircleOutline
               className={`${styles.rightAlignedIcon} ${styles.icon}`}
               onClick={() => handleRegularNavigation(forwardRoute)}

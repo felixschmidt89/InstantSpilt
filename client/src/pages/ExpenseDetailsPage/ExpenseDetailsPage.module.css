@@ -8,9 +8,11 @@
   overflow-x: hidden;
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 0.5rem;
+  margin-top: 1rem;
 }
 
 .emoji {
+  margin-top: 1rem;
   font-size: 1.8rem;
   transform: translateX(0.3rem);
   margin: 0 auto;

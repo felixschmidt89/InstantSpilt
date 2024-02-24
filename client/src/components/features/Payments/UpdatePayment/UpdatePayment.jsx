@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { TiArrowDownThick } from "react-icons/ti";
+
 import axios from "axios";
 
 // Constants and Utils
@@ -23,6 +25,7 @@ import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 import Emoji from "../../../common/Emoji/Emoji";
+import RenderReactIcon from "../../../common/RenderReactIcon/RenderReactIcon";
 
 // Styles
 import styles from "./UpdatePayment.module.css";
@@ -35,7 +38,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  *
  * @param {Object} props - The properties of the component.
  * @param {Object[]} props.groupMembers - An array of group members.
- * @param {string} props.groupCode - The grouCode identifying the group.
+ * @param {string} props.groupCode - The groupCode identifying the group.
  * @param {Object} props.paymentDetails - The details of the payment stored in the database prior to being updated.
  * @param {string} props.itemId - The unique identifier of the payment.
  * @param {string} [props.route="/instant-split"] - The route to navigate to after updating the payment.
@@ -135,10 +138,14 @@ const UpdatePayment = ({
         isUpdate={true}
       />
       <div className={styles.emojis}>
-        <Emoji
-          label={"payment to other user emoji"}
-          emoji={emojiConstants.paymentsMadePointDown}></Emoji>
         <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
+        <RenderReactIcon
+          icon={TiArrowDownThick}
+          size={1.6}
+          scale={1.4}
+          translateX={0.1}
+          translateY={0.25}
+        />
       </div>
       <PaymentRecipientSelect
         paymentRecipientName={paymentRecipientName}

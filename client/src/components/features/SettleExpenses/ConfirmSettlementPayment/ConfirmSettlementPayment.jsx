@@ -76,7 +76,13 @@ const ConfirmSettlementPayment = ({
 
   return (
     <div className={styles.container} onClick={handleShowConfirmation}>
-      <div className={styles.confirm}>confirm</div>
+      <div className={styles.confirm}>
+        <Emoji
+          label={"payment emoji"}
+          emoji={emojiConstants.payment}
+          shrinkOnSmallDevices={true}></Emoji>
+        confirm
+      </div>
       {isConfirmationVisible && (
         <ConfirmationModal
           message={`Confirm ${paymentMakerName} has paid ${paymentAmount}${groupCurrency} to ${paymentRecipientName}?`}

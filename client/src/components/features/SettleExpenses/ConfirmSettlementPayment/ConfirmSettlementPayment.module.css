@@ -11,9 +11,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: var(--color-signal);
+  gap: 0.3rem;
+  color: var(--color-success);
 }
 
 .confirm:hover {
-  color: var(--color-dark-dark);
+  color: var(--color-success-dark);
 }

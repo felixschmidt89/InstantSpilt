@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@mui/material";
+import { TiArrowDownThick } from "react-icons/ti";
 
 // Constants and Utils
 import {
@@ -22,6 +23,7 @@ import PaymentMakerSelect from "../PaymentMakerSelect/PaymentMakerSelect";
 import PaymentRecipientSelect from "../PaymentRecipientSelect/PaymentRecipientSelect";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 import Emoji from "../../../common/Emoji/Emoji";
+import RenderReactIcon from "../../../common/RenderReactIcon/RenderReactIcon";
 
 // Styles
 import styles from "./CreatePayment.module.css";
@@ -85,11 +87,14 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       />
 
       <div className={styles.emojis}>
-        <Emoji
-          label='point down emoji'
-          emoji={emojiConstants.paymentsMadePointDown}
-        />
         <Emoji label='payment emoji' emoji={emojiConstants.payment} />
+        <RenderReactIcon
+          icon={TiArrowDownThick}
+          size={1.6}
+          scale={1.4}
+          translateX={0.1}
+          translateY={0.25}
+        />
       </div>
       <PaymentRecipientSelect
         paymentRecipientName={paymentRecipientName}
