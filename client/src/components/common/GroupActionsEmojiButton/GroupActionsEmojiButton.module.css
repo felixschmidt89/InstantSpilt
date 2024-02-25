@@ -6,7 +6,7 @@
   width: 4rem;
   cursor: pointer;
   line-height: 1.2;
-  color: var(--color-grey-dark);
+  color: var(--color-dark);
 }
 
 .iconExplanation {
@@ -15,9 +15,10 @@
   font-size: 1.4rem;
 }
 
-.icon {
+.emoji {
   font-size: 3rem;
-  font-family: "Noto Color Emoji";
+  font-family: "Noto Emoji";
+  font-weight: 600;
 }
 
 .container:hover {

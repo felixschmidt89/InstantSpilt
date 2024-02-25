@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
-import { deleteGroupDataFromLocalStorage } from "../../utils/localStorageUtils";
+import {
+  deleteGroupDataFromLocalStorage,
+  setViewStateInLocalStorage,
+} from "../../utils/localStorageUtils";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
@@ -29,6 +32,8 @@ import styles from "./InstantSplitPage.module.css";
 const InstantSplitPage = () => {
   const navigate = useNavigate();
   const groupCode = localStorage.getItem("activeGroupCode");
+  const initialViewState = localStorage.getItem("viewState") || "view2";
+  const [view, setView] = useState(initialViewState);
 
   // Handle no active groupCode
   useEffect(() => {
@@ -51,18 +56,23 @@ const InstantSplitPage = () => {
     }
   }, [navigate, groupCode, isValidated, groupExists]);
 
-  const { groupData, isFetched } = useFetchGroupData(groupCode);
-
-  // State to keep track of the balance and history views
-  const [view, setView] = useState(
-    () => localStorage.getItem("viewState") || "view2"
-  );
   // Clear nested routes localStorage
   useDeletePreviousRouteFromLocalStorage();
   useDeletePreviousRouteFromLocalStorage("nestedPreviousRoute");
 
-  const handleSwitchView = () => {
-    setView(view === "view1" ? "view2" : "view1");
+  const { groupData, isFetched } = useFetchGroupData(groupCode);
+
+  // Function to update the view state and store it in local storage using the helper function
+  const updateView = (newView) => {
+    try {
+      setViewStateInLocalStorage(newView);
+      setView(newView);
+    } catch (error) {
+      console.error(
+        `Error setting viewState to ${newView} in local storage.`,
+        error
+      );
+    }
   };
 
   return (
@@ -77,10 +87,7 @@ const InstantSplitPage = () => {
           <div className={styles.topBar}>
             <h1>{groupData.group.groupName}</h1>
           </div>
-          <SwitchViewButtonsBar
-            view={view}
-            handleSwitchView={handleSwitchView}
-          />
+          <SwitchViewButtonsBar view={view} updateView={updateView} />
           {view === "view1" ? (
             <RenderGroupHistory
               groupCode={groupCode}

@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { Link } from "react-router-dom";
+import { IoArrowForwardOutline } from "react-icons/io5";
 
 // Constants and Utils
 import emojiConstants from "../../../../../constants/emojiConstants";
@@ -8,6 +9,7 @@ import Emoji from "../../../../common/Emoji/Emoji";
 
 // Styles
 import styles from "./RenderGroupPayment.module.css";
+import RenderReactIcon from "../../../../common/RenderReactIcon/RenderReactIcon";
 
 /**
  * Component for rendering a single group payment.
@@ -23,10 +25,7 @@ const RenderGroupPayment = ({ item, groupCode, groupCurrency }) => {
       {/* Left column with payment emoji and amount */}
       <div className={styles.leftColumn}>
         <div className={styles.paymentEmoji}>
-          <Emoji
-            label={"payment emoji"}
-            emoji={emojiConstants.payment}
-            shrinkOnSmallDevices={true}></Emoji>
+          <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
         </div>
         <div className={styles.paymentAmount}>
           {/* Link to the item page with item details */}
@@ -36,13 +35,12 @@ const RenderGroupPayment = ({ item, groupCode, groupCurrency }) => {
           </Link>
         </div>
       </div>
-      {/* Right column with payment maker, emoji, and payment recipient */}
+      {/* Right column with payment maker and payment recipient */}
       <div className={styles.rightColumn}>
         <span>{item.paymentMaker.userName}</span>{" "}
-        <Emoji
-          label={"payment to other user emoji"}
-          emoji={emojiConstants.paymentsMade}
-          className={"styles.paymentToEmoji"}></Emoji>
+        <span className={styles.paymentTo}>
+          <RenderReactIcon icon={IoArrowForwardOutline} translateY={0.2} />
+        </span>
         <span>{item.paymentRecipient.userName}</span>
       </div>
     </div>

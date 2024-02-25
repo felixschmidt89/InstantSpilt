@@ -11,22 +11,22 @@ import styles from "./SwitchViewButtonsBar.module.css";
  * Renders buttons to switch between groupBalance and groupHistory views.
  *
  * @param {string} view - The current view state. Default is view2 (balances).
- * @param {Function} handleSwitchView - Function to handle view switching.
+ * @param {Function} props.updateView - Function to update the view state.
  * @returns {JSX.Element} React component. */
-const SwitchViewButtonsBar = ({ view, handleSwitchView }) => {
+const SwitchViewButtonsBar = ({ view, updateView }) => {
   return (
     <div className={styles.buttonContainer}>
       {/* Button to render balances view (default) */}
       <SwitchViewButton
         text='balances'
         isActive={view === "view2"}
-        onClick={handleSwitchView}
+        onClick={() => updateView("view2")}
       />
       {/* Button to render group view */}
       <SwitchViewButton
         text='history'
         isActive={view === "view1"}
-        onClick={handleSwitchView}
+        onClick={() => updateView("view1")}
       />
     </div>
   );

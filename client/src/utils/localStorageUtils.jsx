@@ -76,6 +76,22 @@ export const getFirstGroupCodeInStoredGroupCodesArray = () => {
 };
 
 /**
+ * Sets the 'viewState' property in local storage.
+ * @param {string} value - The value to set for 'viewState'.
+ * @returns {boolean} - Returns true if 'viewState' was successfully set, false if there was an error.
+ */
+export const setViewStateInLocalStorage = (view) => {
+  try {
+    localStorage.setItem("viewState", view);
+    devLog(`ViewState has been set to ${view} in local storage.`);
+    return true;
+  } catch (error) {
+    devLog(`Error setting viewState to ${view} in local storage.`, error);
+    return false;
+  }
+};
+
+/**
  * Removes the 'viewState' property from local storage.
  * @returns {boolean} - Returns true if 'viewState' was successfully removed, false if there was an error.
  */

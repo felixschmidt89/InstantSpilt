@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
-import { TiArrowDownThick } from "react-icons/ti";
+import { IoArrowDownOutline } from "react-icons/io5";
 
 import axios from "axios";
 
@@ -73,6 +73,7 @@ const UpdatePayment = ({
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
+  <IoArrowDownOutline />;
 
   const isSubmitButtonVisible =
     formChanged &&
@@ -138,9 +139,11 @@ const UpdatePayment = ({
         isUpdate={true}
       />
       <div className={styles.emojis}>
-        <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
+        <Emoji
+          label={"payment emoji"}
+          emoji={emojiConstants.payment}></Emoji>
         <RenderReactIcon
-          icon={TiArrowDownThick}
+          icon={IoArrowDownOutline}
           size={1.6}
           scale={1.4}
           translateX={0.1}

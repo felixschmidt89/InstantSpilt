@@ -1,10 +1,10 @@
 import React from "react";
 import emojiConstants from "../../../../constants/emojiConstants";
 import DeleteResource from "../../../common/DeleteResource/DeleteResource";
-import Emoji from "../../../common/Emoji/Emoji";
 import RenderDataAttributeWithAriaLabel from "../../../common/RenderDataAttributeWithAriaLabel/RenderDataAttributeWithAriaLabel";
 import LinkToPage from "../../../common/InAppNavigation/LinkToPage/LinkToPage";
 import styles from "./RenderUserExpense.module.css";
+import Emoji from "../../../common/Emoji/Emoji";
 
 /**
  * Renders a user expense component.

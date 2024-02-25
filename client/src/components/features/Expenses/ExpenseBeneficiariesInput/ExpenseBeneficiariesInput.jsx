@@ -68,7 +68,11 @@ const ExpenseBeneficiariesInput = ({
   return (
     <>
       <p className={styles.emoji}>
-        <Emoji label='expense emoji' emoji={emojiConstants.expense} />
+        <Emoji
+          label='expense emoji'
+          scale={1.15}
+          emoji={emojiConstants.expense}
+        />
         for
       </p>
       <div

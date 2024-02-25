@@ -48,10 +48,8 @@ const ExpenseDetailsPage = () => {
       currencyInfoIsFetched &&
       groupMembersIsFetched ? (
         <div className={styles.container}>
-          <div className={styles.emoji}>
-            <Emoji
-              label={"expense emoji"}
-              emoji={emojiConstants.expense}></Emoji>
+          <div className={styles.expenseEmoji}>
+            <Emoji label={"expense emoji"} emoji={emojiConstants.expense} />
           </div>
           <h1>{expenseInfo.expenseDescription}</h1>
           <div className={styles.detailsBox}>

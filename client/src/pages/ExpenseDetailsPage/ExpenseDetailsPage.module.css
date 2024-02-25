@@ -11,10 +11,11 @@
   margin-top: 1rem;
 }
 
-.emoji {
+.expenseEmoji {
   margin-top: 1rem;
-  font-size: 1.8rem;
+  font-size: 2rem;
   transform: translateX(0.3rem);
+  scale: 1.15;
   margin: 0 auto;
 }
 

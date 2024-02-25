@@ -39,8 +39,9 @@ const RenderGroupExpense = ({
         <Emoji
           label={"expense emoji"}
           emoji={emojiConstants.expense}
-          className={styles.expenseEmoji}
-          shrinkOnSmallDevices={true}></Emoji>
+          scale={"1.15"}
+          translateX={"0.15"}
+        />
         <div className={styles.expenseAmount}>
           <Link to={`/expense-details/${groupCode}/${item.itemId}`}>
             {item.expenseAmount.toFixed(2)}

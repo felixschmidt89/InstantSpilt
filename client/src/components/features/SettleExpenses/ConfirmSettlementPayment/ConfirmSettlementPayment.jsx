@@ -81,7 +81,7 @@ const ConfirmSettlementPayment = ({
           label={"payment emoji"}
           emoji={emojiConstants.payment}
           shrinkOnSmallDevices={true}></Emoji>
-        confirm
+        <span className={styles.confirmText}>confirm</span>
       </div>
       {isConfirmationVisible && (
         <ConfirmationModal

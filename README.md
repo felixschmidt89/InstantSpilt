@@ -3,13 +3,14 @@
 A user centered MERN Full Stack application designed for settling group expenses with a focus on functionality and data privacy, eliminating the need for personalized user registration and app installation. Allows gaining and sharing access to a group via a simple link and managing an unlimited number of such groups. Prioritizes privacy by not identifying or logging individual users and sessions and by purging all data of a group after 90 days of group inactivity.
 
 <div align="center" style="display: flex; flex-wrap: wrap; justify-content: center;">
-  <img src="./client/public/app-onboarding1.png" alt="App screenshot1" width="200px">
-  <img src="./client/public/app-onboarding2.png" alt="App screenshot2" width="200px">
+  <img src="./client/public/app-image.png" alt="App screenshot1" width="200px">
+  <img src="./client/public/app-image2.png" alt="App screenshot2" width="200px">
+    <img src="./client/public/app-image3.png" alt="App screenshot3" width="200px">
 </div>
 <div align="center" style="display: flex; flex-wrap: wrap; justify-content: center;">
-  <img src="./client/public/app-image.png" alt="App screenshot3" width="200px">
-    <img src="./client/public/app-image2.png" alt="App screenshot4" width="200px">
-  <img src="./client/public/app-image3.png" alt="App screenshot5" width="200px">
+    <img src="./client/public/app-image4.png" alt="App screenshot4" width="200px">
+    <img src="./client/public/app-image5.png" alt="App screenshot5" width="200px">
+        <img src="./client/public/app-image6.png" alt="App screenshot6" width="200px">
 </div>
 
 ## About

@@ -1,13 +1,12 @@
 .container {
   background-color: var(--color-main);
   color: var(--color-dark);
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   margin-top: 1rem;
   padding-left: 0.8rem;
   padding-right: 0.8rem;
   padding: 0.5rem 1rem;
-  border: 0.25rem solid var(--color-signal);
   border-radius: 1rem;
   font-size: 1.6rem;
 }
@@ -15,7 +14,6 @@
 .paymentMaker,
 .paymentRecipient {
   width: 10rem;
-  font-weight: bold;
 }
 .paymentSuggestions {
   display: flex;
@@ -23,11 +21,13 @@
   align-items: center;
   margin: 0 auto;
   line-height: 1;
+  margin-bottom: 0.5rem;
 }
 
 .settlementAmount {
   color: var(--color-error);
   margin-right: 1rem;
+  margin-left: auto;
 }
 
 .confirm {

@@ -11,7 +11,7 @@ const InvitationIntro = ({ groupData }) => {
   return (
     <div className={styles.container}>
       <p className={styles.paragraph}>
-        Someone invited you to join the InstantSplit{" "}
+        Someone invited you to join{" "}
         <span className={styles.noWrap}>
           group{" "}
           <span>

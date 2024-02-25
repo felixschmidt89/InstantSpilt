@@ -15,6 +15,10 @@
   color: var(--color-success);
 }
 
+.confirmText {
+  font-size: 1.4rem;
+}
+
 .confirm:hover {
   color: var(--color-success-dark);
 }

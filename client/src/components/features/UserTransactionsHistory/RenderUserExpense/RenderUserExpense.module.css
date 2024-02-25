@@ -27,7 +27,7 @@
 }
 
 .expenseEmoji {
-  transform: translateX(0.1rem);
+  transform: translateX(0.15rem) scale(1.15);
 }
 
 .rightColumn {

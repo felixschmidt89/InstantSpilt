@@ -1,19 +1,13 @@
 // React and Third-Party Libraries
 import React from "react";
 
-// Constants and Utils
-import emojiConstants from "../../../../constants/emojiConstants";
-
-// Components
-import Emoji from "../../../common/Emoji/Emoji";
-
 // Styles
 import styles from "./UserTotals.module.css";
 
 /**
  * Renders a user's expenses and payments totals: expenses/payments paid and expenses/payments benefitted from
  *
- * @cmponent
+ * @component
  * @param {Object} props - The properties passed to the component.
  * @param {Object} props.userData - User data containing expense totals.
  *  @param {string} props.groupCurrency - The currency of the group.
@@ -25,10 +19,7 @@ const UserTotals = ({ userData, groupCurrency }) => {
         role='region'
         aria-label='User Expense Totals'
         className={styles.totalsContainer}>
-        <h3>
-          expense totals{" "}
-          <Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>
-        </h3>
+        <h3>expense totals</h3>
         <ul className={styles.list}>
           {/* total expenses paid amount with 2 decimal places */}
           <li className={styles.item}>
@@ -54,10 +45,7 @@ const UserTotals = ({ userData, groupCurrency }) => {
         role='region'
         aria-label='User Payments Totals'
         className={styles.totalsContainer}>
-        <h3>
-          payment totals{" "}
-          <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
-        </h3>
+        <h3>payment totals</h3>
         <ul className={styles.list}>
           {/* total payments made amount with 2 decimal places */}
           <li className={styles.item}>

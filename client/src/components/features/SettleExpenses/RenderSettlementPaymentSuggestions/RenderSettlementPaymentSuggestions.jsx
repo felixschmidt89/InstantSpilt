@@ -1,6 +1,6 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
-import { TiArrowRightThick } from "react-icons/ti";
+import { IoArrowForwardOutline } from "react-icons/io5";
 
 // Constants and Utils
 import { calculateSuggestedSettlementPayments } from "../../../../utils/settlementUtils";
@@ -49,18 +49,23 @@ const RenderSettlementPaymentSuggestions = ({
                 aria-label={`Payment maker name`}>
                 {settlement.from}{" "}
               </span>
-              <span>owes </span>
+              <span className={styles.paymentTo}>
+                <RenderReactIcon
+                  icon={IoArrowForwardOutline}
+                  translateY={0.2}
+                />
+              </span>{" "}
               <span
                 aria-label={`Payment recipient name`}
                 className={styles.paymentRecipient}>
-                {settlement.to}{" "}
+                {settlement.to}:
               </span>
-              <span
+              <div
                 className={styles.settlementAmount}
                 aria-label={`Settlement payment amount`}>
                 {settlement.amount}
                 {groupCurrency}
-              </span>
+              </div>
             </div>
             <div className={styles.confirm}>
               <ConfirmSettlementPayment

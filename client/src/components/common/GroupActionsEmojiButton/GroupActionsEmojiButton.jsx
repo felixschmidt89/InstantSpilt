@@ -12,6 +12,7 @@ import styles from "./GroupActionsEmojiButton.module.css";
  * @param {string} props.route - The route to navigate to when the button is clicked.
  * @param {string} props.emoji - The emoji to be rendered.
  * @param {string} props.explanationText - The icon description text rendered below the component. Only rendered if given.
+
  * @param {number} [props.translateX] - The horizontal translation of the emoji in rem unit. Defaults to 0.
  * @param {number} [props.translateY] - The vertical translation of the emoji in rem unit. Defaults to 0.
  * @param {number} [props.scale] - The scale factor for the emoji. Defaults to 1.
@@ -39,7 +40,7 @@ const GroupActionsEmojiButton = ({
       onClick={handleClick}
       aria-label={ariaLabel}>
       <span
-        className={styles.icon}
+        className={styles.emoji}
         style={{
           transform: `translate(${translateX}rem, ${translateY}rem) scale(${scale})`,
         }}>

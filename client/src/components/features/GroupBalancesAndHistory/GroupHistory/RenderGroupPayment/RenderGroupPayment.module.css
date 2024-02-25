@@ -1,11 +1,13 @@
 .payments {
   display: flex;
-  line-height: 1.45;
+  line-height: 1.25;
 }
 
 .leftColumn {
   display: flex;
   border-top: 0.2rem solid var(--color-signal-reduced-opacity);
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
 }
 
 .paymentEmoji {
@@ -14,7 +16,11 @@
 
 .paymentAmount {
   text-align: right; /* numbers are right aligned to be easily readable */
-  width: 9rem; /* white space on the left */
+  width: 8rem; /* white space on the left */
+}
+
+.paymentTo {
+  color: var(--color-dark);
 }
 
 .rightColumn {
@@ -39,8 +45,5 @@
     padding-bottom: 0.15rem;
     margin-right: 0.5rem;
     border-top: none;
-  }
-  .payments {
-    line-height: 1.2;
   }
 }

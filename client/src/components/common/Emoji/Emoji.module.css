@@ -1,10 +1,5 @@
-.emoji {
+.emojiFont {
   font-size: inherit;
-  font-family: "Noto Color Emoji";
-}
-
-@media screen and (max-width: 500px) {
-  .emojiShrink {
-    font-size: 1.3rem;
-  }
+  font-weight: 600;
+  font-family: "Noto Emoji";
 }

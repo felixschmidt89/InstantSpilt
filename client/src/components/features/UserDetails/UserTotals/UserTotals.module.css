@@ -6,6 +6,10 @@
   padding-left: 4.5rem;
 }
 
+.expenseEmoji {
+  transform: scale(1.15);
+}
+
 .list {
   width: 85%;
   max-width: 33rem;

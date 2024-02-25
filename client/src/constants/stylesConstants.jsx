@@ -2,7 +2,7 @@
  * Default styles for Material-UI button.
  */
 export const buttonStyles = {
-  padding: "0rem 0.5rem",
+  padding: "0rem 0.6rem",
   fontSize: "1.6rem",
   margin: "0 auto",
   marginTop: "0.5rem",

@@ -1,6 +1,6 @@
 .expenses {
   display: flex;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 .leftColumn {
@@ -8,12 +8,6 @@
   border-top: 0.2rem solid var(--color-signal-reduced-opacity);
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
-}
-
-.expenseEmoji {
-  transform: translateX(0.5rem);
-  transform: translateY(0.2rem);
-  margin-right: 1rem;
 }
 
 /* Ensure that numbers are right aligned to be easily readable */

@@ -18,7 +18,13 @@ const NoGroupTransactions = () => (
   <p className={styles.noTransactions}>
     Start adding expenses{" "}
     <span className={styles.emojiParenthesis}>
-      (<Emoji label={"expense emoji"} emoji={emojiConstants.expense}></Emoji>)
+      (
+      <Emoji
+        label={"expense emoji"}
+        emoji={emojiConstants.expense}
+        scale={"1.15"}
+        translateX={"0.15"}></Emoji>
+      )
     </span>{" "}
     and payments{" "}
     <span className={styles.emojiParenthesis}>

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@mui/material";
-import { TiArrowDownThick } from "react-icons/ti";
+import { IoArrowDownOutline } from "react-icons/io5";
 
 // Constants and Utils
 import {
@@ -89,7 +89,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       <div className={styles.emojis}>
         <Emoji label='payment emoji' emoji={emojiConstants.payment} />
         <RenderReactIcon
-          icon={TiArrowDownThick}
+          icon={IoArrowDownOutline}
           size={1.6}
           scale={1.4}
           translateX={0.1}
