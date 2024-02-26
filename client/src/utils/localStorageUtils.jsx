@@ -24,7 +24,7 @@ export const removeActiveGroupCodeFromLocalStorage = () => {
  */
 export const removeGroupCodeFromStoredGroupCodes = (groupCode) => {
   try {
-    // Get the storedGAll tests passedroupCodes array from local storage
+    // Get the stored groupCodes array from local storage
     let storedGroupCodes = JSON.parse(localStorage.getItem("storedGroupCodes"));
     // Exclude the to be removed groupCode
     const updatedGroupCodes = storedGroupCodes.filter(

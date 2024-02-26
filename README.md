@@ -1,6 +1,6 @@
 # InstantSplit
 
-A user centered MERN Full Stack application designed for settling group expenses with a focus on functionality and data privacy, eliminating the need for personalized user registration and app installation. Allows gaining and sharing access to a group via a simple link and managing an unlimited number of such groups. Prioritizes privacy by not identifying or logging individual users and sessions and by purging all data of a group after 90 days of group inactivity.
+A user centered MERN Full Stack application designed for settling group expenses with a focus on functionality and data privacy, eliminating the need for personalized user registration mandatory app installation. Allows gaining and sharing access to a group via a simple link and managing an unlimited number of such groups. Prioritizes privacy by not identifying or logging individual users and sessions and by purging all data of a group after 90 days of group inactivity.
 
 <div align="center" style="display: flex; flex-wrap: wrap; justify-content: center;">
   <img src="./client/public/app-image.png" alt="App screenshot1" width="200px">

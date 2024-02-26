@@ -16,13 +16,14 @@
   padding-bottom: 0.1rem;
   color: var(--color-main);
   z-index: 1;
+  background-color: inherit;
 }
 
 .notCopied {
-  background-color: var(--color-main);
+  background-color: inherit;
   color: var(--color-signal);
 }
 .isCopied {
-  background-color: var(--color-main);
+  background-color: inherit;
   color: var(--color-success);
 }

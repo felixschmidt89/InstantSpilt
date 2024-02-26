@@ -3,8 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import "friendly-challenge/widget";
+
 // Constants and Utils
-import { genericErrorMessage } from "../../../../../constants/errorConstants";
 import {
   devLog,
   handleApiErrorsAndTriggerErrorModal,
@@ -21,6 +22,7 @@ import useErrorModalVisibility from "../../../../../hooks/useErrorModalVisibilit
 // Components
 import FormSubmitButton from "../../../../common/FormSubmitButton/FormSubmitButton";
 import ErrorModal from "../../../../common/ErrorModal/ErrorModal";
+import FriendlyCaptcha from "../../../../common/FriendlyCaptcha/FriendlyCaptcha";
 
 // Styles
 import styles from "./CreateGroupForm.module.css";
@@ -38,6 +40,7 @@ const CreateGroupForm = ({ isOnboarding }) => {
   const inputRef = useRef(null);
   const [groupName, setGroupName] = useState("");
   const [error, setError] = useState(null);
+  const groupCode = localStorage.getItem("activeGroupCode");
 
   devLog("Onboarding group creation", isOnboarding);
 
@@ -93,6 +96,8 @@ const CreateGroupForm = ({ isOnboarding }) => {
         translateX={0.2}
         translateY={0.15}
       />
+      {!groupCode && <FriendlyCaptcha />}
+
       <ErrorModal
         error={error}
         onClose={handleCloseErrorModal}

@@ -10,12 +10,16 @@ import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import FriendlyCaptcha from "../../../common/FriendlyCaptcha/FriendlyCaptcha";
 
 // Styles
 import styles from "./ValidateGroupCode.module.css";
-import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 const ValidateGroupCode = () => {
+  const groupCode = localStorage.getItem("activeGroupCode");
+  // Get sitekey from .env
+  const sitekey = import.meta.env.VITE_FRIENDLY_CAPTCHA_SITEKEY;
   const [toBeValidatedGroupCode, setToBeValidatedGroupCode] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -58,6 +62,8 @@ const ValidateGroupCode = () => {
           translateX={0.3}
           translateY={0.1}
         />
+        {/* Add FriendlyCaptcha for new users*/}
+        {!groupCode && <FriendlyCaptcha sitekey={sitekey} />}
       </form>
       <ErrorModal
         error={error}
