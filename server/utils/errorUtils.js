@@ -48,7 +48,7 @@ export const errorLog = (
  * Sends an internal server error response with a default message in JSON format.
  *
  */
-export const sendInternalError = () => {
+export const sendInternalError = (res, error) => {
   res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     status: 'fail',
     message: 'Internal server error. Please try again later.',

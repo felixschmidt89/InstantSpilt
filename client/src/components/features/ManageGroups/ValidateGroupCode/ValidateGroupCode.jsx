@@ -1,5 +1,5 @@
 // React and Third-Party Libraries
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Constants and Utils
@@ -37,7 +37,6 @@ const ValidateGroupCode = () => {
       navigate(`/groupCode-validator/${toBeValidatedGroupCode}`);
     }
   };
-
   // Submit on enter button click
   const handleKeyDown = (e) => {
     submitOnEnterClick(e, handleFormSubmit);
@@ -55,17 +54,16 @@ const ValidateGroupCode = () => {
           onKeyDown={handleKeyDown}
         />
         {/* For new users: only render submit button, if FriendlyCaptcha is verified*/}
-        {(!groupCode && friendlyCaptchaIsVerified) ||
-          (groupCode && (
-            <FormSubmitButton
-              fontSize={1.6}
-              submit={true}
-              marginLeft='0.1'
-              transformScale={1.3}
-              translateX={0.3}
-              translateY={0.1}
-            />
-          ))}
+        {(friendlyCaptchaIsVerified || groupCode) && (
+          <FormSubmitButton
+            fontSize={1.6}
+            submit={true}
+            marginLeft='0.1'
+            transformScale={1.3}
+            translateX={0.3}
+            translateY={0.1}
+          />
+        )}
         {/* For new users: render FriendlyCaptcha*/}
         {!groupCode && (
           <FriendlyCaptcha

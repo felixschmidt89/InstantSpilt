@@ -4,10 +4,10 @@ import { WidgetInstance } from "friendly-challenge";
 
 // Constants and Utils
 import { devLog } from "../../../utils/errorUtils";
+import verifyFriendlyCaptchaSolution from "../../../utils/captchaUtils";
 
 // Styles
 import styles from "./FriendlyCaptcha.module.css";
-import verifyFriendlyCaptchaSolution from "../../../utils/captchaUtils";
 
 /**
  * Friendly Captcha widget (automatic and privacy respecting captcha mechanism). Should only be applied outside of the main application, ie when there is no active group in local storage, to prevent malicious attacks and must always be used directly in form elements
@@ -17,28 +17,28 @@ import verifyFriendlyCaptchaSolution from "../../../utils/captchaUtils";
  * @returns {JSX.Element} React component.
  */
 const FriendlyCaptcha = ({ sitekey, secret, setFriendlyCaptchaIsVerified }) => {
-  devLog("Friendly captcha sitekey", sitekey);
   const container = useRef();
   const widget = useRef();
 
-  const doneCallback = async (solution, secret) => {
-    try {
-      console.log("Friendly Captcha was solved.");
-      console.log("Solution:", solution);
+  devLog("Friendly captcha sitekey", sitekey);
+  devLog("friendlySecret", secret);
 
-      // Verify the captcha solution using the helper function
+  const doneCallback = async (solution) => {
+    try {
+      devLog("Friendly Captcha solved:", solution);
+
       const verificationResult = await verifyFriendlyCaptchaSolution(
         solution,
         secret
       );
-      console.log("VerificationResult", verificationResult);
+      devLog("Verification result:", verificationResult);
 
       // Check the verification result
       if (verificationResult.status === "success") {
-        console.log("Friendly Captcha verified successfully.");
+        devLog("Friendly Captcha verified successfully.");
         setFriendlyCaptchaIsVerified(true);
       } else {
-        console.log("Failed to verify Friendly Captcha.");
+        devLog("Failed to verify Friendly Captcha.");
         setFriendlyCaptchaIsVerified(false);
       }
     } catch (error) {

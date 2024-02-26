@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import axios from "axios";
+import { devLog } from "../../../server/utils/errorUtils";
 
 // Constants and Utils
 
@@ -15,14 +16,15 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  */
 const verifyFriendlyCaptchaSolution = async (solution, secret) => {
   try {
-    console.log("Started verifying Friendly Captcha solution.");
+    console.log("verifying Friendly Captcha solution.");
     const response = await axios.post(`${apiUrl}/captchas/verify-captcha`, {
       solution,
       secret,
     });
-    console.log("CaptchaVerified:", response);
+    devLog("CaptchaVerified:", response);
     return response.data;
   } catch (error) {
+    // Log the error in production for monitoring
     console.error("Error verifying captcha:", error);
     throw error;
   }
