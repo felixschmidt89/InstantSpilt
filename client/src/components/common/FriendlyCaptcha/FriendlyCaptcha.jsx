@@ -39,7 +39,8 @@ const FriendlyCaptcha = ({ sitekey, secret, setFriendlyCaptchaIsVerified }) => {
         setFriendlyCaptchaIsVerified(true);
       } else {
         devLog("Failed to verify Friendly Captcha.");
-        setFriendlyCaptchaIsVerified(false);
+        // Allow form submission also for failed verifications as recommended by FriendlyCaptcha
+        setFriendlyCaptchaIsVerified(true);
       }
     } catch (error) {
       devLog("Error verifying captcha:", error);

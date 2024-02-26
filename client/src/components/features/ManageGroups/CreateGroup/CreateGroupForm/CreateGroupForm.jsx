@@ -31,7 +31,7 @@ import styles from "./CreateGroupForm.module.css";
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
- * Component for rendering a form to create a new group, validating group name and rendering group name validation errors.
+ * Component for rendering a form to create a new group, validating group name and rendering group name validation errors. Also renders and validates FriendlyCaptcha for new users.
  *
  *  @param {boolean} isOnboarding - Indicates whether a new InstantSplit user is creating the group
  * @returns {JSX.Element} React component. */
@@ -41,6 +41,8 @@ const CreateGroupForm = ({ isOnboarding }) => {
   const [groupName, setGroupName] = useState("");
   const [error, setError] = useState(null);
   const groupCode = localStorage.getItem("activeGroupCode");
+  const [friendlyCaptchaIsVerified, setFriendlyCaptchaIsVerified] =
+    useState(false);
 
   devLog("Onboarding group creation", isOnboarding);
 
@@ -88,21 +90,25 @@ const CreateGroupForm = ({ isOnboarding }) => {
         placeholder='group name'
         ref={inputRef}
       />
-      <FormSubmitButton
-        fontSize={1.6}
-        add={true}
-        marginLeft='0.1'
-        transformScale={1.3}
-        translateX={0.2}
-        translateY={0.15}
-      />
-      {/* Add FriendlyCaptcha for new users*/}
+      {/* For new users: only render submit button, if FriendlyCaptcha is verified*/}
+      {(groupCode !== null || friendlyCaptchaIsVerified) && (
+        <FormSubmitButton
+          fontSize={1.6}
+          add={true}
+          marginLeft='0.1'
+          transformScale={1.3}
+          translateX={0.2}
+          translateY={0.15}
+        />
+      )}
+      {/* For new users: render FriendlyCaptcha*/}
       {!groupCode && (
         <FriendlyCaptcha
           sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITEKEY}
+          secret={import.meta.env.VITE_FRIENDLY_CAPTCHA_SECRET}
+          setFriendlyCaptchaIsVerified={setFriendlyCaptchaIsVerified}
         />
       )}
-
       <ErrorModal
         error={error}
         onClose={handleCloseErrorModal}

@@ -16,6 +16,10 @@ import FriendlyCaptcha from "../../../common/FriendlyCaptcha/FriendlyCaptcha";
 // Styles
 import styles from "./ValidateGroupCode.module.css";
 
+/**
+ * React component for validating a group code.
+ * @returns {JSX.Element} React component.
+ */
 const ValidateGroupCode = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const [friendlyCaptchaIsVerified, setFriendlyCaptchaIsVerified] =
@@ -37,7 +41,7 @@ const ValidateGroupCode = () => {
       navigate(`/groupCode-validator/${toBeValidatedGroupCode}`);
     }
   };
-  // Submit on enter button click
+
   const handleKeyDown = (e) => {
     submitOnEnterClick(e, handleFormSubmit);
   };
