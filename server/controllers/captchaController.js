@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { StatusCodes } from 'http-status-codes';
-import { sendInternalError } from '../utils/errorUtils';
+import { sendInternalError } from '../utils/errorUtils.js';
 
 export const verifyCaptcha = async (req, res) => {
   try {
