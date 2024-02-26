@@ -43,6 +43,7 @@ A user centered MERN Full Stack application designed for settling group expenses
 ![React Helmet Async](https://img.shields.io/badge/React%20Helmet%20Async-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![React Icons](https://img.shields.io/badge/React%20Icons-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![React Router DOM](https://img.shields.io/badge/React%20Router%20DOM-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+[<img src="https://friendlycaptcha.com/wp-content/uploads/2020/12/FriendlyCaptcha-Logo.svg" alt="Friendly Captcha" height="24px" style="background-color: white; padding: 2px 5px;">](https://friendlycaptcha.com/)
 
 ## Access the application or try the demo.
 
