@@ -95,8 +95,8 @@ const DefaultAndUserSettingsBar = () => {
                   containerWidth='7.2'
                   iconExplanationWidth='5'
                   explanationText='invite'
-                  iconExplanationTextAlignment='left'
-                  iconExplanationIsIdleTranslateX='1'
+                  iconExplanationTextAlignment='center'
+                  iconExplanationIsIdleTranslateX='-0.3'
                   route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
                   iconSize={3.5}
                   translateY={0.1}
@@ -117,8 +117,8 @@ const DefaultAndUserSettingsBar = () => {
                   translateY={0.4}
                   translateX={-0.3}
                   iconExplanationWidth='5'
-                  iconExplanationTextAlignment='right'
-                  iconExplanationIsIdleTranslateX='-1'
+                  iconExplanationTextAlignment='center'
+                  iconExplanationIsIdleTranslateX='-0.3'
                   explanationText='more'
                   onClick={showUserSettings}
                 />

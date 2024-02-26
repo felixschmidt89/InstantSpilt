@@ -18,6 +18,8 @@ import styles from "./ValidateGroupCode.module.css";
 
 const ValidateGroupCode = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
+  const [friendlyCaptchaIsVerified, setFriendlyCaptchaIsVerified] =
+    useState(false);
   const [toBeValidatedGroupCode, setToBeValidatedGroupCode] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -52,19 +54,24 @@ const ValidateGroupCode = () => {
           onChange={(e) => setToBeValidatedGroupCode(e.target.value)}
           onKeyDown={handleKeyDown}
         />
-        <FormSubmitButton
-          fontSize={1.6}
-          submit={true}
-          marginLeft='0.1'
-          transformScale={1.3}
-          translateX={0.3}
-          translateY={0.1}
-        />
-        {/* Add FriendlyCaptcha for new users*/}
+        {/* For new users: only render submit button, if FriendlyCaptcha is verified*/}
+        {(!groupCode && friendlyCaptchaIsVerified) ||
+          (groupCode && (
+            <FormSubmitButton
+              fontSize={1.6}
+              submit={true}
+              marginLeft='0.1'
+              transformScale={1.3}
+              translateX={0.3}
+              translateY={0.1}
+            />
+          ))}
+        {/* For new users: render FriendlyCaptcha*/}
         {!groupCode && (
           <FriendlyCaptcha
             sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITEKEY}
             secret={import.meta.env.VITE_FRIENDLY_CAPTCHA_SECRET}
+            setFriendlyCaptchaIsVerified={setFriendlyCaptchaIsVerified}
           />
         )}
       </form>

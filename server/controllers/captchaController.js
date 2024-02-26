@@ -1,14 +1,11 @@
 import axios from 'axios';
 import { StatusCodes } from 'http-status-codes';
-import { devLog, sendInternalError } from '../utils/errorUtils.js';
+import { sendInternalError } from '../utils/errorUtils';
 
 export const verifyCaptcha = async (req, res) => {
   try {
     const { solution, secret } = req.body;
 
-    // Console logs to monitor implementation
-    console.log('Solution:', solution);
-    console.log('Secret:', secret);
     const response = await axios.post(
       'https://api.friendlycaptcha.com/api/v1/siteverify',
       {
@@ -16,8 +13,6 @@ export const verifyCaptcha = async (req, res) => {
         secret,
       },
     );
-    // Console logs to monitor implementation
-    console.log(response);
     // Extract relevant data from the response
     const { success } = response.data;
 
@@ -25,12 +20,12 @@ export const verifyCaptcha = async (req, res) => {
     if (success) {
       res.status(StatusCodes.OK).json({
         status: 'success',
-        message: 'Captcha verified successfully.',
+        message: 'FriendlyCaptcha verified successfully.',
       });
     } else {
       res.status(StatusCodes.UNAUTHORIZED).json({
         status: 'error',
-        message: 'Failed to verify captcha.',
+        message: 'Failed to verify FriendlyCaptcha.',
       });
     }
   } catch (error) {

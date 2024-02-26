@@ -1,43 +1,50 @@
 // React and Third-Party Libraries
 import { useEffect, useRef } from "react";
 import { WidgetInstance } from "friendly-challenge";
-import axios from "axios";
 
 // Constants and Utils
 import { devLog } from "../../../utils/errorUtils";
 
 // Styles
 import styles from "./FriendlyCaptcha.module.css";
-
-// API URL
-const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+import verifyFriendlyCaptchaSolution from "../../../utils/captchaUtils";
 
 /**
  * Friendly Captcha widget (automatic and privacy respecting captcha mechanism). Should only be applied outside of the main application, ie when there is no active group in local storage, to prevent malicious attacks and must always be used directly in form elements
  *  Documentation: [Friendly Captcha Documentation](https://docs.friendlycaptcha.com/#/)
- * @param {string} props.sitekey - The sitekey provided by Friendly Captcha.
- *  @param {string} props.secret - The API key provided by Friendly Captcha.
-
+ * @param {string} props.sitekey - The sitekey (obtained from Friendly Captcha)
+ *  @param {string} props.secret - The API key obtained from Friendly Captcha)
  * @returns {JSX.Element} React component.
  */
-const FriendlyCaptcha = ({ sitekey, secret }) => {
+const FriendlyCaptcha = ({ sitekey, secret, setFriendlyCaptchaIsVerified }) => {
   devLog("Friendly captcha sitekey", sitekey);
   const container = useRef();
   const widget = useRef();
 
-  const doneCallback = async (solution) => {
-    devLog("Captcha was solved. The form can be submitted.");
-    devLog("Solution:", solution);
+  const doneCallback = async (solution, secret) => {
     try {
-      const response = await axios.post(`${apiUrl}/captchas/verify-captcha`, {
+      console.log("Friendly Captcha was solved.");
+      console.log("Solution:", solution);
+      console.log("Verifying solution now...");
+
+      // Verify the captcha solution using the helper function
+      const verificationResult = await verifyFriendlyCaptchaSolution(
         solution,
-        secret,
-      });
-      console.log("CaptchaVerified:", response);
-      // Handle the response if needed
+        secret
+      );
+      console.log("VerificationResult", verificationResult);
+
+      // Check the verification result
+      if (verificationResult.status === "success") {
+        console.log("Friendly Captcha verified successfully.");
+        setFriendlyCaptchaIsVerified(true);
+      } else {
+        console.log("Failed to verify Friendly Captcha.");
+        setFriendlyCaptchaIsVerified(false);
+      }
     } catch (error) {
-      console.error("Error verifying captcha:", error);
-      // Handle errors
+      devLog("Error verifying captcha:", error);
+      setFriendlyCaptchaIsVerified(false);
     }
   };
 
