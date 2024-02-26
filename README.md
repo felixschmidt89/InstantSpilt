@@ -1,6 +1,6 @@
 # InstantSplit
 
-A user centered MERN Full Stack application designed for settling group expenses with a focus on functionality and data privacy, eliminating the need for personalized user registration mandatory app installation. Allows gaining and sharing access to a group via a simple link and managing an unlimited number of such groups. Prioritizes privacy by not identifying or logging individual users and sessions and by purging all data of a group after 90 days of group inactivity.
+A user centered Full (MERN) Stack PWA designed for settling group expenses with a focus on functionality and data privacy, eliminating the need for personalized user registration or mandatory app installation. Allows gaining and sharing access to a group via a simple link and managing an unlimited number of such groups. Prioritizes privacy by not identifying or logging individual users and sessions and by purging all data of a group after 90 days of group inactivity.
 
 <div align="center" style="display: flex; flex-wrap: wrap; justify-content: center;">
   <img src="./client/public/app-image.png" alt="App screenshot1" width="200px">
@@ -32,6 +32,7 @@ A user centered MERN Full Stack application designed for settling group expenses
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![PWA](https://img.shields.io/badge/PWA-Progressive%20Web%20App-blue?style=for-the-badge)
 
 ## Libraries
 
