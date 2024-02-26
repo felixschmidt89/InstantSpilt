@@ -64,6 +64,7 @@ const ValidateGroupCode = () => {
         {!groupCode && (
           <FriendlyCaptcha
             sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITEKEY}
+            secret={import.meta.env.VITE_FRIENDLY_CAPTCHA_SECRET}
           />
         )}
       </form>

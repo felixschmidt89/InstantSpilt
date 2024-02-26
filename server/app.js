@@ -2,7 +2,6 @@ import express from 'express';
 import dotenv from 'dotenv';
 import compression from 'compression';
 import cors from 'cors';
-import morgan from 'morgan';
 import multer from 'multer';
 import rateLimit from 'express-rate-limit';
 import groupRouter from './routes/groupRouter.js';
@@ -12,6 +11,7 @@ import paymentRouter from './routes/paymentRouter.js';
 import feedbackRouter from './routes/feedbackRouter.js';
 import healthRouter from './routes/healthRouter.js';
 import fileRouter from './routes/fileRouter.js';
+import captchaRouter from './routes/captchaRouter.js';
 
 // Create an express application
 const app = express();
@@ -38,10 +38,6 @@ app.use(cors());
 const upload = multer({ dest: 'uploads/' });
 // Enable GZIP compression to reduce response size for faster loading
 app.use(compression());
-// Log requests in development
-if (NODE_ENV === 'development') {
-  app.use(morgan('dev'));
-}
 
 // ROUTES
 app.use(`${API_BASEURL}/groups`, groupRouter);
@@ -51,5 +47,6 @@ app.use(`${API_BASEURL}/payments`, paymentRouter);
 app.use(`${API_BASEURL}/feedbacks`, feedbackRouter);
 app.use(`${API_BASEURL}/health`, healthRouter);
 app.use(`${API_BASEURL}/files`, fileRouter);
+app.use(`${API_BASEURL}/captchas`, captchaRouter);
 
 export default app;
