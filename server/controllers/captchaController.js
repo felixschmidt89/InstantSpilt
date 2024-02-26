@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { StatusCodes } from 'http-status-codes';
 import { sendInternalError } from '../utils/errorUtils.js';
-import FriendlyCaptcha from '../../client/src/components/common/FriendlyCaptcha/FriendlyCaptcha.jsx';
 
 export const verifyCaptcha = async (req, res) => {
   try {
