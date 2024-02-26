@@ -18,8 +18,6 @@ import styles from "./ValidateGroupCode.module.css";
 
 const ValidateGroupCode = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
-  // Get sitekey from .env
-  const sitekey = import.meta.env.VITE_FRIENDLY_CAPTCHA_SITEKEY;
   const [toBeValidatedGroupCode, setToBeValidatedGroupCode] = useState("");
   const navigate = useNavigate();
   const [error, setError] = useState(null);
@@ -63,7 +61,11 @@ const ValidateGroupCode = () => {
           translateY={0.1}
         />
         {/* Add FriendlyCaptcha for new users*/}
-        {!groupCode && <FriendlyCaptcha sitekey={sitekey} />}
+        {!groupCode && (
+          <FriendlyCaptcha
+            sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITEKEY}
+          />
+        )}
       </form>
       <ErrorModal
         error={error}

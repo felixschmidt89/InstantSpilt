@@ -14,7 +14,22 @@ const SingleTermsAndConditions = ({ sections }) => {
       {sections.map((section) => (
         <div key={section.key}>
           <h3 className={styles.header}>{section.title}</h3>
-          <p className={styles.content}>{section.content}</p>
+          <p className={styles.content}>
+            {section.content}
+            {section.link && (
+              <span>
+                {" "}
+                For more information, please refer to{" "}
+                <a
+                  href={section.link}
+                  target='_blank'
+                  rel='noopener noreferrer'>
+                  {section.linkText || "Privacy Policy"}
+                </a>
+                .
+              </span>
+            )}
+          </p>{" "}
         </div>
       ))}
     </div>

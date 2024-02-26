@@ -96,7 +96,12 @@ const CreateGroupForm = ({ isOnboarding }) => {
         translateX={0.2}
         translateY={0.15}
       />
-      {!groupCode && <FriendlyCaptcha />}
+      {/* Add FriendlyCaptcha for new users*/}
+      {!groupCode && (
+        <FriendlyCaptcha
+          sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITEKEY}
+        />
+      )}
 
       <ErrorModal
         error={error}

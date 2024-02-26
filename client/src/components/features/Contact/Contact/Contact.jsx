@@ -21,7 +21,6 @@ import styles from "./Contact.module.css";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-console.log("apiUrl", apiUrl);
 /**
  * Parent component for user feedback.
  *
