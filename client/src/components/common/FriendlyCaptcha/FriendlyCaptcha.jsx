@@ -25,7 +25,6 @@ const FriendlyCaptcha = ({ sitekey, secret, setFriendlyCaptchaIsVerified }) => {
     try {
       console.log("Friendly Captcha was solved.");
       console.log("Solution:", solution);
-      console.log("Verifying solution now...");
 
       // Verify the captcha solution using the helper function
       const verificationResult = await verifyFriendlyCaptchaSolution(
