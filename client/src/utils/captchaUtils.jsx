@@ -16,7 +16,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  */
 const verifyFriendlyCaptchaSolution = async (solution, secret) => {
   try {
-    console.log("verifying Friendly Captcha solution.");
+    devLog("Started verifying Friendly Captcha solution.");
     const response = await axios.post(`${apiUrl}/captchas/verify-captcha`, {
       solution,
       secret,

@@ -10,7 +10,8 @@
     "test": "jest",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "publish": "npm run build && netlify deploy --prod"
+    "publish": "npm run build && netlify deploy --prod",
+    "generate-pwa-assets": "pwa-assets-generator --preset minimal public/android-chrome-512x512.png"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
@@ -20,7 +21,6 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "axios": "^1.5.0",
-    "customize-cra": "^1.0.0",
     "cypress-vite": "^1.5.0",
     "framer-motion": "^11.0.5",
     "friendly-challenge": "^0.9.14",
@@ -30,7 +30,8 @@
     "react-helmet-async": "^1.3.0",
     "react-icons": "^4.12.0",
     "react-router-dom": "^6.16.0",
-    "react-use-localstorage": "^3.5.3"
+    "react-use-localstorage": "^3.5.3",
+    "react-use-pwa-install": "^0.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
@@ -38,6 +39,7 @@
     "@babel/preset-react": "^7.23.3",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
+    "@vite-pwa/assets-generator": "^0.2.4",
     "@vitejs/plugin-react": "^4.0.3",
     "babel-core": "^4.7.16",
     "babel-jest": "^29.7.0",
@@ -55,6 +57,7 @@
     "react-app-rewired": "^2.2.1",
     "vite": "^4.4.5",
     "vite-plugin-eslint": "^1.8.1",
-    "workbox-webpack-plugin": "^7.0.0"
+    "vite-plugin-pwa": "^0.19.0",
+    "workbox-webpack-plugin": "^4.3.1"
   }
 }

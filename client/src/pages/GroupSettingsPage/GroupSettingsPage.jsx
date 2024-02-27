@@ -19,9 +19,17 @@ import ChangeResourceName from "../../components/common/ChangeResourceName/Chang
 
 // Styles
 import styles from "./GroupSettingsPage.module.css";
+import { useNavigate } from "react-router-dom";
+
 const GroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupData, isFetched } = useFetchGroupData(groupCode);
+
+  const navigate = useNavigate();
+
+  const navigateToTestPage = () => {
+    navigate("/test-page");
+  };
 
   return (
     <main>

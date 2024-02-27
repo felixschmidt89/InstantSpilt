@@ -1,3 +1,4 @@
+import { currentTimeStamp } from "../constants/dateConstants";
 import { devLog } from "./errorUtils";
 /**
  * Removes the 'activeGroupCode' property from local storage.
@@ -104,6 +105,24 @@ export const removeViewStateFromLocalStorage = () => {
     return true;
   } catch (error) {
     devLog("Error removing viewState from local storage:", error);
+    return false;
+  }
+};
+
+/**
+ * Sets the 'pwaCtaClosed' property in local storage.
+ * @param {string} value - The value to set for 'pwaCtaClosed'.
+ * @returns {boolean} - Returns true if 'pwaCtaClosed' was successfully set, false if there was an error.
+ */
+export const setPwaCtaClosedInLocalStorage = () => {
+  try {
+    localStorage.setItem("pwaCtaClosed", currentTimeStamp);
+    devLog(
+      `pwaCtaClosed has been set to ${currentTimeStamp} in local storage.`
+    );
+    return true;
+  } catch (error) {
+    devLog(`Error setting pwaCtaClosed in local storage.`, error);
     return false;
   }
 };

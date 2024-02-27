@@ -58,13 +58,16 @@ const RenderSettlementPaymentSuggestions = ({
               <span
                 aria-label={`Payment recipient name`}
                 className={styles.paymentRecipient}>
-                {settlement.to}:
+                {settlement.to}
               </span>
-              <div
-                className={styles.settlementAmount}
-                aria-label={`Settlement payment amount`}>
-                {settlement.amount}
-                {groupCurrency}
+              <div className={styles.amount}>
+                <span className={styles.dueKey}>due:</span>
+                <span
+                  className={styles.settlementAmount}
+                  aria-label={`Settlement payment amount`}>
+                  {settlement.amount}
+                  {groupCurrency}
+                </span>
               </div>
             </div>
             <div className={styles.confirm}>

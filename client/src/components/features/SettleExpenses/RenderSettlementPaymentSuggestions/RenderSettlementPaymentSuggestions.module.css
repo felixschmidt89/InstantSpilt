@@ -11,10 +11,6 @@
   font-size: 1.6rem;
 }
 
-.paymentMaker,
-.paymentRecipient {
-  width: 10rem;
-}
 .paymentSuggestions {
   display: flex;
   flex-direction: row;
@@ -24,10 +20,20 @@
   margin-bottom: 0.5rem;
 }
 
+.amount {
+  display: flex;
+  flex-direction: row;
+}
+
+.dueKey {
+  color: var(--color-grey);
+}
+
 .settlementAmount {
   color: var(--color-error);
-  margin-right: 1rem;
-  margin-left: auto;
+  text-align: right;
+  width: 8rem;
+  margin-right: auto;
 }
 
 .confirm {

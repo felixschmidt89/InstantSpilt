@@ -12,11 +12,8 @@ const InvitationIntro = ({ groupData }) => {
     <div className={styles.container}>
       <p className={styles.paragraph}>
         Someone invited you to join{" "}
-        <span className={styles.noWrap}>
-          group{" "}
-          <span>
-            <strong>{groupData.group.groupName}</strong>
-          </span>
+        <span>
+          <strong>{groupData.group.groupName}</strong>
         </span>{" "}
         to manage and settle your shared expenses.
       </p>

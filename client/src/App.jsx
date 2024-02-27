@@ -37,6 +37,7 @@ import ManageGroupsPage from "./pages/ManageGroupsPage/ManageGroupsPage";
 import GroupSettingsPage from "./pages/GroupSettingsPage/GroupSettingsPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import ShareGroupInvitationPage from "./pages/ShareGroupInvitationPage/ShareGroupInvitationPage";
+import ClientDevicePage from "./pages/ClientDevicePage/ClientDevicePage";
 
 // Styles
 import "./App.css";
@@ -122,6 +123,7 @@ const App = () => {
               element={<TermsAndConditionsPage />}
             />
             <Route path='*' element={<PageNotFoundPage />} />
+            <Route path='/client-device' element={<ClientDevicePage />} />
           </Routes>
           <Footer />
         </HelmetProvider>
@@ -129,13 +131,5 @@ const App = () => {
     </ThemeProvider>
   );
 };
-
-// Check if the browser supports service workers
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    // Register the service worker
-    navigator.serviceWorker.register("/service-worker.js");
-  });
-}
 
 export default App;

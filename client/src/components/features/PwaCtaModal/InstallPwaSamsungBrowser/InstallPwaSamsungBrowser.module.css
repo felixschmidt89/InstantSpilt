@@ -1,0 +1,26 @@
+.container {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 0 2rem;
+  padding-bottom: 0.5rem;
+}
+
+.text {
+  text-align: left;
+}
+
+.dotsIcon {
+  transform: translateY(0.3rem);
+}
+
+.installIcon {
+  transform: translateY(0.3rem);
+}
+
+.installPwaExplanationList {
+  list-style-type: decimal;
+  text-align: left;
+  margin-left: 2rem;
+}

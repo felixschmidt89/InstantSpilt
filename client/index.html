@@ -54,19 +54,24 @@
     <meta
       http-equiv="Strict-Transport-Security"
       content="max-age=31536000; includeSubDomains; preload" />
-    <link rel="manifest" href="https://instantsplit.de/manifest.json" />
-
     <!-- Title of the web page -->
     <title>InstantSplit</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" href="/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      href="/apple-touch-icon-180x180.png"
+      sizes="180x180" />
+    <link rel="mask-icon" href="/mask-icon.svg" color="#FFFFFF" />
+    <meta name="theme-color" content="#ffffff" />
   </head>
   <body>
     <!-- Root container for React application -->
     <div id="root"></div>
     <!-- JavaScript module for the main entry point of the React application -->
     <script type="module" src="/src/Main.jsx"></script>
+    <!-- Hacky solution to not log the warning by Friendly Captcha that this element is missing. It exists, but is named differently in the build version -->
+    <form style="display: none">
+      <div class="frc-captcha"></div>
+    </form>
   </body>
 </html>

@@ -1,0 +1,43 @@
+.container {
+  width: 60%;
+  height: 90%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
+  padding-bottom: 0.5rem;
+  margin: 0 auto;
+}
+
+.container h1 {
+  margin-bottom: 0.5rem;
+}
+
+.container h2 {
+  margin-top: 0rem;
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  .container {
+    width: 50%;
+  }
+}
+
+/* Delayed rendering to avoid flickering */
+.container {
+  opacity: 0;
+  animation: delayedRender 0.1s ease 0.2s forwards;
+}
+@keyframes delayedRender {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
