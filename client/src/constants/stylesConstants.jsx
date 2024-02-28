@@ -32,6 +32,7 @@ export const smallButtonStyles = {
  */
 export const attachFileButtonStyles = {
   padding: "0.2rem 0.5rem",
+  fontSize: "1.5rem",
   marginTop: "0rem",
   marginBottom: "0.5rem",
   fontFamily: "inherit",

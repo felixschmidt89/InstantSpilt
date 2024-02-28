@@ -18,3 +18,8 @@
   flex-direction: column;
   margin-bottom: 1rem;
 }
+
+.debugButton {
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+}

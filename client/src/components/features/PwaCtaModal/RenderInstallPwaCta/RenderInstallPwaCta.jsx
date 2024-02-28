@@ -16,7 +16,7 @@ const RenderInstallPwaCta = ({
       case "firefox":
         component = <InstallPwaFirefox closePrompt={closePrompt} />;
         break;
-      case "safari":
+      case "iPadIPhone":
         component = <InstallPwaSafari closePrompt={closePrompt} />;
         break;
       case "samsung":

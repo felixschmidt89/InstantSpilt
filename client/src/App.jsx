@@ -123,7 +123,7 @@ const App = () => {
               element={<TermsAndConditionsPage />}
             />
             <Route path='*' element={<PageNotFoundPage />} />
-            <Route path='/client-device' element={<ClientDevicePage />} />
+            <Route path='/client-info' element={<ClientDevicePage />} />
           </Routes>
           <Footer />
         </HelmetProvider>

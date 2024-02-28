@@ -11,7 +11,6 @@ import {
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useDeletePreviousRouteFromLocalStorage from "../../hooks/useDeletePreviousRouteFromLocalStorage";
-import useUserAgent from "../../hooks/useUserAgent";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
 
 // Components
@@ -28,6 +27,7 @@ import PwaCtaModal from "../../components/features/PwaCtaModal/PwaCtaModal/PwaCt
 import styles from "./InstantSplitPage.module.css";
 import { devLog } from "../../utils/errorUtils";
 import { currentTimeStamp } from "../../constants/dateConstants";
+import useGetClientDeviceAndPwaInfo from "../../hooks/useGetClientDeviceAndPwaInfo";
 
 /**
  * Renders the main screen of the application
@@ -79,47 +79,50 @@ const InstantSplitPage = () => {
     }
   };
 
-  // Call to action to add PWA to home screen for safari on iPad and iPhone as well as Firefox and Samsung Browser on non-iOS mobile devices. For chrome on non-iOS devices we rely on the built-in PWA install prompt rendered in the footer.
-  // Get user agent data
-  const { isMobile, userAgent, isIOS, isStandalone } = useUserAgent();
-
   // Check if the PWA CTA should be shown
   let showCta = true; // Default to true if pwaCtaClosed does not exist in localStorage
   const pwaCtaClosed = localStorage.getItem("pwaCtaClosed");
   if (pwaCtaClosed) {
     const pwaCtaClosedTimestamp = Number(pwaCtaClosed);
     // Calculate the difference between the current timestamp and the stored timestamp
-    showCta = currentTimeStamp - pwaCtaClosedTimestamp > 604800000; // 7 days in milliseconds
+    showCta = currentTimeStamp - pwaCtaClosedTimestamp > 3600000; // 60 minutes in milliseconds
   }
-
-  // State to manage displayPrompt based on userAgent
-  const [displayPrompt, setDisplayPrompt] = useState(null);
 
   // State to manage modal visibility
   const [isCtaModalVisible, setIsCtaModalVisible] = useState(null);
   // iPad: Render modal only in Safari. For this to work, isIOS and isMobile must be false, both are true for all other browsers and they strangely also have Safari userAgent
-  // TODO: Test on iPhone
   // Non iOS mobile devices, opposite to iOS mobile, conditions should work as expected
 
+  const { isPwa, isMobile, isMobileSafari, isIOS, browserName } =
+    useGetClientDeviceAndPwaInfo();
+  // State to manage displayPrompt based on userAgent
+  const [displayPrompt, setDisplayPrompt] = useState(null);
+
   useEffect(() => {
-    if (userAgent === "Safari" && !isStandalone && !isIOS && !isMobile) {
-      setDisplayPrompt("safari");
-    } else if (isMobile && !isIOS && !isStandalone) {
-      if (userAgent === "Firefox") {
+    if (
+      isIOS &&
+      isMobileSafari &&
+      browserName.includes("Safari") &&
+      !isPwa &&
+      isMobile
+    ) {
+      setDisplayPrompt("iPadIPhone");
+    } else if (isMobile && !isIOS && !isPwa) {
+      if (browserName.includes("Firefox")) {
         setDisplayPrompt("firefox");
-      } else if (userAgent === "SamsungBrowser") {
+      } else if (browserName.includes("Samsung")) {
         setDisplayPrompt("samsung");
       } else {
         setDisplayPrompt(null);
       }
     } else {
-      devLog("Not a mobile device or already installed");
+      devLog("Not a mobile device we currently support for PWA install CTA.");
     }
-  }, [userAgent, isMobile, isStandalone, isIOS]);
+  }, [isIOS, isMobileSafari, browserName, isPwa, isMobile]);
 
   useEffect(() => {
     setIsCtaModalVisible(displayPrompt !== null && showCta);
-  }, [displayPrompt]);
+  }, [displayPrompt, showCta]);
 
   const closePrompt = () => {
     setDisplayPrompt(null);

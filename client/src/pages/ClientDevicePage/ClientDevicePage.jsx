@@ -2,7 +2,7 @@
 import React from "react";
 
 // Hooks
-import useUserAgent from "../../hooks/useUserAgent";
+import useGetClientDeviceAndPwaInfo from "../../hooks/useGetClientDeviceAndPwaInfo";
 
 // Components
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
@@ -11,35 +11,28 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 import styles from "./ClientDevicePage.module.css";
 
 /**
- * Component for displaying client device information for debugging.
+ * Page for rendering client device information for debugging.
  * @returns {JSX.Element} React component.
  */
 const ClientDevicePage = () => {
-  const { isMobile, userAgent, isIOS, isStandalone, userAgentString } =
-    useUserAgent();
+  const { isPwa, isMobile, isMobileSafari, isIOS, browserName } =
+    useGetClientDeviceAndPwaInfo();
 
   return (
     <main>
       <InAppNavigationBar home={true} />
-      <h1>Client Device</h1>
+      <h1>client info</h1>
       <div className={styles.container}>
-        <ul>
-          <li>
-            <strong>isMobile:</strong> {isMobile ? "true" : "false"}
-          </li>
-          <li>
-            <strong>userAgent:</strong> {userAgent}
-          </li>
-          <li>
-            <strong>isIOS:</strong> {isIOS ? "true" : "false"}
-          </li>
-          <li>
-            <strong>isStandalone:</strong> {isStandalone ? "true" : "false"}
-          </li>
-          <li>
-            <strong>userAgentString:</strong> {userAgentString}
-          </li>
-        </ul>
+        <div>
+          <h2>debug info</h2>
+          <ul>
+            <li>is Mobile: {isMobile ? "Yes" : "No"}</li>
+            <li>Browser: {browserName}</li>
+            <li>is Mobile Safari: {isMobileSafari ? "Yes" : "No"}</li>
+            <li>is iOS: {isIOS ? "Yes" : "No"}</li>
+            <li>isPwa: {isPwa ? "Yes" : "No"} </li>
+          </ul>
+        </div>
       </div>
     </main>
   );

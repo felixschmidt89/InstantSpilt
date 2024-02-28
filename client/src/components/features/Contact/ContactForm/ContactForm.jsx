@@ -12,6 +12,7 @@ import {
 
 // Styles
 import styles from "./ContactForm.module.css";
+import RouteButton from "../../../common/InAppNavigation/RouteButton/RouteButton";
 
 /**
  * Component for rendering contact form
@@ -109,6 +110,14 @@ const ContactForm = ({
         {formData.messageType === "issue/bug" && (
           <div>
             <div>
+              <div className={styles.debugButton}>
+                <RouteButton
+                  route={`client-info`}
+                  buttonText='client info'
+                  setPreviousRoute={true}
+                  margin='0px'
+                />
+              </div>
               <input
                 className={styles.fileInputField}
                 ref={fileInputRef}

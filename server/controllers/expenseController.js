@@ -218,7 +218,6 @@ export const getExpenseInfo = async (req, res) => {
       .populate('expenseBeneficiaries', 'userName');
 
     const groupCode = expense.groupCode;
-    devLog('Expense groupCode', groupCode);
     setGroupLastActivePropertyToNow(groupCode);
 
     res.status(StatusCodes.OK).json({
