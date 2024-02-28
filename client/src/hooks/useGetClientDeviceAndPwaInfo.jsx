@@ -22,10 +22,11 @@ const useGetClientDeviceAndPwaInfo = () => {
     setIsInstantSplitPwa(mediaQueryList.matches);
   }, []);
 
-  const { isMobile, isMobileSafari, isIOS, browserName } = selectors;
+  const { isMobile, isAndroid, isMobileSafari, isIOS, browserName } = selectors;
 
   return {
     isPwa,
+    isAndroid,
     isMobile,
     isMobileSafari,
     isIOS,

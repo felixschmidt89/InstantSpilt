@@ -1,5 +1,5 @@
 // Constants and Utils
-import { isWebShareAPISupported } from "./deviceUtils";
+import { isWebShareAPISupported } from "./clientUtils";
 
 // Mock console.log and console.error methods for devLog
 const mockConsoleLog = jest.spyOn(console, "log").mockImplementation();

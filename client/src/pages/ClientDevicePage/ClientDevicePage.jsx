@@ -15,7 +15,7 @@ import styles from "./ClientDevicePage.module.css";
  * @returns {JSX.Element} React component.
  */
 const ClientDevicePage = () => {
-  const { isPwa, isMobile, isMobileSafari, isIOS, browserName } =
+  const { isPwa, isMobile, isAndroid, isMobileSafari, isIOS, browserName } =
     useGetClientDeviceAndPwaInfo();
 
   return (
@@ -30,6 +30,7 @@ const ClientDevicePage = () => {
             <li>Browser: {browserName}</li>
             <li>is Mobile Safari: {isMobileSafari ? "Yes" : "No"}</li>
             <li>is iOS: {isIOS ? "Yes" : "No"}</li>
+            <li>is Android: {isAndroid ? "Yes" : "No"}</li>
             <li>isPwa: {isPwa ? "Yes" : "No"} </li>
           </ul>
         </div>

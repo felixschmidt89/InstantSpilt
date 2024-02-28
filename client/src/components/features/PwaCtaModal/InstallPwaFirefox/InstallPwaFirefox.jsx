@@ -1,11 +1,12 @@
+// React and Third-Party Libraries
 import React from "react";
-
 import { HiDotsVertical } from "react-icons/hi";
 import { MdInstallMobile } from "react-icons/md";
 
+// Styles
 import styles from "./InstallPwaFirefox.module.css";
 
-const InstallPwaFirefox = ({ closePrompt }) => {
+const InstallPwaFirefox = () => {
   return (
     <div className={styles.container}>
       <p className={styles.text}>For the best experience, install our app:</p>

@@ -1,9 +1,9 @@
 // React and Third-Party Libraries
 import React from "react";
-import { Link } from "react-router-dom";
 
 // Styles
 import styles from "./GetStartedSection.module.css";
+import RouteButton from "../../../common/InAppNavigation/RouteButton/RouteButton";
 
 /**
  * Component for rendering the get started section on the home page.
@@ -14,12 +14,14 @@ const GetStartedSection = () => {
     <>
       <div className={styles.groupContainer}>
         <h2>get started</h2>
-        <Link to='/onboarding-create-group' className={styles.groupLink}>
-          create a new group
-        </Link>
-        <Link to='/onboarding-enter-groupcode' className={styles.groupLink}>
-          join an existing group
-        </Link>
+        <RouteButton
+          route={`onboarding-create-group`}
+          buttonText='create new group'
+        />
+        <RouteButton
+          route={`onboarding-create-group`}
+          buttonText='join existing group'
+        />
       </div>
     </>
   );

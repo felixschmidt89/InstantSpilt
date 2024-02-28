@@ -3,7 +3,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 
 // Constants and Utils
-import { isWebShareAPISupported } from "../../utils/deviceUtils";
+import { isWebShareAPISupported } from "../../utils/clientUtils";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
@@ -14,7 +14,6 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import ShareGroupInvitationIncludingWebShare from "../../components/features/ShareGroupInvitation/ShareGroupInvitationIncludingWebShare/ShareGroupInvitationIncludingWebShare";
 import ShareGroupInvitation from "../../components/features/ShareGroupInvitation/ShareGroupInvitation/ShareGroupInvitation";
-import Spinner from "../../components/common/Spinner/Spinner";
 
 // Styles
 import styles from "./ShareGroupInvitationPage.module.css";

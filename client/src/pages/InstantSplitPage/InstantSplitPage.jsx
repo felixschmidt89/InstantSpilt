@@ -7,11 +7,14 @@ import {
   deleteGroupDataFromLocalStorage,
   setViewStateInLocalStorage,
 } from "../../utils/localStorageUtils";
+import { checkModalClosureUserActionExpiration } from "../../utils/clientUtils";
+import { devLog } from "../../utils/errorUtils";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
 import useDeletePreviousRouteFromLocalStorage from "../../hooks/useDeletePreviousRouteFromLocalStorage";
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
+import useGetClientDeviceAndPwaInfo from "../../hooks/useGetClientDeviceAndPwaInfo";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -25,9 +28,6 @@ import PwaCtaModal from "../../components/features/PwaCtaModal/PwaCtaModal/PwaCt
 
 // Styles
 import styles from "./InstantSplitPage.module.css";
-import { devLog } from "../../utils/errorUtils";
-import { currentTimeStamp } from "../../constants/dateConstants";
-import useGetClientDeviceAndPwaInfo from "../../hooks/useGetClientDeviceAndPwaInfo";
 
 /**
  * Renders the main screen of the application
@@ -60,44 +60,29 @@ const InstantSplitPage = () => {
     }
   }, [navigate, groupCode, isValidated, groupExists]);
 
-  // Clear nested routes localStorage
+  // Clear nested routes
   useDeletePreviousRouteFromLocalStorage();
   useDeletePreviousRouteFromLocalStorage("nestedPreviousRoute");
 
   const { groupData, isFetched } = useFetchGroupData(groupCode);
 
-  // Function to update the view state and store it in local storage using the helper function
   const updateView = (newView) => {
     try {
       setViewStateInLocalStorage(newView);
       setView(newView);
     } catch (error) {
-      console.error(
-        `Error setting viewState to ${newView} in local storage.`,
-        error
-      );
+      devLog(`Error setting viewState to ${newView} in local storage.`, error);
     }
   };
 
-  // Check if the PWA CTA should be shown
-  let showCta = true; // Default to true if pwaCtaClosed does not exist in localStorage
-  const pwaCtaClosed = localStorage.getItem("pwaCtaClosed");
-  if (pwaCtaClosed) {
-    const pwaCtaClosedTimestamp = Number(pwaCtaClosed);
-    // Calculate the difference between the current timestamp and the stored timestamp
-    showCta = currentTimeStamp - pwaCtaClosedTimestamp > 3600000; // 60 minutes in milliseconds
-  }
-
-  // State to manage modal visibility
-  const [isCtaModalVisible, setIsCtaModalVisible] = useState(null);
-  // iPad: Render modal only in Safari. For this to work, isIOS and isMobile must be false, both are true for all other browsers and they strangely also have Safari userAgent
-  // Non iOS mobile devices, opposite to iOS mobile, conditions should work as expected
-
-  const { isPwa, isMobile, isMobileSafari, isIOS, browserName } =
+  // RENDER PWA CTA MODAL
+  // :TODO: Add Chrome Modal CTA (currently install button in footer)
+  // Get client device and PWA info and manage CTA based on that
+  const { isPwa, isMobile, isMobileSafari, isAndroid, isIOS, browserName } =
     useGetClientDeviceAndPwaInfo();
-  // State to manage displayPrompt based on userAgent
-  const [displayPrompt, setDisplayPrompt] = useState(null);
+  const [ctaToRender, setCtaToRender] = useState(null);
 
+  // Render PWA CTA on iPhone and iPad when app is accessed in Safari
   useEffect(() => {
     if (
       isIOS &&
@@ -106,27 +91,32 @@ const InstantSplitPage = () => {
       !isPwa &&
       isMobile
     ) {
-      setDisplayPrompt("iPadIPhone");
-    } else if (isMobile && !isIOS && !isPwa) {
+      setCtaToRender("iPadIPhone");
+    } else if (isMobile && isAndroid && !isPwa) {
+      // Render PWA CTA on Android devices
       if (browserName.includes("Firefox")) {
-        setDisplayPrompt("firefox");
+        setCtaToRender("firefox");
       } else if (browserName.includes("Samsung")) {
-        setDisplayPrompt("samsung");
+        setCtaToRender("samsung");
       } else {
-        setDisplayPrompt(null);
+        // Render nothing
+        setCtaToRender(null);
       }
     } else {
       devLog("Not a mobile device we currently support for PWA install CTA.");
     }
-  }, [isIOS, isMobileSafari, browserName, isPwa, isMobile]);
+  }, [isIOS, isMobileSafari, browserName, isAndroid, isPwa, isMobile]);
+
+  // If client is supported and last modal closure user action has expired, show PWA CTA modal
+  const [showPwaCtaModal, setShowPwaCtaModal] = useState(null);
+  const lastModalClosureUserActionHasExpired =
+    checkModalClosureUserActionExpiration();
 
   useEffect(() => {
-    setIsCtaModalVisible(displayPrompt !== null && showCta);
-  }, [displayPrompt, showCta]);
-
-  const closePrompt = () => {
-    setDisplayPrompt(null);
-  };
+    setShowPwaCtaModal(
+      ctaToRender !== null && lastModalClosureUserActionHasExpired
+    );
+  }, [ctaToRender, lastModalClosureUserActionHasExpired]);
 
   return (
     <main>
@@ -150,11 +140,10 @@ const InstantSplitPage = () => {
             <RenderGroupBalances groupCurrency={groupData.group.currency} />
           )}
           <GroupActionsBar />
-          {isCtaModalVisible && (
+          {showPwaCtaModal && (
             <PwaCtaModal
-              displayPrompt={displayPrompt}
-              closePrompt={closePrompt}
-              setIsCtaModalVisible={setIsCtaModalVisible}
+              ctaToRender={ctaToRender}
+              setShowPwaCtaModal={setShowPwaCtaModal}
             />
           )}
         </>

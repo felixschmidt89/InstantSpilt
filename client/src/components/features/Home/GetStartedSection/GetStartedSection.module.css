@@ -1,19 +1,6 @@
 .groupContainer {
-  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  margin-top: 2.5rem;
 }
-
-.groupLink {
-  font-size: 1.6rem;
-  font-weight: bold;
-}
-
-.groupLink:focus,
-.groupLink:active {
-  outline: none;
-}
-
-/* .groupLink:hover {
-  color: var(--color-success);
-} */

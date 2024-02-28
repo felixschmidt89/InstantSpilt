@@ -9,3 +9,9 @@ export const currentYear = new Date().getFullYear();
  * @type {number}
  */
 export const currentTimeStamp = Date.now();
+
+/**
+ * Constant representing 24h in milliseconds.
+ * @type {number}
+ */
+export const twentyFourHours = 24 * 60 * 60 * 1000;

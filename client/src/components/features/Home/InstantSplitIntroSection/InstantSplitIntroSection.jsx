@@ -22,9 +22,8 @@ const InstantSplitIntroSection = ({ isInvitation = false }) => {
         </p>
       )}
       <ul className={styles.list}>
-        <li className={styles.listItem}>
-          no user registration or mandatory app installation
-        </li>{" "}
+        <li className={styles.listItem}>no user registration</li>{" "}
+        <li className={styles.listItem}>no mandatory app installation</li>{" "}
         <li className={styles.listItem}>no cookies</li>{" "}
         <li className={styles.listItem}>no user tracking</li>{" "}
         <li className={styles.listItem}>complete inactivity data purge</li>{" "}

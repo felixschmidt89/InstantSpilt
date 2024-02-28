@@ -110,7 +110,7 @@ export const removeViewStateFromLocalStorage = () => {
 };
 
 /**
- * Sets the 'pwaCtaClosed' property in local storage.
+ * Sets the 'pwaCtaClosed' property and timestamp in local storage.
  * @param {string} value - The value to set for 'pwaCtaClosed'.
  * @returns {boolean} - Returns true if 'pwaCtaClosed' was successfully set, false if there was an error.
  */

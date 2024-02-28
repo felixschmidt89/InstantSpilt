@@ -1,26 +1,33 @@
+// React and Third-Party Libraries
 import React from "react";
-import styles from "./RenderInstallPwaCta.module.css";
+
+// Components
 import InstallPwaFirefox from "../InstallPwaFirefox/InstallPwaFirefox";
 import InstallPwaSafari from "../InstallPwaSafari/InstallPwaSafari";
 import InstallPwaSamsungBrowser from "../InstallPwaSamsungBrowser/InstallPwaSamsungBrowser";
 
-const RenderInstallPwaCta = ({
-  displayPrompt,
-  closePrompt,
-  setIsCtaModalVisible,
-}) => {
-  // Determine which component to render based on the value of displayPrompt
-  const Prompt = () => {
+// Styles
+import styles from "./RenderInstallPwaCta.module.css";
+
+/**
+ * Component for rendering the appropriate PWA installation instruction based on the client's browser type.
+ * @param {object} props - Component props.
+ * @param {string} props.ctaToRender - the installation instruction to render.
+ * @param {function} props.closeModal - Function to close the modal.
+ * @returns {JSX.Element} The RenderInstallPwaCta component.
+ */
+const RenderInstallPwaCta = ({ ctaToRender, closeModal }) => {
+  const Cta = () => {
     let component;
-    switch (displayPrompt) {
+    switch (ctaToRender) {
       case "firefox":
-        component = <InstallPwaFirefox closePrompt={closePrompt} />;
+        component = <InstallPwaFirefox closeModal={closeModal} />;
         break;
       case "iPadIPhone":
-        component = <InstallPwaSafari closePrompt={closePrompt} />;
+        component = <InstallPwaSafari closeModal={closeModal} />;
         break;
       case "samsung":
-        component = <InstallPwaSamsungBrowser closePrompt={closePrompt} />;
+        component = <InstallPwaSamsungBrowser closeModal={closeModal} />;
         break;
       default:
         component = null; // If displayPrompt doesn't match any case, render nothing
@@ -30,9 +37,9 @@ const RenderInstallPwaCta = ({
 
   return (
     <>
-      {displayPrompt !== "" && (
+      {ctaToRender !== "" && (
         <div className={styles.container}>
-          <Prompt />
+          <Cta />
         </div>
       )}
     </>

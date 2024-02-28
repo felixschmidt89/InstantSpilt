@@ -1,33 +1,48 @@
+// React and Third-Party Libraries
 import React from "react";
 import { Button } from "@mui/material";
+
+// Constants and Utils
 import { smallButtonStyles } from "../../../../constants/stylesConstants";
-import styles from "./PwaCtaModal.module.css";
-import RenderInstallPwaCta from "../RenderInstallPwaCta/RenderInstallPwaCta";
 import { setPwaCtaClosedInLocalStorage } from "../../../../utils/localStorageUtils";
 
-const PwaCtaModal = ({ displayPrompt, closePrompt, setIsCtaModalVisible }) => {
-  const closeCtaModal = () => {
+// Components
+import RenderInstallPwaCta from "../RenderInstallPwaCta/RenderInstallPwaCta";
+
+// Styles
+import styles from "./PwaCtaModal.module.css";
+
+/**
+ * Component for rendering a CTA modal, explaining how to manually install the PWA.
+ * @param {object} props - Component props.
+ * @param {string} props.ctaToRender - The type of PWA call-to-action to render depending on client.
+ * @param {function} props.setShowPwaCtaModal - Function to control the visibility of the modal.
+ * @returns {JSX.Element} The PwaCtaModal component.
+ */
+const PwaCtaModal = ({ ctaToRender, setShowPwaCtaModal }) => {
+  const closeModal = () => {
     setPwaCtaClosedInLocalStorage();
-    setIsCtaModalVisible(false);
+    setShowPwaCtaModal(false);
   };
 
-  const handleModalClick = (e) => {
+  const preventModalFromBeingClosed = (e) => {
     e.stopPropagation();
   };
 
   return (
     <div className={styles.modal}>
-      <div className={styles.modalContent} onClick={handleModalClick}>
+      <div
+        className={styles.modalContent}
+        onClick={preventModalFromBeingClosed}>
         <>
           <RenderInstallPwaCta
-            displayPrompt={displayPrompt}
-            closePrompt={closePrompt}
-            setIsCtaModalVisible={setIsCtaModalVisible}
+            ctaToRender={ctaToRender}
+            closeModal={closeModal}
           />
           <Button
             style={smallButtonStyles}
             variant='outlined'
-            onClick={closeCtaModal}
+            onClick={closeModal}
             color='grey'>
             ok
           </Button>
