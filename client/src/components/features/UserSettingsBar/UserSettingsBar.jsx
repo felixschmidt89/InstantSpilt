@@ -4,7 +4,6 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
 import { IoChatboxOutline } from "react-icons/io5";
-import { IoPersonAddOutline } from "react-icons/io5";
 
 // Components
 import ReactIconNavigate from "../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";

@@ -12,10 +12,19 @@
   outline: none;
   outline-color: var(--color-grey);
   margin: 0 auto;
+  margin-top: 1rem;
 }
 
 .container:hover,
 .container:focus {
   border-color: var(--color-signal);
   background-color: var(--color-body);
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.invitationLink {
+  padding-top:;
 }

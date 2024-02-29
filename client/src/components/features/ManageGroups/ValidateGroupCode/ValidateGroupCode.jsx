@@ -48,11 +48,13 @@ const ValidateGroupCode = () => {
 
   return (
     <div className={styles.container}>
+      <h2>join group</h2>
+
       <form onSubmit={handleFormSubmit}>
         <input
           className={styles.inputField}
           type='text'
-          placeholder='enter groupCode'
+          placeholder='X4NST4NTSL17T'
           value={toBeValidatedGroupCode}
           onChange={(e) => setToBeValidatedGroupCode(e.target.value)}
           onKeyDown={handleKeyDown}

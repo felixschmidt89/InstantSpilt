@@ -6,8 +6,9 @@
   margin: 0 auto;
 }
 
-.container h1 {
-  margin-bottom: 1rem;
+.container h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 /* Delayed rendering to avoid flickering */

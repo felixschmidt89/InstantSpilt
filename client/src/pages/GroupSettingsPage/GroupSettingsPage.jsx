@@ -16,20 +16,14 @@ import Spinner from "../../components/common/Spinner/Spinner";
 import ChangeGroupCurrency from "../../components/features/GroupSettings/ChangeGroupCurrency/ChangeGroupCurrency";
 import ChangeDataPurgeSetting from "../../components/features/GroupSettings/ChangeDataPurgeSetting/ChangeDataPurgeSetting";
 import ChangeResourceName from "../../components/common/ChangeResourceName/ChangeResourceName";
+import GroupCodeSecurity from "../../components/features/GroupSettings/GroupCodeSecurity/GroupCodeSecurity";
 
 // Styles
 import styles from "./GroupSettingsPage.module.css";
-import { useNavigate } from "react-router-dom";
 
 const GroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupData, isFetched } = useFetchGroupData(groupCode);
-
-  const navigate = useNavigate();
-
-  const navigateToTestPage = () => {
-    navigate("/test-page");
-  };
 
   return (
     <main>
@@ -60,6 +54,7 @@ const GroupSettingsPage = () => {
               groupCode={groupCode}
               inactiveDataPurge={groupData.group.inactiveDataPurge}
             />
+            <GroupCodeSecurity groupCode={groupCode} />
           </div>
         ) : (
           <div className={styles.spinner}>

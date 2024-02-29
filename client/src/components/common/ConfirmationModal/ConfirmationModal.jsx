@@ -60,7 +60,7 @@ const ConfirmationModal = ({
             </>
           ) : (
             <>
-              <p>{message}</p>
+              <p className={styles.confirmationMessage}>{message}</p>
               <div className={styles.button}>
                 <ReactIconNavigate
                   icon={IoCheckmarkCircleOutline}

@@ -16,11 +16,11 @@ import styles from "./ShareGroupInvitation.module.css";
 const ShareGroupInvitation = ({ groupName, infoToCopy }) => {
   return (
     <div className={styles.container}>
-      <p>
-        Copy and share the invitation link below to either invite peers to join{" "}
-        <strong>{groupName}</strong> or to gain access on your other devices:
-      </p>
-      <CopyToClipboard inputFieldWidth={"25rem"} infoToCopy={infoToCopy} />
+      <div className={styles.invitationLink}>
+        Copy the link below to invite others to join{" "}
+        <span className={styles.strong}>{groupName}:</span>
+        <CopyToClipboard infoToCopy={infoToCopy} inputFieldWidth={"25rem"} />
+      </div>
     </div>
   );
 };

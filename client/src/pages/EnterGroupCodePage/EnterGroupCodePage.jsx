@@ -17,7 +17,6 @@ const EnterGroupCodePage = () => {
       <PiratePx COUNT_IDENTIFIER={"onboarding-enter-groupcode"} />
       <InAppNavigationBar back={true} backRoute='/' />
       <div className={style.container}>
-        <h1>Enter groupCode</h1>
         <ValidateGroupCode />
       </div>
     </main>

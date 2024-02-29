@@ -66,8 +66,8 @@ const RenderSettlementPaymentSuggestions = ({
                   className={styles.settlementAmount}
                   aria-label={`Settlement payment amount`}>
                   {settlement.amount}
-                  {groupCurrency}
                 </span>
+                <span className={styles.currency}>{groupCurrency}</span>
               </div>
             </div>
             <div className={styles.confirm}>

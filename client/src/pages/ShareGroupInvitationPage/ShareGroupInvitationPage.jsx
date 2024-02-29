@@ -31,32 +31,33 @@ const ShareGroupInvitationPage = () => {
     return <main></main>;
   }
 
-  const initialGroupName = groupData.group.initialGroupName;
-  const groupName = groupData.group.groupName;
   // Force URL-encoded initial groupName
-  const urlEncodedGroupName = encodeURIComponent(initialGroupName);
+  const urlEncodedGroupName = encodeURIComponent(
+    groupData.group.initialGroupName
+  );
   const infoToCopy = `${baseUrl}/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
 
   return (
     <main>
       <HelmetMetaTagsNetlify
-        title={`InstantSplit - invite & share ${groupName}`}
+        title={`InstantSplit - invite & share ${groupData.group.groupName}`}
       />
       <PiratePx COUNT_IDENTIFIER={"share-group"} />
       <InAppNavigationBar back={true} />
+      <h1>share access to group</h1>
+
       {isFetched && (
         <div className={styles.container}>
-          <h1>share access to group</h1>
           {supportsWebShareAPI ? (
             <ShareGroupInvitationIncludingWebShare
-              groupName={groupName}
+              groupName={groupData.group.groupName}
               groupCode={groupCode}
               infoToCopy={infoToCopy}
               initialGroupName={urlEncodedGroupName}
             />
           ) : (
             <ShareGroupInvitation
-              groupName={groupName}
+              groupName={groupData.group.groupName}
               infoToCopy={infoToCopy}
             />
           )}

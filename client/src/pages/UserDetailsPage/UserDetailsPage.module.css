@@ -28,7 +28,7 @@
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
   padding-left: 4.5rem;
 }
@@ -41,8 +41,18 @@
   width: fit-content;
   min-width: 20rem;
   margin: 0 auto;
+  margin-top: 1rem;
 }
 
+.transactionHistoryButton {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.deleteUserButton {
+  padding-top: 2rem;
+  margin: 0 auto;
+}
 @media screen and (max-width: 500px) {
   .userSettings {
     width: 100%;

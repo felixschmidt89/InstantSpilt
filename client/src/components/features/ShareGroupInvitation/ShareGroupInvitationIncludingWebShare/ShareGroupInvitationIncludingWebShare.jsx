@@ -33,12 +33,11 @@ const ShareGroupInvitationIncludingWebShare = ({
           initialGroupName={initialGroupName}
         />
       </div>
-
+      <h2 className={styles.orCopy}>or</h2>
       <div className={styles.invitationLink}>
-        Alternatively, copy and share the invitation link below to either invite
-        peers to join <span className={styles.strong}>{groupName}</span> or to
-        gain access on your other devices:
-        <CopyToClipBoard infoToCopy={infoToCopy} inputFieldWidth={"25rem"} />
+        copy the link below to invite others to join{" "}
+        <span className={styles.strong}>{groupName}:</span>
+        <CopyToClipBoard infoToCopy={infoToCopy} inputFieldWidth={"15rem"} />
       </div>
     </div>
   );

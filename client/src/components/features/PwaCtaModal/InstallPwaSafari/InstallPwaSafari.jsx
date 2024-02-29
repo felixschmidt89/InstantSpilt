@@ -6,6 +6,10 @@ import { MdOutlineAddBox } from "react-icons/md";
 // Styles
 import styles from "./InstallPwaSafari.module.css";
 
+/**
+ * Renders instructions for installing PWA via Safari iOs app.
+ * @returns {JSX.Element} React component.
+ */
 const InstallPwaSafari = () => {
   return (
     <div className={styles.container}>

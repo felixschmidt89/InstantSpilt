@@ -111,7 +111,7 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
                 key={currency.value}
                 className={styles.newCurrency}
                 value={currency.value}>
-                {currency.label}
+                ({currency.value}) {currency.label}
               </option>
             ))}
         </select>

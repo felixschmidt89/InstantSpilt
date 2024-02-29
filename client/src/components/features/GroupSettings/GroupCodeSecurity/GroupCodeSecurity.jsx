@@ -5,14 +5,14 @@ import React from "react";
 import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
 
 // Styles
-import styles from "./OnboardingGroupCodeExplanation.module.css";
+import styles from "./GroupCodeSecurity.module.css";
 
 /**
- * Component for rendering the group code explanation for group creators during onboarding.
+ * Component for rendering the group code and a CTA to save it.
  * @param {string} groupCode - The groupCode identifying the group.
  * @returns {JSX.Element} React component.
  */
-const OnboardingGroupCodeExplanation = ({ groupCode }) => {
+const GroupCodeSecurity = ({ groupCode }) => {
   return (
     <div className={styles.container}>
       <h2>security</h2>
@@ -29,4 +29,4 @@ const OnboardingGroupCodeExplanation = ({ groupCode }) => {
   );
 };
 
-export default OnboardingGroupCodeExplanation;
+export default GroupCodeSecurity;

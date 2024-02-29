@@ -6,6 +6,10 @@ import { LuPlus } from "react-icons/lu";
 // Styles
 import styles from "./InstallPwaSamsungBrowser.module.css";
 
+/**
+ * Renders instructions for installing PWA via Samsung Browser Android app.
+ * @returns {JSX.Element} React component.
+ */
 const InstallPwaSamsungBrowser = () => {
   return (
     <div className={styles.container}>

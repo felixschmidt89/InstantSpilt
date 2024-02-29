@@ -12,12 +12,12 @@ import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRout
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import OnboardingGroupCodeExplanation from "../../components/features/Onboarding/OnboardingGroupCodeExplanation/OnboardingGroupCodeExplanation";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import ChangeGroupCurrency from "../../components/features/GroupSettings/ChangeGroupCurrency/ChangeGroupCurrency";
 import ChangeDataPurgeSetting from "../../components/features/GroupSettings/ChangeDataPurgeSetting/ChangeDataPurgeSetting";
 import Spinner from "../../components/common/Spinner/Spinner";
 import Emoji from "../../components/common/Emoji/Emoji";
+import GroupCodeSecurity from "../../components/features/GroupSettings/GroupCodeSecurity/GroupCodeSecurity";
 
 // Styles
 import styles from "./OnboardingGroupSettingsPage.module.css";
@@ -61,7 +61,7 @@ const OnboardingGroupSettingsPage = () => {
               groupCode={groupCode}
               inactiveDataPurge={groupData.group.inactiveDataPurge}
             />
-            <OnboardingGroupCodeExplanation groupCode={groupCode} />
+            <GroupCodeSecurity groupCode={groupCode} />
           </div>
         ) : (
           <div className={styles.spinner}>

@@ -2,10 +2,6 @@
   display: flex;
 }
 
-.expenses li {
-  line-height: 1.25;
-}
-
 .leftColumn {
   display: flex;
   flex-direction: column;
@@ -23,7 +19,7 @@
 
 .expenseAmount {
   text-align: right;
-  width: 8rem;
+  width: 9.5rem;
 }
 
 .expenseEmoji {
@@ -33,7 +29,7 @@
 .rightColumn {
   display: flex;
   flex-direction: column;
-  margin-left: 3rem;
+  margin-left: 2rem;
   margin-right: 0rem;
   width: 80%;
   border-top: 2px solid var(--color-signal-reduced-opacity);
@@ -46,18 +42,29 @@
 .rightColumn .expenseEmoji {
   margin-bottom: 0.5rem;
 }
+.leftColumn li,
+.rightColumn li {
+  line-height: 1.25;
+  font-size: 1.5rem;
+}
 
-@media (max-width: 500px) {
+@media (max-width: 767px) {
+  .leftColumn,
   .rightColumn {
-    margin-left: 1rem;
     border-top: none;
     padding-top: 0.15rem;
     padding-bottom: 0.15rem;
   }
   .leftColumn {
-    margin-right: 0.5rem;
-    border-top: none;
-    padding-top: 0.15rem;
-    padding-bottom: 0.15rem;
+    margin-left: 0rem;
+  }
+  .rightColumn {
+    margin-right: 0rem;
+    margin-left: 1.5rem;
+  }
+  .leftColumn li,
+  .rightColumn li {
+    line-height: 1.25;
+    font-size: 1.5rem;
   }
 }

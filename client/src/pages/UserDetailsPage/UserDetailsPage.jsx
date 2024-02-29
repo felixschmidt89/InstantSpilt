@@ -57,7 +57,7 @@ const UserDetailsPage = () => {
           </h2>
           <div className={styles.userBalances}>
             <UserTotals userData={userData} groupCurrency={groupCurrency} />
-            <div className={styles.button}>
+            <div className={styles.transactionHistoryButton}>
               <RouteButton
                 route={`user-transaction-history/${groupCode}/${userId}`}
                 buttonText='transaction history'
@@ -81,7 +81,7 @@ const UserDetailsPage = () => {
               navigateToMain={false}
             />
           </div>
-          <div className={styles.button}>
+          <div className={styles.deleteUserButton}>
             <DeleteResource resourceId={userId} resourceType='users' />
           </div>
         </div>

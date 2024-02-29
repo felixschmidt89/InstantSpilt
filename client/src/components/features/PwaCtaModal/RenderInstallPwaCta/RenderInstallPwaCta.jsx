@@ -14,7 +14,7 @@ import styles from "./RenderInstallPwaCta.module.css";
  * @param {object} props - Component props.
  * @param {string} props.ctaToRender - the installation instruction to render.
  * @param {function} props.closeModal - Function to close the modal.
- * @returns {JSX.Element} The RenderInstallPwaCta component.
+ * @returns {JSX.Element} React component.
  */
 const RenderInstallPwaCta = ({ ctaToRender, closeModal }) => {
   const Cta = () => {

@@ -16,7 +16,7 @@
 
 .paymentAmount {
   text-align: right; /* numbers are right aligned to be easily readable */
-  width: 8rem; /* white space on the left */
+  width: 10rem; /* white space on the left */
 }
 
 .paymentTo {

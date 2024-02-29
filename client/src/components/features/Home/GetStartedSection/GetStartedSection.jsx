@@ -19,7 +19,7 @@ const GetStartedSection = () => {
           buttonText='create new group'
         />
         <RouteButton
-          route={`onboarding-create-group`}
+          route={`onboarding-enter-groupcode`}
           buttonText='join existing group'
         />
       </div>

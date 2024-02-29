@@ -1,11 +1,7 @@
-.container h1 {
+.container h2 {
+  margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
-
-.container h2 {
-  margin-top: 0rem;
-}
-
 .container {
   width: fit-content;
   margin: 0 auto;

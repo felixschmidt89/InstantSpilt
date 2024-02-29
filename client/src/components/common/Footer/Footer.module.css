@@ -27,6 +27,7 @@
 }
 .installAppCta {
   font-weight: bold;
+  color: var(--color-grey-dark-);
 }
 
 @media (max-height: 768px) {

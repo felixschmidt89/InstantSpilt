@@ -82,6 +82,7 @@ const CreateGroupForm = ({ isOnboarding }) => {
 
   return (
     <form onSubmit={handleFormSubmit} className={styles.container}>
+      <h2>create group</h2>
       <input
         className={styles.inputField}
         type='text'

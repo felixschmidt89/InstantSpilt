@@ -370,10 +370,10 @@ scrollbar-thumb {
 /* use full display for rendering main when display height is small, e.g. smartphone landscape mode*/
 @media screen and (max-height: 500px) {
   main {
-    margin-top: 0.25rem;
-    margin-bottom: 0.25rem;
+    margin-top: 0.5rem;
+    margin-top: 0.5rem;
     height: 98vh;
     height: 98svh;
-    width: 99vw;
+    width: 98vw;
   }
 }

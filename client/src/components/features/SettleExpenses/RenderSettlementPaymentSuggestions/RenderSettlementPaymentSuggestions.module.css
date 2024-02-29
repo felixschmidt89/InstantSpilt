@@ -25,6 +25,10 @@
   flex-direction: row;
 }
 
+.currency {
+  color: var(--color-error);
+}
+
 .dueKey {
   color: var(--color-grey);
 }
@@ -33,7 +37,6 @@
   color: var(--color-error);
   text-align: right;
   width: 8rem;
-  margin-right: auto;
 }
 
 .confirm {

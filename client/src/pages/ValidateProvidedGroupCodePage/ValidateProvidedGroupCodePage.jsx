@@ -84,7 +84,7 @@ const ValidateProvideGroupCodePage = () => {
         />
       )}
       <div className={styles.container}>
-        <h1>GroupCode validation</h1>
+        <h1>groupCode validation</h1>
         {groupExists && (
           <div className={styles.groupExists}>
             <div className={styles.feedbackIcon}>

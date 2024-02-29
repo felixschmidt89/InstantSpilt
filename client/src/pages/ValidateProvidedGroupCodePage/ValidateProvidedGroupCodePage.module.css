@@ -6,8 +6,13 @@
   overflow-y: auto;
 }
 
+.container h1 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 .feedbackIcon {
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   font-size: 2.5rem;
   line-height: 1;
   margin: 0 auto;

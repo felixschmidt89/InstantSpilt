@@ -6,6 +6,10 @@ import { MdInstallMobile } from "react-icons/md";
 // Styles
 import styles from "./InstallPwaFirefox.module.css";
 
+/**
+ * Renders instructions for installing PWA via Firefox Android app.
+ * @returns {JSX.Element} React component.
+ */
 const InstallPwaFirefox = () => {
   return (
     <div className={styles.container}>

@@ -29,6 +29,15 @@
   gap: 1.5rem;
 }
 
+.confirmationMessage {
+  text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+  .confirmationMessage {
+    padding-left: 1rem;
+  }
+}
 @media only screen and (min-width: 1921px) {
   .modal {
     align-items: flex-start;

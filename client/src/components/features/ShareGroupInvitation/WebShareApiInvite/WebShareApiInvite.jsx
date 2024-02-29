@@ -1,13 +1,15 @@
 // React and Third-Party Libraries
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShareNodes } from "@fortawesome/free-solid-svg-icons";
+import ShareIcon from "@mui/icons-material/Share";
+import { Button } from "@mui/material";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
 
 // Styles
 import styles from "./WebShareApiInvite.module.css";
+import { buttonStyles } from "../../../../constants/stylesConstants";
 
 // BASE URL
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
@@ -20,8 +22,8 @@ const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
  * @param {string} initialGroupName - The group name set during group creation.
  * @returns {JSX.Element} React component. */
 const WebShareApiInvite = ({ groupCode, groupName, initialGroupName }) => {
-  const title = "InstantSplit invitation";
-  const text = `Join ${groupName} to manage and settle expenses.`;
+  const title = "Invitation to InstantSplit";
+  const text = `Join ${groupName} to manage and settle our expenses.`;
   const url = `${baseUrl}/join-instantsplit-group/${initialGroupName}/${groupCode}`;
 
   const handleShareClick = async () => {
@@ -41,7 +43,13 @@ const WebShareApiInvite = ({ groupCode, groupName, initialGroupName }) => {
 
   return (
     <span className={styles.icon} onClick={handleShareClick}>
-      <FontAwesomeIcon icon={faShareNodes} />
+      <Button
+        variant='contained'
+        style={buttonStyles}
+        startIcon={<ShareIcon />}
+        onClick={handleShareClick}>
+        share
+      </Button>
     </span>
   );
 };
