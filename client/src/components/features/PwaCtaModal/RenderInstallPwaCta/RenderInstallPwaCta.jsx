@@ -5,6 +5,8 @@ import React from "react";
 import InstallPwaFirefox from "../InstallPwaFirefox/InstallPwaFirefox";
 import InstallPwaSafari from "../InstallPwaSafari/InstallPwaSafari";
 import InstallPwaSamsungBrowser from "../InstallPwaSamsungBrowser/InstallPwaSamsungBrowser";
+import InstallPwaOpera from "../InstallPwaOpera/InstallPwaOpera";
+import InstallPwaEdge from "../InstallPwaEdge/InstallPwaEdge";
 
 // Styles
 import styles from "./RenderInstallPwaCta.module.css";
@@ -28,6 +30,12 @@ const RenderInstallPwaCta = ({ ctaToRender, closeModal }) => {
         break;
       case "samsung":
         component = <InstallPwaSamsungBrowser closeModal={closeModal} />;
+        break;
+      case "opera":
+        component = <InstallPwaOpera closeModal={closeModal} />;
+        break;
+      case "edge":
+        component = <InstallPwaEdge closeModal={closeModal} />;
         break;
       default:
         component = null; // If displayPrompt doesn't match any case, render nothing

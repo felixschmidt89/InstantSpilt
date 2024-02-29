@@ -9,6 +9,7 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 
 // Styles
 import styles from "./ClientDevicePage.module.css";
+import InstallPwaEdge from "../../components/features/PwaCtaModal/InstallPwaEdge/InstallPwaEdge";
 
 /**
  * Page for rendering client device information for debugging.
@@ -34,6 +35,8 @@ const ClientDevicePage = () => {
             <li>isPwa: {isPwa ? "Yes" : "No"} </li>
           </ul>
         </div>
+
+        <InstallPwaEdge />
       </div>
     </main>
   );

@@ -1,0 +1,32 @@
+.container {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: 0 2rem;
+  padding-bottom: 0.5rem;
+}
+
+.text {
+  text-align: left;
+}
+
+.dotsIcon {
+  transform: translateY(0.3rem) scale(1.1);
+}
+
+.addToIcon {
+  transform: translateY(0.3rem) scale(1.3);
+  margin-right: 0.5rem;
+  margin-left: 0.2rem;
+}
+
+.homeScreenIcon {
+  transform: translateY(0.3rem) scale(1.1);
+}
+
+.installPwaExplanationList {
+  list-style-type: decimal;
+  text-align: left;
+  margin-left: 2rem;
+}

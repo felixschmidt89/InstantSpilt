@@ -84,26 +84,34 @@ const InstantSplitPage = () => {
 
   // Render PWA CTA on iPhone and iPad when app is accessed in Safari
   useEffect(() => {
+    const lowercaseBrowserName = browserName.toLowerCase();
+
     if (
       isIOS &&
       isMobileSafari &&
-      browserName.includes("Safari") &&
+      lowercaseBrowserName.includes("safari") &&
       !isPwa &&
       isMobile
     ) {
       setCtaToRender("iPadIPhone");
     } else if (isMobile && isAndroid && !isPwa) {
       // Render PWA CTA on Android devices
-      if (browserName.includes("Firefox")) {
+      if (lowercaseBrowserName.includes("firefox")) {
         setCtaToRender("firefox");
-      } else if (browserName.includes("Samsung")) {
+      } else if (lowercaseBrowserName.includes("samsung")) {
         setCtaToRender("samsung");
+      } else if (lowercaseBrowserName.includes("opera")) {
+        setCtaToRender("opera");
+      } else if (lowercaseBrowserName.includes("edge")) {
+        setCtaToRender("edge");
       } else {
         // Render nothing
         setCtaToRender(null);
       }
     } else {
-      devLog("Not a mobile device we currently support for PWA install CTA.");
+      devLog(
+        "Not a mobile device we currently support for rendering PWA install CTA modal."
+      );
     }
   }, [isIOS, isMobileSafari, browserName, isAndroid, isPwa, isMobile]);
 
