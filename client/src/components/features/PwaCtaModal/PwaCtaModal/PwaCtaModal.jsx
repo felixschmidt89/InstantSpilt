@@ -44,7 +44,7 @@ const PwaCtaModal = ({ ctaToRender, setShowPwaCtaModal }) => {
             variant='outlined'
             onClick={closeModal}
             color='grey'>
-            ok
+            close
           </Button>
         </>
       </div>

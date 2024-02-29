@@ -1,5 +1,9 @@
 // React and Third Party Libraries
 import React from "react";
+import { usePWAInstall } from "react-use-pwa-install";
+
+// Constants and Utils
+import { devLog } from "../../utils/errorUtils";
 
 // Hooks
 import useGetClientDeviceAndPwaInfo from "../../hooks/useGetClientDeviceAndPwaInfo";
@@ -9,13 +13,16 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 
 // Styles
 import styles from "./ClientDevicePage.module.css";
-import InstallPwaEdge from "../../components/features/PwaCtaModal/InstallPwaEdge/InstallPwaEdge";
 
 /**
  * Page for rendering client device information for debugging.
  * @returns {JSX.Element} React component.
  */
 const ClientDevicePage = () => {
+  // use library to check if PWA install prompt is available
+  const isPWAInstallPromptAvailable = usePWAInstall();
+  devLog("isPWAInstallPromptAvailable", isPWAInstallPromptAvailable);
+
   const { isPwa, isMobile, isAndroid, isMobileSafari, isIOS, browserName } =
     useGetClientDeviceAndPwaInfo();
 
@@ -33,10 +40,12 @@ const ClientDevicePage = () => {
             <li>is iOS: {isIOS ? "Yes" : "No"}</li>
             <li>is Android: {isAndroid ? "Yes" : "No"}</li>
             <li>isPwa: {isPwa ? "Yes" : "No"} </li>
+            <li>
+              isPWAInstallPromptAvailable:{" "}
+              {isPWAInstallPromptAvailable ? "Yes" : "No"}
+            </li>
           </ul>
         </div>
-
-        <InstallPwaEdge />
       </div>
     </main>
   );

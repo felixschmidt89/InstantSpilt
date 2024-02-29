@@ -7,7 +7,7 @@ import { MdAddToHomeScreen } from "react-icons/md";
 import styles from "./InstallPwaEdge.module.css";
 
 /**
- * Renders instructions for installing PWA via Opera Android app.
+ * Renders instructions for installing PWA via Edge Android app.
  * @returns {JSX.Element} React component.
  */
 const InstallPwaEdge = () => {

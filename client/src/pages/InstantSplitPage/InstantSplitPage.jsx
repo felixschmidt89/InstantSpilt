@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { usePWAInstall } from "react-use-pwa-install";
 
 // Constants and Utils
 import {
@@ -75,8 +76,9 @@ const InstantSplitPage = () => {
     }
   };
 
-  // RENDER PWA CTA MODAL
-  // :TODO: Add Chrome Modal CTA (currently install button in footer)
+  // use library to check if PWA install prompt is available
+  const isPWAInstallPromptAvailable = usePWAInstall();
+  devLog("isPWAInstallPromptAvailable", isPWAInstallPromptAvailable);
   // Get client device and PWA info and manage CTA based on that
   const { isPwa, isMobile, isMobileSafari, isAndroid, isIOS, browserName } =
     useGetClientDeviceAndPwaInfo();
@@ -95,7 +97,7 @@ const InstantSplitPage = () => {
     ) {
       setCtaToRender("iPadIPhone");
     } else if (isMobile && isAndroid && !isPwa) {
-      // Render PWA CTA on Android devices
+      // Render PWA instruction CTA on Android devices
       if (lowercaseBrowserName.includes("firefox")) {
         setCtaToRender("firefox");
       } else if (lowercaseBrowserName.includes("samsung")) {
@@ -104,18 +106,29 @@ const InstantSplitPage = () => {
         setCtaToRender("opera");
       } else if (lowercaseBrowserName.includes("edge")) {
         setCtaToRender("edge");
+        // Render PWA installation CTA on Android devices
+      } else if (!isPwa && isPWAInstallPromptAvailable) {
+        setCtaToRender("pwaInstallPrompt");
       } else {
         // Render nothing
         setCtaToRender(null);
       }
     } else {
       devLog(
-        "Not a mobile device we currently support for rendering PWA install CTA modal."
+        "Client does not match PWA CTA rendering conditions. No CTA will be rendered."
       );
     }
-  }, [isIOS, isMobileSafari, browserName, isAndroid, isPwa, isMobile]);
+  }, [
+    isIOS,
+    isMobileSafari,
+    browserName,
+    isAndroid,
+    isPwa,
+    isMobile,
+    isPWAInstallPromptAvailable,
+  ]);
 
-  // If client is supported and last modal closure user action has expired, show PWA CTA modal
+  // If pwa install prompt is available OR client is supported AND last modal closure user action has expired, show PWA CTA modal
   const [showPwaCtaModal, setShowPwaCtaModal] = useState(null);
   const lastModalClosureUserActionHasExpired =
     checkModalClosureUserActionExpiration();

@@ -25,10 +25,6 @@
   text-decoration: underline;
   color: var(--color-grey-dark);
 }
-.installAppCta {
-  font-weight: bold;
-  color: var(--color-grey-dark-);
-}
 
 @media (max-height: 768px) {
   .footer {
