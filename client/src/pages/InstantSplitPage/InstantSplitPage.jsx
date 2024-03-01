@@ -96,6 +96,9 @@ const InstantSplitPage = () => {
       isMobile
     ) {
       setCtaToRender("iPadIPhone");
+      // Render PWA installation CTA if available
+    } else if (!isPwa && isPWAInstallPromptAvailable) {
+      setCtaToRender("pwaInstallPrompt");
     } else if (isMobile && isAndroid && !isPwa) {
       // Render PWA instruction CTA on Android devices
       if (lowercaseBrowserName.includes("firefox")) {
@@ -106,9 +109,6 @@ const InstantSplitPage = () => {
         setCtaToRender("opera");
       } else if (lowercaseBrowserName.includes("edge")) {
         setCtaToRender("edge");
-        // Render PWA installation CTA on Android devices
-      } else if (!isPwa && isPWAInstallPromptAvailable) {
-        setCtaToRender("pwaInstallPrompt");
       } else {
         // Render nothing
         setCtaToRender(null);

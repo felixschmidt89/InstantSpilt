@@ -25,7 +25,7 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
 
   return (
     <div className={styles.container}>
-      <h2>retain access to group</h2>
+      <h2>keep access to group</h2>
       <div className={styles.explanation}>
         <div className={styles.groupCodeExplanation}>
           Key to this group is its unique groupcode, store it somewhere save:
@@ -35,12 +35,10 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
         </div>
       </div>
       <div className={styles.invitationLink}>
-        Alternatively, bookmark its{" "}
-        <strong>
-          <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
-            invitation link.
-          </Link>
-        </strong>
+        or bookmark its{" "}
+        <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
+          invitation link.
+        </Link>
       </div>
     </div>
   );

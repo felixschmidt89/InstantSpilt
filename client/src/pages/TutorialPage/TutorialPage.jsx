@@ -12,7 +12,6 @@ import GroupCodeExplanation from "../../components/features/Tutorial/GroupCodeEx
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import SyncGroupCodeExplanation from "../../components/features/Tutorial/SyncGroupCodeExplanation/SyncGroupCodeExplanation";
 import GroupBalanceAndHistoryExplanation from "../../components/features/Tutorial/GroupBalanceAndHistoryExplanation/GroupBalanceAndHistoryExplanation";
-import UserSettingsExplanation from "../../components/features/Tutorial/UserSettingsExplanation/UserSettingsExplanation";
 import ActiveGroupBarExplanation from "../../components/features/Tutorial/ActiveGroupBarExplanation/ActiveGroupBarExplanation";
 import RecommendedBrowsersExplanation from "../../components/features/Tutorial/RecommendedBrowsersExplanation/RecommendedBrowsersExplanation";
 import Spinner from "../../components/common/Spinner/Spinner";
@@ -42,16 +41,6 @@ function TutorialPage() {
               <GroupCodeExplanation
                 initialGroupName={groupData.group.initialGroupName}
                 groupCode={groupCode}
-              />
-            </div>
-            {/* <div className={styles.section}>
-              <MakeInstantSplitAnAppExplanation />
-            </div> */}
-            <div className={styles.section}>
-              <UserSettingsExplanation
-                groupCode={groupCode}
-                initialGroupName={groupData.group.initialGroupName}
-                groupName={groupData.group.groupName}
               />
             </div>
             <div className={styles.section}>

@@ -16,24 +16,24 @@ const RecommendedBrowsersExplanation = () => {
     <div className={styles.container}>
       <h2>recommended browsers</h2>
       <div className={styles.explanation}>
-        <div className={styles.browserExplanationText}>
-          While InstantSplit works on any operating system and web browser, we
-          recommend{" "}
-          <a
-            href='https://www.google.com/chrome/'
-            target='_blank'
-            rel='noopener noreferrer'>
-            Chrome
-          </a>{" "}
-          or{" "}
-          <a
-            href='https://www.apple.com/safari/'
-            target='_blank'
-            rel='noopener noreferrer'>
-            Safari
-          </a>{" "}
-          for the best user experience.
-        </div>
+        <ul className={styles.recommendedBrowsersList}>
+          <li>
+            <a
+              href='https://www.google.com/chrome/'
+              target='_blank'
+              rel='noopener noreferrer'>
+              Chrome
+            </a>{" "}
+          </li>
+          <li>
+            <a
+              href='https://www.apple.com/safari/'
+              target='_blank'
+              rel='noopener noreferrer'>
+              Safari
+            </a>{" "}
+          </li>
+        </ul>
       </div>
     </div>
   );

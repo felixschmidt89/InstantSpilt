@@ -45,6 +45,7 @@ A user centered Full (MERN) Stack PWA designed for settling group expenses with 
 ![React Icons](https://img.shields.io/badge/React%20Icons-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![React Router DOM](https://img.shields.io/badge/React%20Router%20DOM-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 [<img src="https://friendlycaptcha.com/wp-content/uploads/2020/12/FriendlyCaptcha-Logo.svg" alt="Friendly Captcha" height="24px" style="background-color: white; padding: 2px 5px;">](https://friendlycaptcha.com/)
+[React Device Detect](https://www.npmjs.com/package/react-device-detect)
 
 ## Access the application or try the demo.
 
