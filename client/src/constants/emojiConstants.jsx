@@ -22,5 +22,6 @@ const emojiConstants = {
   settle: "🤝",
   pointDown: "👇",
   settings: "⚙️",
+  fireFoxSettings: "🔧",
 };
 export default emojiConstants;

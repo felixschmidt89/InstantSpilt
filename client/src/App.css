@@ -129,6 +129,7 @@ body {
   font-family: "Ubuntu", sans-serif;
   color: var(--color-dark);
   font-weight: 400;
+  font-variant-emoji: text;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: hidden;

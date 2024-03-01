@@ -4,6 +4,9 @@ import React from "react";
 // Constants and Utils
 import emojiConstants from "../../../constants/emojiConstants";
 
+// Hooks
+import useSettingsEmoji from "../../../hooks/useSettingsEmoji";
+
 // Component
 import GroupActionsEmojiButton from "../../common/GroupActionsEmojiButton/GroupActionsEmojiButton";
 
@@ -17,6 +20,9 @@ import styles from "./ActiveGroupBar.module.css";
  *
  * @returns {JSX.Element} React component. */
 const ActiveGroupBar = ({ applyMargin = true }) => {
+  // Handle Firefox bug (settings emoji not rendered correctly https://github.com/googlefonts/noto-emoji/issues/391)
+
+  const settingsEmoji = useSettingsEmoji();
   const containerClassName = `${styles.groupActionsBar} ${applyMargin ? styles.withMargin : ""}`;
   return (
     <div
@@ -26,7 +32,7 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
       {/* Button for navigating to group settings */}
       <GroupActionsEmojiButton
         route={"group-settings"}
-        emoji={emojiConstants.settings}
+        emoji={settingsEmoji}
         translateX={0}
         explanationText={"settings"}
         ariaLabel='group settings emoji'

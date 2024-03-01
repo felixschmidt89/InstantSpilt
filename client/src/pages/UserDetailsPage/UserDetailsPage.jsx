@@ -9,6 +9,7 @@ import emojiConstants from "../../constants/emojiConstants";
 // Hooks
 import useFetchUserData from "../../hooks/useFetchUserInfo";
 import useFetchGroupCurrency from "../../hooks/useFetchGroupCurrency";
+import useSettingsEmoji from "../../hooks/useSettingsEmoji";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -29,6 +30,7 @@ const UserDetailsPage = () => {
   const { userData, isFetched: userDataIsFetched } = useFetchUserData(userId);
   const { groupCurrency, isFetched: currencyInfoIsFetched } =
     useFetchGroupCurrency(groupCode);
+  const settingsEmoji = useSettingsEmoji();
 
   // Set userBalance to 0 if it's less than or equal to BALANCE_THRESHOLD so balance is considered settled
   if (userData && Math.abs(userData.userBalance) <= BALANCE_THRESHOLD) {
@@ -69,7 +71,7 @@ const UserDetailsPage = () => {
           <div className={styles.userSettings}>
             <h3>
               user settings{" "}
-              <Emoji label='settings emoji' emoji={emojiConstants.settings} />
+              <Emoji label='settings emoji' emoji={settingsEmoji} />
             </h3>{" "}
             <h3>change name</h3>
             <ChangeResourceName

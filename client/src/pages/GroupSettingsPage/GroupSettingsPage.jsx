@@ -6,6 +6,7 @@ import emojiConstants from "../../constants/emojiConstants";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
+import useSettingsEmoji from "../../hooks/useSettingsEmoji";
 
 //Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -24,6 +25,7 @@ import styles from "./GroupSettingsPage.module.css";
 const GroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupData, isFetched } = useFetchGroupData(groupCode);
+  const settingsEmoji = useSettingsEmoji();
 
   return (
     <main>
@@ -32,8 +34,7 @@ const GroupSettingsPage = () => {
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
         <h1>
-          group settings{" "}
-          <Emoji label='settings emoji' emoji={emojiConstants.settings} />
+          group settings <Emoji label='settings emoji' emoji={settingsEmoji} />
         </h1>
         {isFetched && groupData ? (
           <div className={styles.settingsContainer}>
