@@ -1,29 +1,28 @@
+.container h1 {
+  margin-top: 0.5rem;
+}
+
 .container {
-  width: 100%;
+  width: 40%;
   height: 90%;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
   margin: 0 auto;
   margin-top: 1rem;
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 0.5rem;
 }
 
-.container h1 {
-  margin-bottom: 1rem;
+.container h2 {
+  margin-top: 0.5rem;
 }
 
-@media screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .container {
-    width: 100%;
+    width: 60%;
   }
 }
 
 @media only screen and (min-width: 1921px) {
   .container {
-    width: 80%;
-    height: 90%;
+    padding-left: 4rem;
   }
 }
 

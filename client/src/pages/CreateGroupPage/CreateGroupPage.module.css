@@ -1,14 +1,30 @@
-.container {
-  overflow-y: auto;
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
-  width: fit-content;
+.container h2 {
+  margin-top: 0.5rem;
+  text-align: left;
+}
 
+.container {
+  width: 40%;
+  height: 90%;
   margin: 0 auto;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .container h2 {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 1921px) {
+  .container {
+    padding-left: 4rem;
+  }
 }
 
 /* Delayed rendering to avoid flickering */

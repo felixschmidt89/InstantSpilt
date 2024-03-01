@@ -43,8 +43,6 @@ const RenderGroupSelection = ({ groupCode, groupNamesAndGroupCodes }) => {
 
   return (
     <div className={styles.container}>
-      <h2>switch group</h2>
-
       <form onSubmit={handleFormSubmit}>
         <select
           className={styles.groupSelection}

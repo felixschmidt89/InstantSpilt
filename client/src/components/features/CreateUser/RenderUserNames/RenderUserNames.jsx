@@ -112,7 +112,7 @@ const RenderUserNames = ({
                 ))}
               </ul>
             ) : (
-              "No group members yet. Please add some."
+              "No group members added yet."
             )}
           </div>
         </div>
