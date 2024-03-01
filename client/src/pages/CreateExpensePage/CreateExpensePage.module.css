@@ -11,10 +11,10 @@
 }
 
 .container h1 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .container {
     width: 95%;
   }

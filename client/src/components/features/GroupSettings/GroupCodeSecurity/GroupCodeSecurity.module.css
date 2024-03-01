@@ -13,11 +13,15 @@
   height: fit-content;
   outline: none;
   outline-color: var(--color-grey);
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 .explanation:hover,
 .explanation:focus {
   border-color: var(--color-signal);
   background-color: var(--color-body);
+}
+
+.groupCode {
+  padding-top: 0.5rem;
 }

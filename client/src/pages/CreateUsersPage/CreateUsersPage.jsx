@@ -24,36 +24,22 @@ function CreateUsersPage() {
   if (isRetrieved) {
     devLog("Current user is a new user:", isNewUser);
   }
-
-  // Check if current user has created group from within the application, ie is redirected from manage-groups route
-  const isInAppGroupCreator = previousRoute.includes("/manage-groups");
-  if (isRetrieved) {
-    devLog("Current user is InstantSplit user:", isInAppGroupCreator);
-  }
-
   return (
     <main>
       <HelmetMetaTagsNetlify title='InstantSplit - add user' />
       <PiratePx COUNT_IDENTIFIER={"create-users"} />
-      {
-        // Case 1: Navigate group creators users to onboarding group settings
-        isNewUser || isInAppGroupCreator ? (
-          <InAppNavigationBar
-            forward={true}
-            forwardRoute='/onboarding-group-settings'
-          />
-        ) : (
-          // Case 2: Render back button for default case (adding users to a group from within main application)
-          <InAppNavigationBar back={true} />
-        )
-      }
-      <div className={styles.container}>
-        <h1>group members</h1>
-        <h2>add group members</h2>
-        <CreateUserAndRenderUserList
-          isNewUser={isNewUser}
-          isInAppGroupCreator={isInAppGroupCreator}
+      {isNewUser ? (
+        <InAppNavigationBar
+          forward={true}
+          forwardRoute='/onboarding-group-settings'
         />
+      ) : (
+        <InAppNavigationBar back={true} />
+      )}
+      <div className={styles.container}>
+        {!isNewUser ? <h1>group members</h1> : null}
+        <h2>add group members</h2>
+        <CreateUserAndRenderUserList />
       </div>
     </main>
   );

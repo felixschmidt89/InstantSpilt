@@ -18,8 +18,7 @@ const GroupCodeSecurity = ({ groupCode }) => {
       <h2>security</h2>
       <div className={styles.explanation}>
         <div>
-          Be sure to store your <strong>groupCode</strong> somewhere save to
-          avoid losing access:
+          store <strong>groupCode</strong> to avoid losing access:
         </div>
         <div className={styles.groupCode}>
           <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"15rem"} />

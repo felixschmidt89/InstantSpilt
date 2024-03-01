@@ -7,6 +7,7 @@
 .members {
   height: max-content;
   overflow-y: scroll;
+  line-height: 1.2;
 }
 
 .userName {
@@ -34,14 +35,9 @@
 .members li {
   font-size: 1.6rem;
   padding-right: 0.5rem;
+  line-height: 1.2;
 }
 
 .membersContainer {
-  width: 80%;
-}
-
-@media screen and (max-width: 768px) {
-  .membersContainer {
-    width: 120%;
-  }
+  width: 120%;
 }

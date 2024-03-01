@@ -270,7 +270,7 @@ scrollbar-thumb {
 
 /* Media queries for responsive design */
 /* Mobile*/
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   main {
     margin-top: 0.5rem;
     height: 84vh;
@@ -308,7 +308,7 @@ scrollbar-thumb {
 }
 
 /* Tablet and portrait mode */
-@media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: portrait) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1366px) and (orientation: portrait) {
   main {
     margin-top: 1rem;
     height: 85vh;

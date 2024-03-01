@@ -15,7 +15,7 @@ import styles from "./CreateUserAndRenderUserList.module.css";
  * Component for creating a user within a group and rendering the groups user list.
  * Has nested components and uses a custom hook to get groupCode and trigger rerender logic.
  * @returns {JSX.Element} React component. */
-const CreateUserAndRenderUserList = ({ isNewUser, isInAppGroupCreator }) => {
+const CreateUserAndRenderUserList = () => {
   // Custom hook to get groupCode and trigger rerender logic
   const { groupCode, rerenderTrigger, incrementRerenderTrigger } =
     useTriggerRerender();

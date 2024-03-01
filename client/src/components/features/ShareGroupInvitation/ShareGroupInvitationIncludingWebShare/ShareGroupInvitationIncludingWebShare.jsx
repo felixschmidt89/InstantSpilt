@@ -36,7 +36,7 @@ const ShareGroupInvitationIncludingWebShare = ({
       <h2 className={styles.orCopy}>or</h2>
       <div className={styles.invitationLink}>
         copy the link below to invite others to join{" "}
-        <span className={styles.strong}>{groupName}:</span>
+        <span className={styles.strong}>{groupName}</span>:{" "}
         <CopyToClipBoard infoToCopy={infoToCopy} inputFieldWidth={"15rem"} />
       </div>
     </div>

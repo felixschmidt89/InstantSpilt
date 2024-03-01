@@ -18,7 +18,7 @@ const ShareGroupInvitation = ({ groupName, infoToCopy }) => {
     <div className={styles.container}>
       <div className={styles.invitationLink}>
         Copy the link below to invite others to join{" "}
-        <span className={styles.strong}>{groupName}:</span>
+        <span className={styles.strong}>{groupName}</span>:
         <CopyToClipboard infoToCopy={infoToCopy} inputFieldWidth={"25rem"} />
       </div>
     </div>

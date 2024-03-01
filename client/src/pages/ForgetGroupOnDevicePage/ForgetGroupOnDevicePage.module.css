@@ -7,10 +7,10 @@
   padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   width: 70%;
   margin: 0 auto;
-  margin-top: 1rem;
 }
 
-.container h1 {
+.header {
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
 
@@ -18,10 +18,29 @@
   margin-top: 1rem;
 }
 
-@media (max-width: 500px) {
-  .groupCode {
-    margin-bottom: 0.3rem;
-  }
+.groupCodeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem 1rem;
+  width: 20rem;
+  border: 0.15rem solid var(--color-grey);
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  overflow-y: auto;
+  height: fit-content;
+  outline: none;
+  outline-color: var(--color-grey);
+  line-height: 1.2;
+}
+
+.groupCodeContainer:hover,
+.groupCodeContainer:focus {
+  border-color: var(--color-signal);
+  background-color: var(--color-body);
+}
+
+.copyGroupCode {
+  margin-top: 0.5rem;
 }
 
 /* Delayed rendering to avoid flickering */

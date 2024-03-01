@@ -12,16 +12,12 @@ const SyncGroupCodeExplanation = () => {
   return (
     <div className={styles.container}>
       <h2>sync across devices & browsers</h2>
+      <p>To access this group either</p>
       <ul className={styles.list}>
-        <li>
-          To access this group on another device, you'll need to enter the
-          groupCode or accept a group invitation specifically on that device.
-        </li>
-        <li>
-          The same applies, if you're using multiple web browsers on the same
-          device.
-        </li>
+        <li>enter the groupCode manually or</li>
+        <li>accept an invitation</li>
       </ul>
+      <p>specifically on another device / in another browser.</p>
     </div>
   );
 };

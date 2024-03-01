@@ -77,7 +77,7 @@
 
 /* Component width is aligned with main width in app.css */
 /* Mobile*/
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .container,
   .defaultBar,
   .userSettingsBar {

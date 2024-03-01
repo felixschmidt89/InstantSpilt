@@ -90,7 +90,7 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.header}>change currency</h2>
+      <h2 className={styles.header}>currency</h2>
       <form onSubmit={handleFormSubmit}>
         <select
           className={`${styles.select} ${styles.idleOnMount}`}

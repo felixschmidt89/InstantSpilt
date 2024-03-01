@@ -16,7 +16,6 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 import ChangeGroupCurrency from "../../components/features/GroupSettings/ChangeGroupCurrency/ChangeGroupCurrency";
 import ChangeDataPurgeSetting from "../../components/features/GroupSettings/ChangeDataPurgeSetting/ChangeDataPurgeSetting";
 import Spinner from "../../components/common/Spinner/Spinner";
-import Emoji from "../../components/common/Emoji/Emoji";
 import GroupCodeSecurity from "../../components/features/GroupSettings/GroupCodeSecurity/GroupCodeSecurity";
 
 // Styles
@@ -46,10 +45,6 @@ const OnboardingGroupSettingsPage = () => {
         </div>
       </div>
       <div className={styles.container}>
-        <h1>
-          group settings{" "}
-          <Emoji label='settings emoji' emoji={emojiConstants.settings} />
-        </h1>{" "}
         {isFetched && groupData ? (
           <div className={styles.settings}>
             <ChangeGroupCurrency

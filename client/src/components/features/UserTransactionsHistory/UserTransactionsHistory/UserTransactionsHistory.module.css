@@ -11,7 +11,7 @@
   font-size: 1.5rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .container {
     padding: 0 0rem; /* Limiting width while keeping scrollbar on the border */
   }

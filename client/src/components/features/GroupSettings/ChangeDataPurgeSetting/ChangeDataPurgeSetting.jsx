@@ -70,8 +70,7 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
         <h2 className={styles.header}>data purge</h2>
         <div className={styles.box}>
           <p className={styles.explanation}>
-            Delete group and its associated data (including group members,
-            expenses & payments) after {INACTIVE_DAYS} days of group inactivity.
+            delete group after {INACTIVE_DAYS} days of inactivity.
           </p>
           <form onSubmit={handleToggleClick} className={styles.toggle}>
             <FormControlLabel
