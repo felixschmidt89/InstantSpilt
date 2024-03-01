@@ -13,6 +13,7 @@ import {
 // Styles
 import styles from "./ContactForm.module.css";
 import RouteButton from "../../../common/InAppNavigation/RouteButton/RouteButton";
+import ClientInfo from "../ClientInfo/ClientInfo";
 
 /**
  * Component for rendering contact form
@@ -102,7 +103,11 @@ const ContactForm = ({
               name='feedback'
               value={formData.feedback}
               onChange={handleInputChange}
-              placeholder='required'
+              placeholder={
+                formData.messageType === "issue/bug"
+                  ? "Please copy and paste client info, describe the issue and add a screenshot if possible."
+                  : "required"
+              }
               rows='4'
             />
           </div>
@@ -110,14 +115,8 @@ const ContactForm = ({
         {formData.messageType === "issue/bug" && (
           <div>
             <div>
-              <div className={styles.debugButton}>
-                <RouteButton
-                  route={`client-info`}
-                  buttonText='client info'
-                  setPreviousRoute={true}
-                  margin='0px'
-                />
-              </div>
+              <ClientInfo />
+
               <input
                 className={styles.fileInputField}
                 ref={fileInputRef}
