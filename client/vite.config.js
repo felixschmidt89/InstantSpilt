@@ -43,8 +43,4 @@ export default {
     outDir: "dist",
     minify: "esbuild",
   },
-  optimizeDeps: {
-    // Disabled for now as otherwise emoji-mart is not working
-    enabled: false,
-  },
 };
