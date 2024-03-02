@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
@@ -34,6 +35,7 @@ const ExpenseDetailsPage = () => {
     useFetchExpenseInfo(itemId);
   const { groupMembers, isFetched: groupMembersIsFetched } =
     useFetchGroupMembers(groupCode);
+  const { t } = useTranslation();
 
   devLog("ExpenseInfo fetched", expenseInfo);
   devLog("Group currency fetched:", currencyInfoIsFetched);
@@ -41,7 +43,7 @@ const ExpenseDetailsPage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - expense details' />
+      <HelmetMetaTagsNetlify title={t("expense-details-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"expense-details"} />
       <InAppNavigation back={true} />
       {expenseInfoIsFetched &&

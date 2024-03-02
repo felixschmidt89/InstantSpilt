@@ -1,0 +1,18 @@
+{
+  "create-expense-page-title": "InstantSplit - Ausgabe hinzufügen",
+  "create-expense-page-header": "neue Ausgabe",
+  "contact-page-title": "InstantSplit - Kontakt",
+  "contact-page-header": "Kontakt",
+  "onboarding-create-group-page-title": "InstantSplit - Gruppe erstellen",
+  "create-payment-page-title": "InstantSplit - Zahlung hinzufügen",
+  "create-payment-page-header": "neue Zahlung",
+  "create-users-page-title": "InstantSplit - Mitglied hinzufügen",
+  "create-users-page-header": "Mitglieder hinzufügen",
+  "enter-groupcode-page-title": "InstantSplit - Gruppencode eingeben",
+  "expense-details-page-title": "InstantSplit - Ausgabendetails",
+  "forget-group-on-device-page-title": "InstantSplit - Gruppe verlassen",
+  "forget-group-on-device-page-header": "Gruppe verlassen",
+  "forget-group-on-device-groupcode-explanation": "Gruppencode speichern um {{groupName}} wieder beizutreten:",
+  "forget-group-on-device-button": "Gruppe verlassen",
+  "forget-group-on-device-confirmation-message": "Gruppe auf diesem Gerät verlassen?"
+}

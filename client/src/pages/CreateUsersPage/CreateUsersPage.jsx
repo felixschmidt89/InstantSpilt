@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../utils/errorUtils";
@@ -19,6 +20,7 @@ import styles from "./CreateUsersPage.module.css";
 function CreateUsersPage() {
   // Check if current user is a new user, ie is redirected from create-group route
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
+  const { t } = useTranslation();
 
   const isNewUser = previousRoute.includes("/onboarding-create-group");
   if (isRetrieved) {
@@ -26,7 +28,7 @@ function CreateUsersPage() {
   }
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - add user' />
+      <HelmetMetaTagsNetlify title={t("create-users-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"create-users"} />
       {isNewUser ? (
         <InAppNavigationBar
@@ -38,7 +40,7 @@ function CreateUsersPage() {
       )}
       <div className={styles.container}>
         {!isNewUser ? <h1>group members</h1> : null}
-        <h2>add group members</h2>
+        <h2>{t("create-users-page-header")}</h2>
         <CreateUserAndRenderUserList />
       </div>
     </main>

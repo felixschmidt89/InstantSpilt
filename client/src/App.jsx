@@ -13,7 +13,7 @@ import Footer from "./components/common/Footer/Footer";
 // Pages
 import PageNotFoundPage from "./pages/PageNotFound/PageNotFoundPage";
 import HomePage from "./pages/HomePage/HomePage";
-import CreateGroupPage from "./pages/CreateGroupPage/CreateGroupPage";
+import OnboardingCreateGroupPage from "./pages/OnboardingCreateGroupPage/OnboardingCreateGroupPage";
 import InstantSplitPage from "./pages/InstantSplitPage/InstantSplitPage";
 import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
 import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
@@ -55,7 +55,7 @@ const App = () => {
             />
             <Route
               path='/onboarding-create-group'
-              element={<CreateGroupPage />}
+              element={<OnboardingCreateGroupPage />}
             />
             <Route
               path='/onboarding-enter-groupcode'

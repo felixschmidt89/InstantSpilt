@@ -1,0 +1,18 @@
+{
+  "create-expense-page-title": "InstantSplit - add expense",
+  "create-expense-page-header": "new expense",
+  "contact-page-title": "InstantSplit - contact",
+  "contact-page-header": "contact",
+  "onboarding-create-group-page-title": "InstantSplit - create group",
+  "create-payment-page-title": "InstantSplit - add payment",
+  "create-payment-page-header": "new payment",
+  "create-users-page-title": "InstantSplit - add user",
+  "create-users-page-header": "add group members",
+  "enter-groupcode-page-title": "InstantSplit - enter groupCode",
+  "expense-details-page-title": "InstantSplit - expense details",
+  "forget-group-on-device-page-title": "InstantSplit - leave group",
+  "forget-group-on-device-page-header": "leave group",
+  "forget-group-on-device-groupcode-explanation": "To rejoin {{groupName}} later, store its groupCode:",
+  "forget-group-on-device-button": "leave group",
+  "forget-group-on-device-confirmation-message": "Are you sure you want to delete the group from this device?"
+}
