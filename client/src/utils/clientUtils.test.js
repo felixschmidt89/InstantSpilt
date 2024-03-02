@@ -1,7 +1,12 @@
 // Constants and Utils
-import { isWebShareAPISupported } from "./clientUtils";
+import {
+  isWebShareAPISupported,
+  checkModalClosureUserActionExpiration,
+} from "./clientUtils";
 
-// Mock console.log and console.error methods for devLog
+// Jest test for isWebShareAPISupported function
+
+// Mocking console.log and console.error methods for devLog
 const mockConsoleLog = jest.spyOn(console, "log").mockImplementation();
 const mockConsoleError = jest.spyOn(console, "error").mockImplementation();
 
@@ -83,5 +88,42 @@ describe("isWebShareAPISupported", () => {
     // Assert
     expect(result).toBe(true);
     expect(mockConsoleLog).not.toHaveBeenCalled();
+  });
+});
+
+// Jest test for checkModalClosureUserActionExpiration function
+
+describe("checkModalClosureUserActionExpiration", () => {
+  it("should return user closure action cannot be found", () => {
+    // Mock localStorage.getItem to return null, simulating no user action recorded
+    jest.spyOn(window.localStorage.__proto__, "getItem").mockReturnValue(null);
+    const result = checkModalClosureUserActionExpiration();
+
+    expect(result).toBe(true);
+  });
+
+  it("should return true if user closure action was more than 24 hours ago", () => {
+    const currentTimeStamp = Date.now();
+    const twentyFiveHoursAgo = currentTimeStamp - 25 * 60 * 60 * 1000;
+    jest
+      .spyOn(window.localStorage.__proto__, "getItem")
+      .mockReturnValue(twentyFiveHoursAgo.toString());
+    const result = checkModalClosureUserActionExpiration();
+    expect(result).toBe(true);
+  });
+
+  it("should return false if user action was less than 24 hours ago", () => {
+    const currentTimeStamp = Date.now();
+    const twentyThreeHoursAgo = currentTimeStamp - 23 * 60 * 60 * 1000 + 1;
+
+    jest
+      .spyOn(window.localStorage.__proto__, "getItem")
+      .mockReturnValue(twentyThreeHoursAgo.toString());
+    const result = checkModalClosureUserActionExpiration();
+    expect(result).toBe(false);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 });
