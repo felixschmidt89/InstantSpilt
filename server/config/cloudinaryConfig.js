@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary';
 import dotenv from 'dotenv';
 
-// Access the initial NODE_ENV environment variable
+// Access initial NODE_ENV environment variable
 const nodeEnv = process.env.NODE_ENV;
 
 // Load environment variables based on initial NODE_ENV

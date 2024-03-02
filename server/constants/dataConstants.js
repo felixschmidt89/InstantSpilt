@@ -1,5 +1,5 @@
 /**
- * Number of days without any group activity prior to purging all related group data from db
+ * Number of days without group activity prior to purging all related group data from db
  *
  * @constant
  * @type {number}
