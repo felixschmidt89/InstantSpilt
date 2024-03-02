@@ -24,7 +24,7 @@ const HomePage = () => {
       <InAppNavigationBar logoOnly={true} />
       <div className={styles.container}>
         <PiratePx COUNT_IDENTIFIER='homepage' />
-        <h1 className={styles.homepageHeader}>Welcome to InstantSplit</h1>
+        <h1 className={styles.homepageHeader}>Welcome to InstantSplitDEV</h1>
         <InstantSplitIntroSection />
         <GetStartedSection />
         <TermsAndConditionsSection />
