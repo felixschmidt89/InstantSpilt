@@ -77,5 +77,16 @@
   "in-app-navigation-main-icon-text": "home",
   "in-app-navigation-next-icon-text": "weiter",
   "render-resource-created-component-created-text": "hinzugefügt: ",
-  "render-resource-created-component-changed-text": "aktualisiert: "
+  "render-resource-created-component-changed-text": "aktualisiert: ",
+  "join-group-button-text": "{{groupName}} beitreten",
+  "client-info-accordion-title": "Client-Informationen",
+  "invitation-intro-copy": "Du wurdest zu {{groupName}} eingeladen um eure gemeinsamen Ausgaben zu begleichen.",
+  "contact-form-missing-name-error": "Name fehlt.",
+  "contact-form-too-long-name-error": "Der Name darf nicht länger als 50 Zeichen sein",
+  "contact-form-no-message-error": "Nachricht fehlt.",
+  "contact-form-message-too-long-error": "Die Nachricht darf nicht länger als 2500 Zeichen sein",
+  "contact-form-attached-file-too-big-error": "Die Datei überschreitet die zulässige Größe von 5 MB.",
+  "contact-form-upload-file-error": "Fehler beim Hochladen der Datei. Bitte erneut versuchen.",
+  "contact-form-success-feedback": "Nachricht erhalten - danke!",
+  "contact-form-redirect-to-main-app-copy": "Leite zur Gruppe zurück..."
 }

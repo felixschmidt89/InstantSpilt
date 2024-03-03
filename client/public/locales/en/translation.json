@@ -76,5 +76,16 @@
   "in-app-navigation-main-icon-text": "main",
   "in-app-navigation-next-icon-text": "next",
   "render-resource-created-component-created-text": "created: ",
-  "render-resource-created-component-changed-text": "changed: "
+  "render-resource-created-component-changed-text": "changed: ",
+  "join-group-button-text": "join {{groupName}}",
+  "client-info-accordion-title": "client info",
+  "invitation-intro-copy": "Someone invited you to join {{groupName}} to manage and settle your shared expenses.",
+  "contact-form-missing-name-error": "missing name",
+  "contact-form-too-long-name-error": "name must not exceed 50 characters",
+  "contact-form-no-message-error": "missing message",
+  "contact-form-message-too-long-error": "message must not exceed 2500 characters",
+  "contact-form-attached-file-too-big-error": "file exceeds allowed size limit of 5MB",
+  "contact-form-upload-file-error": "Error uploading file. Please try again.",
+  "contact-form-success-feedback": "Message received successfully - thanks!",
+  "contact-form-redirect-to-main-app-copy": "Redirecting back to the main application now."
 }

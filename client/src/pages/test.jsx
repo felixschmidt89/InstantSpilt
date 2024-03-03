@@ -5,10 +5,8 @@ import { useTranslation } from "react-i18next";
       <h1 className={styles.header}>
         {t("-page-header")}
             {t("leave-group-on-device-groupcode-explanation", { groupName })}
+            client info
 
 
-
-
-            Are you certain you want to delete this?
-
-            invte
+      
+            Redirecting back to the main application now.

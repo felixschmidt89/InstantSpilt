@@ -2,6 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import {
@@ -25,6 +26,7 @@ import styles from "./AcceptGroupInvitation.module.css";
  * @returns {JSX.Element} React component. */
 const AcceptGroupInvitation = ({ groupName, groupCode }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleAcceptInvitation = () => {
     storeGroupCodeInLocalStorage(groupCode);
@@ -39,7 +41,7 @@ const AcceptGroupInvitation = ({ groupName, groupCode }) => {
           style={buttonStyles}
           onClick={handleAcceptInvitation}
           variant='contained'>
-          join {groupName}
+          {t("join-group-button-text", { groupName })}
         </Button>
       </div>
       <div className={styles.termsAndConditions}>
