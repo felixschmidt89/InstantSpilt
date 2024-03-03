@@ -9,10 +9,6 @@ import { useTranslation } from "react-i18next";
 
 
 
-            <h1>transaction history</h1>
+            Are you certain you want to delete this?
 
-
-            <h1>groupCode validation</h1>
-
-
-            <p>Valid GroupCode, redirecting to the group now.</p>
+            invte

@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import emojiConstants from "../../../constants/emojiConstants";
@@ -23,6 +24,8 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
   // Handle Firefox bug (settings emoji not rendered correctly https://github.com/googlefonts/noto-emoji/issues/391)
 
   const settingsEmoji = useSettingsEmoji();
+  const { t } = useTranslation();
+
   const containerClassName = `${styles.groupActionsBar} ${applyMargin ? styles.withMargin : ""}`;
   return (
     <div
@@ -34,14 +37,14 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
         route={"group-settings"}
         emoji={settingsEmoji}
         translateX={0}
-        explanationText={"settings"}
+        explanationText={t("active-group-bar-settings-emoji-copy")}
         ariaLabel='group settings emoji'
       />
       {/* Button for navigating to settling expenses */}
       <GroupActionsEmojiButton
         route={"settle-expenses"}
         emoji={emojiConstants.settle}
-        explanationText={"settle"}
+        explanationText={t("active-group-bar-settle-emoji-copy")}
         ariaLabel='settle expenses emoji'
         translateY={-0.1}
         scale={1.1}
@@ -50,7 +53,7 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
       <GroupActionsEmojiButton
         route={"create-users"}
         emoji={emojiConstants.user}
-        explanationText={"+member"}
+        explanationText={t("active-group-bar-member-emoji-copy")}
         ariaLabel='add group member emoji'
         scale={0.97}
         translateY={-0.05}
@@ -60,7 +63,7 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
       <GroupActionsEmojiButton
         route={"create-payment"}
         emoji={emojiConstants.payment}
-        explanationText={"+payment"}
+        explanationText={t("active-group-bar-payment-emoji-copy")}
         ariaLabel='add payment emoji'
       />
 
@@ -69,7 +72,7 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
         route={"create-expense"}
         emoji={emojiConstants.expense}
         translateX={0.8}
-        explanationText={"+expense"}
+        explanationText={t("active-group-bar-expense-emoji-copy")}
         ariaLabel='add expense emoji'
       />
     </div>

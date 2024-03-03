@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { buttonStyles } from "../../../constants/stylesConstants";
@@ -38,13 +39,11 @@ const DeleteResource = ({
   showResourceType = true,
   onDeleteResource,
 }) => {
+  const { t } = useTranslation();
+
   // Use hook to
   const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
-  const {
-    deleteResource,
-    resourceTypeSingular,
-    error: hookError,
-  } = useDeleteResource(
+  const { deleteResource, error: hookError } = useDeleteResource(
     resourceType,
     resourceId,
     navigateOnDelete ? route : null
@@ -79,20 +78,20 @@ const DeleteResource = ({
           variant='contained'
           type='submit'
           endIcon={<DeleteIcon />}>
-          delete {showResourceType && resourceTypeSingular}
+          {t("delete-resource-delete-copy")}
         </Button>
       ) : (
         <span
           className={styles.link}
           onClick={handleShowConfirmation}
           role='button'>
-          delete {showResourceType && resourceTypeSingular}
+          {t("delete-resource-delete-copy")}
         </span>
       )}
 
       {isConfirmationVisible && (
         <ConfirmationModal
-          message={`Are you sure you want to delete this ${resourceTypeSingular}?`}
+          message={t("delete-resource-confirmation-message")}
           onConfirm={handleDelete}
           onCancel={handleHideConfirmation}
           isVisible={isConfirmationVisible}

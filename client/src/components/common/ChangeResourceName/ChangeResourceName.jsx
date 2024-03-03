@@ -101,7 +101,7 @@ const ChangeResourceName = ({
 
   return (
     <div className={styles.container}>
-      {headerText && <h2 className={styles.header}>change {headerText}</h2>}
+      {headerText && <h2 className={styles.header}>{headerText}</h2>}
       <form onSubmit={handleFormSubmit}>
         <input
           className={`${styles.inputField} ${styles.idleOnMount}`}

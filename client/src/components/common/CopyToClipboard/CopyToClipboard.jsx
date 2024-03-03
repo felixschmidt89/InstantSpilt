@@ -2,6 +2,7 @@
 import React, { useState, useRef } from "react";
 import { LuCopy } from "react-icons/lu";
 import { LuCopyCheck } from "react-icons/lu";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../utils/errorUtils";
@@ -24,6 +25,7 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "12rem" }) => {
   const [isCopied, setIsCopied] = useState(false);
   const [error, setError] = useState(false);
   const inputRef = useRef(null);
+  const { t } = useTranslation();
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
@@ -39,7 +41,7 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "12rem" }) => {
       window.getSelection().removeAllRanges();
     } catch (error) {
       devLog("Error copying to clipboard:", error);
-      setError("Error copying content, please copy manually.");
+      setError(t("copy-to-clipboard-component-error-copy"));
       displayErrorModal();
       setIsCopied(false);
     }
