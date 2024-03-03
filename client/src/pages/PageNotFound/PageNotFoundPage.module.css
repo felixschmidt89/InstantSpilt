@@ -4,8 +4,8 @@
   padding-top: 4rem;
   padding-bottom: 0.5rem;
   overflow-y: auto;
-  width: 70%;
-  padding-left: 3rem;
+  width: 100%;
+  text-align: center;
 }
 
 .pageNotFoundHeader {
@@ -31,13 +31,12 @@
 
 @media screen and (max-width: 768px) {
   .container {
-    width: 80%;
-    padding-left: 3rem;
+    width: 90%;
   }
 }
 
 @media only screen and (min-width: 1921px) {
   .container {
-    width: 50%;
+    width: 60%;
   }
 }

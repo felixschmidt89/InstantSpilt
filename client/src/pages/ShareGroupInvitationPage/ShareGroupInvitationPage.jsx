@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { isWebShareAPISupported } from "../../utils/clientUtils";
@@ -22,6 +23,7 @@ import styles from "./ShareGroupInvitationPage.module.css";
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 const ShareGroupInvitationPage = () => {
+  const { t } = useTranslation();
   const { groupCode } = useParams();
   const { groupData, isFetched } = useFetchGroupData(groupCode);
   const supportsWebShareAPI = isWebShareAPISupported();
@@ -40,11 +42,13 @@ const ShareGroupInvitationPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify
-        title={`InstantSplit - invite & share ${groupData.group.groupName}`}
+        title={t("share-group-invitation-page-title", {
+          groupName: groupData.group.groupName,
+        })}
       />
       <PiratePx COUNT_IDENTIFIER={"share-group"} />
       <InAppNavigationBar back={true} />
-      <h1>share access to group</h1>
+      <h1>{t("share-group-invitation-page-header")}</h1>
 
       {isFetched && (
         <div className={styles.container}>

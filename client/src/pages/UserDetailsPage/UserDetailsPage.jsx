@@ -1,10 +1,10 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
-import emojiConstants from "../../constants/emojiConstants";
 
 // Hooks
 import useFetchUserData from "../../hooks/useFetchUserInfo";
@@ -26,6 +26,7 @@ import UserTotals from "../../components/features/UserDetails/UserTotals/UserTot
 import styles from "./UserDetailsPage.module.css";
 
 const UserDetailsPage = () => {
+  const { t } = useTranslation();
   const { groupCode, userId } = useParams();
   const { userData, isFetched: userDataIsFetched } = useFetchUserData(userId);
   const { groupCurrency, isFetched: currencyInfoIsFetched } =
@@ -44,14 +45,14 @@ const UserDetailsPage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - user details' />
+      <HelmetMetaTagsNetlify title={t("user-details-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"user-details"} />
       <InAppNavigationBar back={true} />
       {userDataIsFetched && currencyInfoIsFetched ? (
         <div className={styles.container}>
           <h1>{userData.userName}</h1>
           <h2>
-            balance:{" "}
+            {t("user-details-page-user-balance-header")}{" "}
             <span className={balanceClass}>
               {userData.userBalance.toFixed(2)}
               {groupCurrency}
@@ -70,7 +71,7 @@ const UserDetailsPage = () => {
           </div>
           <div className={styles.userSettings}>
             <h3>
-              user settings{" "}
+              {t("user-details-page-user-settings-header")}{" "}
               <Emoji label='settings emoji' emoji={settingsEmoji} />
             </h3>{" "}
             <h3>change name</h3>

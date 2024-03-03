@@ -9,6 +9,8 @@ import styles from "./Footer.module.css";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
+      <LocaleSwitcher />
+
       {/* GitHub repository */}
       <a
         href='https://github.com/felixschmidt89/InstantSpilt'
@@ -25,7 +27,6 @@ const Footer = () => {
       <Link to='/terms-and-conditions' className={styles.link}>
         T&C
       </Link>
-      <LocaleSwitcher />
     </footer>
   );
 };

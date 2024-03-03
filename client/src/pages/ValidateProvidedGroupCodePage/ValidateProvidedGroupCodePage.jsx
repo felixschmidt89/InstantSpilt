@@ -5,6 +5,7 @@ import {
   IoMdCheckmarkCircleOutline,
   IoMdCloseCircleOutline,
 } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import {
@@ -32,6 +33,7 @@ import styles from "./ValidateProvidedGroupCodePage.module.css";
  *
  * @returns {JSX.Element} React component. */
 const ValidateProvideGroupCodePage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { groupCode } = useParams();
   const [error, setError] = useState(null);
@@ -66,7 +68,7 @@ const ValidateProvideGroupCodePage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - validate groupCode' />
+      <HelmetMetaTagsNetlify title={t("validate-groupcode-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"groupCode-validator"} />
       {isInstantSplitUser ? (
         <InAppNavigationBar
@@ -84,13 +86,13 @@ const ValidateProvideGroupCodePage = () => {
         />
       )}
       <div className={styles.container}>
-        <h1>groupCode validation</h1>
+        <h1>{t("validate-groupcode-page-header")}</h1>
         {groupExists && (
           <div className={styles.groupExists}>
             <div className={styles.feedbackIcon}>
               <IoMdCheckmarkCircleOutline />
             </div>
-            <p>Valid GroupCode, redirecting to the group now.</p>
+            <p>{t("validate-groupcode-page-redirect-copy")}</p>
           </div>
         )}
         {/*Handle validations timeout errors*/}

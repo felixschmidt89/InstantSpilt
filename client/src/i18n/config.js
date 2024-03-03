@@ -7,8 +7,8 @@ import HttpApi from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
 export const supportedLanguages = {
-  en: "EN",
-  de: "DE",
+  en: "🇬🇧",
+  de: "🇩🇪",
 };
 
 i18n
@@ -18,7 +18,7 @@ i18n
   .init({
     // Config options
     // default language (locale)
-    lng: "en",
+    lng: "de",
     // fallback locale
     fallbackLng: "en",
     supportedLngs: Object.keys(supportedLanguages),

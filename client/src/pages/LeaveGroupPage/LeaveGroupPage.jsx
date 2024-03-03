@@ -12,6 +12,7 @@ import {
   getFirstGroupCodeInStoredGroupCodesArray,
   setGroupCodeToCurrentlyActive,
 } from "../../utils/localStorageUtils";
+import { buttonStyles } from "../../constants/stylesConstants";
 
 // Hooks
 import useConfirmationModalLogicAndActions from "../../hooks/useConfirmationModalLogicAndActions";
@@ -24,10 +25,9 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 import ConfirmationModal from "../../components/common/ConfirmationModal/ConfirmationModal";
 
 // Styles
-import styles from "./ForgetGroupOnDevicePage.module.css";
-import { buttonStyles } from "../../constants/stylesConstants";
+import styles from "./LeaveGroupPage.module.css";
 
-const ForgetGroupOnDevicePage = () => {
+const LeaveGroupPage = () => {
   const { groupName, groupCode } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -52,16 +52,16 @@ const ForgetGroupOnDevicePage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title={t("forget-group-on-device-page-title")} />
-      <PiratePx COUNT_IDENTIFIER={"forget-group"} />
+      <HelmetMetaTagsNetlify title={t("leave-group-on-device-page-title")} />
+      <PiratePx COUNT_IDENTIFIER={"leave-group-on-device"} />
       <InAppNavigationBar back={true} />
       <h1 className={styles.header}>
-        {t("forget-group-on-device-page-header")}
+        {t("leave-group-on-device-page-header")}
       </h1>
       <div className={styles.container}>
         <div className={styles.groupCodeContainer}>
           <div className={styles.groupCodeExplanation}>
-            {t("forget-group-on-device-groupcode-explanation", { groupName })}
+            {t("leave-group-on-device-groupcode-explanation", { groupName })}
           </div>
           <div className={styles.copyGroupCode}>
             <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"15rem"} />
@@ -75,11 +75,11 @@ const ForgetGroupOnDevicePage = () => {
             color='error'
             onClick={handleShowConfirmation}
             endIcon={<ExitToAppIcon />}>
-            {t("forget-group-on-device-page-header")}
+            {t("leave-group-on-device-page-button")}
           </Button>
           {isConfirmationVisible && (
             <ConfirmationModal
-              message={t("forget-group-on-device-confirmation-message")}
+              message={t("leave-group-on-device-confirmation-message")}
               onConfirm={handleConfirmation}
               onCancel={handleHideConfirmation}
               isVisible={isConfirmationVisible}
@@ -91,4 +91,4 @@ const ForgetGroupOnDevicePage = () => {
   );
 };
 
-export default ForgetGroupOnDevicePage;
+export default LeaveGroupPage;

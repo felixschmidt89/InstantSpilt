@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 //  Hooks
 import useExpenseUpdate from "../../hooks/useExpenseUpdate";
@@ -18,6 +19,7 @@ import styles from "./UpdateExpensePage.module.css";
 
 function UpdateExpensePage() {
   const { groupCode, expenseId } = useParams();
+  const { t } = useTranslation();
 
   // Use custom hook to identify user's previous route to render appropriate InAppNavigation
   const { isChecked, openedViaGroupHistory, openedViaUserTransactionsHistory } =
@@ -28,7 +30,8 @@ function UpdateExpensePage() {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - update expense' />
+      <HelmetMetaTagsNetlify title={t("update-expense-page-title")} />
+
       <PiratePx COUNT_IDENTIFIER={"update-expense"} />
       {isChecked && openedViaGroupHistory && (
         <InAppNavigationBar previousRoute={true} home={true} />
@@ -40,7 +43,7 @@ function UpdateExpensePage() {
         <Spinner />
       ) : (
         <>
-          <h1 className={styles.header}>edit expense </h1>
+          <h1 className={styles.header}>{t("update-expense-page-header")}</h1>
           <div className={styles.container}>
             <UpdateExpense
               groupCode={groupCode}

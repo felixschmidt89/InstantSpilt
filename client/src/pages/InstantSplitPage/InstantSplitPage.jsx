@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePWAInstall } from "react-use-pwa-install";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import {
@@ -36,6 +37,7 @@ import styles from "./InstantSplitPage.module.css";
  */
 const InstantSplitPage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const groupCode = localStorage.getItem("activeGroupCode");
   const initialViewState = localStorage.getItem("viewState") || "view2";
   const [view, setView] = useState(initialViewState);
@@ -114,9 +116,7 @@ const InstantSplitPage = () => {
         setCtaToRender(null);
       }
     } else {
-      devLog(
-        "Client does not match PWA CTA rendering conditions. No CTA will be rendered."
-      );
+      devLog("Client does not match PWA CTA rendering conditions.");
     }
   }, [
     isIOS,
@@ -145,7 +145,7 @@ const InstantSplitPage = () => {
         <span className={styles.spinner}></span>
       ) : groupData.group ? (
         <>
-          <HelmetMetaTagsNetlify title={`InstantSplit - main`} />
+          <HelmetMetaTagsNetlify title={t("main-page-title")} />{" "}
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
           <DefaultAndUserSettingsBar />
           <div className={styles.topBar}>

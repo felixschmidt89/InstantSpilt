@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Contents
 import {
@@ -20,9 +21,10 @@ import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRout
 import { devLog } from "../../utils/errorUtils";
 
 const LegalNoticePage = () => {
+  const { t } = useTranslation();
+
   // Check if current user is an invited user, ie is redirected from join-instantsplit-group route
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
-
   const isInvitedUser = previousRoute.includes("join-instantsplit-group/");
   if (isRetrieved) {
     devLog("Current user is an invited user:", isInvitedUser);
@@ -31,8 +33,8 @@ const LegalNoticePage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify
-        title='InstantSplit - Impressum'
-        description='Legal Notice as required by the Telemediengesetz for German websites.'
+        title={t("legal-notice-page-title")}
+        description={t("legal-notice-page-description")}
       />
       <PiratePx COUNT_IDENTIFIER={"legal-notice"} />
       {/* Navigate invited users back to accept group invitation page */}
@@ -41,10 +43,8 @@ const LegalNoticePage = () => {
       )}
       {isRetrieved && !isInvitedUser && <InAppNavigationBar back={true} />}
       <div className={styles.container}>
-        <h1>Legal Notice (Impressum)</h1>
-        <p className={styles.note}>
-          As required by the Telemediengesetz for German websites.
-        </p>
+        <h1>{t("legal-notice-page-header")}</h1>
+        <p className={styles.note}>{t("legal-notice-page-explanation")} </p>
         <LegalNoticeAuthor authorInfo={authorInfo} />
         <LegalNoticeSections LegalNoticeSections={legalNoticeSections} />
       </div>

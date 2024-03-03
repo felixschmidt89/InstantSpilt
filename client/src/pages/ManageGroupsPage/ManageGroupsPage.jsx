@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 import { setRouteInLocalStorage } from "../../utils/localStorageUtils";
@@ -17,6 +18,7 @@ import ValidateGroupCode from "../../components/features/ManageGroups/ValidateGr
 import styles from "./ManageGroupsPage.module.css";
 
 const ManageGroupsPage = () => {
+  const { t } = useTranslation();
   const groupCode = localStorage.getItem("activeGroupCode");
   useValidateAndCleanupStoredGroupCodes();
 
@@ -27,11 +29,11 @@ const ManageGroupsPage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - manage groups' />
+      <HelmetMetaTagsNetlify title={t("manage-groups-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"manage-groups"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <h1>manage groups</h1>
+        <h1>{t("manage-groups-page-header")}</h1>
         <SwitchGroups groupCode={groupCode} />
         <CreateGroupForm isInAppCreation={true} />
         <ValidateGroupCode />

@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
@@ -22,14 +23,15 @@ import styles from "./TutorialPage.module.css";
 function TutorialPage() {
   const { groupCode } = useParams();
   const { groupData, isFetched } = useFetchGroupData(groupCode);
+  const { t } = useTranslation();
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - tutorial' />
+      <HelmetMetaTagsNetlify title={t("tutorial-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"tutorial"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <h1>tutorial</h1>
+        <h1>{t("tutorial-page-header")}</h1>
         {!isFetched ? (
           <Spinner />
         ) : (

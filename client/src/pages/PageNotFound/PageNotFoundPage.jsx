@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
@@ -15,18 +16,20 @@ import RouteButton from "../../components/common/InAppNavigation/RouteButton/Rou
 import styles from "./PageNotFoundPage.module.css";
 
 function PageNotFoundPage() {
+  const { t } = useTranslation();
+
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - page not found' />
+      <HelmetMetaTagsNetlify title={t("page-not-found-page-title")} />
       <InAppNavigationBar logoOnly={true} />
       <h1 className={styles.pageNotFoundHeader}>
-        <Emoji label={"error emoji"} emoji={emojiConstants.error}></Emoji> 404 -
-        Page not found
+        <Emoji label={"error emoji"} emoji={emojiConstants.error}></Emoji>
+        {t("page-not-found-page-header")}
       </h1>
       <div className={styles.container}>
         <PiratePx COUNT_IDENTIFIER={"page-not-found"} />
         <div className={styles.pageNotFoundText}>
-          <p>The page you&rsquo;re looking for does not exist.</p>
+          <p>{t("page-not-found-page-explanation")}</p>
           <span className={styles.goToMainButton}>
             <RouteButton
               route={`instant-split`}
