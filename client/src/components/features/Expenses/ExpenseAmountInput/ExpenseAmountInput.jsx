@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { validateAndProcessAmountInput } from "../../../../utils/formatUtils";
@@ -23,6 +24,7 @@ const ExpenseAmountInput = ({
   isUpdate = false,
 }) => {
   const inputRef = useRef(null);
+  const { t } = useTranslation();
 
   // If update, remove isUpdate class after click, so that input does not fall back to appearing inactive
   const handleInputClick = () => {
@@ -46,7 +48,7 @@ const ExpenseAmountInput = ({
         onClick={handleInputClick}
         onChange={handleExpenseAmountChange}
         ref={inputRef}
-        placeholder='amount'
+        placeholder={t("expense-amount-input-placeholder")}
         inputMode='decimal'
       />
     </div>

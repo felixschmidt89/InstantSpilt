@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { buttonStyles } from "../../../../constants/stylesConstants";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import {
@@ -37,6 +38,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @returns {JSX.Element} React component. */
 const CreateExpense = ({ groupMembers, groupCode }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [expenseDescription, setExpenseDescription] = useState("");
   const [expenseAmount, setExpenseAmount] = useState("");
@@ -98,7 +100,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
             onSelectedBeneficiariesChange={setSelectedBeneficiaries}
           />
           <Button style={buttonStyles} variant='contained' type='submit'>
-            add expense
+            {t("create-expense-add-expense-button-text")}
           </Button>
         </div>
       </form>

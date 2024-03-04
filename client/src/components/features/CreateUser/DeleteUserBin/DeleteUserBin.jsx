@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { StatusCodes } from "http-status-codes";
 import { MdDelete } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
@@ -36,6 +37,7 @@ const DeleteUserBin = ({
   const [isConfirmationVisible, setIsConfirmationVisible] = useState(false);
   const [deletionSuccess, setDeletionSuccess] = useState(false);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   // Effect to trigger rerender when deletion is successful
   useEffect(() => {
@@ -83,7 +85,9 @@ const DeleteUserBin = ({
       </span>
       {isConfirmationVisible && (
         <ConfirmationModal
-          message={`Are you sure you want to delete ${userName}?`}
+          message={t("delete-user-bin-component-confirmation-message", {
+            userName,
+          })}
           onConfirm={handleDelete}
           onCancel={handleHideConfirmation}
           isVisible={isConfirmationVisible}
