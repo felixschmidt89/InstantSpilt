@@ -37,7 +37,7 @@
   "settle-expenses-page-title": "InstantSplit - Ausgaben ",
   "settle-expenses-page-header": "Ausgleichszahlungen",
   "share-group-invitation-page-title": "InstantSplit - Zugang zu {{groupName}} teilen",
-  "share-group-invitation-page-header": "Gruppenzugang teilen",
+  "share-group-invitation-page-header": "Gruppe teilen",
   "terms-and-conditions-page-title": "InstantSplit - Allgemeine Geschäftsbedingungen",
   "tutorial-page-title": "InstantSplit - Tutorial",
   "tutorial-page-header": "Tutorial",
@@ -186,5 +186,13 @@
   "confirm-settlement-payment-message": "Bestätigen, dass {{paymentMakerName}} {{paymentAmount}}{{groupCurrency}} an {{paymentRecipientName}} gezahlt hat?",
   "confirm-settlement-payment-button": "bestätigen",
   "all-expenses-settled": "Alles beglichen",
-  "render-settlement-payment-suggestions-due": "offen"
+  "render-settlement-payment-suggestions-due": "offen",
+  "share-group-invitation-explanation": "Kopiere den Link, um andere zu  {{groupName}} einzuladen",
+  "share-group-invitation-or": "oder",
+
+  "web-share-api-invite-title": "Einladung zu {{groupName}}",
+  "web-share-api-invite-text": "Tritt bei um unsere Ausgaben zu begleichen.",
+  "web-share-api-invite-button": "teilen",
+  "disclaimer-header": "Haftungsausschluss",
+  "disclaimer-copy": "Durch die Nutzung von InstantSplit erkennen Sie unsere Allgemeinen Geschäftsbedingungen an. Bitte verwenden Sie InstantSplit nicht, wenn Sie mit ihnen nicht einverstanden sind. Zuletzt aktualisiert wurden unsere AGB am"
 }

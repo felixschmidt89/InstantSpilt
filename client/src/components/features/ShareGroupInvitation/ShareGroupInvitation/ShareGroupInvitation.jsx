@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Components
 import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
@@ -14,11 +15,13 @@ import styles from "./ShareGroupInvitation.module.css";
  * @param {string} props.infoToCopy - The information to be copied.
  * @returns {JSX.Element} React component. */
 const ShareGroupInvitation = ({ groupName, infoToCopy }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
       <div className={styles.invitationLink}>
-        Copy the link below to invite others to join{" "}
-        <span className={styles.strong}>{groupName}</span>:
+        {t("share-group-invitation-explanation", { groupName })}
+        :
         <CopyToClipboard infoToCopy={infoToCopy} inputFieldWidth={"25rem"} />
       </div>
     </div>

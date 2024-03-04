@@ -186,6 +186,11 @@
   "confirm-settlement-payment-message": "Confirm {{paymentMakerName}} has paid {{paymentAmount}}{{groupCurrency}} to {{paymentRecipientName}}?",
   "all-expenses-settled": "All settled",
   "render-settlement-payment-suggestions-due": "due",
-  "users-with-negative-balance-header":"
-  needs ti "
+  "share-group-invitation-explanation": "Copy the link to invite others to join {{groupName}}",
+  "share-group-invitation-or": "or",
+  "web-share-api-invite-title": "Invitation to {{groupName}}",
+  "web-share-api-invite-text": "Join and settle our shared expenses.",
+  "web-share-api-invite-button": "share",
+  "disclaimer-header": "disclaimer",
+  "disclaimer-copy": "By using InstantSplit you acknowledge and accept our terms and conditions. If you do not agree with these terms, please do not use the application. These terms and conditions were last updated on"
 }

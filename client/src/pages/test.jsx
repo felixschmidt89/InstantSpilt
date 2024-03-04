@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 
 name*
 
-{t("install-pwa-cta")}
+{t("disclaimer-header")}
 {t("install-pwa-samsung-browser-list-item1-part1")}
 
 {t("create-group-group-name-placeholder")}
@@ -29,7 +29,7 @@ name*
 
 
 
-{t("render-settlement-payment-suggestions-due")}
+{t("share-group-invitation-or")}
 
 
 delete group after {{days}} of inactivity.
