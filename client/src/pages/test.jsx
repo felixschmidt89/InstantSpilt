@@ -20,7 +20,7 @@ name*
 {t("create-group-group-name-placeholder")}
 
 
-{t("contact-form-issue-bug-message-type")}
+{t("confirm-settlement-payment-button")}
 
 
 {t(  "contact-form-message-send-button-text"
@@ -29,9 +29,7 @@ name*
 
 
 
-
-{t( "install-pwa-opera-list-item2-part1")}
-{t("install-pwa-safari-list-item3-part1")}
+{t("render-settlement-payment-suggestions-due")}
 
 
 delete group after {{days}} of inactivity.

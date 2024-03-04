@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import {
@@ -42,6 +43,7 @@ const ConfirmSettlementPayment = ({
   groupCode,
   groupCurrency,
 }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -81,11 +83,18 @@ const ConfirmSettlementPayment = ({
           label={"payment emoji"}
           emoji={emojiConstants.payment}
           shrinkOnSmallDevices={true}></Emoji>
-        <span className={styles.confirmText}>confirm</span>
+        <span className={styles.confirmText}>
+          {t("confirm-settlement-payment-button")}
+        </span>
       </div>
       {isConfirmationVisible && (
         <ConfirmationModal
-          message={`Confirm ${paymentMakerName} has paid ${paymentAmount}${groupCurrency} to ${paymentRecipientName}?`}
+          message={t("confirm-settlement-payment-message", {
+            paymentMakerName,
+            paymentAmount,
+            groupCurrency,
+            paymentRecipientName,
+          })}
           onConfirm={handleConfirmation}
           onCancel={handleHideConfirmation}
           isVisible={isConfirmationVisible}

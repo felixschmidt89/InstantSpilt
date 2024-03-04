@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import { IoArrowForwardOutline } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { calculateSuggestedSettlementPayments } from "../../../../utils/settlementUtils";
@@ -26,6 +27,8 @@ const RenderSettlementPaymentSuggestions = ({
   groupCurrency,
   groupCode,
 }) => {
+  const { t } = useTranslation();
+
   const [settlementPaymentSuggestions, setSettlementPaymentSuggestions] =
     useState([]);
 
@@ -61,7 +64,9 @@ const RenderSettlementPaymentSuggestions = ({
                 {settlement.to}
               </span>
               <div className={styles.amount}>
-                <span className={styles.dueKey}>due:</span>
+                <span className={styles.dueKey}>
+                  {t("render-settlement-payment-suggestions-due")}:
+                </span>
                 <span
                   className={styles.settlementAmount}
                   aria-label={`Settlement payment amount`}>

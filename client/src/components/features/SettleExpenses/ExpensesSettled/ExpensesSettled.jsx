@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
@@ -14,13 +15,16 @@ import styles from "./ExpensesSettled.module.css";
  * Component for rendering a message indicating that all group expenses are settled.
  *
  * @returns {JSX.Element} React component. */
-const ExpensesSettled = () => (
-  <p className={styles.balancesSettled}>
-    All settled.{" "}
-    <Emoji
-      label={"Expenses settled emoji"}
-      emoji={emojiConstants.settle}></Emoji>
-  </p>
-);
+const ExpensesSettled = () => {
+  const { t } = useTranslation();
+  return (
+    <p className={styles.balancesSettled}>
+      {t("all-expenses-settled")}.{" "}
+      <Emoji
+        label={"Expenses settled emoji"}
+        emoji={emojiConstants.settle}></Emoji>
+    </p>
+  );
+};
 
 export default ExpensesSettled;

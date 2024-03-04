@@ -181,5 +181,11 @@
   "install-pwa-samsung-browser-list-item1-part2": "in your browser",
   "install-pwa-samsung-browser-list-item2-part1": "press",
   "install-pwa-samsung-browser-list-item2-part2": "(add page to)",
-  "install-pwa-samsung-browser-list-item3": "and choose home screen"
+  "install-pwa-samsung-browser-list-item3": "and choose home screen",
+  "confirm-settlement-payment-button": "confirm",
+  "confirm-settlement-payment-message": "Confirm {{paymentMakerName}} has paid {{paymentAmount}}{{groupCurrency}} to {{paymentRecipientName}}?",
+  "all-expenses-settled": "All settled",
+  "render-settlement-payment-suggestions-due": "due",
+  "users-with-negative-balance-header":"
+  needs ti "
 }
