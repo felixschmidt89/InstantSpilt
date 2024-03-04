@@ -2,6 +2,7 @@
 import React from "react";
 import { LuMenu } from "react-icons/lu";
 import { LuPlus } from "react-icons/lu";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./InstallPwaSamsungBrowser.module.css";
@@ -11,18 +12,23 @@ import styles from "./InstallPwaSamsungBrowser.module.css";
  * @returns {JSX.Element} React component.
  */
 const InstallPwaSamsungBrowser = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
-      <p className={styles.text}>For the best experience, install our app:</p>
+      <p className={styles.text}>{t("install-pwa-cta")}:</p>
       <ul className={styles.installPwaExplanationList}>
         <li>
-          Select <LuMenu className={styles.dotsIcon} /> in your browser,
+          {t("install-pwa-samsung-browser-list-item1-part1")}{" "}
+          <LuMenu className={styles.dotsIcon} />{" "}
+          {t("install-pwa-samsung-browser-list-item1-part2")},
         </li>
         <li>
-          press <LuPlus className={styles.installIcon} />
-          (add page to),
+          {t("install-pwa-samsung-browser-list-item2-part1")}{" "}
+          <LuPlus className={styles.installIcon} />
+          {t("install-pwa-samsung-browser-list-item2-part2")},
         </li>
-        <li>and choose home screen</li>
+        <li>{t("install-pwa-samsung-browser-list-item3")}.</li>
       </ul>
     </div>
   );

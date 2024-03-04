@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Components
 import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
@@ -13,13 +14,13 @@ import styles from "./GroupCodeSecurity.module.css";
  * @returns {JSX.Element} React component.
  */
 const GroupCodeSecurity = ({ groupCode }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
-      <h2>security</h2>
+      <h2>{t("groupcode-security-header")}</h2>
       <div className={styles.explanation}>
-        <div>
-          store <strong>groupCode</strong> to avoid losing access:
-        </div>
+        <div>{t("groupcode-security-explanation")}:</div>
         <div className={styles.groupCode}>
           <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"15rem"} />
         </div>

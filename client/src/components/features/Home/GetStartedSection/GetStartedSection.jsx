@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./GetStartedSection.module.css";
@@ -10,17 +11,18 @@ import RouteButton from "../../../common/InAppNavigation/RouteButton/RouteButton
  *
  * @returns {JSX.Element} React component. */
 const GetStartedSection = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className={styles.groupContainer}>
-        <h2>get started</h2>
+        <h2>{t("get-started-section")}</h2>
         <RouteButton
           route={`onboarding-create-group`}
-          buttonText='create new group'
+          buttonText={t("get-started-create-group-button")}
         />
         <RouteButton
           route={`onboarding-enter-groupcode`}
-          buttonText='join existing group'
+          buttonText={t("get-started-join-group-button")}
         />
       </div>
     </>

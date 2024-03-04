@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { IoArrowDownOutline } from "react-icons/io5";
-
+import { useTranslation } from "react-i18next";
 import axios from "axios";
 
 // Constants and Utils
@@ -50,6 +50,7 @@ const UpdatePayment = ({
   itemId,
   route = "/instant-split",
 }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const paymentId = paymentDetails._id;
 
@@ -139,9 +140,7 @@ const UpdatePayment = ({
         isUpdate={true}
       />
       <div className={styles.emojis}>
-        <Emoji
-          label={"payment emoji"}
-          emoji={emojiConstants.payment}></Emoji>
+        <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
         <RenderReactIcon
           icon={IoArrowDownOutline}
           size={1.6}
@@ -159,7 +158,7 @@ const UpdatePayment = ({
       <div className={styles.buttonContainer}>
         {isSubmitButtonVisible && (
           <Button style={buttonStyles} variant='contained' type='submit'>
-            update payment
+            {t("update-payment-button-text")}
           </Button>
         )}
         <ErrorModal

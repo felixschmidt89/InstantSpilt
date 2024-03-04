@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useTranslation } from "react-i18next";
+
 // Constants and Utils
 import { setGroupCodeToCurrentlyActive } from "../../../../../utils/localStorageUtils";
 import { submitOnEnterClick } from "../../../../../utils/formUtils";
@@ -22,6 +24,7 @@ import styles from "./RenderGroupSelection.module.css";
  */
 const RenderGroupSelection = ({ groupCode, groupNamesAndGroupCodes }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [selectedGroupCode, setSelectedGroupCode] = useState("");
 
   const handleSelectChange = (event) => {
@@ -50,7 +53,7 @@ const RenderGroupSelection = ({ groupCode, groupNamesAndGroupCodes }) => {
           onChange={handleSelectChange}
           onKeyDown={handleKeyDown}>
           <option value='' disabled>
-            choose group
+            {t("render-group-selection-placeholder")}
           </option>
           {groupNamesAndGroupCodes.map((group) => (
             <option key={group.groupCode} value={group.groupCode}>

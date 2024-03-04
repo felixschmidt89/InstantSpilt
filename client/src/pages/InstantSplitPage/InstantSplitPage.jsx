@@ -109,8 +109,6 @@ const InstantSplitPage = () => {
         setCtaToRender("samsung");
       } else if (lowercaseBrowserName.includes("opera")) {
         setCtaToRender("opera");
-      } else if (lowercaseBrowserName.includes("edge")) {
-        setCtaToRender("edge");
       } else {
         // Render nothing
         setCtaToRender(null);

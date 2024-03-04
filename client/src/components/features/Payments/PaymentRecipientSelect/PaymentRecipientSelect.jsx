@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./PaymentRecipientSelect.module.css";
@@ -20,6 +21,7 @@ const PaymentRecipientSelect = ({
   isUpdate = false,
 }) => {
   const selectRef = useRef(null);
+  const { t } = useTranslation();
 
   // If update, remove isUpdate class after click, so that select does not fall back to appearing inactive
   const handleSelectClick = () => {
@@ -45,7 +47,7 @@ const PaymentRecipientSelect = ({
       onChange={(e) => onRecipientChange(e.target.value)}>
       {/* Do not preselect user, indicate functionality instead */}
       <option value='' disabled>
-        paid to
+        {t("payment-recipient-select-placeholder")}
       </option>
       {options}
     </select>

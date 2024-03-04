@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { useTranslation } from "react-i18next";
+
 // Constants and Utils
 import { submitOnEnterClick } from "../../../../utils/formUtils";
 
@@ -21,6 +23,7 @@ import styles from "./ValidateGroupCode.module.css";
  * @returns {JSX.Element} React component.
  */
 const ValidateGroupCode = () => {
+  const { t } = useTranslation();
   const groupCode = localStorage.getItem("activeGroupCode");
   const [friendlyCaptchaIsVerified, setFriendlyCaptchaIsVerified] =
     useState(false);
@@ -48,8 +51,7 @@ const ValidateGroupCode = () => {
 
   return (
     <div className={styles.container}>
-      <h2>join group</h2>
-
+      <h2>{t("validate-groupcode-join-group-header")}</h2>
       <form onSubmit={handleFormSubmit}>
         <input
           className={styles.inputField}

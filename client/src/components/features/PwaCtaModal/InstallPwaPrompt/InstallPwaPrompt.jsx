@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { usePWAInstall } from "react-use-pwa-install";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { buttonStyles } from "../../../../constants/stylesConstants";
@@ -15,16 +16,17 @@ import styles from "./InstallPwaPrompt.module.css";
  */
 
 const InstallPwaPrompt = () => {
+  const { t } = useTranslation();
   // use library to install PWA
   const handleInstallPWA = usePWAInstall();
   return (
     <div className={styles.container}>
-      <p className={styles.text}>For the best experience:</p>
+      <p className={styles.text}>{t("install-pwa-install-cta")}:</p>
       <Button
         style={buttonStyles}
         variant='contained'
         onClick={handleInstallPWA}>
-        install our app
+        {t("install-pwa-install-button")}
       </Button>
     </div>
   );

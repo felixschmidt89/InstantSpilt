@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import { useTranslation } from "react-i18next";
 import "friendly-challenge/widget";
 
 // Constants and Utils
@@ -37,6 +37,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @returns {JSX.Element} React component. */
 const CreateGroupForm = ({ isOnboarding }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const inputRef = useRef(null);
   const [groupName, setGroupName] = useState("");
   const [error, setError] = useState(null);
@@ -82,13 +83,13 @@ const CreateGroupForm = ({ isOnboarding }) => {
 
   return (
     <form onSubmit={handleFormSubmit} className={styles.container}>
-      <h2>create group</h2>
+      <h2>{t("create-group-header")}</h2>
       <input
         className={styles.inputField}
         type='text'
         value={groupName}
         onChange={(e) => setGroupName(e.target.value)}
-        placeholder='group name'
+        placeholder={t("create-group-group-name-placeholder")}
         ref={inputRef}
       />
       {/* For new users: only render submit button, if FriendlyCaptcha is verified*/}

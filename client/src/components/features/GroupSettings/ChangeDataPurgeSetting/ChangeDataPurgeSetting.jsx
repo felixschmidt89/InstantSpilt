@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FormControlLabel, Switch } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import {
@@ -35,6 +36,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
   const [error, setError] = useState(null);
   const [isActive, setIsActive] = useState(inactiveDataPurge);
+  const { t } = useTranslation();
 
   const handleToggleClick = async () => {
     try {
@@ -67,10 +69,14 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
     <>
       {" "}
       <div className={styles.container}>
-        <h2 className={styles.header}>data purge</h2>
+        <h2 className={styles.header}>
+          {t("change-data-purge-setting-header")}
+        </h2>
         <div className={styles.box}>
           <p className={styles.explanation}>
-            delete group after {INACTIVE_DAYS} days of inactivity.
+            {t("change-data-purge-setting-explanation", {
+              days: INACTIVE_DAYS,
+            })}
           </p>
           <form onSubmit={handleToggleClick} className={styles.toggle}>
             <FormControlLabel

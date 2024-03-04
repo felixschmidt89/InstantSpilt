@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./PaymentMakerSelect.module.css";
@@ -19,6 +20,7 @@ const PaymentMakerSelect = ({
   isUpdate = false,
 }) => {
   const selectRef = useRef(null);
+  const { t } = useTranslation();
 
   // If update, remove isUpdate class after click, so that select does not fall back to appearing inactive
   const handleSelectClick = () => {
@@ -36,7 +38,7 @@ const PaymentMakerSelect = ({
       onChange={(e) => onPaymentMakerChange(e.target.value)}>
       {/* Do not preselect user, indicate functionality instead */}
       <option value='' disabled>
-        paid by
+        {t("payment-maker-select-placeholder")}
       </option>
       {groupMembers.map((member) => (
         <option key={member} value={member}>

@@ -14,10 +14,10 @@ import { useTranslation } from "react-i18next";
 
 name*
 
-{t("contact-form-email")}
-{t("contact-form-optional-placeholder")}
+{t("install-pwa-cta")}
+{t("install-pwa-samsung-browser-list-item1-part1")}
 
-{t("contact-form-message-type")}
+{t("create-group-group-name-placeholder")}
 
 
 {t("contact-form-issue-bug-message-type")}
@@ -28,7 +28,10 @@ name*
 
 
 
-{t("active-group-bar-member-emoji-copy")}
-{t("create-user-cta-payment-copy")}
-{t("create-user-cta-expense-copy")}
 
+
+{t( "install-pwa-opera-list-item2-part1")}
+{t("install-pwa-safari-list-item3-part1")}
+
+
+delete group after {{days}} of inactivity.

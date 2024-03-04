@@ -43,7 +43,7 @@ const GroupSettingsPage = () => {
               resourceId={groupData.group._id}
               groupCode={groupCode}
               resourceType={"group"}
-              headerText={"name"}
+              headerText={t("change-group-name")}
               resourceName={groupData.group.groupName}
               navigateToMain={false}
             />

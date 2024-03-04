@@ -3,6 +3,7 @@ import React from "react";
 import { HiDotsVertical } from "react-icons/hi";
 import { HiOutlinePlusCircle } from "react-icons/hi";
 import { MdAddToHomeScreen } from "react-icons/md";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./InstallPwaOpera.module.css";
@@ -12,20 +13,26 @@ import styles from "./InstallPwaOpera.module.css";
  * @returns {JSX.Element} React component.
  */
 const InstallPwaOpera = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
-      <p className={styles.text}>For the best experience, install our app:</p>
+      <p className={styles.text}>{t("install-pwa-cta")}:</p>
       <ul className={styles.installPwaExplanationList}>
         <li>
-          Select <HiDotsVertical className={styles.dotsIcon} /> in your browser,
+          {t("install-pwa-opera-list-item1-part1")}{" "}
+          <HiDotsVertical className={styles.dotsIcon} />{" "}
+          {t("install-pwa-opera-list-item1-part2")},
         </li>
         <li>
-          press <HiOutlinePlusCircle className={styles.addToIcon} />
-          (add to...),
+          {t("install-pwa-opera-list-item2-part1")}{" "}
+          <HiOutlinePlusCircle className={styles.addToIcon} />
+          {t("install-pwa-opera-list-item2-part2")},
         </li>
         <li>
-          and choose <MdAddToHomeScreen className={styles.homeScreenIcon} />{" "}
-          home screen.
+          {t("install-pwa-opera-list-item3-part1")}{" "}
+          <MdAddToHomeScreen className={styles.homeScreenIcon} />{" "}
+          {t("install-pwa-opera-list-item3-part2")}.
         </li>
       </ul>
     </div>
