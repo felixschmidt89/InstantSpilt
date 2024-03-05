@@ -63,7 +63,9 @@ const UserDetailsPage = () => {
             <div className={styles.transactionHistoryButton}>
               <RouteButton
                 route={`user-transaction-history/${groupCode}/${userId}`}
-                buttonText='transaction history'
+                buttonText={t(
+                  "user-details-page-transactions-history-button-text"
+                )}
                 setPreviousRoute={true}
                 margin='0px'
               />
@@ -74,7 +76,7 @@ const UserDetailsPage = () => {
               {t("user-details-page-user-settings-header")}{" "}
               <Emoji label='settings emoji' emoji={settingsEmoji} />
             </h3>{" "}
-            <h3>change name</h3>
+            <h3>{t("user-details-page-user-change-name-header")}</h3>
             <ChangeResourceName
               resourceId={userId}
               resourceType='user'

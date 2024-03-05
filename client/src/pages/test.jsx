@@ -15,21 +15,21 @@ import { useTranslation } from "react-i18next";
 name*
 
 {t("disclaimer-header")}
-{t("install-pwa-samsung-browser-list-item1-part1")}
+{t("user-transaction-history-created-key")}
 
 {t("create-group-group-name-placeholder")}
 
 
-{t("confirm-settlement-payment-button")}
+{t("https://www.google.com/chrome/")}
 
 
-{t(  "contact-form-message-send-button-text"
+{t("user-transaction-history-paid-by-key"
 )}
 
 
 
 
-{t( "groupcode-explanation-copy-1")}
+{t("user-transaction-history-amount-benefitted-by-key")}
 
 
 delete group after {{days}} of inactivity.

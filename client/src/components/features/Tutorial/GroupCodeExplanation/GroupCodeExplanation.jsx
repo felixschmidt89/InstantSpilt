@@ -28,20 +28,20 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
   return (
     <div className={styles.container}>
       <h2>{t("groupcode-explanation-header")}</h2>
-      <div className={styles.explanation}>
-        <div className={styles.groupCodeExplanation}>
+      <ul className={styles.list}>
+        <li className={styles.groupCodeExplanation}>
           {t("groupcode-explanation-copy-1")}
           <span className={styles.copyButton}>
             <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"15rem"} />
           </span>
-        </div>
-      </div>
-      <div className={styles.invitationLink}>
-        {t("groupcode-explanation-copy-2")}{" "}
-        <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
-          {t("groupcode-explanation-invitation-link-text")}.
-        </Link>
-      </div>
+        </li>
+        <li className={styles.invitationLink}>
+          {t("groupcode-explanation-copy-2")}{" "}
+          <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
+            {t("groupcode-explanation-invitation-link-text")}
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };

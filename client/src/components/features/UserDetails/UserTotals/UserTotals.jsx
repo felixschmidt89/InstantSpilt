@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./UserTotals.module.css";
@@ -13,17 +14,21 @@ import styles from "./UserTotals.module.css";
  *  @param {string} props.groupCurrency - The currency of the group.
  * @returns {JSX.Element} React component. */
 const UserTotals = ({ userData, groupCurrency }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
       <div
         role='region'
         aria-label='User Expense Totals'
         className={styles.totalsContainer}>
-        <h3>expense totals</h3>
+        <h3>{t("user-totals-expense-totals-header")}</h3>
         <ul className={styles.list}>
           {/* total expenses paid amount with 2 decimal places */}
           <li className={styles.item}>
-            <span className={styles.key}>paid for:</span>
+            <span className={styles.key}>
+              {t("user-totals-payment-paid-for")}:
+            </span>
             <span className={styles.value}>
               {userData.totalExpensesPaidAmount.toFixed(2)}
               {groupCurrency}
@@ -32,7 +37,7 @@ const UserTotals = ({ userData, groupCurrency }) => {
           <li className={styles.item}>
             <span className={styles.key}>
               {/* total expenses benefitted from amount with 2 decimal places */}
-              benefitted from:
+              {t("user-totals-payment-benefitted-from")}:
             </span>
             <span className={styles.value}>
               {userData.totalExpenseBenefittedAmount.toFixed(2)}
@@ -45,11 +50,13 @@ const UserTotals = ({ userData, groupCurrency }) => {
         role='region'
         aria-label='User Payments Totals'
         className={styles.totalsContainer}>
-        <h3>payment totals</h3>
+        <h3>{t("user-totals-payment-totals-header")}</h3>
         <ul className={styles.list}>
           {/* total payments made amount with 2 decimal places */}
           <li className={styles.item}>
-            <span className={styles.key}>payments made:</span>{" "}
+            <span className={styles.key}>
+              {t("user-totals-payment-payments-made")}:
+            </span>{" "}
             <span className={styles.value}>
               {userData.totalPaymentsMadeAmount.toFixed(2)}
               {groupCurrency}
@@ -58,7 +65,7 @@ const UserTotals = ({ userData, groupCurrency }) => {
           <li className={styles.item}>
             <span className={styles.key}>
               {/* total payments received amount with 2 decimal places */}
-              payments received:
+              {t("user-totals-payment-payments-received")}:
             </span>
             <span className={styles.value}>
               {userData.totalPaymentsReceivedAmount.toFixed(2)}

@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./SyncGroupCodeExplanation.module.css";
@@ -9,15 +10,16 @@ import styles from "./SyncGroupCodeExplanation.module.css";
  * @returns {JSX.Element} React component.
  */
 const SyncGroupCodeExplanation = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
-      <h2>sync across devices & browsers</h2>
-      <p>To access this group either</p>
+      <h2>{t("sync-groupcode-explanation-header")}</h2>
       <ul className={styles.list}>
-        <li>enter the groupCode manually or</li>
-        <li>accept an invitation</li>
+        <li>{t("sync-groupcode-explanation-list-item1")},</li>
+        <li>{t("sync-groupcode-explanation-list-item2")}</li>
       </ul>
-      <p>specifically on another device / in another browser.</p>
+      <p>{t("sync-groupcode-explanation-list-explanation")}</p>
     </div>
   );
 };

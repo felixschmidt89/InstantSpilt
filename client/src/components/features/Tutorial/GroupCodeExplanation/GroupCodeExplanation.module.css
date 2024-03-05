@@ -3,6 +3,14 @@
   line-height: 1.5;
   width: 100%;
 }
+
+.list li {
+  list-style-type: disc;
+  margin-left: 2rem;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
 /* Mobile*/
 @media only screen and (max-width: 768px) {
   .container {
@@ -11,7 +19,7 @@
   }
 }
 
-.groupCodeExplanation {
+/* .groupCodeExplanation {
   display: flex;
   flex-direction: column;
-}
+} */
