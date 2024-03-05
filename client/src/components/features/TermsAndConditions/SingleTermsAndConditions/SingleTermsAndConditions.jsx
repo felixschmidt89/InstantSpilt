@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./SingleTermsAndConditions.module.css";
@@ -9,6 +10,8 @@ import styles from "./SingleTermsAndConditions.module.css";
  * @param {Array} sections - An array of objects representing sections with keys, titles, and content.
  * @returns {JSX.Element} React component. */
 const SingleTermsAndConditions = ({ sections }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
       {sections.map((section) => (
@@ -19,12 +22,12 @@ const SingleTermsAndConditions = ({ sections }) => {
             {section.link && (
               <span>
                 {" "}
-                For more information, please refer to{" "}
+                {t("single-terms-and-conditions-more-info-copy")}{" "}
                 <a
                   href={section.link}
                   target='_blank'
                   rel='noopener noreferrer'>
-                  {section.linkText || "Privacy Policy"}
+                  {section.linkText}
                 </a>
                 .
               </span>

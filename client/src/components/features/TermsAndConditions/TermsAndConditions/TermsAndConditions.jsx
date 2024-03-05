@@ -2,12 +2,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-// Contents
-import {
-  lastUpdateDate,
-  sections,
-} from "../../../../contents/termsAndConditionsContent";
-
 // Components
 import Disclaimer from "../Disclaimer/Disclaimer";
 import SingleTermsAndConditions from "../SingleTermsAndConditions/SingleTermsAndConditions";
@@ -22,10 +16,11 @@ import styles from "./TermsAndConditions.module.css";
  * @returns {JSX.Element} React component. */
 const TermsAndConditions = () => {
   const { t } = useTranslation();
+  const sections = t("terms-and-conditions-sections", { returnObjects: true });
 
   return (
     <div className={styles.container}>
-      <Disclaimer lastUpdateDate={lastUpdateDate} />
+      <Disclaimer />
       <h2>{t("terms-and-conditions-header")}</h2>
       <SingleTermsAndConditions sections={sections} />
     </div>

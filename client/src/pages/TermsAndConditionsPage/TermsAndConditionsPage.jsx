@@ -3,7 +3,6 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import { lastUpdateDate } from "../../contents/termsAndConditionsContent";
 import { devLog } from "../../utils/errorUtils";
 
 // Hooks

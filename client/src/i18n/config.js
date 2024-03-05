@@ -17,12 +17,14 @@ i18n
   // Initialize the i18next instance.
   .init({
     // Config options
+    detection: {
+      order: ["localStorage", "navigator"],
+    },
     // default language (locale)
     lng: "de",
     // fallback locale
     fallbackLng: "en",
     supportedLngs: Object.keys(supportedLanguages),
-
     // Enable useful output in the browser’s dev console.
     debug: true,
     // React does escaping itself

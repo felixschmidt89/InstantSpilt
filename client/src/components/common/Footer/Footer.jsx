@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 // Components
-import LocaleSwitcher from "../LocaleSwitcher/LocaleSwitcher";
+import LanguageSelect from "../LanguageSelect/LanguageSelect";
 
 // Styles
 import styles from "./Footer.module.css";
@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <span className={styles.localeSwitcher}>
-        <LocaleSwitcher />
+        <LanguageSelect />
       </span>
       {/* GitHub repository */}
       <a

@@ -29,7 +29,6 @@ const ShareGroupInvitationIncludingWebShare = ({
   return (
     <div className={styles.container}>
       <div className={styles.webshare}>
-        {" "}
         <WebShareApiInvite
           groupCode={groupCode}
           groupName={groupName}

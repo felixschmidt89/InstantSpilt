@@ -229,5 +229,86 @@
   "user-totals-payment-benefitted-from": "profitiert von",
   "user-totals-payment-totals-header": "Zahlungen (Summen)",
   "user-totals-payment-payments-made": "getätigte Zahlungen",
-  "user-totals-payment-payments-received": "erhaltene Zahlungen"
+  "user-totals-payment-payments-received": "erhaltene Zahlungen",
+  "single-terms-and-conditions-more-info-copy": "Weitere Informationen finden Sie hier:",
+  "terms-and-conditions-sections": [
+    {
+      "key": "section1",
+      "title": "Open Source",
+      "content": "InstantSplit ist eine Open-Source-Anwendung: Der Quellcode ist frei verfügbar und kann von jedem eingesehen, verändert und genutzt werden.",
+      "link": "https://github.com/felixschmidt89/InstantSpilt",
+      "linkText": "GitHub-Repository"
+    },
+    {
+      "key": "section2",
+      "title": "Haftungsausschluss",
+      "content": "InstantSplit wird im Ist-Zustand ohne jegliche Garantien oder Gewährleistungen bereitgestellt. Wir, die Entwickler und Mitwirkenden, sind nicht haftbar für Schäden oder Verluste, die bei der Nutzung der Anwendung entstehen. Sie verwenden InstantSplit auf eigene Gefahr."
+    },
+    {
+      "key": "section3",
+      "title": "Gruppencode-Zugang",
+      "content": "Das Herzstück der Anwendung ist ein eindeutiger und einzigartiger Gruppencode pro einzelner Gruppe. Dieser Gruppencode dient als technischer Schlüssel zu einer Gruppe, wodurch die Notwendigkeit von Benutzerregistrierungen entfällt. Innerhalb der Anwendung kann auf den Gruppencode zugegriffen werden, er kann kopiert und manuell oder automatisiert (über den Link für Gruppeneinladungen) weitergegeben werden. Alle Benutzer, die über den Gruppencode verfügen, haben innerhalb einer Gruppe die gleichen Benutzerrechte."
+    },
+    {
+      "key": "section4",
+      "title": "Keine Cookies, keine Protokolle, keine Tracking-Mechanismen",
+      "content": "Wir sind bestrebt, der Benutzerfreundlichkeit und der Datensensibilität größten Vorrang einzuräumen. Die InstantSplit-Anwendung verwendet keine Cookies, Zugriffsprotokolle oder andere Nachverfolgungsmechanismen, um Ihre Privatsphäre zu jeder Zeit zu gewährleisten. Bitte beachten Sie jedoch, dass unser Website-Host, Netlify,  Abrufdaten speichern kann.",
+      "link": "https://www.netlify.com/privacy/",
+      "linkText": "Netlify's Privacy Policy"
+    },
+    {
+      "key": "section5",
+      "title": "Schutz der Webseite",
+      "content": "Um InstantSplit vor Angriffen zu schützen, verwenden wir Friendly Captcha. Friendly Captcha ist ausschließlich  Sicherheitsdienstleister und speichert keine persönlichen Informationen und nutzt sie auch nicht für andere Zwecke (Beispiel: Marketing).",
+      "link": "https://friendlycaptcha.com/de/legal/privacy-end-users/",
+      "linkText": "Friendly Captchas Datenschutz­bestimmungen für Endnutzer"
+    },
+    {
+      "key": "section6",
+      "title": "Privatsphäre",
+      "content": "Wir verwenden PiratePx, ein Open-Source-Analyseprogramm, das die Privatsphäre respektiert und keine Cookies verwendet. PiratePx sammelt keine Browsing-Daten, verkauft keine Werbung und betreibt auch keine Monetarisierung in irgendeiner Form. Es kann keine einzelnen Benutzer oder Benutzer-Sessions identifiziert werden und dient ausschließlich dazu, unsere Benutzer besser zu verstehen und die App entsprechend zu verbessern. Die anonymen Informationen werden nach 30 Tagen gelöscht. PiratePx wurde den gängigen Analysetools vorgezogen, um die Privatsphäre der Nutzer zu wahren.",
+      "link": "https://www.piratepx.com/",
+      "linkText": "PiratePx"
+    },
+    {
+      "key": "section7",
+      "title": "Local Storage",
+      "content": "InstantSplit nutzt den lokalen Speicher Ihres Browsers, um eine bequeme App-Nutzung zu ermöglichen. Im lokalen Speicher werden in erster Linie Ihre(n) Gruppencode(s) gespeichert, wodurch die Notwendigkeit einer persönlichen Identifizierung oder Registrierung entfällt. Darüber hinaus können Benutzereinstellungen im lokalen Speicher hinterlegt werden, um Ihre Interaktion mit der Anwendung zu verbessern. Wenn Sie eine Gruppe innerhalb der Anwendung verlassen, werden alle zur jeweiligen Gruppe zugehörigen Daten im lokalen Speicher entfernt. Sie können diese Daten in den Einstellungen Ihres Browsers manuell löschen, was jedoch dazu führt, dass Sie den Zugang zu einer oder möglicherweise zu allen Gruppen verlieren."
+    },
+    {
+      "key": "section8",
+      "title": "Datenlöschung",
+      "content": "Als datenschutzsensible Anwendung haben wir einen Datenlöschungsmechanismus eingeführt: Wenn eine Gruppe über einen Zeitraum von 90 Tagen inaktiv bleibt, d.h. keine Gruppendaten dargestellt, hinzugefügt oder verändert werden, werden alle Nutzungsdaten dauerhaft gelöscht. Diese Richtlinie dient dazu, Ihre Privatsphäre zu schützen und sicherzustellen, dass nur relevante und aktive Daten in der Anwendung gespeichert werden. Wenn Sie die Gruppe und ihre Daten behalten möchten, können Sie diesen Mechanismus in den Gruppeneinstellungen der Anwendung deaktivieren."
+    },
+    {
+      "key": "section9",
+      "title": "Änderungen und Aktualisierungen",
+      "content": "Wir behalten uns das Recht vor, jederzeit Änderungen, Aktualisierungen oder Modifikationen an der InstantSplit-Anwendung vorzunehmen. Dies beinhaltet, ist aber nicht beschränkt auf, Aussehen und Funktionalität der Anwendungen als auch der allgemeinen Geschäftsbedingungen selbst. Es liegt in Ihrer Verantwortung, diese Bedingungen regelmäßig auf etwaige Aktualisierungen zu überprüfen."
+    },
+    {
+      "key": "section10",
+      "title": "Verbreitung des Gruppencodes",
+      "content": "Seien Sie vorsichtig, wenn Sie einen Gruppencode weitergeben, da er jedem, der über ihn verfügt, vollen Zugriff zur Gruppe gewährt."
+    },
+    {
+      "key": "section11",
+      "title": "Verlust des Gruppencodes",
+      "content": "Bitte beachten Sie, dass es keine Möglichkeit gibt, einen Gruppencode wiederherzustellen. Falls Sie und alle anderen Gruppenmitglieder den Code verlieren, ist auch die Gruppe verloren. Wir können in derartigen Fällen keine Unterstützung leisten, da wir unsere Nutzer nicht identifizieren können. Das bedeutet, dass Ihre Daten letztendlich in Ihrer Verantwortung liegen, und diese bei Gruppencodeverlust unwiederbringlich verloren sind und gelöscht werden (siehe Datenlöschung)."
+    },
+    {
+      "key": "section12",
+      "title": "Entschädigung",
+      "content": "Sie erklären sich damit einverstanden, die Entwickler und Mitwirkenden von InstantSplit von jeglichen Ansprüchen, Verlusten oder Haftungen freizustellen, die sich aus Ihrer Nutzung der Anwendung ergeben."
+    },
+    {
+      "key": "section13",
+      "title": "Terminierung",
+      "content": "Wir behalten uns das Recht vor, den Zugang zur InstantSplit-Anwendung nach unserem Ermessen und ohne Vorankündigung zu beenden."
+    },
+    {
+      "key": "section14",
+      "title": "Gesamte Vereinbarung",
+      "content": "Diese Bedingungen stellen die gesamte Vereinbarung zwischen Ihnen und InstantSplit bezüglich Ihrer Nutzung der Anwendung dar und ersetzen alle vorherigen oder gleichzeitigen Vereinbarungen oder Absprachen."
+    }
+  ]
 }
