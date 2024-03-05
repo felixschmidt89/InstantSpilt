@@ -7,6 +7,7 @@ import emojiConstants from "../../../constants/emojiConstants";
 
 // Hooks
 import useSettingsEmoji from "../../../hooks/useSettingsEmoji";
+import useIsSlimDevice from "../../../hooks/useIsSlimDevice";
 
 // Component
 import GroupActionsEmojiButton from "../../common/GroupActionsEmojiButton/GroupActionsEmojiButton";
@@ -26,6 +27,8 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
   const settingsEmoji = useSettingsEmoji();
   const { t } = useTranslation();
 
+  const isSlimDevice = useIsSlimDevice();
+
   const containerClassName = `${styles.groupActionsBar} ${applyMargin ? styles.withMargin : ""}`;
   return (
     <div
@@ -37,7 +40,11 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
         route={"group-settings"}
         emoji={settingsEmoji}
         translateX={0}
-        explanationText={t("active-group-bar-settings-emoji-copy")}
+        explanationText={
+          isSlimDevice
+            ? t("active-group-bar-settings-emoji-short-copy")
+            : t("active-group-bar-settings-emoji-copy")
+        }
         ariaLabel='group settings emoji'
       />
       {/* Button for navigating to settling expenses */}

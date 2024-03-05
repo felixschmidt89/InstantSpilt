@@ -7,8 +7,8 @@ import HttpApi from "i18next-http-backend";
 import { initReactI18next } from "react-i18next";
 
 export const supportedLanguages = {
-  en: "🇬🇧",
   de: "🇩🇪",
+  en: "🇬🇧",
 };
 
 i18n
