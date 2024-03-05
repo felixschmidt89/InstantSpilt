@@ -29,7 +29,7 @@ name*
 
 
 
-{t("share-group-invitation-or")}
+{t( "groupcode-explanation-copy-1")}
 
 
 delete group after {{days}} of inactivity.

@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Components
 import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
@@ -19,25 +20,26 @@ const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
  * @param {string} props.groupCode - The GroupCode for accessing the group.
  * @returns {JSX.Element} React component. */
 const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
+  const { t } = useTranslation();
   // Force passing URL-encoded groupNames
   const urlEncodedGroupName = encodeURIComponent(initialGroupName);
   const invitationUrl = `${baseUrl}/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
 
   return (
     <div className={styles.container}>
-      <h2>keep access to group</h2>
+      <h2>{t("groupcode-explanation-header")}</h2>
       <div className={styles.explanation}>
         <div className={styles.groupCodeExplanation}>
-          Key to this group is its unique groupcode, store it somewhere save:
+          {t("groupcode-explanation-copy-1")}
           <span className={styles.copyButton}>
             <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"15rem"} />
           </span>
         </div>
       </div>
       <div className={styles.invitationLink}>
-        or bookmark its{" "}
+        {t("groupcode-explanation-copy-2")}{" "}
         <Link to={invitationUrl} target='_blank' rel='noopener noreferrer'>
-          invitation link.
+          {t("groupcode-explanation-invitation-link-text")}.
         </Link>
       </div>
     </div>
