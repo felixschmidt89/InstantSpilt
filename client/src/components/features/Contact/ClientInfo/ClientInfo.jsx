@@ -5,6 +5,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
@@ -20,6 +21,8 @@ import styles from "./ClientInfo.module.css";
  * @returns {JSX.Element} React component.
  */
 const ClientInfo = () => {
+  const { t } = useTranslation();
+
   // use library to check if PWA install prompt is available
   const isPWAInstallPromptAvailable = usePWAInstall();
   devLog("isPWAInstallPromptAvailable", isPWAInstallPromptAvailable);
@@ -36,7 +39,7 @@ const ClientInfo = () => {
           id='panel1-header'
           className={styles.accordionSummary}>
           {" "}
-          client info
+          {t("client-info-accordion-title")}
         </AccordionSummary>
         <AccordionDetails>
           <div>

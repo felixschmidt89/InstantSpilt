@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React, { useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./ExpensePayerSelect.module.css";
@@ -23,6 +24,7 @@ const ExpensePayerSelect = ({
   isUpdate = false,
 }) => {
   const selectRef = useRef(null);
+  const { t } = useTranslation();
 
   const handlePayerChange = (e) => {
     onPayerChange(e.target.value);
@@ -47,7 +49,7 @@ const ExpensePayerSelect = ({
       ref={selectRef}>
       {/* Default option */}
       <option value='' disabled>
-        paid by
+        {t("expense-payer-select-paid-by")}
       </option>
       {/* Map group members to select beneficiaries */}
       {groupMembers.map((member) => (

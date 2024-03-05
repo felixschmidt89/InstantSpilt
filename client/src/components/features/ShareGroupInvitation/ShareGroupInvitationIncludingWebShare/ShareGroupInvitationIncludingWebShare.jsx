@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Components
 import CopyToClipBoard from "../../../common/CopyToClipboard/CopyToClipboard";
@@ -23,20 +24,21 @@ const ShareGroupInvitationIncludingWebShare = ({
   infoToCopy,
   initialGroupName,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
       <div className={styles.webshare}>
-        {" "}
         <WebShareApiInvite
           groupCode={groupCode}
           groupName={groupName}
           initialGroupName={initialGroupName}
         />
       </div>
-      <h2 className={styles.orCopy}>or</h2>
+      <h2 className={styles.orCopy}>{t("share-group-invitation-or")}</h2>
       <div className={styles.invitationLink}>
-        copy the link below to invite others to join{" "}
-        <span className={styles.strong}>{groupName}</span>:{" "}
+        {t("share-group-invitation-explanation", { groupName })}
+        :
         <CopyToClipBoard infoToCopy={infoToCopy} inputFieldWidth={"15rem"} />
       </div>
     </div>

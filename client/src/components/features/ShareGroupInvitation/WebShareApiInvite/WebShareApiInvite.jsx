@@ -1,8 +1,8 @@
 // React and Third-Party Libraries
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ShareIcon from "@mui/icons-material/Share";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
@@ -22,8 +22,9 @@ const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
  * @param {string} initialGroupName - The group name set during group creation.
  * @returns {JSX.Element} React component. */
 const WebShareApiInvite = ({ groupCode, groupName, initialGroupName }) => {
-  const title = "Invitation to InstantSplit";
-  const text = `Join ${groupName} to manage and settle our expenses.`;
+  const { t } = useTranslation();
+  const title = t("web-share-api-invite-title", { groupName });
+  const text = t("web-share-api-invite-text");
   const url = `${baseUrl}/join-instantsplit-group/${initialGroupName}/${groupCode}`;
 
   const handleShareClick = async () => {
@@ -48,7 +49,7 @@ const WebShareApiInvite = ({ groupCode, groupName, initialGroupName }) => {
         style={buttonStyles}
         startIcon={<ShareIcon />}
         onClick={handleShareClick}>
-        share
+        {t("web-share-api-invite-button")}
       </Button>
     </span>
   );

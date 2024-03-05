@@ -6,7 +6,6 @@ import InstallPwaFirefox from "../InstallPwaFirefox/InstallPwaFirefox";
 import InstallPwaSafari from "../InstallPwaSafari/InstallPwaSafari";
 import InstallPwaSamsungBrowser from "../InstallPwaSamsungBrowser/InstallPwaSamsungBrowser";
 import InstallPwaOpera from "../InstallPwaOpera/InstallPwaOpera";
-import InstallPwaEdge from "../InstallPwaEdge/InstallPwaEdge";
 import InstallPwaPrompt from "../InstallPwaPrompt/InstallPwaPrompt";
 
 // Styles
@@ -34,9 +33,6 @@ const RenderInstallPwaCta = ({ ctaToRender, closeModal }) => {
         break;
       case "opera":
         component = <InstallPwaOpera closeModal={closeModal} />;
-        break;
-      case "edge":
-        component = <InstallPwaEdge closeModal={closeModal} />;
         break;
       case "pwaInstallPrompt":
         component = <InstallPwaPrompt closeModal={closeModal} />;

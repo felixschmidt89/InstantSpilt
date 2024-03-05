@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Components
 import ActiveGroupBar from "../../ActiveGroupBar/ActiveGroupBar";
@@ -11,14 +12,13 @@ import styles from "./ActiveGroupBarExplanation.module.css";
  * Component for rendering ActiveGroupBar explanation.
  * @returns {JSX.Element} React component. */
 const ActiveGroupBarExplanation = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className={styles.container}>
-        <h2>active group bar</h2>
-        <p className={styles.explanation}>
-          houses all functions related to capturing & settling expenses:
-        </p>
-      </div>{" "}
+        <h2>{t("tutorial-active-group-bar-header")}</h2>
+      </div>
       <div className={styles.bar}>
         <ActiveGroupBar applyMargin={false} />
       </div>

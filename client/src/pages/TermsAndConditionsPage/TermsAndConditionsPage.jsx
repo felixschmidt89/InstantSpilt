@@ -1,8 +1,8 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import { lastUpdateDate } from "../../contents/termsAndConditionsContent";
 import { devLog } from "../../utils/errorUtils";
 
 // Hooks
@@ -18,6 +18,8 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 import styles from "./TermsAndConditionsPage.module.css";
 
 const TermsAndConditionsPage = () => {
+  const { t } = useTranslation();
+
   // Check if current user is an invited user, ie is redirected from join-instantsplit-group route
   const { previousRoute, isRetrieved } = useGetPreviousRouteFromLocalStorage();
 
@@ -28,10 +30,7 @@ const TermsAndConditionsPage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify
-        title='InstantSplit - Terms and Conditions'
-        description={`Instant Split - Terms and Conditions. Last updated on ${lastUpdateDate}.`}
-      />
+      <HelmetMetaTagsNetlify title={t("terms-and-conditions-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"terms-and-conditions"} />
       {/* Navigate invited users back to accept group invitation page */}
       {isRetrieved && isInvitedUser && (

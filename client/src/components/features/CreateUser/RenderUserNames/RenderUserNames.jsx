@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
@@ -39,6 +40,7 @@ const RenderUserNames = ({
   const [userDetails, setUserDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
@@ -80,14 +82,16 @@ const RenderUserNames = ({
   }, [rerenderTrigger, groupCode]);
 
   return (
-    <div className={styles.spinnercontainer}>
+    <div className={styles.container}>
       {isLoading ? (
         <div className={styles.spinner}>
           <Spinner />
         </div>
       ) : (
         <div className={styles.membersContainer}>
-          <h2 className={styles.groupMemberHeader}>group members</h2>
+          <h2 className={styles.groupMemberHeader}>
+            {t("render-user-names-component-header")}
+          </h2>
           <div className={styles.members}>
             {userDetails.length > 0 ? (
               <ul className={styles.list}>
@@ -112,7 +116,7 @@ const RenderUserNames = ({
                 ))}
               </ul>
             ) : (
-              "No group members added yet."
+              t("render-user-names-component-no-group-members-added-copy")
             )}
           </div>
         </div>

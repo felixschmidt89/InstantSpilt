@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
@@ -26,6 +27,8 @@ const RenderUserPayment = ({
   onDeleteResource,
   groupCurrency,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.payments}>
       {/* Left Column */}
@@ -46,7 +49,7 @@ const RenderUserPayment = ({
           <LinkToPage
             to={`/update-payment/${groupCode}/${item._id}`}
             setNestedPreviousRoute={true}>
-            edit
+            {t("user-transaction-history-edit-link")}
           </LinkToPage>
         </li>
         <li className={styles.actionLine}>
@@ -64,21 +67,27 @@ const RenderUserPayment = ({
       <div className={styles.rightColumn}>
         <ul>
           <li>
-            <span className={styles.key}>paid by: </span>
+            <span className={styles.key}>
+              {t("user-transaction-history-paid-by-key")}:{" "}
+            </span>
             <RenderDataAttributeWithAriaLabel
               attribute={item.paymentMaker.userName}
               ariaLabel={"username of the payment maker"}
             />
           </li>
           <li>
-            <span className={styles.key}>paid to: </span>
+            <span className={styles.key}>
+              {t("user-transaction-history-paid-to-key")}:{" "}
+            </span>
             <RenderDataAttributeWithAriaLabel
               attribute={item.paymentRecipient.userName}
               ariaLabel={"username of the payment recipient"}
             />
           </li>
           <li>
-            <span className={styles.key}>created: </span>
+            <span className={styles.key}>
+              {t("user-transaction-history-created-key")}:{" "}
+            </span>
             <RenderDataAttributeWithAriaLabel
               attribute={new Date(item.createdAt).toLocaleString()}
               ariaLabel={"payment creation date"}
@@ -86,7 +95,9 @@ const RenderUserPayment = ({
           </li>
           {item.createdAt !== item.updatedAt && (
             <li>
-              <span className={styles.key}>changed: </span>
+              <span className={styles.key}>
+                {t("user-transaction-history-changed-key")}:{" "}
+              </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={new Date(item.updatedAt).toLocaleString()}
                 ariaLabel={"payment last update date"}

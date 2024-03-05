@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import {
@@ -47,6 +48,7 @@ const UpdateExpense = ({
   route = "/instant-split",
 }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // Values stored in database
   const storedExpenseDescription = expenseInfo.expenseDescription;
@@ -132,7 +134,7 @@ const UpdateExpense = ({
         />
         {formChanged && (
           <Button style={buttonStyles} variant='contained' type='submit'>
-            update expense
+            {t("update-expense-button-text")}
           </Button>
         )}
       </form>

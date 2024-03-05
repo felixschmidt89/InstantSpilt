@@ -2,13 +2,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoReorderThree } from "react-icons/io5";
-import { IoPersonAddOutline } from "react-icons/io5";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
 import { IoChatboxOutline } from "react-icons/io5";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { FaUserPlus } from "react-icons/fa6";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { deleteGroupDataFromLocalStorage } from "../../../../utils/localStorageUtils";
@@ -27,6 +27,7 @@ import InstantSplitLogo from "../../../common/InstantSplitLogo/InstantSplitLogo"
 const DefaultAndUserSettingsBar = () => {
   const navigate = useNavigate();
   const containerRef = useRef(null);
+  const { t } = useTranslation();
   const groupCode = localStorage.getItem("activeGroupCode");
   const [isDefaultBarShown, setIsDefaultBarShown] = useState(true);
 
@@ -87,14 +88,13 @@ const DefaultAndUserSettingsBar = () => {
               className={`${styles.userSettingsBar} ${!isDefaultBarShown ? styles.hideUserSettingsBar : styles.showUserSettingsBar}`}
               role='toolbar'
               aria-label='user settings'>
-              {/* Here's the missing opening <span> tag */}
               <span className={styles.icon}>
                 <ReactIconNavigate
                   icon={FaUserPlus}
                   containerHeight='5.8'
                   containerWidth='7.2'
                   iconExplanationWidth='5'
-                  explanationText='invite'
+                  explanationText={t("main-bar-invite-icon-text")}
                   iconExplanationTextAlignment='center'
                   iconExplanationIsIdleTranslateX='-0.3'
                   route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
@@ -119,7 +119,7 @@ const DefaultAndUserSettingsBar = () => {
                   iconExplanationWidth='5'
                   iconExplanationTextAlignment='center'
                   iconExplanationIsIdleTranslateX='-0.3'
-                  explanationText='more'
+                  explanationText={t("main-bar-more-icon-text")}
                   onClick={showUserSettings}
                 />
               </span>
@@ -133,7 +133,7 @@ const DefaultAndUserSettingsBar = () => {
               icon={IoArrowBackCircleOutline}
               containerHeight='5.8'
               containerWidth='8'
-              explanationText='back'
+              explanationText={t("main-bar-back-icon-text")}
               iconSize={3.5}
               iconScale={1.05}
               onClick={hideUserSettings}
@@ -143,7 +143,7 @@ const DefaultAndUserSettingsBar = () => {
               icon={IoInformationCircleOutline}
               containerHeight='5.8'
               containerWidth='8'
-              explanationText='tutorial'
+              explanationText={t("main-bar-tutorial-icon-text")}
               route={`/tutorial/${groupData?.group?.initialGroupName}/${groupCode}`}
               iconSize={3.5}
               iconScale={1.05}
@@ -152,7 +152,7 @@ const DefaultAndUserSettingsBar = () => {
               icon={IoChatboxOutline}
               containerHeight='5.8'
               containerWidth='8'
-              explanationText='contact'
+              explanationText={t("main-bar-contact-icon-text")}
               route={`/contact/${groupCode}`}
               iconSize={3.5}
               iconScale={0.95}
@@ -161,7 +161,7 @@ const DefaultAndUserSettingsBar = () => {
               icon={PiUserSwitchLight}
               containerHeight='5.8'
               containerWidth='8'
-              explanationText='switch/create group'
+              explanationText={t("main-bar-manage-groups-icon-text")}
               iconExplanationWidth='9'
               route={`/manage-groups`}
               iconSize={3.5}
@@ -172,7 +172,7 @@ const DefaultAndUserSettingsBar = () => {
               containerHeight='5.8'
               containerWidth='8'
               iconExplanationWidth='6'
-              explanationText='leave group'
+              explanationText={t("main-bar-leave-group-icon-text")}
               route={`/leave-group/${groupData?.group?.groupName}/${groupCode}`}
               iconSize={3.5}
               iconScale={1}

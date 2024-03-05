@@ -1,11 +1,18 @@
+// React and Third Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
+
+// Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
+
+// Components
 import DeleteResource from "../../../common/DeleteResource/DeleteResource";
 import RenderDataAttributeWithAriaLabel from "../../../common/RenderDataAttributeWithAriaLabel/RenderDataAttributeWithAriaLabel";
 import LinkToPage from "../../../common/InAppNavigation/LinkToPage/LinkToPage";
-import styles from "./RenderUserExpense.module.css";
 import Emoji from "../../../common/Emoji/Emoji";
 
+// Styles
+import styles from "./RenderUserExpense.module.css";
 /**
  * Renders a user expense component.
  * @param {object} props - The props object.
@@ -23,11 +30,13 @@ const RenderUserExpense = ({
   groupCurrency,
   groupMembers,
 }) => {
+  const { t } = useTranslation();
+
   const allGroupMembersBenefitFromExpense =
     groupMembers.length === item.expenseBeneficiaries.length;
 
   const beneficiaries = allGroupMembersBenefitFromExpense
-    ? "all group members"
+    ? t("render-expense-beneficiaries-all-group-members")
     : item.expenseBeneficiaries
         .map((beneficiary) => beneficiary.userName)
         .join(", ");
@@ -57,7 +66,7 @@ const RenderUserExpense = ({
           <LinkToPage
             to={`/update-expense/${groupCode}/${item._id}`}
             setNestedPreviousRoute={true}>
-            edit
+            {t("user-transaction-history-edit-link")}
           </LinkToPage>
         </li>
         <li className={styles.actionLine}>
@@ -76,14 +85,18 @@ const RenderUserExpense = ({
         <div className={styles.borderedContent}>
           <ul>
             <li>
-              <span className={styles.key}>description: </span>
+              <span className={styles.key}>
+                {t("user-transaction-history-description-key")}:{" "}
+              </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expenseDescription}
                 ariaLabel={"expense description"}
               />
             </li>
             <li>
-              <span className={styles.key}>paid by: </span>
+              <span className={styles.key}>
+                {t("user-transaction-history-paid-by-key")}:{" "}
+              </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expensePayer.userName}
                 ariaLabel={"username of the expense payer"}
@@ -91,14 +104,18 @@ const RenderUserExpense = ({
             </li>
 
             <li>
-              <span className={styles.key}>beneficiaries: </span>
+              <span className={styles.key}>
+                {t("render-expense-beneficiaries-beneficiaries")}:{" "}
+              </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={beneficiaries}
                 ariaLabel={"expense beneficiaries"}
               />
             </li>
             <li>
-              <span className={styles.key}>amount benefitted: </span>
+              <span className={styles.key}>
+                {t("user-transaction-history-amount-benefitted-key")}:{" "}
+              </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expenseAmountPerBeneficiary.toFixed(2)}
                 ariaLabel={"amount each beneficiary has benefitted"}
@@ -107,7 +124,9 @@ const RenderUserExpense = ({
             </li>
 
             <li>
-              <span className={styles.key}>created: </span>
+              <span className={styles.key}>
+                {t("user-transaction-history-created-key")}:{" "}
+              </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={new Date(item.createdAt).toLocaleString()}
                 ariaLabel={"expense creation date"}
@@ -116,7 +135,9 @@ const RenderUserExpense = ({
 
             {item.createdAt !== item.updatedAt && (
               <li>
-                <span className={styles.key}>changed: </span>
+                <span className={styles.key}>
+                  {t("user-transaction-history-changed-key")}:{" "}
+                </span>
                 <RenderDataAttributeWithAriaLabel
                   attribute={new Date(item.updatedAt).toLocaleString()}
                   ariaLabel={"expense last update date"}

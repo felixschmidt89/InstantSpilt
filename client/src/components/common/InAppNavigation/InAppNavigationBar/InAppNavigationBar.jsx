@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { GoHome } from "react-icons/go";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
@@ -40,6 +41,7 @@ const InAppNavigationBar = ({
   forwardRoute = "/instant-split",
   logoOnly = false,
 }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleRegularNavigation = (route) => {
@@ -71,7 +73,9 @@ const InAppNavigationBar = ({
               className={`${styles.leftAlignedIcon} ${styles.icon}`}
               onClick={() => handleRegularNavigation(backRoute)}
             />
-            <div className={styles.text}>back</div>
+            <div className={styles.text}>
+              {t("in-app-navigation-back-icon-text")}
+            </div>
           </div>
         )}
         {previousRoute && (
@@ -80,7 +84,9 @@ const InAppNavigationBar = ({
               className={`${styles.leftAlignedIcon} ${styles.icon}`}
               onClick={() => handleNestedNavigation(previousRoute)}
             />
-            <div className={styles.text}>back</div>
+            <div className={styles.text}>
+              {t("in-app-navigation-back-icon-text")}
+            </div>
           </div>
         )}
         {nestedPreviousRoute && (
@@ -89,7 +95,9 @@ const InAppNavigationBar = ({
               className={`${styles.leftAlignedIcon} ${styles.icon}`}
               onClick={() => handleNestedNavigation(nestedPreviousRoute)}
             />
-            <div className={styles.text}>back</div>
+            <div className={styles.text}>
+              {t("in-app-navigation-back-icon-text")}
+            </div>
           </div>
         )}
       </div>
@@ -107,7 +115,9 @@ const InAppNavigationBar = ({
               className={`${styles.rightAlignedIcon} ${styles.icon}`}
               onClick={() => handleRegularNavigation(homeRoute)}
             />
-            <div className={styles.text}>main</div>
+            <div className={styles.text}>
+              {t("in-app-navigation-main-icon-text")}
+            </div>
           </div>
         )}
         {forward && (
@@ -116,7 +126,9 @@ const InAppNavigationBar = ({
               className={`${styles.rightAlignedIcon} ${styles.icon}`}
               onClick={() => handleRegularNavigation(forwardRoute)}
             />
-            <div className={styles.text}>next</div>
+            <div className={styles.text}>
+              {t("in-app-navigation-next-icon-text")}
+            </div>
           </div>
         )}
       </div>

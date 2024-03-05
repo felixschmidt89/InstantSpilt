@@ -1,22 +1,23 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./Disclaimer.module.css";
 
 /**
  * Component for rendering a terms and conditions disclaimer.
- * @param {string} lastUpdateDate - The last time, the Terms and Conditions have been updated
  * @returns {JSX.Element} React component. */
-const Disclaimer = ({ lastUpdateDate }) => {
+const Disclaimer = () => {
+  const { t } = useTranslation();
+
+  const lastUpdateDate = new Date("05/03/2024").toLocaleDateString();
+
   return (
     <div className={styles.container}>
-      <h2>Disclaimer</h2>
+      <h2>{t("disclaimer-header")}</h2>
       <p className={styles.disclaimer}>
-        By using InstantSplit, you acknowledge and accept our terms and
-        conditions. If you do not agree with these terms, please do not use the
-        application. These terms and conditions were last updated on{" "}
-        <strong>{lastUpdateDate}</strong>.
+        {t("disclaimer-copy")} <strong>{lastUpdateDate}</strong>.
       </p>
     </div>
   );

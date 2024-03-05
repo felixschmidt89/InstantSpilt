@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React, { useRef } from "react";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
@@ -29,6 +30,7 @@ const ExpenseBeneficiariesInput = ({
 }) => {
   const divRef = useRef(null);
   const buttonRef = useRef(null);
+  const { t } = useTranslation();
 
   // If update, remove isUpdate class after click on either toggle button or beneficiares div, so that input does not fall back to appearing inactive
   const handleDivOrButtonClick = () => {
@@ -73,7 +75,7 @@ const ExpenseBeneficiariesInput = ({
           scale={1.15}
           emoji={emojiConstants.expense}
         />
-        for
+        {t("expense-beneficiaries-input-for")}
       </p>
       <div
         className={`${styles.beneficiaries} ${isUpdate ? styles.isUpdate : ""}`}
@@ -105,8 +107,8 @@ const ExpenseBeneficiariesInput = ({
             variant='outlined'
             ref={buttonRef}>
             {selectedBeneficiaries.length === groupMembers.length
-              ? "none"
-              : "all"}
+              ? t("expense-beneficiaries-input-none")
+              : t("expense-beneficiaries-input-all")}
           </Button>
         </div>
       </div>

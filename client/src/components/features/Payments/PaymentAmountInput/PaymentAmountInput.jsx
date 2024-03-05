@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React, { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { validateAndProcessAmountInput } from "../../../../utils/formatUtils";
@@ -24,6 +25,7 @@ const PaymentAmountInput = ({
   isUpdate = false,
 }) => {
   const inputRef = useRef(null);
+  const { t } = useTranslation();
 
   // Autofocus input field on mount if isUpdate is false
   useEffect(() => {
@@ -55,7 +57,7 @@ const PaymentAmountInput = ({
         value={paymentAmount}
         onClick={handleInputClick}
         onChange={handlePaymentAmountChange}
-        placeholder='amount'
+        placeholder={t("payment-amount-input-placeholder")}
         inputMode='decimal'
         ref={inputRef}
       />

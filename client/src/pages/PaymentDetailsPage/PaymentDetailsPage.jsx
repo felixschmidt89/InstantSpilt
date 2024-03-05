@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import emojiConstants from "../../constants/emojiConstants";
@@ -24,6 +25,7 @@ import Emoji from "../../components/common/Emoji/Emoji";
 import styles from "./PaymentDetailsPage.module.css";
 
 const PaymentDetailsPage = () => {
+  const { t } = useTranslation();
   const { groupCode, itemId } = useParams();
   const { paymentInfo, isFetched: paymentInfoIsFetched } =
     useFetchPaymentInfo(itemId);
@@ -32,7 +34,7 @@ const PaymentDetailsPage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - payment details' />
+      <HelmetMetaTagsNetlify title={t("payment-details-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"payment-details"} />
       <InAppNavigationBar back={true} />
       {paymentInfoIsFetched && currencyInfoIsFetched ? (

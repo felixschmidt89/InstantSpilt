@@ -1,11 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
-
-// Contents
-import {
-  lastUpdateDate,
-  sections,
-} from "../../../../contents/termsAndConditionsContent";
+import { useTranslation } from "react-i18next";
 
 // Components
 import Disclaimer from "../Disclaimer/Disclaimer";
@@ -20,10 +15,13 @@ import styles from "./TermsAndConditions.module.css";
  * @param {Array} sections - An array of objects representing sections with keys, titles, and content.
  * @returns {JSX.Element} React component. */
 const TermsAndConditions = () => {
+  const { t } = useTranslation();
+  const sections = t("terms-and-conditions-sections", { returnObjects: true });
+
   return (
     <div className={styles.container}>
-      <Disclaimer lastUpdateDate={lastUpdateDate} />
-      <h2>Terms and Conditions</h2>
+      <Disclaimer />
+      <h2>{t("terms-and-conditions-header")}</h2>
       <SingleTermsAndConditions sections={sections} />
     </div>
   );

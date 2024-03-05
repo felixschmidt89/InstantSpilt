@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./RenderExpenseBeneficiaries.module.css";
@@ -16,12 +17,19 @@ const RenderExpenseBeneficiaries = ({
   expenseBeneficiaries,
   allGroupMembersBenefitFromExpense,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={styles.container}>
-      <span className={styles.key}>beneficiaries:</span>
+      <span className={styles.key}>
+        {" "}
+        {t("render-expense-beneficiaries-beneficiaries")}:
+      </span>
       {allGroupMembersBenefitFromExpense ? (
         <span className={styles.beneficiariesList}>
-          <span className={styles.noWrap}>all group members</span>
+          <span className={styles.noWrap}>
+            {t("render-expense-beneficiaries-all-group-members")}
+          </span>
         </span>
       ) : (
         <span className={styles.beneficiariesList}>

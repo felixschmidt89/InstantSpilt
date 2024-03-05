@@ -22,7 +22,6 @@ const GroupActionsEmojiButton = ({
   route,
   emoji,
   explanationText,
-  tooltipText,
   ariaLabel,
   translateX = 0,
   translateY = 0,

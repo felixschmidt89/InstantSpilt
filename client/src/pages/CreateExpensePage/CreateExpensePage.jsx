@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 import useFetchGroupMembers from "../../hooks/useFetchGroupMembers";
@@ -18,14 +19,15 @@ import styles from "./CreateExpensePage.module.css";
 const CreateExpensePage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupMembers, isFetched } = useFetchGroupMembers(groupCode);
+  const { t } = useTranslation();
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - add payment' />
+      <HelmetMetaTagsNetlify title={t("create-expense-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"create-expense"} />
       <InAppNavigationBar back={true} />
       <div className={styles.container}>
-        <h1>new expense </h1>
+        <h1>{t("create-expense-page-header")}</h1>
         {!isFetched ? (
           <Spinner />
         ) : // Check if there are at least 2 group members

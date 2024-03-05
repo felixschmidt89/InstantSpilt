@@ -18,9 +18,15 @@ A user centered Full (MERN) Stack PWA designed for settling group expenses with 
 - **Project idea**: Frustrated with the need for each of my friends to download an app to settle our shared trip expenses, I decided to build InstantSplit to fill in the gap.
 - **Project purpose**: In September 2023, when I was still a Web Development student, I took on this project to continue learning and showcase my coding skills while creating a practical tool for others.
 - **Project status**:
+
   - The application has been fully functional since the release of the first MVP on 03/10/2023 and will continue to receive improvements.
-  - Recently, both the codebase and the UI have been widely improved after the first user tests in January 2024
-  - Further development will focus on improving UI/UX, adding unit tests, database encryption, server side refactoring & internalization (DE language)
+  - Recently, the codebase, UI and UX have been widely improved after the first user tests in January 2024
+  - Further development will focus on further improving UI/UX, adding unit tests, database encryption, server side refactoring.
+
+## Access the application or try the demo.
+
+- Access the [application](https://www.instantsplit.de/): Create your own group, start adding users, expenses and settle payments.
+- Alternatively, [join](https://instantsplit.de/join-instantsplit-group/Italy%20Trip%20GitHub%20Demo/UO99CWXD) the demo group with test data for a better immediate understanding of the application's main functionalities. Feel free to explore and add or amend test data.
 
 ## Technologies
 
@@ -34,7 +40,7 @@ A user centered Full (MERN) Stack PWA designed for settling group expenses with 
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![PWA](https://img.shields.io/badge/PWA-Progressive%20Web%20App-blue?style=for-the-badge)
 
-## Libraries
+## Core Libraries
 
 ![Axios](https://img.shields.io/badge/Axios-61DAFB?style=for-the-badge&logo=axios&logoColor=white)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
@@ -44,14 +50,14 @@ A user centered Full (MERN) Stack PWA designed for settling group expenses with 
 ![React Helmet Async](https://img.shields.io/badge/React%20Helmet%20Async-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![React Icons](https://img.shields.io/badge/React%20Icons-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![React Router DOM](https://img.shields.io/badge/React%20Router%20DOM-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
-[<img src="https://friendlycaptcha.com/wp-content/uploads/2020/12/FriendlyCaptcha-Logo.svg" alt="Friendly Captcha" height="24px" style="background-color: white; padding: 2px 5px;">](https://friendlycaptcha.com/)
-[React Device Detect](https://www.npmjs.com/package/react-device-detect)
+![React i18next](https://img.shields.io/badge/React%20i18next-0FAAFF?style=for-the-badge&logo=i18next&logoColor=white)
+![Multer](https://img.shields.io/badge/Multer-FF73AF?style=for-the-badge&logo=node.js&logoColor=white)
+![Nodemailer](https://img.shields.io/badge/Nodemailer-339933?style=for-the-badge&logo=nodemailer&logoColor=white)
+![node-cron](https://img.shields.io/badge/node--cron-F8C300?style=for-the-badge&logo=node.js&logoColor=white)
+![nanoid](https://img.shields.io/badge/nanoid-00D4FF?style=for-the-badge&logo=node.js&logoColor=white)
+![express-rate-limit](https://img.shields.io/badge/express--rate--limit-FF6D00?style=for-the-badge&logo=node.js&logoColor=white)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-00BFFF?style=for-the-badge&logo=cloudinary&logoColor=white)
 
-## Access the application or try the demo.
-
-- Access the [application](https://www.instantsplit.de/): Create your own group, start adding users, expenses and settle payments.
-- Alternatively, [join](https://instantsplit.de/join-instantsplit-group/Italy%20Trip%20GitHub%20Demo/UO99CWXD) the demo group with test data for a better immediate understanding of the application's main functionalities. Feel free to explore and add or amend test data.
-
-## Acknowledgements
-
-- Shoutouts to [@jstayton](https://github.com/jstayton) and his truly amazing [piratepx](https://github.com/piratepx) tool. It's a super simple to implement yet powerful beauty providing exactly what I needed: privacy-respecting usage insights without spying on my users. I just love it, thanks!
+- [Friendly Captcha](https://friendlycaptcha.com/)
+- [React Device Detect](https://www.npmjs.com/package/react-device-detect)
+- [piratepx](https://github.com/piratepx)

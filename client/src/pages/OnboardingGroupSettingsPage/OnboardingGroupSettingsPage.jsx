@@ -1,9 +1,9 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../utils/errorUtils";
-import emojiConstants from "../../constants/emojiConstants";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
@@ -27,23 +27,15 @@ import styles from "./OnboardingGroupSettingsPage.module.css";
 const OnboardingGroupSettingsPage = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { groupData, isFetched } = useFetchGroupData(groupCode);
-  const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
-
-  // Check if current user has created group from within the application, started from manage-groups route
-  const isInAppGroupCreator = previousRoute.includes("/manage-groups");
-  if (isRetrieved) {
-    devLog("Current user is InstantSplit user:", isInAppGroupCreator);
-  }
+  const { t } = useTranslation();
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - group settings' />
+      <HelmetMetaTagsNetlify
+        title={t("onboarding-group-settings-page-title")}
+      />
       <PiratePx COUNT_IDENTIFIER={"onboarding-group-settings"} />
-      <div className={styles.rightAligned}>
-        <div className={styles.rightAligned}>
-          <InAppNavigationBar forward={true} forwardRoute='/instant-split' />
-        </div>
-      </div>
+      <InAppNavigationBar forward={true} forwardRoute='/instant-split' />
       <div className={styles.container}>
         {isFetched && groupData ? (
           <div className={styles.settings}>

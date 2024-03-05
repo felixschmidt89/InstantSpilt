@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import {
@@ -12,7 +13,6 @@ import {
 
 // Styles
 import styles from "./ContactForm.module.css";
-import RouteButton from "../../../common/InAppNavigation/RouteButton/RouteButton";
 import ClientInfo from "../ClientInfo/ClientInfo";
 
 /**
@@ -32,7 +32,7 @@ const ContactForm = ({
   handleFormSubmission,
 }) => {
   const fileInputRef = useRef(null);
-
+  const { t } = useTranslation();
   const handleFileUploadClick = () => {
     fileInputRef.current.click();
   };
@@ -45,7 +45,7 @@ const ContactForm = ({
         encType='multipart/form-data'>
         <div>
           <label htmlFor='name'>
-            <strong>name*</strong>
+            <strong>{t("contact-form-mandatory-name")}</strong>
           </label>
           <div>
             <input
@@ -55,13 +55,13 @@ const ContactForm = ({
               name='name'
               value={formData.name}
               onChange={handleInputChange}
-              placeholder='required'
+              placeholder={t("contact-form-required-placeholder")}
               autoFocus
             />
           </div>
         </div>
         <div>
-          <label htmlFor='email'>email</label>
+          <label htmlFor='email'>{t("contact-form-email")}</label>
           <div>
             <input
               className={styles.inputField}
@@ -70,12 +70,12 @@ const ContactForm = ({
               name='email'
               value={formData.email}
               onChange={handleInputChange}
-              placeholder='optional'
+              placeholder={t("contact-form-optional-placeholder")}
             />
           </div>
         </div>
         <div>
-          <label htmlFor='messageType'>type</label>
+          <label htmlFor='messageType'>{t("contact-form-type")}</label>
           <div>
             <select
               className={styles.select}
@@ -84,39 +84,47 @@ const ContactForm = ({
               value={formData.messageType}
               onChange={handleInputChange}>
               <option value='' disabled>
-                Select message type
+                {t("contact-form-select-message-type")}
               </option>
-              <option value='issue/bug'>issue / bug</option>
-              <option value='feedback'>feedback</option>
-              <option value='feature request'>feature request</option>
-              <option value='else'>else</option>
+              <option value='issue/bug'>
+                {t("contact-form-issue-bug-message-type")}
+              </option>
+              <option value='feedback'>
+                {t("contact-form-feedback-message-type")}
+              </option>
+              <option value='feature request'>
+                {t("contact-form-feature-request-message-type")}
+              </option>
+              <option value='other'>
+                {t("contact-form-other-message-type")}
+              </option>
             </select>
           </div>
         </div>
         <div>
           <label htmlFor='feedback'>
-            <strong>message*</strong>
+            <strong>{t("contact-form-mandatory-message")}</strong>
           </label>
           <div>
             <textarea
-              id='feedback'
-              name='feedback'
+              id='message'
+              name='message'
               value={formData.feedback}
               onChange={handleInputChange}
               placeholder={
-                formData.messageType === "issue/bug"
-                  ? "Please copy and paste client info, describe the issue and add a screenshot if possible."
-                  : "required"
+                formData.messageType ===
+                t("contact-form-issue-bug-message-type")
+                  ? t("contact-form-message-bug/issue-placeholder")
+                  : t("contact-form-required-placeholder")
               }
               rows='4'
             />
           </div>
         </div>
-        {formData.messageType === "issue/bug" && (
+        {formData.messageType === t("contact-form-issue-bug-message-type") && (
           <div>
             <div>
               <ClientInfo />
-
               <input
                 className={styles.fileInputField}
                 ref={fileInputRef}
@@ -131,7 +139,7 @@ const ContactForm = ({
                 style={attachFileButtonStyles}
                 startIcon={<CloudUploadIcon />}
                 onClick={handleFileUploadClick}>
-                add screenshot
+                {t("contact-form-message-add-screenshot-button-text")}{" "}
               </Button>
             </div>
           </div>
@@ -141,7 +149,7 @@ const ContactForm = ({
           variant='contained'
           type='submit'
           endIcon={<SendIcon />}>
-          Send
+          {t("contact-form-message-send-button-text")}
         </Button>
       </form>
     </div>

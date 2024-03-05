@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React, { useRef, useState } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Contents
 import { currenciesContent } from "../../../../contents/currenciesContent";
@@ -34,6 +35,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  */
 const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
   const selectRef = useRef(null);
+  const { t } = useTranslation();
   const [labelCurrency, setLabelCurrency] = useState(groupCurrency);
   const [newGroupCurrency, setNewGroupCurrency] = useState("");
   const [error, setError] = useState(null);
@@ -90,7 +92,9 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.header}>currency</h2>
+      <h2 className={styles.header}>
+        {t("change-group-currency-setting-header")}
+      </h2>
       <form onSubmit={handleFormSubmit}>
         <select
           className={`${styles.select} ${styles.idleOnMount}`}

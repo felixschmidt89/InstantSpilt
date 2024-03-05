@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
@@ -14,9 +15,10 @@ import AcceptGroupInvitation from "../../components/features/AcceptGroupInvitati
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 // Styles
-import styles from "./AcceptGroupInvitationAndJoinPage.module.css";
+import styles from "./JoinGroupPage.module.css";
 
-const AcceptGroupInvitationAndJoinPage = () => {
+const JoinGroupPage = () => {
+  const { t } = useTranslation();
   const { groupCode } = useParams();
   const { groupData, isFetched } = useFetchGroupData(groupCode);
   const groupName = groupData?.group?.groupName || "";
@@ -24,14 +26,16 @@ const AcceptGroupInvitationAndJoinPage = () => {
   return (
     <main>
       <HelmetMetaTagsNetlify
-        title={`Invitation to join ${groupName}`}
-        description={`Join our group ${groupName} to manage and settle expenses.`}
+        title={t("join-group-page-title", { groupName })}
+        description={t("join-group-page-description", { groupName })}
       />
       <InAppNavigationBar logoOnly={true} />
-      <PiratePx COUNT_IDENTIFIER={"accept-invitation-landing-page"} />
+      <PiratePx COUNT_IDENTIFIER={"join-group-page"} />
       {isFetched && (
         <div className={styles.container}>
-          <h1 className={styles.homepageHeader}>Hi there!</h1>
+          <h1 className={styles.homepageHeader}>
+            {t("join-group-page-header")}{" "}
+          </h1>
           <InvitationIntro groupData={groupData} />
           <InstantSplitIntroSection isInvitation={true} />
           <div className={styles.acceptInvitationSection}>
@@ -45,4 +49,4 @@ const AcceptGroupInvitationAndJoinPage = () => {
     </main>
   );
 };
-export default AcceptGroupInvitationAndJoinPage;
+export default JoinGroupPage;

@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Hooks
 import useGetActiveGroupCodeOrSetNextInactiveGroupCodeToActiveAndNavigateToMainApplication from "../../hooks/useGetActiveGroupCodeOrSetNextInactiveGroupCodeToActiveAndNavigateToMainApplication";
@@ -17,14 +18,15 @@ import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   useGetActiveGroupCodeOrSetNextInactiveGroupCodeToActiveAndNavigateToMainApplication();
+  const { t } = useTranslation();
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - homepage' />
+      <HelmetMetaTagsNetlify title={t("home-page-title")} />
       <InAppNavigationBar logoOnly={true} />
       <div className={styles.container}>
         <PiratePx COUNT_IDENTIFIER='homepage' />
-        <h1 className={styles.homepageHeader}>Welcome to InstantSplit</h1>
+        <h1 className={styles.homepageHeader}>{t("home-page-header")} </h1>
         <InstantSplitIntroSection />
         <GetStartedSection />
         <TermsAndConditionsSection />

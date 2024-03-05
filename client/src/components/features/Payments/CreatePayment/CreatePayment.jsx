@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { IoArrowDownOutline } from "react-icons/io5";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import {
@@ -40,6 +41,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @returns {JSX.Element} React component. */
 const CreatePayment = ({ groupMembers, groupCode }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [paymentAmount, setPaymentAmount] = useState("");
   const [paymentMakerName, setPaymentMakerName] = useState("");
@@ -103,7 +105,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       />
       <div>
         <Button style={buttonStyles} variant='contained' type='submit'>
-          add payment
+          {t("create-payment-button-text")}
         </Button>
       </div>
       <ErrorModal

@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import emojiConstants from "../../../../constants/emojiConstants";
@@ -15,17 +16,20 @@ import styles from "./CreateUserCTA.module.css";
  * @param {boolean} props.isPayment - Indicates whether the CTA is related to a payment. Defaults to true.
  * @returns {JSX.Element} React component. */
 const CreateUserCTA = ({ isPayment = true }) => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <p className={styles.callToAction}>
-        To add {isPayment ? "a payment" : "an expense"}, ensure you have at
-        least 2 group members:
+        {isPayment
+          ? t("create-user-cta-payment-copy")
+          : t("create-user-cta-expense-copy")}
+        :
         <div className={styles.icon}>
           <GroupActionsEmojiButton
             route={"create-users"}
             emoji={emojiConstants.user}
-            explanationText={"+member"}
-            tooltipText='add group member'
+            explanationText={t("active-group-bar-member-emoji-copy")}
             ariaLabel='add group member emoji'
           />
         </div>

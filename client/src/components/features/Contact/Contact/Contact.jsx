@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
@@ -28,6 +29,8 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @returns {JSX.Element} - React component.
  */
 const Contact = () => {
+  const { t } = useTranslation();
+
   const { groupCode } = useParams();
   const navigate = useNavigate();
 
@@ -68,31 +71,31 @@ const Contact = () => {
     setError("");
     // Validate name
     if (!formData.name.trim()) {
-      setError("missing name");
+      setError(t("contact-form-missing-name-error"));
       displayErrorModal();
       return;
     }
     if (formData.name.length > 50) {
-      setError("name must not exceed 50 characters");
+      setError(t("contact-form-too-long-name-error"));
       displayErrorModal();
       return;
     }
 
     // Validate message
     if (!formData.feedback.trim()) {
-      setError("missing message");
+      setError(t("contact-form-no-message-error"));
       displayErrorModal();
       return;
     }
     if (formData.feedback.length > 2500) {
-      setError("message must not exceed 2500 characters.");
+      setError(t("contact-form-message-too-long-error"));
       displayErrorModal();
       return;
     }
 
     // Validate file size
     if (file && file.size > 5242880) {
-      setError("file exceeds allowed size limit of 5MB.");
+      setError(t("contact-form-attached-file-too-big-error"));
       displayErrorModal();
       return;
     }
@@ -115,7 +118,7 @@ const Contact = () => {
           contactData.fileId = responseFile.data.savedFile._id;
         } catch (error) {
           devLog("Error uploading file:", error);
-          setError("Error uploading file. Please try again.");
+          setError(t("contact-form-upload-file-error"));
           displayErrorModal();
           return;
         }

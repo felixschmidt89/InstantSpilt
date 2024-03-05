@@ -1,4 +1,8 @@
+// React and Third-Party Libraries
 import React, { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+
+// Styles
 import styles from "./ExpenseDescriptionInput.module.css";
 
 /**
@@ -17,6 +21,7 @@ const ExpenseDescriptionInput = ({
   isUpdate = false,
 }) => {
   const inputRef = useRef(null);
+  const { t } = useTranslation();
 
   // Autofocus input field on mount if isUpdate is false
   useEffect(() => {
@@ -47,7 +52,7 @@ const ExpenseDescriptionInput = ({
         value={value}
         onClick={handleInputClick}
         onChange={handleExpenseDescriptionChange}
-        placeholder='description'
+        placeholder={t("expense-description-input-placeholder")}
         ref={inputRef}
       />
     </div>

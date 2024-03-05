@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 
 //  Hooks
@@ -15,10 +16,10 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 
 // Styles
 import styles from "./UpdatePaymentPage.module.css";
-import Emoji from "../../components/common/Emoji/Emoji";
 
 const UpdatePaymentPage = () => {
   const { groupCode, paymentId } = useParams();
+  const { t } = useTranslation();
 
   // Use custom hook to identify user's previous route to render appropriate InAppNavigation
   const { isChecked, openedViaGroupHistory, openedViaUserTransactionsHistory } =
@@ -29,7 +30,8 @@ const UpdatePaymentPage = () => {
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - update payment' />
+      <HelmetMetaTagsNetlify title={t("update-payment-page-title")} />
+
       <PiratePx COUNT_IDENTIFIER={"update-payment"} />
       {isChecked && openedViaGroupHistory && (
         <InAppNavigationBar previousRoute={true} home={true} />
@@ -42,7 +44,7 @@ const UpdatePaymentPage = () => {
         <Spinner />
       ) : (
         <div className={styles.container}>
-          <h1 className={styles.header}>edit payment</h1>
+          <h1 className={styles.header}>{t("update-payment-page-header")} </h1>
           <div className={styles.innerContainer}>
             <UpdatePayment
               groupMembers={groupMembers}

@@ -1,6 +1,8 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 import axios from "axios";
 
 // Constants and Utils
@@ -27,6 +29,7 @@ import styles from "./UserTransactionHistoryPage.module.css";
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 const UserTransactionHistoryPage = () => {
+  const { t } = useTranslation();
   const { groupCode, userId } = useParams();
   const [userExpensesAndPayments, setUserExpensesAndPayments] = useState([]);
   const { groupMembers, isFetched: groupMembersIsFetched } =
@@ -72,7 +75,7 @@ const UserTransactionHistoryPage = () => {
   }, [userId]);
   return (
     <main>
-      <HelmetMetaTagsNetlify title='InstantSplit - user history' />
+      <HelmetMetaTagsNetlify title={t("user-transaction-history-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"user-transaction-history"} />
       <InAppNavigationBar previousRoute={true} home={true} />
       {isLoading && currencyInfoIsFetched && groupMembersIsFetched ? (
@@ -81,7 +84,7 @@ const UserTransactionHistoryPage = () => {
         </div>
       ) : (
         <div className={styles.container}>
-          <h1>transaction history</h1>
+          <h1>{t("user-transaction-history-page-header")}</h1>
           {userExpensesAndPayments.length > 0 ? (
             <UserTransactionsHistory
               userExpensesAndPayments={userExpensesAndPayments}
