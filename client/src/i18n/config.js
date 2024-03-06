@@ -16,10 +16,6 @@ i18n
   .use(initReactI18next)
   // Initialize the i18next instance.
   .init({
-    // Config options
-    detection: {
-      order: ["localStorage", "navigator"],
-    },
     // default language (locale)
     lng: "de",
     // fallback locale
@@ -30,6 +26,10 @@ i18n
     // React does escaping itself
     interpolation: {
       escapeValue: false,
+    },
+    backend: {
+      // Load translations
+      loadPath: "/locales/{{lng}}/translations.json",
     },
   });
 

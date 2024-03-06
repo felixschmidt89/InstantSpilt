@@ -23,23 +23,19 @@ export const devLog = (message = "devLog", data) => {
 };
 
 /**
- * Handles API errors and triggers the display of the error modal.
- *
- * @param {Error} error - The error object.
- * @param {Function} setError - State setter function for updating error state.
- * @param {Function} displayErrorModal - Function to display the error modal.
- *
- * @throws {Error} Throws an error if the provided error object is falsy.
- *
- * @statusCodes Handled HTTP status codes:
- * - UNPROCESSABLE_ENTITY (422): Sets error message based on the first validation error.
- * - CONFLICT (409): Sets error message based on the conflict message.
- * - BAD_REQUEST (400): Sets error message based on the first error's message in case of bad request.
+ * Handles API errors, sets the appropriate error translation and triggers displaying the error modal.
+ * @param {object} error - The error object.
+ * @param {function} setError - Function to set error state.
+ * @param {string} router - The router name.
+ * @param {function} displayErrorModal - Function to display error modal.
+ * @param {function} t - Translation function.
  */
-export const handleApiErrorsAndTriggerErrorModal = (
+export const handleApiErrors = (
   error,
   setError,
-  displayErrorModal
+  router,
+  displayErrorModal,
+  t
 ) => {
   if (!error) {
     throw new Error("Invalid error object provided.");
@@ -48,18 +44,29 @@ export const handleApiErrorsAndTriggerErrorModal = (
   if (error.response) {
     devLog("error.response:", error.response);
 
-    let errorMessage = genericErrorMessage;
+    let errorType;
 
-    if (error.response.status === StatusCodes.UNPROCESSABLE_ENTITY) {
-      errorMessage = error.response.data.errors[0] || genericErrorMessage;
-    } else if (
-      error.response.status === StatusCodes.CONFLICT ||
-      error.response.status === StatusCodes.BAD_REQUEST ||
-      error.response.status === StatusCodes.NOT_FOUND
-    ) {
-      errorMessage = error.response.data.message || genericErrorMessage;
+    switch (error.response.status) {
+      case StatusCodes.UNPROCESSABLE_ENTITY:
+        errorType = `${t(`${router}-router-unprocessable-error-${error.response.data.errors[0].replaceAll(" ", "-").toLowerCase()}`)}`;
+        break;
+      case StatusCodes.CONFLICT:
+        errorType = `${t(`${router}-router-conflict-error-${error.response.data.message.replaceAll(" ", "-").toLowerCase()}`)}`;
+        break;
+      case StatusCodes.BAD_REQUEST:
+        errorType = `${t(`${router}-router-bad-request-error-${error.response.data.message.replaceAll(" ", "-").toLowerCase()}`)}`;
+
+        break;
+      case StatusCodes.NOT_FOUND:
+        errorType = `${t(`${router}-router-not-found-error-${error.response.data.message.replaceAll(" ", "-").toLowerCase()}`)}`;
+
+        break;
+      default:
+        errorType = t(`generic-error`);
+        break;
     }
-    setError(errorMessage);
+
+    setError(errorType);
     displayErrorModal();
   }
 };

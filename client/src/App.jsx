@@ -36,7 +36,6 @@ import ContactPage from "./pages/ContactPage/ContactPage";
 import ShareGroupInvitationPage from "./pages/ShareGroupInvitationPage/ShareGroupInvitationPage";
 import LeaveGroupPage from "./pages/LeaveGroupPage/LeaveGroupPage";
 import JoinGroupPage from "./pages/JoinGroupPage/JoinGroupPage";
-import SettleExpenses from "./components/features/SettleExpenses/SettleExpenses/SettleExpenses";
 
 // Styles
 import "./App.css";

@@ -6,10 +6,7 @@ import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import {
-  devLog,
-  handleApiErrorsAndTriggerErrorModal,
-} from "../../../../utils/errorUtils";
+import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { buttonStyles } from "../../../../constants/stylesConstants";
 
@@ -94,7 +91,7 @@ const UpdateExpense = ({
       navigate(route);
     } catch (error) {
       if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+        handleApiErrors(error, setError, "expenses", displayErrorModal, t);
       } else {
         setError(genericErrorMessage);
         devLog("Error updating expense:", error);

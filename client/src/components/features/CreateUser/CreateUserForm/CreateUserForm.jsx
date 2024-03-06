@@ -1,12 +1,10 @@
 // React and Third-Party Libraries
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import {
-  devLog,
-  handleApiErrorsAndTriggerErrorModal,
-} from "../../../../utils/errorUtils";
+import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
@@ -29,6 +27,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {function} props.incrementRerenderTrigger - Function to trigger rerender in parent component.
  * @returns {JSX.Element} React component. */
 const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
+  const { t } = useTranslation();
   const inputRef = useRef(null);
   const [userName, setUserName] = useState("");
   const [error, setError] = useState("");
@@ -58,7 +57,7 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
       setError("");
     } catch (error) {
       if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+        handleApiErrors(error, setError, "users", displayErrorModal, t);
       } else {
         setError(genericErrorMessage);
         devLog("Error creating user.", error);
@@ -75,7 +74,7 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
             type='text'
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            placeholder='member name'
+            placeholder={t("create-user-username-placeholder")}
             className={styles.inputField}
             ref={inputRef}
             autoFocus

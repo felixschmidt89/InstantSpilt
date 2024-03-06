@@ -115,7 +115,7 @@ export const updateExpense = async (req, res) => {
     if (!expensePayerName) {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
-        message: 'Expense payer name is required.',
+        message: 'Expense payer name is required',
       });
     }
 
@@ -123,7 +123,7 @@ export const updateExpense = async (req, res) => {
     if (!expenseBeneficiariesNames || !expenseBeneficiariesNames.length) {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
-        message: 'At least 1 expense beneficiary is required.',
+        message: 'At least 1 expense beneficiary is required',
       });
     }
 

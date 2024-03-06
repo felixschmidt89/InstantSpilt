@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import emojiConstants from "../../../../../constants/emojiConstants";
@@ -27,6 +28,8 @@ const RenderGroupExpense = ({
   groupCurrency,
   groupMembers,
 }) => {
+  const { t } = useTranslation();
+
   devLog(item);
 
   const allGroupMembersBenefitFromExpense =
@@ -55,7 +58,9 @@ const RenderGroupExpense = ({
         <div className={styles.borderedContent}>
           {item.expensePayer.userName}
           {allGroupMembersBenefitFromExpense && (
-            <span className={styles.forAll}> for all</span>
+            <span className={styles.forAll}>
+              {t("render-group-expense-for-all-badge")}
+            </span>
           )}
           : {/* Link to the detailed item page */}
           <Link to={`/expense-details/${groupCode}/${item.itemId}`}>

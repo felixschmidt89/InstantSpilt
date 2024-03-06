@@ -41,7 +41,7 @@ const AcceptGroupInvitation = ({ groupName, groupCode }) => {
           style={buttonStyles}
           onClick={handleAcceptInvitation}
           variant='contained'>
-          {t("join-group-button-text", { groupName })}
+          {t("join-group-button-text")}
         </Button>
       </div>
       <div className={styles.termsAndConditions}>

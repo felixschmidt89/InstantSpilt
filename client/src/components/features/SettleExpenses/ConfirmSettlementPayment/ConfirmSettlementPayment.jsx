@@ -5,10 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import {
-  devLog,
-  handleApiErrorsAndTriggerErrorModal,
-} from "../../../../utils/errorUtils";
+import { devLog } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
@@ -67,12 +64,8 @@ const ConfirmSettlementPayment = ({
       devLog("Settlement payment created:", response);
       navigate("/instant-split");
     } catch (error) {
-      if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError);
-      } else {
-        setError(genericErrorMessage);
-        devLog("Error creating settlement payment:", error);
-      }
+      setError(genericErrorMessage);
+      devLog("Error creating settlement payment:", error);
     }
   };
 

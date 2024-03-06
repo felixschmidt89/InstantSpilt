@@ -61,7 +61,6 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
     } catch (error) {
       setError(genericErrorMessage);
       displayErrorModal();
-
       devLog("Error updating group currency:", error);
     }
   };

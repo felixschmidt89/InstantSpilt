@@ -21,9 +21,9 @@ import { INACTIVE_DAYS } from "../../../constants/dataConstants";
  * @returns {JSX.Element} React component. */
 const HelmetMetaTagsNetlify = ({ title, description, image, path, author }) => {
   // Define default values
-  const defaultDescription = `Effortlessly settle group expenses with InstantSplit, a hassle-free solution that requires no registration or app downloads and purges related data after ${INACTIVE_DAYS} of group inactivity.`;
-  const defaultTitle =
-    "InstantSplit - simplified group expense sharing and settlement";
+  const defaultDescription =
+    "Gemeinsame Ausgaben ohne Registrierung begleichen. Vollständige Datenlöschung nach Verwendung.";
+  const defaultTitle = "InstantSplit";
   const defaultImage = "https://instantsplit.de/metaTagDefaultImg.png";
   const defaultUrl = "https://www.instantsplit.de/";
   const defaultAuthor = "Felix Schmidt";

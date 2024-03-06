@@ -6,10 +6,7 @@ import { useTranslation } from "react-i18next";
 import "friendly-challenge/widget";
 
 // Constants and Utils
-import {
-  devLog,
-  handleApiErrorsAndTriggerErrorModal,
-} from "../../../../../utils/errorUtils";
+import { devLog } from "../../../../../utils/errorUtils";
 import {
   setGroupCodeToCurrentlyActive,
   setRouteInLocalStorage,
@@ -73,9 +70,6 @@ const CreateGroupForm = ({ isOnboarding }) => {
       setRouteInLocalStorage(window.location.pathname, "previousRoute");
       navigate("/create-users");
     } catch (error) {
-      if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
-      }
       devLog("Error creating group:", error);
       displayErrorModal();
     }

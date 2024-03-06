@@ -7,10 +7,7 @@ import { buttonStyles } from "../../../../constants/stylesConstants";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import {
-  devLog,
-  handleApiErrorsAndTriggerErrorModal,
-} from "../../../../utils/errorUtils";
+import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
@@ -68,7 +65,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
       navigate("/instant-split");
     } catch (error) {
       if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+        handleApiErrors(error, setError, "expenses", displayErrorModal, t);
       } else {
         setError(genericErrorMessage);
         devLog("Error creating expense:", error);

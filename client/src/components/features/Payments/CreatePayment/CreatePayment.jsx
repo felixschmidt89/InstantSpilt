@@ -7,10 +7,7 @@ import { IoArrowDownOutline } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import {
-  devLog,
-  handleApiErrorsAndTriggerErrorModal,
-} from "../../../../utils/errorUtils";
+import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { buttonStyles } from "../../../../constants/stylesConstants";
@@ -67,7 +64,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       navigate("/instant-split");
     } catch (error) {
       if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+        handleApiErrors(error, setError, "payments", displayErrorModal, t);
       } else {
         setError(genericErrorMessage);
         devLog("Error creating payment:", error);

@@ -7,10 +7,7 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 
 // Constants and Utils
-import {
-  devLog,
-  handleApiErrorsAndTriggerErrorModal,
-} from "../../../../utils/errorUtils";
+import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
@@ -74,7 +71,6 @@ const UpdatePayment = ({
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
-  <IoArrowDownOutline />;
 
   const isSubmitButtonVisible =
     formChanged &&
@@ -117,7 +113,7 @@ const UpdatePayment = ({
       navigate(route);
     } catch (error) {
       if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+        handleApiErrors(error, setError, "payments", displayErrorModal, t);
       } else {
         setError(genericErrorMessage);
         devLog("Error updating payment:", error);

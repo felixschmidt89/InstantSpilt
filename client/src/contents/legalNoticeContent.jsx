@@ -52,18 +52,19 @@ export const legalNoticeSections = [
     title: "Urheberrecht",
     content: (
       <p>
-        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
-        Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung,
-        Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
-        Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
-        jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite
-        sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
-        Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden,
-        werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte
-        Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine
-        Urheberrechtsverletzung aufmerksam werden, bitten wir um einen
-        entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden
-        wir derartige Inhalte umgehend entfernen.
+        Die Inhalte und Werke auf diesen Seiten, die von den Betreibern erstellt
+        wurden, stehen unter der Open-Source-Lizenz des deutschen Urheberrechts.
+        Jeder ist berechtigt, die Inhalte zu vervielfältigen, zu bearbeiten, zu
+        verbreiten und anderweitig zu nutzen, solange dies im Rahmen der
+        geltenden Lizenzbestimmungen geschieht. Downloads und Kopien dieser
+        Seite sind für jeden Zweck gestattet, jedoch ausschließlich für den
+        privaten und nicht-kommerziellen Gebrauch. Soweit die Inhalte auf dieser
+        Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte
+        Dritter beachtet. Insbesondere werden Inhalte Dritter als solche
+        gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung
+        aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei
+        Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte
+        umgehend entfernen.
       </p>
     ),
   },
@@ -75,19 +76,19 @@ export const legalNoticeSections = [
         <p>
           Die Nutzung unserer Webseite ist in der Regel ohne Angabe
           personenbezogener Daten möglich. Soweit auf unseren Seiten
-          personenbezogene Daten (beispielsweise Name, Anschrift oder
-          eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets
-          auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche
-          Zustimmung nicht an Dritte weitergegeben. Wir weisen darauf hin, dass
-          die Datenübertragung im Internet (z.B. bei der Kommunikation per
-          E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der
-          Daten vor dem Zugriff durch Dritte ist nicht möglich. Der Nutzung von
-          im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch
-          Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung
-          und Informationsmaterialien wird hiermit ausdrücklich widersprochen.
-          Die Betreiber der Seiten behalten sich ausdrücklich rechtliche
-          Schritte im Falle der unverlangten Zusendung von Werbeinformationen,
-          etwa durch Spam-Mails, vor.
+          personenbezogene Daten (beispielsweise Name oder E-Mailadressen)
+          erhoben werden, erfolgt dies stets auf freiwilliger Basis. Diese Daten
+          werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte
+          weitergegeben. Wir weisen darauf hin, dass die Datenübertragung im
+          Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken
+          aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch
+          Dritte ist nicht möglich. Der Nutzung von im Rahmen der
+          Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur
+          Übersendung von nicht ausdrücklich angeforderter Werbung und
+          Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die
+          Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im
+          Falle der unverlangten Zusendung von Werbeinformationen, etwa durch
+          Spam-Mails, vor.
         </p>
         <p>
           Erstellt mit dem{" "}

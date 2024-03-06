@@ -2,12 +2,10 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import {
-  devLog,
-  handleApiErrorsAndTriggerErrorModal,
-} from "../../../utils/errorUtils";
+import { devLog, handleApiErrors } from "../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../constants/errorConstants";
 import { submitOnEnterClick } from "../../../utils/formUtils";
 
@@ -32,7 +30,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} props.resourceType - The type of the resource in singular (e.g., "user", "group").
  * @param {string} props.resourceName - The current name of the resource.
  * @param {string} props.groupCode - The groupCode of the associated group.
- * @param {string} props.headerText - The name of the resource tpye being changed displayed in the header. Prefixed by "change ".
+ * @param {string} props.headerText - The name of the resource type being changed displayed in the header. Prefixed by "change ".
  * @param {number} [props.inputWidth=20] - The width of the input field in rem units. Defaults to 20.
  * @param {boolean} [props.navigateToMain=true] - Flag indicating whether to navigate to the main page after updating the resource name. Defaults to true.
  * @returns {JSX.Element} React component.
@@ -48,6 +46,8 @@ const ChangeResourceName = ({
 }) => {
   const inputRef = useRef(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const storedResourceName = resourceName;
   const [newResourceName, setNewResourceName] = useState(storedResourceName);
   const [error, setError] = useState(null);
@@ -55,13 +55,14 @@ const ChangeResourceName = ({
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
+  const pluralResourceType = resourceType + "s";
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     try {
       // Convert resourceType to plural for API endpoint
-      const pluralResourceType = resourceType + "s";
+
       const payload = {
         [resourceType]: resourceId,
         [`${resourceType}Name`]: newResourceName,
@@ -80,7 +81,13 @@ const ChangeResourceName = ({
       inputRef.current.blur();
     } catch (error) {
       if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
+        handleApiErrors(
+          error,
+          setError,
+          pluralResourceType,
+          displayErrorModal,
+          t
+        );
       } else {
         setError(genericErrorMessage);
         devLog(`Error updating ${resourceType} name:`, error);

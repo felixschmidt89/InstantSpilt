@@ -8,8 +8,10 @@
   "create-payment-page-header": "new payment",
   "create-users-page-title": "InstantSplit - add user",
   "create-users-page-header": "add group members",
+  "create-user-username-placeholder": "name",
   "enter-groupcode-page-title": "InstantSplit - enter groupCode",
   "expense-details-page-title": "InstantSplit - expense details",
+  "expense-details-edit-expense-button-text": "edit expense",
   "leave-group-on-device-page-title": "InstantSplit - leave group",
   "leave-group-on-device-page-header": "leave group",
   "leave-group-on-device-groupcode-explanation": "To rejoin {{groupName}} later, store its groupCode:",
@@ -30,6 +32,7 @@
   "page-not-found-page-header": "404 - page not found",
   "page-not-found-page-explanation": "The page you're looking for does not exist.",
   "payment-details-page-title": "InstantSplit - payment details",
+  "payment-details-edit-payment-button-text": "edit payment",
   "join-group-page-title": "InstantSplit - to join {{groupName}}",
   "join-group-page-description": "Join {{groupName}} to manage and settle our shared expenses.",
   "join-group-page-header": "Hi there!",
@@ -87,7 +90,7 @@
   "in-app-navigation-next-icon-text": "next",
   "render-resource-created-component-created-text": "created: ",
   "render-resource-created-component-changed-text": "changed: ",
-  "join-group-button-text": "join {{groupName}}",
+  "join-group-button-text": "join group",
   "client-info-accordion-title": "client info",
   "invitation-intro-copy": "Someone invited you to join {{groupName}} to manage and settle your shared expenses.",
   "contact-form-missing-name-error": "missing name",
@@ -127,6 +130,7 @@
   "render-expense-details-total-amount": "total amount",
   "render-expense-details-paid-by": "paid by",
   "render-expense-details-amount-per-beneficiary": "amount per beneficiary",
+  "render-group-expense-for-all-badge": " for all",
   "update-expense-button-text": "update expense",
   "create-user-cta-payment-copy": "To add a payment ensure you have at least 2 group members",
   "create-user-cta-expense-copy": "To add an expense ensure you have at least 2 group members",
@@ -185,7 +189,6 @@
   "install-pwa-safari-list-item1-part1": "Select",
   "install-pwa-safari-list-item1-part2": "in your browser",
   "install-pwa-safari-list-item2": "scroll down",
-
   "install-pwa-safari-list-item3-part1": "and press",
   "install-pwa-safari-list-item3-part2": "(add to home screen)",
   "install-pwa-samsung-browser-list-item1-part1": "Select",
@@ -230,6 +233,7 @@
   "user-totals-payment-totals-header": "payment totals",
   "user-totals-payment-payments-made": "payments made",
   "user-totals-payment-payments-received": "payments received",
+  "genericErrorMessage": "An error occurred. Please try again later.",
   "single-terms-and-conditions-more-info-copy": "For more information, please refer to",
   "terms-and-conditions-sections": [
     {
@@ -310,5 +314,21 @@
       "title": "Entire Agreement",
       "content": "These terms and conditions constitute the entire agreement between you and InstantSplit concerning your use of the application, superseding any prior or contemporaneous agreements or understandings."
     }
-  ]
+  ],
+  "generic-error": "An error occurred. Please try again later.",
+  "payments-router-conflict-error-payment-maker-and-recipient-can't-be-the-same": "payment maker and recipient can't be the same",
+  "payments-router-bad-request-error-missing-payment-maker": "missing payment maker",
+  "payments-router-bad-request-error-missing-payment-recipient": "missing payment recipient",
+  "payments-router-unprocessable-error-missing-payment-amount": "missing payment amount",
+  "payments-router-unprocessable-error-the-payment-amount-may-not-exceed-99999.99": "payment amount must not exceed 99999.99",
+  "expenses-router-bad-request-error-missing-expense-payer": "missing expense payer",
+  "expenses-router-unprocessable-error-expense-description-missing": "missing expense description",
+  "expenses-router-unprocessable-error-expense-amount-missing": "missing expense amount",
+  "expenses-router-bad-request-error-at-least-1-expense-beneficiary-is-required": "at least one expense beneficiary is required",
+  "expenses-router-unprocessable-error-expense-amount-must-not-exceed-99999.99": "expense amount must not exceed 99999.99",
+  "users-router-unprocessable-error-missing-user-name": "missing name",
+  "users-router-conflict-error-name-is-already-taken-in-this-group": "name is already taken in this group",
+  "users-router-unprocessable-error-username-cannot-exceed-20-characters": "member name can't exceed 20 characters",
+  "groups-router-unprocessable-error-missing-group-name": "missing group name",
+  "groups-router-unprocessable-error-the-group-name-cannot-exceed-30-characters": "group name can't exceed 30 characters"
 }

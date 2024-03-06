@@ -5,10 +5,7 @@ import { FormControlLabel, Switch } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import {
-  devLog,
-  handleApiErrorsAndTriggerErrorModal,
-} from "../../../../utils/errorUtils";
+import { devLog } from "../../../../utils/errorUtils";
 import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { INACTIVE_DAYS } from "../../../../constants/dataConstants";
 
@@ -51,16 +48,11 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
       );
       devLog("inactiveDataPurge setting updated:", response);
     } catch (error) {
-      if (error.response) {
-        handleApiErrorsAndTriggerErrorModal(error, setError, displayErrorModal);
-      } else {
-        setError(genericErrorMessage);
-        devLog("Error updating inactive group data purge setting:", error);
-        displayErrorModal();
-      }
+      setError(genericErrorMessage);
+      devLog("Error updating inactive group data purge setting:", error);
+      displayErrorModal();
     }
   };
-
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();

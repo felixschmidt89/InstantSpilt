@@ -76,7 +76,7 @@ const ExpenseDetailsPage = () => {
           </div>
           <RouteButton
             route={`update-expense/${groupCode}/${itemId}`}
-            buttonText={"edit expense"}
+            buttonText={t("expense-details-edit-expense-button-text")}
             setPreviousRoute={true}
           />
           <DeleteResource resourceId={itemId} resourceType='expenses' />

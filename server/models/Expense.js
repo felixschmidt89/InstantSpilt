@@ -13,7 +13,7 @@ const expenseSchema = new Schema(
       type: Number,
       required: [true, 'expense amount missing'],
       min: [0.01, 'expense amount must be at least 0.01'],
-      max: [99999.99, 'expense amount must not exceed 99999.99.'],
+      max: [99999.99, 'expense amount must not exceed 99999.99'],
     },
     expenseAmountPerBeneficiary: {
       type: Number,

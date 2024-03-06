@@ -11,9 +11,9 @@ const groupSchema = new Schema(
     groupName: {
       type: String,
       trim: true,
-      required: [true, 'Missing group name.'],
-      minlength: [1, 'The group name must be at least 1 characters long.'],
-      maxlength: [30, 'The group name cannot exceed 30 characters.'],
+      required: [true, 'Missing group name'],
+      minlength: [1, 'The group name must be at least 1 characters long'],
+      maxlength: [30, 'The group name cannot exceed 30 characters'],
       index: true, // Index for quick lookups
     },
     // groupName set during registration, used for client routing

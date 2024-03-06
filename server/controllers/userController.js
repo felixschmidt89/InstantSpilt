@@ -21,8 +21,7 @@ export const createUser = async (req, res) => {
     if (existingUser) {
       return res.status(StatusCodes.CONFLICT).json({
         status: 'error',
-        message:
-          'This name is already taken in this group. Please pick another one.',
+        message: 'name is already taken in this group',
       });
     }
     const user = await User.create({ userName, groupCode });
@@ -88,8 +87,7 @@ export const changeUserName = async (req, res) => {
     if (existingUser) {
       return res.status(StatusCodes.CONFLICT).json({
         status: 'error',
-        message:
-          'This name is already taken in this group. Please pick another one.',
+        message: 'name is already taken in this group',
       });
     }
 
