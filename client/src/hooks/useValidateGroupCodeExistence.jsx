@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { StatusCodes } from "http-status-codes";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../utils/errorUtils";
@@ -24,6 +25,7 @@ function useValidateGroupExistence(groupCode, validationType = "continuous") {
   const [groupExists, setGroupExists] = useState(null);
   const [error, setError] = useState(null);
   const [isValidated, setIsValidated] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const validateGroup = async () => {
@@ -42,9 +44,7 @@ function useValidateGroupExistence(groupCode, validationType = "continuous") {
           devLog(`Groupcode ${groupCode} exists.`);
         } else {
           setGroupExists(false);
-          setError(
-            "There's no group associated with the provided groupCode."
-          );
+          setError(t("validate-groupcode-error-groupcode-does-not-exist"));
           setIsValidated(true);
           devLog(`Groupcode ${groupCode} does not exist.`);
         }

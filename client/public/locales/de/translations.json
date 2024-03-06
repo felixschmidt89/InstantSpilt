@@ -65,6 +65,7 @@
   "validate-groupcode-page-title": "InstantSplit - Gruppencode validieren",
   "validate-groupcode-page-header": "Gruppencode-Validierung",
   "validate-groupcode-page-redirect-copy": "Gültiger Gruppencode. Leite zur  Gruppe weiter...",
+  "validate-groupcode-error-groupcode-does-not-exist": "Zu diesem Gruppencode existiert keine Gruppe.",
   "footer-github-link": "GitHub",
   "footer-legal-notice-link": "Impressum",
   "footer-t&c-link": "AGB",
