@@ -15,31 +15,38 @@ import styles from "./ShareGroupInvitationIncludingWebShare.module.css";
  * @param {Object} props - The component props.
  * @param {string} props.groupName - The name of the group.
  * @param {string} initialGroupName - The group name set during group creation.
- * @param {string} props.groupCode - The code of the group.
- * @param {string} props.infoToCopy - The information to be copied. *
+ * @param {string} props.invitationLinkDE - German meta tags invitation link.
+ *  @param {string} props.invitationLinkEN - English meta tags invitation link.
  * @returns {JSX.Element} React component. */
 const ShareGroupInvitationIncludingWebShare = ({
   groupName,
-  groupCode,
-  infoToCopy,
+  invitationLinkDE,
+  invitationLinkEN,
   initialGroupName,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  // Check language locale
+  const isGerman = i18n.language === "de";
+
+  // Determine the appropriate invitation link
+  const invitationLink = isGerman ? invitationLinkDE : invitationLinkEN;
 
   return (
     <div className={styles.container}>
       <div className={styles.webshare}>
         <WebShareApiInvite
-          groupCode={groupCode}
           groupName={groupName}
-          initialGroupName={initialGroupName}
+          invitationLink={invitationLink}
         />
       </div>
       <h2 className={styles.orCopy}>{t("share-group-invitation-or")}</h2>
       <div className={styles.invitationLink}>
-        {t("share-group-invitation-explanation", { groupName })}
-        :
-        <CopyToClipBoard infoToCopy={infoToCopy} inputFieldWidth={"15rem"} />
+        {t("share-group-invitation-explanation", { groupName })}:
+        <CopyToClipBoard
+          infoToCopy={invitationLink}
+          inputFieldWidth={"15rem"}
+        />
       </div>
     </div>
   );

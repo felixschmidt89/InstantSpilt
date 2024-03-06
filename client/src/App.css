@@ -280,6 +280,7 @@ scrollbar-thumb {
   footer {
     height: 6vh;
     height: 6svh;
+    min-height: 2rem;
   }
 
   p,
