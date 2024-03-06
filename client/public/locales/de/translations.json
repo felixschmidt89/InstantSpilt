@@ -60,10 +60,12 @@
   "validate-groupcode-page-title": "InstantSplit - Gruppencode validieren",
   "validate-groupcode-page-header": "Gruppencode-Validierung",
   "validate-groupcode-page-redirect-copy": "Gültiger Gruppencode. Leite zur  Gruppe weiter...",
+  "validate-groupcode-error-groupcode-does-not-exist": "Es existiert keine Gruppe mit diesem Gruppencode",
   "footer-github-link": "GitHub",
   "footer-legal-notice-link": "Impressum",
   "footer-t&c-link": "AGB",
-  "active-group-bar-settings-emoji-copy": "Einstell.",
+  "active-group-bar-settings-emoji-copy": "Einstellungen",
+  "active-group-bar-settings-emoji-short-copy": "Einstell.",
   "active-group-bar-settle-emoji-copy": "begleichen",
   "active-group-bar-member-emoji-copy": "+Mitglied",
   "active-group-bar-payment-emoji-copy": "+Zahlung",
@@ -308,5 +310,21 @@
       "title": "Gesamte Vereinbarung",
       "content": "Diese Bedingungen stellen die gesamte Vereinbarung zwischen Ihnen und InstantSplit bezüglich Ihrer Nutzung der Anwendung dar und ersetzen alle vorherigen oder gleichzeitigen Vereinbarungen oder Absprachen."
     }
-  ]
+  ],
+  "generic-error": "Ein Fehler ist aufgetreten. Bitte erneut versuchen.",
+  "payments-router-conflict-error-payment-maker-and-recipient-can't-be-the-same": "Zahler und Empfänger sind identisch...",
+  "payments-router-bad-request-error-missing-payment-maker": "Zahler fehlt",
+  "payments-router-bad-request-error-missing-payment-recipient": "Empfänger fehlt",
+  "payments-router-unprocessable-error-missing-payment-amount": "Betrag fehlt",
+  "payments-router-unprocessable-error-the-payment-amount-may-not-exceed-99999.99": "Betrag darf 99999.99 nicht überschreiten",
+  "expenses-router-bad-request-error-missing-expense-payer": "Zahler fehlt",
+  "expenses-router-unprocessable-error-expense-description-missing": "Beschreibung fehlt",
+  "expenses-router-unprocessable-error-expense-amount-missing": "Betrag fehlt",
+  "expenses-router-bad-request-error-at-least-1-expense-beneficiary-is-required": "kein Begünstigter ausgewählt...",
+  "expenses-router-unprocessable-error-expense-amount-must-not-exceed-99999.99": "Betrag darf 99999.99 nicht überschreiten",
+  "users-router-unprocessable-error-missing-user-name": "fehlender Name",
+  "users-router-conflict-error-name-is-already-taken-in-this-group": "Name ist bereits vergeben",
+  "users-router-unprocessable-error-username-cannot-exceed-20-characters": "Name darf 20 Zeichen nicht überschreiten",
+  "groups-router-unprocessable-error-missing-group-name": "fehlender Gruppenname",
+  "groups-router-unprocessable-error-the-group-name-cannot-exceed-30-characters": "Name darf 30 Zeichen nicht überschreiten"
 }

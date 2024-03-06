@@ -38,7 +38,7 @@ const ShareGroupInvitationPage = () => {
     groupData.group.initialGroupName
   );
   const invitationLinkDE = `${baseUrl}/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
-  const invitationLinkEN = `${baseUrl}/en/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
+  const invitationLinkEN = `${baseUrl}/join-en-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
 
   return (
     <main>

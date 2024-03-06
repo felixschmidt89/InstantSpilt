@@ -35,12 +35,8 @@ import GroupSettingsPage from "./pages/GroupSettingsPage/GroupSettingsPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import ShareGroupInvitationPage from "./pages/ShareGroupInvitationPage/ShareGroupInvitationPage";
 import LeaveGroupPage from "./pages/LeaveGroupPage/LeaveGroupPage";
-<<<<<<< HEAD
-import JoinGroupPage from "./pages/JoinGroupPage/JoinGroupPage";
-=======
 import JoinGroupDEPage from "./pages/JoinGroupDEPage/JoinGroupDEPage";
 import JoinGroupENPage from "./pages/JoinGroupENPage/JoinGroupENPage";
->>>>>>> dev
 
 // Styles
 import "./App.css";
@@ -75,7 +71,7 @@ const App = () => {
               element={<JoinGroupDEPage />}
             />
             <Route
-              path='/join-instantsplit-group/en/:initialGroupName/:groupCode'
+              path='/join-en-instantsplit-group/:initialGroupName/:groupCode'
               element={<JoinGroupENPage />}
             />
             <Route
