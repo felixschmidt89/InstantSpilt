@@ -37,7 +37,8 @@ const ShareGroupInvitationPage = () => {
   const urlEncodedGroupName = encodeURIComponent(
     groupData.group.initialGroupName
   );
-  const infoToCopy = `${baseUrl}/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
+  const invitationLinkDE = `${baseUrl}/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
+  const invitationLinkEN = `${baseUrl}/en/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
 
   return (
     <main>
@@ -55,14 +56,14 @@ const ShareGroupInvitationPage = () => {
           {supportsWebShareAPI ? (
             <ShareGroupInvitationIncludingWebShare
               groupName={groupData.group.groupName}
-              groupCode={groupCode}
-              infoToCopy={infoToCopy}
-              initialGroupName={urlEncodedGroupName}
+              invitationLinkDE={invitationLinkDE}
+              invitationLinkEN={invitationLinkEN}
             />
           ) : (
             <ShareGroupInvitation
               groupName={groupData.group.groupName}
-              infoToCopy={infoToCopy}
+              invitationLinkDE={invitationLinkDE}
+              invitationLinkEN={invitationLinkEN}
             />
           )}
         </div>

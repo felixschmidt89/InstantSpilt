@@ -31,8 +31,6 @@
   "page-not-found-page-header": "404 - Seite nicht gefunden",
   "page-not-found-page-explanation": "Die angeforderte Seite existiert nicht.",
   "payment-details-page-title": "InstantSplit - Zahlungsdetails",
-  "join-group-page-title": "InstantSplit - Trete {{groupName}} bei",
-  "join-group-page-description": "Trete {{groupName}} bei um unsere gemeinsamen Ausgaben zu begleichen.",
   "join-group-page-header": "Hi!",
   "settle-expenses-page-title": "InstantSplit - Ausgaben ",
   "settle-expenses-page-header": "Ausgleichszahlungen",

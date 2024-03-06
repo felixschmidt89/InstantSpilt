@@ -12,17 +12,30 @@ import styles from "./ShareGroupInvitation.module.css";
  *
  * @param {Object} props - The component props.
  * @param {string} props.groupName - The name of the group.
- * @param {string} props.infoToCopy - The information to be copied.
- * @returns {JSX.Element} React component. */
-const ShareGroupInvitation = ({ groupName, infoToCopy }) => {
-  const { t } = useTranslation();
+ * @param {string} props.invitationLinkDE - German meta tags invitation link.
+ *  @param {string} props.invitationLinkEN - English meta tags invitation link. * @returns {JSX.Element} React component. */
+const ShareGroupInvitation = ({
+  groupName,
+  invitationLinkDE,
+  invitationLinkEN,
+}) => {
+  const { t, i18n } = useTranslation();
+
+  // Check language locale
+  const isGerman = i18n.language === "de";
+
+  // Determine the appropriate invitation link
+  const invitationLink = isGerman ? invitationLinkDE : invitationLinkEN;
 
   return (
     <div className={styles.container}>
       <div className={styles.invitationLink}>
         {t("share-group-invitation-explanation", { groupName })}
         :
-        <CopyToClipboard infoToCopy={infoToCopy} inputFieldWidth={"25rem"} />
+        <CopyToClipboard
+          infoToCopy={invitationLink}
+          inputFieldWidth={"25rem"}
+        />
       </div>
     </div>
   );

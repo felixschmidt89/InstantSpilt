@@ -35,8 +35,8 @@ import GroupSettingsPage from "./pages/GroupSettingsPage/GroupSettingsPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import ShareGroupInvitationPage from "./pages/ShareGroupInvitationPage/ShareGroupInvitationPage";
 import LeaveGroupPage from "./pages/LeaveGroupPage/LeaveGroupPage";
-import JoinGroupPage from "./pages/JoinGroupPage/JoinGroupPage";
-import SettleExpenses from "./components/features/SettleExpenses/SettleExpenses/SettleExpenses";
+import JoinGroupDEPage from "./pages/JoinGroupDEPage/JoinGroupDEPage";
+import JoinGroupENPage from "./pages/JoinGroupENPage/JoinGroupENPage";
 
 // Styles
 import "./App.css";
@@ -68,7 +68,11 @@ const App = () => {
             />
             <Route
               path='/join-instantsplit-group/:initialGroupName/:groupCode'
-              element={<JoinGroupPage />}
+              element={<JoinGroupDEPage />}
+            />
+            <Route
+              path='/join-instantsplit-group/en/:initialGroupName/:groupCode'
+              element={<JoinGroupENPage />}
             />
             <Route
               path='/tutorial/:initialGroupName/:groupCode'

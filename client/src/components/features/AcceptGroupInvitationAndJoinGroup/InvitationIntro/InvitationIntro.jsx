@@ -6,20 +6,18 @@ import { useTranslation } from "react-i18next";
 import styles from "./InvitationIntro.module.css";
 
 /**
- * Component to introduce users to InstantSplit when they receive an invitation.
+ * Component to introduce users to InstantSplit when they receive a group invitation.
  *
  * @param {Object} props - React props.
- * @param {Object} props.groupData - groupData
+ * @param {Object} props.groupName
  * @returns {JSX.Element} React component. */
 
-const InvitationIntro = ({ groupData }) => {
+const InvitationIntro = ({ groupName }) => {
   const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
-      <p>
-        {t("invitation-intro-copy", { groupName: groupData.group.groupName })}
-      </p>
+      <p>{t("invitation-intro-copy", { groupName })}</p>
     </div>
   );
 };
