@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { buttonStyles } from "../../../../constants/stylesConstants";
 
 // Hooks
@@ -93,7 +92,7 @@ const UpdateExpense = ({
       if (error.response) {
         handleApiErrors(error, setError, "expenses", displayErrorModal, t);
       } else {
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         devLog("Error updating expense:", error);
         displayErrorModal();
       }

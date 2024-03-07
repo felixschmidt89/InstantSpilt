@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
 import useConfirmationModalLogicAndActions from "../../../../hooks/useConfirmationModalLogicAndActions";
@@ -64,7 +63,7 @@ const ConfirmSettlementPayment = ({
       devLog("Settlement payment created:", response);
       navigate("/instant-split");
     } catch (error) {
-      setError(genericErrorMessage);
+      setError(t("generic-error-message"));
       devLog("Error creating settlement payment:", error);
     }
   };

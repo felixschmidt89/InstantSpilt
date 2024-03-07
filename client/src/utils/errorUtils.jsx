@@ -1,5 +1,4 @@
 import { StatusCodes } from "http-status-codes";
-import { genericErrorMessage } from "../constants/errorConstants";
 
 /**
  * Utility function to log messages and/or errors in the development environment only.
@@ -62,7 +61,7 @@ export const handleApiErrors = (
 
         break;
       default:
-        errorType = t(`generic-error`);
+        errorType = t(`generic-error-message`);
         break;
     }
 

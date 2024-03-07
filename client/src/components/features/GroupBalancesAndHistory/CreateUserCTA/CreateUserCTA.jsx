@@ -19,7 +19,7 @@ const CreateUserCTA = ({ isPayment = true }) => {
   const { t } = useTranslation();
 
   return (
-    <div>
+    <div className={styles.container}>
       <p className={styles.callToAction}>
         {isPayment
           ? t("create-user-cta-payment-copy")

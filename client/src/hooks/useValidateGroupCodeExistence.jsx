@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../utils/errorUtils";
-import { genericErrorMessage } from "../constants/errorConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -58,7 +57,7 @@ function useValidateGroupExistence(groupCode, validationType = "continuous") {
           devLog("Too many validation requests from this IP address.", error);
         } else {
           devLog("Error validating group code:", error);
-          setError(genericErrorMessage);
+          setError(t("generic-error-message"));
         }
       }
     };

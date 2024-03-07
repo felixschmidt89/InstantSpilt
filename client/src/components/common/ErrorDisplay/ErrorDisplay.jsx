@@ -1,8 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
-
-// Contants and Utils
-import { genericErrorMessage } from "../../../constants/errorConstants";
+import { useTranslation } from "react-i18next";
 
 // Styles
 import styles from "./ErrorDisplay.module.css";
@@ -15,13 +13,17 @@ import styles from "./ErrorDisplay.module.css";
  * @param {boolean} props.errorFontColor - Flag to determine if error font color should be used (defaults to false).
  */
 const ErrorDisplay = ({ error, remWidth = 20, errorFontColor = false }) => {
+  const { t } = useTranslation();
+
   if (!error) {
     return null;
   }
 
   // Determine the error message to display
   const errorMessage =
-    typeof error === "string" ? error : error.message || genericErrorMessage;
+    typeof error === "string"
+      ? error
+      : error.message || t("generic-error-message");
   return (
     <p
       className={styles.errorMessage}

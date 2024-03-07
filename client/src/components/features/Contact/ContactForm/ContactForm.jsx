@@ -112,16 +112,15 @@ const ContactForm = ({
               value={formData.feedback}
               onChange={handleInputChange}
               placeholder={
-                formData.messageType ===
-                t("contact-form-issue-bug-message-type")
+                formData.messageType === "issue/bug"
                   ? t("contact-form-message-bug/issue-placeholder")
                   : t("contact-form-required-placeholder")
               }
-              rows='4'
+              rows='7'
             />
           </div>
         </div>
-        {formData.messageType === t("contact-form-issue-bug-message-type") && (
+        {formData.messageType === "issue/bug" && (
           <div>
             <div>
               <ClientInfo />

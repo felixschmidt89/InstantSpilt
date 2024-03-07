@@ -1,5 +1,5 @@
 .container {
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   margin-top: 1rem;

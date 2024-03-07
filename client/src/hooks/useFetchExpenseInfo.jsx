@@ -1,10 +1,10 @@
 // React and Third-Party Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../utils/errorUtils";
-import { genericErrorMessage } from "../constants/errorConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -20,6 +20,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
  */
 const useFetchExpenseInfo = (expenseId) => {
+  const { t } = useTranslation();
   const [expenseInfo, setExpenseInfo] = useState(null);
   const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
@@ -34,7 +35,7 @@ const useFetchExpenseInfo = (expenseId) => {
         setIsFetched(true);
       } catch (error) {
         devLog("Error fetching expense info:", error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
       }
     };
 

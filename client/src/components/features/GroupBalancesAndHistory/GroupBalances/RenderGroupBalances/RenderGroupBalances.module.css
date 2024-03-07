@@ -14,6 +14,14 @@
   margin-bottom: 0.5rem;
 }
 
+.issue {
+  height: 75%;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
 /* Delayed rendering to avoid flickering */
 .container {
   opacity: 0;

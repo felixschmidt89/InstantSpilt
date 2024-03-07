@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Components
 import ConfirmationModal from "../../../common/ConfirmationModal/ConfirmationModal";
@@ -61,7 +60,7 @@ const DeleteUserBin = ({
         setError(error.response.data.message);
       } else {
         devLog(`Error deleting user ${userId}:`, error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
       }
     }
   };

@@ -29,15 +29,11 @@
 .listItem {
   display: flex;
   flex-direction: row;
-  width: 23rem;
+  width: 20rem;
 }
 
 .members li {
   font-size: 1.6rem;
   padding-right: 0.5rem;
   line-height: 1.2;
-}
-
-.membersContainer {
-  width: 120%;
 }

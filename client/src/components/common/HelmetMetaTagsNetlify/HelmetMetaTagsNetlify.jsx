@@ -22,7 +22,7 @@ import { INACTIVE_DAYS } from "../../../constants/dataConstants";
 const HelmetMetaTagsNetlify = ({ title, description, image, path, author }) => {
   // Define default values
   const defaultDescription =
-    "Gemeinsame Ausgaben ohne Registrierung begleichen. Vollständige Datenlöschung nach Verwendung.";
+    "Gemeinsame Ausgaben bequem begleichen. Keine Anmeldung, kein Tracking, vollständige Datenlöschung nach Verwendung.";
   const defaultTitle = "InstantSplit";
   const defaultImage = "https://instantsplit.de/metaTagDefaultImg.png";
   const defaultUrl = "https://www.instantsplit.de/";

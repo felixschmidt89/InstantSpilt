@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -59,7 +58,7 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
       if (error.response) {
         handleApiErrors(error, setError, "users", displayErrorModal, t);
       } else {
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         devLog("Error creating user.", error);
         displayErrorModal();
       }

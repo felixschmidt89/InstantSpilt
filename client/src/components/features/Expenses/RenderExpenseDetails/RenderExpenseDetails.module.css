@@ -1,7 +1,7 @@
 .container {
   /*prevent design from breaking in case of huge amounts */
   width: 110%;
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;

@@ -7,7 +7,6 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -133,7 +132,7 @@ const Contact = () => {
       }, 2500);
     } catch (error) {
       devLog("Error creating Feedback:", error);
-      setError(genericErrorMessage);
+      setError(t("generic-error-message"));
     }
   };
 

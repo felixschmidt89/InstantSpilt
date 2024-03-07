@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -67,7 +66,7 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
       if (error.response) {
         handleApiErrors(error, setError, "expenses", displayErrorModal, t);
       } else {
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         devLog("Error creating expense:", error);
         displayErrorModal();
       }

@@ -1,6 +1,6 @@
 .balancesContainer {
   height: 100%;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .userDetails {

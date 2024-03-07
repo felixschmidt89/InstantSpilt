@@ -16,12 +16,13 @@
 .modalContent {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background: var(--color-body);
-  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   border-radius: 1rem;
-  text-align: center;
   border: 0.25rem solid var(--color-grey);
-  max-width: 80%;
 }
 
 @media only screen and (min-width: 1921px) {

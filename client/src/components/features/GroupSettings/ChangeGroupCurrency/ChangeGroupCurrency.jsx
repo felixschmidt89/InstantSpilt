@@ -8,7 +8,6 @@ import { currenciesContent } from "../../../../contents/currenciesContent";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -59,7 +58,7 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
       setLabelCurrency(newGroupCurrency);
       handleUpdateFeedback();
     } catch (error) {
-      setError(genericErrorMessage);
+      setError(t("generic-error-message"));
       displayErrorModal();
       devLog("Error updating group currency:", error);
     }

@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { INACTIVE_DAYS } from "../../../../constants/dataConstants";
 
 // Hooks
@@ -48,7 +47,7 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
       );
       devLog("inactiveDataPurge setting updated:", response);
     } catch (error) {
-      setError(genericErrorMessage);
+      setError(t("generic-error-message"));
       devLog("Error updating inactive group data purge setting:", error);
       displayErrorModal();
     }
@@ -81,9 +80,8 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
                 />
               }
             />{" "}
-          </form>
+          </form>{" "}
         </div>
-
         <ErrorModal
           error={error}
           onClose={handleCloseErrorModal}

@@ -1,9 +1,8 @@
 .container {
-  overflow-y: auto;
+  overflow-y: scroll;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 0rem 2rem; /* Limiting width while keeping scrollbar on the border */
 }
 
 .container h1 {

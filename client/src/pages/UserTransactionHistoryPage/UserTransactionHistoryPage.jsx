@@ -7,7 +7,6 @@ import axios from "axios";
 
 // Constants and Utils
 import { devLog } from "../../utils/errorUtils";
-import { genericErrorMessage } from "../../constants/errorConstants";
 
 // Hooks
 import useFetchGroupCurrency from "../../hooks/useFetchGroupCurrency";
@@ -66,7 +65,7 @@ const UserTransactionHistoryPage = () => {
         setIsLoading(false);
       } catch (error) {
         devLog("Error fetching user expenses and payments:", error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         setIsLoading(false);
       }
     };

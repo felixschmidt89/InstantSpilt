@@ -9,7 +9,6 @@ import { useTranslation } from "react-i18next";
 // Constants and Utils
 import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { buttonStyles } from "../../../../constants/stylesConstants";
 
 // Hooks
@@ -66,7 +65,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       if (error.response) {
         handleApiErrors(error, setError, "payments", displayErrorModal, t);
       } else {
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         devLog("Error creating payment:", error);
         displayErrorModal();
       }

@@ -15,7 +15,6 @@ const GetStartedSection = () => {
   return (
     <>
       <div className={styles.groupContainer}>
-        <h2>{t("get-started-section")}</h2>
         <RouteButton
           route={`onboarding-create-group`}
           buttonText={t("get-started-create-group-button")}

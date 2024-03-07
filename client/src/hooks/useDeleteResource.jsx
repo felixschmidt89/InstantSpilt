@@ -3,8 +3,10 @@ import { useState } from "react";
 import axios from "axios";
 import { StatusCodes } from "http-status-codes";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
+// Constants and Utils
 import { devLog } from "../utils/errorUtils";
-import { genericErrorMessage } from "../constants/errorConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -21,6 +23,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @property {string} error - An error message, if any, during the deletion process.
  */
 const useDeleteResource = (resourceType, resourceId, route) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
   const resourceTypeSingular = resourceType.slice(0, -1);
@@ -43,7 +46,7 @@ const useDeleteResource = (resourceType, resourceId, route) => {
           `Error deleting resource (${resourceType} ${resourceId}):`,
           error
         );
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
       }
     }
   };

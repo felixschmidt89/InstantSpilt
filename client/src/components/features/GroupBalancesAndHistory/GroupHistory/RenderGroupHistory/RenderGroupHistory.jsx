@@ -1,10 +1,10 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../../constants/errorConstants";
 
 // Hooks
 import useFetchGroupMembers from "../../../../../hooks/useFetchGroupMembers";
@@ -20,6 +20,7 @@ import ErrorModal from "../../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./RenderGroupHistory.module.css";
+import { t } from "i18next";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -77,7 +78,7 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
         setIsLoading(false);
       } catch (error) {
         devLog("Error fetching group expenses and payments:", error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         displayErrorModal();
         setIsLoading(false);
       }

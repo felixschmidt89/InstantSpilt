@@ -38,11 +38,13 @@ const ErrorModal = ({ error, onClose, isVisible }) => {
         <div className={styles.modalContent} onClick={handleModalClick}>
           {isVisible && (
             <>
-              <ErrorDisplay
-                error={error}
-                remWidth={30}
-                errorFontColor={false}
-              />
+              <span className={styles.errorMessage}>
+                <ErrorDisplay
+                  error={error}
+                  remWidth={30}
+                  errorFontColor={false}
+                />
+              </span>
               <Button
                 style={smallButtonStyles}
                 variant='outlined'

@@ -9,11 +9,12 @@
   border: 0.15rem solid var(--color-grey);
   border-radius: 1rem;
   font-size: 1.6rem;
-  overflow-y: auto;
+  overflow-y: scroll;
   height: fit-content;
   outline: none;
   outline-color: var(--color-grey);
   line-height: 1.2;
+  overflow-x: hidden;
 }
 
 .explanation:hover,

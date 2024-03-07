@@ -9,7 +9,6 @@ import axios from "axios";
 // Constants and Utils
 import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { MINIMUM_VALID_AMOUNT } from "../../../../constants/dataConstants";
 import { buttonStyles } from "../../../../constants/stylesConstants";
 
@@ -115,7 +114,7 @@ const UpdatePayment = ({
       if (error.response) {
         handleApiErrors(error, setError, "payments", displayErrorModal, t);
       } else {
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         devLog("Error updating payment:", error);
         displayErrorModal();
       }

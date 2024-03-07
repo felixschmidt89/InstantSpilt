@@ -1,10 +1,10 @@
 // React and Third-Party Libraries
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../utils/errorUtils";
-import { genericErrorMessage } from "../constants/errorConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -20,6 +20,8 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @property {null|Error} error - An error object if there's an issue during data fetching or transforming.
  */
 const useGetInactiveGroupsFromLocalStorage = (groupCode) => {
+  const { t } = useTranslation();
+
   const [inactiveGroupNamesAndGroupCodes, setInactiveGroupNamesAndGroupCodes] =
     useState([]);
   const [isFetched, setIsFetched] = useState(false);
@@ -62,7 +64,7 @@ const useGetInactiveGroupsFromLocalStorage = (groupCode) => {
         setIsFetched(true);
       } catch (error) {
         devLog("Error fetching and transforming group names:", error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
       }
     };
 

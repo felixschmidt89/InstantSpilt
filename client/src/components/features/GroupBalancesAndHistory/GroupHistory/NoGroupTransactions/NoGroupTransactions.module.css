@@ -1,6 +1,5 @@
 .noTransactions {
   padding-top: 0.5rem;
-  padding: 0 0.5rem; /* Limiting width while keeping scrollbar on the border */
   margin: 0 auto;
   width: 60%;
 }

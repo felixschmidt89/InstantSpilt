@@ -1,14 +1,12 @@
 .container {
   height: 90%;
-  overflow-y: auto;
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
+  overflow-y: scroll;
   padding-bottom: 0.5rem;
 }
 
 @media screen and (max-width: 768px) {
   .container {
     width: 95%;
-    padding: 0 0.5rem; /* Limiting width while keeping scrollbar on the border */
     margin: 0 auto;
   }
 }

@@ -1,10 +1,10 @@
 // React and Third-Party Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../utils/errorUtils";
-import { genericErrorMessage } from "../constants/errorConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -19,6 +19,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @property {string|null} error - An error message in case of an error during fetching.
  */
 const useFetchPaymentInfo = (paymentId) => {
+  const { t } = useTranslation();
   const [paymentInfo, setPaymentInfo] = useState(null);
   const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
@@ -32,7 +33,7 @@ const useFetchPaymentInfo = (paymentId) => {
         setIsFetched(true);
       } catch (error) {
         devLog("Error fetching payment info:", error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
       }
     };
 

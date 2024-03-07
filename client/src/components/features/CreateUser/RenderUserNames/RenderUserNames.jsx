@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
 import emojiConstants from "../../../../constants/emojiConstants";
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -70,7 +69,7 @@ const RenderUserNames = ({
         setIsLoading(false);
       } catch (error) {
         devLog("Error fetching group users:", error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         displayErrorModal();
         setIsLoading(false);
       }

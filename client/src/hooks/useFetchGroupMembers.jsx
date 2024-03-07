@@ -1,10 +1,10 @@
 // React and Third-Party Libraries
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../utils/errorUtils";
-import { genericErrorMessage } from "../constants/errorConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -19,6 +19,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @property {Error|null} error - The error object if an error occurred during fetching, otherwise null.
  */
 const useFetchGroupMembers = (groupCode) => {
+  const { t } = useTranslation();
   const [groupMembers, setGroupMembers] = useState([]);
   const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
@@ -36,7 +37,7 @@ const useFetchGroupMembers = (groupCode) => {
         setIsFetched(true);
       } catch (error) {
         devLog("Error fetching group members:", error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
       }
     };
 

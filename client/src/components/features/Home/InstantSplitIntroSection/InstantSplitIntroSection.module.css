@@ -5,11 +5,19 @@
   width: fit-content;
   list-style: disc;
   padding-left: 2rem;
+  margin: 0 auto;
+}
+
+.introText {
+  display: flex;
+  flex-wrap: wrap;
+  width: 30rem;
 }
 
 .listItem {
   line-height: 1.4;
   font-size: 1.6rem;
+  width: 30rem;
 }
 
 .strong {
@@ -19,4 +27,15 @@
 .dataText,
 .introText {
   margin-top: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .introText {
+    width: 30rem;
+    margin: 0 auto;
+  }
+  .listItem {
+    margin-left: 2rem;
+    width: 30rem;
+  }
 }

@@ -1,12 +1,10 @@
 .container {
-  width: 60%;
   height: 90%;
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   margin-top: 1rem;
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 0.5rem;
 }
 
@@ -16,22 +14,6 @@
 
 .container h2 {
   margin-top: 0rem;
-}
-
-.settingsContainer {
-  margin-left: 7%;
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    width: 80%;
-  }
-}
-
-@media only screen and (min-width: 1921px) {
-  .container {
-    width: 50%;
-  }
 }
 
 /* Delayed rendering to avoid flickering */

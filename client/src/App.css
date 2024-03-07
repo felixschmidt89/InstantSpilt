@@ -107,6 +107,12 @@
   font-weight: 600;
 }
 
+/* Android emojis */
+@font-face {
+  font-family: "Noto Emoji Color";
+  src: url("../assets/fonts/NotoColorEmoji-Regular.ttf") format("truetype");
+}
+
 ::selection {
   background-color: var(--color-signal);
   color: var(--color-body);
@@ -143,6 +149,7 @@ main {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  overflow-y: scroll;
   margin: 0 auto;
   background-color: var(--color-main);
   border-radius: 2rem;
@@ -354,18 +361,21 @@ scrollbar-thumb {
 /* Larger Screens */
 @media only screen and (min-width: 1441px) and (max-width: 1920px) {
   main {
-    margin-top: 1rem;
-    height: 90vh;
-    height: 90svh;
-    width: 55rem;
+    margin-top: 5rem;
+    height: 70vh;
+    height: 70svh;
+    min-height: 70rem;
+    width: 70rem;
   }
 }
 
 @media only screen and (min-width: 1921px) {
   main {
-    margin-top: 1rem;
-    height: 75rem;
-    width: 68rem;
+    margin-top: 5rem;
+    height: 70vh;
+    height: 70svh;
+    min-height: 70rem;
+    width: 70rem;
   }
 }
 

@@ -1,9 +1,8 @@
 .container {
   margin: 0 auto;
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-top: 4rem;
   padding-bottom: 0.5rem;
-  overflow-y: auto;
+  overflow-y: scroll;
   width: 100%;
   text-align: center;
 }

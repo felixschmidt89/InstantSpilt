@@ -7,7 +7,8 @@
   max-width: 30rem;
   border: 0.15rem solid var(--color-grey);
   border-radius: 1rem;
-  overflow-y: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: fit-content;
   outline: none;
   outline-color: var(--color-grey);
@@ -23,8 +24,4 @@
 
 .strong {
   font-weight: bold;
-}
-
-.invitationLink {
-  padding-top:;
 }

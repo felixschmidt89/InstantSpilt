@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog, handleApiErrors } from "../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../constants/errorConstants";
 import { submitOnEnterClick } from "../../../utils/formUtils";
 
 // Hooks
@@ -89,7 +88,7 @@ const ChangeResourceName = ({
           t
         );
       } else {
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         devLog(`Error updating ${resourceType} name:`, error);
         displayErrorModal();
       }

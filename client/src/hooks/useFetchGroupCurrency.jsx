@@ -2,10 +2,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { StatusCodes } from "http-status-codes";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../utils/errorUtils";
-import { genericErrorMessage } from "../constants/errorConstants";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -20,6 +20,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @property {Error|null} error - The error object if an error
  */
 const useFetchGroupCurrency = (groupCode) => {
+  const { t } = useTranslation();
   const [groupCurrency, setGroupCurrency] = useState(null);
   const [isFetched, setIsFetched] = useState(false);
   const [error, setError] = useState(null);
@@ -44,7 +45,7 @@ const useFetchGroupCurrency = (groupCode) => {
         setIsFetched(true);
       } catch (error) {
         devLog("Error fetching group currency:", error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
       }
     };
 

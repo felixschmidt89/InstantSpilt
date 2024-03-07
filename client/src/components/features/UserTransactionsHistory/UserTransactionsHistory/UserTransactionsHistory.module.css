@@ -2,19 +2,13 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding-left: 8%;
-  margin: 0 auto;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   line-height: 1.3;
   font-size: 1.5rem;
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: 0 0rem; /* Limiting width while keeping scrollbar on the border */
-  }
   .item {
     border-top: 0.15rem solid var(--color-signal-reduced-opacity);
   }

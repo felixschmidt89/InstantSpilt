@@ -91,13 +91,13 @@ icon:hover {
 /* Larger Screens */
 @media only screen and (min-width: 1441px) and (max-width: 1920px) {
   .navContainer {
-    width: 55rem;
+    width: 70rem;
   }
 }
 
 @media only screen and (min-width: 1921px) {
   .navContainer {
-    width: 68rem;
+    width: 70rem;
   }
   .middleLogo {
     padding-top: 1.3rem;

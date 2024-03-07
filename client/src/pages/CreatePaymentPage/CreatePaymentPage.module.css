@@ -1,13 +1,11 @@
 .container {
   width: 100%;
   height: 90%;
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   margin-top: 1rem;
-
-  padding: 0 2rem; /* Limiting width while keeping scrollbar on the border */
   padding-bottom: 0.5rem;
 }
 

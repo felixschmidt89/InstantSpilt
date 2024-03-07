@@ -1,9 +1,9 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import { genericErrorMessage } from "../../../../constants/errorConstants";
 import { devLog } from "../../../../utils/errorUtils";
 import {
   calculateAndAddUserBalance,
@@ -30,6 +30,8 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * Parent component to settle expenses, identifying users with unsettled user balances.
  * @returns {JSX.Element} React component. */
 const SettleExpenses = () => {
+  const { t } = useTranslation();
+
   const groupCode = localStorage.getItem("activeGroupCode");
   const [unsettledUsers, setUnsettledUsers] = useState([]);
   const [error, setError] = useState(null);
@@ -63,7 +65,7 @@ const SettleExpenses = () => {
           "Error fetching and identifying users with unsettled balances:",
           error
         );
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         setIsLoading(false);
       }
     };

@@ -1,9 +1,10 @@
 // React and Third-Party Libraries
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
+
 // Constants and Utils
 import { devLog } from "../../../../../utils/errorUtils";
-import { genericErrorMessage } from "../../../../../constants/errorConstants";
 import { BALANCE_THRESHOLD } from "../../../../../constants/dataConstants";
 
 // Hooks
@@ -28,7 +29,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @returns {JSX.Element} React component. */
 const RenderGroupBalances = ({ groupCurrency }) => {
   const groupCode = localStorage.getItem("activeGroupCode");
-
+  const { t } = useTranslation();
   const [userDetails, setUserDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -65,7 +66,7 @@ const RenderGroupBalances = ({ groupCurrency }) => {
         setIsLoading(false);
       } catch (error) {
         devLog("Error fetching user details:", error);
-        setError(genericErrorMessage);
+        setError(t("generic-error-message"));
         displayErrorModal();
         setIsLoading(false);
       }
@@ -88,7 +89,9 @@ const RenderGroupBalances = ({ groupCurrency }) => {
           groupCurrency={groupCurrency}
         />
       ) : (
-        <NotEnoughUsers />
+        <span className={styles.issue}>
+          <NotEnoughUsers />
+        </span>
       )}
       <PiratePx COUNT_IDENTIFIER={"group-balances"} />
       <ErrorModal

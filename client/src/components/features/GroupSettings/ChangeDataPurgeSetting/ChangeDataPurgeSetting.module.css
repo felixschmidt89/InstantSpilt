@@ -6,7 +6,7 @@
   border: 0.15rem solid var(--color-grey);
   border-radius: 1rem;
   font-size: 1.6rem;
-  overflow-y: auto;
+  overflow-y: scroll;
   height: fit-content;
   outline: none;
   outline-color: var(--color-grey);
@@ -16,12 +16,12 @@
 .box {
   display: flex;
   flex-direction: row;
-  width: 26.6rem;
   align-items: center;
 }
-
+/* ensure toggle does not widen container and break design */
 .toggle {
-  margin: 0 auto;
+  position: absolute;
+  margin-left: 21rem;
 }
 
 .explanation:hover,

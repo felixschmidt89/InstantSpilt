@@ -3,8 +3,10 @@
   margin-bottom: 0.5rem;
 }
 .container {
-  width: fit-content;
+  height: 90%;
   margin: 0 auto;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 /* Delayed rendering to avoid flickering */

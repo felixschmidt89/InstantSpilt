@@ -3,20 +3,13 @@
 }
 
 .failMessage {
-  overflow-y: auto;
+  overflow-y: scroll;
   margin-bottom: 0.5rem;
-  width: 85%;
   margin: 0 auto;
 }
 
 @media (max-width: 768px) {
   .failMessage {
-    width: 70%;
-  }
-}
-
-@media only screen and (min-width: 1921px) {
-  .failMessage {
-    width: 70%;
+    width: 75%;
   }
 }
