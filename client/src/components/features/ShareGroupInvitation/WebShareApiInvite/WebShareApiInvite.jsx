@@ -22,7 +22,7 @@ import { buttonStyles } from "../../../../constants/stylesConstants";
 const WebShareApiInvite = ({ groupName, invitationLink }) => {
   const { t } = useTranslation();
   const title = t("web-share-api-invite-title", { groupName });
-  const text = t("web-share-api-invite-text");
+  const text = t("web-share-api-invite-text", { groupName });
   const url = invitationLink;
 
   const handleShareClick = async () => {

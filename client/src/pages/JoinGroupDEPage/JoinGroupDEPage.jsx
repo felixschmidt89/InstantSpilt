@@ -11,6 +11,9 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import JoinGroupViaInvitation from "../../components/features/AcceptGroupInvitationAndJoinGroup/JoinGroupViaInvitation/JoinGroupViaInvitation";
 
+// Styles
+import styles from "./JoinGroupDEPage.module.css";
+
 /**
  * Page for joining a group using German meta tags.
  * @returns {JSX.Element} React component.
@@ -20,7 +23,7 @@ const JoinGroupDEPage = () => {
   const { groupData, isFetched } = useFetchGroupData(groupCode);
   const groupName = groupData?.group?.groupName || "";
   return (
-    <main>
+    <main className={styles.container}>
       <HelmetMetaTagsNetlify
         title={`InstantSplit - Einladung zu ${groupName}`}
         description={`Tritt ${groupName} bei um unsere gemeinsamen Ausgaben zu begleichen.`}

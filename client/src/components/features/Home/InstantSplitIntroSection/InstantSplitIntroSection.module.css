@@ -4,20 +4,21 @@
   flex-direction: column;
   width: fit-content;
   list-style: disc;
-  padding-left: 2rem;
   margin: 0 auto;
 }
 
 .introText {
   display: flex;
   flex-wrap: wrap;
-  width: 30rem;
+  margin: 0 auto;
+  width: 40rem;
 }
 
 .listItem {
   line-height: 1.4;
   font-size: 1.6rem;
-  width: 30rem;
+  width: 40rem;
+  margin-left: 3rem;
 }
 
 .strong {

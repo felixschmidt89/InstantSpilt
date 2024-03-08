@@ -1,13 +1,13 @@
 .terms {
+  text-wrap: wrap;
   font-style: italic;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   text-align: left;
-  width: 30rem;
   margin: 0 auto;
 }
 
 @media screen and (max-width: 768px) {
   .terms {
-    width: 20rem;
+    margin-top: 0.5rem;
   }
 }

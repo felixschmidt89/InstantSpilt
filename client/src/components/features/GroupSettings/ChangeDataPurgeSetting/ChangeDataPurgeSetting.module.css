@@ -20,8 +20,7 @@
 }
 /* ensure toggle does not widen container and break design */
 .toggle {
-  position: absolute;
-  margin-left: 21rem;
+  margin-left: 1.5rem;
 }
 
 .explanation:hover,

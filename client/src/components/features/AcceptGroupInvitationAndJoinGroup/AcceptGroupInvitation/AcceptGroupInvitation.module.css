@@ -1,12 +1,13 @@
 .container {
-  padding-top: 5rem;
+  padding-top: 2rem;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  text-wrap: wrap;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .termsAndConditions {
   width: 80%;
-  padding-left: 1rem;
 }

@@ -17,7 +17,11 @@ const InvitationIntro = ({ groupName }) => {
 
   return (
     <div className={styles.container}>
-      <p>{t("invitation-intro-copy", { groupName })}</p>
+      <p>
+        {t("invitation-intro-copy1")}
+        <span className={styles.groupName}> {groupName} </span>
+        {t("invitation-intro-copy2")}
+      </p>
     </div>
   );
 };

@@ -2,13 +2,7 @@
   height: 90%;
   overflow-y: scroll;
   padding-bottom: 0.5rem;
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    width: 95%;
-    margin: 0 auto;
-  }
+  padding: 0rem 1rem;
 }
 
 /* Delayed rendering to avoid flickering */

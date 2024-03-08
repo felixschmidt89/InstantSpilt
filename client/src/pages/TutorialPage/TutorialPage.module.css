@@ -9,6 +9,7 @@
   overflow-y: scroll;
   overflow-x: hidden;
   padding-bottom: 0.5rem;
+  padding: 0rem 1rem;
 }
 
 .container h1 {
@@ -22,7 +23,6 @@
 .section {
   border-bottom: 0.2rem solid var(--color-signal-reduced-opacity);
   width: 99%;
-  margin: 0 auto;
 }
 
 /* Delayed rendering to avoid flickering */

@@ -99,7 +99,7 @@ const DefaultAndUserSettingsBar = () => {
                   iconExplanationIsIdleTranslateX='-0.3'
                   route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
                   iconSize={3.5}
-                  translateY={0.1}
+                  translateY={0.3}
                   translateX={0}
                   iconScale={0.8}
                 />
@@ -113,12 +113,12 @@ const DefaultAndUserSettingsBar = () => {
                   containerHeight='5.8'
                   containerWidth='7.2'
                   iconSize={3.5}
-                  iconScale={1.5}
+                  iconScale={1.4}
                   translateY={0.4}
-                  translateX={-0.3}
+                  translateX={0.3}
                   iconExplanationWidth='5'
                   iconExplanationTextAlignment='center'
-                  iconExplanationIsIdleTranslateX='-0.3'
+                  iconExplanationIsIdleTranslateX='0.3'
                   explanationText={t("main-bar-more-icon-text")}
                   onClick={showUserSettings}
                 />

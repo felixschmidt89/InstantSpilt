@@ -1,7 +1,7 @@
 .container {
-  padding: 0.5rem 1rem;
   line-height: 1.5;
   width: 100%;
+  padding: 0.5rem 0;
 }
 .bar {
   width: 100%;

@@ -1,18 +1,18 @@
 .container {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0;
   line-height: 1.5;
   width: 100%;
 }
 
 .list li {
   list-style-type: disc;
-  margin-left: 2rem;
+  margin-left: 3rem;
   line-height: 1.5;
 }
 /* Mobile*/
 @media only screen and (max-width: 768px) {
-  .container {
-    width: 100%;
-    margin-left: 0.5rem;
+  .list li {
+    margin-left: 2rem;
+    line-height: 1.5;
   }
 }

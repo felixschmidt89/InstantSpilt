@@ -1,7 +1,15 @@
-.paragraph {
-  margin-top: 1rem;
+.container {
+  width: 40rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
-.noWrap {
-  white-space: nowrap;
+.groupName {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    width: 30rem;
+  }
 }

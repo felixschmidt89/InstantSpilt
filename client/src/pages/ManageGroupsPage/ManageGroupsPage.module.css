@@ -3,7 +3,6 @@
 }
 
 .container {
-  width: 50%;
   height: 90%;
   margin: 0 auto;
   margin-top: 1rem;
@@ -11,12 +10,6 @@
 
 .container h1 {
   margin-bottom: 0rem;
-}
-
-@media only screen and (max-width: 768px) {
-  .container {
-    width: 60%;
-  }
 }
 
 /* Delayed rendering to avoid flickering */

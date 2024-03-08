@@ -1,7 +1,6 @@
 .container {
-  padding: 0.5rem 1rem;
   line-height: 1.5;
-  width: 100%;
+  padding: 0.5rem 0;
 }
 
 .list li {
@@ -16,10 +15,15 @@
   margin-bottom: 0.5rem;
 }
 
-/* Mobile*/
-@media only screen and (max-width: 768px) {
-  .container {
-    width: 100%;
-    margin-left: 0.5rem;
+.list li {
+  list-style-type: disc;
+  margin-left: 3rem;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 768px) {
+  .list li {
+    margin-left: 2rem;
   }
 }
