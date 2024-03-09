@@ -60,16 +60,16 @@ const UserDetailsPage = () => {
           </h2>
           <div className={styles.userBalances}>
             <UserTotals userData={userData} groupCurrency={groupCurrency} />
-            <div className={styles.transactionHistoryButton}>
-              <RouteButton
-                route={`user-transaction-history/${groupCode}/${userId}`}
-                buttonText={t(
-                  "user-details-page-transactions-history-button-text"
-                )}
-                setPreviousRoute={true}
-                margin='0px'
-              />
-            </div>
+          </div>
+          <div className={styles.transactionHistoryButton}>
+            <RouteButton
+              route={`user-transaction-history/${groupCode}/${userId}`}
+              buttonText={t(
+                "user-details-page-transactions-history-button-text"
+              )}
+              setPreviousRoute={true}
+              margin='0px'
+            />
           </div>
           <div className={styles.userSettings}>
             <h3>

@@ -1,9 +1,7 @@
 .totalsContainer {
   display: flex;
   flex-direction: column;
-  width: 70%;
   margin: 0 auto;
-  padding-left: 4.5rem;
 }
 
 .expenseEmoji {
@@ -22,10 +20,4 @@
 
 .value {
   text-align: right;
-}
-
-@media screen and (max-width: 500px) {
-  .totalsContainer {
-    width: 100%;
-  }
 }

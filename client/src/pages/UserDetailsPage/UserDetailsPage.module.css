@@ -22,13 +22,15 @@
   color: var(--color-error);
 }
 
-.userSettings {
+.userSettings,
+.userBalances {
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
   width: 70%;
   margin: 0 auto;
   padding-left: 4.5rem;
+  max-width: 33rem;
 }
 
 .userBalances {
@@ -51,8 +53,9 @@
   padding-top: 2rem;
   margin: 0 auto;
 }
-@media screen and (max-width: 500px) {
-  .userSettings {
+@media screen and (max-width: 768px) {
+  .userSettings,
+  .userBalances {
     width: 100%;
   }
 }
