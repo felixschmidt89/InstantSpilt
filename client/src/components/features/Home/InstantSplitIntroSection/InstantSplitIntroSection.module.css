@@ -18,7 +18,7 @@
   line-height: 1.4;
   font-size: 1.6rem;
   width: 40rem;
-  margin-left: 3rem;
+  margin-left: 4rem;
 }
 
 .strong {
@@ -36,7 +36,7 @@
     margin: 0 auto;
   }
   .listItem {
-    margin-left: 2rem;
+    margin-left: 3.5rem;
     width: 30rem;
   }
 }
