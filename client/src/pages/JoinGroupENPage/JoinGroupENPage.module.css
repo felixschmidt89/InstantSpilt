@@ -1,3 +1,10 @@
+.container {
+  height: 100%;
+  overflow-y: scroll;
+  padding-bottom: 0.5rem;
+  margin: 0 auto;
+}
+
 /* Delayed rendering to avoid flickering */
 .container {
   opacity: 0;
