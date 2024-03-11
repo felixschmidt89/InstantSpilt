@@ -2,26 +2,24 @@
 
 A user centered Full (MERN) Stack PWA designed for settling group expenses with a focus on functionality and data privacy, eliminating the need for personalized user registration or mandatory app installation. Allows gaining and sharing access to a group via a simple link and managing an unlimited number of such groups. Prioritizes privacy by not identifying or logging individual users and sessions and by purging all data of a group after 90 days of group inactivity.
 
-<div align="center" style="display: flex; flex-wrap: wrap; justify-content: center;">
-  <img src="./client/public/app-image.png" alt="App screenshot1" width="200px">
-  <img src="./client/public/app-image2.png" alt="App screenshot2" width="200px">
-    <img src="./client/public/app-image3.png" alt="App screenshot3" width="200px">
+<div align="center" style="display: flex; flex-wrap: wrap; gap: 10px;justify-content: center; margin-top: 10px">
+  <img src="./client/public/app-image.png" alt="App screenshot2" width="210px">
+  <img src="./client/public/app-image2.png" alt="App screenshot2" width="580px">
 </div>
-<div align="center" style="display: flex; flex-wrap: wrap; justify-content: center;">
-    <img src="./client/public/app-image4.png" alt="App screenshot4" width="200px">
-    <img src="./client/public/app-image5.png" alt="App screenshot5" width="200px">
-        <img src="./client/public/app-image6.png" alt="App screenshot6" width="200px">
+<div align="center" style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 10px">
+        <img src="./client/public/app-image3.png" alt="App screenshot6" width="800px">
 </div>
 
 ## About
 
 - **Project idea**: Frustrated with the need for each of my friends to download an app to settle our shared trip expenses, I decided to build InstantSplit to fill in the gap.
-- **Project purpose**: In September 2023, when I was still a Web Development student, I took on this project to continue learning and showcase my coding skills while creating a practical tool for others.
-- **Project status**:
+- **Project purpose**: In September 2023 I took on this project to continue learning and showcase my coding skills while creating a practical tool for others.
 
+- **Project status**:
   - The application has been fully functional since the release of the first MVP on 03/10/2023 and will continue to receive improvements.
-  - Recently, the codebase, UI and UX have been widely improved after the first user tests in January 2024
-  - Further development will focus on further improving UI/UX, adding unit tests, database encryption, server side refactoring.
+  - Recently, codebase, UI and UX have been widely improved after the first user tests in January 2024
+  - Further development will focus on implementing database encryption, adding unit tests, and general server-side refactoring.
+  - The next new core user functionality will be multi-currency expense tracking and daily currency rate conversion for settlement payments in a group's base currency.
 
 ## Access the application or try the demo.
 
@@ -45,7 +43,6 @@ A user centered Full (MERN) Stack PWA designed for settling group expenses with 
 ![Axios](https://img.shields.io/badge/Axios-61DAFB?style=for-the-badge&logo=axios&logoColor=white)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
 ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)
 ![http-status-codes](https://img.shields.io/badge/http--status--codes-4285F4?style=for-the-badge)
 ![React Helmet Async](https://img.shields.io/badge/React%20Helmet%20Async-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![React Icons](https://img.shields.io/badge/React%20Icons-61DAFB?style=for-the-badge&logo=react&logoColor=white)
@@ -61,3 +58,5 @@ A user centered Full (MERN) Stack PWA designed for settling group expenses with 
 - [Friendly Captcha](https://friendlycaptcha.com/)
 - [React Device Detect](https://www.npmjs.com/package/react-device-detect)
 - [piratepx](https://github.com/piratepx)
+
+## Main functionalities

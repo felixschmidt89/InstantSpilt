@@ -13,9 +13,13 @@ import styles from "./ShareGroupInvitation.module.css";
  * @param {Object} props - The component props.
  * @param {string} props.groupName - The name of the group.
  * @param {string} props.invitationLinkDE - German meta tags invitation link.
- *  @param {string} props.invitationLinkEN - English meta tags invitation link. * @returns {JSX.Element} React component. */
+ *  @param {string} props.invitationLinkEN - English meta tags invitation link. 
+ * @param {string} props.predeterminedInvitationLink - Predetermined invitation link (in parent component).
+
+ * @returns {JSX.Element} React component. */
 const ShareGroupInvitation = ({
   groupName,
+  predeterminedInvitationLink,
   invitationLinkDE,
   invitationLinkEN,
 }) => {
@@ -25,12 +29,18 @@ const ShareGroupInvitation = ({
   const isGerman = i18n.language === "de";
 
   // Determine the appropriate invitation link
-  const invitationLink = isGerman ? invitationLinkDE : invitationLinkEN;
+  const invitationLink =
+    predeterminedInvitationLink ||
+    (isGerman ? invitationLinkDE : invitationLinkEN);
 
   return (
     <div className={styles.container}>
       <div className={styles.invitationLink}>
-        {t("share-group-invitation-explanation", { groupName })}
+        {t("share-group-invitation-explanation-part1")}{" "}
+        <span className={styles.groupName}>
+          {t("share-group-invitation-explanation-groupname", { groupName })}{" "}
+        </span>
+        {t("share-group-invitation-explanation-part2")}
         :
         <CopyToClipboard
           infoToCopy={invitationLink}

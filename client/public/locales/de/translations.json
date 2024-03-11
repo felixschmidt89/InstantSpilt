@@ -197,9 +197,10 @@
   "confirm-settlement-payment-button": "bestätigen",
   "all-expenses-settled": "Alles beglichen",
   "render-settlement-payment-suggestions-due": "offen",
-  "share-group-invitation-explanation": "Kopiere den Link, um andere zu  {{groupName}} einzuladen",
+  "share-group-invitation-explanation-part1": "Link kopieren, um andere zu",
+  "share-group-invitation-explanation-groupname": "{{groupName}}",
+  "share-group-invitation-explanation-part2": "einzuladen",
   "share-group-invitation-or": "oder",
-
   "web-share-api-invite-title": "Einladung zu {{groupName}}",
   "web-share-api-invite-text": "Tritt {{groupName}} bei um unsere gemeinsamen Ausgaben zu begleichen. Keine Registrierung notwendig.",
   "web-share-api-invite-button": "teilen",

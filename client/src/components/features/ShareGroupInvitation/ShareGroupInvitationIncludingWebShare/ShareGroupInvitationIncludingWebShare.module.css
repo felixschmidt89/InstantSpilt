@@ -6,35 +6,7 @@
 }
 
 .orCopy {
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   text-align: center;
-}
-
-.invitationLink {
-  padding: 0.5rem 1rem;
-  width: fit-content;
-  border: 0.15rem solid var(--color-grey);
-  border-radius: 1rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: fit-content;
-  outline: none;
-  outline-color: var(--color-grey);
-}
-
-.invitationLink:hover,
-.invitationLink:focus {
-  border-color: var(--color-signal);
-  background-color: var(--color-body);
-}
-
-@media screen and (max-width: 768px) {
-  .invitationLink {
-    width: 20rem;
-    margin: 0 auto;
-  }
-}
-
-.strong {
-  font-weight: bold;
 }
