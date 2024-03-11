@@ -16,19 +16,22 @@ import { deleteGroupDataFromLocalStorage } from "../../../../utils/localStorageU
 // Hooks
 import useValidateGroupExistence from "../../../../hooks/useValidateGroupCodeExistence";
 import useFetchGroupData from "../../../../hooks/useFetchGroupData";
+import useIsSlimDevice from "../../../../hooks/useIsSlimDevice";
 
 // Components
 import ReactIconNavigate from "../../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
+import InstantSplitLogo from "../../../common/InstantSplitLogo/InstantSplitLogo";
 
 // Styles
 import styles from "./DefaultAndUserSettingsBar.module.css";
-import InstantSplitLogo from "../../../common/InstantSplitLogo/InstantSplitLogo";
 
 const DefaultAndUserSettingsBar = () => {
   const navigate = useNavigate();
   const containerRef = useRef(null);
   const { t } = useTranslation();
   const groupCode = localStorage.getItem("activeGroupCode");
+  const isSlimDevice = useIsSlimDevice();
+
   const [isDefaultBarShown, setIsDefaultBarShown] = useState(true);
 
   // Validate active groupCode
@@ -96,11 +99,11 @@ const DefaultAndUserSettingsBar = () => {
                   iconExplanationWidth='5'
                   explanationText={t("main-bar-invite-icon-text")}
                   iconExplanationTextAlignment='center'
-                  iconExplanationIsIdleTranslateX='-0.3'
+                  iconExplanationIsIdleTranslateX='0.3'
                   route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
                   iconSize={3.5}
                   translateY={0.3}
-                  translateX={0}
+                  translateX={0.5}
                   iconScale={0.8}
                 />
               </span>
@@ -115,10 +118,10 @@ const DefaultAndUserSettingsBar = () => {
                   iconSize={3.5}
                   iconScale={1.4}
                   translateY={0.4}
-                  translateX={0.3}
-                  iconExplanationWidth='5'
+                  translateX={isSlimDevice ? 0.5 : -0.3}
+                  iconExplanationWidth={5}
                   iconExplanationTextAlignment='center'
-                  iconExplanationIsIdleTranslateX='0.3'
+                  iconExplanationIsIdleTranslateX={isSlimDevice ? 0.5 : -0.3}
                   explanationText={t("main-bar-more-icon-text")}
                   onClick={showUserSettings}
                 />

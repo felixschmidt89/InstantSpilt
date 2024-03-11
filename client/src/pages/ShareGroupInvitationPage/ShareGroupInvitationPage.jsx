@@ -49,10 +49,11 @@ const ShareGroupInvitationPage = () => {
       />
       <PiratePx COUNT_IDENTIFIER={"share-group"} />
       <InAppNavigationBar back={true} />
-      <h1>{t("share-group-invitation-page-header")}</h1>
 
       {isFetched && (
         <div className={styles.container}>
+          <h1>{t("share-group-invitation-page-header")}</h1>
+
           {supportsWebShareAPI ? (
             <ShareGroupInvitationIncludingWebShare
               groupName={groupData.group.groupName}

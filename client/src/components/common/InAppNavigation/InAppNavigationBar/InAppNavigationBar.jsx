@@ -9,9 +9,11 @@ import { useTranslation } from "react-i18next";
 import { devLog } from "../../../../utils/errorUtils";
 import { getRouteFromLocalStorage } from "../../../../utils/localStorageUtils";
 
+// Components
+import InstantSplitLogo from "../../InstantSplitLogo/InstantSplitLogo";
+
 // Styles
 import styles from "./InAppNavigationBar.module.css";
-import InstantSplitLogo from "../../InstantSplitLogo/InstantSplitLogo";
 
 /**
  * InAppNavigationBar component for rendering navigation links within the application. Utilizes previousRoute key from local storage for nested navigation and nestedPreviousRoute for further nested navigation

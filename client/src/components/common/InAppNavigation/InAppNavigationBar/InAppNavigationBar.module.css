@@ -9,8 +9,6 @@
   position: relative; /* To enable absolute centering of InstantSplitLogo */
   overflow-x: hidden;
   overflow-y: hidden;
-  padding-left: 1.9rem;
-  padding-right: 1.8rem;
   opacity: 0;
   animation: delayedRender 0.1s ease 0.2s forwards;
 }
@@ -25,12 +23,23 @@
 .icon {
   font-family: "Ubuntu", sans-serif;
   font-size: 3.5rem;
+  transform: scale(1.05);
 }
 
 .text {
   line-height: 0.4;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   text-align: center;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 8rem;
+  height: 5.8rem;
 }
 
 .iconContainer:hover,
