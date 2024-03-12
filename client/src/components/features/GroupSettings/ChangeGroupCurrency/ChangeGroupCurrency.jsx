@@ -122,7 +122,7 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
           submit={true}
           marginLeft='0.1'
           transformScale={1.3}
-          translateX={0.3}
+          translateX={0.5}
           translateY={0.1}
         />
       </form>

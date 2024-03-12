@@ -4,7 +4,6 @@
   align-items: flex-start;
   padding: 0.5rem 1rem;
   width: fit-content;
-  width: 35rem;
   border: 0.15rem solid var(--color-grey);
   border-radius: 1rem;
   overflow-y: scroll;
@@ -14,6 +13,10 @@
   outline-color: var(--color-grey);
   margin: 0 auto;
   margin-top: 1rem;
+}
+
+.invitationLink {
+  padding-bottom: 0.3rem;
 }
 
 .container:hover,

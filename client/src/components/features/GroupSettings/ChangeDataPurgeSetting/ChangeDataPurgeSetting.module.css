@@ -18,9 +18,8 @@
   flex-direction: row;
   align-items: center;
 }
-/* ensure toggle does not widen container and break design */
 .toggle {
-  margin-left: 1.5rem;
+  margin-left: 1.3rem;
 }
 
 .explanation:hover,

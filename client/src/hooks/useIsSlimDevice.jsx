@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 /**
- * Determines if the device is small (maximum width of 600px).
+ * Determines if the device is slim (maximum width of 600px).
  * @returns {boolean} True if the device is small, otherwise false.
  */
 const useIsSlimDevice = () => {

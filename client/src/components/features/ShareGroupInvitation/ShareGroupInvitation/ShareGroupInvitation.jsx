@@ -7,6 +7,7 @@ import CopyToClipboard from "../../../common/CopyToClipboard/CopyToClipboard";
 
 // Styles
 import styles from "./ShareGroupInvitation.module.css";
+import useIsSlimDevice from "../../../../hooks/useIsSlimDevice";
 /**
  * Renders option for sharing a group invitation.
  *
@@ -25,6 +26,8 @@ const ShareGroupInvitation = ({
 }) => {
   const { t, i18n } = useTranslation();
 
+  const isSlimDevice = useIsSlimDevice();
+
   // Check language locale
   const isGerman = i18n.language === "de";
 
@@ -40,13 +43,12 @@ const ShareGroupInvitation = ({
         <span className={styles.groupName}>
           {t("share-group-invitation-explanation-groupname", { groupName })}{" "}
         </span>
-        {t("share-group-invitation-explanation-part2")}
-        :
-        <CopyToClipboard
-          infoToCopy={invitationLink}
-          inputFieldWidth={"25rem"}
-        />
+        {t("share-group-invitation-explanation-part2")}:{" "}
       </div>
+      <CopyToClipboard
+        infoToCopy={invitationLink}
+        inputFieldWidth={isSlimDevice ? "25rem" : "30rem"}
+      />
     </div>
   );
 };

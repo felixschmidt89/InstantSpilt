@@ -19,7 +19,7 @@
 
 @media (max-width: 500px) {
   .container {
-    padding: 0 1rem;
+    padding-left: 0.25rem;
   }
 }
 

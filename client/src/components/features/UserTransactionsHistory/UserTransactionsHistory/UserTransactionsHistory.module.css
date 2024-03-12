@@ -6,10 +6,12 @@
   margin-bottom: 0.5rem;
   line-height: 1.3;
   font-size: 1.5rem;
+  padding-left: 0.6rem;
 }
 
 @media (max-width: 768px) {
   .item {
     border-top: 0.15rem solid var(--color-signal-reduced-opacity);
+    padding-left: 0rem;
   }
 }
