@@ -107,12 +107,6 @@
   font-weight: 600;
 }
 
-/* Android emojis */
-@font-face {
-  font-family: "Noto Emoji Color";
-  src: url("../assets/fonts/NotoColorEmoji-Regular.ttf") format("truetype");
-}
-
 ::selection {
   background-color: var(--color-signal);
   color: var(--color-body);
