@@ -1,6 +1,8 @@
 # InstantSplit
 
-A user centered Full (MERN) Stack PWA designed for settling group expenses with a focus on functionality and data privacy, eliminating the need for personalized user registration or mandatory app installation. Allows gaining and sharing access to a group via a simple link and managing an unlimited number of such groups. Prioritizes privacy by not identifying or logging individual users and sessions and by purging all data of a group after 90 days of group inactivity.
+- User centered Full (MERN) Stack PWA designed for settling group expenses with a focus on functionality and data privacy, eliminating the need for personalized user registration or mandatory app installation.
+- Allows gaining and sharing access to a group via a simple link and managing an unlimited number of such groups.
+- Prioritizes privacy by not identifying or logging individual users and sessions and by purging all data of a group after 90 days of group inactivity.
 
 <div align="center" style="display: flex; flex-wrap: wrap; gap: 10px;justify-content: center; margin-top: 10px">
   <img src="./client/public/app-image.png" alt="App screenshot2" width="210px">
@@ -58,5 +60,3 @@ A user centered Full (MERN) Stack PWA designed for settling group expenses with 
 - [Friendly Captcha](https://friendlycaptcha.com/)
 - [React Device Detect](https://www.npmjs.com/package/react-device-detect)
 - [piratepx](https://github.com/piratepx)
-
-## Main functionalities

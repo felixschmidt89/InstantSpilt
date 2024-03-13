@@ -137,7 +137,7 @@
   "create-user-cta-expense-copy": "Um eine Ausgabe hinzufügen, benötigst du mindestens 2 Gruppenmitglieder",
   "no-group-transactions-start-adding-expenses": "Füge Ausgaben",
   "no-group-transactions-add-payments": "und Zahlungen",
-  "no-group-transactions-below": "unten hinzu",
+  "no-group-transactions-below": "unten",
   "not-enough-users-start-adding": "Um Ausgaben einzutragen, füge mindestens zwei Mitglieder",
   "not-enough-users-append": " hinzu",
   "no-user-transactions-message": "Bislang keine Ausgaben oder Zahlungen",
