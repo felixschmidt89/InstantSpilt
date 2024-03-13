@@ -8,7 +8,6 @@ import useGetInactiveGroupsFromLocalStorage from "../../../../../hooks/useGetIna
 // Components
 import RenderGroupSelection from "../RenderGroupSelection/RenderGroupSelection";
 import ErrorDisplay from "../../../../common/ErrorDisplay/ErrorDisplay";
-import Spinner from "../../../../common/Spinner/Spinner";
 
 // Styles
 import styles from "./SwitchGroups.module.css";
@@ -26,9 +25,7 @@ const SwitchGroups = ({ groupCode }) => {
     <div className={styles.container}>
       <h2>{t("switch-groups-header")}</h2>
 
-      {!isFetched ? (
-        <Spinner />
-      ) : (
+      {isFetched && (
         <div>
           {inactiveGroupNamesAndGroupCodes.length === 0 ? (
             <p className={styles.noGroupsMessage}>

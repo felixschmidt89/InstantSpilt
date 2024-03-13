@@ -61,7 +61,7 @@ icon:hover {
 /* Mobile*/
 @media only screen and (max-width: 768px) {
   .navContainer {
-    width: 98vw;
+    width: 100vw;
   }
   .middleLogo {
     padding-top: 1.5rem;

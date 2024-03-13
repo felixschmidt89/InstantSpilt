@@ -37,6 +37,7 @@ const RenderUserNames = ({
   incrementRerenderTrigger,
 }) => {
   const [userDetails, setUserDetails] = useState([]);
+  const [noGroupMembers, setNoGroupMembers] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const { t } = useTranslation();
@@ -63,8 +64,10 @@ const RenderUserNames = ({
               new Date(userB.createdAt) - new Date(userA.createdAt)
           );
           setUserDetails(sortedUserDetails);
+          setNoGroupMembers(false);
+        } else {
+          setNoGroupMembers(true);
         }
-        devLog(userDetails);
         setError(null);
         setIsLoading(false);
       } catch (error) {
@@ -80,6 +83,10 @@ const RenderUserNames = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [rerenderTrigger, groupCode]);
 
+  useEffect(() => {
+    devLog("group members:", userDetails);
+  }, [userDetails]);
+
   return (
     <div className={styles.container}>
       {isLoading ? (
@@ -92,7 +99,11 @@ const RenderUserNames = ({
             {t("render-user-names-component-header")}
           </h2>
           <div className={styles.members}>
-            {userDetails.length > 0 ? (
+            {noGroupMembers ? (
+              <span className={styles.noGroupMembers}>
+                {t("render-user-names-component-no-group-members-added-copy")}
+              </span>
+            ) : (
               <ul className={styles.list}>
                 {userDetails.map(({ _id, userName }, index) => (
                   <li key={index} className={styles.listItem}>
@@ -114,8 +125,6 @@ const RenderUserNames = ({
                   </li>
                 ))}
               </ul>
-            ) : (
-              t("render-user-names-component-no-group-members-added-copy")
             )}
           </div>
         </div>

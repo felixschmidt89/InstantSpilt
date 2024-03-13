@@ -63,6 +63,7 @@ const PaymentDetailsPage = () => {
             route={`update-payment/${groupCode}/${itemId}`}
             buttonText={t("payment-details-edit-payment-button-text")}
             setPreviousRoute={true}
+            endIcon={"edit"}
           />
           <DeleteResource resourceId={itemId} resourceType='payments' />
         </div>

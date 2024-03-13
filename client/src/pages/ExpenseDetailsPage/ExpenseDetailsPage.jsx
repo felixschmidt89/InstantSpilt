@@ -50,7 +50,7 @@ const ExpenseDetailsPage = () => {
       currencyInfoIsFetched &&
       groupMembersIsFetched ? (
         <div className={styles.container}>
-          <div className={styles.expenseEmoji}>
+          <div className={styles.emoji}>
             <Emoji label={"expense emoji"} emoji={emojiConstants.expense} />
           </div>
           <h1>{expenseInfo.expenseDescription}</h1>
@@ -78,6 +78,7 @@ const ExpenseDetailsPage = () => {
             route={`update-expense/${groupCode}/${itemId}`}
             buttonText={t("expense-details-edit-expense-button-text")}
             setPreviousRoute={true}
+            endIcon={"edit"}
           />
           <DeleteResource resourceId={itemId} resourceType='expenses' />
         </div>

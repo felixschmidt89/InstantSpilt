@@ -39,8 +39,8 @@ function CreateUsersPage() {
         <InAppNavigationBar back={true} />
       )}
       <div className={styles.container}>
-        {!isNewUser ? <h1>group members</h1> : null}
-        <h2>{t("create-users-page-header")}</h2>
+        {!isNewUser ? <h1>{t("create-users-page-header")}</h1> : null}
+        <h2>{t("create-users-form-header")}</h2>
         <CreateUserAndRenderUserList />
       </div>
     </main>

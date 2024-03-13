@@ -6,37 +6,54 @@
 
 .members {
   height: max-content;
-  overflow-y: scroll;
   line-height: 1.2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0.5rem 1rem;
-  width: 23rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 23.5rem;
+  height: fit-content;
+  max-height: 35rem;
   border: 0.15rem solid var(--color-grey);
   border-radius: 1rem;
-  overflow-y: scroll;
   overflow-x: hidden;
-  height: fit-content;
+  overflow-y: scroll;
   outline: none;
   outline-color: var(--color-grey);
 }
 
+.members:hover,
+.members:focus {
+  border-color: var(--color-signal);
+  background-color: var(--color-body);
+}
+
+.noGroupMembers {
+  color: var(--color-grey);
+  padding: 0.4rem 0rem;
+}
+
 .userName {
+  display: flex;
+  align-self: center;
   font-size: 1.6rem;
-  font-weight: bold;
-  padding-top: 0.3rem;
 }
 
 .emoji {
-  font-size: 1.3rem;
-  padding-top: 0.4rem;
-  margin-right: 0.4rem;
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+  display: flex;
+  align-self: center;
 }
 
 .button {
+  padding-top: 0.5rem;
   font-size: 2rem;
   margin-left: auto;
+  cursor: pointer;
 }
 
 .listItem {
@@ -45,5 +62,11 @@
   width: 21.7rem;
   font-size: 1.6rem;
   padding-right: 0.5rem;
-  line-height: 1.1;
+  line-height: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .members {
+    max-height: 30rem;
+  }
 }

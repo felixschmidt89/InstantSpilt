@@ -79,8 +79,8 @@ const ChangeDataPurgeSetting = ({ groupCode, inactiveDataPurge }) => {
                   size='small'
                 />
               }
-            />{" "}
-          </form>{" "}
+            />
+          </form>
         </div>
         <ErrorModal
           error={error}

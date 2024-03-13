@@ -41,8 +41,8 @@ const DeleteUserBin = ({
   // Effect to trigger rerender when deletion is successful
   useEffect(() => {
     if (deletionSuccess && rerenderTrigger) {
-      incrementRerenderTrigger();
       setDeletionSuccess(false);
+      incrementRerenderTrigger();
     }
   }, [deletionSuccess, incrementRerenderTrigger, rerenderTrigger]);
 
