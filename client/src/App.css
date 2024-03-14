@@ -33,13 +33,6 @@
 
 @font-face {
   font-family: "Ubuntu";
-  src: url("../assets/fonts/Ubuntu-BoldItalic.ttf") format("truetype");
-  font-weight: bold;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Ubuntu";
   src: url("../assets/fonts/Ubuntu-Italic.ttf") format("truetype");
   font-style: italic;
 }
@@ -52,22 +45,8 @@
 
 @font-face {
   font-family: "Ubuntu";
-  src: url("../assets/fonts/Ubuntu-LightItalic.ttf") format("truetype");
-  font-weight: 300;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: "Ubuntu";
   src: url("../assets/fonts/Ubuntu-Medium.ttf") format("truetype");
   font-weight: 500;
-}
-
-@font-face {
-  font-family: "Ubuntu";
-  src: url("../assets/fonts/Ubuntu-MediumItalic.ttf") format("truetype");
-  font-weight: 500;
-  font-style: italic;
 }
 
 @font-face {
@@ -77,34 +56,11 @@
 }
 
 /* Unicolour emojis */
-@font-face {
-  font-family: "Noto Emoji";
-  src: url("../assets/fonts/NotoEmoji-Bold.ttf") format("truetype");
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: "Noto Emoji";
-  src: url("../assets/fonts/NotoEmoji-Light.ttf") format("truetype");
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "Noto Emoji";
-  src: url("../assets/fonts/NotoEmoji-Regular.ttf") format("truetype");
-  font-weight: 400;
-}
 
 @font-face {
   font-family: "Noto Emoji";
   src: url("../assets/fonts/NotoEmoji-Medium.ttf") format("truetype");
   font-weight: 500;
-}
-
-@font-face {
-  font-family: "Noto Emoji";
-  src: url("../assets/fonts/NotoEmoji-SemiBold.ttf") format("truetype");
-  font-weight: 600;
 }
 
 ::selection {

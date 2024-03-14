@@ -22,7 +22,7 @@ import styles from "./Contact.module.css";
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
- * Parent component for user feedback.
+ * Parent component for contact form.
  *
  * @function
  * @returns {JSX.Element} - React component.
@@ -37,7 +37,7 @@ const Contact = () => {
     name: "",
     email: "",
     messageType: "",
-    feedback: "",
+    message: "",
   });
   const [file, setFile] = useState(null);
   const [showForm, setShowForm] = useState(true);
@@ -81,12 +81,12 @@ const Contact = () => {
     }
 
     // Validate message
-    if (!formData.feedback.trim()) {
+    if (!formData.message.trim()) {
       setError(t("contact-form-no-message-error"));
       displayErrorModal();
       return;
     }
-    if (formData.feedback.length > 2500) {
+    if (formData.message.length > 2500) {
       setError(t("contact-form-message-too-long-error"));
       displayErrorModal();
       return;
@@ -124,9 +124,9 @@ const Contact = () => {
       }
 
       const response = await axios.post(`${apiUrl}/feedbacks`, contactData);
-      devLog("Feedback sent:", response);
+      devLog("Message sent:", response);
       setShowForm(false);
-      // Render feedback and programmatically navigate with a delay
+      // Render success feedback and programmatically navigate with a delay
       setTimeout(() => {
         navigate("/instant-split");
       }, 2500);

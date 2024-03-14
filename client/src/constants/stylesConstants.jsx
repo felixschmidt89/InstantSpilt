@@ -68,3 +68,25 @@ export const toggleBeneficiariesButtonStyles = {
   width: "fit-content",
   borderRadius: "20px",
 };
+
+/**
+ * Styles for plus icon FormSubmitButton component  */
+export const plusFormSubmitButtonStyles = {
+  fontSize: 1.6,
+  add: true,
+  marginLeft: "0.1",
+  transformScale: 1.3,
+  translateX: 0.5,
+  translateY: 0.15,
+};
+
+/**
+ * Styles for send icon FormSubmitButton component  */
+export const sendFormSubmitButtonStyles = {
+  fontSize: 1.6,
+  submit: true,
+  marginLeft: "0.1",
+  transformScale: 1.25,
+  translateX: 0.6,
+  translateY: 0.1,
+};

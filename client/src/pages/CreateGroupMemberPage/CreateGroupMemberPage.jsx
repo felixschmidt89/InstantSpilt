@@ -15,9 +15,9 @@ import CreateUserAndRenderUserList from "../../components/features/CreateUser/Cr
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 // Styles
-import styles from "./CreateUsersPage.module.css";
+import styles from "./CreateGroupMemberPage.module.css";
 
-function CreateUsersPage() {
+function CreateGroupMemberPage() {
   // Check if current user is a new user, ie is redirected from create-group route
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
   const { t } = useTranslation();
@@ -46,4 +46,4 @@ function CreateUsersPage() {
     </main>
   );
 }
-export default CreateUsersPage;
+export default CreateGroupMemberPage;

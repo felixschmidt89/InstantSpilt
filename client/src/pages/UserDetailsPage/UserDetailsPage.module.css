@@ -5,7 +5,7 @@
   height: 90%;
   margin-top: 1rem;
   padding-bottom: 0.5rem;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .container h1 {

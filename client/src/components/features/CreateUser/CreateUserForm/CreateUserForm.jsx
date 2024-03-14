@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
+import { sendFormSubmitButtonStyles } from "../../../../constants/stylesConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -51,7 +52,6 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
       });
       devLog("User created:", response);
       setUserName("");
-      // Increment rerenderTrigger in parent component to rerender user list
       incrementRerenderTrigger();
       setError("");
     } catch (error) {
@@ -78,14 +78,7 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
             ref={inputRef}
             autoFocus
           />
-          <FormSubmitButton
-            fontSize={1.6}
-            add={true}
-            marginLeft='0.1'
-            transformScale={1.3}
-            translateX={0.2}
-            translateY={0.15}
-          />
+          <FormSubmitButton {...sendFormSubmitButtonStyles} />
         </form>
         <ErrorModal
           error={error}

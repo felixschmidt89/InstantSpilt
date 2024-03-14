@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 // Constants and Utils
 import { devLog, handleApiErrors } from "../../../utils/errorUtils";
 import { submitOnEnterClick } from "../../../utils/formUtils";
+import { sendFormSubmitButtonStyles } from "../../../constants/stylesConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../hooks/useErrorModalVisibility";
@@ -120,14 +121,7 @@ const ChangeResourceName = ({
           ref={inputRef}
           onKeyDown={handleKeyDown}
         />
-        <FormSubmitButton
-          fontSize={1.6}
-          submit={true}
-          marginLeft='0.1'
-          transformScale={1.3}
-          translateX={0.5}
-          translateY={0.1}
-        />
+        <FormSubmitButton {...sendFormSubmitButtonStyles} />
       </form>
       <ErrorModal
         error={error}

@@ -1,11 +1,12 @@
 // React and Third-Party Libraries
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { submitOnEnterClick } from "../../../../utils/formUtils";
+import { sendFormSubmitButtonStyles } from "../../../../constants/stylesConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -63,14 +64,7 @@ const ValidateGroupCode = () => {
         />
         {/* For new users: only render submit button, if FriendlyCaptcha is verified*/}
         {(friendlyCaptchaIsVerified || groupCode) && (
-          <FormSubmitButton
-            fontSize={1.6}
-            submit={true}
-            marginLeft='0.1'
-            transformScale={1.3}
-            translateX={0.3}
-            translateY={0.1}
-          />
+          <FormSubmitButton {...sendFormSubmitButtonStyles} />
         )}
         {/* For new users: render FriendlyCaptcha*/}
         {!groupCode && (

@@ -8,6 +8,8 @@ import { currenciesContent } from "../../../../contents/currenciesContent";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
+import { sendFormSubmitButtonStyles } from "../../../../constants/stylesConstants";
+import { submitOnEnterClick } from "../../../../utils/formUtils";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
@@ -18,7 +20,6 @@ import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // Styles
 import styles from "./ChangeGroupCurrency.module.css";
-import { submitOnEnterClick } from "../../../../utils/formUtils";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -117,14 +118,7 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
               </option>
             ))}
         </select>
-        <FormSubmitButton
-          fontSize={1.6}
-          submit={true}
-          marginLeft='0.1'
-          transformScale={1.3}
-          translateX={0.5}
-          translateY={0.1}
-        />
+        <FormSubmitButton {...sendFormSubmitButtonStyles} />
       </form>
       <ErrorModal
         error={error}

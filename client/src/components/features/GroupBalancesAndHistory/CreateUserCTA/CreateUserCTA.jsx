@@ -27,7 +27,7 @@ const CreateUserCTA = ({ isPayment = true }) => {
         :
         <div className={styles.icon}>
           <GroupActionsEmojiButton
-            route={"create-users"}
+            route={"create-group-members"}
             emoji={emojiConstants.user}
             explanationText={t("active-group-bar-member-emoji-copy")}
             ariaLabel='add group member emoji'

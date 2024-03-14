@@ -6,6 +6,7 @@
   height: 90%;
   margin: 0 auto;
   margin-top: 1rem;
+  overflow-y: auto;
 }
 
 .container h1 {

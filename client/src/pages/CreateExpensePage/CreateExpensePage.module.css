@@ -13,12 +13,6 @@
   margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 768px) {
-  .container {
-    width: 95%;
-  }
-}
-
 /* Delayed rendering to avoid flickering */
 .container {
   opacity: 0;

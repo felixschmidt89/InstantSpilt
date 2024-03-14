@@ -2,7 +2,7 @@
   margin: 0 auto;
   padding-top: 4rem;
   padding-bottom: 0.5rem;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
   text-align: center;
 }

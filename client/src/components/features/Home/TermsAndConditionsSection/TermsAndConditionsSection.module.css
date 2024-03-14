@@ -7,6 +7,10 @@
   margin: 0 auto;
 }
 
+.tncLink {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 768px) {
   .terms {
     margin-top: 0.5rem;

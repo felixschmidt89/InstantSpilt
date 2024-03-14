@@ -7,6 +7,7 @@
   margin: 0 auto;
   margin-top: 1rem;
   padding-bottom: 0.5rem;
+  overflow-y: auto;
 }
 
 .container h2 {

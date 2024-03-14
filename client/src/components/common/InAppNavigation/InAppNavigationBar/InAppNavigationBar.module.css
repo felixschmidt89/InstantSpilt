@@ -112,10 +112,3 @@ icon:hover {
     padding-top: 1.3rem;
   }
 }
-
-/* use full display for rendering main when display height is small, e.g. smartphone landscape mode*/
-@media screen and (max-height: 500px) {
-  .navContainer {
-    width: 99vw;
-  }
-}

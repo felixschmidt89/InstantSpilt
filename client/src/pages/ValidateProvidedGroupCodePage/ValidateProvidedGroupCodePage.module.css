@@ -2,7 +2,7 @@
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .container h1 {

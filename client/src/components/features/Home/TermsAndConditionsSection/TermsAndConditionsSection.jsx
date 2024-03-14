@@ -23,12 +23,13 @@ const TermsAndConditionsSection = () => {
   return (
     <p className={styles.terms}>
       {t("terms-and-conditions-section-text")}{" "}
-      <span>
-        <Link to='/terms-and-conditions/' onClick={handleLinkClick}>
-          {t("terms-and-conditions-section-tnc")}
-        </Link>
-        {t("terms-and-conditions-section-append")}.
-      </span>
+      <Link
+        className={styles.tncLink}
+        to='/terms-and-conditions/'
+        onClick={handleLinkClick}>
+        {t("terms-and-conditions-section-tnc")}
+      </Link>
+      {t("terms-and-conditions-section-append")}.
     </p>
   );
 };

@@ -12,6 +12,7 @@ import {
   setRouteInLocalStorage,
   storeGroupCodeInLocalStorage,
 } from "../../../../../utils/localStorageUtils";
+import { plusFormSubmitButtonStyles } from "../../../../../constants/stylesConstants";
 
 // Hooks
 import useErrorModalVisibility from "../../../../../hooks/useErrorModalVisibility";
@@ -68,7 +69,7 @@ const CreateGroupForm = ({ isOnboarding }) => {
       setGroupCodeToCurrentlyActive(groupCode);
       // Necessary for appropriate InAppNavigationBar conditional rendering on navigated to route:
       setRouteInLocalStorage(window.location.pathname, "previousRoute");
-      navigate("/create-users");
+      navigate("/create-group-members");
     } catch (error) {
       devLog("Error creating group:", error);
       displayErrorModal();
@@ -88,14 +89,7 @@ const CreateGroupForm = ({ isOnboarding }) => {
       />
       {/* For new users: only render submit button, if FriendlyCaptcha is verified*/}
       {(groupCode !== null || friendlyCaptchaIsVerified) && (
-        <FormSubmitButton
-          fontSize={1.6}
-          add={true}
-          marginLeft='0.1'
-          transformScale={1.3}
-          translateX={0.2}
-          translateY={0.15}
-        />
+        <FormSubmitButton {...plusFormSubmitButtonStyles} />
       )}
       {/* For new users: render FriendlyCaptcha*/}
       {!groupCode && (

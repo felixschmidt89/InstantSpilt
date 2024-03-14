@@ -23,7 +23,6 @@ import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
 import OnboardingGroupSettingsPage from "./pages/OnboardingGroupSettingsPage/OnboardingGroupSettingsPage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
-import CreateUsersPage from "./pages/CreateUsersPage/CreateUsersPage";
 import TutorialPage from "./pages/TutorialPage/TutorialPage";
 import UpdateExpensePage from "./pages/UpdateExpensePage/UpdateExpensePage";
 import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
@@ -37,6 +36,7 @@ import ShareGroupInvitationPage from "./pages/ShareGroupInvitationPage/ShareGrou
 import LeaveGroupPage from "./pages/LeaveGroupPage/LeaveGroupPage";
 import JoinGroupDEPage from "./pages/JoinGroupDEPage/JoinGroupDEPage";
 import JoinGroupENPage from "./pages/JoinGroupENPage/JoinGroupENPage";
+import CreateGroupMemberPage from "./pages/CreateGroupMemberPage/CreateGroupMemberPage";
 
 // Styles
 import "./App.css";
@@ -89,7 +89,10 @@ const App = () => {
               path='/update-payment/:groupCode/:paymentId'
               element={<UpdatePaymentPage />}
             />
-            <Route path='/create-users' element={<CreateUsersPage />} />
+            <Route
+              path='/create-group-members'
+              element={<CreateGroupMemberPage />}
+            />
             <Route path='/settle-expenses' element={<SettleExpensesPage />} />
             <Route
               path='/user-details/:groupCode/:userId'
