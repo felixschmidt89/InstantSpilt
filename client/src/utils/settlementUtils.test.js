@@ -29,12 +29,12 @@ describe("calculateSuggestedSettlementPayments", () => {
       negativeBalanceUsers
     );
 
-    // Assert: Check if the result is an array of settlement settlement payments, with the expected amounts and order, ie settlement amounts are in descending order
+    // Assert: Check if the result is an array of settlement settlement payments, with the expected amounts and order, ie sorted by debtors alphabetically
     expect(resultSettlements).toEqual([
-      { from: "User5", to: "User1", amount: "300.00" },
-      { from: "User4", to: "User1", amount: "200.00" },
-      { from: "User6", to: "User2", amount: "160.00" },
       { from: "User3", to: "User2", amount: "140.00" },
+      { from: "User4", to: "User1", amount: "200.00" },
+      { from: "User5", to: "User1", amount: "300.00" },
+      { from: "User6", to: "User2", amount: "160.00" },
     ]);
 
     // Assert: Check if the users are removed from samples arrays, implying that all settlement suggestions have been made and no user has a balance left

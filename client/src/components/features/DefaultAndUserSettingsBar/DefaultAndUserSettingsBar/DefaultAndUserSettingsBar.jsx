@@ -1,13 +1,13 @@
 // React and Third-Party Libraries
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IoReorderThree } from "react-icons/io5";
+import { LuMenu } from "react-icons/lu";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
 import { IoChatboxOutline } from "react-icons/io5";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
-import { FaUserPlus } from "react-icons/fa6";
+import { PiUserPlus } from "react-icons/pi";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
@@ -93,7 +93,7 @@ const DefaultAndUserSettingsBar = () => {
               aria-label='user settings'>
               <span className={styles.icon}>
                 <ReactIconNavigate
-                  icon={FaUserPlus}
+                  icon={PiUserPlus}
                   containerHeight='5.8'
                   containerWidth='7.2'
                   iconExplanationWidth='5'
@@ -102,9 +102,9 @@ const DefaultAndUserSettingsBar = () => {
                   iconExplanationIsIdleTranslateX='0.3'
                   route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
                   iconSize={3.5}
-                  translateY={0.3}
+                  translateY={0.4}
                   translateX={0.5}
-                  iconScale={0.8}
+                  iconScale={1}
                 />
               </span>
               <span className={styles.instantSplitLogo}>
@@ -112,12 +112,12 @@ const DefaultAndUserSettingsBar = () => {
               </span>
               <span className={styles.icon}>
                 <ReactIconNavigate
-                  icon={IoReorderThree}
+                  icon={LuMenu}
                   containerHeight='5.8'
                   containerWidth='7.2'
                   iconSize={3.5}
-                  iconScale={1.4}
-                  translateY={0.4}
+                  iconScale={1.1}
+                  translateY={0.3}
                   translateX={isSlimDevice ? 0.5 : -0.3}
                   iconExplanationWidth={5}
                   iconExplanationTextAlignment='center'

@@ -21,8 +21,8 @@ i18n
     // fallback locale
     fallbackLng: "en",
     supportedLngs: Object.keys(supportedLanguages),
-    // Enable useful output in the browser’s dev console.
-    debug: true,
+    // built-in console.logs
+    debug: process.env.NODE_ENV === "development" ? true : false,
     // React does escaping itself
     interpolation: {
       escapeValue: false,

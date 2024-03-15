@@ -20,9 +20,9 @@
 }
 
 .iconContainer:hover .customIcon {
-  color: var(--color-dark);
+  color: var(--color-dark-dark);
 }
 
 .iconContainer:hover .iconExplanation {
-  color: var(--color-dark);
+  color: var(--color-dark-dark);
 }

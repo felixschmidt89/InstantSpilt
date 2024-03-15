@@ -29,7 +29,7 @@ function CreateGroupMemberPage() {
   return (
     <main>
       <HelmetMetaTagsNetlify title={t("create-users-page-title")} />
-      <PiratePx COUNT_IDENTIFIER={"create-users"} />
+      <PiratePx COUNT_IDENTIFIER={"create-group-members"} />
       {isNewUser ? (
         <InAppNavigationBar
           forward={true}

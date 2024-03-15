@@ -59,6 +59,9 @@ export const calculateSuggestedSettlementPayments = (
       negativeBalanceUsers.shift();
     }
   }
+  // Sort suggestedSettlementPayments by debtors alphabetically
+  suggestedSettlementPayments.sort((a, b) => a.from.localeCompare(b.from));
+
   devLog(
     "Suggested settlement payments calculated:",
     suggestedSettlementPayments

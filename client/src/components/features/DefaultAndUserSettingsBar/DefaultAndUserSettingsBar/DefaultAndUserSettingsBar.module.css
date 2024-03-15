@@ -9,10 +9,19 @@
   overflow-x: hidden;
   overflow-y: hidden;
   text-align: center;
+  color: var(--color-dark);
 }
 
 .instantSplitLogo {
   padding-top: 0.5rem;
+}
+
+.icon {
+  color: var(--color-dark);
+}
+
+.icon:hover {
+  color: var(--color-dark-dark);
 }
 
 /* Delayed rendering to hide initial transforming of DefaultBar and UserSettingsBar */
