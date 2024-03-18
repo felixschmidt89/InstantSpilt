@@ -94,7 +94,7 @@ const DefaultAndUserSettingsBar = () => {
               <span className={styles.icon}>
                 <ReactIconNavigate
                   icon={PiUserPlus}
-                  containerHeight='5.8'
+                  containerHeight='8'
                   containerWidth='7.2'
                   iconExplanationWidth='5'
                   explanationText={t("main-bar-invite-icon-text")}
@@ -102,7 +102,7 @@ const DefaultAndUserSettingsBar = () => {
                   iconExplanationIsIdleTranslateX='0.3'
                   route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
                   iconSize={3.5}
-                  translateY={0.4}
+                  translateY={0.2}
                   translateX={0.5}
                   iconScale={1}
                 />
@@ -113,11 +113,11 @@ const DefaultAndUserSettingsBar = () => {
               <span className={styles.icon}>
                 <ReactIconNavigate
                   icon={LuMenu}
-                  containerHeight='5.8'
+                  containerHeight='8'
                   containerWidth='7.2'
                   iconSize={3.5}
                   iconScale={1.1}
-                  translateY={0.3}
+                  translateY={0.15}
                   translateX={isSlimDevice ? 0.5 : -0.3}
                   iconExplanationWidth={5}
                   iconExplanationTextAlignment='center'
@@ -134,7 +134,7 @@ const DefaultAndUserSettingsBar = () => {
             aria-label='user settings'>
             <ReactIconNavigate
               icon={IoArrowBackCircleOutline}
-              containerHeight='5.8'
+              containerHeight='8'
               containerWidth='8'
               explanationText={t("main-bar-back-icon-text")}
               iconSize={3.5}
@@ -144,16 +144,17 @@ const DefaultAndUserSettingsBar = () => {
 
             <ReactIconNavigate
               icon={IoInformationCircleOutline}
-              containerHeight='5.8'
+              containerHeight='8'
               containerWidth='8'
               explanationText={t("main-bar-tutorial-icon-text")}
               route={`/tutorial/${groupData?.group?.initialGroupName}/${groupCode}`}
               iconSize={3.5}
-              iconScale={1.05}
+              iconScale={1.1}
+              translateY={0.1}
             />
             <ReactIconNavigate
               icon={IoChatboxOutline}
-              containerHeight='5.8'
+              containerHeight='8'
               containerWidth='8'
               explanationText={t("main-bar-contact-icon-text")}
               route={`/contact/${groupCode}`}
@@ -162,25 +163,25 @@ const DefaultAndUserSettingsBar = () => {
             />
             <ReactIconNavigate
               icon={PiUserSwitchLight}
-              containerHeight='5.8'
+              containerHeight='8'
               containerWidth='8'
               explanationText={t("main-bar-manage-groups-icon-text")}
               iconExplanationWidth='9'
               route={`/manage-groups`}
               iconSize={3.5}
-              iconScale={0.95}
+              iconScale={1}
+              translateY={0.1}
             />
             <ReactIconNavigate
               icon={IoEnterOutline}
-              containerHeight='5.8'
+              containerHeight='8'
               containerWidth='8'
               iconExplanationWidth='6'
               explanationText={t("main-bar-leave-group-icon-text")}
               route={`/leave-group/${groupData?.group?.groupName}/${groupCode}`}
               iconSize={3.5}
-              iconScale={1}
+              iconScale={1.1}
               translateX={-0.3}
-              translateY={-0.1}
             />
           </span>
         </div>

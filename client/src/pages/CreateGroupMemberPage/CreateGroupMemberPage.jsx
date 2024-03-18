@@ -11,8 +11,8 @@ import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRout
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import CreateUserAndRenderUserList from "../../components/features/CreateUser/CreateUserAndRenderUserList/CreateUserAndRenderUserList";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
+import CreateGroupMembersAndRenderMemberList from "../../components/features/CreateGroupMember/CreateGroupMembersAndRenderMemberList/CreateGroupMembersAndRenderMemberList";
 
 // Styles
 import styles from "./CreateGroupMemberPage.module.css";
@@ -28,7 +28,7 @@ function CreateGroupMemberPage() {
   }
   return (
     <main>
-      <HelmetMetaTagsNetlify title={t("create-users-page-title")} />
+      <HelmetMetaTagsNetlify title={t("create-group-members-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"create-group-members"} />
       {isNewUser ? (
         <InAppNavigationBar
@@ -39,9 +39,9 @@ function CreateGroupMemberPage() {
         <InAppNavigationBar back={true} />
       )}
       <div className={styles.container}>
-        {!isNewUser ? <h1>{t("create-users-page-header")}</h1> : null}
-        <h2>{t("create-users-form-header")}</h2>
-        <CreateUserAndRenderUserList />
+        {!isNewUser ? <h1>{t("create-group-members-page-header")}</h1> : null}
+        <h2>{t("create-group-members-form-header")}</h2>
+        <CreateGroupMembersAndRenderMemberList />
       </div>
     </main>
   );

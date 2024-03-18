@@ -6,23 +6,23 @@ import useTriggerRerender from "../../../../hooks/useTriggerRerender";
 
 // Components
 import RenderUserNames from "../RenderUserNames/RenderUserNames";
-import CreateUserForm from "../CreateUserForm/CreateUserForm";
+import CreateGroupMemberForm from "../CreateGroupMemberForm/CreateGroupMemberForm";
 
 // Styles
-import styles from "./CreateUserAndRenderUserList.module.css";
+import styles from "./CreateGroupMembersAndRenderMemberList.module.css";
 
 /**
  * Component for creating a user within a group and rendering the groups user list.
  * Has nested components and uses a custom hook to get groupCode and trigger rerender logic.
  * @returns {JSX.Element} React component. */
-const CreateUserAndRenderUserList = () => {
+const CreateGroupMembersAndRenderMemberList = () => {
   // Custom hook to get groupCode and trigger rerender logic
   const { groupCode, rerenderTrigger, incrementRerenderTrigger } =
     useTriggerRerender();
 
   return (
     <div className={styles.container}>
-      <CreateUserForm
+      <CreateGroupMemberForm
         incrementRerenderTrigger={incrementRerenderTrigger}
         groupCode={groupCode}
       />
@@ -37,4 +37,4 @@ const CreateUserAndRenderUserList = () => {
   );
 };
 
-export default CreateUserAndRenderUserList;
+export default CreateGroupMembersAndRenderMemberList;

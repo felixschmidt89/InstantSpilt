@@ -84,17 +84,19 @@ const ReactIconNavigate = ({
           transform: `translate(${translateX}rem, ${translateY}rem) scale(${iconScale})`,
         }}
       />
-      <span
-        className={`${styles.iconExplanation} ${
-          iconExplanationIsIdle ? styles.iconExplanationIsIdle : ""
-        }`}
-        style={{
-          width: `${iconExplanationWidth}rem`,
-          textAlign: `${iconExplanationTextAlignment}`,
-          transform: `translate(${iconExplanationIsIdleTranslateX}rem`,
-        }}>
-        {explanationText}
-      </span>
+      {explanationText && (
+        <span
+          className={`${styles.iconExplanation} ${
+            iconExplanationIsIdle ? styles.iconExplanationIsIdle : ""
+          }`}
+          style={{
+            width: `${iconExplanationWidth}rem`,
+            textAlign: `${iconExplanationTextAlignment}`,
+            transform: `translate(${iconExplanationIsIdleTranslateX}rem`,
+          }}>
+          {explanationText}
+        </span>
+      )}
     </div>
   );
 };

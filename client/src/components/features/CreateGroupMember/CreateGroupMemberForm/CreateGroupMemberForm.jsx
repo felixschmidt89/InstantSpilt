@@ -15,18 +15,18 @@ import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 
 // Styles
-import styles from "./CreateUserForm.module.css";
+import styles from "./CreateGroupMemberForm.module.css";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
- * Component for creating a new user within a group.
+ * Component for creating a new group member.
  *
  * @param {Object} props - The properties of the component.
  * @param {function} props.incrementRerenderTrigger - Function to trigger rerender in parent component.
  * @returns {JSX.Element} React component. */
-const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
+const CreateGroupMemberForm = ({ incrementRerenderTrigger, groupCode }) => {
   const { t } = useTranslation();
   const inputRef = useRef(null);
   const [userName, setUserName] = useState("");
@@ -73,7 +73,7 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
             type='text'
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
-            placeholder={t("create-user-username-placeholder")}
+            placeholder={t("create-group-members-membername-placeholder")}
             className={styles.inputField}
             ref={inputRef}
             autoFocus
@@ -90,4 +90,4 @@ const CreateUserForm = ({ incrementRerenderTrigger, groupCode }) => {
   );
 };
 
-export default CreateUserForm;
+export default CreateGroupMemberForm;
