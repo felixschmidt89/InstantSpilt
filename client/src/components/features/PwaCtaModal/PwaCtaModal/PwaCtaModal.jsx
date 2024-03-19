@@ -1,5 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@mui/material";
 
 // Constants and Utils
@@ -20,6 +21,8 @@ import styles from "./PwaCtaModal.module.css";
  * @returns {JSX.Element} The PwaCtaModal component.
  */
 const PwaCtaModal = ({ ctaToRender, setShowPwaCtaModal }) => {
+  const { t } = useTranslation();
+
   const closeModal = () => {
     setPwaCtaClosedInLocalStorage();
     setShowPwaCtaModal(false);
@@ -44,7 +47,7 @@ const PwaCtaModal = ({ ctaToRender, setShowPwaCtaModal }) => {
             variant='outlined'
             onClick={closeModal}
             color='grey'>
-            close
+            {t("close-pwa-cta-modal-button")}
           </Button>
         </>
       </div>

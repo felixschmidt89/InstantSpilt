@@ -197,6 +197,7 @@
   "install-pwa-samsung-browser-list-item2-part1": "klick",
   "install-pwa-samsung-browser-list-item2-part2": "(Seite hinzufügen zu)",
   "install-pwa-samsung-browser-list-item3": "und wähle Startbildschirm",
+  "close-pwa-cta-modal-button": "schließen",
   "confirm-settlement-payment-message": "Bestätigen, dass {{paymentMakerName}} {{paymentAmount}}{{groupCurrency}} an {{paymentRecipientName}} gezahlt hat?",
   "confirm-settlement-payment-button": "bestätigen",
   "all-expenses-settled": "Alles beglichen",

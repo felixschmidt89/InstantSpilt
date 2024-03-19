@@ -17,13 +17,14 @@ export const buttonStyles = {
  * Styles for small Material-UI button, such as OK button.
  */
 export const smallButtonStyles = {
-  padding: "0rem 0rem",
+  padding: "0rem 0.5rem",
   fontSize: "1.4rem",
   margin: "0 auto",
   marginTop: "0.4rem",
   marginBottom: "0.4rem",
   fontFamily: "inherit",
-  width: "2rem",
+  minWidth: "2rem",
+  width: "fit-content",
   borderRadius: "20px",
 };
 

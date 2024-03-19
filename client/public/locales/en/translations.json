@@ -200,6 +200,7 @@
   "install-pwa-samsung-browser-list-item2-part1": "press",
   "install-pwa-samsung-browser-list-item2-part2": "(add page to)",
   "install-pwa-samsung-browser-list-item3": "and choose home screen",
+  "close-pwa-cta-modal-button": "close",
   "confirm-settlement-payment-button": "confirm",
   "confirm-settlement-payment-message": "Confirm {{paymentMakerName}} has paid {{paymentAmount}}{{groupCurrency}} to {{paymentRecipientName}}?",
   "all-expenses-settled": "All settled",
