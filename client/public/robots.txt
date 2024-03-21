@@ -1,3 +1,2 @@
-// Allow all robots to crawl all content
 User-agent: *
-
+Disallow:

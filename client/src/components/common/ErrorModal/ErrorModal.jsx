@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { smallButtonStyles } from "../../../constants/stylesConstants";
@@ -22,6 +23,8 @@ import styles from "./ErrorModal.module.css";
  * @returns {JSX.Element} React component.
  */
 const ErrorModal = ({ error, onClose, isVisible }) => {
+  const { t } = useTranslation();
+
   // Prevent modal from being closed when clicking the modal
   const handleModalClick = (e) => {
     e.stopPropagation();
@@ -50,7 +53,7 @@ const ErrorModal = ({ error, onClose, isVisible }) => {
                 variant='outlined'
                 onClick={onClose}
                 color='grey'>
-                ok
+                {t("error-modal-close-modal-button-text")}
               </Button>
             </>
           )}

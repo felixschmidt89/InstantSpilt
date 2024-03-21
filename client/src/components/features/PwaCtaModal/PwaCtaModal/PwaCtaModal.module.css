@@ -24,7 +24,16 @@
   max-width: 80%;
 }
 
-@media only screen and (min-width: 1921px) {
+@media only screen and (min-width: 1921px) and (min-height: 1081px) {
+  .modal {
+    align-items: flex-start;
+  }
+  .modalContent {
+    margin-top: 20vh;
+  }
+}
+
+@media only screen and (min-height: 2001px) {
   .modal {
     align-items: flex-start;
   }

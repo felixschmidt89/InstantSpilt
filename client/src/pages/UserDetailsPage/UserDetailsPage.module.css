@@ -8,8 +8,13 @@
   overflow-y: auto;
 }
 
+.emoji {
+  font-size: 2rem;
+  text-align: center;
+}
+
 .container h1 {
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
 }
 
 .container h2 {
@@ -24,7 +29,6 @@
 
 .userSettings,
 .userBalances {
-  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -34,6 +38,10 @@
 }
 
 .userBalances {
+  margin-top: 1rem;
+}
+
+.userSettings {
   margin-top: 2rem;
 }
 

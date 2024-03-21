@@ -3,6 +3,7 @@ import React from "react";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { smallButtonStyles } from "../../../constants/stylesConstants";
@@ -33,6 +34,8 @@ const ConfirmationModal = ({
   isVisible,
   error,
 }) => {
+  const { t } = useTranslation();
+
   // Prevent modal from being closed when clicking the modal
   const handleModalClick = (e) => {
     e.stopPropagation();
@@ -55,7 +58,7 @@ const ConfirmationModal = ({
                 variant='outlined'
                 onClick={onCancel}
                 color='grey'>
-                ok
+                {t("confirmation-modal-error-close-modal-button-text")}
               </Button>
             </>
           ) : (

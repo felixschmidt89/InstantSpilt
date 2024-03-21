@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
+import emojiConstants from "../../constants/emojiConstants";
 
 // Hooks
 import useFetchUserData from "../../hooks/useFetchUserInfo";
@@ -50,7 +51,12 @@ const UserDetailsPage = () => {
       <InAppNavigationBar back={true} />
       {userDataIsFetched && currencyInfoIsFetched ? (
         <div className={styles.container}>
-          <h1>{userData.userName}</h1>
+          <span className={styles.emoji}>
+            <Emoji
+              label={"group member emoji"}
+              emoji={emojiConstants.user}></Emoji>
+          </span>
+          <h1>{userData.userName} </h1>
           <h2>
             {t("user-details-page-user-balance-header")}{" "}
             <span className={balanceClass}>

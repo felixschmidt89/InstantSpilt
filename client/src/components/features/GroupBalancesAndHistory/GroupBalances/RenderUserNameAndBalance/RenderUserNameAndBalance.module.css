@@ -21,6 +21,14 @@
 .leftColumn {
   text-align: left;
   width: 22rem;
+  display: flex;
+}
+
+.emoji {
+  font-size: 1.4rem;
+  margin-right: 0.5rem;
+  display: flex;
+  align-self: center;
 }
 
 .rightColumn {

@@ -7,6 +7,8 @@ import { BALANCE_THRESHOLD } from "../../../../../constants/dataConstants";
 
 // Styles
 import styles from "./RenderUserNameAndBalance.module.css";
+import Emoji from "../../../../common/Emoji/Emoji";
+import emojiConstants from "../../../../../constants/emojiConstants";
 
 /**
  * Component for rendering username and user balance
@@ -23,33 +25,36 @@ const RenderUserNameAndBalance = ({
   <div className={styles.balancesContainer}>
     <ul>
       {userDetails.map((user) => (
-        <li key={user.userId} className={styles.userListItem}>
-          <div className={styles.userDetails}>
-            <div className={styles.leftColumn}>
-              {/* Link to the user page */}
-              <Link
-                className={styles.userName}
-                to={`/user-details/${groupCode}/${user.userId}`}>
-                {user.userName}
-              </Link>
-            </div>
-            <div className={styles.rightColumn}>
-              {/* Visually indicate negative userBalance*/}
-              <div
-                className={`${styles.userBalance} ${
-                  user.userBalance >= 0
-                    ? styles.positiveBalance
-                    : styles.negativeBalance
-                }`}>
-                {/* Fix remaining rounding issue in certain settings, e.g., 100€/3 will result in 33.33, 33.33, 33.4 */}
-                {user.userBalance === BALANCE_THRESHOLD ||
-                user.userBalance === -BALANCE_THRESHOLD
-                  ? `0.00${groupCurrency}`
-                  : user.userBalance.toFixed(2) + `${groupCurrency}`}
+        <Link
+          key={user.userId}
+          to={`/user-details/${groupCode}/${user.userId}`}
+          className={styles.userListItemLink}>
+          <li className={styles.userListItem}>
+            <div className={styles.userDetails}>
+              <div className={styles.leftColumn}>
+                <span className={styles.emoji}>
+                  <Emoji label={"expense emoji"} emoji={emojiConstants.user} />
+                </span>
+                <span className={styles.userName}>{user.userName}</span>
+              </div>
+              <div className={styles.rightColumn}>
+                {/* Visually indicate negative userBalance*/}
+                <div
+                  className={`${styles.userBalance} ${
+                    user.userBalance >= 0
+                      ? styles.positiveBalance
+                      : styles.negativeBalance
+                  }`}>
+                  {/* Fix remaining rounding issue in certain situations, e.g., 100€/3 will result in 33.33, 33.33, 33.4 */}
+                  {user.userBalance === BALANCE_THRESHOLD ||
+                  user.userBalance === -BALANCE_THRESHOLD
+                    ? `0.00${groupCurrency}`
+                    : user.userBalance.toFixed(2) + `${groupCurrency}`}
+                </div>
               </div>
             </div>
-          </div>
-        </li>
+          </li>
+        </Link>
       ))}
     </ul>
   </div>

@@ -1,17 +1,9 @@
-// React and Third-Party Libraries
 import React from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; // Import Helmet from react-helmet-async
 
-// Styles
 import styles from "./InstantSplitLogo.module.css";
 
-/**
- * InstantSplitLogo component representing the application logo.
- * @param {Object} props - The component props.
- * @param {number} [props.width=50] - Width of the logo in percent units.
- * @param {boolean} [props.linkToInstantSplitPage=true] - Whether to render the link to /instant-split page. Defaults to true.
- * @returns {JSX.Element} React component.
- */
 const InstantSplitLogo = ({ width = 25, linkToInstantSplitPage = true }) => {
   const logoStyle = {
     width: `${width}rem`,
@@ -19,7 +11,6 @@ const InstantSplitLogo = ({ width = 25, linkToInstantSplitPage = true }) => {
     minWidth: "20rem",
   };
 
-  // Conditionally render the Link component based on linkToInstantSplitPage prop
   const logoContent = linkToInstantSplitPage ? (
     <Link to='/instant-split' className={styles.logoLink}>
       <img
@@ -38,7 +29,15 @@ const InstantSplitLogo = ({ width = 25, linkToInstantSplitPage = true }) => {
     />
   );
 
-  return logoContent;
+  return (
+    <>
+      {/* Preload the logo image */}
+      <Helmet>
+        <link rel='preload' href='/logo_coloured.svg' as='image' />
+      </Helmet>
+      {logoContent}
+    </>
+  );
 };
 
 export default InstantSplitLogo;
