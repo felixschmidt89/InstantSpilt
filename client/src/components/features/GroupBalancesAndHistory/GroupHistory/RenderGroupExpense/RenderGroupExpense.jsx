@@ -36,39 +36,36 @@ const RenderGroupExpense = ({
     item.expenseBeneficiaries.length === groupMembers.length;
 
   return (
-    <div className={styles.expenses}>
-      {/* Left column containing expense emoji and amount */}
-      <div className={styles.leftColumn}>
-        <Emoji
-          label={"expense emoji"}
-          emoji={emojiConstants.expense}
-          scale={"1.1"}
-          translateX={"0.15"}
-          translateY={"0.1"}
-        />
-        <div className={styles.expenseAmount}>
-          <Link to={`/expense-details/${groupCode}/${item.itemId}`}>
+    <Link
+      to={`/expense-details/${groupCode}/${item.itemId}`}
+      className={styles.expenseLink}>
+      <div className={styles.expense}>
+        <div className={styles.leftColumn}>
+          <Emoji
+            label={"expense emoji"}
+            emoji={emojiConstants.expense}
+            scale={"1.1"}
+            translateX={"0.15"}
+            translateY={"0.1"}
+          />
+          <div className={styles.expenseAmount}>
             {item.expenseAmount.toFixed(2)}
             {groupCurrency}
-          </Link>
+          </div>
+        </div>
+        <div className={styles.rightColumn}>
+          <div className={styles.borderedContent}>
+            {item.expensePayer.userName}
+            {allGroupMembersBenefitFromExpense && (
+              <span className={styles.forAll}>
+                {t("render-group-expense-for-all-badge")}
+              </span>
+            )}
+            : {item.expenseDescription}
+          </div>
         </div>
       </div>
-      {/* Right column containing expense details */}
-      <div className={styles.rightColumn}>
-        <div className={styles.borderedContent}>
-          {item.expensePayer.userName}
-          {allGroupMembersBenefitFromExpense && (
-            <span className={styles.forAll}>
-              {t("render-group-expense-for-all-badge")}
-            </span>
-          )}
-          : {/* Link to the detailed item page */}
-          <Link to={`/expense-details/${groupCode}/${item.itemId}`}>
-            {item.expenseDescription}
-          </Link>
-        </div>
-      </div>
-    </div>
+    </Link>
   );
 };
 

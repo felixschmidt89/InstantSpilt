@@ -21,30 +21,30 @@ import RenderReactIcon from "../../../../common/RenderReactIcon/RenderReactIcon"
  * @returns {JSX.Element} React component. */
 const RenderGroupPayment = ({ item, groupCode, groupCurrency }) => {
   return (
-    <div className={styles.payments}>
-      {/* Left column with payment emoji and amount */}
-      <div className={styles.leftColumn}>
-        <div className={styles.paymentEmoji}>
-          <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
-        </div>
-        <div className={styles.paymentAmount}>
-          {/* Link to the item page with item details */}
-          <Link to={`/payment-details/${groupCode}/${item.itemId}`}>
+    <Link
+      to={`/payment-details/${groupCode}/${item.itemId}`}
+      className={styles.paymentLink}>
+      <div className={styles.payment}>
+        <div className={styles.leftColumn}>
+          <div className={styles.paymentEmoji}>
+            <Emoji
+              label={"payment emoji"}
+              emoji={emojiConstants.payment}></Emoji>
+          </div>
+          <div className={styles.paymentAmount}>
             {item.paymentAmount.toFixed(2)}
             {groupCurrency}
-          </Link>
+          </div>
+        </div>
+        <div className={styles.rightColumn}>
+          <span>{item.paymentMaker.userName}</span>{" "}
+          <span className={styles.paymentTo}>
+            <RenderReactIcon icon={IoArrowForwardOutline} translateY={0.2} />
+          </span>
+          <span>{item.paymentRecipient.userName}</span>
         </div>
       </div>
-      {/* Right column with payment maker and payment recipient */}
-      <div className={styles.rightColumn}>
-        <span>{item.paymentMaker.userName}</span>{" "}
-        <span className={styles.paymentTo}>
-          <RenderReactIcon icon={IoArrowForwardOutline} translateY={0.2} />
-        </span>
-        <span>{item.paymentRecipient.userName}</span>
-      </div>
-    </div>
+    </Link>
   );
 };
-
 export default RenderGroupPayment;

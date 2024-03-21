@@ -3,6 +3,14 @@
   overflow-y: scroll;
 }
 
+.balancesContainer a {
+  color: var(--color-dark);
+}
+
+.balancesContainer a:hover {
+  color: var(--color-dark-dark);
+}
+
 .userDetails {
   display: flex;
   flex-direction: row;
@@ -13,6 +21,7 @@
   min-width: 25rem;
   margin: 0 auto;
 }
+
 .userListItem {
   list-style: none;
   margin-top: 0.25rem;

@@ -1,4 +1,12 @@
-.payments {
+.paymentLink {
+  color: var(--color-dark);
+}
+
+.paymentLink:hover {
+  color: var(--color-dark-dark);
+}
+
+.payment {
   display: flex;
   line-height: 1.25;
 }
