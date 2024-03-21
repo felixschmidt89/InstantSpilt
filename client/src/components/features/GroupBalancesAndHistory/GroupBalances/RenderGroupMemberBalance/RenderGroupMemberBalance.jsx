@@ -4,38 +4,43 @@ import { Link } from "react-router-dom";
 
 // Constants and Utils
 import { BALANCE_THRESHOLD } from "../../../../../constants/dataConstants";
-
-// Styles
-import styles from "./RenderUserNameAndBalance.module.css";
-import Emoji from "../../../../common/Emoji/Emoji";
 import emojiConstants from "../../../../../constants/emojiConstants";
 
+// Components
+import Emoji from "../../../../common/Emoji/Emoji";
+
+// Styles
+import styles from "./RenderGroupMemberBalance.module.css";
+
 /**
- * Component for rendering username and user balance
+ * Component for rendering group member name and balance
  *
  * @param {Object[]} userDetails - The array of user details.
  *  @param {string} props.groupCode - The groupCode of the group.
  *  @param {string} props.groupCurrency - The currency of the group.
  * @returns {JSX.Element} React component. */
-const RenderUserNameAndBalance = ({
-  userDetails,
+const RenderGroupMemberBalance = ({
+  groupMemberDetails,
   groupCode,
   groupCurrency,
 }) => (
   <div className={styles.balancesContainer}>
     <ul>
-      {userDetails.map((user) => (
+      {groupMemberDetails.map((user) => (
         <Link
           key={user.userId}
           to={`/user-details/${groupCode}/${user.userId}`}
-          className={styles.userListItemLink}>
-          <li className={styles.userListItem}>
-            <div className={styles.userDetails}>
+          className={styles.groupMemberListItemLink}>
+          <li className={styles.groupMemberListItem}>
+            <div className={styles.groupMemberDetails}>
               <div className={styles.leftColumn}>
                 <span className={styles.emoji}>
-                  <Emoji label={"expense emoji"} emoji={emojiConstants.user} />
+                  <Emoji
+                    label={"expense emoji"}
+                    emoji={emojiConstants.member}
+                  />
                 </span>
-                <span className={styles.userName}>{user.userName}</span>
+                <span className={styles.groupMemberName}>{user.userName}</span>
               </div>
               <div className={styles.rightColumn}>
                 {/* Visually indicate negative userBalance*/}
@@ -60,4 +65,4 @@ const RenderUserNameAndBalance = ({
   </div>
 );
 
-export default RenderUserNameAndBalance;
+export default RenderGroupMemberBalance;

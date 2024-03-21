@@ -12,7 +12,7 @@ import { devLog } from "../../../../utils/errorUtils";
 import ConfirmationModal from "../../../common/ConfirmationModal/ConfirmationModal";
 
 // Styles
-import styles from "./DeleteUserBin.module.css";
+import styles from "./DeleteGroupMemberBin.module.css";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -22,14 +22,14 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  *
  * @param {Object} props - The component props.
  * @param {string} props.userId - The ID of the user to be deleted.
- * @param {string} props.userName - The name of the user to be deleted.
+ * @param {string} props.groupMemberName - The name of the group member to be deleted.
  * @param {Function} props.incrementRerenderTrigger - Function to increment the rerender trigger.
  * @param {boolean} props.rerenderTrigger - rerenderTrigger variable from parent component.
  * @returns {JSX.Element} React component.
  */
-const DeleteUserBin = ({
+const DeleteGroupMemberBin = ({
   userId,
-  userName,
+  groupMemberName,
   incrementRerenderTrigger,
   rerenderTrigger,
 }) => {
@@ -51,7 +51,7 @@ const DeleteUserBin = ({
       const response = await axios.delete(`${apiUrl}/users/${userId}`);
       if (response.status === StatusCodes.NO_CONTENT) {
         setError(null);
-        devLog(`User ${userId} has been deleted.`);
+        devLog(`Group member ${userId} has been deleted.`);
         setDeletionSuccess(true);
         handleHideConfirmation();
       }
@@ -59,7 +59,7 @@ const DeleteUserBin = ({
       if (error.response && error.response.status === StatusCodes.BAD_REQUEST) {
         setError(error.response.data.message);
       } else {
-        devLog(`Error deleting user ${userId}:`, error);
+        devLog(`Error deleting group member ${userId}:`, error);
         setError(t("generic-error-message"));
       }
     }
@@ -84,8 +84,8 @@ const DeleteUserBin = ({
       </span>
       {isConfirmationVisible && (
         <ConfirmationModal
-          message={t("delete-user-bin-component-confirmation-message", {
-            userName,
+          message={t("delete-group-member-bin-component-confirmation-message", {
+            groupMemberName,
           })}
           onConfirm={handleDelete}
           onCancel={handleHideConfirmation}
@@ -97,4 +97,4 @@ const DeleteUserBin = ({
   );
 };
 
-export default DeleteUserBin;
+export default DeleteGroupMemberBin;

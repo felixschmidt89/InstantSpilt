@@ -9,18 +9,18 @@ import emojiConstants from "../../../../constants/emojiConstants";
 import Emoji from "../../../common/Emoji/Emoji";
 
 // Styles
-import styles from "./NotEnoughUsers.module.css";
+import styles from "./NotEnoughGroupMembers.module.css";
 /**
  * Component for rendering a call to action to add members to a group
  *
  * @returns {JSX.Element} React component. */
-const NotEnoughUsers = () => {
+const NotEnoughGroupMembers = () => {
   const { t } = useTranslation();
   return (
     <p className={styles.failMessage}>
-      {t("not-enough-users-start-adding")}{" "}
+      {t("not-enough-groupmembers-start-adding")}{" "}
       <span className={styles.emojiParanthesis}>
-        (<Emoji label={"user emoji"} emoji={emojiConstants.user}></Emoji>)
+        (<Emoji label={"user emoji"} emoji={emojiConstants.member}></Emoji>)
       </span>{" "}
       {t("no-group-transactions-below")}{" "}
       <span className={styles.emojiParanthesis}>
@@ -30,9 +30,9 @@ const NotEnoughUsers = () => {
           emoji={emojiConstants.pointDown}></Emoji>
         )
       </span>
-      {t("not-enough-users-append")}.
+      {t("not-enough-groupmembers-append")}.
     </p>
   );
 };
 
-export default NotEnoughUsers;
+export default NotEnoughGroupMembers;

@@ -36,7 +36,7 @@
   padding: 0.4rem 0rem;
 }
 
-.userName {
+.groupMemberName {
   display: flex;
   align-self: center;
   font-size: 1.6rem;

@@ -12,18 +12,18 @@ import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
 
 // Components
 import Spinner from "../../../common/Spinner/Spinner";
-import DeleteUserBin from "../DeleteUserBin/DeleteUserBin";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 import Emoji from "../../../common/Emoji/Emoji";
+import DeleteGroupMemberBin from "../DeleteGroupMemberBin/DeleteGroupMemberBin";
 
 // Styles
-import styles from "./RenderUserNames.module.css";
+import styles from "./RenderGroupMemberNames.module.css";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
 /**
- * Renders a list of all member names of a group including ability to delete each user.
+ * Renders a list of all member names of a group including ability to delete them.
  *
  * @param {Object} props - The component props.
  * @param {number} props.rerenderTrigger - Trigger for re-rendering the component.
@@ -31,12 +31,12 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {Function} props.incrementRerenderTrigger - Function to increment the rerender trigger.
  * @returns {JSX.Element} React component.
  */
-const RenderUserNames = ({
+const RenderGroupMemberNames = ({
   rerenderTrigger,
   groupCode,
   incrementRerenderTrigger,
 }) => {
-  const [userDetails, setUserDetails] = useState([]);
+  const [groupMemberDetails, setGroupMemberDetails] = useState([]);
   const [noGroupMembers, setNoGroupMembers] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -63,7 +63,7 @@ const RenderUserNames = ({
             (userA, userB) =>
               new Date(userB.createdAt) - new Date(userA.createdAt)
           );
-          setUserDetails(sortedUserDetails);
+          setGroupMemberDetails(sortedUserDetails);
           setNoGroupMembers(false);
         } else {
           setNoGroupMembers(true);
@@ -84,8 +84,8 @@ const RenderUserNames = ({
   }, [rerenderTrigger, groupCode]);
 
   useEffect(() => {
-    devLog("group members:", userDetails);
-  }, [userDetails]);
+    devLog("group members:", groupMemberDetails);
+  }, [groupMemberDetails]);
 
   return (
     <div className={styles.container}>
@@ -96,28 +96,28 @@ const RenderUserNames = ({
       ) : (
         <div className={styles.membersContainer}>
           <h2 className={styles.groupMemberHeader}>
-            {t("render-user-names-component-header")}
+            {t("render-groupmember-names-component-header")}
           </h2>
           <div className={styles.members}>
             {noGroupMembers ? (
               <span className={styles.noGroupMembers}>
-                {t("render-user-names-component-no-group-members-added-copy")}
+                {t("render-groupmember-names-component-no-group-members-copy")}
               </span>
             ) : (
               <ul className={styles.list}>
-                {userDetails.map(({ _id, userName }, index) => (
+                {groupMemberDetails.map(({ _id, userName }, index) => (
                   <li key={index} className={styles.listItem}>
                     <span className={styles.emoji}>
                       <Emoji
-                        emoji={emojiConstants.user}
+                        emoji={emojiConstants.member}
                         label='group member emoji'
                       />
                     </span>
-                    <span className={styles.userName}>{userName}</span>
+                    <span className={styles.groupMemberName}>{userName}</span>
                     <span className={styles.button}>
-                      <DeleteUserBin
+                      <DeleteGroupMemberBin
                         userId={_id}
-                        userName={userName}
+                        groupMemberName={userName}
                         incrementRerenderTrigger={incrementRerenderTrigger}
                         rerenderTrigger={rerenderTrigger}
                       />
@@ -138,4 +138,4 @@ const RenderUserNames = ({
   );
 };
 
-export default RenderUserNames;
+export default RenderGroupMemberNames;

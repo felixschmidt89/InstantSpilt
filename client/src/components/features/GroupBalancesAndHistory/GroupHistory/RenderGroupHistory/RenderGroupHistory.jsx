@@ -14,13 +14,12 @@ import useErrorModalVisibility from "../../../../../hooks/useErrorModalVisibilit
 import Spinner from "../../../../common/Spinner/Spinner";
 import RenderGroupExpense from "../RenderGroupExpense/RenderGroupExpense";
 import RenderGroupPayment from "../RenderGroupPayment/RenderGroupPayment";
-import NotEnoughUsers from "../../NotEnoughUsers/NotEnoughUsers";
 import NoGroupTransactions from "../NoGroupTransactions/NoGroupTransactions";
 import ErrorModal from "../../../../common/ErrorModal/ErrorModal";
+import NotEnoughGroupMembers from "../../NotEnoughGroupMembers/NotEnoughGroupMembers";
 
 // Styles
 import styles from "./RenderGroupHistory.module.css";
-import { t } from "i18next";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -37,6 +36,7 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
   const [groupExpensesAndPayments, setGroupExpensesAndPayments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
@@ -127,7 +127,7 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
           {isFetched && groupMembers.length > 1 ? (
             <NoGroupTransactions />
           ) : (
-            <NotEnoughUsers />
+            <NotEnoughGroupMembers />
           )}
           <ErrorModal
             error={error}

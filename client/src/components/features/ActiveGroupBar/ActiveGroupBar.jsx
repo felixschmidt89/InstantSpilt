@@ -59,7 +59,7 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
       {/* Button for navigating to adding users */}
       <GroupActionsEmojiButton
         route={"create-group-members"}
-        emoji={emojiConstants.user}
+        emoji={emojiConstants.member}
         explanationText={t("active-group-bar-member-emoji-copy")}
         ariaLabel='add group member emoji'
         scale={0.97}

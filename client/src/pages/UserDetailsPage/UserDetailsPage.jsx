@@ -54,7 +54,7 @@ const UserDetailsPage = () => {
           <span className={styles.emoji}>
             <Emoji
               label={"group member emoji"}
-              emoji={emojiConstants.user}></Emoji>
+              emoji={emojiConstants.member}></Emoji>
           </span>
           <h1>{userData.userName} </h1>
           <h2>

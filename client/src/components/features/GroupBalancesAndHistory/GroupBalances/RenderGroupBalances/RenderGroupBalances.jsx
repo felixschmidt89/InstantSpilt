@@ -13,9 +13,9 @@ import useErrorModalVisibility from "../../../../../hooks/useErrorModalVisibilit
 // Components
 import Spinner from "../../../../common/Spinner/Spinner";
 import PiratePx from "../../../../common/PiratePx/PiratePx";
-import NotEnoughUsers from "../../NotEnoughUsers/NotEnoughUsers";
-import RenderUserNameAndBalance from "../RenderUserNameAndBalance/RenderUserNameAndBalance";
+import NotEnoughGroupMembers from "../../NotEnoughGroupMembers/NotEnoughGroupMembers";
 import ErrorModal from "../../../../common/ErrorModal/ErrorModal";
+import RenderGroupMemberBalance from "../RenderGroupMemberBalance/RenderGroupMemberBalance";
 
 // Styles
 import styles from "./RenderGroupBalances.module.css";
@@ -30,7 +30,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const RenderGroupBalances = ({ groupCurrency }) => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const { t } = useTranslation();
-  const [userDetails, setUserDetails] = useState([]);
+  const [groupMemberDetails, setGroupMemberDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -50,7 +50,7 @@ const RenderGroupBalances = ({ groupCurrency }) => {
 
         // Format fetched user data
         if (responseData.users && responseData.users.length > 0) {
-          const userDetails = responseData.users.map((user) => ({
+          const groupMemberDetails = responseData.users.map((user) => ({
             userId: user._id,
             userName: user.userName,
             userBalance:
@@ -59,8 +59,8 @@ const RenderGroupBalances = ({ groupCurrency }) => {
                 ? 0 // If true, set userBalance to 0 to treat such edge cases as settled
                 : +parseFloat(user.userBalance).toFixed(2), // round to 2 decimal places
           }));
-          setUserDetails(userDetails);
-          devLog("User details formatted:", userDetails);
+          setGroupMemberDetails(groupMemberDetails);
+          devLog("Group details formatted:", groupMemberDetails);
         }
         setError("");
         setIsLoading(false);
@@ -82,15 +82,15 @@ const RenderGroupBalances = ({ groupCurrency }) => {
   ) : (
     <div className={styles.container}>
       {/* Check if there is at least 1 user */}
-      {userDetails.length > 0 ? (
-        <RenderUserNameAndBalance
-          userDetails={userDetails}
+      {groupMemberDetails.length > 0 ? (
+        <RenderGroupMemberBalance
+          groupMemberDetails={groupMemberDetails}
           groupCode={groupCode}
           groupCurrency={groupCurrency}
         />
       ) : (
         <span className={styles.issue}>
-          <NotEnoughUsers />
+          <NotEnoughGroupMembers />
         </span>
       )}
       <PiratePx COUNT_IDENTIFIER={"group-balances"} />

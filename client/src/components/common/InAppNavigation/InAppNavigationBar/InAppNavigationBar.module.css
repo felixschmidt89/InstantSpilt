@@ -68,13 +68,6 @@ icon:hover {
   }
 }
 
-/* smartphone landscape mode*/
-@media only screen and (max-width: 768px) and (orientation: landscape) {
-  .navContainer {
-    width: 60vw;
-  }
-}
-
 /* Tablet and portrait mode */
 @media only screen and (min-device-width: 769px) and (max-device-width: 1366px) and (orientation: portrait) {
   .navContainer {

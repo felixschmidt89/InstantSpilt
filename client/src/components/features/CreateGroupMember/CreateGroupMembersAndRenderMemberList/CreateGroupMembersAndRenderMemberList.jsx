@@ -5,14 +5,11 @@ import React from "react";
 import useTriggerRerender from "../../../../hooks/useTriggerRerender";
 
 // Components
-import RenderUserNames from "../RenderUserNames/RenderUserNames";
 import CreateGroupMemberForm from "../CreateGroupMemberForm/CreateGroupMemberForm";
-
-// Styles
-import styles from "./CreateGroupMembersAndRenderMemberList.module.css";
+import RenderGroupMemberNames from "../RenderGroupMemberNames/RenderGroupMemberNames";
 
 /**
- * Component for creating a user within a group and rendering the groups user list.
+ * Container component for creating a user within a group and rendering the groups user list.
  * Has nested components and uses a custom hook to get groupCode and trigger rerender logic.
  * @returns {JSX.Element} React component. */
 const CreateGroupMembersAndRenderMemberList = () => {
@@ -21,19 +18,17 @@ const CreateGroupMembersAndRenderMemberList = () => {
     useTriggerRerender();
 
   return (
-    <div className={styles.container}>
+    <>
       <CreateGroupMemberForm
         incrementRerenderTrigger={incrementRerenderTrigger}
         groupCode={groupCode}
       />
-      <div className={styles.usernames}>
-        <RenderUserNames
-          rerenderTrigger={rerenderTrigger}
-          groupCode={groupCode}
-          incrementRerenderTrigger={incrementRerenderTrigger}
-        />
-      </div>
-    </div>
+      <RenderGroupMemberNames
+        rerenderTrigger={rerenderTrigger}
+        groupCode={groupCode}
+        incrementRerenderTrigger={incrementRerenderTrigger}
+      />
+    </>
   );
 };
 

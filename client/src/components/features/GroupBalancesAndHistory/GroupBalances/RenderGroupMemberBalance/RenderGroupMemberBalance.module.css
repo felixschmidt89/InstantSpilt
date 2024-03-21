@@ -11,7 +11,7 @@
   color: var(--color-dark-dark);
 }
 
-.userDetails {
+.groupMemberDetails {
   display: flex;
   flex-direction: row;
   width: fit-content;
@@ -22,7 +22,7 @@
   margin: 0 auto;
 }
 
-.userListItem {
+.groupMemberListItem {
   list-style: none;
   margin-top: 0.25rem;
 }
@@ -43,10 +43,6 @@
 .rightColumn {
   width: 13rem;
   text-align: right;
-}
-
-.userName {
-  text-decoration: none;
 }
 
 .positiveBalance {
