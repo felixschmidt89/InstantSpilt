@@ -41,7 +41,7 @@ const Contact = () => {
   });
   const [file, setFile] = useState(null);
   const [showForm, setShowForm] = useState(true);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =

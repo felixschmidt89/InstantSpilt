@@ -29,8 +29,8 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 const CreateGroupMemberForm = ({ incrementRerenderTrigger, groupCode }) => {
   const { t } = useTranslation();
   const inputRef = useRef(null);
-  const [userName, setUserName] = useState("");
-  const [error, setError] = useState("");
+  const [userName, setUserName] = useState(null);
+  const [error, setError] = useState(null);
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =

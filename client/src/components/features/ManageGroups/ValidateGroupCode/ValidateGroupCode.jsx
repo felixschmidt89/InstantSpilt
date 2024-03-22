@@ -28,7 +28,7 @@ const ValidateGroupCode = () => {
   const groupCode = localStorage.getItem("activeGroupCode");
   const [friendlyCaptchaIsVerified, setFriendlyCaptchaIsVerified] =
     useState(false);
-  const [toBeValidatedGroupCode, setToBeValidatedGroupCode] = useState("");
+  const [toBeValidatedGroupCode, setToBeValidatedGroupCode] = useState(null);
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 

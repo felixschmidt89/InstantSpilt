@@ -36,9 +36,9 @@ const CreateExpense = ({ groupMembers, groupCode }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const [expenseDescription, setExpenseDescription] = useState("");
-  const [expenseAmount, setExpenseAmount] = useState("");
-  const [expensePayerName, setExpensePayerName] = useState("");
+  const [expenseDescription, setExpenseDescription] = useState(null);
+  const [expenseAmount, setExpenseAmount] = useState(null);
+  const [expensePayerName, setExpensePayerName] = useState(null);
   // Preselect all group members as beneficiaries
   const [selectedBeneficiaries, setSelectedBeneficiaries] = useState([
     ...groupMembers,

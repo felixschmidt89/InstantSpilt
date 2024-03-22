@@ -37,7 +37,7 @@ const CreateGroupForm = ({ isOnboarding }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const inputRef = useRef(null);
-  const [groupName, setGroupName] = useState("");
+  const [groupName, setGroupName] = useState(null);
   const [error, setError] = useState(null);
   const groupCode = localStorage.getItem("activeGroupCode");
   const [friendlyCaptchaIsVerified, setFriendlyCaptchaIsVerified] =

@@ -39,7 +39,7 @@
 .leftColumn li,
 .rightColumn li {
   line-height: 1.25;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 
 @media (max-width: 768px) {

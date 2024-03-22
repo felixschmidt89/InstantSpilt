@@ -1,4 +1,10 @@
+// React and Third-Party Libraries
 import React from "react";
+
+// Hooks
+import useIsNotoEmojiFontLoaded from "../../../hooks/useIsNotoEmojiFontLoaded";
+
+// Styles
 import styles from "./Emoji.module.css";
 
 /**
@@ -13,11 +19,13 @@ import styles from "./Emoji.module.css";
  * @returns {JSX.Element} React component.
  */
 const Emoji = ({ label, emoji, scale = 1, translateX = 0, translateY = 0 }) => {
+  const notoEmojiFontIsLoaded = useIsNotoEmojiFontLoaded();
+
   const emojiStyle = {
     transform: `translate(${translateX}rem, ${translateY}rem) scale(${scale})`,
   };
 
-  return (
+  return notoEmojiFontIsLoaded ? (
     <span
       role='img'
       aria-label={label}
@@ -25,7 +33,7 @@ const Emoji = ({ label, emoji, scale = 1, translateX = 0, translateY = 0 }) => {
       style={emojiStyle}>
       {emoji}
     </span>
-  );
+  ) : null;
 };
 
 export default Emoji;

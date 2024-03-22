@@ -37,7 +37,7 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
   const selectRef = useRef(null);
   const { t } = useTranslation();
   const [labelCurrency, setLabelCurrency] = useState(groupCurrency);
-  const [newGroupCurrency, setNewGroupCurrency] = useState("");
+  const [newGroupCurrency, setNewGroupCurrency] = useState(null);
   const [error, setError] = useState(null);
 
   // Get error modal visibility logic

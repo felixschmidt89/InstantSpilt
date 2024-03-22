@@ -65,7 +65,7 @@ const UpdatePayment = ({
   );
 
   const [formChanged, setFormChanged] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =

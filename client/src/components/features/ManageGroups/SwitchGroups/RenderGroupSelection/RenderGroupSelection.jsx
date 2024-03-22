@@ -26,7 +26,7 @@ import styles from "./RenderGroupSelection.module.css";
 const RenderGroupSelection = ({ groupCode, groupNamesAndGroupCodes }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [selectedGroupCode, setSelectedGroupCode] = useState("");
+  const [selectedGroupCode, setSelectedGroupCode] = useState(null);
 
   const handleSelectChange = (event) => {
     setSelectedGroupCode(event.target.value);

@@ -39,10 +39,10 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const [paymentAmount, setPaymentAmount] = useState("");
-  const [paymentMakerName, setPaymentMakerName] = useState("");
-  const [paymentRecipientName, setPaymentRecipientName] = useState("");
-  const [error, setError] = useState("");
+  const [paymentAmount, setPaymentAmount] = useState(null);
+  const [paymentMakerName, setPaymentMakerName] = useState(null);
+  const [paymentRecipientName, setPaymentRecipientName] = useState(null);
+  const [error, setError] = useState(null);
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =

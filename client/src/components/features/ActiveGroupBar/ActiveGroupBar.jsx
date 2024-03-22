@@ -8,6 +8,7 @@ import emojiConstants from "../../../constants/emojiConstants";
 // Hooks
 import useSettingsEmoji from "../../../hooks/useSettingsEmoji";
 import useIsSlimDevice from "../../../hooks/useIsSlimDevice";
+import useIsNotoEmojiFontLoaded from "../../../hooks/useIsNotoEmojiFontLoaded";
 
 // Component
 import GroupActionsEmojiButton from "../../common/GroupActionsEmojiButton/GroupActionsEmojiButton";
@@ -18,21 +19,19 @@ import styles from "./ActiveGroupBar.module.css";
 /**
  * Toolbar displaying a set of navigation icons for creating expenses, payments, and users, and for settling expenses within a group.
  * @param {boolean} [props.applyMargin=true] - Whether to apply margin for the element. Defaults to true.
-
- *
- * @returns {JSX.Element} React component. */
+ * @returns {JSX.Element} React component.
+ */
 const ActiveGroupBar = ({ applyMargin = true }) => {
   // Handle Firefox bug (settings emoji not rendered correctly https://github.com/googlefonts/noto-emoji/issues/391)
-
   const settingsEmoji = useSettingsEmoji();
   const { t } = useTranslation();
-
   const isSlimDevice = useIsSlimDevice();
+  const notoEmojiFontIsLoaded = useIsNotoEmojiFontLoaded();
 
-  const containerClassName = `${styles.groupActionsBar} ${applyMargin ? styles.withMargin : ""}`;
-  return (
+  // Render the group actions bar if emoji font is loaded
+  return notoEmojiFontIsLoaded ? (
     <div
-      className={containerClassName}
+      className={`${styles.groupActionsBar} ${applyMargin ? styles.withMargin : ""}`}
       role='toolbar'
       aria-label='active group bar'>
       {/* Button for navigating to group settings */}
@@ -65,7 +64,6 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
         scale={0.97}
         translateY={-0.05}
       />
-
       {/* Button for navigating to adding payments */}
       <GroupActionsEmojiButton
         route={"create-payment"}
@@ -73,7 +71,6 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
         explanationText={t("active-group-bar-payment-emoji-copy")}
         ariaLabel='add payment emoji'
       />
-
       {/* Button for navigating to adding expenses */}
       <GroupActionsEmojiButton
         route={"create-expense"}
@@ -83,7 +80,7 @@ const ActiveGroupBar = ({ applyMargin = true }) => {
         ariaLabel='add expense emoji'
       />
     </div>
-  );
+  ) : null;
 };
 
 export default ActiveGroupBar;

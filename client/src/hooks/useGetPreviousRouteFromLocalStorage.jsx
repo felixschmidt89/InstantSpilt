@@ -6,8 +6,8 @@ import { getRouteFromLocalStorage } from "../utils/localStorageUtils";
  * @returns {{ previousRoute: string, nestedPreviousRoute: string, isRetrieved: boolean }} The retrieved previous routes and a boolean indicating whether the retrieval was successful.
  */
 const useGetPreviousRoutesFromLocalStorage = () => {
-  const [previousRoute, setPreviousRoute] = useState("");
-  const [nestedPreviousRoute, setNestedPreviousRoute] = useState("");
+  const [previousRoute, setPreviousRoute] = useState(null);
+  const [nestedPreviousRoute, setNestedPreviousRoute] = useState(null);
   const [isRetrieved, setIsRetrieved] = useState(false);
 
   useEffect(() => {

@@ -41,7 +41,7 @@ const ConfirmSettlementPayment = ({
 }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
   // Get confirmation modal logic from hook, pass callbacks to be executed on confirmation
   const {
