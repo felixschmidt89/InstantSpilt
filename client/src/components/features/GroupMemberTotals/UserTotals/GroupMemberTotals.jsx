@@ -3,44 +3,44 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 // Styles
-import styles from "./UserTotals.module.css";
+import styles from "./GroupMemberTotals.module.css";
 
 /**
- * Renders a user's expenses and payments totals: expenses/payments paid and expenses/payments benefitted from
+ * Renders a group member's expenses and payments totals: expenses/payments paid and expenses/payments benefitted from
  *
  * @component
  * @param {Object} props - The properties passed to the component.
- * @param {Object} props.userData - User data containing expense totals.
+ * @param {Object} props.groupMemberData - group member data containing expense totals.
  *  @param {string} props.groupCurrency - The currency of the group.
  * @returns {JSX.Element} React component. */
-const UserTotals = ({ userData, groupCurrency }) => {
+const GroupMemberTotals = ({ groupMemberData, groupCurrency }) => {
   const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
       <div
         role='region'
-        aria-label='User Expense Totals'
+        aria-label='Group Member Expense Totals'
         className={styles.totalsContainer}>
-        <h3>{t("user-totals-expense-totals-header")}</h3>
+        <h3>{t("groupmember-totals-expense-totals-header")}</h3>
         <ul className={styles.list}>
           {/* total expenses paid amount with 2 decimal places */}
           <li className={styles.item}>
             <span className={styles.key}>
-              {t("user-totals-payment-paid-for")}:
+              {t("groupmember-totals-payment-paid-for")}:
             </span>
             <span className={styles.value}>
-              {userData.totalExpensesPaidAmount.toFixed(2)}
+              {groupMemberData.totalExpensesPaidAmount.toFixed(2)}
               {groupCurrency}
             </span>
           </li>
           <li className={styles.item}>
             <span className={styles.key}>
               {/* total expenses benefitted from amount with 2 decimal places */}
-              {t("user-totals-payment-benefitted-from")}:
+              {t("groupmember-totals-payment-benefitted-from")}:
             </span>
             <span className={styles.value}>
-              {userData.totalExpenseBenefittedAmount.toFixed(2)}
+              {groupMemberData.totalExpenseBenefittedAmount.toFixed(2)}
               {groupCurrency}
             </span>
           </li>
@@ -48,27 +48,27 @@ const UserTotals = ({ userData, groupCurrency }) => {
       </div>
       <div
         role='region'
-        aria-label='User Payments Totals'
+        aria-label='Group Member Payments Totals'
         className={styles.totalsContainer}>
-        <h3>{t("user-totals-payment-totals-header")}</h3>
+        <h3>{t("groupmember-totals-payment-totals-header")}</h3>
         <ul className={styles.list}>
           {/* total payments made amount with 2 decimal places */}
           <li className={styles.item}>
             <span className={styles.key}>
-              {t("user-totals-payment-payments-made")}:
+              {t("groupmember-totals-payment-payments-made")}:
             </span>{" "}
             <span className={styles.value}>
-              {userData.totalPaymentsMadeAmount.toFixed(2)}
+              {groupMemberData.totalPaymentsMadeAmount.toFixed(2)}
               {groupCurrency}
             </span>
           </li>
           <li className={styles.item}>
             <span className={styles.key}>
               {/* total payments received amount with 2 decimal places */}
-              {t("user-totals-payment-payments-received")}:
+              {t("groupmember-totals-payment-payments-received")}:
             </span>
             <span className={styles.value}>
-              {userData.totalPaymentsReceivedAmount.toFixed(2)}
+              {groupMemberData.totalPaymentsReceivedAmount.toFixed(2)}
               {groupCurrency}
             </span>
           </li>
@@ -78,4 +78,4 @@ const UserTotals = ({ userData, groupCurrency }) => {
   );
 };
 
-export default UserTotals;
+export default GroupMemberTotals;

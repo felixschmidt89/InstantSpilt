@@ -11,7 +11,7 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
 import CreateExpense from "../../components/features/Expenses/CreateExpense/CreateExpense";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
-import CreateUserCTA from "../../components/features/GroupBalancesAndHistory/CreateUserCTA/CreateUserCTA";
+import CreateUserCTA from "../../components/features/GroupBalancesAndHistory/CreateGroupMemberCTA/CreateGroupMemberCTA";
 
 // Styles
 import styles from "./CreateExpensePage.module.css";

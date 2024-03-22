@@ -12,16 +12,16 @@ import RenderDataAttributeWithAriaLabel from "../../../common/RenderDataAttribut
 import LinkToPage from "../../../common/InAppNavigation/LinkToPage/LinkToPage";
 
 // Styles
-import styles from "./RenderUserPayment.module.css";
+import styles from "./RenderGroupMemberPayment.module.css";
 
 /**
- * Component for rendering details of a user's single payment.
+ * Component for rendering details of a groupmember's single payment.
  * @param {Object} props - The component props.
  * @param {Object} props.item - The payment item object.
  * @param {string} props.groupCode - The associated groupCode.
  * @param {Function} props.onDelete - Callback function for deleting the payment.
  * @returns {JSX.Element} React component. */
-const RenderUserPayment = ({
+const NoGroupMemberTransactions = ({
   item,
   groupCode,
   onDeleteResource,
@@ -49,7 +49,7 @@ const RenderUserPayment = ({
           <LinkToPage
             to={`/update-payment/${groupCode}/${item._id}`}
             setNestedPreviousRoute={true}>
-            {t("user-transaction-history-edit-link")}
+            {t("groupmember-transaction-history-edit-link")}
           </LinkToPage>
         </li>
         <li className={styles.actionLine}>
@@ -68,25 +68,25 @@ const RenderUserPayment = ({
         <ul>
           <li>
             <span className={styles.key}>
-              {t("user-transaction-history-paid-by-key")}:{" "}
+              {t("groupmember-transaction-history-paid-by-key")}:{" "}
             </span>
             <RenderDataAttributeWithAriaLabel
               attribute={item.paymentMaker.userName}
-              ariaLabel={"username of the payment maker"}
+              ariaLabel={"name of the payment maker"}
             />
           </li>
           <li>
             <span className={styles.key}>
-              {t("user-transaction-history-paid-to-key")}:{" "}
+              {t("groupmember-transaction-history-paid-to-key")}:{" "}
             </span>
             <RenderDataAttributeWithAriaLabel
               attribute={item.paymentRecipient.userName}
-              ariaLabel={"username of the payment recipient"}
+              ariaLabel={"name of the payment recipient"}
             />
           </li>
           <li>
             <span className={styles.key}>
-              {t("user-transaction-history-created-key")}:{" "}
+              {t("groupmember-transaction-history-created-key")}:{" "}
             </span>
             <RenderDataAttributeWithAriaLabel
               attribute={new Date(item.createdAt).toLocaleString()}
@@ -96,7 +96,7 @@ const RenderUserPayment = ({
           {item.createdAt !== item.updatedAt && (
             <li>
               <span className={styles.key}>
-                {t("user-transaction-history-changed-key")}:{" "}
+                {t("groupmember-transaction-history-changed-key")}:{" "}
               </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={new Date(item.updatedAt).toLocaleString()}
@@ -110,4 +110,4 @@ const RenderUserPayment = ({
   );
 };
 
-export default RenderUserPayment;
+export default NoGroupMemberTransactions;

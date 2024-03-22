@@ -2,16 +2,16 @@
 import React from "react";
 
 // Components
-import RenderUserPayment from "../RenderUserPayment/RenderUserPayment";
-import RenderUserExpense from "../RenderUserExpense/RenderUserExpense";
+import RenderGroupMemberPayment from "../RenderGroupMemberPayment/RenderGroupMemberPayment";
+import RenderGroupMemberExpense from "../RenderGroupMemberExpense/RenderGroupMemberExpense";
 
 // Styles
-import styles from "./UserTransactionsHistory.module.css";
+import styles from "./GroupMemberTransactionsHistory.module.css";
 
 /**
- * Parent component rendering user transactions history including every single expense and payment of a user.
+ * Parent component rendering group member transactions history including every single expense and payment of a group member.
  * @param {Object} props - The component props.
- * @param {Array} props.userExpensesAndPayments - An array of user expenses and payments.
+ * @param {Array} props.groupMemberExpensesAndPayments - An array of group member expenses and payments.
  * @param {Array} props.groupMembers - An array of the names of the group members.
 
  * @param {string} props.groupCode - The associated groupCode.
@@ -19,19 +19,19 @@ import styles from "./UserTransactionsHistory.module.css";
  * @param {string} props.groupCurrency - The currency of the group.
  * @returns {JSX.Element|null} React component or null if no transactions.
  */
-const UserTransactionsHistory = ({
-  userExpensesAndPayments,
+const GroupMemberTransactionsHistory = ({
+  groupMemberExpensesAndPayments,
   groupCode,
   onDeleteResource,
   groupCurrency,
   groupMembers,
 }) => {
-  if (userExpensesAndPayments.length === 0) {
+  if (groupMemberExpensesAndPayments.length === 0) {
     return null;
   }
 
   // Sort expenses and payments by date in descending order
-  const sortedExpensesAndPayments = userExpensesAndPayments.sort(
+  const sortedExpensesAndPayments = groupMemberExpensesAndPayments.sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
 
@@ -41,7 +41,7 @@ const UserTransactionsHistory = ({
         {sortedExpensesAndPayments.map((item) => (
           <li className={styles.item} key={item._id}>
             {item.itemType === "expense" ? (
-              <RenderUserExpense
+              <RenderGroupMemberExpense
                 item={item}
                 groupCode={groupCode}
                 onDeleteResource={onDeleteResource}
@@ -49,7 +49,7 @@ const UserTransactionsHistory = ({
                 groupMembers={groupMembers}
               />
             ) : (
-              <RenderUserPayment
+              <RenderGroupMemberPayment
                 item={item}
                 groupCode={groupCode}
                 onDeleteResource={onDeleteResource}
@@ -63,4 +63,4 @@ const UserTransactionsHistory = ({
   );
 };
 
-export default UserTransactionsHistory;
+export default GroupMemberTransactionsHistory;

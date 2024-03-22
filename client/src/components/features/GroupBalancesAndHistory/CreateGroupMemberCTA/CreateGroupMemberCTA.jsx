@@ -9,21 +9,21 @@ import emojiConstants from "../../../../constants/emojiConstants";
 import GroupActionsEmojiButton from "../../../common/GroupActionsEmojiButton/GroupActionsEmojiButton";
 
 // Styles
-import styles from "./CreateUserCTA.module.css";
+import styles from "./CreateGroupMemberCTA.module.css";
 
 /**
  * Component for rendering a call-to-action (CTA) to create users.
  * @param {boolean} props.isPayment - Indicates whether the CTA is related to a payment. Defaults to true.
  * @returns {JSX.Element} React component. */
-const CreateUserCTA = ({ isPayment = true }) => {
+const CreateGroupMemberCTA = ({ isPayment = true }) => {
   const { t } = useTranslation();
 
   return (
     <div className={styles.container}>
       <p className={styles.callToAction}>
         {isPayment
-          ? t("create-user-cta-payment-copy")
-          : t("create-user-cta-expense-copy")}
+          ? t("create-groupmember-cta-payment-copy")
+          : t("create-groupmember-cta-expense-copy")}
         :
         <div className={styles.icon}>
           <GroupActionsEmojiButton
@@ -38,4 +38,4 @@ const CreateUserCTA = ({ isPayment = true }) => {
   );
 };
 
-export default CreateUserCTA;
+export default CreateGroupMemberCTA;

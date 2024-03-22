@@ -12,9 +12,9 @@ import LinkToPage from "../../../common/InAppNavigation/LinkToPage/LinkToPage";
 import Emoji from "../../../common/Emoji/Emoji";
 
 // Styles
-import styles from "./RenderUserExpense.module.css";
+import styles from "./RenderGroupMemberExpense.module.css";
 /**
- * Renders a user expense component.
+ * Renders a single group member expense component.
  * @param {object} props - The props object.
  * @param {object} props.item - The expense item to be displayed.
  * @param {string} props.groupCode - The groupCode of the group to which the expense belongs.
@@ -23,7 +23,7 @@ import styles from "./RenderUserExpense.module.css";
  * @param {Array} props.groupMembers - Array of group members.
  * @returns {JSX.Element} React Component.
  */
-const RenderUserExpense = ({
+const RenderGroupMemberExpense = ({
   item,
   groupCode,
   onDeleteResource,
@@ -66,7 +66,7 @@ const RenderUserExpense = ({
           <LinkToPage
             to={`/update-expense/${groupCode}/${item._id}`}
             setNestedPreviousRoute={true}>
-            {t("user-transaction-history-edit-link")}
+            {t("groupmember-transaction-history-edit-link")}
           </LinkToPage>
         </li>
         <li className={styles.actionLine}>
@@ -86,7 +86,7 @@ const RenderUserExpense = ({
           <ul>
             <li>
               <span className={styles.key}>
-                {t("user-transaction-history-description-key")}:{" "}
+                {t("groupmember-transaction-history-description-key")}:{" "}
               </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expenseDescription}
@@ -95,11 +95,11 @@ const RenderUserExpense = ({
             </li>
             <li>
               <span className={styles.key}>
-                {t("user-transaction-history-paid-by-key")}:{" "}
+                {t("groupmember-transaction-history-paid-by-key")}:{" "}
               </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expensePayer.userName}
-                ariaLabel={"username of the expense payer"}
+                ariaLabel={"name of the expense payer"}
               />
             </li>
 
@@ -114,7 +114,7 @@ const RenderUserExpense = ({
             </li>
             <li>
               <span className={styles.key}>
-                {t("user-transaction-history-amount-benefitted-key")}:{" "}
+                {t("groupmember-transaction-history-amount-benefitted-key")}:{" "}
               </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={item.expenseAmountPerBeneficiary.toFixed(2)}
@@ -125,7 +125,7 @@ const RenderUserExpense = ({
 
             <li>
               <span className={styles.key}>
-                {t("user-transaction-history-created-key")}:{" "}
+                {t("groupmember-transaction-history-created-key")}:{" "}
               </span>
               <RenderDataAttributeWithAriaLabel
                 attribute={new Date(item.createdAt).toLocaleString()}
@@ -136,7 +136,7 @@ const RenderUserExpense = ({
             {item.createdAt !== item.updatedAt && (
               <li>
                 <span className={styles.key}>
-                  {t("user-transaction-history-changed-key")}:{" "}
+                  {t("groupmember-transaction-history-changed-key")}:{" "}
                 </span>
                 <RenderDataAttributeWithAriaLabel
                   attribute={new Date(item.updatedAt).toLocaleString()}
@@ -151,4 +151,4 @@ const RenderUserExpense = ({
   );
 };
 
-export default RenderUserExpense;
+export default RenderGroupMemberExpense;

@@ -10,7 +10,7 @@ import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import Spinner from "../../components/common/Spinner/Spinner";
 import CreatePayment from "../../components/features/Payments/CreatePayment/CreatePayment";
-import CreateUserCTA from "../../components/features/GroupBalancesAndHistory/CreateUserCTA/CreateUserCTA";
+import CreateUserCTA from "../../components/features/GroupBalancesAndHistory/CreateGroupMemberCTA/CreateGroupMemberCTA";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 
 // Styles

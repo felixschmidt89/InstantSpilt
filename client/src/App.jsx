@@ -19,7 +19,6 @@ import CreateExpensePage from "./pages/CreateExpensePage/CreateExpensePage";
 import CreatePaymentPage from "./pages/CreatePaymentPage/CreatePaymentPage";
 import ExpenseDetailsPage from "./pages/ExpenseDetailsPage/ExpenseDetailsPage";
 import PaymentDetailsPage from "./pages/PaymentDetailsPage/PaymentDetailsPage";
-import UserDetailsPage from "./pages/UserDetailsPage/UserDetailsPage";
 import OnboardingGroupSettingsPage from "./pages/OnboardingGroupSettingsPage/OnboardingGroupSettingsPage";
 import ValidateProvidedGroupCodePage from "./pages/ValidateProvidedGroupCodePage/ValidateProvidedGroupCodePage";
 import LegalNoticePage from "./pages/LegalNoticePage/LegalNoticePage";
@@ -27,7 +26,6 @@ import TutorialPage from "./pages/TutorialPage/TutorialPage";
 import UpdateExpensePage from "./pages/UpdateExpensePage/UpdateExpensePage";
 import UpdatePaymentPage from "./pages/UpdatePaymentPage/UpdatePaymentPage";
 import TermsAndConditionsPage from "./pages/TermsAndConditionsPage/TermsAndConditionsPage";
-import UserTransactionHistoryPage from "./pages/UserTransactionHistoryPage/UserTransactionHistoryPage";
 import EnterGroupCodePage from "./pages/EnterGroupCodePage/EnterGroupCodePage";
 import ManageGroupsPage from "./pages/ManageGroupsPage/ManageGroupsPage";
 import GroupSettingsPage from "./pages/GroupSettingsPage/GroupSettingsPage";
@@ -37,10 +35,12 @@ import LeaveGroupPage from "./pages/LeaveGroupPage/LeaveGroupPage";
 import JoinGroupDEPage from "./pages/JoinGroupDEPage/JoinGroupDEPage";
 import JoinGroupENPage from "./pages/JoinGroupENPage/JoinGroupENPage";
 import CreateGroupMemberPage from "./pages/CreateGroupMemberPage/CreateGroupMemberPage";
+import SettleExpensesPage from "./pages/SettleExpensesPage/SettleExpensesPage";
+import GroupMemberDetailsPage from "./pages/GroupMemberDetailsPage/GroupMemberDetailsPage";
+import GroupMemberTransactionHistoryPage from "./pages/GroupMemberTransactionHistoryPage/GroupMemberTransactionHistoryPage";
 
 // Styles
 import "./App.css";
-import SettleExpensesPage from "./pages/SettleExpensesPage/SettleExpensesPage";
 
 const App = () => {
   return (
@@ -95,12 +95,12 @@ const App = () => {
             />
             <Route path='/settle-expenses' element={<SettleExpensesPage />} />
             <Route
-              path='/user-details/:groupCode/:userId'
-              element={<UserDetailsPage />}
+              path='/groupmember-details/:groupCode/:userId'
+              element={<GroupMemberDetailsPage />}
             />
             <Route
-              path='/user-transaction-history/:groupCode/:userId'
-              element={<UserTransactionHistoryPage />}
+              path='/groupmember-transaction-history/:groupCode/:userId'
+              element={<GroupMemberTransactionHistoryPage />}
             />
             <Route
               path='/payment-details/:groupCode/:itemId'

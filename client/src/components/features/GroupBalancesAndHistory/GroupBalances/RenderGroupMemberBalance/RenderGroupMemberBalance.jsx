@@ -29,7 +29,7 @@ const RenderGroupMemberBalance = ({
       {groupMemberDetails.map((user) => (
         <Link
           key={user.userId}
-          to={`/user-details/${groupCode}/${user.userId}`}
+          to={`/groupmember-details/${groupCode}/${user.userId}`}
           className={styles.groupMemberListItemLink}>
           <li className={styles.groupMemberListItem}>
             <div className={styles.groupMemberDetails}>

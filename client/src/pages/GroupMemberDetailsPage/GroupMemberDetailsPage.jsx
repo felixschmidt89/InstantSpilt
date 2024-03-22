@@ -8,7 +8,7 @@ import { BALANCE_THRESHOLD } from "../../constants/dataConstants";
 import emojiConstants from "../../constants/emojiConstants";
 
 // Hooks
-import useFetchUserData from "../../hooks/useFetchUserInfo";
+import useFetchGroupMemberData from "../../hooks/useFetchGroupMemberData";
 import useFetchGroupCurrency from "../../hooks/useFetchGroupCurrency";
 import useSettingsEmoji from "../../hooks/useSettingsEmoji";
 
@@ -21,57 +21,64 @@ import DeleteResource from "../../components/common/DeleteResource/DeleteResourc
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import ChangeResourceName from "../../components/common/ChangeResourceName/ChangeResourceName";
 import Emoji from "../../components/common/Emoji/Emoji";
-import UserTotals from "../../components/features/UserDetails/UserTotals/UserTotals";
+import GroupMemberTotals from "../../components/features/GroupMemberTotals/UserTotals/GroupMemberTotals";
 
 // Styles
-import styles from "./UserDetailsPage.module.css";
+import styles from "./GroupMemberDetailsPage.module.css";
 
-const UserDetailsPage = () => {
+const GroupMemberDetailsPage = () => {
   const { t } = useTranslation();
   const { groupCode, userId } = useParams();
-  const { userData, isFetched: userDataIsFetched } = useFetchUserData(userId);
+  const { groupMemberData, isFetched: groupMemberDataIsFetched } =
+    useFetchGroupMemberData(userId);
   const { groupCurrency, isFetched: currencyInfoIsFetched } =
     useFetchGroupCurrency(groupCode);
   const settingsEmoji = useSettingsEmoji();
 
   // Set userBalance to 0 if it's less than or equal to BALANCE_THRESHOLD so balance is considered settled
-  if (userData && Math.abs(userData.userBalance) <= BALANCE_THRESHOLD) {
-    userData.userBalance = 0;
+  if (
+    groupMemberData &&
+    Math.abs(groupMemberData.userBalance) <= BALANCE_THRESHOLD
+  ) {
+    groupMemberData.userBalance = 0;
   }
 
   const balanceClass =
-    userData && userData.userBalance >= 0
+    groupMemberData && groupMemberData.userBalance >= 0
       ? styles.positiveBalance
       : styles.negativeBalance;
 
   return (
     <main>
-      <HelmetMetaTagsNetlify title={t("user-details-page-title")} />
-      <PiratePx COUNT_IDENTIFIER={"user-details"} />
+      <HelmetMetaTagsNetlify title={t("groupmember-details-page-title")} />
+      <PiratePx COUNT_IDENTIFIER={"groupmember-details"} />
       <InAppNavigationBar back={true} />
-      {userDataIsFetched && currencyInfoIsFetched ? (
+      {groupMemberDataIsFetched && currencyInfoIsFetched ? (
         <div className={styles.container}>
           <span className={styles.emoji}>
             <Emoji
               label={"group member emoji"}
               emoji={emojiConstants.member}></Emoji>
           </span>
-          <h1>{userData.userName} </h1>
+          <h1>{groupMemberData.userName} </h1>
           <h2>
-            {t("user-details-page-user-balance-header")}{" "}
+            {t("groupmember-details-page-balance-header")}{" "}
             <span className={balanceClass}>
-              {userData.userBalance.toFixed(2)}
+              {groupMemberData.userBalance.toFixed(2)}
               {groupCurrency}
             </span>
           </h2>
           <div className={styles.userBalances}>
-            <UserTotals userData={userData} groupCurrency={groupCurrency} />
+            <GroupMemberTotals
+              groupMemberData={groupMemberData}
+              groupCurrency={groupCurrency}
+            />
           </div>
           <div className={styles.transactionHistoryButton}>
             <RouteButton
-              route={`user-transaction-history/${groupCode}/${userId}`}
+              route={`groupmember-transaction-history/${groupCode}/${userId}`}
               buttonText={t(
-                "user-details-page-transactions-history-button-text"
+                "groupmember-details-page-transactions-history-button-text"
               )}
               setPreviousRoute={true}
               margin='0px'
@@ -79,20 +86,20 @@ const UserDetailsPage = () => {
           </div>
           <div className={styles.userSettings}>
             <h3>
-              {t("user-details-page-user-settings-header")}{" "}
+              {t("groupmember-details-page-settings-header")}{" "}
               <Emoji label='settings emoji' emoji={settingsEmoji} />
             </h3>{" "}
-            <h3>{t("user-details-page-user-change-name-header")}</h3>
+            <h3>{t("groupmember-details-page-change-name-header")}</h3>
             <ChangeResourceName
               resourceId={userId}
               resourceType='user'
-              resourceName={userData.userName}
+              resourceName={groupMemberData.userName}
               groupCode={groupCode}
               inputWidth={20}
               navigateToMain={false}
             />
           </div>
-          <div className={styles.deleteUserButton}>
+          <div className={styles.deleteGroupMemberButton}>
             <DeleteResource resourceId={userId} resourceType='users' />
           </div>
         </div>
@@ -102,4 +109,4 @@ const UserDetailsPage = () => {
     </main>
   );
 };
-export default UserDetailsPage;
+export default GroupMemberDetailsPage;
