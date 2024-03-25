@@ -23,7 +23,7 @@ const JoinGroupDEPage = () => {
     <main>
       <HelmetMetaTagsNetlify
         title={`InstantSplit - Einladung zu ${groupName}`}
-        description={`Tritt ${groupName} bei um unsere gemeinsamen Ausgaben zu begleichen.`}
+        description={`Tritt ${groupName} bei um unsere gemeinsamen Ausgaben zu begleichen. Keine Registrierung notwendig.`}
       />
       <PiratePx COUNT_IDENTIFIER={"join-group-german-page"} />
       <InAppNavigationBar logoOnly={true} />

@@ -11,11 +11,9 @@ import { PiUserPlus } from "react-icons/pi";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import { deleteGroupDataFromLocalStorage } from "../../../../utils/localStorageUtils";
 import { isWebShareAPISupported } from "../../../../utils/clientUtils";
 
 // Hooks
-import useValidateGroupExistence from "../../../../hooks/useValidateGroupCodeExistence";
 import useFetchGroupData from "../../../../hooks/useFetchGroupData";
 import useIsSlimDevice from "../../../../hooks/useIsSlimDevice";
 
@@ -26,12 +24,18 @@ import InstantSplitLogo from "../../../common/InstantSplitLogo/InstantSplitLogo"
 // Styles
 import styles from "./DefaultAndUserSettingsBar.module.css";
 import WebShareApiInvite from "../../ShareGroupInvitation/WebShareApiInvite/WebShareApiInvite";
+import { addUserReactIconStyles } from "../../../../constants/stylesConstants";
 
 // BASE URL
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
+/**
+ * React component for the default and user settings bar.
+ * This component displays the top bar with various icons and settings for the user.
+ * @component
+ * @returns {JSX.Element} React component
+ */
 const DefaultAndUserSettingsBar = () => {
-  const navigate = useNavigate();
   const containerRef = useRef(null);
   const { t, i18n } = useTranslation();
   const groupCode = localStorage.getItem("activeGroupCode");
@@ -104,23 +108,15 @@ const DefaultAndUserSettingsBar = () => {
               <span className={styles.icon}>
                 {supportsWebShareAPI ? (
                   <WebShareApiInvite
-                    groupName={groupData.group.group}
+                    groupName={groupData.group.groupName}
                     invitationLink={invitationLink}
                   />
                 ) : (
                   <ReactIconNavigate
-                    icon={PiUserPlus}
-                    containerHeight='8'
-                    containerWidth='7.2'
-                    iconExplanationWidth='5'
                     explanationText={t("main-bar-invite-icon-text")}
-                    iconExplanationTextAlignment='center'
-                    iconExplanationIsIdleTranslateX='0.3'
+                    icon={PiUserPlus}
                     route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
-                    iconSize={3.5}
-                    translateY={0.2}
-                    translateX={0.5}
-                    iconScale={1}
+                    {...addUserReactIconStyles}
                   />
                 )}
               </span>
