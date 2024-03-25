@@ -37,7 +37,10 @@ const PaymentMakerSelect = ({
       onClick={handleSelectClick}
       onChange={(e) => onPaymentMakerChange(e.target.value)}>
       {/* Do not preselect user, indicate functionality instead */}
-      <option value='' disabled>
+      <option
+        value=''
+        disabled={!paymentMakerName}
+        selected={!paymentMakerName}>
         {t("payment-maker-select-placeholder")}
       </option>
       {groupMembers.map((member) => (

@@ -46,7 +46,10 @@ const PaymentRecipientSelect = ({
       onClick={handleSelectClick}
       onChange={(e) => onRecipientChange(e.target.value)}>
       {/* Do not preselect user, indicate functionality instead */}
-      <option value='' disabled>
+      <option
+        value=''
+        disabled={!paymentRecipientName}
+        selected={!paymentRecipientName}>
         {t("payment-recipient-select-placeholder")}
       </option>
       {options}

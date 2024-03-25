@@ -48,7 +48,10 @@ const ExpensePayerSelect = ({
       onClick={handleSelectClick}
       ref={selectRef}>
       {/* Default option */}
-      <option value='' disabled>
+      <option
+        value=''
+        disabled={!expensePayerName}
+        selected={!expensePayerName}>
         {t("expense-payer-select-paid-by")}
       </option>
       {/* Map group members to select beneficiaries */}
