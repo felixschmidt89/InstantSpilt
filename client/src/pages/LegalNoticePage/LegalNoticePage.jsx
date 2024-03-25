@@ -8,6 +8,9 @@ import {
   legalNoticeSections,
 } from "../../contents/legalNoticeContent";
 
+// Hooks
+import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
+
 //Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
@@ -17,18 +20,16 @@ import LegalNoticeSections from "../../components/features/LegalNotice/LegalNoti
 
 // Styles
 import styles from "./LegalNoticePage.module.css";
-import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
-import { devLog } from "../../utils/errorUtils";
 
 const LegalNoticePage = () => {
   const { t } = useTranslation();
 
   // Check if current user is an invited user, ie is redirected from join-instantsplit-group route
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
-  const isInvitedUser = previousRoute.includes("join-instantsplit-group/");
-  if (isRetrieved) {
-    devLog("Current user is an invited user:", isInvitedUser);
-  }
+  const isInvitedUser =
+    previousRoute && isRetrieved
+      ? previousRoute.includes("join-instantsplit-group/")
+      : false;
 
   return (
     <main>

@@ -12,7 +12,6 @@ import {
   setGroupCodeToCurrentlyActive,
   storeGroupCodeInLocalStorage,
 } from "../../utils/localStorageUtils";
-import { devLog } from "../../utils/errorUtils";
 
 // Hooks
 import useValidateGroupExistence from "../../hooks/useValidateGroupCodeExistence";
@@ -45,10 +44,10 @@ const ValidateProvideGroupCodePage = () => {
   // Check if current user has entered code from within main application, ie is redirected from manage-groups route
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
 
-  const isInstantSplitUser = previousRoute.includes("/manage-groups");
-  if (isRetrieved) {
-    devLog("Current user is InstantSplit user:", isInstantSplitUser);
-  }
+  const isInstantSplitUser =
+    previousRoute && isRetrieved
+      ? previousRoute.includes("/manage-groups")
+      : false;
 
   useEffect(() => {
     if (groupExists) {

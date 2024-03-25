@@ -2,9 +2,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-// Constants and Utils
-import { devLog } from "../../utils/errorUtils";
-
 // Hooks
 import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
 
@@ -22,10 +19,11 @@ function CreateGroupMemberPage() {
   const { previousRoute, isRetrieved } = useGetPreviousRoutesFromLocalStorage();
   const { t } = useTranslation();
 
-  const isNewUser = previousRoute.includes("/onboarding-create-group");
-  if (isRetrieved) {
-    devLog("Current user is a new user:", isNewUser);
-  }
+  const isNewUser =
+    previousRoute && isRetrieved
+      ? previousRoute.includes("/onboarding-create-group")
+      : false;
+
   return (
     <main>
       <HelmetMetaTagsNetlify title={t("create-group-members-page-title")} />

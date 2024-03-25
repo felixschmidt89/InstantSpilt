@@ -37,7 +37,7 @@ const useDetermineUpdateTransactionPageOpeningSource = () => {
 
       // Check if the page has been opened via UserTransactionsHistory
       setOpenedViaUserTransactionsHistory(
-        nestedPreviousRoute.includes("/user-transaction-history/")
+        nestedPreviousRoute.includes("/groupmember-transaction-history/")
       );
       setIsChecked(true);
     }

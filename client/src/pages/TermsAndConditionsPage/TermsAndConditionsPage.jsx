@@ -2,9 +2,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-// Constants and Utils
-import { devLog } from "../../utils/errorUtils";
-
 // Hooks
 import useGetPreviousRouteFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
 
@@ -23,10 +20,10 @@ const TermsAndConditionsPage = () => {
   // Check if current user is an invited user, ie is redirected from join-instantsplit-group route
   const { previousRoute, isRetrieved } = useGetPreviousRouteFromLocalStorage();
 
-  const isInvitedUser = previousRoute.includes("join-instantsplit-group/");
-  if (isRetrieved) {
-    devLog("Current user is an invited user:", isInvitedUser);
-  }
+  const isInvitedUser =
+    previousRoute && isRetrieved
+      ? previousRoute.includes("join-instantsplit-group/")
+      : false;
 
   return (
     <main>
