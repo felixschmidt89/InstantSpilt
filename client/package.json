@@ -50,7 +50,7 @@
     "babel-core": "^4.7.16",
     "babel-jest": "^29.7.0",
     "create-vite": "^4.4.1",
-    "cypress": "^13.6.4",
+    "cypress": "^13.7.1",
     "eslint": "^8.56.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.32.2",

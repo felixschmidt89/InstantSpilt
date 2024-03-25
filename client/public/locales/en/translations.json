@@ -213,7 +213,7 @@
   "share-group-invitation-or": "or",
   "web-share-api-invite-title": "Invitation to {{groupName}}",
   "web-share-api-invite-text": "Join {{groupName}} to settle our shared expenses. No registration necessary.",
-  "web-share-api-invite-button": "share",
+  "": "share",
   "disclaimer-header": "Disclaimer",
   "disclaimer-copy": "By using InstantSplit you acknowledge and accept our terms and conditions. If you do not agree with these terms, please do not use the application. These terms and conditions were last updated on",
   "terms-and-conditions-header": "Terms and Conditions",

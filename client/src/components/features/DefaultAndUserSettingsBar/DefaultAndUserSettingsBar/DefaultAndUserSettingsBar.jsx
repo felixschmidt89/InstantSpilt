@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { deleteGroupDataFromLocalStorage } from "../../../../utils/localStorageUtils";
+import { isWebShareAPISupported } from "../../../../utils/clientUtils";
 
 // Hooks
 import useValidateGroupExistence from "../../../../hooks/useValidateGroupCodeExistence";
@@ -24,29 +25,19 @@ import InstantSplitLogo from "../../../common/InstantSplitLogo/InstantSplitLogo"
 
 // Styles
 import styles from "./DefaultAndUserSettingsBar.module.css";
+import WebShareApiInvite from "../../ShareGroupInvitation/WebShareApiInvite/WebShareApiInvite";
+
+// BASE URL
+const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
 const DefaultAndUserSettingsBar = () => {
   const navigate = useNavigate();
   const containerRef = useRef(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const groupCode = localStorage.getItem("activeGroupCode");
+  const supportsWebShareAPI = isWebShareAPISupported();
   const isSlimDevice = useIsSlimDevice();
-
   const [isDefaultBarShown, setIsDefaultBarShown] = useState(true);
-
-  // Validate active groupCode
-  const { isValidated, groupExists } = useValidateGroupExistence(
-    groupCode,
-    "continuous"
-  );
-
-  // Handle invalid active groupCode
-  useEffect(() => {
-    if (isValidated && !groupExists) {
-      deleteGroupDataFromLocalStorage(groupCode);
-    }
-  }, [navigate, groupCode, isValidated, groupExists]);
-
   const { groupData, isFetched } = useFetchGroupData(groupCode);
 
   const showUserSettings = () => {
@@ -76,6 +67,25 @@ const DefaultAndUserSettingsBar = () => {
     }
   }, [isFetched, groupData]);
 
+  // Making sure that page is not rendered prior to successful data fetching while also not breaking the design
+  if (!isFetched) {
+    return <div></div>;
+  }
+
+  // Force URL-encoded initial groupName
+  const urlEncodedGroupName = encodeURIComponent(
+    groupData.group.initialGroupName
+  );
+
+  const invitationLinkDE = `${baseUrl}/join-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
+  const invitationLinkEN = `${baseUrl}/join-en-instantsplit-group/${urlEncodedGroupName}/${groupCode}`;
+
+  // Check language locale
+  const isGerman = i18n.language === "de";
+
+  // Determine the appropriate invitation link
+  const invitationLink = isGerman ? invitationLinkDE : invitationLinkEN;
+
   return (
     <div
       className={styles.container}
@@ -92,23 +102,30 @@ const DefaultAndUserSettingsBar = () => {
               role='toolbar'
               aria-label='user settings'>
               <span className={styles.icon}>
-                <ReactIconNavigate
-                  icon={PiUserPlus}
-                  containerHeight='8'
-                  containerWidth='7.2'
-                  iconExplanationWidth='5'
-                  explanationText={t("main-bar-invite-icon-text")}
-                  iconExplanationTextAlignment='center'
-                  iconExplanationIsIdleTranslateX='0.3'
-                  route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
-                  iconSize={3.5}
-                  translateY={0.2}
-                  translateX={0.5}
-                  iconScale={1}
-                />
+                {supportsWebShareAPI ? (
+                  <WebShareApiInvite
+                    groupName={groupData.group.group}
+                    invitationLink={invitationLink}
+                  />
+                ) : (
+                  <ReactIconNavigate
+                    icon={PiUserPlus}
+                    containerHeight='8'
+                    containerWidth='7.2'
+                    iconExplanationWidth='5'
+                    explanationText={t("main-bar-invite-icon-text")}
+                    iconExplanationTextAlignment='center'
+                    iconExplanationIsIdleTranslateX='0.3'
+                    route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
+                    iconSize={3.5}
+                    translateY={0.2}
+                    translateX={0.5}
+                    iconScale={1}
+                  />
+                )}
               </span>
               <span className={styles.instantSplitLogo}>
-                <InstantSplitLogo width={"24"} />{" "}
+                <InstantSplitLogo width={"24"} />
               </span>
               <span className={styles.icon}>
                 <ReactIconNavigate

@@ -1,15 +1,16 @@
 // React and Third-Party Libraries
 import React from "react";
-import ShareIcon from "@mui/icons-material/Share";
-import { Button } from "@mui/material";
+import { PiUserPlus } from "react-icons/pi";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
 
+// Components
+import ReactIconNavigate from "../../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
+
 // Styles
 import styles from "./WebShareApiInvite.module.css";
-import { buttonStyles } from "../../../../constants/stylesConstants";
 
 /**
  * WebShareApiInvite component for inviting users to join the group via the Web Share API.
@@ -42,13 +43,20 @@ const WebShareApiInvite = ({ groupName, invitationLink }) => {
 
   return (
     <span className={styles.icon} onClick={handleShareClick}>
-      <Button
-        variant='contained'
-        style={buttonStyles}
-        startIcon={<ShareIcon />}
-        onClick={handleShareClick}>
-        {t("web-share-api-invite-button")}
-      </Button>
+      <ReactIconNavigate
+        icon={PiUserPlus}
+        containerHeight='8'
+        containerWidth='7.2'
+        iconExplanationWidth='5'
+        explanationText={t("main-bar-invite-icon-text")}
+        iconExplanationTextAlignment='center'
+        iconExplanationIsIdleTranslateX='0.3'
+        onClick={handleShareClick}
+        iconSize={3.5}
+        translateY={0.2}
+        translateX={0.5}
+        iconScale={1}
+      />
     </span>
   );
 };
