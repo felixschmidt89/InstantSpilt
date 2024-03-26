@@ -1,7 +1,9 @@
+// React and Third-Party Libraries
 import React from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async"; // Import Helmet from react-helmet-async
+import { Helmet } from "react-helmet-async";
 
+// Styles
 import styles from "./InstantSplitLogo.module.css";
 
 const InstantSplitLogo = ({ width = 25, linkToInstantSplitPage = true }) => {
