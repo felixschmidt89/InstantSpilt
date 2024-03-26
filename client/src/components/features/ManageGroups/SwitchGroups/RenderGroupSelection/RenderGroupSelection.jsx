@@ -53,7 +53,10 @@ const RenderGroupSelection = ({ groupCode, groupNamesAndGroupCodes }) => {
           value={selectedGroupCode}
           onChange={handleSelectChange}
           onKeyDown={handleKeyDown}>
-          <option value='' disabled>
+          <option
+            value=''
+            disabled={!groupNamesAndGroupCodes}
+            selected={!groupNamesAndGroupCodes}>
             {t("render-group-selection-placeholder")}
           </option>
           {groupNamesAndGroupCodes.map((group) => (

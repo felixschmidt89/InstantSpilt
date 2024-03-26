@@ -1,6 +1,5 @@
 // React and Third-Party Libraries
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { LuMenu } from "react-icons/lu";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
@@ -12,6 +11,7 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { isWebShareAPISupported } from "../../../../utils/clientUtils";
+import { addUserReactIconStyles } from "../../../../constants/stylesConstants";
 
 // Hooks
 import useFetchGroupData from "../../../../hooks/useFetchGroupData";
@@ -20,11 +20,10 @@ import useIsSlimDevice from "../../../../hooks/useIsSlimDevice";
 // Components
 import ReactIconNavigate from "../../../common/InAppNavigation/ReactIconNavigate/ReactIconNavigate";
 import InstantSplitLogo from "../../../common/InstantSplitLogo/InstantSplitLogo";
+import WebShareApiInvite from "../../ShareGroupInvitation/WebShareApiInvite/WebShareApiInvite";
 
 // Styles
 import styles from "./DefaultAndUserSettingsBar.module.css";
-import WebShareApiInvite from "../../ShareGroupInvitation/WebShareApiInvite/WebShareApiInvite";
-import { addUserReactIconStyles } from "../../../../constants/stylesConstants";
 
 // BASE URL
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
