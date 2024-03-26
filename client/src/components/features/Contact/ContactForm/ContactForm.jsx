@@ -108,7 +108,7 @@ const ContactForm = ({
           <div>
             <textarea
               id='message'
-              name='message'
+              name='feedback'
               value={formData.feedback}
               onChange={handleInputChange}
               placeholder={

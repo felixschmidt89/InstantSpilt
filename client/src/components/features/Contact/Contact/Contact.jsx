@@ -37,7 +37,7 @@ const Contact = () => {
     name: "",
     email: "",
     messageType: "",
-    message: "",
+    feedback: "",
   });
   const [file, setFile] = useState(null);
   const [showForm, setShowForm] = useState(true);
@@ -81,12 +81,12 @@ const Contact = () => {
     }
 
     // Validate message
-    if (!formData.message.trim()) {
+    if (!formData.feedback.trim()) {
       setError(t("contact-form-no-message-error"));
       displayErrorModal();
       return;
     }
-    if (formData.message.length > 2500) {
+    if (formData.feedback.length > 2500) {
       setError(t("contact-form-message-too-long-error"));
       displayErrorModal();
       return;

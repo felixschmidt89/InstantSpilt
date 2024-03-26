@@ -44,6 +44,7 @@
 
 ![Axios](https://img.shields.io/badge/Axios-61DAFB?style=for-the-badge&logo=axios&logoColor=white)
 ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
+![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 ![http-status-codes](https://img.shields.io/badge/http--status--codes-4285F4?style=for-the-badge)
 ![React Helmet Async](https://img.shields.io/badge/React%20Helmet%20Async-61DAFB?style=for-the-badge&logo=react&logoColor=white)

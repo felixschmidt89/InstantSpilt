@@ -84,6 +84,6 @@ export const createFeedback = async (req, res) => {
       'Error creating feedback:',
       'Failed to create feedback. Please try again later.',
     );
-    sendInternalError();
+    sendInternalError(res, error);
   }
 };
