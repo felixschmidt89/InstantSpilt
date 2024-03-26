@@ -2,8 +2,6 @@
 import axios from "axios";
 import { devLog } from "../../../server/utils/errorUtils";
 
-// Constants and Utils
-
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 

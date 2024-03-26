@@ -6,7 +6,7 @@ import {
 
 // Jest test for isWebShareAPISupported function
 
-// Mocking console.log and console.error methods for devLog
+// Mock console.log and console.error methods
 const mockConsoleLog = jest.spyOn(console, "log").mockImplementation();
 const mockConsoleError = jest.spyOn(console, "error").mockImplementation();
 
