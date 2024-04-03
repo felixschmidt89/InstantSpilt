@@ -334,5 +334,6 @@
   "users-router-conflict-error-name-is-already-taken-in-this-group": "Name ist bereits vergeben",
   "users-router-unprocessable-error-username-cannot-exceed-20-characters": "Name darf nicht mehr als 20 Zeichen haben.",
   "groups-router-unprocessable-error-missing-group-name": "fehlender Gruppenname",
-  "groups-router-unprocessable-error-the-group-name-cannot-exceed-30-characters": "Gruppenname darf nicht mehr als 30 Zeichen haben."
+  "groups-router-unprocessable-error-the-group-name-cannot-exceed-30-characters": "Gruppenname darf nicht mehr als 30 Zeichen haben.",
+  "delete-resource-error-user-cant-be-deleted-yet-please-remove-the-user-from-all-transactions": "Gruppenmitglied kann noch nicht gelöscht werden. Bite es zuerst aus allen Transaktionen entfernen."
 }

@@ -52,7 +52,17 @@ const DeleteResource = ({
   // State for hook error
   const [localError, setLocalError] = useState(null);
   useEffect(() => {
-    setLocalError(hookError);
+    if (hookError) {
+      // Transform error message to match translation key format
+      const transformedError = `delete-resource-error-${hookError
+        .toLowerCase()
+        .replace(/[^\w\s]|_/g, "")
+        .replaceAll(" ", "-")}`;
+      setLocalError(transformedError);
+      setLocalError(transformedError);
+    } else {
+      setLocalError(null);
+    }
   }, [hookError]);
 
   const handleDelete = () => {
@@ -95,7 +105,7 @@ const DeleteResource = ({
           onConfirm={handleDelete}
           onCancel={handleHideConfirmation}
           isVisible={isConfirmationVisible}
-          error={localError}
+          error={t(localError)}
         />
       )}
     </div>
