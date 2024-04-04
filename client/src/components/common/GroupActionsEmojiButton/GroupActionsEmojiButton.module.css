@@ -5,7 +5,6 @@
   align-items: center;
   width: 4rem;
   cursor: pointer;
-  line-height: 1.2;
   color: var(--color-dark);
 }
 
@@ -19,6 +18,7 @@
   font-size: 3rem;
   font-family: "Noto Emoji";
   font-weight: 500;
+  line-height: 1.2;
 }
 
 .container:hover {
