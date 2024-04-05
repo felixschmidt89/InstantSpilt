@@ -28,7 +28,9 @@ const JoinGroupENPage = () => {
       <PiratePx COUNT_IDENTIFIER={"join-group-english-page"} />
       <InAppNavigationBar logoOnly={true} />
       {isFetched && (
-        <JoinGroupViaInvitation groupCode={groupCode} groupName={groupName} />
+        <div className={styles.container}>
+          <JoinGroupViaInvitation groupCode={groupCode} groupName={groupName} />
+        </div>
       )}
     </main>
   );

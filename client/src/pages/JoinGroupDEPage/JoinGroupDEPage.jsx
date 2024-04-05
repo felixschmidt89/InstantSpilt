@@ -11,6 +11,9 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import JoinGroupViaInvitation from "../../components/features/AcceptGroupInvitationAndJoinGroup/JoinGroupViaInvitation/JoinGroupViaInvitation";
 
+// Styles
+import styles from "./JoinGroupDEPage.module.css";
+
 /**
  * Page for joining a group using German meta tags.
  * @returns {JSX.Element} React component.
@@ -28,7 +31,9 @@ const JoinGroupDEPage = () => {
       <PiratePx COUNT_IDENTIFIER={"join-group-german-page"} />
       <InAppNavigationBar logoOnly={true} />
       {isFetched && (
-        <JoinGroupViaInvitation groupCode={groupCode} groupName={groupName} />
+        <div className={styles.container}>
+          <JoinGroupViaInvitation groupCode={groupCode} groupName={groupName} />
+        </div>
       )}
     </main>
   );
