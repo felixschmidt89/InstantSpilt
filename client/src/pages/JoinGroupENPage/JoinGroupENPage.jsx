@@ -11,8 +11,11 @@ import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import JoinGroupViaInvitation from "../../components/features/AcceptGroupInvitationAndJoinGroup/JoinGroupViaInvitation/JoinGroupViaInvitation";
 
+// Styles
+import styles from "./JoinGroupENPage.module.css";
+
 /**
- * Page for joining a group using German meta tags.
+ * Page for joining a group using English meta tags.
  * @returns {JSX.Element} React component.
  */
 const JoinGroupENPage = () => {
@@ -23,15 +26,15 @@ const JoinGroupENPage = () => {
     <main>
       <HelmetMetaTagsNetlify
         title={`InstantSplit - invitation to ${groupName}`}
-        description={`Join ${groupName} to settle our shared expenses.`}
+        description={`Join ${groupName} to settle our shared expenses. No registration required.`}
       />
       <PiratePx COUNT_IDENTIFIER={"join-group-english-page"} />
-      <InAppNavigationBar logoOnly={true} />
-      {isFetched && (
-        <div className={styles.container}>
+      <div className={styles.container}>
+        <InAppNavigationBar logoOnly={true} />
+        {isFetched && (
           <JoinGroupViaInvitation groupCode={groupCode} groupName={groupName} />
-        </div>
-      )}
+        )}
+      </div>
     </main>
   );
 };

@@ -29,12 +29,12 @@ const JoinGroupDEPage = () => {
         description={`Tritt ${groupName} bei um unsere gemeinsamen Ausgaben zu begleichen. Keine Registrierung notwendig.`}
       />
       <PiratePx COUNT_IDENTIFIER={"join-group-german-page"} />
-      <InAppNavigationBar logoOnly={true} />
-      {isFetched && (
-        <div className={styles.container}>
+      <div className={styles.container}>
+        <InAppNavigationBar logoOnly={true} />
+        {isFetched && (
           <JoinGroupViaInvitation groupCode={groupCode} groupName={groupName} />
-        </div>
-      )}
+        )}
+      </div>
     </main>
   );
 };

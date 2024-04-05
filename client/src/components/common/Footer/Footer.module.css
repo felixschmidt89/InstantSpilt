@@ -34,6 +34,18 @@
   margin-right: auto;
 }
 
+/* Delayed rendering to avoid flickering */
+.footer {
+  opacity: 0;
+  animation: delayedRender 0.1s ease 0.2s forwards;
+}
+@keyframes delayedRender {
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 /* Hide footer on mobile when keyboard is shown */
 @media screen and (max-height: 500px) {
   .footer {
