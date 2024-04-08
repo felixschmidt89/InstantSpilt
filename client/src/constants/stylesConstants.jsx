@@ -33,7 +33,7 @@ export const smallButtonStyles = {
  */
 export const attachFileButtonStyles = {
   padding: "0.2rem 0.5rem",
-  fontSize: "1.5rem",
+  fontSize: "1.6rem",
   marginTop: "0rem",
   marginBottom: "0.5rem",
   fontFamily: "inherit",
@@ -47,7 +47,7 @@ export const attachFileButtonStyles = {
  */
 export const routeButtonStyles = {
   padding: "0.1rem 0.5rem",
-  fontSize: "1.5rem",
+  fontSize: "1.6rem",
   margin: "0 auto",
   marginTop: "0.5rem",
   marginBottom: "0.5rem",

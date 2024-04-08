@@ -85,7 +85,7 @@ const DeleteResource = ({
           onClick={handleShowConfirmation}
           style={buttonStyles}
           color='error'
-          variant='contained'
+          variant='outlined'
           type='submit'
           endIcon={<DeleteIcon />}>
           {t("delete-resource-delete-copy")}

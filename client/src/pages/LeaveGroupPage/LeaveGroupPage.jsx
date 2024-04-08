@@ -71,7 +71,7 @@ const LeaveGroupPage = () => {
         <div className={styles.buttonContainer}>
           <Button
             style={buttonStyles}
-            variant='contained'
+            variant='outlined'
             color='error'
             onClick={handleShowConfirmation}
             endIcon={<ExitToAppIcon />}>

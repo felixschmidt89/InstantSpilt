@@ -144,7 +144,7 @@ a {
 }
 
 a:hover {
-  color: var(--color-dark);
+  color: var(--color-signal-dark);
 }
 
 ul {

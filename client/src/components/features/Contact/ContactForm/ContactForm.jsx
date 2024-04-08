@@ -145,7 +145,7 @@ const ContactForm = ({
         )}
         <Button
           style={buttonStyles}
-          variant='contained'
+          variant='outlined'
           type='submit'
           endIcon={<SendIcon />}>
           {t("contact-form-message-send-button-text")}
