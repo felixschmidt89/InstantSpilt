@@ -2,9 +2,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 
-// Constants and Utils
-import { INACTIVE_DAYS } from "../../../constants/dataConstants";
-
 /**
  * HelmetMetaTagsNetlify component for Single Page Application hosted on Netlify.
  *

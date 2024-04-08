@@ -12,6 +12,10 @@
   border-radius: 0.5rem;
 }
 
+.languageFlag img:hover {
+  filter: grayscale(0%);
+}
+
 @media (max-width: 768px) {
   .languageFlag {
     width: 2rem;

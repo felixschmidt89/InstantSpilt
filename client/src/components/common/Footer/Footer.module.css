@@ -6,7 +6,6 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: var(--color-body);
   z-index: 999;
   position: static;
   height: 3.5rem;
@@ -19,14 +18,13 @@
 }
 
 .footer a {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   text-decoration: none;
   cursor: pointer;
-  color: var(--color-grey-dark);
+  color: var(--color-grey);
 }
 
 .footer a:hover {
-  text-decoration: underline;
   color: var(--color-grey-dark);
 }
 
