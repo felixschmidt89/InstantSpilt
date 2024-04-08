@@ -16,6 +16,8 @@ import { setRouteInLocalStorage } from "../../../../utils/localStorageUtils";
  *  @param {boolean} props.setCustomPreviousRoute - Flag to indicate if a custom previous route should be stored in localStorage.
  * @param {string} props.customRoute - The custom route to be stored in localStorage.
  * @param {string} props.customKey - The custom key under which to store the route in localStorage. Defaults to "previousRoute".
+ * @param {string} props.color - The color of the link.
+ * @param {string} props.hoverColor - The color of the link on hover.
  *
  * @returns {React.Component} The rendered LinkToPage component.
  */
@@ -27,6 +29,8 @@ const LinkToPage = ({
   setCustomPreviousRoute,
   customRoute,
   customKey = "previousRoute",
+  color,
+  hoverColor,
 }) => {
   const navigate = useNavigate();
 
@@ -42,7 +46,14 @@ const LinkToPage = ({
   };
 
   return (
-    <Link to={to} onClick={handleClick}>
+    <Link
+      to={to}
+      onClick={handleClick}
+      style={{
+        color: color,
+      }}
+      onMouseEnter={(e) => (e.target.style.color = hoverColor)}
+      onMouseLeave={(e) => (e.target.style.color = color)}>
       {children}
     </Link>
   );

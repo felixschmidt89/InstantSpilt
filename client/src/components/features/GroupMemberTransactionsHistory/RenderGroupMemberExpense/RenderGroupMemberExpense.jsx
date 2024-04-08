@@ -65,7 +65,9 @@ const RenderGroupMemberExpense = ({
         <li className={styles.actionLine}>
           <LinkToPage
             to={`/update-expense/${groupCode}/${item._id}`}
-            setNestedPreviousRoute={true}>
+            setNestedPreviousRoute={true}
+            color='var(--color-signal)'
+            hoverColor='var(--color-signal-dark'>
             {t("groupmember-transaction-history-edit-link")}
           </LinkToPage>
         </li>
