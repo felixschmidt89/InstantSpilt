@@ -1,7 +1,7 @@
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
-export default {
+const config = {
   plugins: [
     react(),
     VitePWA({
@@ -43,4 +43,10 @@ export default {
     outDir: "dist",
     minify: "esbuild",
   },
+  css: {
+    modules: true, // Enable CSS modules
+  },
+  include: ["src/**/*"], // Specify which files to include as source files
 };
+
+export default config;
