@@ -11,6 +11,10 @@
   line-height: 1.25;
 }
 
+.expense:hover {
+  background-color: var(--color-body);
+}
+
 .leftColumn {
   display: flex;
   border-top: 0.2rem solid var(--color-signal-reduced-opacity);

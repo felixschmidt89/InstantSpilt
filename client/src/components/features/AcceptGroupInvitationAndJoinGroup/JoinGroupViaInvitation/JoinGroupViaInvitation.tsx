@@ -10,6 +10,11 @@ import AcceptGroupInvitation from "../AcceptGroupInvitation/AcceptGroupInvitatio
 // Styles
 import styles from "./JoinGroupViaInvitation.module.css";
 
+type JoinGroupViaInvitationProps = {
+  groupCode: string;
+  groupName: string;
+};
+
 /**
  * renders the interface for joining a group via invitation.
  * @param {object} props - Component props.
@@ -17,7 +22,10 @@ import styles from "./JoinGroupViaInvitation.module.css";
  * @param {string} props.groupName - The name of the group.
  * @returns {JSX.Element} React component.
  */
-const JoinGroupViaInvitation = ({ groupCode, groupName }) => {
+const JoinGroupViaInvitation = ({
+  groupCode,
+  groupName,
+}: JoinGroupViaInvitationProps) => {
   const { t } = useTranslation();
 
   return (

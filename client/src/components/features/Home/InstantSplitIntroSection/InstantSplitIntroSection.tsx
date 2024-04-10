@@ -5,11 +5,16 @@ import { useTranslation } from "react-i18next";
 // Styles
 import styles from "./InstantSplitIntroSection.module.css";
 
+type InstantSplitIntroSectionProps = {
+  isInvitation?: boolean;
+};
+
 /**
- * Component for rendering the introductory section explaining what InstantSplit is about.
- * @param {boolean} isInvitation - If true, the sentence about retaining data and opting out will be hidden.
- * @returns {JSX.Element} React component. */
-const InstantSplitIntroSection = ({ isInvitation = false }) => {
+ * Component for rendering the introductory section explaining what InstantSplit is about. Shorter copy for invitations.
+ */
+const InstantSplitIntroSection = ({
+  isInvitation = false,
+}: InstantSplitIntroSectionProps) => {
   const { t } = useTranslation();
   return (
     <div className={styles.introContainer}>

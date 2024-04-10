@@ -5,14 +5,14 @@ import { useTranslation } from "react-i18next";
 // Styles
 import styles from "./InvitationIntro.module.css";
 
-/**
- * Component to introduce users to InstantSplit when they receive a group invitation.
- *
- * @param {Object} props - React props.
- * @param {Object} props.groupName
- * @returns {JSX.Element} React component. */
+type InvitationIntroProps = {
+  groupName: string;
+};
 
-const InvitationIntro = ({ groupName }) => {
+/**
+ * Component to briefly introduce users to InstantSplit when opening a group invitation.
+ */
+const InvitationIntro = ({ groupName }: InvitationIntroProps) => {
   const { t } = useTranslation();
 
   return (

@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.expenses:hover {
+  background-color: var(--color-body);
+}
+
 .leftColumn {
   display: flex;
   flex-direction: column;

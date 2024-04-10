@@ -17,18 +17,24 @@ import TermsAndConditionsSection from "../../Home/TermsAndConditionsSection/Term
 // Styles
 import styles from "./AcceptGroupInvitation.module.css";
 
+type AcceptGroupInvitationProps = {
+  groupName: string;
+  groupCode: string;
+};
+
 /**
- * Component to render and accept a group invitation.
- *
- * @param {Object} props - React props.
- * @param {string} props.groupName - The name of the group.
- * @param {string} props.groupCode - The code of the group.
- * @returns {JSX.Element} React component. */
-const AcceptGroupInvitation = ({ groupName, groupCode }) => {
+ * Component for rendering group invitation with ability to accept and navigate to terms and conditions page.
+ */
+const AcceptGroupInvitation = ({
+  groupName,
+  groupCode,
+}: AcceptGroupInvitationProps) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const handleAcceptInvitation = () => {
+  const handleAcceptInvitation: React.MouseEventHandler<
+    HTMLButtonElement
+  > = () => {
     storeGroupCodeInLocalStorage(groupCode);
     setGroupCodeToCurrentlyActive(groupCode);
     navigate("/instant-split");
