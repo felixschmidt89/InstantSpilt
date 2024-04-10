@@ -28,6 +28,7 @@
   padding: 0.2rem 0.6rem;
 }
 
+.groupMemberListItem:active,
 .groupMemberListItem:hover {
   background-color: var(--color-body);
   border-radius: 1rem;

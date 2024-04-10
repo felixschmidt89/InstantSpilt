@@ -11,7 +11,7 @@ import styles from "./Disclaimer.module.css";
 const Disclaimer = () => {
   const { t } = useTranslation();
 
-  const lastUpdateDate = new Date("03/05/2024").toLocaleDateString();
+  const lastUpdateDate = new Date("05.03.2024").toLocaleDateString();
 
   return (
     <div className={styles.container}>

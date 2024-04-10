@@ -2,17 +2,15 @@
   color: var(--color-dark);
 }
 
-.paymentLink:hover {
-  color: var(--color-dark-dark);
-}
-
 .payment {
   display: flex;
   line-height: 1.25;
 }
 
+.payment:active,
 .payment:hover {
   background-color: var(--color-body);
+  color: var(--color-dark-dark);
 }
 
 .leftColumn {

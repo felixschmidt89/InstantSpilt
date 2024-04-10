@@ -2,17 +2,15 @@
   color: var(--color-dark);
 }
 
-.expenseLink:hover {
-  color: var(--color-dark-dark);
-}
-
 .expense {
   display: flex;
   line-height: 1.25;
 }
 
+.expense:active,
 .expense:hover {
   background-color: var(--color-body);
+  color: var(--color-dark-dark);
 }
 
 .leftColumn {
