@@ -46,7 +46,7 @@ const AcceptGroupInvitation = ({
         <Button
           style={buttonStyles}
           onClick={handleAcceptInvitation}
-          variant='contained'>
+          variant='outlined'>
           {t("join-group-button-text")}
         </Button>
       </div>
