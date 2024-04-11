@@ -41,7 +41,7 @@ const PaymentDetailsPage = () => {
         <div className={styles.container}>
           <span className={styles.emoji}>
             <Emoji
-              label={"payment to other user emoji"}
+              ariaLabel={"payment to other user emoji"}
               emoji={emojiConstants.payment}></Emoji>{" "}
           </span>
           <h1>

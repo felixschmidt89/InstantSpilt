@@ -34,7 +34,7 @@ const GroupSettingsPage = () => {
       <div className={styles.container}>
         <h1>
           {t("group-settings-page-header")}
-          <Emoji label='settings emoji' emoji={settingsEmoji} />
+          <Emoji ariaLabel='settings emoji' emoji={settingsEmoji} />
         </h1>
         {isFetched && groupData ? (
           <div className={styles.settingsContainer}>

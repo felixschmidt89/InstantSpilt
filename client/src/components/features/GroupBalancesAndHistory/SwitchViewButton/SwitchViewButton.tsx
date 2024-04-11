@@ -5,10 +5,10 @@ import React from "react";
 import styles from "./SwitchViewButton.module.css";
 
 /**
- * Renders a single switch view button.
+ * renders switch view button.
  *
  * @param {string} text - The text to display on the button.
- * @param {boolean} isActive - Whether the button is active or not.
+ * @param {boolean} isActive - Whether the button appears active or not.
  * @param {Function} onClick - Function to handle button click.
  * @returns {JSX.Element} React component. */
 const SwitchViewButton = ({ text, isActive, onClick }) => {

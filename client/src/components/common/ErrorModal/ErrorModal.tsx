@@ -12,21 +12,22 @@ import ErrorDisplay from "../ErrorDisplay/ErrorDisplay";
 // Styles
 import styles from "./ErrorModal.module.css";
 
+type ErrorModalProps = {
+  // error message to display in the modal.
+  error: string | null;
+  // callback function to execute on modal close
+  onClose: () => void;
+  // flag indicating whether the modal is visible
+  isVisible: boolean;
+};
+
 /**
  * Component for rendering an error message inside a modal.
- *
- * @component
- * @param {Object} props - The component props.
- * @param {string} props.message - The error message to display in the modal.
- * @param {Function} props.onClose - Callback function to execute on modal close.
- * @param {boolean} props.isVisible - Flag indicating whether the modal is visible.
- * @returns {JSX.Element} React component.
  */
-const ErrorModal = ({ error, onClose, isVisible }) => {
+const ErrorModal = ({ error, onClose, isVisible }: ErrorModalProps) => {
   const { t } = useTranslation();
 
-  // Prevent modal from being closed when clicking the modal
-  const handleModalClick = (e) => {
+  const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
   };
 

@@ -135,7 +135,7 @@ const UpdatePayment = ({
         isUpdate={true}
       />
       <div className={styles.emojis}>
-        <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
+        <Emoji ariaLabel={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
         <RenderReactIcon
           icon={IoArrowDownOutline}
           size={1.6}

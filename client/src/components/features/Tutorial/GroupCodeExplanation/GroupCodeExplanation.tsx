@@ -12,14 +12,19 @@ import styles from "./GroupCodeExplanation.module.css";
 // BASE URL
 const baseUrl = import.meta.env.VITE_REACT_APP_BASE_URL;
 
+type GroupCodeExplanationProps = {
+  // group name provided during group creation.
+  initialGroupName: string;
+  groupCode: string;
+};
+
 /**
- * Component for rendering explanation of the GroupCode for accessing a group and providing related information to store it.
- *
- * @param {Object} props - The properties of the component.
- * @param {string} initialGroupName - The group name set during group creation.
- * @param {string} props.groupCode - The GroupCode for accessing the group.
- * @returns {JSX.Element} React component. */
-const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
+ * Component for rendering explanation of the groupCode for accessing a group and providing related information to store it.
+ */
+const GroupCodeExplanation = ({
+  initialGroupName,
+  groupCode,
+}: GroupCodeExplanationProps) => {
   const { t } = useTranslation();
   // Force passing URL-encoded groupNames
   const urlEncodedGroupName = encodeURIComponent(initialGroupName);
@@ -32,7 +37,7 @@ const GroupCodeExplanation = ({ initialGroupName, groupCode }) => {
         <li className={styles.groupCodeExplanation}>
           {t("groupcode-explanation-copy-1")}
           <span className={styles.copyButton}>
-            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"15rem"} />
+            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={10} />
           </span>
         </li>
         <li className={styles.invitationLink}>

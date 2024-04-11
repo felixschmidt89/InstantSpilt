@@ -23,7 +23,7 @@ const NoGroupTransactions = () => {
       <span className={styles.emojiParenthesis}>
         (
         <Emoji
-          label={"expense emoji"}
+          ariaLabel={"expense emoji"}
           emoji={emojiConstants.expense}
           scale={"1.15"}
           translateX={"0.15"}></Emoji>
@@ -33,7 +33,9 @@ const NoGroupTransactions = () => {
       <span className={styles.emojiParenthesis}>
         <span className={styles.emojiParenthesis}>
           (
-          <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
+          <Emoji
+            ariaLabel={"payment emoji"}
+            emoji={emojiConstants.payment}></Emoji>
           )
         </span>{" "}
       </span>{" "}
@@ -44,7 +46,7 @@ const NoGroupTransactions = () => {
         aria-label='Point Down Emoji'>
         (
         <Emoji
-          label={"pont down emoji"}
+          ariaLabel={"pont down emoji"}
           emoji={emojiConstants.pointDown}></Emoji>
         )
       </span>

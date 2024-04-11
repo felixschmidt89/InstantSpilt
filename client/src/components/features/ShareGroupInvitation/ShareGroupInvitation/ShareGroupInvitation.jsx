@@ -47,7 +47,7 @@ const ShareGroupInvitation = ({
       </div>
       <CopyToClipboard
         infoToCopy={invitationLink}
-        inputFieldWidth={isSlimDevice ? "25rem" : "30rem"}
+        inputFieldWidth={isSlimDevice ? 25 : 30}
       />
     </div>
   );

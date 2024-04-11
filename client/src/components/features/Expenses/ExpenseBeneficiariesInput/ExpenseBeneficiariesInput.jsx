@@ -71,7 +71,7 @@ const ExpenseBeneficiariesInput = ({
     <>
       <p className={styles.emoji}>
         <Emoji
-          label='expense emoji'
+          ariaLabel='expense emoji'
           scale={1.15}
           emoji={emojiConstants.expense}
         />

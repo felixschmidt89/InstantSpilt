@@ -23,6 +23,11 @@
   background-color: inherit;
   color: var(--color-signal);
 }
+
+.notCopied:hover {
+  color: var(--color-signal-dark);
+}
+
 .isCopied {
   background-color: inherit;
   color: var(--color-success);

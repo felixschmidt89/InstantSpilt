@@ -28,7 +28,7 @@ const RenderGroupPayment = ({ item, groupCode, groupCurrency }) => {
         <div className={styles.leftColumn}>
           <div className={styles.paymentEmoji}>
             <Emoji
-              label={"payment emoji"}
+              ariaLabel={"payment emoji"}
               emoji={emojiConstants.payment}></Emoji>
           </div>
           <div className={styles.paymentAmount}>

@@ -21,7 +21,7 @@ const ExpensesSettled = () => {
     <p className={styles.balancesSettled}>
       {t("all-expenses-settled")}.{" "}
       <Emoji
-        label={"Expenses settled emoji"}
+        ariaLabel={"Expenses settled emoji"}
         emoji={emojiConstants.settle}></Emoji>
     </p>
   );

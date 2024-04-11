@@ -85,7 +85,7 @@ const CreatePayment = ({ groupMembers, groupCode }) => {
       />
 
       <div className={styles.emojis}>
-        <Emoji label='payment emoji' emoji={emojiConstants.payment} />
+        <Emoji ariaLabel='payment emoji' emoji={emojiConstants.payment} />
         <RenderReactIcon
           icon={IoArrowDownOutline}
           size={1.6}

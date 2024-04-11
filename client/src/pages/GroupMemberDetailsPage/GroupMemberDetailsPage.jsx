@@ -87,7 +87,7 @@ const GroupMemberDetailsPage = () => {
           <div className={styles.userSettings}>
             <h3>
               {t("groupmember-details-page-settings-header")}{" "}
-              <Emoji label='settings emoji' emoji={settingsEmoji} />
+              <Emoji ariaLabel='settings emoji' emoji={settingsEmoji} />
             </h3>{" "}
             <h3>{t("groupmember-details-page-change-name-header")}</h3>
             <ChangeResourceName

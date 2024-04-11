@@ -15,6 +15,10 @@
   margin-bottom: 0.5rem;
 }
 
+.button {
+  cursor: default;
+}
+
 .list li {
   list-style-type: disc;
   margin-left: 3rem;

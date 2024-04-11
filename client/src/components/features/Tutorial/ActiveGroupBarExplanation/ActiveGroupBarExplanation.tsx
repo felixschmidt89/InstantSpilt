@@ -10,7 +10,6 @@ import styles from "./ActiveGroupBarExplanation.module.css";
 
 /**
  * Component for rendering ActiveGroupBar explanation.
- * @returns {JSX.Element} React component.
  */
 const ActiveGroupBarExplanation: React.FC = () => {
   const { t } = useTranslation();

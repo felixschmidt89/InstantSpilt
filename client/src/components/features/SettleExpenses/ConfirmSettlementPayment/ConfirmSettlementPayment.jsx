@@ -72,7 +72,7 @@ const ConfirmSettlementPayment = ({
     <div className={styles.container} onClick={handleShowConfirmation}>
       <div className={styles.confirm}>
         <Emoji
-          label={"payment emoji"}
+          ariaLabel={"payment emoji"}
           emoji={emojiConstants.payment}
           shrinkOnSmallDevices={true}></Emoji>
         <span className={styles.confirmText}>

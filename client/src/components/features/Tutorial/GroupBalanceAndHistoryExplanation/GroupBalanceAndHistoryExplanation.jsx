@@ -2,13 +2,14 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-// Styles
-import styles from "./GroupBalanceAndHistoryExplanation.module.css";
+// Components
 import SwitchViewButton from "../../GroupBalancesAndHistory/SwitchViewButton/SwitchViewButton";
 
+// Styles
+import styles from "./GroupBalanceAndHistoryExplanation.module.css";
+
 /**
- * Component for rendering an explanation of group balances and group history views.
- * @returns {JSX.Element} React component.
+ * Component for rendering an explanation of a group's balances and history views.
  */
 const GroupBalanceAndHistoryExplanation = () => {
   const { t } = useTranslation();

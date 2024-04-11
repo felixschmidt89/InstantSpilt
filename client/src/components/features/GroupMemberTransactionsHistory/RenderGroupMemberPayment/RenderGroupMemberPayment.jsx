@@ -34,7 +34,9 @@ const NoGroupMemberTransactions = ({
       {/* Left Column */}
       <ul className={styles.leftColumn}>
         <li className={styles.amountLine}>
-          <Emoji label={"payment emoji"} emoji={emojiConstants.payment}></Emoji>
+          <Emoji
+            ariaLabel={"payment emoji"}
+            emoji={emojiConstants.payment}></Emoji>
           <div className={styles.paymentAmount}>
             <div>
               <RenderDataAttributeWithAriaLabel

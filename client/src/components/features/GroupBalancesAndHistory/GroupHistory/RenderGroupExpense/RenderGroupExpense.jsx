@@ -42,7 +42,7 @@ const RenderGroupExpense = ({
       <div className={styles.expense}>
         <div className={styles.leftColumn}>
           <Emoji
-            label={"expense emoji"}
+            ariaLabel={"expense emoji"}
             emoji={emojiConstants.expense}
             scale={"1.1"}
             translateX={"0.15"}

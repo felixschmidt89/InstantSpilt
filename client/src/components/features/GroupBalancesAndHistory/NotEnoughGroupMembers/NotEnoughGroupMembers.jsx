@@ -20,13 +20,13 @@ const NotEnoughGroupMembers = () => {
     <p className={styles.failMessage}>
       {t("not-enough-groupmembers-start-adding")}{" "}
       <span className={styles.emojiParanthesis}>
-        (<Emoji label={"user emoji"} emoji={emojiConstants.member}></Emoji>)
+        (<Emoji ariaLabel={"user emoji"} emoji={emojiConstants.member}></Emoji>)
       </span>{" "}
       {t("no-group-transactions-below")}{" "}
       <span className={styles.emojiParanthesis}>
         (
         <Emoji
-          label={"pont down emoji"}
+          ariaLabel={"pont down emoji"}
           emoji={emojiConstants.pointDown}></Emoji>
         )
       </span>

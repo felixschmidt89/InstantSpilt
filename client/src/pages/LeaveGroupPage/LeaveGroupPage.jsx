@@ -64,14 +64,14 @@ const LeaveGroupPage = () => {
             {t("leave-group-on-device-groupcode-explanation", { groupName })}
           </div>
           <div className={styles.copyGroupCode}>
-            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={"15rem"} />
+            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={15} />
           </div>
         </div>
 
         <div className={styles.buttonContainer}>
           <Button
             style={buttonStyles}
-            variant='outlined'
+            variant='contained'
             color='error'
             onClick={handleShowConfirmation}
             endIcon={<ExitToAppIcon />}>

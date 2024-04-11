@@ -48,7 +48,7 @@ const RenderGroupMemberExpense = ({
         <li className={styles.amountLine}>
           <div className={styles.expenseEmoji}>
             <Emoji
-              label={"expense emoji"}
+              ariaLabel={"expense emoji"}
               emoji={emojiConstants.expense}></Emoji>
           </div>
           <div className={styles.expenseAmount}>

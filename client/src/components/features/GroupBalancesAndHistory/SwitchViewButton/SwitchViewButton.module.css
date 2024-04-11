@@ -21,4 +21,5 @@
 .inactiveButton:hover {
   opacity: 1;
   filter: grayscale(0%);
+  color: var(--color-dark);
 }

@@ -23,7 +23,7 @@ function PageNotFoundPage() {
       <HelmetMetaTagsNetlify title={t("page-not-found-page-title")} />
       <InAppNavigationBar logoOnly={true} />
       <h1 className={styles.pageNotFoundHeader}>
-        <Emoji label={"error emoji"} emoji={emojiConstants.error}></Emoji>
+        <Emoji ariaLabel={"error emoji"} emoji={emojiConstants.error}></Emoji>
         {t("page-not-found-page-header")}
       </h1>
       <div className={styles.container}>

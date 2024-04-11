@@ -36,7 +36,7 @@ const RenderGroupMemberBalance = ({
               <div className={styles.leftColumn}>
                 <span className={styles.emoji}>
                   <Emoji
-                    label={"expense emoji"}
+                    ariaLabel={"expense emoji"}
                     emoji={emojiConstants.member}
                   />
                 </span>

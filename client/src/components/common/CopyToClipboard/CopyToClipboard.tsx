@@ -16,15 +16,22 @@ import ErrorModal from "../ErrorModal/ErrorModal";
 // Styles
 import styles from "./CopyToClipboard.module.css";
 
+type CopyToClipboardProps = {
+  // copy to be copied to clipboard
+  infoToCopy: string;
+  inputFieldWidth?: number;
+};
+
 /**
- * Component for rendering information and easily copying it to the clipboard, providing a icon to copy and successful copy feedback to the user
- * @param {string} props.infoToCopy - The text to be copied to the clipboard.
- * @param {string} [props.inputFieldWidth] - The width of the input field. Defaults to 'fit-content'
+ * Component for rendering a copy and copying it to the clipboard with visual feedback
  */
-const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "12rem" }) => {
+const CopyToClipboard = ({
+  infoToCopy,
+  inputFieldWidth = 12,
+}: CopyToClipboardProps) => {
   const [isCopied, setIsCopied] = useState(false);
-  const [error, setError] = useState(false);
-  const inputRef = useRef(null);
+  const [error, setError] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const { t } = useTranslation();
 
   // Get error modal visibility logic
@@ -33,12 +40,17 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "12rem" }) => {
 
   const handleCopyClick = async () => {
     try {
-      // Copy text to clipboard
-      await navigator.clipboard.writeText(inputRef.current.value);
-      devLog("Copied to clipboard:", inputRef.current.value);
-      setIsCopied(true);
-      // Clear the text selection
-      window.getSelection().removeAllRanges();
+      if (inputRef.current) {
+        // Copy text to clipboard
+        await navigator.clipboard.writeText(inputRef.current.value);
+        devLog("Copied to clipboard:", inputRef.current.value);
+        setIsCopied(true);
+        // remove text if selected
+        const selection = window.getSelection();
+        if (selection) {
+          selection.removeAllRanges();
+        }
+      }
     } catch (error) {
       devLog("Error copying to clipboard:", error);
       setError(t("copy-to-clipboard-component-error-copy"));
@@ -53,16 +65,15 @@ const CopyToClipboard = ({ infoToCopy, inputFieldWidth = "12rem" }) => {
         className={styles.inputField}
         type='text'
         value={infoToCopy}
-        readOnly // Make input field read-only
-        style={{ width: inputFieldWidth }}
+        readOnly
+        style={{ width: `${inputFieldWidth}rem` }}
         ref={inputRef}
       />
       <span
         className={`${styles.button} ${
           isCopied ? styles.isCopied : styles.notCopied
         }`}
-        onClick={handleCopyClick}
-        disabled={isCopied}>
+        onClick={handleCopyClick}>
         {isCopied ? <LuCopyCheck /> : <LuCopy />}
       </span>
       <ErrorModal

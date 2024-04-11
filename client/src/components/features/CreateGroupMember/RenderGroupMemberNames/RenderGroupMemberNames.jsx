@@ -110,7 +110,7 @@ const RenderGroupMemberNames = ({
                     <span className={styles.emoji}>
                       <Emoji
                         emoji={emojiConstants.member}
-                        label='group member emoji'
+                        ariaLabel='group member emoji'
                       />
                     </span>
                     <span className={styles.groupMemberName}>{userName}</span>
