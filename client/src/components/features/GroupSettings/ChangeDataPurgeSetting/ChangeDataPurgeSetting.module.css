@@ -1,15 +1,12 @@
 .explanation {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.5rem 0.8rem;
   width: 20rem;
-  border: 0.15rem solid var(--color-grey);
   border-radius: 1rem;
   font-size: 1.6rem;
   overflow-y: scroll;
   height: fit-content;
   outline: none;
-  outline-color: var(--color-grey);
   line-height: 1.2;
 }
 
@@ -21,10 +18,4 @@
 .toggle {
   display: absolute;
   margin-left: 1.4rem;
-}
-
-.explanation:hover,
-.explanation:focus {
-  border-color: var(--color-signal);
-  background-color: var(--color-body);
 }
