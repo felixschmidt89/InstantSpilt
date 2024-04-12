@@ -37,7 +37,7 @@ const GroupCodeExplanation = ({
         <li className={styles.groupCodeExplanation}>
           {t("groupcode-explanation-copy-1")}
           <span className={styles.copyButton}>
-            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={10} />
+            <CopyToClipboard infoToCopy={groupCode} />
           </span>
         </li>
         <li className={styles.invitationLink}>

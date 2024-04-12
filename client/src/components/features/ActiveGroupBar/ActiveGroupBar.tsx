@@ -16,14 +16,10 @@ import GroupActionsEmojiButton from "../../common/GroupActionsEmojiButton/GroupA
 // Styles
 import styles from "./ActiveGroupBar.module.css";
 
-type ActiveGroupBarProps = {
-  applyBottomMargin?: boolean;
-};
-
 /**
  * Toolbar displaying a set of navigation icons for creating expenses, payments & group members, for settling expenses within a group and for navigating to group settings.
  */
-const ActiveGroupBar = ({ applyBottomMargin = true }: ActiveGroupBarProps) => {
+const ActiveGroupBar = () => {
   // Handle Firefox bug (settings emoji not rendered correctly https://github.com/googlefonts/noto-emoji/issues/391)
   const settingsEmoji = useSettingsEmoji();
   const { t } = useTranslation();
@@ -33,7 +29,7 @@ const ActiveGroupBar = ({ applyBottomMargin = true }: ActiveGroupBarProps) => {
   // Render the group actions bar if emoji font is loaded
   return notoEmojiFontIsLoaded ? (
     <div
-      className={`${styles.groupActionsBar} ${applyBottomMargin ? styles.bottomMargin : ""}`}
+      className={styles.groupActionsBar}
       role='toolbar'
       aria-label='active group bar'>
       {/* Button for navigating to group settings */}

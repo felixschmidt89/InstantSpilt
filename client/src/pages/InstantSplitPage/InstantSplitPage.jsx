@@ -21,7 +21,7 @@ import useGetClientDeviceAndPwaInfo from "../../hooks/useGetClientDeviceAndPwaIn
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
-import GroupActionsBar from "../../components/features/ActiveGroupBar/ActiveGroupBar";
+import ActiveGroupBar from "../../components/features/ActiveGroupBar/ActiveGroupBar";
 import SwitchViewButtonsBar from "../../components/features/GroupBalancesAndHistory/SwitchViewButtonsBar/SwitchViewButtonsBar";
 import RenderGroupHistory from "../../components/features/GroupBalancesAndHistory/GroupHistory/RenderGroupHistory/RenderGroupHistory";
 import RenderGroupBalances from "../../components/features/GroupBalancesAndHistory/GroupBalances/RenderGroupBalances/RenderGroupBalances";
@@ -158,7 +158,7 @@ const InstantSplitPage = () => {
           ) : (
             <RenderGroupBalances groupCurrency={groupData.group.currency} />
           )}
-          <GroupActionsBar />
+          <ActiveGroupBar />
           {showPwaCtaModal && (
             <PwaCtaModal
               ctaToRender={ctaToRender}

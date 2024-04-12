@@ -66,7 +66,7 @@ const LeaveGroupPage = () => {
             {t("leave-group-on-device-groupcode-explanation-part2")}
           </div>
           <div className={styles.copyGroupCode}>
-            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={16.5} />
+            <CopyToClipboard infoToCopy={groupCode} />
           </div>
         </div>
 

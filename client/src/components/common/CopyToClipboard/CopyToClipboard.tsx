@@ -27,7 +27,7 @@ type CopyToClipboardProps = {
  */
 const CopyToClipboard = ({
   infoToCopy,
-  inputFieldWidth = 12,
+  inputFieldWidth = 16.5,
 }: CopyToClipboardProps) => {
   const [isCopied, setIsCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);

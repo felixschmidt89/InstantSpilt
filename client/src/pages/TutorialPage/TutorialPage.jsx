@@ -13,7 +13,6 @@ import GroupCodeExplanation from "../../components/features/Tutorial/GroupCodeEx
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
 import SyncGroupCodeExplanation from "../../components/features/Tutorial/SyncGroupCodeExplanation/SyncGroupCodeExplanation";
 import GroupBalanceAndHistoryExplanation from "../../components/features/Tutorial/GroupBalanceAndHistoryExplanation/GroupBalanceAndHistoryExplanation";
-import ActiveGroupBarExplanation from "../../components/features/Tutorial/ActiveGroupBarExplanation/ActiveGroupBarExplanation";
 import RecommendedBrowsersExplanation from "../../components/features/Tutorial/RecommendedBrowsersExplanation/RecommendedBrowsersExplanation";
 import Spinner from "../../components/common/Spinner/Spinner";
 
@@ -47,9 +46,6 @@ function TutorialPage() {
             </div>
             <div className={styles.section}>
               <GroupBalanceAndHistoryExplanation />
-            </div>
-            <div className={styles.section}>
-              <ActiveGroupBarExplanation />
             </div>
             <SyncGroupCodeExplanation />
           </>

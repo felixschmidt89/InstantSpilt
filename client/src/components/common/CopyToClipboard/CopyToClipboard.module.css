@@ -26,6 +26,7 @@
 
 .notCopied:hover {
   color: var(--color-signal-dark);
+  cursor: pointer;
 }
 
 .isCopied {
