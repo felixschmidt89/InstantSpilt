@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   width: 24rem;
   height: fit-content;
@@ -19,11 +18,10 @@
   overflow-x: hidden;
   overflow-y: scroll;
   outline: none;
-  outline-color: var(--color-grey);
 }
 
 .noGroupMembers {
-  color: var(--color-grey);
+  color: var(--color-dark-light);
   padding: 0.4rem 0rem;
 }
 
@@ -41,16 +39,21 @@
 }
 
 .button {
-  padding-top: 0.5rem;
+  padding-top: 0.3rem;
   font-size: 2rem;
+  color: var(--color-signal);
   margin-left: auto;
   cursor: pointer;
+}
+
+.button:hover {
+  color: var(--color-signal-dark);
 }
 
 .listItem {
   display: flex;
   flex-direction: row;
-  width: 21.7rem;
+  width: 23.7rem;
   font-size: 1.6rem;
   padding-right: 0.5rem;
   line-height: 1;
