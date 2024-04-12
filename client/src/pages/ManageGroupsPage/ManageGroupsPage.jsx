@@ -36,7 +36,7 @@ const ManageGroupsPage = () => {
         <h1>{t("manage-groups-page-header")}</h1>
         <SwitchGroups groupCode={groupCode} />
         <CreateGroupForm isInAppCreation={true} />
-        <ValidateGroupCode />
+        <ValidateGroupCode isExistingUser={true} />
       </div>
     </main>
   );

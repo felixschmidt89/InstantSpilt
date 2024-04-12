@@ -21,9 +21,11 @@ import styles from "./ValidateGroupCode.module.css";
 
 /**
  * React component for validating a group code.
+ * @param {Object} props - Component props.
+ * @param {boolean} [props.isExistingUser=false] - Flag to render different header and placeholder dependant on user.
  * @returns {JSX.Element} React component.
  */
-const ValidateGroupCode = () => {
+const ValidateGroupCode = ({ isExistingUser = false }) => {
   const { t } = useTranslation();
   const groupCode = localStorage.getItem("activeGroupCode");
   const [friendlyCaptchaIsVerified, setFriendlyCaptchaIsVerified] =
@@ -52,12 +54,20 @@ const ValidateGroupCode = () => {
 
   return (
     <div className={styles.container}>
-      <h2>{t("validate-groupcode-join-group-header")}</h2>
+      <h2>
+        {isExistingUser
+          ? t("validate-groupcode-join-group-copy")
+          : t("validate-groupcode-enter-groupcode-copy")}
+      </h2>
       <form onSubmit={handleFormSubmit}>
         <input
           className={styles.inputField}
           type='text'
-          placeholder='X4NST4NTSL17T'
+          placeholder={
+            isExistingUser
+              ? t("validate-groupcode-enter-groupcode-copy")
+              : "L54N21ST4N1L17T"
+          }
           value={toBeValidatedGroupCode}
           onChange={(e) => setToBeValidatedGroupCode(e.target.value)}
           onKeyDown={handleKeyDown}
