@@ -5,8 +5,8 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 import { IoEnterOutline } from "react-icons/io5";
 import { PiUserSwitchLight } from "react-icons/pi";
 import { IoChatboxOutline } from "react-icons/io5";
+import { IoAddCircleOutline } from "react-icons/io5";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
-import { PiUserPlus } from "react-icons/pi";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
@@ -113,7 +113,7 @@ const DefaultAndUserSettingsBar = () => {
                 ) : (
                   <ReactIconNavigate
                     explanationText={t("main-bar-invite-icon-text")}
-                    icon={PiUserPlus}
+                    icon={IoAddCircleOutline}
                     route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
                     {...addUserReactIconStyles}
                   />

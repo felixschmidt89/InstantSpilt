@@ -101,7 +101,7 @@ export const addUserReactIconStyles = {
   iconExplanationTextAlignment: "center",
   iconExplanationIsIdleTranslateX: "0.3",
   iconSize: 3.5,
-  translateY: 0.2,
-  translateX: 0.5,
+  translateY: 0.1,
+  translateX: 0.3,
   iconScale: 1,
 };

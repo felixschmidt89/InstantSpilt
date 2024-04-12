@@ -1,6 +1,6 @@
 // React and Third-Party Libraries
 import React from "react";
-import { PiUserPlus } from "react-icons/pi";
+import { IoAddCircleOutline } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
@@ -45,7 +45,7 @@ const WebShareApiInvite = ({ groupName, invitationLink }) => {
   return (
     <span className={styles.icon} onClick={handleShareClick}>
       <ReactIconNavigate
-        icon={PiUserPlus}
+        icon={IoAddCircleOutline}
         explanationText={t("main-bar-invite-icon-text")}
         onClick={handleShareClick}
         {...addUserReactIconStyles}
