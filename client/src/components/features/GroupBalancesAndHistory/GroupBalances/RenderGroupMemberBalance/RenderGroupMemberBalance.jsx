@@ -27,11 +27,10 @@ const RenderGroupMemberBalance = ({
   <div className={styles.balancesContainer}>
     <ul>
       {groupMemberDetails.map((user) => (
-        <Link
-          key={user.userId}
-          to={`/groupmember-details/${groupCode}/${user.userId}`}
-          className={styles.groupMemberListItemLink}>
-          <li className={styles.groupMemberListItem}>
+        <li key={user.userId} className={styles.groupMemberListItem}>
+          <Link
+            to={`/groupmember-details/${groupCode}/${user.userId}`}
+            className={styles.groupMemberListItemLink}>
             <div className={styles.groupMemberDetails}>
               <div className={styles.leftColumn}>
                 <span className={styles.emoji}>
@@ -58,8 +57,8 @@ const RenderGroupMemberBalance = ({
                 </div>
               </div>
             </div>
-          </li>
-        </Link>
+          </Link>
+        </li>
       ))}
     </ul>
   </div>

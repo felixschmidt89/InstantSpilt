@@ -17,12 +17,6 @@
   overflow-x: hidden;
 }
 
-.explanation:hover,
-.explanation:focus {
-  border-color: var(--color-signal);
-  background-color: var(--color-body);
-}
-
 .groupCode {
   padding-top: 0.5rem;
 }

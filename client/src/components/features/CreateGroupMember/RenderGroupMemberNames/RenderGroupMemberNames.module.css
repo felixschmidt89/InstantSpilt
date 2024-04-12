@@ -10,25 +10,16 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 1rem;
-  padding-right: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   width: 24rem;
   height: fit-content;
   max-height: 35rem;
-  border: 0.15rem solid var(--color-grey);
   border-radius: 1rem;
   overflow-x: hidden;
   overflow-y: scroll;
   outline: none;
   outline-color: var(--color-grey);
-}
-
-.members:hover,
-.members:focus {
-  border-color: var(--color-signal);
-  background-color: var(--color-body);
 }
 
 .noGroupMembers {

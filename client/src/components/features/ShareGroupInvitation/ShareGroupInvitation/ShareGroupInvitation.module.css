@@ -4,7 +4,6 @@
   align-items: flex-start;
   padding: 0.5rem 1rem;
   width: fit-content;
-  border: 0.15rem solid var(--color-grey);
   border-radius: 1rem;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -17,12 +16,6 @@
 
 .invitationLink {
   padding-bottom: 0.3rem;
-}
-
-.container:hover,
-.container:focus {
-  border-color: var(--color-signal);
-  background-color: var(--color-body);
 }
 
 .groupName {

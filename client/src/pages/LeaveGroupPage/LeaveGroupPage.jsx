@@ -61,10 +61,12 @@ const LeaveGroupPage = () => {
       <div className={styles.container}>
         <div className={styles.groupCodeContainer}>
           <div className={styles.groupCodeExplanation}>
-            {t("leave-group-on-device-groupcode-explanation", { groupName })}
+            {t("leave-group-on-device-groupcode-explanation-part1")}
+            <span className={styles.groupName}> {groupName} </span>
+            {t("leave-group-on-device-groupcode-explanation-part2")}
           </div>
           <div className={styles.copyGroupCode}>
-            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={15} />
+            <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={16.5} />
           </div>
         </div>
 
