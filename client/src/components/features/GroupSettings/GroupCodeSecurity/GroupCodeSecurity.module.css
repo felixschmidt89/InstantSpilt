@@ -4,7 +4,7 @@
 .explanation {
   display: flex;
   flex-wrap: wrap;
-  width: 24rem;
+  width: 20rem;
   border-radius: 1rem;
   font-size: 1.6rem;
   overflow-y: scroll;
@@ -16,4 +16,5 @@
 
 .groupCode {
   padding-top: 0.5rem;
+  width: 24rem;
 }

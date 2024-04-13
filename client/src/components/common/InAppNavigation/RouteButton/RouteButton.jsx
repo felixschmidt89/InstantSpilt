@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import HistoryIcon from "@mui/icons-material/History";
 
 // Constants and Utils
 import { setRouteInLocalStorage } from "../../../../utils/localStorageUtils";
@@ -13,7 +14,7 @@ import styles from "./RouteButton.module.css";
 
 const iconMap = {
   edit: EditIcon,
-  // Add more icons here if needed
+  history: HistoryIcon,
 };
 
 /**
@@ -24,7 +25,7 @@ const iconMap = {
  * @param {string} [props.buttonText="update"] - The text content of the button.
  *  @param {boolean} props.setPreviousRoute - If true, sets the current page as previous route in localStorage.
  * @param {boolean} props.setNestedPreviousRoute - If true, sets sets the current page as nested previous route in localStorage.
- * @param {string} [props.iconName] - The name of the icon to be displayed at the end of the button. Available name: "edit". Add more: https://mui.com/material-ui/material-icons/
+ * @param {string} [props.iconName] - The name of the icon to be displayed at the end of the button. Available names: "edit", "history". Add more: https://mui.com/material-ui/material-icons/
  * @returns {JSX.Element} React component. */
 const RouteButton = ({
   route,

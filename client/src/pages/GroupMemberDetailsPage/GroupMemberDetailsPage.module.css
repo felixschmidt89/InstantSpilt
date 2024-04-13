@@ -58,7 +58,7 @@
 }
 
 .deleteGroupMemberButton {
-  padding-top: 2rem;
+  padding-top: 0rem;
   margin: 0 auto;
 }
 @media screen and (max-width: 768px) {

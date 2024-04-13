@@ -126,7 +126,7 @@ const Contact = () => {
       const response = await axios.post(`${apiUrl}/feedbacks`, contactData);
       devLog("Message sent:", response);
       setShowForm(false);
-      // Render success feedback and programmatically navigate with a delay
+      // Render success feedback and programmatically navigate with a short delay
       setTimeout(() => {
         navigate("/instant-split");
       }, 2500);

@@ -1,0 +1,26 @@
+.container {
+  height: 4rem;
+  margin: 0 auto;
+}
+
+.changeName {
+  margin-top: 0.9rem;
+}
+
+.groupMemberName {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.icon {
+  color: var(--color-signal);
+  font-size: 1.8rem;
+  margin-left: 0.6rem;
+  transform: translateY(0.2rem);
+}
+
+.icon:hover,
+.icon:active {
+  color: var(--color-signal-dark);
+}

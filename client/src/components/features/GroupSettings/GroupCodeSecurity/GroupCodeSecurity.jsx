@@ -19,8 +19,10 @@ const GroupCodeSecurity = ({ groupCode }) => {
   return (
     <div className={styles.container}>
       <h2>{t("groupcode-security-header")}</h2>
-      <div className={styles.explanation}>
-        <div>{t("groupcode-security-explanation")}:</div>
+      <div>
+        <div className={styles.explanation}>
+          {t("groupcode-security-explanation")}:
+        </div>
         <div className={styles.groupCode}>
           <CopyToClipboard infoToCopy={groupCode} inputFieldWidth={20} />
         </div>

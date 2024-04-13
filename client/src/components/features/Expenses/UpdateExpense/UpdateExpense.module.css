@@ -12,3 +12,9 @@
   margin-bottom: 0.5rem;
   margin-top: 0.1rem;
 }
+
+.beneficiaries {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

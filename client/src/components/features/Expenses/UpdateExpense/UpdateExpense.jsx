@@ -121,13 +121,15 @@ const UpdateExpense = ({
           setFormChanged={setFormChanged}
           isUpdate={true}
         />
-        <ExpenseBeneficiariesInput
-          selectedBeneficiaries={selectedBeneficiaries}
-          groupMembers={groupMembers}
-          onSelectedBeneficiariesChange={setSelectedBeneficiaries}
-          setFormChanged={setFormChanged}
-          isUpdate={true}
-        />
+        <div className={styles.beneficiaries}>
+          <ExpenseBeneficiariesInput
+            selectedBeneficiaries={selectedBeneficiaries}
+            groupMembers={groupMembers}
+            onSelectedBeneficiariesChange={setSelectedBeneficiaries}
+            setFormChanged={setFormChanged}
+            isUpdate={true}
+          />
+        </div>
         {formChanged && (
           <Button style={buttonStyles} variant='contained' type='submit'>
             {t("update-expense-button-text")}

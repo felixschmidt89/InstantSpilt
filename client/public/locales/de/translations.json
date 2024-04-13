@@ -50,7 +50,6 @@
   "update-payment-page-header": "Zahlung aktualisieren",
   "groupmember-details-page-title": "InstantSplit - Mitgliederdetails",
   "groupmember-details-page-balance-header": "Saldo:",
-  "groupmember-details-page-settings-header": "Einstellungen",
   "groupmember-details-page-change-name-header": "Name ändern",
   "groupmember-details-page-transactions-history-button-text": "Verlauf",
   "groupmember-transaction-history-page-title": "InstantSplit - Transaktionsverlauf",
@@ -110,9 +109,9 @@
   "contact-form-name": "Name",
   "contact-form-email": "E-Mail",
   "contact-form-optional-placeholder": "optional",
-  "contact-form-type": "Typ",
-  "contact-form-select-message-type": "Nachrichtentyp wählen",
-  "contact-form-issue-bug-message-type": "Problem/Bug",
+  "contact-form-type": "Anliegen",
+  "contact-form-select-message-type": "optional",
+  "contact-form-issue-bug-message-type": "Problem",
   "contact-form-feedback-message-type": "Feedback",
   "contact-form-feature-request-message-type": "Verbesserungsvorschlag",
   "contact-form-other-message-type": "Sonstiges",
@@ -337,5 +336,5 @@
   "users-router-unprocessable-error-username-cannot-exceed-20-characters": "Name darf nicht mehr als 20 Zeichen haben.",
   "groups-router-unprocessable-error-missing-group-name": "fehlender Gruppenname",
   "groups-router-unprocessable-error-the-group-name-cannot-exceed-30-characters": "Gruppenname darf nicht mehr als 30 Zeichen haben.",
-  "delete-resource-error-user-cant-be-deleted-yet-please-remove-the-user-from-all-transactions": "Gruppenmitglied kann noch nicht gelöscht werden. Bite es zuerst aus allen Transaktionen entfernen."
+  "delete-resource-error-user-cant-be-deleted-yet-please-remove-the-user-from-all-transactions": "Gruppenmitglied kann noch nicht gelöscht werden. Bitte es zuerst aus allen Transaktionen entfernen."
 }

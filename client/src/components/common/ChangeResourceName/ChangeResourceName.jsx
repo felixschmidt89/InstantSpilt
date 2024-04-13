@@ -33,6 +33,7 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {string} props.headerText - The name of the resource type being changed displayed in the header. Prefixed by "change ".
  * @param {number} [props.inputWidth=20] - The width of the input field in rem units. Defaults to 20.
  * @param {boolean} [props.navigateToMain=true] - Flag indicating whether to navigate to the main page after updating the resource name. Defaults to true.
+ *  @param {Function} [props.callback] - Optional callback function to be executed after the form is submitted successfully.
  * @returns {JSX.Element} React component.
  */
 const ChangeResourceName = ({
@@ -43,6 +44,7 @@ const ChangeResourceName = ({
   headerText,
   inputWidth = 20,
   navigateToMain = true,
+  callback,
 }) => {
   const inputRef = useRef(null);
   const navigate = useNavigate();
@@ -75,6 +77,9 @@ const ChangeResourceName = ({
       devLog(`${resourceType} name updated:`, response);
       if (navigateToMain) {
         navigate("/instant-split");
+      }
+      if (typeof callback === "function") {
+        callback(newResourceName);
       }
       // Remove active class and blur input after successful update
       inputRef.current.classList.remove(styles.active);
