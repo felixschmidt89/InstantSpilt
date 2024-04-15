@@ -1,6 +1,6 @@
 // React and Third-Party Libraries
 import React, { useRef } from "react";
-import { Button } from "@mui/material";
+import { Button, Checkbox } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils

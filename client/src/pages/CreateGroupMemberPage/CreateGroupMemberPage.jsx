@@ -28,14 +28,10 @@ function CreateGroupMemberPage() {
     <main>
       <HelmetMetaTagsNetlify title={t("create-group-members-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"create-group-members"} />
-      {isNewUser ? (
-        <InAppNavigationBar
-          forward={true}
-          forwardRoute='/onboarding-group-settings'
-        />
-      ) : (
-        <InAppNavigationBar back={true} />
-      )}
+      <InAppNavigationBar
+        forward={true}
+        forwardRoute='/onboarding-group-settings'
+      />
       <div className={styles.container}>
         {!isNewUser ? <h1>{t("create-group-members-page-header")}</h1> : null}
         <h2>{t("create-group-members-form-header")}</h2>

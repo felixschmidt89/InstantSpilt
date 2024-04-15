@@ -117,7 +117,7 @@
   "contact-form-feature-request-message-type": "feature request",
   "contact-form-other-message-type": "other",
   "contact-form-mandatory-message": "message*",
-  "contact-form-message-bug/issue-placeholder": "Please copy and paste client info, describe the issue and add a screenshot if possible.",
+  "contact-form-message-bug/issue-placeholder": "Please describe the issue and add a screenshot if possible.",
   "contact-form-required-placeholder": "required",
   "contact-form-message-add-screenshot-button-text": "add screenshot",
   "contact-form-message-send-button-text": "send",

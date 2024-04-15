@@ -47,6 +47,9 @@
   margin: 0.25rem;
 }
 
+.beneficiaries:hover {
+  cursor: pointer;
+}
 .beneficiaries .input {
   appearance: none;
   width: 1.6rem;
@@ -66,15 +69,13 @@
   height: 1.6rem;
   width: 1.6rem;
   clip-path: polygon(
-    20% 52%,
-    35% 54%,
-    54% 61%,
-    76% 13%,
-    85% 15%,
-    91% 16%,
-    75% 65%,
-    63% 91%,
-    31% 68%
+    20% 50%,
+    35% 70%,
+    50% 90%,
+    80% 20%,
+    70% 10%,
+    50% 70%,
+    30% 50%
   );
 }
 

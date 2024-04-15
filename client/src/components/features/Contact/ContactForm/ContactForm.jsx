@@ -13,7 +13,6 @@ import {
 
 // Styles
 import styles from "./ContactForm.module.css";
-import ClientInfo from "../ClientInfo/ClientInfo";
 
 /**
  * Component for rendering contact form
@@ -123,7 +122,6 @@ const ContactForm = ({
         {formData.messageType === "issue/bug" && (
           <div>
             <div>
-              <ClientInfo />
               <input
                 className={styles.fileInputField}
                 ref={fileInputRef}

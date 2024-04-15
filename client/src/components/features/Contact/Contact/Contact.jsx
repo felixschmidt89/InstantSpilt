@@ -4,12 +4,14 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { usePWAInstall } from "react-use-pwa-install";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+import useGetClientDeviceAndPwaInfo from "../../../../hooks/useGetClientDeviceAndPwaInfo";
 
 // Components
 import ContactForm from "../ContactForm/ContactForm";
@@ -43,6 +45,13 @@ const Contact = () => {
   const [showForm, setShowForm] = useState(true);
   const [error, setError] = useState(null);
 
+  // use library to check if PWA install prompt is available
+  const isPWAInstallPromptAvailable = usePWAInstall();
+  devLog("isPWAInstallPromptAvailable", isPWAInstallPromptAvailable);
+
+  const { isPwa, isMobile, isAndroid, isMobileSafari, isIOS, browserName } =
+    useGetClientDeviceAndPwaInfo();
+
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
@@ -65,7 +74,6 @@ const Contact = () => {
     if (formData.messageType !== "issue/bug") {
       setFile(null);
     }
-
     // Clear previous error
     setError("");
     // Validate name
@@ -105,6 +113,21 @@ const Contact = () => {
         groupCode,
       };
 
+      // Add client information to feedback if messageType is 'issue/bug'
+      if (formData.messageType === "issue/bug") {
+        const clientInfo = `Client Information:
+        - mobile: ${isMobile ? "Yes" : "No"}
+        - browser: ${browserName}
+        - mobile safari: ${isMobileSafari ? "Yes" : "No"}
+        - iOS: ${isIOS ? "Yes" : "No"}
+        - android: ${isAndroid ? "Yes" : "No"}
+        - isUsingPWA: ${isPwa ? "Yes" : "No"}
+        - PWAPromptAvailable: ${isPWAInstallPromptAvailable ? "Yes" : "No"}`;
+
+        contactData.feedback += `\n\n${clientInfo}`;
+      }
+
+      // Upload file if attached
       if (file !== null) {
         try {
           const fileData = new FormData();

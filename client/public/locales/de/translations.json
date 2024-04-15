@@ -116,7 +116,7 @@
   "contact-form-feature-request-message-type": "Verbesserungsvorschlag",
   "contact-form-other-message-type": "Sonstiges",
   "contact-form-mandatory-message": "Nachricht*",
-  "contact-form-message-bug/issue-placeholder": "Bitte das Problem beschreiben, Clientinformationen kopieren und nach Möglichkeit auch einen Screenshot hinzufügen.",
+  "contact-form-message-bug/issue-placeholder": "Bitte das Problem beschreiben und einen Screenshot hinzufügen.",
   "contact-form-required-placeholder": "Pflichtfeld",
   "contact-form-message-add-screenshot-button-text": "+Screenshot",
   "contact-form-message-send-button-text": "abschicken",
