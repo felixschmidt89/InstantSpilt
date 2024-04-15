@@ -22,11 +22,11 @@ const NotEnoughGroupMembers = () => {
       <span className={styles.emojiParanthesis}>
         (<Emoji ariaLabel={"user emoji"} emoji={emojiConstants.member}></Emoji>)
       </span>{" "}
-      {t("no-group-transactions-below")}{" "}
+      {t("not-enough-groupmembers-below")}{" "}
       <span className={styles.emojiParanthesis}>
         (
         <Emoji
-          ariaLabel={"pont down emoji"}
+          ariaLabel={"point down emoji"}
           emoji={emojiConstants.pointDown}></Emoji>
         )
       </span>

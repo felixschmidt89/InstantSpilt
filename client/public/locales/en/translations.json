@@ -145,6 +145,7 @@
   "no-group-transactions-below": "below",
   "no-group-transactions-append": "",
   "not-enough-groupmembers-start-adding": "To start settling expenses add group members",
+  "not-enough-groupmembers-below": "below",
   "not-enough-groupmembers-append": "",
   "no-groupmember-transactions-message": "no associated expenses or payments",
   "change-data-purge-setting-header": "data purge",
