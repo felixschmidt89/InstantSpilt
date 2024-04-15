@@ -14,9 +14,9 @@
 .groupMemberDetails {
   display: flex;
   flex-direction: row;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   line-height: 1.3;
-  max-width: 40rem;
+  max-width: 45rem;
   min-width: 25rem;
 }
 
@@ -36,7 +36,7 @@
 
 .leftColumn {
   text-align: left;
-  width: 22rem;
+  width: 26rem;
   display: flex;
 }
 
@@ -48,7 +48,7 @@
 }
 
 .rightColumn {
-  width: 13rem;
+  width: 16rem;
   text-align: right;
 }
 
@@ -58,4 +58,13 @@
 
 .negativeBalance {
   color: var(--color-error);
+}
+
+@media (max-width: 500px) {
+  .rightColumn {
+    width: 13rem;
+  }
+  .leftColumn {
+    width: 22rem;
+  }
 }

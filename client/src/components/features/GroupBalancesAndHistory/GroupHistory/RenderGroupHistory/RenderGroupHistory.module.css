@@ -52,6 +52,8 @@ a:hover {
 .container {
   opacity: 0;
   animation: delayedRender 0.1s ease 0.2s forwards;
+  padding-left: 0rem;
+  padding-right: 0rem;
 }
 @keyframes delayedRender {
   to {

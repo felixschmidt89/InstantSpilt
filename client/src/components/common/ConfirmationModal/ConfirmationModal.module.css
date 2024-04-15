@@ -31,6 +31,9 @@
 .confirmationMessage {
   text-align: left;
   margin-bottom: 0.4rem;
+  /* explicit to fix wrong color and cursor being applied in certain cases */
+  color: var(--color-dark);
+  cursor: default;
 }
 
 @media screen and (max-width: 768px) {
