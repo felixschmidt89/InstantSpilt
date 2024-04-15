@@ -106,7 +106,6 @@ const InAppNavigationBar = ({
       <div className={styles.middleLogo}>
         <InstantSplitLogo
           className={styles.instantSplitLogo}
-          width={"24"}
           linkToInstantSplitPage={!logoOnly && !forward}
         />
       </div>

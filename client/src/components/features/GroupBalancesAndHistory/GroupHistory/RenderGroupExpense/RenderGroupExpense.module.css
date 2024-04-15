@@ -44,8 +44,7 @@
   padding-right: 0.5rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
-  margin-left: 0.4rem;
-  margin-right: 0.1rem;
+  margin-right: 0.4rem;
   margin-bottom: 0.1rem;
   white-space: nowrap;
 }
@@ -66,14 +65,14 @@
     flex-wrap: wrap;
     margin-left: 1rem;
     padding-top: 0.1rem;
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.1rem;
     padding-left: 0rem;
     max-width: 50%;
   }
   .leftColumn {
     margin-right: 0.5rem;
     padding-top: 0.1rem;
-    padding-bottom: 0.25rem;
+    padding-bottom: 0.1rem;
     padding-left: 0rem;
     padding-right: 0rem;
   }
@@ -106,6 +105,6 @@
     font-size: 1.4rem;
   }
   .rightColumn {
-    max-width: 25%;
+    max-width: 35%;
   }
 }

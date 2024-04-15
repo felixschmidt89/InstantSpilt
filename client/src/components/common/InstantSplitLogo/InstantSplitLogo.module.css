@@ -9,3 +9,21 @@
 .logoLink:active {
   outline: none;
 }
+
+.logoImage {
+  width: 24rem;
+  max-width: 30rem;
+  min-width: 10rem;
+}
+
+@media screen and (max-width: 400px) {
+  .logoImage {
+    width: 20rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .logoImage {
+    width: 15rem;
+  }
+}
