@@ -1,16 +1,11 @@
-.expenseLink {
-  color: var(--color-dark);
-}
-
 .expense {
   display: flex;
   font-size: 1.6rem;
   line-height: 1.3;
   padding: 0.2rem 0.6rem;
   margin: 0 auto;
-  flex-direction: row;
-  width: fit-content;
   color: var(--color-dark);
+  width: fit-content;
 }
 
 .expense:active,
@@ -35,8 +30,6 @@
   padding-top: 0.1rem;
   padding-bottom: 0.2rem;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
   margin-left: 2rem;
   width: 32rem;
 }
@@ -68,18 +61,19 @@
 
 @media (max-width: 500px) {
   .rightColumn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-left: 1rem;
-    border-top: none;
     padding-top: 0.1rem;
     padding-bottom: 0.25rem;
     padding-left: 0rem;
-    padding-right: 0rem;
+    max-width: 50%;
   }
   .leftColumn {
     margin-right: 0.5rem;
-    border-top: none;
-    padding-top: 0.15rem;
-    padding-bottom: 0.15rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.25rem;
     padding-left: 0rem;
     padding-right: 0rem;
   }
@@ -90,5 +84,28 @@
   .expense:active,
   .expense:hover {
     border-radius: 0rem;
+  }
+  .expense {
+    margin: 0;
+    font-size: 1.5rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .expense {
+    font-size: 1.5rem;
+  }
+  .rightColumn {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 320px) {
+  .expense {
+    font-size: 1.4rem;
+  }
+  .rightColumn {
+    max-width: 25%;
   }
 }

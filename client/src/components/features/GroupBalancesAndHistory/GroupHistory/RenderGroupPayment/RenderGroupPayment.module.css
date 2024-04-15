@@ -1,15 +1,10 @@
-.paymentLink {
-  color: var(--color-dark);
-  font-size: 1.6rem;
-}
-
 .payment {
   display: flex;
+  font-size: 1.6rem;
   line-height: 1.3;
   padding: 0.2rem 0.6rem;
   margin: 0 auto;
-  display: flex;
-  flex-direction: row;
+  color: var(--color-dark);
   width: fit-content;
 }
 
@@ -17,13 +12,12 @@
 .payment:hover {
   background-color: var(--color-body);
   color: var(--color-dark-dark);
+  border-radius: 1rem;
 }
 
 .leftColumn {
   display: flex;
-  border-top: 0.2rem solid var(--color-signal-reduced-opacity);
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
+  width: 13rem;
 }
 
 .paymentEmoji {
@@ -31,35 +25,62 @@
 }
 
 .paymentAmount {
-  text-align: right; /* numbers are right aligned to be easily readable */
-  width: 10rem; /* white space on the left */
-}
-
-.paymentTo {
-  color: var(--color-dark);
+  text-align: right;
+  width: 11rem; /* white space on the left */
 }
 
 .rightColumn {
+  padding-top: 0.1rem;
+  padding-bottom: 0.2rem;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 0.3rem;
-  margin-left: 3rem;
-  width: 80%;
-  border-top: 0.2rem solid var(--color-signal-reduced-opacity);
-  overflow-x: hidden;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+  width: 32rem;
 }
 @media (max-width: 500px) {
   .rightColumn {
-    padding-top: 0.15rem;
-    padding-bottom: 0.15rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-left: 1rem;
-    border-top: none;
+    padding-top: 0.1rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0rem;
+    max-width: 55%;
   }
   .leftColumn {
-    padding-top: 0.15rem;
-    padding-bottom: 0.15rem;
     margin-right: 0.5rem;
-    border-top: none;
+    padding-top: 0.1rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+  .paymentAmount {
+    width: 11rem;
+  }
+  .payment {
+    margin: 0;
+    font-size: 1.5rem;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .payment {
+    font-size: 1.5rem;
+  }
+  .rightColumn {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 320px) {
+  .payment {
+    font-size: 1.4rem;
+  }
+  .rightColumn {
+    max-width: 25%;
+    font-size: 1.4rem;
   }
 }

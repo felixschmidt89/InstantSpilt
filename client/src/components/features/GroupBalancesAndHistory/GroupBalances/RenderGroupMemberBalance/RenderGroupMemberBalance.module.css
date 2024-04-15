@@ -68,3 +68,15 @@
     width: 22rem;
   }
 }
+
+@media (max-width: 400px) {
+  .balancesContainer {
+    font-size: 1.4rem;
+  }
+  .rightColumn {
+    width: rem;
+  }
+  .leftColumn {
+    width: 19rem;
+  }
+}

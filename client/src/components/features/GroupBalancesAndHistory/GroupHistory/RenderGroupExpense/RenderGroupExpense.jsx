@@ -54,7 +54,7 @@ const RenderGroupExpense = ({
       </div>
       <div className={styles.rightColumn}>
         <div className={styles.borderedContent}>
-          {item.expenseDescription}{" "}
+          {item.expenseDescription}
           {allGroupMembersBenefitFromExpense && (
             <span className={styles.forAll}>
               {t("render-group-expense-for-all-badge")}
