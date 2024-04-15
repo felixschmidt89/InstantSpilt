@@ -91,6 +91,7 @@
   "in-app-navigation-back-icon-text": "zurück",
   "in-app-navigation-main-icon-text": "home",
   "in-app-navigation-next-icon-text": "weiter",
+  "in-app-navigation-abort-icon-text": "Abbruch",
   "render-resource-created-component-created-text": "hinzugefügt: ",
   "render-resource-created-component-changed-text": "aktualisiert: ",
   "join-group-button-text": "beitreten",

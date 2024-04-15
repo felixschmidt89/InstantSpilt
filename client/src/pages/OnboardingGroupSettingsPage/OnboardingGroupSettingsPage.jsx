@@ -2,12 +2,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-// Constants and Utils
-import { devLog } from "../../utils/errorUtils";
-
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
-import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -35,7 +31,12 @@ const OnboardingGroupSettingsPage = () => {
         title={t("onboarding-group-settings-page-title")}
       />
       <PiratePx COUNT_IDENTIFIER={"onboarding-group-settings"} />
-      <InAppNavigationBar forward={true} forwardRoute='/instant-split' />
+      <InAppNavigationBar
+        back={true}
+        backRoute='/onboarding-create-group'
+        forward={true}
+        forwardRoute='/instant-split'
+      />
       <div className={styles.container}>
         {isFetched && groupData ? (
           <div className={styles.settings}>

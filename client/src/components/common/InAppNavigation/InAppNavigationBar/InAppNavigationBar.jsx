@@ -1,13 +1,17 @@
 // React and Third-Party Libraries
 import { useNavigate } from "react-router-dom";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { IoCloseCircleOutline } from "react-icons/io5";
 import { GoHome } from "react-icons/go";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
-import { getRouteFromLocalStorage } from "../../../../utils/localStorageUtils";
+import {
+  deleteGroupDataFromLocalStorage,
+  getRouteFromLocalStorage,
+} from "../../../../utils/localStorageUtils";
 
 // Components
 import InstantSplitLogo from "../../InstantSplitLogo/InstantSplitLogo";
@@ -35,6 +39,8 @@ import styles from "./InAppNavigationBar.module.css";
 const InAppNavigationBar = ({
   back = false,
   backRoute = "/instant-split",
+  abort = false,
+  abortRoute = "/instant-split",
   previousRoute = false,
   nestedPreviousRoute = false,
   home = false,
@@ -49,6 +55,13 @@ const InAppNavigationBar = ({
   const handleRegularNavigation = (route) => {
     devLog("Navigating to:", route);
     navigate(route);
+  };
+
+  const handleAbort = (abortRoute) => {
+    const groupCode = localStorage.getItem("activeGroupCode");
+    deleteGroupDataFromLocalStorage(groupCode);
+    devLog("Navigating to main application");
+    navigate(abortRoute);
   };
 
   const handleNestedNavigation = () => {
@@ -99,6 +112,17 @@ const InAppNavigationBar = ({
             />
             <div className={styles.text}>
               {t("in-app-navigation-back-icon-text")}
+            </div>
+          </div>
+        )}
+        {abort && (
+          <div className={styles.iconContainer}>
+            <IoCloseCircleOutline
+              className={`${styles.leftAlignedIcon} ${styles.icon}`}
+              onClick={() => handleAbort(abortRoute)}
+            />
+            <div className={styles.text}>
+              {t("in-app-navigation-abort-icon-text")}
             </div>
           </div>
         )}

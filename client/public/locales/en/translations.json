@@ -92,6 +92,7 @@
   "in-app-navigation-back-icon-text": "back",
   "in-app-navigation-main-icon-text": "main",
   "in-app-navigation-next-icon-text": "next",
+  "in-app-navigation-abort-icon-text": "abort",
   "render-resource-created-component-created-text": "created: ",
   "render-resource-created-component-changed-text": "changed: ",
   "join-group-button-text": "join group",

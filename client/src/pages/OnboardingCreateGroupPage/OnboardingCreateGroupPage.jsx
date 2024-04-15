@@ -18,7 +18,7 @@ const OnboardingCreateGroupPage = () => {
     <main>
       <HelmetMetaTagsNetlify title={t("onboarding-create-group-page-title")} />
       <PiratePx COUNT_IDENTIFIER={"onboarding-create-group"} />
-      <InAppNavigationBar back={true} backRoute={"/"} />
+      <InAppNavigationBar back={true} backRoute='/' />
       <div className={styles.container}>
         <CreateGroupForm isOnboarding={true} />
       </div>
