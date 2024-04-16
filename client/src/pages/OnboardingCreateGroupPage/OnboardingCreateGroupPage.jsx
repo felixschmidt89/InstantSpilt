@@ -20,7 +20,7 @@ const OnboardingCreateGroupPage = () => {
       <PiratePx COUNT_IDENTIFIER={"onboarding-create-group"} />
       <InAppNavigationBar back={true} backRoute='/' />
       <div className={styles.container}>
-        <CreateGroupForm isOnboarding={true} />
+        <CreateGroupForm isExistingUser={false} />
       </div>
     </main>
   );

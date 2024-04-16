@@ -77,7 +77,7 @@ const ValidateGroupCode = ({ isExistingUser = false }) => {
           <FormSubmitButton {...sendFormSubmitButtonStyles} />
         )}
         {/* For new users: render FriendlyCaptcha*/}
-        {!groupCode && (
+        {!isExistingUser && (
           <FriendlyCaptcha
             sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITEKEY}
             secret={import.meta.env.VITE_FRIENDLY_CAPTCHA_SECRET}

@@ -31,30 +31,29 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 /**
  * Component for rendering a form to create a new group, validating group name and rendering group name validation errors. Also renders and validates FriendlyCaptcha for new users.
  *
- *  @param {boolean} isOnboarding - Indicates whether a new InstantSplit user is creating the group
+ *  @param {boolean} [props.isExistingUser=false] - Indicates whether a new InstantSplit user is creating the group
  * @returns {JSX.Element} React component. */
-const CreateGroupForm = ({ isOnboarding }) => {
+const CreateGroupForm = ({ isExistingUser = false }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const inputRef = useRef(null);
   const [groupName, setGroupName] = useState(null);
   const [error, setError] = useState(null);
-  const groupCode = localStorage.getItem("activeGroupCode");
   const [friendlyCaptchaIsVerified, setFriendlyCaptchaIsVerified] =
     useState(false);
 
-  devLog("Onboarding group creation", isOnboarding);
+  devLog("Is existing user", isExistingUser);
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
     useErrorModalVisibility();
 
-  // Autofocus input field on mount if isOnboarding is true
+  // Autofocus input field on mount if user is new
   useEffect(() => {
-    if (isOnboarding) {
+    if (!isExistingUser) {
       inputRef.current.focus();
     }
-  }, [isOnboarding]);
+  }, [isExistingUser]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -88,11 +87,12 @@ const CreateGroupForm = ({ isOnboarding }) => {
         ref={inputRef}
       />
       {/* For new users: only render submit button, if FriendlyCaptcha is verified*/}
-      {(groupCode !== null || friendlyCaptchaIsVerified) && (
+      {(friendlyCaptchaIsVerified || isExistingUser) && (
         <FormSubmitButton {...plusFormSubmitButtonStyles} />
       )}
+
       {/* For new users: render FriendlyCaptcha*/}
-      {!groupCode && (
+      {!isExistingUser && (
         <FriendlyCaptcha
           sitekey={import.meta.env.VITE_FRIENDLY_CAPTCHA_SITEKEY}
           secret={import.meta.env.VITE_FRIENDLY_CAPTCHA_SECRET}
