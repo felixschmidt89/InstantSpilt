@@ -2,8 +2,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+// Constants and Utils
+import { devLog } from "../../utils/errorUtils";
+
 // Hooks
 import useFetchGroupData from "../../hooks/useFetchGroupData";
+import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
@@ -33,7 +37,7 @@ const OnboardingGroupSettingsPage = () => {
       <PiratePx COUNT_IDENTIFIER={"onboarding-group-settings"} />
       <InAppNavigationBar
         back={true}
-        backRoute='/onboarding-create-group'
+        backRoute={"/create-group-members"}
         forward={true}
         forwardRoute='/instant-split'
       />

@@ -40,6 +40,7 @@ function CreateGroupMemberPage() {
       <PiratePx COUNT_IDENTIFIER={"create-group-members"} />
       <InAppNavigationBar
         abort={isNewUser || isInAppGroupCreation ? true : false}
+        abortRoute={isInAppGroupCreation ? "/manage-groups" : "/"}
         back={isRegularUser ? true : false}
         forward={isNewUser || isInAppGroupCreation ? true : false}
         forwardRoute='/onboarding-group-settings'
