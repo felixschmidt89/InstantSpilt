@@ -31,17 +31,19 @@ const RenderGroupPayment = ({ item, groupCode, groupCurrency }) => {
               ariaLabel={"payment emoji"}
               emoji={emojiConstants.payment}></Emoji>
           </div>
+          <span className={styles.paymentInfo}>
+            <span>{item.paymentMaker.userName}</span>{" "}
+            <span className={styles.paymentTo}>
+              <RenderReactIcon icon={IoArrowForwardOutline} translateY={0.2} />
+            </span>
+            <span>{item.paymentRecipient.userName}</span>
+          </span>
+        </div>
+        <div className={styles.rightColumn}>
           <div className={styles.paymentAmount}>
             {item.paymentAmount.toFixed(2)}
             {groupCurrency}
           </div>
-        </div>
-        <div className={styles.rightColumn}>
-          <span>{item.paymentMaker.userName}</span>{" "}
-          <span className={styles.paymentTo}>
-            <RenderReactIcon icon={IoArrowForwardOutline} translateY={0.2} />
-          </span>
-          <span>{item.paymentRecipient.userName}</span>
         </div>
       </div>
     </Link>

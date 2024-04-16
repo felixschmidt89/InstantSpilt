@@ -40,29 +40,25 @@ const RenderGroupExpense = ({
       to={`/expense-details/${groupCode}/${item.itemId}`}
       className={styles.expense}>
       <div className={styles.leftColumn}>
-        <Emoji
-          ariaLabel={"expense emoji"}
-          emoji={emojiConstants.expense}
-          scale={"1.1"}
-          translateX={"0.15"}
-          translateY={"0.1"}
-        />
-        <div className={styles.expenseAmount}>
-          {item.expenseAmount.toFixed(2)}
-          {groupCurrency}
-        </div>
-      </div>
-      <div className={styles.rightColumn}>
-        <div className={styles.borderedContent}>
+        <span className={styles.expenseEmoji}>
+          <Emoji ariaLabel={"expense emoji"} emoji={emojiConstants.expense} />
+        </span>
+        <span className={styles.expenseInfo}>
           {allGroupMembersBenefitFromExpense && (
             <span className={styles.forAll}>
               {t("render-group-expense-for-all-badge")}
             </span>
           )}
           {item.expenseDescription}
-
           {": "}
           <span className={styles.payer}> {item.expensePayer.userName}</span>
+        </span>
+      </div>
+
+      <div className={styles.rightColumn}>
+        <div className={styles.expenseAmount}>
+          {item.expenseAmount.toFixed(2)}
+          {groupCurrency}
         </div>
       </div>
     </Link>

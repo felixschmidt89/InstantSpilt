@@ -5,7 +5,7 @@
   padding: 0.2rem 0.6rem;
   margin: 0 auto;
   color: var(--color-dark);
-  width: fit-content;
+  width: 45rem;
 }
 
 .payment:active,
@@ -15,72 +15,36 @@
   border-radius: 1rem;
 }
 
-.leftColumn {
-  display: flex;
-  width: 13rem;
-}
-
 .paymentEmoji {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 .paymentAmount {
   text-align: right;
-  width: 11rem; /* white space on the left */
+  width: 14rem; /* white space on the left */
+  padding-top: 0.2rem;
 }
 
-.rightColumn {
+.leftColumn {
   padding-top: 0.1rem;
   padding-bottom: 0.2rem;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  margin-left: 2rem;
-  width: 32rem;
+  width: 31rem;
 }
-@media (max-width: 500px) {
-  .rightColumn {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-left: 1rem;
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
-    padding-left: 0rem;
-    max-width: 55%;
+
+@media screen and (max-width: 500px) {
+  .payment {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    padding: 0.2rem 0.3rem;
+    width: 99vw;
+    margin: 0;
   }
-  .leftColumn {
+  .paymentEmoji {
     margin-right: 0.5rem;
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
-    padding-left: 0rem;
-    padding-right: 0rem;
   }
   .paymentAmount {
-    width: 11rem;
-  }
-  .payment {
-    margin: 0;
-    font-size: 1.5rem;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 375px) {
-  .payment {
-    font-size: 1.5rem;
-  }
-  .rightColumn {
-    max-width: 45%;
-  }
-}
-
-@media (max-width: 320px) {
-  .payment {
-    font-size: 1.4rem;
-  }
-  .rightColumn {
-    max-width: 35%;
-    font-size: 1.4rem;
+    width: 12rem;
   }
 }

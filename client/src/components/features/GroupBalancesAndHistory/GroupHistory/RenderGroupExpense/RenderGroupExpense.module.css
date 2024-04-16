@@ -5,7 +5,7 @@
   padding: 0.2rem 0.6rem;
   margin: 0 auto;
   color: var(--color-dark);
-  width: fit-content;
+  width: 45rem;
 }
 
 .expense:active,
@@ -15,23 +15,27 @@
   border-radius: 1rem;
 }
 
-.leftColumn {
-  display: flex;
-  width: 13rem;
+.expenseEmoji {
+  transform: scale(1.1) translateX(0.1rem);
+}
+
+.expenseInfo {
+  margin-left: 0.4rem;
 }
 
 /* Ensure that numbers are right aligned to be easily readable */
 .expenseAmount {
   text-align: right;
-  width: 11rem; /* white space on the left */
+  width: 14rem; /* white space on the left */
+  padding-top: 0.2rem;
 }
 
-.rightColumn {
+.leftColumn {
   padding-top: 0.1rem;
   padding-bottom: 0.2rem;
   display: flex;
-  margin-left: 2rem;
-  width: 32rem;
+  flex-direction: row;
+  width: 31rem;
 }
 
 .forAll {
@@ -40,13 +44,14 @@
   font-size: 1.4rem;
   border: 0.1rem solid var(--color-dark);
   border-radius: 1rem;
-  padding-left: 0.2rem;
-  padding-right: 0.5rem;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
   padding-top: 0rem;
   padding-bottom: 0rem;
   margin-right: 0.4rem;
   margin-bottom: 0.1rem;
   white-space: nowrap;
+  height: fit-content;
 }
 
 .payer {
@@ -54,57 +59,23 @@
   font-style: italic;
 }
 
-.rightColumn .expenseEmoji {
+.leftColumn .expenseEmoji {
   margin-bottom: 0.5rem;
 }
 
-@media (max-width: 500px) {
-  .rightColumn {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-left: 1rem;
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
-    padding-left: 0rem;
-    max-width: 50%;
+@media screen and (max-width: 500px) {
+  .expense {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    padding: 0.1rem 0.4rem;
+    color: var(--color-dark);
+    width: 99vw;
+    margin: 0;
   }
-  .leftColumn {
-    margin-right: 0.5rem;
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
-    padding-left: 0rem;
-    padding-right: 0rem;
+  .expenseEmoji {
+    margin-right: 0rem;
   }
   .expenseAmount {
-    width: 11rem;
-  }
-
-  .expense:active,
-  .expense:hover {
-    border-radius: 0rem;
-  }
-  .expense {
-    margin: 0;
-    font-size: 1.5rem;
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 375px) {
-  .expense {
-    font-size: 1.5rem;
-  }
-  .rightColumn {
-    max-width: 45%;
-  }
-}
-
-@media (max-width: 320px) {
-  .expense {
-    font-size: 1.4rem;
-  }
-  .rightColumn {
-    max-width: 35%;
+    width: 12rem; /* white space on the left */
   }
 }
