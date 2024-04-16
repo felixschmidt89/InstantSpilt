@@ -1,4 +1,3 @@
-/* Logo.css */
 .logoLink {
   text-decoration: none;
   margin: 0;
@@ -11,19 +10,30 @@
 }
 
 .logoImage {
-  width: 24rem;
-  max-width: 30rem;
-  min-width: 10rem;
+  width: 26rem;
+}
+
+/* Ensure proper size across different mobile devices */
+@media screen and (max-width: 500px) {
+  .logoImage {
+    width: 24rem;
+  }
 }
 
 @media screen and (max-width: 400px) {
   .logoImage {
-    width: 20rem;
+    width: 23rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .logoImage {
+    width: 21rem;
   }
 }
 
 @media screen and (max-width: 320px) {
   .logoImage {
-    width: 15rem;
+    width: 17rem;
   }
 }
