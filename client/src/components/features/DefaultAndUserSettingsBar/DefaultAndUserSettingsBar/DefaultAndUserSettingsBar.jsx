@@ -39,7 +39,7 @@ const DefaultAndUserSettingsBar = () => {
   const { t, i18n } = useTranslation();
   const groupCode = localStorage.getItem("activeGroupCode");
   const supportsWebShareAPI = isWebShareAPISupported();
-  const isSlimDevice = useIsSlimDevice();
+  const { isSlimDevice, isVerySlimDevice } = useIsSlimDevice();
   const [isDefaultBarShown, setIsDefaultBarShown] = useState(true);
   const { groupData, isFetched } = useFetchGroupData(groupCode);
 
@@ -116,6 +116,7 @@ const DefaultAndUserSettingsBar = () => {
                     icon={IoAddCircleOutline}
                     route={`/share-group/${groupData.group.initialGroupName}/${groupCode}`}
                     {...addUserReactIconStyles}
+                    iconSize={isVerySlimDevice ? 3 : 3.5}
                   />
                 )}
               </span>
@@ -127,7 +128,7 @@ const DefaultAndUserSettingsBar = () => {
                   icon={LuMenu}
                   containerHeight='8'
                   containerWidth='7.2'
-                  iconSize={3.5}
+                  iconSize={isVerySlimDevice ? 3 : 3.5}
                   iconScale={1.1}
                   translateY={0.15}
                   translateX={isSlimDevice ? 0.5 : -0.3}
@@ -147,9 +148,9 @@ const DefaultAndUserSettingsBar = () => {
             <ReactIconNavigate
               icon={IoArrowBackCircleOutline}
               containerHeight='8'
-              containerWidth='8'
+              containerWidth={isVerySlimDevice ? "5" : "8"}
               explanationText={t("main-bar-back-icon-text")}
-              iconSize={3.5}
+              iconSize={isVerySlimDevice ? 3 : 3.5}
               iconScale={1.05}
               onClick={hideUserSettings}
             />
@@ -157,41 +158,41 @@ const DefaultAndUserSettingsBar = () => {
             <ReactIconNavigate
               icon={IoInformationCircleOutline}
               containerHeight='8'
-              containerWidth='8'
+              containerWidth={isVerySlimDevice ? "5" : "8"}
               explanationText={t("main-bar-tutorial-icon-text")}
               route={`/tutorial/${groupData?.group?.initialGroupName}/${groupCode}`}
-              iconSize={3.5}
+              iconSize={isVerySlimDevice ? 3 : 3.5}
               iconScale={1.1}
               translateY={0.1}
             />
             <ReactIconNavigate
               icon={IoChatboxOutline}
               containerHeight='8'
-              containerWidth='8'
+              containerWidth={isVerySlimDevice ? "5" : "8"}
               explanationText={t("main-bar-contact-icon-text")}
               route={`/contact/${groupCode}`}
-              iconSize={3.5}
+              iconSize={isVerySlimDevice ? 3 : 3.5}
               iconScale={0.95}
             />
             <ReactIconNavigate
               icon={PiUserSwitchLight}
               containerHeight='8'
-              containerWidth='8'
+              containerWidth={isVerySlimDevice ? "6" : "8"}
               explanationText={t("main-bar-manage-groups-icon-text")}
-              iconExplanationWidth='9'
+              iconExplanationWidth={isVerySlimDevice ? "7" : "9"}
               route={`/manage-groups`}
-              iconSize={3.5}
+              iconSize={isVerySlimDevice ? 3 : 3.5}
               iconScale={1}
               translateY={0.1}
             />
             <ReactIconNavigate
               icon={IoEnterOutline}
               containerHeight='8'
-              containerWidth='8'
-              iconExplanationWidth='6'
+              containerWidth={isVerySlimDevice ? "6" : "8"}
+              iconExplanationWidth={isVerySlimDevice ? "5" : "6"}
               explanationText={t("main-bar-leave-group-icon-text")}
               route={`/leave-group/${groupData?.group?.groupName}/${groupCode}`}
-              iconSize={3.5}
+              iconSize={isVerySlimDevice ? 3 : 3.5}
               iconScale={1.1}
               translateX={-0.3}
             />

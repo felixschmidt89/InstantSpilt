@@ -46,7 +46,6 @@
   margin-bottom: 1rem;
   margin-top: 0.8rem;
   position: relative;
-
   transition: transform 0.5s ease;
   height: 6rem;
 }
@@ -85,6 +84,18 @@
 }
 
 /* Component width is aligned with main width in app.css */
+
+/* very small screens*/
+@media only screen and (max-width: 350px) {
+  .container {
+    padding-top: 1rem;
+    height: 6rem;
+    min-height: 60px;
+    font-size: 1.25rem;
+    padding-bottom: 1rem;
+  }
+}
+
 /* Mobile*/
 @media only screen and (max-width: 768px) {
   .container,

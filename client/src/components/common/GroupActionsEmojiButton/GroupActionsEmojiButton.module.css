@@ -24,3 +24,22 @@
 .container:hover {
   color: var(--color-dark-dark);
 }
+
+@media only screen and (max-width: 350px) {
+  .container {
+    width: 3.5rem;
+  }
+
+  .iconExplanation {
+    display: flex;
+    width: max-content;
+    font-size: 1.25rem;
+  }
+
+  .emoji {
+    font-size: 2.6rem;
+    font-family: "Noto Emoji";
+    font-weight: 500;
+    line-height: 1.2;
+  }
+}

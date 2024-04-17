@@ -6,6 +6,7 @@
   padding: 0rem 0rem;
   width: 90%;
   margin: 0 auto;
+
   margin-bottom: 1rem;
 }
 
@@ -19,5 +20,11 @@
   to {
     opacity: 1;
     visibility: visible;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .groupActionsBar {
+    margin-bottom: 0.5rem;
   }
 }

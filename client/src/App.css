@@ -227,6 +227,94 @@ scrollbar-thumb {
 }
 
 /* Media queries for responsive design
+/* very slim devices*/
+@media only screen and (max-width: 350px) {
+  main {
+    margin-top: 0rem;
+    height: 85vh;
+    height: 95svh;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    border-radius: 0rem 0rem 2rem 2rem;
+  }
+  footer {
+    height: 6vh;
+    height: 6svh;
+    min-height: 2rem;
+  }
+
+  p,
+  textarea,
+  select,
+  input,
+  textarea,
+  li,
+  p {
+    font-size: 1.4rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+  h4,
+  h5,
+  h6 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Mobile*/
+@media only screen and (max-width: 400px) {
+  main {
+    margin-top: 0rem;
+    height: 85vh;
+    height: 95svh;
+    width: 100vw;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    border-radius: 0rem 0rem 2rem 2rem;
+  }
+  footer {
+    height: 6vh;
+    height: 6svh;
+    min-height: 2rem;
+  }
+
+  p,
+  textarea,
+  select,
+  input,
+  textarea,
+  p,
+  li {
+    font-size: 1.5rem;
+  }
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+  }
+  h4,
+  h5,
+  h6 {
+    font-size: 1.5rem;
+  }
+}
+
 /* Mobile*/
 @media only screen and (max-width: 768px) {
   main {
@@ -248,8 +336,10 @@ scrollbar-thumb {
   textarea,
   select,
   input,
-  textarea {
-    font-size: 1.6rem;
+  textarea,
+  li,
+  p {
+    font-size: 1.5rem;
   }
 }
 
