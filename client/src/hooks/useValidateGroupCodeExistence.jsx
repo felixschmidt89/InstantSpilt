@@ -53,7 +53,7 @@ function useValidateGroupExistence(groupCode, validationType = "continuous") {
           error.response &&
           error.response.status === StatusCodes.TOO_MANY_REQUESTS
         ) {
-          setError("Too many validation requests. Please try again later.");
+          setError(t("validate-groupcode-error-too-many-requests"));
           devLog("Too many validation requests from this IP address.", error);
         } else {
           devLog("Error validating group code:", error);

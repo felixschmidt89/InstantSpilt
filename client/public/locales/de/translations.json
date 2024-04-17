@@ -67,6 +67,7 @@
   "validate-groupcode-page-header": "Gruppencode prüfen",
   "validate-groupcode-page-redirect-copy": "Gültiger Gruppencode. Leite zur  Gruppe weiter...",
   "validate-groupcode-error-groupcode-does-not-exist": "Es existiert keine Gruppe mit diesem Gruppencode",
+  "validate-groupcode-error-too-many-requests": "Zu viele fehlerhafte Versuche. Bitte versuche es später erneut.",
   "footer-github-link": "GitHub",
   "footer-legal-notice-link": "Impressum",
   "footer-t&c-link": "AGB",

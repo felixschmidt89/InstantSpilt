@@ -43,12 +43,12 @@ const RenderGroupExpense = ({
         <span className={styles.expenseEmoji}>
           <Emoji ariaLabel={"expense emoji"} emoji={emojiConstants.expense} />
         </span>
+        {allGroupMembersBenefitFromExpense && (
+          <span className={styles.forAll}>
+            {t("render-group-expense-for-all-badge")}
+          </span>
+        )}
         <span className={styles.expenseInfo}>
-          {allGroupMembersBenefitFromExpense && (
-            <span className={styles.forAll}>
-              {t("render-group-expense-for-all-badge")}
-            </span>
-          )}
           {item.expenseDescription}
           {": "}
           <span className={styles.payer}> {item.expensePayer.userName}</span>

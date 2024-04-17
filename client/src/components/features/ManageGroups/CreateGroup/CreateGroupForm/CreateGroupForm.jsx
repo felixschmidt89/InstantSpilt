@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import "friendly-challenge/widget";
 
 // Constants and Utils
-import { devLog } from "../../../../../utils/errorUtils";
+import { devLog, handleApiErrors } from "../../../../../utils/errorUtils";
 import {
   setGroupCodeToCurrentlyActive,
   setRouteInLocalStorage,
@@ -66,12 +66,16 @@ const CreateGroupForm = ({ isExistingUser = false }) => {
       const { groupCode } = response.data.group;
       storeGroupCodeInLocalStorage(groupCode);
       setGroupCodeToCurrentlyActive(groupCode);
-      // Necessary for appropriate InAppNavigationBar conditional rendering on navigated to route:
       setRouteInLocalStorage(window.location.pathname, "previousRoute");
       navigate("/create-group-members");
     } catch (error) {
-      devLog("Error creating group:", error);
-      displayErrorModal();
+      if (error.response) {
+        handleApiErrors(error, setError, "groups", displayErrorModal, t);
+      } else {
+        setError(t("generic-error-message"));
+        devLog("Error creating group.", error);
+        displayErrorModal();
+      }
     }
   };
 
