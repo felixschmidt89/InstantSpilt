@@ -81,3 +81,15 @@
     width: 11rem; /* white space on the left */
   }
 }
+
+@media screen and (max-width: 350px) {
+  .expense {
+    font-size: 1.4rem;
+  }
+  .expenseInfo {
+    max-width: 12rem;
+  }
+  .expenseAmount {
+    width: 10rem; /* white space on the left */
+  }
+}

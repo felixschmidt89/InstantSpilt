@@ -3,10 +3,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   cursor: pointer;
   line-height: 1.2;
   color: var(--color-dark);
+  margin-top: 1rem;
 }
 
 .iconExplanationIsIdle {
@@ -27,4 +27,10 @@
 
 .iconContainer:hover .iconExplanation {
   color: var(--color-dark-dark);
+}
+
+@media only screen and (max-width: 350px) {
+  .iconContainer {
+    margin-top: 1rem;
+  }
 }

@@ -58,6 +58,7 @@ icon:hover {
 }
 
 /* Media queries for responsive design */
+
 /* Mobile*/
 @media only screen and (max-width: 768px) {
   .navContainer {
@@ -65,6 +66,15 @@ icon:hover {
   }
   .middleLogo {
     padding-top: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+  .navContainer {
+    width: 60vw;
+  }
+  .middleLogo {
+    padding-top: 0.5rem;
   }
 }
 

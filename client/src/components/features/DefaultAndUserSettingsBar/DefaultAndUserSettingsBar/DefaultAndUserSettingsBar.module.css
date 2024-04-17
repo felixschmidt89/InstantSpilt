@@ -88,11 +88,13 @@
 /* very small screens*/
 @media only screen and (max-width: 350px) {
   .container {
-    padding-top: 1rem;
-    height: 6rem;
-    min-height: 60px;
+    height: 6.5rem;
+    min-height: 65px;
     font-size: 1.25rem;
-    padding-bottom: 1rem;
+    justify-content: center;
+  }
+  .instantSplitLogo {
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -163,14 +165,5 @@
   .defaultBar,
   .userSettingsBar {
     width: 70rem;
-  }
-}
-
-/* use full display for rendering main when display height is small, e.g. smartphone landscape mode*/
-@media screen and (max-height: 500px) {
-  .container,
-  .defaultBar,
-  .userSettingsBar {
-    width: 99vw;
   }
 }

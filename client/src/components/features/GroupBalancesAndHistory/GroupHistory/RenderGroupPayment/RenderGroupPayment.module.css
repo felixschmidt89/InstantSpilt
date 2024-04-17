@@ -53,10 +53,19 @@
     width: 99vw;
     margin: 0;
   }
-  .paymentEmoji {
-    margin-right: 0.5rem;
-  }
   .paymentAmount {
     width: 12rem;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .payment {
+    font-size: 1.4rem;
+  }
+  .expenseInfo {
+    max-width: 12rem;
+  }
+  .paymentAmount {
+    width: 10rem; /* white space on the left */
   }
 }
