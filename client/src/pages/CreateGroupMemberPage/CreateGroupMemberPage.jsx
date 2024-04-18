@@ -49,7 +49,7 @@ function CreateGroupMemberPage() {
         {!isNewUser ? <h1>{t("create-group-members-page-header")}</h1> : null}
         <h2>{t("create-group-members-form-header")}</h2>
         <CreateGroupMembersAndRenderMemberList
-          isInAppGroupCreation={isInAppGroupCreation}
+          isInAppGroupCreation={isNewUser || isInAppGroupCreation}
         />
       </div>
     </main>
