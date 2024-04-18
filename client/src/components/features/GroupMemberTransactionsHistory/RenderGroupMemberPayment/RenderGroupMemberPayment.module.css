@@ -1,5 +1,13 @@
 .payments {
   display: flex;
+  width: 50rem;
+  margin: 0 auto;
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
+}
+
+.paymentEmoji {
+  margin-right: 0.4rem;
 }
 
 .payments:hover {
@@ -9,7 +17,6 @@
 .leftColumn {
   display: flex;
   flex-direction: column;
-  border-top: 2px solid var(--color-signal-reduced-opacity);
 }
 
 .amountLine {
@@ -23,17 +30,15 @@
 
 .paymentAmount {
   text-align: right;
-  width: 9.5rem;
+  width: 11rem;
 }
 
-.rightColumn {
+.leftColumn {
   display: flex;
   flex-direction: row;
   align-items: start;
   gap: 0.3rem;
-  margin-left: 2rem;
   width: 80%;
-  border-top: 2px solid var(--color-signal-reduced-opacity);
 }
 
 .key {
@@ -47,18 +52,21 @@
 }
 
 @media (max-width: 768px) {
+  .payments {
+    width: 100%;
+    padding: 0.1rem 0.5rem;
+  }
   .leftColumn,
   .rightColumn {
     border-top: none;
     padding-top: 0.15rem;
     padding-bottom: 0.15rem;
   }
-  .leftColumn {
+  .rightColumn {
     margin-left: 0rem;
   }
-  .rightColumn {
+  .leftColumn {
     margin-right: 0rem;
-    margin-left: 1.5rem;
   }
   .leftColumn li,
   .rightColumn li {

@@ -63,6 +63,7 @@
 @media screen and (max-width: 500px) {
   .groupMemberDetails {
     font-size: 1.5rem;
+    line-height: 1.2;
     padding: 0.3rem 0.6rem;
     color: var(--color-dark);
     width: 97vw;
@@ -80,6 +81,6 @@
 @media screen and (max-width: 400px) {
   .groupMemberDetails {
     font-size: 1.4rem;
-    line-height: 1.2;
+    line-height: 1.1;
   }
 }

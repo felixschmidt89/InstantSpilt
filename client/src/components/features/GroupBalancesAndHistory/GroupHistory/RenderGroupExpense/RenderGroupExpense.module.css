@@ -24,14 +24,14 @@
 
 .expenseInfo {
   margin-left: 0.4rem;
-  margin-top: 0.25rem;
+  margin-top: 0.3rem;
 }
 
 /* Ensure that numbers are right aligned to be easily readable */
 .expenseAmount {
   text-align: right;
   width: 14rem; /* white space on the left */
-  margin-top: 0.25rem;
+  margin-top: 0.3rem;
 }
 
 .leftColumn {
@@ -58,7 +58,6 @@
 }
 
 .payer {
-  white-space: nowrap;
   font-style: italic;
 }
 
@@ -77,8 +76,22 @@
   .expenseEmoji {
     margin-right: 0rem;
   }
+  .expenseInfo {
+    max-width: 22rem;
+    overflow-x: hidden;
+  }
   .expenseAmount {
     width: 11rem; /* white space on the left */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .expense {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  .expenseEmoji {
+    margin-right: 0rem;
   }
 }
 
@@ -86,10 +99,23 @@
   .expense {
     font-size: 1.4rem;
   }
-  .expenseInfo {
-    max-width: 12rem;
-  }
   .expenseAmount {
-    width: 10rem; /* white space on the left */
+    width: 10rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --min-width: 14rem; /* Minimum width for expenseInfo */
+    --max-width: 20rem; /* Maximum width for expenseInfo */
+    --screen-width: 500px; /* Initial screen width */
+  }
+
+  .expenseInfo {
+    max-width: calc(
+      var(--min-width) + (var(--max-width) - var(--min-width)) *
+        ((100vw - 320px) / (var(--screen-width) - 320))
+    );
+    overflow-x: hidden;
   }
 }

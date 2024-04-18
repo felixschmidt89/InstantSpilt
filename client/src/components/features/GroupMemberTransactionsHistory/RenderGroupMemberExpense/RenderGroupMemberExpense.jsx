@@ -44,13 +44,78 @@ const RenderGroupMemberExpense = ({
   return (
     <div className={styles.expenses}>
       {/* Left Column */}
-      <ul className={styles.leftColumn}>
+      <div className={styles.leftColumn}>
+        <div className={styles.expenseEmoji}>
+          <Emoji
+            ariaLabel={"expense emoji"}
+            emoji={emojiConstants.expense}></Emoji>
+        </div>
+        <ul>
+          <li>
+            <span className={styles.key}>
+              {t("groupmember-transaction-history-description-key")}:{" "}
+            </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={item.expenseDescription}
+              ariaLabel={"expense description"}
+            />
+          </li>
+          <li>
+            <span className={styles.key}>
+              {t("groupmember-transaction-history-paid-by-key")}:{" "}
+            </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={item.expensePayer.userName}
+              ariaLabel={"name of the expense payer"}
+            />
+          </li>
+
+          <li>
+            <span className={styles.key}>
+              {t("render-expense-beneficiaries-beneficiaries")}:{" "}
+            </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={beneficiaries}
+              ariaLabel={"expense beneficiaries"}
+            />
+          </li>
+          <li>
+            <span className={styles.key}>
+              {t("groupmember-transaction-history-amount-benefitted-key")}:{" "}
+            </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={item.expenseAmountPerBeneficiary.toFixed(2)}
+              ariaLabel={"amount each beneficiary has benefitted"}
+            />
+            <span>{groupCurrency}</span>
+          </li>
+
+          <li>
+            <span className={styles.key}>
+              {t("groupmember-transaction-history-created-key")}:{" "}
+            </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={new Date(item.createdAt).toLocaleString()}
+              ariaLabel={"expense creation date"}
+            />
+          </li>
+
+          {item.createdAt !== item.updatedAt && (
+            <li>
+              <span className={styles.key}>
+                {t("groupmember-transaction-history-changed-key")}:{" "}
+              </span>
+              <RenderDataAttributeWithAriaLabel
+                attribute={new Date(item.updatedAt).toLocaleString()}
+                ariaLabel={"expense last update date"}
+              />
+            </li>
+          )}
+        </ul>
+      </div>
+      {/* Right Column */}{" "}
+      <ul className={styles.rightColumn}>
         <li className={styles.amountLine}>
-          <div className={styles.expenseEmoji}>
-            <Emoji
-              ariaLabel={"expense emoji"}
-              emoji={emojiConstants.expense}></Emoji>
-          </div>
           <div className={styles.expenseAmount}>
             <div>
               <RenderDataAttributeWithAriaLabel
@@ -61,7 +126,6 @@ const RenderGroupMemberExpense = ({
             </div>
           </div>
         </li>
-
         <li className={styles.actionLine}>
           <LinkToPage
             to={`/update-expense/${groupCode}/${item._id}`}
@@ -82,73 +146,6 @@ const RenderGroupMemberExpense = ({
           />
         </li>
       </ul>
-      {/* Right Column */}
-      <div className={styles.rightColumn}>
-        <div className={styles.borderedContent}>
-          <ul>
-            <li>
-              <span className={styles.key}>
-                {t("groupmember-transaction-history-description-key")}:{" "}
-              </span>
-              <RenderDataAttributeWithAriaLabel
-                attribute={item.expenseDescription}
-                ariaLabel={"expense description"}
-              />
-            </li>
-            <li>
-              <span className={styles.key}>
-                {t("groupmember-transaction-history-paid-by-key")}:{" "}
-              </span>
-              <RenderDataAttributeWithAriaLabel
-                attribute={item.expensePayer.userName}
-                ariaLabel={"name of the expense payer"}
-              />
-            </li>
-
-            <li>
-              <span className={styles.key}>
-                {t("render-expense-beneficiaries-beneficiaries")}:{" "}
-              </span>
-              <RenderDataAttributeWithAriaLabel
-                attribute={beneficiaries}
-                ariaLabel={"expense beneficiaries"}
-              />
-            </li>
-            <li>
-              <span className={styles.key}>
-                {t("groupmember-transaction-history-amount-benefitted-key")}:{" "}
-              </span>
-              <RenderDataAttributeWithAriaLabel
-                attribute={item.expenseAmountPerBeneficiary.toFixed(2)}
-                ariaLabel={"amount each beneficiary has benefitted"}
-              />
-              <span>{groupCurrency}</span>
-            </li>
-
-            <li>
-              <span className={styles.key}>
-                {t("groupmember-transaction-history-created-key")}:{" "}
-              </span>
-              <RenderDataAttributeWithAriaLabel
-                attribute={new Date(item.createdAt).toLocaleString()}
-                ariaLabel={"expense creation date"}
-              />
-            </li>
-
-            {item.createdAt !== item.updatedAt && (
-              <li>
-                <span className={styles.key}>
-                  {t("groupmember-transaction-history-changed-key")}:{" "}
-                </span>
-                <RenderDataAttributeWithAriaLabel
-                  attribute={new Date(item.updatedAt).toLocaleString()}
-                  ariaLabel={"expense last update date"}
-                />
-              </li>
-            )}
-          </ul>
-        </div>
-      </div>
     </div>
   );
 };

@@ -59,13 +59,23 @@
 }
 
 @media screen and (max-width: 400px) {
-  .payment {
-    font-size: 1.4rem;
-  }
-  .expenseInfo {
-    max-width: 12rem;
-  }
   .paymentAmount {
     width: 10rem; /* white space on the left */
+  }
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --min-width: 14rem;
+    --max-width: 20rem;
+    --screen-width: 500px;
+  }
+
+  .paymentInfo {
+    max-width: calc(
+      var(--min-width) + (var(--max-width) - var(--min-width)) *
+        ((100vw - 320px) / (var(--screen-width) - 320))
+    );
+    overflow-x: hidden;
   }
 }

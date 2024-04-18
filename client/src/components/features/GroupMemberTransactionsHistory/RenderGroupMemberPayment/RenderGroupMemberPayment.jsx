@@ -32,11 +32,56 @@ const NoGroupMemberTransactions = ({
   return (
     <div className={styles.payments}>
       {/* Left Column */}
-      <ul className={styles.leftColumn}>
-        <li className={styles.amountLine}>
+      <div className={styles.leftColumn}>
+        <span className={styles.paymentEmoji}>
           <Emoji
             ariaLabel={"payment emoji"}
             emoji={emojiConstants.payment}></Emoji>
+        </span>
+        <ul>
+          <li>
+            <span className={styles.key}>
+              {t("groupmember-transaction-history-payment-by-key")}:{" "}
+            </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={item.paymentMaker.userName}
+              ariaLabel={"name of the payment maker"}
+            />
+          </li>
+          <li>
+            <span className={styles.key}>
+              {t("groupmember-transaction-history-payment-to-key")}:{" "}
+            </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={item.paymentRecipient.userName}
+              ariaLabel={"name of the payment recipient"}
+            />
+          </li>
+          <li>
+            <span className={styles.key}>
+              {t("groupmember-transaction-history-created-key")}:{" "}
+            </span>
+            <RenderDataAttributeWithAriaLabel
+              attribute={new Date(item.createdAt).toLocaleString()}
+              ariaLabel={"payment creation date"}
+            />
+          </li>
+          {item.createdAt !== item.updatedAt && (
+            <li>
+              <span className={styles.key}>
+                {t("groupmember-transaction-history-changed-key")}:{" "}
+              </span>
+              <RenderDataAttributeWithAriaLabel
+                attribute={new Date(item.updatedAt).toLocaleString()}
+                ariaLabel={"payment last update date"}
+              />
+            </li>
+          )}
+        </ul>
+      </div>
+      {/* Right Column */}
+      <ul className={styles.rightColumn}>
+        <li className={styles.amountLine}>
           <div className={styles.paymentAmount}>
             <div>
               <RenderDataAttributeWithAriaLabel
@@ -67,49 +112,6 @@ const NoGroupMemberTransactions = ({
           />
         </li>
       </ul>
-      {/* Right Column */}
-      <div className={styles.rightColumn}>
-        <ul>
-          <li>
-            <span className={styles.key}>
-              {t("groupmember-transaction-history-paid-by-key")}:{" "}
-            </span>
-            <RenderDataAttributeWithAriaLabel
-              attribute={item.paymentMaker.userName}
-              ariaLabel={"name of the payment maker"}
-            />
-          </li>
-          <li>
-            <span className={styles.key}>
-              {t("groupmember-transaction-history-paid-to-key")}:{" "}
-            </span>
-            <RenderDataAttributeWithAriaLabel
-              attribute={item.paymentRecipient.userName}
-              ariaLabel={"name of the payment recipient"}
-            />
-          </li>
-          <li>
-            <span className={styles.key}>
-              {t("groupmember-transaction-history-created-key")}:{" "}
-            </span>
-            <RenderDataAttributeWithAriaLabel
-              attribute={new Date(item.createdAt).toLocaleString()}
-              ariaLabel={"payment creation date"}
-            />
-          </li>
-          {item.createdAt !== item.updatedAt && (
-            <li>
-              <span className={styles.key}>
-                {t("groupmember-transaction-history-changed-key")}:{" "}
-              </span>
-              <RenderDataAttributeWithAriaLabel
-                attribute={new Date(item.updatedAt).toLocaleString()}
-                ariaLabel={"payment last update date"}
-              />
-            </li>
-          )}
-        </ul>
-      </div>
     </div>
   );
 };

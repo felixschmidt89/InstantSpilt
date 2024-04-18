@@ -5,32 +5,50 @@ import { renderHook } from "@testing-library/react-hooks";
 import useIsSlimDevice from "./useIsSlimDevice";
 
 describe("useIsSlimDevice", () => {
-  it("should return true if the device width is <= 500px", () => {
+  it("should return true for isSlimDevice if the device width is <= 500px", () => {
     // Mock window resize
     const { innerWidth } = window;
-    window.innerWidth = 600;
+    window.innerWidth = 500;
 
     const { result } = renderHook(() => useIsSlimDevice());
 
-    // Assert hook returns true
-    expect(result.current).toBe(true);
+    // Assert isSlimDevice is true
+    expect(result.current.isSlimDevice).toBe(true);
 
     // Reset window size
     window.innerWidth = innerWidth;
   });
 
-  it("should return false if the device width is > 500px", () => {
-    // Mock window resize
+  it("should return false for isSlimDevice if the device width is > 500px", () => {
     const { innerWidth } = window;
-    window.innerWidth = 601;
+    window.innerWidth = 501;
 
-    // Render the hook
     const { result } = renderHook(() => useIsSlimDevice());
 
-    // Assert hook returns false
-    expect(result.current).toBe(false);
+    expect(result.current.isSlimDevice).toBe(false);
 
-    // Reset window size
+    window.innerWidth = innerWidth;
+  });
+
+  it("should return true for isVerySlimDevice if the device width is <= 400px", () => {
+    const { innerWidth } = window;
+    window.innerWidth = 400;
+
+    const { result } = renderHook(() => useIsSlimDevice());
+
+    expect(result.current.isVerySlimDevice).toBe(true);
+
+    window.innerWidth = innerWidth;
+  });
+
+  it("should return false for isVerySlimDevice if the device width is > 400px", () => {
+    const { innerWidth } = window;
+    window.innerWidth = 401;
+
+    const { result } = renderHook(() => useIsSlimDevice());
+
+    expect(result.current.isVerySlimDevice).toBe(false);
+
     window.innerWidth = innerWidth;
   });
 });

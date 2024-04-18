@@ -1,15 +1,18 @@
 .expenses {
   display: flex;
+  width: 50rem;
+  margin: 0 auto;
+  padding: 0.3rem 0.6rem;
+  border-radius: 1rem;
 }
 
 .expenses:hover {
   background-color: var(--color-body);
 }
 
-.leftColumn {
+.rightColumn {
   display: flex;
   flex-direction: column;
-  border-top: 2px solid var(--color-signal-reduced-opacity);
 }
 
 .amountLine {
@@ -23,27 +26,25 @@
 
 .expenseAmount {
   text-align: right;
-  width: 9.5rem;
+  width: 10.5rem;
 }
 
 .expenseEmoji {
-  transform: translateX(0.15rem) scale(1.15);
+  margin-right: 0.4rem;
 }
 
-.rightColumn {
+.leftColumn {
   display: flex;
-  flex-direction: column;
-  margin-left: 2rem;
+  flex-direction: row;
   margin-right: 0rem;
   width: 80%;
-  border-top: 2px solid var(--color-signal-reduced-opacity);
 }
 
 .key {
   color: var(--color-grey);
 }
 
-.rightColumn .expenseEmoji {
+.leftColumn .expenseEmoji {
   margin-bottom: 0.5rem;
 }
 .leftColumn li,
@@ -53,18 +54,22 @@
 }
 
 @media (max-width: 768px) {
+  .expenses {
+    width: 100%;
+  }
+
   .leftColumn,
   .rightColumn {
+    border-top: 2px solid var(--color-signal-reduced-opacity);
     border-top: none;
     padding-top: 0.15rem;
     padding-bottom: 0.15rem;
   }
-  .leftColumn {
+  .rightColumn {
     margin-left: 0rem;
   }
-  .rightColumn {
+  .leftColumn {
     margin-right: 0rem;
-    margin-left: 1.5rem;
   }
   .leftColumn li,
   .rightColumn li {
