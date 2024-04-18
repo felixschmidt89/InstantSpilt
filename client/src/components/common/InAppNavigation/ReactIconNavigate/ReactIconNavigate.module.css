@@ -29,7 +29,7 @@
   color: var(--color-dark-dark);
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 400px) {
   .iconContainer {
     margin-top: 1rem;
   }

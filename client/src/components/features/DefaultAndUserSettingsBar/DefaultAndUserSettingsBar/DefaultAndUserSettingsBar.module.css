@@ -86,7 +86,7 @@
 /* Component width is aligned with main width in app.css */
 
 /* very small screens*/
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 400px) {
   .container {
     height: 6.5rem;
     min-height: 65px;
@@ -119,7 +119,7 @@
   .container,
   .defaultBar,
   .userSettingsBar {
-    width: 60vw;
+    width: 100vw;
   }
 }
 

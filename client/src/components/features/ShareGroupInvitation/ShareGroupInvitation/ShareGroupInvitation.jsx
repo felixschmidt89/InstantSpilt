@@ -26,7 +26,7 @@ const ShareGroupInvitation = ({
 }) => {
   const { t, i18n } = useTranslation();
 
-  const isSlimDevice = useIsSlimDevice();
+  const { isSlimDevice } = useIsSlimDevice();
 
   // Check language locale
   const isGerman = i18n.language === "de";

@@ -23,8 +23,10 @@ const ActiveGroupBar = () => {
   // Handle Firefox bug (settings emoji not rendered correctly https://github.com/googlefonts/noto-emoji/issues/391)
   const settingsEmoji = useSettingsEmoji();
   const { t } = useTranslation();
-  const isSlimDevice = useIsSlimDevice();
+  const { isSlimDevice } = useIsSlimDevice();
   const notoEmojiFontIsLoaded = useIsNotoEmojiFontLoaded();
+
+  console.log("isVerySlimDevice", isSlimDevice);
 
   // Render the group actions bar if emoji font is loaded
   return notoEmojiFontIsLoaded ? (

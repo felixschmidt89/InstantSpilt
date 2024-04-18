@@ -5,7 +5,7 @@ import { renderHook } from "@testing-library/react-hooks";
 import useIsSlimDevice from "./useIsSlimDevice";
 
 describe("useIsSlimDevice", () => {
-  it("should return true if the device width is <= 600px", () => {
+  it("should return true if the device width is <= 500px", () => {
     // Mock window resize
     const { innerWidth } = window;
     window.innerWidth = 600;
@@ -19,7 +19,7 @@ describe("useIsSlimDevice", () => {
     window.innerWidth = innerWidth;
   });
 
-  it("should return false if the device width is > 600px", () => {
+  it("should return false if the device width is > 500px", () => {
     // Mock window resize
     const { innerWidth } = window;
     window.innerWidth = 601;

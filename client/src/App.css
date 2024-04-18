@@ -228,7 +228,7 @@ scrollbar-thumb {
 
 /* Media queries for responsive design
 /* very slim devices*/
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 400px) {
   main {
     font-size: 1.4rem;
   }
@@ -333,10 +333,9 @@ scrollbar-thumb {
   main {
     margin-top: 0rem;
     border-radius: 0rem 0rem 2rem 2rem;
-
     height: 81vh;
     height: 91svh;
-    width: 60vw;
+    width: 100vw;
   }
   footer {
     height: 6vh;

@@ -35,7 +35,7 @@
 
 /* Media queries for responsive design
 /* very slim devices*/
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 400px) {
   .topBar h1 {
     font-size: 1.8rem;
   }
