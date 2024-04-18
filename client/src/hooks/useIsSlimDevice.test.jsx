@@ -30,7 +30,7 @@ describe("useIsSlimDevice", () => {
     window.innerWidth = innerWidth;
   });
 
-  it("should return true for isVerySlimDevice if the device width is <= 400px", () => {
+  it("should return true for isVerySlimDevice if the device width is <= 360px", () => {
     const { innerWidth } = window;
     window.innerWidth = 400;
 
@@ -41,7 +41,7 @@ describe("useIsSlimDevice", () => {
     window.innerWidth = innerWidth;
   });
 
-  it("should return false for isVerySlimDevice if the device width is > 400px", () => {
+  it("should return false for isVerySlimDevice if the device width is > 360px", () => {
     const { innerWidth } = window;
     window.innerWidth = 401;
 

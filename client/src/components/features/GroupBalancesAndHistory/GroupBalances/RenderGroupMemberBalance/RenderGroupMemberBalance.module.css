@@ -78,7 +78,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 360px) {
   .groupMemberDetails {
     font-size: 1.4rem;
     line-height: 1.1;

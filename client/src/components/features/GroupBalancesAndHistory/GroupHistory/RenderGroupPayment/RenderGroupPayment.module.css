@@ -58,7 +58,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 360px) {
   .paymentAmount {
     width: 10rem; /* white space on the left */
   }

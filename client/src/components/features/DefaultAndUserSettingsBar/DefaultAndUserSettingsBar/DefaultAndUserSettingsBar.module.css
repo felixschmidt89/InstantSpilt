@@ -1,11 +1,10 @@
 .container {
-  padding-top: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 8rem;
-  min-height: 80px;
+  height: 9rem;
+  min-height: 90px;
   overflow-x: hidden;
   overflow-y: hidden;
   text-align: center;
@@ -17,6 +16,7 @@
 }
 
 .icon {
+  padding-top: 2rem;
   color: var(--color-dark);
 }
 
@@ -53,13 +53,11 @@
   position: relative; /* To enable absolute centering of InstantSplitLogo */
 }
 
-.instantSplitLogo {
-  .middleLogo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center; /* to center Logo within InstantSplitLogo component */
-  }
+.middleLogo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center; /* to center Logo within InstantSplitLogo component */
 }
 
 .topBarWrapper {
@@ -85,25 +83,12 @@
 
 /* Component width is aligned with main width in app.css */
 
-/* very small screens*/
-@media only screen and (max-width: 400px) {
-  .container {
-    height: 6.5rem;
-    min-height: 65px;
-    font-size: 1.25rem;
-    justify-content: center;
-  }
-  .instantSplitLogo {
-    margin-bottom: 1.5rem;
-  }
-}
-
 /* Mobile*/
 @media only screen and (max-width: 768px) {
   .container,
   .defaultBar,
   .userSettingsBar {
-    width: 98vw;
+    width: 100vw;
   }
   .container {
     margin-top: 0.2rem;

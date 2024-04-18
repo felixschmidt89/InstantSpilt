@@ -96,7 +96,7 @@ export const sendFormSubmitButtonStyles = {
  * Styles for add user React icon component*/
 export const addUserReactIconStyles = {
   containerHeight: "8",
-  containerWidth: "7.2",
+  containerWidth: "7",
   iconExplanationWidth: "5",
   iconExplanationTextAlignment: "center",
   iconExplanationIsIdleTranslateX: "0.3",

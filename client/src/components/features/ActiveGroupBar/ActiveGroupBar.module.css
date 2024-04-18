@@ -23,7 +23,7 @@
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 360px) {
   .groupActionsBar {
     margin-bottom: 0.5rem;
   }

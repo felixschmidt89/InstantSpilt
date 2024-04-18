@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 
 /**
- * Determines if the device is slim (maximum width of 500px) or very slim (maximum width of 400px).
+ * Determines if the device is slim (maximum width of 500px) or very slim (maximum width of 360px).
  * @returns {Object} An object containing information about the device's slimness.
  */
 const useIsSlimDevice = () => {
   const [isSlimDevice, setIsSlimDevice] = useState(window.innerWidth <= 500);
   const [isVerySlimDevice, setIsVerySlimDevice] = useState(
-    window.innerWidth <= 400
+    window.innerWidth <= 360
   );
 
   useEffect(() => {
     const handleResize = () => {
       const isSlim = window.innerWidth <= 500;
-      const isVerySlim = window.innerWidth <= 400;
+      const isVerySlim = window.innerWidth <= 360;
       setIsSlimDevice(isSlim);
       setIsVerySlimDevice(isVerySlim);
     };
