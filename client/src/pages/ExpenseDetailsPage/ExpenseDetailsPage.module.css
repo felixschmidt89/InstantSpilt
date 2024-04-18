@@ -8,6 +8,10 @@
   overflow-x: hidden;
 }
 
+.container h1 {
+  width: 80%;
+}
+
 .emoji {
   margin-top: 1rem;
   font-size: 2rem;

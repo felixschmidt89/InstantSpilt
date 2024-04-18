@@ -45,6 +45,7 @@
   border: 0.15rem solid var(--color-grey);
   padding-right: 0.5rem;
   margin: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 .beneficiaries:hover {

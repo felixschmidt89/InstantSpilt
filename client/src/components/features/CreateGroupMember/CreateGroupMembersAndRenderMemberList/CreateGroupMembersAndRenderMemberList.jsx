@@ -12,7 +12,7 @@ import RenderGroupMemberNames from "../RenderGroupMemberNames/RenderGroupMemberN
  * Container component for creating a user within a group and rendering the groups user list.
  * Has nested components and uses a custom hook to get groupCode and trigger rerender logic.
  * @returns {JSX.Element} React component. */
-const CreateGroupMembersAndRenderMemberList = () => {
+const CreateGroupMembersAndRenderMemberList = ({ isInAppGroupCreation }) => {
   // Custom hook to get groupCode and trigger rerender logic
   const { groupCode, rerenderTrigger, incrementRerenderTrigger } =
     useTriggerRerender();
@@ -27,6 +27,7 @@ const CreateGroupMembersAndRenderMemberList = () => {
         rerenderTrigger={rerenderTrigger}
         groupCode={groupCode}
         incrementRerenderTrigger={incrementRerenderTrigger}
+        isInAppGroupCreation={isInAppGroupCreation}
       />
     </>
   );

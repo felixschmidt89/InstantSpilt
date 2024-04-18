@@ -18,6 +18,7 @@ import DeleteGroupMemberBin from "../DeleteGroupMemberBin/DeleteGroupMemberBin";
 
 // Styles
 import styles from "./RenderGroupMemberNames.module.css";
+import { Link } from "react-router-dom";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -29,12 +30,14 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {number} props.rerenderTrigger - Trigger for re-rendering the component.
  * @param {string} props.groupCode - The groupCode of the group.
  * @param {Function} props.incrementRerenderTrigger - Function to increment the rerender trigger.
+ * @param {boolean} props.isInAppGroupCreation - Boolean indicating if current group is currently being created within the app.
  * @returns {JSX.Element} React component.
  */
 const RenderGroupMemberNames = ({
   rerenderTrigger,
   groupCode,
   incrementRerenderTrigger,
+  isInAppGroupCreation,
 }) => {
   const [groupMemberDetails, setGroupMemberDetails] = useState([]);
   const [noGroupMembers, setNoGroupMembers] = useState(false);
@@ -107,21 +110,42 @@ const RenderGroupMemberNames = ({
               <ul className={styles.list}>
                 {groupMemberDetails.map(({ _id, userName }, index) => (
                   <li key={index} className={styles.listItem}>
-                    <span className={styles.emoji}>
-                      <Emoji
-                        emoji={emojiConstants.member}
-                        ariaLabel='group member emoji'
-                      />
-                    </span>
-                    <span className={styles.groupMemberName}>{userName}</span>
-                    <span className={styles.button}>
-                      <DeleteGroupMemberBin
-                        userId={_id}
-                        groupMemberName={userName}
-                        incrementRerenderTrigger={incrementRerenderTrigger}
-                        rerenderTrigger={rerenderTrigger}
-                      />
-                    </span>
+                    {!isInAppGroupCreation ? (
+                      <Link
+                        to={`/groupmember-details/${groupCode}/${_id}`}
+                        className={`${styles.groupMemberListItemLink} ${styles.linkWrapper}`}>
+                        <span className={styles.emoji}>
+                          <Emoji
+                            emoji={emojiConstants.member}
+                            ariaLabel='group member emoji'
+                          />{" "}
+                        </span>
+                        <span className={styles.groupMemberName}>
+                          {userName}
+                        </span>
+                      </Link>
+                    ) : (
+                      <div className={`${styles.groupMemberListItem}`}>
+                        <span className={styles.emoji}>
+                          <Emoji
+                            emoji={emojiConstants.member}
+                            ariaLabel='group member emoji'
+                          />{" "}
+                        </span>
+                        <span className={styles.groupMemberName}>
+                          {userName}
+                        </span>
+                        <span className={styles.button}>
+                          <DeleteGroupMemberBin
+                            userId={_id}
+                            groupMemberName={userName}
+                            incrementRerenderTrigger={incrementRerenderTrigger}
+                            rerenderTrigger={rerenderTrigger}
+                            isInAppGroupCreation={isInAppGroupCreation}
+                          />
+                        </span>
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>

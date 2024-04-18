@@ -200,6 +200,7 @@ const DefaultAndUserSettingsBar = () => {
                 iconSize={isVerySlimDevice ? 3 : 3.5}
                 iconScale={1}
                 translateY={0.1}
+                translateX={isVerySlimDevice ? 0.2 : 0.5}
               />
             </span>
             <span className={styles.icon}>

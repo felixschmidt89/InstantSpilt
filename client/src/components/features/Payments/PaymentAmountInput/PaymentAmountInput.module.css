@@ -5,3 +5,7 @@
 .amount.isUpdate:focus {
   color: var(--color-dark2);
 }
+
+.container {
+  margin-bottom: 0.5rem;
+}
