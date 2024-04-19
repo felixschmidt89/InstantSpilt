@@ -30,8 +30,8 @@
 
 .confirmationMessage {
   text-align: left;
-  margin-bottom: 0.4rem;
   /* explicit to fix wrong color and cursor being applied in certain cases */
+  line-height: 1.4;
   color: var(--color-dark);
   cursor: default;
 }

@@ -7,12 +7,14 @@
   padding-left: 0.6rem;
   padding-right: 0.6rem;
   margin: 0 auto;
+  color: var(--color-dark);
   width: 45rem;
 }
 
 .expense:active,
 .expense:hover {
   background-color: var(--color-body);
+  color: var(--color-dark-dark);
   border-radius: 1rem;
 }
 
@@ -67,6 +69,7 @@
   .expense {
     font-size: 1.5rem;
     line-height: 1.2;
+    color: var(--color-dark);
     width: 99vw;
     margin: 0;
   }
@@ -92,7 +95,7 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 400px) {
   .expense {
     font-size: 1.4rem;
   }

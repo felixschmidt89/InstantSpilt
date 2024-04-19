@@ -111,19 +111,30 @@ const RenderGroupMemberNames = ({
                 {groupMemberDetails.map(({ _id, userName }, index) => (
                   <li key={index} className={styles.listItem}>
                     {!isInAppGroupCreation ? (
-                      <Link
-                        to={`/groupmember-details/${groupCode}/${_id}`}
-                        className={`${styles.groupMemberListItemLink} ${styles.linkWrapper}`}>
-                        <span className={styles.emoji}>
-                          <Emoji
-                            emoji={emojiConstants.member}
-                            ariaLabel='group member emoji'
-                          />{" "}
+                      <>
+                        <Link
+                          to={`/groupmember-details/${groupCode}/${_id}`}
+                          className={`${styles.groupMemberListItemLink} ${styles.linkWrapper}`}>
+                          <span className={styles.emoji}>
+                            <Emoji
+                              emoji={emojiConstants.member}
+                              ariaLabel='group member emoji'
+                            />{" "}
+                          </span>
+                          <span className={styles.groupMemberName}>
+                            {userName}
+                          </span>
+                        </Link>
+                        <span className={styles.linkButton}>
+                          <DeleteGroupMemberBin
+                            userId={_id}
+                            groupMemberName={userName}
+                            incrementRerenderTrigger={incrementRerenderTrigger}
+                            rerenderTrigger={rerenderTrigger}
+                            isInAppGroupCreation={isInAppGroupCreation}
+                          />
                         </span>
-                        <span className={styles.groupMemberName}>
-                          {userName}
-                        </span>
-                      </Link>
+                      </>
                     ) : (
                       <div className={`${styles.groupMemberListItem}`}>
                         <span className={styles.emoji}>

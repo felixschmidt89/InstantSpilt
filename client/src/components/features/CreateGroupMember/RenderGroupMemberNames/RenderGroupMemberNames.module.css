@@ -28,7 +28,6 @@
 .groupMemberName {
   display: flex;
   align-self: center;
-  font-size: 1.6rem;
   padding-left: 0.3rem;
 }
 
@@ -42,29 +41,37 @@
 
 .button {
   padding-top: 0.4rem;
-
-  font-size: 2.1rem;
+  font-size: 2rem;
   color: var(--color-signal);
   margin-left: auto;
   cursor: pointer;
 }
 
+.linkButton:hover,
 .button:hover {
   color: var(--color-signal-dark);
+}
+
+.linkButton {
+  margin-left: 1.1rem;
+  padding-top: 0.4rem;
+  font-size: 2rem;
+  color: var(--color-signal);
+  cursor: pointer;
 }
 
 .listItem {
   display: flex;
   flex-direction: row;
   width: 24rem;
-  font-size: 1.6rem;
   padding-right: 0rem;
-  line-height: 1.6;
+  line-height: 1;
 }
 
 .groupMemberListItem,
 .groupMemberListItemLink {
   display: flex;
+  line-height: 1;
 }
 
 .emojiCreation {
@@ -76,11 +83,15 @@
   width: 20rem;
 }
 .groupMemberName {
-  padding-top: 0.4rem;
   width: 19rem;
 }
 
+.listItem a {
+  color: var(--color-dark);
+}
+
 .listItem a:hover {
+  color: var(--color-dark-dark);
   background-color: var(--color-body);
   border-radius: 1rem;
 }

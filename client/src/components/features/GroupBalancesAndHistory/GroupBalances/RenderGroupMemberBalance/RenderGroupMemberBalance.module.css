@@ -4,6 +4,14 @@
   overflow-x: hidden;
 }
 
+.balancesContainer a {
+  color: var(--color-dark);
+}
+
+.balancesContainer a:hover {
+  color: var(--color-dark-dark);
+}
+
 .groupMemberDetails {
   display: flex;
   flex-direction: row;
@@ -44,6 +52,10 @@
   text-align: right;
 }
 
+.positiveBalance {
+  color: var(--color-dark);
+}
+
 .negativeBalance {
   color: var(--color-error);
 }
@@ -53,6 +65,7 @@
     font-size: 1.5rem;
     line-height: 1.2;
     padding: 0.3rem 0.6rem;
+    color: var(--color-dark);
     width: 97vw;
     margin: 0;
   }

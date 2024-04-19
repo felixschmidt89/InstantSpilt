@@ -6,13 +6,15 @@ import { MdDelete } from "react-icons/md";
 import { useTranslation } from "react-i18next";
 
 // Constants and Utils
-import { devLog } from "../../../../utils/errorUtils";
+import { devLog, handleApiErrors } from "../../../../utils/errorUtils";
 
 // Components
 import ConfirmationModal from "../../../common/ConfirmationModal/ConfirmationModal";
 
 // Styles
 import styles from "./DeleteGroupMemberBin.module.css";
+import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+import ErrorModal from "../../../common/ErrorModal/ErrorModal";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -38,6 +40,10 @@ const DeleteGroupMemberBin = ({
   const [error, setError] = useState(null);
   const { t } = useTranslation();
 
+  // Get error modal visibility logic
+  const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
+    useErrorModalVisibility();
+
   // Effect to trigger rerender when deletion is successful
   useEffect(() => {
     if (deletionSuccess && rerenderTrigger) {
@@ -56,11 +62,14 @@ const DeleteGroupMemberBin = ({
         handleHideConfirmation();
       }
     } catch (error) {
-      if (error.response && error.response.status === StatusCodes.BAD_REQUEST) {
-        setError(error.response.data.message);
+      if (error.response) {
+        setIsConfirmationVisible(false);
+        handleApiErrors(error, setError, "users", displayErrorModal, t);
       } else {
-        devLog(`Error deleting group member ${userId}:`, error);
+        setIsConfirmationVisible(false);
         setError(t("generic-error-message"));
+        devLog(`Error deleting group member ${userId}:`, error);
+        displayErrorModal();
       }
     }
   };
@@ -93,6 +102,11 @@ const DeleteGroupMemberBin = ({
           error={error}
         />
       )}
+      <ErrorModal
+        error={t(error)}
+        onClose={handleCloseErrorModal}
+        isVisible={isErrorModalVisible}
+      />
     </div>
   );
 };

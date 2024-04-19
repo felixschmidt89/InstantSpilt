@@ -7,12 +7,14 @@
   padding-left: 0.6rem;
   padding-right: 0.6rem;
   margin: 0 auto;
+  color: var(--color-dark);
   width: 45rem;
 }
 
 .payment:active,
 .payment:hover {
   background-color: var(--color-body);
+  color: var(--color-dark-dark);
   border-radius: 1rem;
 }
 
@@ -47,6 +49,7 @@
   .payment {
     font-size: 1.5rem;
     line-height: 1.2;
+    color: var(--color-dark);
     width: 99vw;
     margin: 0;
   }
