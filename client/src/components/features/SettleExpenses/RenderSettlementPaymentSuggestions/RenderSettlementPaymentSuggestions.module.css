@@ -17,10 +17,6 @@
   border-radius: 1rem;
 }
 
-.paymentSuggestions:hover {
-  background-color: var(--color-body);
-}
-
 .amount {
   display: flex;
   flex-direction: row;

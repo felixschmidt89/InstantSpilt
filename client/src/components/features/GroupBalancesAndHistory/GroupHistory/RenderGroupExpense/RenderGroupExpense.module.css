@@ -42,7 +42,7 @@
 
 .forAll {
   color: var(--color-dark);
-  background-color: var(--color-signal-reduced-opacity);
+  background-color: var(--color-success-reduced-opacity);
   font-size: 1.2rem;
   border: 0.1rem solid var(--color-dark);
   border-radius: 1rem;

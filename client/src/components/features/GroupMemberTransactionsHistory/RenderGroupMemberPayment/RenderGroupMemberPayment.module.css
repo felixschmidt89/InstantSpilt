@@ -42,7 +42,8 @@
 }
 
 .key {
-  color: var(--color-grey);
+  color: var(--color-dark);
+  font-weight: 300;
 }
 
 .leftColumn li,
