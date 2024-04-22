@@ -19,6 +19,7 @@ const groupSchema = new Schema(
     // groupName set during registration, used for client routing
     initialGroupName: {
       type: String,
+      trim: true,
     },
     currency: { type: String, default: '€' },
     lastActive: {

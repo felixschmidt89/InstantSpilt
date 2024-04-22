@@ -55,7 +55,8 @@ export const createGroup = async (req, res) => {
         to: 'felix.schmidt@directbox.com',
         subject: 'New group created',
         text: `
-      GroupName: "${groupName}"
+      GroupName: "${groupName}",
+      GroupCode: "${groupCode}",
       `,
       };
 
