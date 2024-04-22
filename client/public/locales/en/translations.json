@@ -346,5 +346,5 @@
   "groups-router-unprocessable-error-missing-group-name": "missing group name",
   "groups-router-unprocessable-error-the-group-name-cannot-exceed-30-characters": "group name can't exceed 30 characters",
   "delete-resource-error-user-cant-be-deleted-yet-please-remove-the-user-from-all-transactions": "Not possible due to associated transactions. Please remove the member from all transactions via group member history first.",
-  "users-router-bad-request-error-user-has-associated-transactions": "Not possible due to associated transactions. Please remove the member from all transactions via group member history first."
+  "users-router-bad-request-error-user-has-associated-transactions-please-remove-the-user-from-all-transactions": "Not possible due to associated transactions. Please remove the member from all transactions via group member history first."
 }

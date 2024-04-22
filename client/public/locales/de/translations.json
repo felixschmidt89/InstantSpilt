@@ -344,5 +344,5 @@
   "groups-router-unprocessable-error-missing-group-name": "fehlender Gruppenname",
   "groups-router-unprocessable-error-the-group-name-cannot-exceed-30-characters": "Gruppenname darf nicht mehr als 30 Zeichen haben.",
   "delete-resource-error-user-cant-be-deleted-yet-please-remove-the-user-from-all-transactions": "Gruppenmitglied kann nicht gelöscht werden. Bitte zuerst seinen Verlauf öffnen und es dort aus allen Transaktionen entfernen.",
-  "users-router-bad-request-error-user-has-associated-transactions": "Gruppenmitglied kann nicht gelöscht werden. Bitte zuerst seinen Verlauf öffnen und es dort aus allen Transaktionen entfernen."
+  "users-router-bad-request-error-user-has-associated-transactions-please-remove-the-user-from-all-transactions": "Gruppenmitglied kann nicht gelöscht werden. Bitte zuerst seinen Verlauf öffnen und es dort aus allen Transaktionen entfernen."
 }

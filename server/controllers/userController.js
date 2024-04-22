@@ -189,7 +189,7 @@ export const deleteUser = async (req, res) => {
       return res.status(StatusCodes.BAD_REQUEST).json({
         status: 'fail',
         message:
-          "User can't be deleted yet. Please remove the user from all transactions.",
+          'User has associated transactions. Please remove the user from all transactions.',
       });
     }
 

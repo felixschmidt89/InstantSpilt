@@ -47,17 +47,17 @@ export const handleApiErrors = (
 
     switch (error.response.status) {
       case StatusCodes.UNPROCESSABLE_ENTITY:
-        errorType = `${t(`${router}-router-unprocessable-error-${error.response.data.errors[0].replaceAll(" ", "-").toLowerCase()}`)}`;
+        errorType = `${t(`${router}-router-unprocessable-error-${error.response.data.errors[0].replaceAll(" ", "-").replaceAll(".", "").toLowerCase()}`)}`;
         break;
       case StatusCodes.CONFLICT:
-        errorType = `${t(`${router}-router-conflict-error-${error.response.data.message.replaceAll(" ", "-").toLowerCase()}`)}`;
+        errorType = `${t(`${router}-router-conflict-error-${error.response.data.message.replaceAll(" ", "-").replaceAll(".", "").toLowerCase()}`)}`;
         break;
       case StatusCodes.BAD_REQUEST:
-        errorType = `${t(`${router}-router-bad-request-error-${error.response.data.message.replaceAll(" ", "-").toLowerCase()}`)}`;
+        errorType = `${t(`${router}-router-bad-request-error-${error.response.data.message.replaceAll(" ", "-").replaceAll(".", "").toLowerCase()}`)}`;
 
         break;
       case StatusCodes.NOT_FOUND:
-        errorType = `${t(`${router}-router-not-found-error-${error.response.data.message.replaceAll(" ", "-").toLowerCase()}`)}`;
+        errorType = `${t(`${router}-router-not-found-error-${error.response.data.message.replaceAll(" ", "-").replaceAll(".", "").toLowerCase()}`)}`;
 
         break;
       default:
