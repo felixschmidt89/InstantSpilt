@@ -86,6 +86,7 @@ const InstantSplitPage = () => {
     useGetClientDeviceAndPwaInfo();
   const [ctaToRender, setCtaToRender] = useState(null);
 
+  console.log("isPwa", isPwa);
   // Render PWA CTA on iPhone and iPad when app is accessed in Safari
   useEffect(() => {
     const lowercaseBrowserName = browserName.toLowerCase();
@@ -133,9 +134,9 @@ const InstantSplitPage = () => {
 
   useEffect(() => {
     setShowPwaCtaModal(
-      ctaToRender !== null && lastModalClosureUserActionHasExpired
+      !isPwa && ctaToRender !== null && lastModalClosureUserActionHasExpired
     );
-  }, [ctaToRender, lastModalClosureUserActionHasExpired]);
+  }, [isPwa, ctaToRender, lastModalClosureUserActionHasExpired]);
 
   return (
     <main>
