@@ -1,3 +1,24 @@
-.idleOnMount {
-  color: var(--color-grey);
+.container {
+  margin-top: 0.5rem;
+}
+
+.currencyContainer {
+  display: flex;
+  width: 23.3rem;
+}
+
+.currencyName {
+  display: flex;
+  flex-wrap: wrap;
+  width: 20rem;
+  font-size: 1.6rem;
+  overflow-y: scroll;
+  height: fit-content;
+  outline: none;
+  line-height: 1.2;
+  overflow-x: hidden;
+}
+
+.icon {
+  margin-left: auto;
 }

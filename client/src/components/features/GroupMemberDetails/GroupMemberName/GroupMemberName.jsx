@@ -1,49 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
-import { MdEdit } from "react-icons/md";
 import styles from "./GroupMemberName.module.css";
 import ChangeResourceName from "../../../common/ChangeResourceName/ChangeResourceName";
 import useFetchGroupMemberData from "../../../../hooks/useFetchGroupMemberData";
+import EditPenButton from "../../../common/EditPenButton/EditPenButton";
+import useEditPenVisibility from "../../../../hooks/useEditPenVisibility";
 
 const GroupMemberName = ({ userId, groupCode }) => {
   const { groupMemberData, isFetched: groupMemberDataIsFetched } =
     useFetchGroupMemberData(userId);
-
-  const [showEdit, setShowEdit] = useState(false);
-  const [groupMemberName, setGroupMemberName] = useState("");
+  const [groupMemberName, setGroupMemberName] = useState(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
     if (groupMemberDataIsFetched) {
-      // Set groupMemberName after groupMemberData is fetched
       setGroupMemberName(groupMemberData?.userName || "");
     }
   }, [groupMemberDataIsFetched, groupMemberData]);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target)
-      ) {
-        setShowEdit(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const handleIconClick = () => {
-    setShowEdit(true);
-  };
-
-  const handleChange = (newName) => {
-    setShowEdit(false);
-    setGroupMemberName(newName);
-  };
+  const { showEdit, handleIconClick, handleChange } = useEditPenVisibility(
+    containerRef,
+    setGroupMemberName
+  );
 
   return (
     <div className={styles.container} ref={containerRef}>
@@ -64,11 +41,8 @@ const GroupMemberName = ({ userId, groupCode }) => {
           ) : (
             <h1 className={styles.groupMemberName}>
               {groupMemberName}{" "}
-              <span
-                className={styles.icon}
-                onClick={handleIconClick}
-                role='button'>
-                <MdEdit />
+              <span className={styles.icon}>
+                <EditPenButton handleIconClick={handleIconClick} scale={1.1} />
               </span>
             </h1>
           )}

@@ -10,13 +10,16 @@ import { currenciesContent } from "../../../../contents/currenciesContent";
 import { devLog } from "../../../../utils/errorUtils";
 import { sendFormSubmitButtonStyles } from "../../../../constants/stylesConstants";
 import { submitOnEnterClick } from "../../../../utils/formUtils";
+import { findCurrencyLabel } from "../../../../utils/currencyUtils";
 
 // Hooks
 import useErrorModalVisibility from "../../../../hooks/useErrorModalVisibility";
+import useEditPenVisibility from "../../../../hooks/useEditPenVisibility";
 
 // Components
 import FormSubmitButton from "../../../common/FormSubmitButton/FormSubmitButton";
 import ErrorModal from "../../../common/ErrorModal/ErrorModal";
+import EditPenButton from "../../../common/EditPenButton/EditPenButton";
 
 // Styles
 import styles from "./ChangeGroupCurrency.module.css";
@@ -30,15 +33,19 @@ const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
  * @param {Object} props - Component props.
  * @param {string} props.groupCode - the groupCode identifying the group.
  * @param {string} props.groupCurrency - The current currency of the group.
- * @param {boolean} props.isOnboarding - Flag indicating whether the component is used in the onboarding process.
  * @returns {JSX.Element} React component.
  */
-const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
+const ChangeGroupCurrency = ({ groupCurrency, groupCode }) => {
   const selectRef = useRef(null);
+  const containerRef = useRef(null);
   const { t } = useTranslation();
-  const [labelCurrency, setLabelCurrency] = useState(groupCurrency);
-  const [newGroupCurrency, setNewGroupCurrency] = useState(null);
+  const [currency, setCurrency] = useState({
+    selectedCurrency: groupCurrency,
+    storedCurrency: groupCurrency,
+  });
   const [error, setError] = useState(null);
+
+  const storedCurrencyLabel = findCurrencyLabel(currency.storedCurrency);
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
@@ -52,12 +59,14 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
         `${apiUrl}/groups/currency/${groupCode}`,
         {
           groupCode,
-          currency: newGroupCurrency,
+          currency: currency.selectedCurrency,
         }
       );
+      handleChange((prevState) => ({
+        ...prevState,
+        storedCurrency: currency.selectedCurrency,
+      }));
       devLog("Group currency updated:", response);
-      setLabelCurrency(newGroupCurrency);
-      handleUpdateFeedback();
     } catch (error) {
       setError(t("generic-error-message"));
       displayErrorModal();
@@ -65,61 +74,54 @@ const ChangeGroupCurrency = ({ groupCode, groupCurrency, isOnboarding }) => {
     }
   };
 
-  const handleSelectChange = (e) => {
-    setNewGroupCurrency(e.target.value);
-  };
-
-  // Remove idle class after click, so that select does not fall back to appearing inactive
-  const handleSelectFocus = () => {
-    selectRef.current.classList.remove(styles.idleOnMount);
-  };
-
-  // Add idle class upon update, so that select goes back to appearing inactive with updated value
-  const handleUpdateFeedback = () => {
-    selectRef.current.classList.add(styles.idleOnMount);
-  };
+  const { showEdit, handleIconClick, handleChange } = useEditPenVisibility(
+    containerRef,
+    setCurrency
+  );
 
   // Submit on enter button click
   const handleKeyDown = (e) => {
     submitOnEnterClick(e, handleFormSubmit);
   };
 
-  // Find the label for labelCurrency
-  const storedCurrencyLabel = currenciesContent.find(
-    (currency) => currency.value === labelCurrency
-  )?.label;
-
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={containerRef}>
       <h2 className={styles.header}>
         {t("change-group-currency-setting-header")}
       </h2>
-      <form onSubmit={handleFormSubmit}>
-        <select
-          className={`${styles.select} ${styles.idleOnMount}`}
-          value={newGroupCurrency}
-          ref={selectRef}
-          onFocus={handleSelectFocus}
-          onChange={handleSelectChange}
-          onKeyDown={handleKeyDown}>
-          {/* Default option */}
-          <option className={styles.storedCurrency}>
-            {storedCurrencyLabel}
-          </option>
-          {/* Render options from currenciesContent excluding labelCurrency */}
-          {currenciesContent
-            .filter((currency) => currency.value !== labelCurrency)
-            .map((currency) => (
-              <option
-                key={currency.value}
-                className={styles.newCurrency}
-                value={currency.value}>
-                ({currency.value}) {currency.label}
-              </option>
-            ))}
-        </select>
-        <FormSubmitButton {...sendFormSubmitButtonStyles} />
-      </form>
+      {showEdit ? (
+        <>
+          <form onSubmit={handleFormSubmit}>
+            <select
+              className={styles.select}
+              value={currency.selectedCurrency || ""}
+              onChange={(event) =>
+                setCurrency((prevState) => ({
+                  ...prevState,
+                  selectedCurrency: event.target.value,
+                }))
+              }
+              onKeyDown={handleKeyDown}>
+              {currenciesContent.map((currency) => (
+                <option
+                  key={currency.value}
+                  value={currency.value}
+                  ref={selectRef}>
+                  ({currency.value}) {currency.label}
+                </option>
+              ))}
+            </select>
+            <FormSubmitButton {...sendFormSubmitButtonStyles} />
+          </form>
+        </>
+      ) : (
+        <div className={styles.currencyContainer}>
+          <span className={styles.currencyName}>{storedCurrencyLabel}</span>
+          <span className={styles.icon}>
+            <EditPenButton handleIconClick={handleIconClick} scale={1.4} />
+          </span>
+        </div>
+      )}
       <ErrorModal
         error={error}
         onClose={handleCloseErrorModal}

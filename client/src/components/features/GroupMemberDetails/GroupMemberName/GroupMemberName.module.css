@@ -14,13 +14,6 @@
 }
 
 .icon {
-  color: var(--color-signal);
-  font-size: 1.8rem;
-  margin-left: 0.6rem;
-  transform: translateY(0.2rem);
-}
-
-.icon:hover,
-.icon:active {
-  color: var(--color-signal-dark);
+  margin-left: 0.5rem;
+  transform: translateY(0.1rem);
 }

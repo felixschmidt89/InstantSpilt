@@ -1,0 +1,9 @@
+.icon {
+  color: var(--color-signal);
+  font-size: 1.6rem;
+}
+
+.icon:hover,
+.icon:active {
+  color: var(--color-signal-dark);
+}

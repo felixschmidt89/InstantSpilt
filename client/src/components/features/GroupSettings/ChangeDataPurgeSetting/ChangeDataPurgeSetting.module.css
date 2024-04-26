@@ -2,7 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   width: 20rem;
-  border-radius: 1rem;
   font-size: 1.6rem;
   overflow-y: scroll;
   height: fit-content;
