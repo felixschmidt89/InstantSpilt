@@ -14,8 +14,8 @@ import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNav
 import Spinner from "../../components/common/Spinner/Spinner";
 import ChangeGroupCurrency from "../../components/features/GroupSettings/ChangeGroupCurrency/ChangeGroupCurrency";
 import ChangeDataPurgeSetting from "../../components/features/GroupSettings/ChangeDataPurgeSetting/ChangeDataPurgeSetting";
-import ChangeResourceName from "../../components/common/ChangeResourceName/ChangeResourceName";
 import GroupCodeSecurity from "../../components/features/GroupSettings/GroupCodeSecurity/GroupCodeSecurity";
+import ChangeGroupName from "../../components/features/GroupSettings/ChangeGroupName/ChangeGroupName";
 
 // Styles
 import styles from "./GroupSettingsPage.module.css";
@@ -38,15 +38,7 @@ const GroupSettingsPage = () => {
         </h1>
         {isFetched && groupData ? (
           <div className={styles.settingsContainer}>
-            {/*Change group name */}
-            <ChangeResourceName
-              resourceId={groupData.group._id}
-              groupCode={groupCode}
-              resourceType={"group"}
-              headerText={t("change-group-name")}
-              resourceName={groupData.group.groupName}
-              navigateToMain={false}
-            />
+            <ChangeGroupName groupData={groupData} groupCode={groupCode} />
             <ChangeGroupCurrency
               groupCode={groupCode}
               groupCurrency={groupData.group.currency}

@@ -1,6 +1,6 @@
 .container {
   height: 90%;
-  overflow-y: auto;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   margin: 0 auto;

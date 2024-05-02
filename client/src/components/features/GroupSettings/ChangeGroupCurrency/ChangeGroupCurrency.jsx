@@ -90,7 +90,7 @@ const ChangeGroupCurrency = ({ groupCurrency, groupCode }) => {
         {t("change-group-currency-setting-header")}
       </h2>
       {showEdit ? (
-        <>
+        <div className={styles.editContainer}>
           <form onSubmit={handleFormSubmit}>
             <select
               className={styles.select}
@@ -113,7 +113,7 @@ const ChangeGroupCurrency = ({ groupCurrency, groupCode }) => {
             </select>
             <FormSubmitButton {...sendFormSubmitButtonStyles} />
           </form>
-        </>
+        </div>
       ) : (
         <div className={styles.currencyContainer}>
           <span className={styles.currencyName}>{storedCurrencyLabel}</span>
