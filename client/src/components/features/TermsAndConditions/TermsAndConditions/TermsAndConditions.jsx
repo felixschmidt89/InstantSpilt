@@ -11,7 +11,6 @@ import styles from "./TermsAndConditions.module.css";
 
 /**
  * Parent component to render terms and conditions
- * @param {string} lastUpdateDate - The last time, the Terms and Conditions have been updated
  * @param {Array} sections - An array of objects representing sections with keys, titles, and content.
  * @returns {JSX.Element} React component. */
 const TermsAndConditions = () => {
@@ -20,7 +19,7 @@ const TermsAndConditions = () => {
 
   return (
     <div className={styles.container}>
-      <Disclaimer />
+      <Disclaimer lastUpdateDate={"2024-03-05"} />
       <h2>{t("terms-and-conditions-header")}</h2>
       <SingleTermsAndConditions sections={sections} />
     </div>
