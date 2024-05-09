@@ -33,7 +33,6 @@ const RenderGroupBalances = ({ groupCurrency }) => {
   const [groupMemberDetails, setGroupMemberDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isEdgeCase, setIsEdgeCase] = useState(false);
 
   // Get error modal visibility logic
   const { isErrorModalVisible, displayErrorModal, handleCloseErrorModal } =
@@ -52,28 +51,30 @@ const RenderGroupBalances = ({ groupCurrency }) => {
         // Format fetched user data
         if (responseData.users && responseData.users.length > 0) {
           const groupMemberDetails = responseData.users.map((user) => {
-            const isEdgeCase =
+            const isNoEdgeCase =
               responseData.users.length > 1 &&
               responseData.users.every(
-                (u) => Math.abs(u.userBalance) === BALANCE_THRESHOLD
+                (u) => Math.abs(u.userBalance) <= BALANCE_THRESHOLD
               ) &&
-              Math.abs(user.userBalance) ===
+              Math.abs(user.userBalance) <=
                 (responseData.users.length - 1) * BALANCE_THRESHOLD;
+
+            devLog("isNoEdgeCase:", isNoEdgeCase);
 
             return {
               userId: user._id,
               userName: user.userName,
               userBalance:
-                // Check if the absolute value of userBalance is less than or equal to the threshold
-                Math.abs(user.userBalance) <= BALANCE_THRESHOLD && isEdgeCase
-                  ? 0 // If true, set userBalance to 0 to treat such edge cases as settled
-                  : +parseFloat(user.userBalance).toFixed(2), // round to 2 decimal places
+                Math.abs(user.userBalance) <= BALANCE_THRESHOLD && isNoEdgeCase
+                  ? 0
+                  : +parseFloat(user.userBalance).toFixed(2),
             };
           });
+
           setGroupMemberDetails(groupMemberDetails);
           devLog("Group details formatted:", groupMemberDetails);
         }
-        setIsEdgeCase(isEdgeCase);
+
         setError("");
         setIsLoading(false);
       } catch (error) {
@@ -86,7 +87,7 @@ const RenderGroupBalances = ({ groupCurrency }) => {
 
     fetchUserDetails();
   }, [groupCode]);
-  // Display loading spinner while data is being fetched
+
   return isLoading ? (
     <div className={styles.spinner}>
       <Spinner />
@@ -99,7 +100,6 @@ const RenderGroupBalances = ({ groupCurrency }) => {
           groupMemberDetails={groupMemberDetails}
           groupCode={groupCode}
           groupCurrency={groupCurrency}
-          isEdgeCase={isEdgeCase}
         />
       ) : (
         <span className={styles.issue}>

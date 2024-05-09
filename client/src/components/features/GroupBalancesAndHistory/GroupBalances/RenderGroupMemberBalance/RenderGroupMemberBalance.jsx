@@ -23,7 +23,6 @@ const RenderGroupMemberBalance = ({
   groupMemberDetails,
   groupCode,
   groupCurrency,
-  isEdgeCase,
 }) => (
   <div className={styles.balancesContainer}>
     <ul>
@@ -50,11 +49,7 @@ const RenderGroupMemberBalance = ({
                       ? styles.positiveBalance
                       : styles.negativeBalance
                   }`}>
-                  {/* Fix remaining rounding issue in certain situations, e.g., 100€/3 will result in 33.33, 33.33, 33.4 */}
-                  {user.userBalance === BALANCE_THRESHOLD ||
-                  (user.userBalance === -BALANCE_THRESHOLD && isEdgeCase)
-                    ? `0.00${groupCurrency}`
-                    : user.userBalance.toFixed(2) + `${groupCurrency}`}
+                  {user.userBalance.toFixed(2) + `${groupCurrency}`}
                 </div>
               </div>
             </div>
