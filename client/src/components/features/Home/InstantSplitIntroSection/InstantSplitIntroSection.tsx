@@ -29,16 +29,16 @@ const InstantSplitIntroSection = ({
       )}
       <ul className={styles.list}>
         <li className={styles.listItem}>
+          {t("intro-section-bullet-points-free")}
+        </li>{" "}
+        <li className={styles.listItem}>
           {t("intro-section-bullet-points-user-registration")}
         </li>{" "}
         <li className={styles.listItem}>
-          {t("intro-section-bullet-points-app-installation")}
-        </li>{" "}
-        <li className={styles.listItem}>
-          {t("intro-section-bullet-points-cookies")}
-        </li>{" "}
-        <li className={styles.listItem}>
           {t("intro-section-bullet-points-user-tracking")}
+        </li>{" "}
+        <li className={styles.listItem}>
+          {t("intro-section-bullet-points-app-installation")}
         </li>{" "}
         <li className={styles.listItem}>
           {t("intro-section-bullet-points-data-purge")}
