@@ -51,6 +51,7 @@ const RenderGroupBalances = ({ groupCurrency }) => {
         // Format fetched user data
         if (responseData.users && responseData.users.length > 0) {
           const groupMemberDetails = responseData.users.map((user) => {
+            // Check if all group members have user balances within the threshold, if so, render accurate user balance.
             const isNoEdgeCase =
               responseData.users.length > 1 &&
               responseData.users.every(
@@ -58,13 +59,13 @@ const RenderGroupBalances = ({ groupCurrency }) => {
               ) &&
               Math.abs(user.userBalance) <=
                 (responseData.users.length - 1) * BALANCE_THRESHOLD;
-
             devLog("isNoEdgeCase:", isNoEdgeCase);
 
             return {
               userId: user._id,
               userName: user.userName,
               userBalance:
+                // if user balance is within the treshold and it's no edge case, set it to 0 to avoid rounding errors (e.g. 10.00 splitted among 3 group members)
                 Math.abs(user.userBalance) <= BALANCE_THRESHOLD && isNoEdgeCase
                   ? 0
                   : +parseFloat(user.userBalance).toFixed(2),

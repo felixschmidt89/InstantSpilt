@@ -96,7 +96,7 @@ export const calculateAndAddUserBalance = (user) => {
  */
 export const filterUnsettledUsers = (userDetails) => {
   return userDetails.filter(
-    (user) => Math.abs(user.userBalanceCalculated) > BALANCE_THRESHOLD
+    (user) => Math.abs(user.userBalanceCalculated) >= BALANCE_THRESHOLD
   );
 };
 
