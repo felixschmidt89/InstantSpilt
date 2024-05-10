@@ -18,11 +18,7 @@ const InstantSplitIntroSection = ({
   const { t } = useTranslation();
   return (
     <div className={styles.introContainer}>
-      {isInvitation ? (
-        <p className={styles.introText}>
-          {t("intro-section-invitation-intro-text")}:
-        </p>
-      ) : (
+      {isInvitation ? null : (
         <p className={styles.introText}>
           {t("intro-section-regular-intro-text")}:
         </p>
