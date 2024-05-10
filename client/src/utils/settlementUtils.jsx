@@ -59,6 +59,14 @@ export const calculateSuggestedSettlementPayments = (
       negativeBalanceUsers.shift();
     }
   }
+
+  // Remove invalid payment suggestions with a 0.00 amount from settlements array (such payment has occurred in at least 1 case)
+  for (let i = suggestedSettlementPayments.length - 1; i >= 0; i--) {
+    if (suggestedSettlementPayments[i].amount === "0.00") {
+      suggestedSettlementPayments.splice(i, 1);
+    }
+  }
+
   // Sort suggestedSettlementPayments by debtors alphabetically
   suggestedSettlementPayments.sort((a, b) => a.from.localeCompare(b.from));
 
@@ -96,7 +104,7 @@ export const calculateAndAddUserBalance = (user) => {
  */
 export const filterUnsettledUsers = (userDetails) => {
   return userDetails.filter(
-    (user) => Math.abs(user.userBalanceCalculated) >= BALANCE_THRESHOLD
+    (user) => Math.abs(user.userBalanceCalculated) > BALANCE_THRESHOLD
   );
 };
 
