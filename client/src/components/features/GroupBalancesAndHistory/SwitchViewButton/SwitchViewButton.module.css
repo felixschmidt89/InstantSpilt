@@ -13,13 +13,13 @@
 }
 
 .inactiveButton {
-  opacity: 0.45;
-  filter: grayscale(15%);
-  color: var(--color-dark-light);
+  background-color: var(--color-body);
 }
 
 .inactiveButton:hover {
-  opacity: 1;
-  filter: grayscale(0%);
-  color: var(--color-dark);
+  background-color: var(--color-signal-reduced-opacity);
+}
+
+.activeButton:hover {
+  cursor: default;
 }

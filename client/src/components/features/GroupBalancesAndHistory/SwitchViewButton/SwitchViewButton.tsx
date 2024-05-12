@@ -14,7 +14,7 @@ import styles from "./SwitchViewButton.module.css";
 const SwitchViewButton = ({ text, isActive, onClick }) => {
   return (
     <button
-      className={`${styles.button} ${isActive ? styles.expensesButton : styles.balancesButton} ${isActive ? "" : styles.inactiveButton}`}
+      className={`${styles.button} ${isActive ? styles.expensesButton : styles.balancesButton} ${isActive ? styles.activeButton : styles.inactiveButton}`}
       onClick={onClick}
       disabled={isActive}>
       {text}
