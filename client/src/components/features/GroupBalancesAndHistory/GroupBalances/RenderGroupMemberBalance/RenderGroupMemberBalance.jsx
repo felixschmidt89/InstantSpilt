@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Constants and Utils
-import { BALANCE_THRESHOLD } from "../../../../../constants/dataConstants";
 import emojiConstants from "../../../../../constants/emojiConstants";
 
 // Components
@@ -35,7 +34,7 @@ const RenderGroupMemberBalance = ({
               <div className={styles.leftColumn}>
                 <span className={styles.emoji}>
                   <Emoji
-                    ariaLabel={"expense emoji"}
+                    ariaLabel={"group member emoji"}
                     emoji={emojiConstants.member}
                   />
                 </span>

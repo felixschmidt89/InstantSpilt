@@ -8,6 +8,7 @@ import {
   getExpenseInfo,
   deleteExpense,
   updateExpense,
+  getExpensesTotalByGroupCode,
 } from '../controllers/expenseController.js';
 import { expenseValidator } from '../validators/expenseValidator.js';
 import developmentOnlyMiddleware from '../middleware/developmentOnlyMiddleware.js';
@@ -25,11 +26,12 @@ router.get('/:expenseId', getExpenseInfo);
 
 // Delete expense
 router.delete('/:expenseId', deleteExpense);
-// Update an expense
-// router.update('/', updateExpense);
 
-// Get expenses by GroupCode
+// Get all expenses by GroupCode
 router.get('/byGroupCode/:groupCode', listAllExpensesByGroupCode);
+
+// Get total expenses by GroupCode
+router.get('/totalExpenses/:groupCode', getExpensesTotalByGroupCode);
 
 // ROUTES FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 // List all expenses

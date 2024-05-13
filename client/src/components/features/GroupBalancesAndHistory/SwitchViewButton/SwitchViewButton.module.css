@@ -13,11 +13,12 @@
 }
 
 .inactiveButton {
-  background-color: var(--color-body);
+  background-color: var(--color-main);
 }
 
 .inactiveButton:hover {
-  background-color: var(--color-signal-reduced-opacity);
+  color: var(--color-dark-dark);
+  border: 0.2rem solid var(--color-dark-dark);
 }
 
 .activeButton:hover {

@@ -19,6 +19,7 @@ import RenderGroupMemberBalance from "../RenderGroupMemberBalance/RenderGroupMem
 
 // Styles
 import styles from "./RenderGroupBalances.module.css";
+import RenderGroupExpensesTotal from "../RenderTotalGroupExpenses/RenderGroupExpensesTotal";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -65,7 +66,7 @@ const RenderGroupBalances = ({ groupCurrency }) => {
               userId: user._id,
               userName: user.userName,
               userBalance:
-                // if user balance is within the treshold and it's no edge case, set it to 0 to avoid rounding errors (e.g. 10.00 splitted among 3 group members)
+                // if user balance is within the threshold and it's no edge case, set it to 0 to avoid rounding errors (e.g. 10.00 split among 3 group members)
                 Math.abs(user.userBalance) <= BALANCE_THRESHOLD && isNoEdgeCase
                   ? 0
                   : +parseFloat(user.userBalance).toFixed(2),
@@ -97,11 +98,17 @@ const RenderGroupBalances = ({ groupCurrency }) => {
     <div className={styles.container}>
       {/* Check if there is at least 1 user */}
       {groupMemberDetails.length > 0 ? (
-        <RenderGroupMemberBalance
-          groupMemberDetails={groupMemberDetails}
-          groupCode={groupCode}
-          groupCurrency={groupCurrency}
-        />
+        <>
+          <RenderGroupMemberBalance
+            groupMemberDetails={groupMemberDetails}
+            groupCode={groupCode}
+            groupCurrency={groupCurrency}
+          />
+          <RenderGroupExpensesTotal
+            groupCode={groupCode}
+            groupCurrency={groupCurrency}
+          />
+        </>
       ) : (
         <span className={styles.issue}>
           <NotEnoughGroupMembers />

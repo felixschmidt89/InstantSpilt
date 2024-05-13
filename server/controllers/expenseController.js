@@ -297,6 +297,33 @@ export const listAllExpensesByGroupCode = async (req, res) => {
   }
 };
 
+export const getExpensesTotalByGroupCode = async (req, res) => {
+  try {
+    const { groupCode } = req.params;
+
+    setGroupLastActivePropertyToNow(groupCode);
+
+    // Calculate the sum of all expenses associated with the groupcode
+    const totalExpenses = await Expense.aggregate([
+      { $match: { groupCode } },
+      { $group: { _id: null, total: { $sum: '$expenseAmount' } } },
+    ]);
+
+    res.status(StatusCodes.OK).json({
+      status: 'success',
+      expensesTotal: totalExpenses.length > 0 ? totalExpenses[0].total : 0,
+      message: 'Total group expenses retrieved successfully',
+    });
+  } catch (error) {
+    errorLog(
+      error,
+      'Error fetching total group expenses:',
+      'Failed to lost total group expenses. Please try again later.',
+    );
+    sendInternalError();
+  }
+};
+
 // FOR DEVELOPMENT/DEBUGGING PURPOSES ONLY
 
 export const listAllExpenses = async (req, res) => {
