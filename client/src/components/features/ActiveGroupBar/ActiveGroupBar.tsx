@@ -46,6 +46,37 @@ const ActiveGroupBar = () => {
         }
         ariaLabel='group settings emoji'
       />
+
+      {/* Button for navigating to adding users */}
+      <GroupActionsEmojiButton
+        route={"create-group-members"}
+        emoji={emojiConstants.member}
+        plusIcon={true}
+        plusIconTranslateX={-0.8}
+        explanationText={t("active-group-bar-member-emoji-copy")}
+        ariaLabel='add group member emoji'
+        scale={0.97}
+        translateY={-0.05}
+      />
+      {/* Button for navigating to adding expenses */}
+      <GroupActionsEmojiButton
+        route={"create-expense"}
+        emoji={emojiConstants.expense}
+        plusIcon={true}
+        plusIconTranslateX={-0.6}
+        explanationText={t("active-group-bar-expense-emoji-copy")}
+        ariaLabel='add expense emoji'
+      />
+      {/* Button for navigating to adding payments */}
+      <GroupActionsEmojiButton
+        route={"create-payment"}
+        emoji={emojiConstants.payment}
+        translateX={0}
+        plusIconTranslateX={-1.5}
+        plusIcon={true}
+        explanationText={t("active-group-bar-payment-emoji-copy")}
+        ariaLabel='add payment emoji'
+      />
       {/* Button for navigating to settling expenses */}
       <GroupActionsEmojiButton
         route={"settle-expenses"}
@@ -54,30 +85,6 @@ const ActiveGroupBar = () => {
         ariaLabel='settle expenses emoji'
         translateY={-0.1}
         scale={1.1}
-      />
-      {/* Button for navigating to adding users */}
-      <GroupActionsEmojiButton
-        route={"create-group-members"}
-        emoji={emojiConstants.member}
-        explanationText={t("active-group-bar-member-emoji-copy")}
-        ariaLabel='add group member emoji'
-        scale={0.97}
-        translateY={-0.05}
-      />
-      {/* Button for navigating to adding payments */}
-      <GroupActionsEmojiButton
-        route={"create-payment"}
-        emoji={emojiConstants.payment}
-        explanationText={t("active-group-bar-payment-emoji-copy")}
-        ariaLabel='add payment emoji'
-      />
-      {/* Button for navigating to adding expenses */}
-      <GroupActionsEmojiButton
-        route={"create-expense"}
-        emoji={emojiConstants.expense}
-        translateX={0.8}
-        explanationText={t("active-group-bar-expense-emoji-copy")}
-        ariaLabel='add expense emoji'
       />
     </div>
   ) : null;

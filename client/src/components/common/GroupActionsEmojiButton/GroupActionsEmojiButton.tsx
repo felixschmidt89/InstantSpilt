@@ -1,6 +1,7 @@
 // React and Third-Party Libraries
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FaPlus } from "react-icons/fa";
 
 // Styles
 import styles from "./GroupActionsEmojiButton.module.css";
@@ -8,6 +9,8 @@ import styles from "./GroupActionsEmojiButton.module.css";
 type GroupActionsEmojiButtonProps = {
   route: string;
   emoji: string;
+  plusIcon?: boolean;
+  plusIconTranslateX?: number;
   explanationText?: string;
   ariaLabel: string;
   translateX?: number;
@@ -21,6 +24,8 @@ type GroupActionsEmojiButtonProps = {
 const GroupActionsEmojiButton = ({
   route,
   emoji,
+  plusIcon = false,
+  plusIconTranslateX = 0,
   explanationText,
   ariaLabel,
   translateX = 0,
@@ -39,11 +44,17 @@ const GroupActionsEmojiButton = ({
       onClick={handleClick}
       aria-label={ariaLabel}>
       <span
-        className={styles.emoji}
+        className={styles.emojiContainer}
         style={{
           transform: `translate(${translateX}rem, ${translateY}rem) scale(${scale})`,
         }}>
-        {emoji}
+        <span className={styles.emoji}>{emoji}</span>
+        {plusIcon && (
+          <FaPlus
+            className={styles.plusIcon}
+            style={{ right: `${plusIconTranslateX}rem` }}
+          />
+        )}
       </span>
       {explanationText && (
         <span className={styles.iconExplanation}>{explanationText}</span>

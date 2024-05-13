@@ -21,6 +21,17 @@
   line-height: 1.2;
 }
 
+.emojiContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.plusIcon {
+  position: absolute;
+  bottom: 1rem;
+  font-size: 1.25rem;
+}
+
 .container:hover {
   color: var(--color-dark-dark);
 }
@@ -41,5 +52,8 @@
     font-family: "Noto Emoji";
     font-weight: 500;
     line-height: 1.2;
+  }
+  .plusIcon {
+    font-size: 0.9rem;
   }
 }

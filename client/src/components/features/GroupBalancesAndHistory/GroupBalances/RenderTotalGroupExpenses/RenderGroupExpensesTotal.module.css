@@ -6,7 +6,8 @@
   width: fit-content;
   margin: 0 auto;
   margin-bottom: 1rem;
-  color: var(--color-dark-light);
+  color: var(--color-dark);
+  font-style: italic;
 }
 
 .emoji {
