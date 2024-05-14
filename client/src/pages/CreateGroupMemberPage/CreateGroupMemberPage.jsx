@@ -4,12 +4,14 @@ import { useTranslation } from "react-i18next";
 
 // Hooks
 import useGetPreviousRoutesFromLocalStorage from "../../hooks/useGetPreviousRouteFromLocalStorage";
+import useTriggerRerender from "../../hooks/useTriggerRerender";
 
 // Components
 import HelmetMetaTagsNetlify from "../../components/common/HelmetMetaTagsNetlify/HelmetMetaTagsNetlify";
 import PiratePx from "../../components/common/PiratePx/PiratePx";
 import InAppNavigationBar from "../../components/common/InAppNavigation/InAppNavigationBar/InAppNavigationBar";
-import CreateGroupMembersAndRenderMemberList from "../../components/features/CreateGroupMember/CreateGroupMembersAndRenderMemberList/CreateGroupMembersAndRenderMemberList";
+import CreateGroupMemberForm from "../../components/features/CreateGroupMember/CreateGroupMemberForm/CreateGroupMemberForm";
+import RenderGroupMemberNames from "../../components/features/CreateGroupMember/RenderGroupMemberNames/RenderGroupMemberNames";
 
 // Styles
 import styles from "./CreateGroupMemberPage.module.css";
@@ -34,6 +36,10 @@ function CreateGroupMemberPage() {
   const previousRouteExists = localStorage.getItem("previousRoute");
   const isRegularUser = !previousRouteExists;
 
+  // Custom hook to get groupCode and trigger rerender logic
+  const { groupCode, rerenderTrigger, incrementRerenderTrigger } =
+    useTriggerRerender();
+
   return (
     <main>
       <HelmetMetaTagsNetlify title={t("create-group-members-page-title")} />
@@ -45,11 +51,20 @@ function CreateGroupMemberPage() {
         forward={isNewUser || isInAppGroupCreation ? true : false}
         forwardRoute='/onboarding-group-settings'
       />
-      <div className={styles.container}>
+      <div className={styles.addGroupMember}>
         {!isNewUser ? <h1>{t("create-group-members-page-header")}</h1> : null}
         <h2>{t("create-group-members-form-header")}</h2>
-        <CreateGroupMembersAndRenderMemberList
-          isInAppGroupCreation={isNewUser || isInAppGroupCreation}
+        <CreateGroupMemberForm
+          incrementRerenderTrigger={incrementRerenderTrigger}
+          groupCode={groupCode}
+        />
+      </div>
+      <div className={styles.container}>
+        <RenderGroupMemberNames
+          rerenderTrigger={rerenderTrigger}
+          groupCode={groupCode}
+          incrementRerenderTrigger={incrementRerenderTrigger}
+          isInAppGroupCreation={isInAppGroupCreation}
         />
       </div>
     </main>

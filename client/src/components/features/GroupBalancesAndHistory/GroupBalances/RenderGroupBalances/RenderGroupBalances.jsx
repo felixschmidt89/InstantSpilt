@@ -19,7 +19,7 @@ import RenderGroupMemberBalance from "../RenderGroupMemberBalance/RenderGroupMem
 
 // Styles
 import styles from "./RenderGroupBalances.module.css";
-import RenderGroupExpensesTotal from "../RenderTotalGroupExpenses/RenderGroupExpensesTotal";
+import RenderGroupExpensesTotal from "../../GroupHistory/RenderTotalGroupExpenses/RenderGroupExpensesTotal";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -98,17 +98,11 @@ const RenderGroupBalances = ({ groupCurrency }) => {
     <div className={styles.container}>
       {/* Check if there is at least 1 user */}
       {groupMemberDetails.length > 0 ? (
-        <>
-          <RenderGroupMemberBalance
-            groupMemberDetails={groupMemberDetails}
-            groupCode={groupCode}
-            groupCurrency={groupCurrency}
-          />
-          <RenderGroupExpensesTotal
-            groupCode={groupCode}
-            groupCurrency={groupCurrency}
-          />
-        </>
+        <RenderGroupMemberBalance
+          groupMemberDetails={groupMemberDetails}
+          groupCode={groupCode}
+          groupCurrency={groupCurrency}
+        />
       ) : (
         <span className={styles.issue}>
           <NotEnoughGroupMembers />

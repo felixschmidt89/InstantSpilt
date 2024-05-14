@@ -20,8 +20,12 @@ const RenderGroupExpensesTotal = ({ groupCode, groupCurrency }) => {
   return (
     isFetched && (
       <div className={styles.totalExpenses}>
-        {t("total-group-expenses-copy")}: {expensesTotal.toFixed(2)}
-        {groupCurrency}
+        {t("total-group-expenses-copy")}:
+        <span className={styles.totalExpensesAmount}>
+          {" "}
+          {expensesTotal.toFixed(2)}
+          {groupCurrency}
+        </span>
       </div>
     )
   );

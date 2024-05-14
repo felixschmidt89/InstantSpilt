@@ -20,6 +20,7 @@ import NotEnoughGroupMembers from "../../NotEnoughGroupMembers/NotEnoughGroupMem
 
 // Styles
 import styles from "./RenderGroupHistory.module.css";
+import RenderGroupExpensesTotal from "../RenderTotalGroupExpenses/RenderGroupExpensesTotal";
 
 // API URL
 const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -94,34 +95,40 @@ const RenderGroupHistory = ({ groupCode, groupCurrency }) => {
     // Render container with group expenses and payments or display  messages if there are either no such transactions or not at least 2 members in the group
     <>
       {groupExpensesAndPayments.length > 0 ? (
-        <div className={styles.container}>
-          <ul>
-            {/* Map through group expenses and payments */}
-            {groupExpensesAndPayments.map((item) => (
-              <li key={item._id}>
-                {item.expenseDescription ? (
-                  <RenderGroupExpense
-                    item={item}
-                    groupCode={groupCode}
-                    groupCurrency={groupCurrency}
-                    groupMembers={groupMembers}
-                  />
-                ) : (
-                  <RenderGroupPayment
-                    item={item}
-                    groupCode={groupCode}
-                    groupCurrency={groupCurrency}
-                  />
-                )}
-              </li>
-            ))}
-          </ul>
-          <ErrorModal
-            error={error}
-            onClose={handleCloseErrorModal}
-            isVisible={isErrorModalVisible}
-          />{" "}
-        </div>
+        <>
+          <RenderGroupExpensesTotal
+            groupCode={groupCode}
+            groupCurrency={groupCurrency}
+          />
+          <div className={styles.container}>
+            <ul>
+              {/* Map through group expenses and payments */}
+              {groupExpensesAndPayments.map((item) => (
+                <li key={item._id}>
+                  {item.expenseDescription ? (
+                    <RenderGroupExpense
+                      item={item}
+                      groupCode={groupCode}
+                      groupCurrency={groupCurrency}
+                      groupMembers={groupMembers}
+                    />
+                  ) : (
+                    <RenderGroupPayment
+                      item={item}
+                      groupCode={groupCode}
+                      groupCurrency={groupCurrency}
+                    />
+                  )}
+                </li>
+              ))}
+            </ul>
+            <ErrorModal
+              error={error}
+              onClose={handleCloseErrorModal}
+              isVisible={isErrorModalVisible}
+            />{" "}
+          </div>
+        </>
       ) : (
         <div className={styles.issue}>
           {isFetched && groupMembers.length > 1 ? (

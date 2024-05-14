@@ -5,9 +5,14 @@
   line-height: 1.6;
   width: fit-content;
   margin: 0 auto;
-  margin-bottom: 1rem;
   color: var(--color-dark);
   font-style: italic;
+  padding-top: 0.5rem;
+}
+
+.totalExpensesAmount {
+  text-decoration: underline;
+  margin-left: 0.5rem;
 }
 
 .emoji {
