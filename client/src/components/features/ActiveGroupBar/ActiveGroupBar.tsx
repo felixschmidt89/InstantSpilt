@@ -66,7 +66,7 @@ const ActiveGroupBar = () => {
         plusIcon={true}
         plusIconTranslateX={-0.6}
         explanationText={t("active-group-bar-expense-emoji-copy")}
-        explanationTextTranslateX={isSlimDevice ? 0.1 : 0.2}
+        explanationTextTranslateX={isSlimDevice ? 0.15 : 0.2}
         ariaLabel='add expense emoji'
       />
       {/* Button for navigating to adding payments */}
@@ -77,7 +77,7 @@ const ActiveGroupBar = () => {
         plusIconTranslateX={-1.5}
         plusIcon={true}
         explanationText={t("active-group-bar-payment-emoji-copy")}
-        explanationTextTranslateX={0.7}
+        explanationTextTranslateX={isSlimDevice ? 0.6 : 0.7}
         ariaLabel='add payment emoji'
       />
       {/* Button for navigating to settling expenses */}
