@@ -12,6 +12,7 @@ type GroupActionsEmojiButtonProps = {
   plusIcon?: boolean;
   plusIconTranslateX?: number;
   explanationText?: string;
+  explanationTextTranslateX?: number;
   ariaLabel: string;
   translateX?: number;
   translateY?: number;
@@ -27,6 +28,7 @@ const GroupActionsEmojiButton = ({
   plusIcon = false,
   plusIconTranslateX = 0,
   explanationText,
+  explanationTextTranslateX = 0,
   ariaLabel,
   translateX = 0,
   translateY = 0,
@@ -57,7 +59,11 @@ const GroupActionsEmojiButton = ({
         )}
       </span>
       {explanationText && (
-        <span className={styles.iconExplanation}>{explanationText}</span>
+        <span
+          className={styles.iconExplanation}
+          style={{ transform: `translateX(${explanationTextTranslateX}rem)` }}>
+          {explanationText}
+        </span>
       )}
     </div>
   );

@@ -54,6 +54,7 @@ const ActiveGroupBar = () => {
         plusIcon={true}
         plusIconTranslateX={-0.8}
         explanationText={t("active-group-bar-member-emoji-copy")}
+        explanationTextTranslateX={isSlimDevice ? 0.25 : 0.4}
         ariaLabel='add group member emoji'
         scale={0.97}
         translateY={-0.05}
@@ -65,6 +66,7 @@ const ActiveGroupBar = () => {
         plusIcon={true}
         plusIconTranslateX={-0.6}
         explanationText={t("active-group-bar-expense-emoji-copy")}
+        explanationTextTranslateX={isSlimDevice ? 0.1 : 0.2}
         ariaLabel='add expense emoji'
       />
       {/* Button for navigating to adding payments */}
@@ -75,6 +77,7 @@ const ActiveGroupBar = () => {
         plusIconTranslateX={-1.5}
         plusIcon={true}
         explanationText={t("active-group-bar-payment-emoji-copy")}
+        explanationTextTranslateX={0.7}
         ariaLabel='add payment emoji'
       />
       {/* Button for navigating to settling expenses */}
