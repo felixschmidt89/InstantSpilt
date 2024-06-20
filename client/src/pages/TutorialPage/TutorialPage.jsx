@@ -47,9 +47,7 @@ function TutorialPage() {
             <div className={styles.section}>
               <GroupBalanceAndHistoryExplanation />
             </div>
-            <div className={styles.section}>
-              <SyncGroupCodeExplanation />
-            </div>
+            <SyncGroupCodeExplanation />
           </>
         )}
       </div>

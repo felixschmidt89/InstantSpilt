@@ -19,7 +19,6 @@ const SyncGroupCodeExplanation = () => {
         <li>{t("sync-groupcode-explanation-list-item1")},</li>
         <li>{t("sync-groupcode-explanation-list-item2")}</li>
       </ul>
-      <p>{t("sync-groupcode-explanation-list-explanation")}</p>
     </div>
   );
 };
