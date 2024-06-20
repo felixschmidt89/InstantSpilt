@@ -83,6 +83,7 @@
   "copy-to-clipboard-component-error-copy": "Error copying content, please copy manually.",
   "delete-resource-delete-copy": "delete",
   "delete-resource-confirmation-message": "Sure you want to delete this?",
+  "delete-resource-error-user-has-associated-transactions-please-remove-the-user-from-all-transactions": "Not possible due to associated transactions. Please remove the member from all transactions via its history first.",
   "view-switch-balances-button": "balances",
   "view-switch-history-button": "history",
   "main-bar-invite-icon-text": "invite",

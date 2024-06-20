@@ -83,6 +83,7 @@
   "copy-to-clipboard-component-error-copy": "Fehler beim Kopieren , bitte manuell kopieren",
   "delete-resource-delete-copy": "löschen",
   "delete-resource-confirmation-message": "Sicher, dass du das löschen möchtest?",
+  "delete-resource-error-user-has-associated-transactions-please-remove-the-user-from-all-transactions": "Gruppenmitglied kann nicht gelöscht werden. Zunächst Verlauf öffnen und es aus allen Transaktionen entfernen.",
   "view-switch-balances-button": "Übersicht",
   "view-switch-history-button": "Verlauf",
   "main-bar-invite-icon-text": "einladen",
