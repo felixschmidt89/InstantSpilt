@@ -168,7 +168,7 @@ const DefaultAndUserSettingsBar = () => {
               <ReactIconNavigate
                 icon={IoInformationCircleOutline}
                 containerHeight='8'
-                containerWidth={isVerySlimDevice ? "2" : "5"}
+                containerWidth={isVerySlimDevice ? "6" : "7"}
                 explanationText={t("main-bar-tutorial-icon-text")}
                 iconExplanationWidth='8'
                 route={`/tutorial/${groupData?.group?.initialGroupName}/${groupCode}`}
@@ -181,7 +181,7 @@ const DefaultAndUserSettingsBar = () => {
               <ReactIconNavigate
                 icon={IoChatboxOutline}
                 containerHeight='8'
-                containerWidth={isVerySlimDevice ? "3" : "5"}
+                containerWidth={isVerySlimDevice ? "6" : "7"}
                 explanationText={t("main-bar-contact-icon-text")}
                 iconExplanationWidth='5'
                 route={`/contact/${groupCode}`}
@@ -193,14 +193,13 @@ const DefaultAndUserSettingsBar = () => {
               <ReactIconNavigate
                 icon={PiUserSwitchLight}
                 containerHeight='8'
-                containerWidth={isVerySlimDevice ? "4" : "5"}
+                containerWidth={isVerySlimDevice ? "6" : "7"}
                 explanationText={t("main-bar-manage-groups-icon-text")}
                 iconExplanationWidth='7'
                 route={`/manage-groups`}
                 iconSize={isVerySlimDevice ? 3 : 3.5}
                 iconScale={1}
                 translateY={0.1}
-                translateX={isVerySlimDevice ? 0.2 : 0.5}
               />
             </span>
             <span className={styles.icon}>

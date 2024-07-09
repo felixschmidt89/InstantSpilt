@@ -143,7 +143,7 @@ const InstantSplitPage = () => {
         <span className={styles.spinner}></span>
       ) : groupData.group ? (
         <>
-          <HelmetMetaTagsNetlify title={t("main-page-title")} />{" "}
+          <HelmetMetaTagsNetlify title={t("main-page-title")} />
           <PiratePx COUNT_IDENTIFIER={"main-application"} />
           <DefaultAndUserSettingsBar />
           <div className={styles.topBar}>
