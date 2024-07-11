@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 
 // Constants and Utils
 import { devLog } from "../../../../utils/errorUtils";
+import { setViewStateInLocalStorage } from "../../../../utils/localStorageUtils";
 
 // Hooks
 import useConfirmationModalLogicAndActions from "../../../../hooks/useConfirmationModalLogicAndActions";
@@ -61,6 +62,7 @@ const ConfirmSettlementPayment = ({
         paymentRecipientName,
       });
       devLog("Settlement payment created:", response);
+      setViewStateInLocalStorage("view2");
       navigate("/instant-split");
     } catch (error) {
       setError(t("generic-error-message"));
