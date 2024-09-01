@@ -19,9 +19,7 @@
 
 - **Project status**:
   - The application has been fully functional since the release of the first MVP on 03/10/2023 and will continue to receive improvements.
-  - Recently, codebase, UI and UX have been widely improved after the first user tests in January 2024
-  - Further development will focus on implementing database encryption, adding unit tests, and general server-side refactoring.
-  - The next new core user functionality will be multi-currency expense tracking and daily currency rate conversion for settlement payments in a group's base currency.
+  - Codebase, UI and UX have been widely improved after the first user tests in January 2024
 
 ## Access the application or try the demo.
 
