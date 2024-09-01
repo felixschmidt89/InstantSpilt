@@ -26,7 +26,7 @@ const ActiveGroupBar = () => {
   const { isSlimDevice } = useIsSlimDevice();
   const notoEmojiFontIsLoaded = useIsNotoEmojiFontLoaded();
 
-  console.log("isVerySlimDevice", isSlimDevice);
+  console.log("isSlimDevice", isSlimDevice);
 
   // Render the group actions bar if emoji font is loaded
   return notoEmojiFontIsLoaded ? (
@@ -39,11 +39,7 @@ const ActiveGroupBar = () => {
         route={"group-settings"}
         emoji={settingsEmoji || ""}
         translateX={0}
-        explanationText={
-          isSlimDevice
-            ? t("active-group-bar-settings-emoji-short-copy")
-            : t("active-group-bar-settings-emoji-copy")
-        }
+        explanationText={t("active-group-bar-settings-emoji-copy")}
         ariaLabel='group settings emoji'
       />
 

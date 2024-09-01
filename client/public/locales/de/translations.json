@@ -19,8 +19,8 @@
   "leave-group-on-device-groupcode-explanation-part2": "wieder beizutreten:",
   "leave-group-on-device-page-button": "verlassen",
   "leave-group-on-device-confirmation-message": "Gruppe auf diesem Gerät verlassen?",
-  "group-settings-page-title": "InstantSplit - Gruppeneinstellungen",
-  "group-settings-page-header": "Gruppeneinstellungen",
+  "group-settings-page-title": "InstantSplit - Gruppenoptionen",
+  "group-settings-page-header": "Gruppenoptionen",
   "home-page-title": "InstantSplit - Startseite",
   "home-page-header": "Willkommen bei InstantSplit!",
   "main-page-title": "InstantSplit",
@@ -30,7 +30,7 @@
   "legal-notice-page-explanation": "",
   "manage-groups-page-title": "InstantSplit - Gruppen verwalten",
   "manage-groups-page-header": "Gruppen verwalten",
-  "onboarding-group-settings-page-title": "InstantSplit - Gruppeneinstellungen",
+  "onboarding-group-settings-page-title": "InstantSplit - Gruppenoptionen",
   "page-not-found-page-title": "InstantSplit - Seite nicht gefunden",
   "page-not-found-page-header": "404 - Seite nicht gefunden",
   "page-not-found-page-explanation": "Die angeforderte Seite existiert nicht.",
@@ -74,8 +74,7 @@
   "footer-github-link": "GitHub",
   "footer-legal-notice-link": "Impressum",
   "footer-t&c-link": "AGB",
-  "active-group-bar-settings-emoji-short-copy": "Einstell.",
-  "active-group-bar-settings-emoji-copy": "Einstellungen",
+  "active-group-bar-settings-emoji-copy": "Optionen",
   "active-group-bar-settle-emoji-copy": "Ausgleich",
   "active-group-bar-member-emoji-copy": "Mitglied",
   "active-group-bar-payment-emoji-copy": "Zahlung",
@@ -295,7 +294,7 @@
     {
       "key": "section8",
       "title": "Datenlöschung",
-      "content": "Als datenschutzsensible Anwendung haben wir einen Datenlöschungsmechanismus eingeführt: Wenn eine Gruppe über einen Zeitraum von 90 Tagen inaktiv bleibt, d.h. keine Gruppendaten dargestellt, hinzugefügt oder verändert werden, werden alle Nutzungsdaten dauerhaft gelöscht. Diese Richtlinie dient dazu, Ihre Privatsphäre zu schützen und sicherzustellen, dass nur relevante und aktive Daten in der Anwendung gespeichert bleiben. Wenn Sie die Gruppe und ihre Daten behalten möchten, können Sie diesen Mechanismus in den Gruppeneinstellungen der Anwendung deaktivieren."
+      "content": "Als datenschutzsensible Anwendung haben wir einen Datenlöschungsmechanismus eingeführt: Wenn eine Gruppe über einen Zeitraum von 90 Tagen inaktiv bleibt, d.h. keine Gruppendaten dargestellt, hinzugefügt oder verändert werden, werden alle Nutzungsdaten dauerhaft gelöscht. Diese Richtlinie dient dazu, Ihre Privatsphäre zu schützen und sicherzustellen, dass nur relevante und aktive Daten in der Anwendung gespeichert bleiben. Wenn Sie die Gruppe und ihre Daten behalten möchten, können Sie diesen Mechanismus in den optionen der Anwendung deaktivieren."
     },
     {
       "key": "section9",
