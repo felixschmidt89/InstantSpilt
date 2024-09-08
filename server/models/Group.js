@@ -20,6 +20,10 @@ const groupSchema = new Schema(
     initialGroupName: {
       type: String,
       trim: true,
+      validate: {
+        validator: (value) => !/\//.test(value), // Custom validator to disallow slashes
+        message: 'The group name must not include slashes',
+      },
     },
     currency: { type: String, default: '€' },
     lastActive: {

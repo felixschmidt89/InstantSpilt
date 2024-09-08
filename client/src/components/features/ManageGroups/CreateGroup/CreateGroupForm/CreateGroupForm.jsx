@@ -79,6 +79,12 @@ const CreateGroupForm = ({ isExistingUser = false }) => {
     }
   };
 
+  // Event handler to replace slashes with dashes in group name to prevent route issues
+  const handleInputChange = (e) => {
+    const normalizedValue = e.target.value.replace(/\//g, "-");
+    setGroupName(normalizedValue);
+  };
+
   return (
     <form onSubmit={handleFormSubmit} className={styles.container}>
       <h2>{t("create-group-header")}</h2>
@@ -86,7 +92,7 @@ const CreateGroupForm = ({ isExistingUser = false }) => {
         className={styles.inputField}
         type='text'
         value={groupName}
-        onChange={(e) => setGroupName(e.target.value)}
+        onChange={handleInputChange}
         placeholder={t("create-group-group-name-placeholder")}
         ref={inputRef}
       />
