@@ -21,7 +21,7 @@ const groupSchema = new Schema(
       type: String,
       trim: true,
       validate: {
-        validator: (value) => !/\//.test(value), // Custom validator to disallow slashes
+        validator: (value) => !/\//.test(value), // disallow slashes
         message: 'The group name must not include slashes',
       },
     },
