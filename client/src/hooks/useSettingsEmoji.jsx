@@ -8,8 +8,8 @@ import useGetClientDeviceAndPwaInfo from "./useGetClientDeviceAndPwaInfo";
 // Hooks
 
 /**
- * Custom hook to handle the settings emoji based on the user's browser to handle a related
- * Firefox bug. (settings emoji not rendered correctly, see: https://github.com/googlefonts/noto-emoji/issues/391)
+ * Custom hook to handle the settings emoji based on the user's browser to handle related
+ * Firefox & newly introduced Chrome bug. (settings emoji not rendered correctly, see: https://github.com/googlefonts/noto-emoji/issues/391)
  *
  */
 const useSettingsEmoji = () => {
@@ -17,9 +17,12 @@ const useSettingsEmoji = () => {
   const { browserName } = useGetClientDeviceAndPwaInfo();
 
   useEffect(() => {
-    const isFireFox = browserName.toLowerCase().includes("firefox");
-    const emojiToUse = isFireFox
-      ? emojiConstants.fireFoxSettings
+    const lowerCaseBrowser = browserName.toLowerCase();
+    const isFirefoxOrChrome =
+      lowerCaseBrowser.includes("firefox") ||
+      lowerCaseBrowser.includes("chrome");
+    const emojiToUse = isFirefoxOrChrome
+      ? emojiConstants.chromeAndFireFoxSettings
       : emojiConstants.settings;
     setSettingsEmoji(emojiToUse);
   }, [browserName]);
